@@ -320,7 +320,7 @@ function renderList() {
     info.className = 'info';
     const name = document.createElement('div');
     name.className = 'name';
-    name.textContent = spot.title;
+    name.textContent = (ADMIN && /^s\d+$/.test(spot.id) ? `№ ${+spot.id.slice(1)} · ` : '') + spot.title;
     info.append(name);
     const metaText = [spot.year, spot.hint].filter(Boolean).join(' · ');
     if (metaText) {
