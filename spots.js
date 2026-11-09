@@ -399,13 +399,13 @@ window.SPOTS_DATA = [
   "id": "s046",
   "src": "photos/spot046.jpg",
   "thumb": "photos/thumbs/spot046.jpg",
-  "title": "Старый снимок № 46",
+  "title": "Михайловские ворота",
   "year": "",
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378368611753&set=pcb.107381791944744",
   "original": "469163660_584956144187304_718926113660435160_n.jpg",
-  "group": "Ворота (уточнить)"
+  "group": "Михайловские ворота"
  },
  {
   "id": "s047",
@@ -507,13 +507,13 @@ window.SPOTS_DATA = [
   "id": "s057",
   "src": "photos/spot057.jpg",
   "thumb": "photos/thumbs/spot057.jpg",
-  "title": "Старый снимок № 57",
+  "title": "Мост от Михайловских ворот через полуконтргард",
   "year": "",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "470205956_591464013536517_8016974389044086127_n.jpg",
-  "group": "Ворота (уточнить)"
+  "group": "Михайловские ворота"
  },
  {
   "id": "s059",
@@ -591,13 +591,13 @@ window.SPOTS_DATA = [
   "id": "s065",
   "src": "photos/spot065.jpg",
   "thumb": "photos/thumbs/spot065.jpg",
-  "title": "Старый снимок № 65",
+  "title": "Николаевские ворота",
   "year": "",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "471591667_602564452426473_9027189579637723076_n.jpg",
-  "group": "Ворота (уточнить)"
+  "group": "Николаевские ворота"
  },
  {
   "id": "s066",
@@ -651,13 +651,13 @@ window.SPOTS_DATA = [
   "id": "s070",
   "src": "photos/spot070.jpg",
   "thumb": "photos/thumbs/spot070.jpg",
-  "title": "Старый снимок № 70",
+  "title": "Константиновские ворота",
   "year": "",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "481071221_656791186920031_5467225317698404071_n.jpg",
-  "group": "Ворота (уточнить)"
+  "group": "Константиновские ворота"
  },
  {
   "id": "s071",
@@ -795,13 +795,13 @@ window.SPOTS_DATA = [
   "id": "s089",
   "src": "photos/spot089.jpg",
   "thumb": "photos/thumbs/spot089.jpg",
-  "title": "Старый снимок № 89",
+  "title": "Михайловские ворота",
   "year": "",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489542489_737690215594189_507549765832897493_n.jpg",
-  "group": "Ворота (уточнить)"
+  "group": "Михайловские ворота"
  },
  {
   "id": "s090",
@@ -951,13 +951,13 @@ window.SPOTS_DATA = [
   "id": "s102",
   "src": "photos/spot102.jpg",
   "thumb": "photos/thumbs/spot102.jpg",
-  "title": "Старый снимок № 102",
+  "title": "Николаевские ворота",
   "year": "",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489901291_737773318919212_2610499294000031030_n.jpg",
-  "group": "Ворота (уточнить)"
+  "group": "Николаевские ворота"
  },
  {
   "id": "s103",
@@ -1059,13 +1059,13 @@ window.SPOTS_DATA = [
   "id": "s111",
   "src": "photos/spot111.jpg",
   "thumb": "photos/thumbs/spot111.jpg",
-  "title": "Старый снимок № 111",
+  "title": "Пристройка перед Николаевскими воротами",
   "year": "",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489951270_737692542260623_1921791790077964040_n.jpg",
-  "group": "Ворота (уточнить)"
+  "group": "Николаевские ворота"
  },
  {
   "id": "s112",
@@ -1143,13 +1143,13 @@ window.SPOTS_DATA = [
   "id": "s120",
   "src": "photos/spot120.jpg",
   "thumb": "photos/thumbs/spot120.jpg",
-  "title": "Старый снимок № 120",
+  "title": "Инженерный арсенал, крыша",
   "year": "",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490023893_740077085355502_8367157190442196756_n.jpg",
-  "group": "Ворота (уточнить)"
+  "group": "Инженерный арсенал"
  },
  {
   "id": "s121",
@@ -1533,7 +1533,7 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02sJS2qnWns8aGPefuQAyQtBgCRuLtxUUy27wVTX8aK9GzqWq6qrDGsy7hBxYJvvaGl",
   "original": "490409736_740076755355535_6050240267208918825_n.jpg",
-  "group": "Виды сверху"
+  "group": "Инженерный арсенал"
  },
  {
   "id": "s155",
