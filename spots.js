@@ -8,7 +8,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0wwxqdxTdg5p8e1zjEKDUi4vKcqTfv72bVDRSmNizkcgXMPsBMpgThMWNb8dRPhXWl",
   "original": "488363915_733585706004640_2063632195152577580_n.jpg",
-  "thumb": "photos/thumbs/spot01.jpg"
+  "thumb": "photos/thumbs/spot01.jpg",
+  "group": "Михайловские ворота"
  },
  {
   "id": "s02",
@@ -19,7 +20,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02WD4TEGLKS1w5Et1bx1iWbDu54Bks5qJngTjjrhf7x8HgS9HxxhLFVYkfnqMZ95K4l",
   "original": "489785473_733585682671309_5975442801454541864_n.jpg",
-  "thumb": "photos/thumbs/spot02.jpg"
+  "thumb": "photos/thumbs/spot02.jpg",
+  "group": "Михайловские ворота"
  },
  {
   "id": "s03",
@@ -30,7 +32,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0RtKFDQ13AZkBk2qY4vAY2thyrpWVVMXrCDpp3KwR9Huzou76HZxB2NTjTWDggcyWl",
   "original": "489339465_733585882671289_3284612479246191142_n.jpg",
-  "thumb": "photos/thumbs/spot03.jpg"
+  "thumb": "photos/thumbs/spot03.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s05",
@@ -41,7 +44,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=533883462641533",
   "original": "492023161_742388471791030_3400678634038058358_n.jpg",
-  "thumb": "photos/thumbs/spot05.jpg"
+  "thumb": "photos/thumbs/spot05.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s06",
@@ -52,7 +56,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=539890788707467",
   "original": "490536104_742464525116758_675542424662661152_n.jpg",
-  "thumb": "photos/thumbs/spot06.jpg"
+  "thumb": "photos/thumbs/spot06.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s07",
@@ -63,7 +68,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=544479058248640",
   "original": "491341231_742464728450071_7416061140947829490_n.jpg",
-  "thumb": "photos/thumbs/spot07.jpg"
+  "thumb": "photos/thumbs/spot07.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s08",
@@ -74,7 +80,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid033M4tfnPKsnWQ1zPXKiWaCeYts2q8MtZGS7W7PQgNLfNRvdGpR8q29um1ggVcGzm2l",
   "original": "708277263_1076607218369152_2186363187117378939_n.jpg",
-  "thumb": "photos/thumbs/spot08.jpg"
+  "thumb": "photos/thumbs/spot08.jpg",
+  "group": "Константиновские ворота"
  },
  {
   "id": "s13",
@@ -85,7 +92,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
   "original": "489924397_737696825593528_8896885690954861260_n.jpg",
-  "thumb": "photos/thumbs/spot13.jpg"
+  "thumb": "photos/thumbs/spot13.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s14",
@@ -96,7 +104,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
   "original": "490348282_737696838926860_1721376415922042285_n.jpg",
-  "thumb": "photos/thumbs/spot14.jpg"
+  "thumb": "photos/thumbs/spot14.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s15",
@@ -107,7 +116,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
   "original": "490343775_737696465593564_7585436451181115167_n.jpg",
-  "thumb": "photos/thumbs/spot15.jpg"
+  "thumb": "photos/thumbs/spot15.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s17",
@@ -118,7 +128,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02dmeYaBMDmFZT6KfR5GBdgFJN9EwC2uvwH1XPNrCDK9oCQAh7b3CEVLA4MctuwE8wl",
   "original": "706726974_1077433198286554_5949946869488280220_n.jpg",
-  "thumb": "photos/thumbs/spot17.jpg"
+  "thumb": "photos/thumbs/spot17.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s18",
@@ -129,7 +140,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02dmeYaBMDmFZT6KfR5GBdgFJN9EwC2uvwH1XPNrCDK9oCQAh7b3CEVLA4MctuwE8wl",
   "original": "707580643_1077432931619914_5285432096468790543_n.jpg",
-  "thumb": "photos/thumbs/spot18.jpg"
+  "thumb": "photos/thumbs/spot18.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s19",
@@ -140,7 +152,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02dmeYaBMDmFZT6KfR5GBdgFJN9EwC2uvwH1XPNrCDK9oCQAh7b3CEVLA4MctuwE8wl",
   "original": "708209978_1077433194953221_1120243343787519750_n.jpg",
-  "thumb": "photos/thumbs/spot19.jpg"
+  "thumb": "photos/thumbs/spot19.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s20",
@@ -151,7 +164,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02dmeYaBMDmFZT6KfR5GBdgFJN9EwC2uvwH1XPNrCDK9oCQAh7b3CEVLA4MctuwE8wl",
   "original": "708210606_1077433191619888_2221898660151372043_n.jpg",
-  "thumb": "photos/thumbs/spot20.jpg"
+  "thumb": "photos/thumbs/spot20.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s21",
@@ -162,7 +176,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02dmeYaBMDmFZT6KfR5GBdgFJN9EwC2uvwH1XPNrCDK9oCQAh7b3CEVLA4MctuwE8wl",
   "original": "708270757_1077433311619876_8800647499990115373_n.jpg",
-  "thumb": "photos/thumbs/spot21.jpg"
+  "thumb": "photos/thumbs/spot21.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s22",
@@ -173,7 +188,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02dmeYaBMDmFZT6KfR5GBdgFJN9EwC2uvwH1XPNrCDK9oCQAh7b3CEVLA4MctuwE8wl",
   "original": "708450915_1077433178286556_8314641312388790824_n.jpg",
-  "thumb": "photos/thumbs/spot22.jpg"
+  "thumb": "photos/thumbs/spot22.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s23",
@@ -184,7 +200,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02dmeYaBMDmFZT6KfR5GBdgFJN9EwC2uvwH1XPNrCDK9oCQAh7b3CEVLA4MctuwE8wl",
   "original": "708793521_1077433668286507_7307091010769653974_n.jpg",
-  "thumb": "photos/thumbs/spot23.jpg"
+  "thumb": "photos/thumbs/spot23.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s024",
@@ -195,7 +212,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "1.jpg"
+  "original": "1.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s026",
@@ -206,7 +224,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378478611742&set=pcb.107381791944744",
-  "original": "277800585_107378451945078_2882600075453609382_n.png"
+  "original": "277800585_107378451945078_2882600075453609382_n.png",
+  "group": "Собор"
  },
  {
   "id": "s028",
@@ -217,7 +236,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0cFjcKVKuhQRg8ytr2GZcsA7ydQ5WUE6W2fji2wMJMDDoBpsfkkDWQoNC5acrYmQHl",
-  "original": "469009002_584955897520662_8935759319512018143_n.jpg"
+  "original": "469009002_584955897520662_8935759319512018143_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s029",
@@ -228,7 +248,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377698611820&set=pcb.107381791944744",
-  "original": "469009398_584955844187334_971039392454788469_n.jpg"
+  "original": "469009398_584955844187334_971039392454788469_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s030",
@@ -239,7 +260,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378078611782&set=pcb.107381791944744",
-  "original": "469010142_584955907520661_6019223787486006460_n.jpg"
+  "original": "469010142_584955907520661_6019223787486006460_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s031",
@@ -250,7 +272,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378248611765&set=pcb.107381791944744",
-  "original": "469010149_584956127520639_4515998323807538988_n.jpg"
+  "original": "469010149_584956127520639_4515998323807538988_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s033",
@@ -261,7 +284,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378345278422&set=pcb.107381791944744",
-  "original": "469074487_584956120853973_5595155640745170488_n.jpg"
+  "original": "469074487_584956120853973_5595155640745170488_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s035",
@@ -272,7 +296,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377888611801&set=pcb.107381791944744",
-  "original": "469096825_584955884187330_6317374574251915569_n.jpg"
+  "original": "469096825_584955884187330_6317374574251915569_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s037",
@@ -283,7 +308,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377968611793&set=pcb.107381791944744",
-  "original": "469108288_584955900853995_3460619888247434748_n.jpg"
+  "original": "469108288_584955900853995_3460619888247434748_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s038",
@@ -294,7 +320,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378185278438&set=pcb.107381791944744",
-  "original": "469115002_584955887520663_3556234438919068877_n.jpg"
+  "original": "469115002_584955887520663_3556234438919068877_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s039",
@@ -305,7 +332,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377801945143&set=pcb.107381791944744",
-  "original": "469122418_584956094187309_6724379559263303296_n.jpg"
+  "original": "469122418_584956094187309_6724379559263303296_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s041",
@@ -316,7 +344,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378465278410&set=pcb.107381791944744",
-  "original": "469133042_584955870853998_6966179978672072809_n.jpg"
+  "original": "469133042_584955870853998_6966179978672072809_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s042",
@@ -327,7 +356,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0cFjcKVKuhQRg8ytr2GZcsA7ydQ5WUE6W2fji2wMJMDDoBpsfkkDWQoNC5acrYmQHl",
-  "original": "469134742_584955864187332_7586439356741062368_n.jpg"
+  "original": "469134742_584955864187332_7586439356741062368_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s043",
@@ -338,7 +368,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377911945132&set=pcb.107381791944744",
-  "original": "469141492_584955790854006_4835181550574155336_n.jpg"
+  "original": "469141492_584955790854006_4835181550574155336_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s044",
@@ -349,7 +380,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378461945077&set=pcb.107381791944744",
-  "original": "469143209_584955807520671_2449607922378821198_n.jpg"
+  "original": "469143209_584955807520671_2449607922378821198_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s045",
@@ -360,7 +392,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377758611814&set=pcb.107381791944744",
-  "original": "469158458_584956130853972_3951381031250255598_n.jpg"
+  "original": "469158458_584956130853972_3951381031250255598_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s046",
@@ -371,7 +404,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378368611753&set=pcb.107381791944744",
-  "original": "469163660_584956144187304_718926113660435160_n.jpg"
+  "original": "469163660_584956144187304_718926113660435160_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s047",
@@ -382,7 +416,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378001945123&set=pcb.107381791944744",
-  "original": "469180480_584956090853976_2077894905452397017_n.jpg"
+  "original": "469180480_584956090853976_2077894905452397017_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s048",
@@ -393,7 +428,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377741945149&set=pcb.107381791944744",
-  "original": "469285165_584956134187305_3284627912535909037_n.jpg"
+  "original": "469285165_584956134187305_3284627912535909037_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s049",
@@ -404,7 +440,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377771945146&set=pcb.107381791944744",
-  "original": "469292791_584956084187310_4606624244781198322_n.jpg"
+  "original": "469292791_584956084187310_4606624244781198322_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s050",
@@ -415,7 +452,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "469986636_591465123536406_4384820694644206299_n.jpg"
+  "original": "469986636_591465123536406_4384820694644206299_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s051",
@@ -426,7 +464,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "469998171_591463733536545_6463079825683265629_n.jpg"
+  "original": "469998171_591463733536545_6463079825683265629_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s054",
@@ -437,7 +476,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "470180429_592181590131426_3740695992457493886_n.jpg"
+  "original": "470180429_592181590131426_3740695992457493886_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s055",
@@ -448,7 +488,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "470184446_592187423464176_3244501568797605742_n.jpg"
+  "original": "470184446_592187423464176_3244501568797605742_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s056",
@@ -459,7 +500,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "470185466_591462533536665_3191858994277036621_n.jpg"
+  "original": "470185466_591462533536665_3191858994277036621_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s057",
@@ -470,7 +512,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "470205956_591464013536517_8016974389044086127_n.jpg"
+  "original": "470205956_591464013536517_8016974389044086127_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s059",
@@ -481,7 +524,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "470214104_591467220202863_5372301924303375384_n.jpg"
+  "original": "470214104_591467220202863_5372301924303375384_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s060",
@@ -492,7 +536,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "470217826_592190033463915_2377079514556247004_n.jpg"
+  "original": "470217826_592190033463915_2377079514556247004_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s061",
@@ -503,7 +548,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "470217886_591468273536091_125834721888115275_n.jpg"
+  "original": "470217886_591468273536091_125834721888115275_n.jpg",
+  "group": "Виды сверху"
  },
  {
   "id": "s062",
@@ -514,7 +560,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "470226345_591451106871141_8519268482160495196_n.jpg"
+  "original": "470226345_591451106871141_8519268482160495196_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s063",
@@ -525,7 +572,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "470237498_592904590059126_7921223754987084026_n.jpg"
+  "original": "470237498_592904590059126_7921223754987084026_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s064",
@@ -536,7 +584,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "471494073_602559752426943_2461006822548162762_n.jpg"
+  "original": "471494073_602559752426943_2461006822548162762_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s065",
@@ -547,7 +596,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "471591667_602564452426473_9027189579637723076_n.jpg"
+  "original": "471591667_602564452426473_9027189579637723076_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s066",
@@ -558,7 +608,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "471819733_602553865760865_6656327872371821534_n.jpg"
+  "original": "471819733_602553865760865_6656327872371821534_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s067",
@@ -569,7 +620,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "472956326_610974718252113_3755758424475463356_n.jpg"
+  "original": "472956326_610974718252113_3755758424475463356_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s068",
@@ -580,7 +632,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "472965802_610956161587302_580667693652697665_n.jpg"
+  "original": "472965802_610956161587302_580667693652697665_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s069",
@@ -591,7 +644,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "473445748_612157711467147_5921251586486764421_n.jpg"
+  "original": "473445748_612157711467147_5921251586486764421_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s070",
@@ -602,7 +656,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "481071221_656791186920031_5467225317698404071_n.jpg"
+  "original": "481071221_656791186920031_5467225317698404071_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s071",
@@ -613,7 +668,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "488575514_733585989337945_7112225636572201731_n.jpg"
+  "original": "488575514_733585989337945_7112225636572201731_n.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s074",
@@ -624,7 +680,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "488795722_732857009410843_5799518006163468843_n.jpg"
+  "original": "488795722_732857009410843_5799518006163468843_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s075",
@@ -635,7 +692,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "488814447_733521242677753_1420537054288927487_n.jpg"
+  "original": "488814447_733521242677753_1420537054288927487_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s077",
@@ -646,7 +704,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "488892339_733586006004610_6709986998483773397_n.jpg"
+  "original": "488892339_733586006004610_6709986998483773397_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s079",
@@ -657,7 +716,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489006929_733522652677612_907594319715915683_n.jpg"
+  "original": "489006929_733522652677612_907594319715915683_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s082",
@@ -668,7 +728,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489042885_733586009337943_4847057479397669926_n.jpg"
+  "original": "489042885_733586009337943_4847057479397669926_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s083",
@@ -679,7 +740,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489076621_733572999339244_951714427475629755_n.jpg"
+  "original": "489076621_733572999339244_951714427475629755_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s084",
@@ -690,7 +752,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489140854_737699445593266_3739867424044438135_n.jpg"
+  "original": "489140854_737699445593266_3739867424044438135_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s085",
@@ -701,7 +764,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02Dfkxg2jzdbtkcPRNqoJzfLp6gFwHg6m3sRjp1ZXz1waAteCzrhER5TnKCywUyJQul",
-  "original": "489294774_732640979432446_9139480994228305828_n.jpg"
+  "original": "489294774_732640979432446_9139480994228305828_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s086",
@@ -712,7 +776,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489339928_733584666004744_2809285436584197554_n.jpg"
+  "original": "489339928_733584666004744_2809285436584197554_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s087",
@@ -723,7 +788,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489479733_737689318927612_1130034804424972830_n.jpg"
+  "original": "489479733_737689318927612_1130034804424972830_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s089",
@@ -734,7 +800,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489542489_737690215594189_507549765832897493_n.jpg"
+  "original": "489542489_737690215594189_507549765832897493_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s090",
@@ -745,7 +812,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489544007_737694578927086_8144660133063216132_n.jpg"
+  "original": "489544007_737694578927086_8144660133063216132_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s091",
@@ -756,7 +824,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0H5DFguqnPtHaRbryKb3znx6iqrAD8zucEfiSXRX676nU4skR4nzrkWgHEy2S3EgTl",
-  "original": "489694929_738193598877184_136399821540950764_n.jpg"
+  "original": "489694929_738193598877184_136399821540950764_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s092",
@@ -767,7 +836,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0ZNyJn1r45GFqzLHnjKmFw3xosdScc2xo8pc6sBSxj7YhScrL1TjRDRNVDVjr7c8kl",
-  "original": "489708006_737948305568380_2015592341392721569_n.jpg"
+  "original": "489708006_737948305568380_2015592341392721569_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s093",
@@ -778,7 +848,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489711866_737043978992146_7991692386203559663_n.jpg"
+  "original": "489711866_737043978992146_7991692386203559663_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s094",
@@ -789,7 +860,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489768922_737636685599542_2140311027724180393_n.jpg"
+  "original": "489768922_737636685599542_2140311027724180393_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s095",
@@ -800,7 +872,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489817209_737925745570636_2393715834988413268_n.jpg"
+  "original": "489817209_737925745570636_2393715834988413268_n.jpg",
+  "group": "Константиновские ворота"
  },
  {
   "id": "s096",
@@ -811,7 +884,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489822487_737925858903958_6548017730769548286_n.jpg"
+  "original": "489822487_737925858903958_6548017730769548286_n.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s097",
@@ -822,7 +896,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489828777_737925838903960_7466463034200938883_n.jpg"
+  "original": "489828777_737925838903960_7466463034200938883_n.jpg",
+  "group": "Константиновские ворота"
  },
  {
   "id": "s098",
@@ -833,7 +908,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489835816_737941642235713_3138390221931971273_n.jpg"
+  "original": "489835816_737941642235713_3138390221931971273_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s099",
@@ -844,7 +920,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489835980_737929625570248_8474698662953692993_n.jpg"
+  "original": "489835980_737929625570248_8474698662953692993_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s100",
@@ -855,7 +932,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=390642843632263",
-  "original": "489885894_737778492252028_324641060072361176_n.jpg"
+  "original": "489885894_737778492252028_324641060072361176_n.jpg",
+  "group": "Константиновские ворота"
  },
  {
   "id": "s101",
@@ -866,7 +944,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489896884_737792022250675_12980776566501471_n.jpg"
+  "original": "489896884_737792022250675_12980776566501471_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s102",
@@ -877,7 +956,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489901291_737773318919212_2610499294000031030_n.jpg"
+  "original": "489901291_737773318919212_2610499294000031030_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s103",
@@ -888,7 +968,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489912215_737636828932861_8561603842077780156_n.jpg"
+  "original": "489912215_737636828932861_8561603842077780156_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s104",
@@ -899,7 +980,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489912734_737636582266219_8387240067702359525_n.jpg"
+  "original": "489912734_737636582266219_8387240067702359525_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s105",
@@ -910,7 +992,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0xBqHFhK1aUdiq7ZB9nH6TMwxU1SUSdijfkjJ2ZzZepgZQ4pWtppVijHrqW1CLyBol",
-  "original": "489913360_738358628860681_3492844122284669656_n.jpg"
+  "original": "489913360_738358628860681_3492844122284669656_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s106",
@@ -921,7 +1004,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489914686_737774432252434_2012524983602934636_n.jpg"
+  "original": "489914686_737774432252434_2012524983602934636_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s107",
@@ -932,7 +1016,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489918493_737768895586321_7918307893977986356_n.jpg"
+  "original": "489918493_737768895586321_7918307893977986356_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s108",
@@ -943,7 +1028,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=419564397406774",
-  "original": "489924000_738189395544271_1830081876286391238_n.jpg"
+  "original": "489924000_738189395544271_1830081876286391238_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s109",
@@ -954,7 +1040,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0H5DFguqnPtHaRbryKb3znx6iqrAD8zucEfiSXRX676nU4skR4nzrkWgHEy2S3EgTl",
-  "original": "489943883_738193515543859_4809971715363214622_n.jpg"
+  "original": "489943883_738193515543859_4809971715363214622_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s110",
@@ -965,7 +1052,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489950892_737788968917647_1064868204005125192_n.jpg"
+  "original": "489950892_737788968917647_1064868204005125192_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s111",
@@ -976,7 +1064,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489951270_737692542260623_1921791790077964040_n.jpg"
+  "original": "489951270_737692542260623_1921791790077964040_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s112",
@@ -987,7 +1076,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "489954561_737699438926600_2197416576484120621_n.jpg"
+  "original": "489954561_737699438926600_2197416576484120621_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s115",
@@ -998,7 +1088,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490018755_739064388790105_7492205756229411660_n.jpg"
+  "original": "490018755_739064388790105_7492205756229411660_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s116",
@@ -1009,7 +1100,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490019126_737699492259928_5671603682845670978_n.jpg"
+  "original": "490019126_737699492259928_5671603682845670978_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s117",
@@ -1020,7 +1112,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490019639_737685665594644_4647040057024112093_n.jpg"
+  "original": "490019639_737685665594644_4647040057024112093_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s118",
@@ -1031,7 +1124,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=427248133305067",
-  "original": "490020010_738354492194428_1701501542556570457_n.jpg"
+  "original": "490020010_738354492194428_1701501542556570457_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s119",
@@ -1042,7 +1136,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490022739_738363805526830_3455702079888864549_n.jpg"
+  "original": "490022739_738363805526830_3455702079888864549_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s120",
@@ -1053,7 +1148,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490023893_740077085355502_8367157190442196756_n.jpg"
+  "original": "490023893_740077085355502_8367157190442196756_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s121",
@@ -1064,7 +1160,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490023909_740076788688865_846842056168209973_n.jpg"
+  "original": "490023909_740076788688865_846842056168209973_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s122",
@@ -1075,7 +1172,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490066062_738196012210276_39031162349320751_n.jpg"
+  "original": "490066062_738196012210276_39031162349320751_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s123",
@@ -1086,7 +1184,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=417220437641170",
-  "original": "490069870_738070912222786_2641350390545457329_n.jpg"
+  "original": "490069870_738070912222786_2641350390545457329_n.jpg",
+  "group": "Николаевские ворота"
  },
  {
   "id": "s124",
@@ -1097,7 +1196,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0xBqHFhK1aUdiq7ZB9nH6TMwxU1SUSdijfkjJ2ZzZepgZQ4pWtppVijHrqW1CLyBol",
-  "original": "490089030_738358665527344_7890148817621918785_n.jpg"
+  "original": "490089030_738358665527344_7890148817621918785_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s125",
@@ -1108,7 +1208,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490113112_738202688876275_2018082667247163976_n.jpg"
+  "original": "490113112_738202688876275_2018082667247163976_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s126",
@@ -1119,7 +1220,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490116869_738204832209394_943030705327841471_n.jpg"
+  "original": "490116869_738204832209394_943030705327841471_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s127",
@@ -1130,7 +1232,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0xBqHFhK1aUdiq7ZB9nH6TMwxU1SUSdijfkjJ2ZzZepgZQ4pWtppVijHrqW1CLyBol",
-  "original": "490135473_738358415527369_468219210751847938_n.jpg"
+  "original": "490135473_738358415527369_468219210751847938_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s128",
@@ -1141,7 +1244,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490141838_738363825526828_8031247234878803851_n.jpg"
+  "original": "490141838_738363825526828_8031247234878803851_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s129",
@@ -1152,7 +1256,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490148424_738664168830127_8054479268497514557_n.jpg"
+  "original": "490148424_738664168830127_8054479268497514557_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s130",
@@ -1163,7 +1268,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490178363_737637035599507_3630280296748609433_n.jpg"
+  "original": "490178363_737637035599507_3630280296748609433_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s131",
@@ -1174,7 +1280,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490189779_737927262237151_3591329553264784229_n.jpg"
+  "original": "490189779_737927262237151_3591329553264784229_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s132",
@@ -1185,7 +1292,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490210025_737925845570626_2615180287390084018_n.jpg"
+  "original": "490210025_737925845570626_2615180287390084018_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s133",
@@ -1196,7 +1304,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490270227_740076822022195_5647634789989503389_n.jpg"
+  "original": "490270227_740076822022195_5647634789989503389_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s135",
@@ -1207,7 +1316,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=390245613671986",
-  "original": "490281592_737777822252095_3290682520224235809_n.jpg"
+  "original": "490281592_737777822252095_3290682520224235809_n.jpg",
+  "group": "Константиновские ворота"
  },
  {
   "id": "s136",
@@ -1218,7 +1328,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490287665_738198345543376_6747884918667777211_n.jpg"
+  "original": "490287665_738198345543376_6747884918667777211_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s137",
@@ -1229,7 +1340,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=442430448453502",
-  "original": "490296304_738659135497297_7717743711867188079_n.jpg"
+  "original": "490296304_738659135497297_7717743711867188079_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s138",
@@ -1240,7 +1352,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490297810_743543685008842_2268272422598792620_n.jpg"
+  "original": "490297810_743543685008842_2268272422598792620_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s140",
@@ -1251,7 +1364,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490315731_737686842261193_1893881426608041430_n.jpg"
+  "original": "490315731_737686842261193_1893881426608041430_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s141",
@@ -1262,7 +1376,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490317595_738768648819679_2407160495326170601_n.jpg"
+  "original": "490317595_738768648819679_2407160495326170601_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s142",
@@ -1273,7 +1388,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490325145_739727882057089_395962021402307190_n.jpg"
+  "original": "490325145_739727882057089_395962021402307190_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s143",
@@ -1284,7 +1400,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490329598_737925855570625_2731676249589293737_n.jpg"
+  "original": "490329598_737925855570625_2731676249589293737_n.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s144",
@@ -1295,7 +1412,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490331822_738662298830314_5831766421950205219_n.jpg"
+  "original": "490331822_738662298830314_5831766421950205219_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s145",
@@ -1306,7 +1424,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=475241085172438",
-  "original": "490353110_739713115391899_7974158494479597172_n.jpg"
+  "original": "490353110_739713115391899_7974158494479597172_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s146",
@@ -1317,7 +1436,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=382858184410729",
-  "original": "490356013_737689908927553_2673555062350851859_n.jpg"
+  "original": "490356013_737689908927553_2673555062350851859_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s147",
@@ -1328,7 +1448,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490356108_737698088926735_6085248806675825136_n.jpg"
+  "original": "490356108_737698088926735_6085248806675825136_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s148",
@@ -1339,7 +1460,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0Jc7HHtCL5zK1U9SFZDmiecPYGgGdXnARdvWrxujBPM83omjZ3GgCegyk1JTh3hrJl",
-  "original": "490356762_739059112123966_2240644202201659235_n.jpg"
+  "original": "490356762_739059112123966_2240644202201659235_n.jpg",
+  "group": "Редюиты и валы"
  },
  {
   "id": "s149",
@@ -1350,7 +1472,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490363341_737699228926621_2643859807801353000_n.jpg"
+  "original": "490363341_737699228926621_2643859807801353000_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s150",
@@ -1361,7 +1484,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490364806_737925908903953_7683524907578751087_n.jpg"
+  "original": "490364806_737925908903953_7683524907578751087_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s151",
@@ -1372,7 +1496,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490365922_737768852252992_5787615282034885294_n.jpg"
+  "original": "490365922_737768852252992_5787615282034885294_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s152",
@@ -1383,7 +1508,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490378010_737699542259923_4758720432133022389_n.jpg"
+  "original": "490378010_737699542259923_4758720432133022389_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s153",
@@ -1394,7 +1520,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490383901_737925802237297_6888565236327664955_n.jpg"
+  "original": "490383901_737925802237297_6888565236327664955_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s154",
@@ -1405,7 +1532,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02sJS2qnWns8aGPefuQAyQtBgCRuLtxUUy27wVTX8aK9GzqWq6qrDGsy7hBxYJvvaGl",
-  "original": "490409736_740076755355535_6050240267208918825_n.jpg"
+  "original": "490409736_740076755355535_6050240267208918825_n.jpg",
+  "group": "Виды сверху"
  },
  {
   "id": "s155",
@@ -1416,7 +1544,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490434443_738191305544080_630417721187800032_n.jpg"
+  "original": "490434443_738191305544080_630417721187800032_n.jpg",
+  "group": "Мосты и дороги"
  },
  {
   "id": "s156",
@@ -1427,7 +1556,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490461750_740077088688835_1512118363027907362_n.jpg"
+  "original": "490461750_740077088688835_1512118363027907362_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s158",
@@ -1438,7 +1568,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490499156_738663802163497_238538642854862881_n.jpg"
+  "original": "490499156_738663802163497_238538642854862881_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s159",
@@ -1449,7 +1580,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490539575_737637025599508_5821000816668366332_n.jpg"
+  "original": "490539575_737637025599508_5821000816668366332_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s160",
@@ -1460,7 +1592,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490539721_739510238745520_2317750626187618733_n.jpg"
+  "original": "490539721_739510238745520_2317750626187618733_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s161",
@@ -1471,7 +1604,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490573649_740076762022201_4406410934887207312_n.jpg"
+  "original": "490573649_740076762022201_4406410934887207312_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s162",
@@ -1482,7 +1616,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490584894_740076685355542_2256356096183607586_n.jpg"
+  "original": "490584894_740076685355542_2256356096183607586_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s163",
@@ -1493,7 +1628,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490698492_740076715355539_3159440391696455026_n.jpg"
+  "original": "490698492_740076715355539_3159440391696455026_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s164",
@@ -1504,7 +1640,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490701414_738660338830510_6832959252128877930_n.jpg"
+  "original": "490701414_738660338830510_6832959252128877930_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s165",
@@ -1515,7 +1652,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490712390_740077095355501_8330379479717795318_n.jpg"
+  "original": "490712390_740077095355501_8330379479717795318_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s166",
@@ -1526,7 +1664,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490719522_738663858830158_747091439360356002_n.jpg"
+  "original": "490719522_738663858830158_747091439360356002_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s167",
@@ -1537,7 +1676,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490737638_740077112022166_4541911777336828436_n.jpg"
+  "original": "490737638_740077112022166_4541911777336828436_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s169",
@@ -1548,7 +1688,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490744464_738768328819711_6843932063214558603_n.jpg"
+  "original": "490744464_738768328819711_6843932063214558603_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s171",
@@ -1559,7 +1700,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490747119_738209845542226_5471309428693359755_n.jpg"
+  "original": "490747119_738209845542226_5471309428693359755_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s172",
@@ -1570,7 +1712,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490751353_740077068688837_6915384358313109053_n.jpg"
+  "original": "490751353_740077068688837_6915384358313109053_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s173",
@@ -1581,7 +1724,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490751580_738669055496305_29385167508206815_n.jpg"
+  "original": "490751580_738669055496305_29385167508206815_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s174",
@@ -1592,7 +1736,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490756215_738663852163492_1431150970900486428_n.jpg"
+  "original": "490756215_738663852163492_1431150970900486428_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s176",
@@ -1603,7 +1748,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490815443_738208028875741_2771262875253316833_n.jpg"
+  "original": "490815443_738208028875741_2771262875253316833_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s177",
@@ -1614,7 +1760,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490830742_737925805570630_2008184429039925742_n.jpg"
+  "original": "490830742_737925805570630_2008184429039925742_n.jpg",
+  "group": "Константиновские ворота"
  },
  {
   "id": "s178",
@@ -1625,7 +1772,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=478202074876339",
-  "original": "490858120_739916165371594_7397443730820098547_n.jpg"
+  "original": "490858120_739916165371594_7397443730820098547_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s179",
@@ -1636,7 +1784,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490964962_740077058688838_1554718489124334089_n (1).jpg"
+  "original": "490964962_740077058688838_1554718489124334089_n (1).jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s180",
@@ -1647,7 +1796,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "490993524_740077105355500_6871893031651611249_n.jpg"
+  "original": "490993524_740077105355500_6871893031651611249_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s181",
@@ -1658,7 +1808,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=439893885373825",
-  "original": "491026187_738654368831107_935010104638497680_n.jpg"
+  "original": "491026187_738654368831107_935010104638497680_n.jpg",
+  "group": "Собор"
  },
  {
   "id": "s182",
@@ -1669,7 +1820,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=554038937292652",
-  "original": "491056820_742785498417994_4863785619218655446_n.jpg"
+  "original": "491056820_742785498417994_4863785619218655446_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s183",
@@ -1680,7 +1832,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "491144214_740555428641001_896082837204834944_n.jpg"
+  "original": "491144214_740555428641001_896082837204834944_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s184",
@@ -1691,7 +1844,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "491212471_742297678466776_2763886715533922819_n.jpg"
+  "original": "491212471_742297678466776_2763886715533922819_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s185",
@@ -1702,7 +1856,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "491320322_740076768688867_4025163290198296982_n.jpg"
+  "original": "491320322_740076768688867_4025163290198296982_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s186",
@@ -1713,7 +1868,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "491404172_739712985391912_6773496581072494592_n.jpg"
+  "original": "491404172_739712985391912_6773496581072494592_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s187",
@@ -1724,7 +1880,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=549957447700801",
-  "original": "491409952_742785258418018_2433674365929382832_n.jpg"
+  "original": "491409952_742785258418018_2433674365929382832_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s188",
@@ -1735,7 +1892,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "491525266_739728762057001_4866403983257278016_n.jpg"
+  "original": "491525266_739728762057001_4866403983257278016_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s189",
@@ -1746,7 +1904,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "491925853_748218081208069_8571233200676111769_n.jpg"
+  "original": "491925853_748218081208069_8571233200676111769_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s191",
@@ -1757,7 +1916,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "492000940_742785625084648_2566089167445709054_n.jpg"
+  "original": "492000940_742785625084648_2566089167445709054_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s192",
@@ -1768,7 +1928,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "492223367_750274431002434_6638638554280023564_n.jpg"
+  "original": "492223367_750274431002434_6638638554280023564_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s193",
@@ -1779,7 +1940,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "492314181_751071814256029_7890452296160476079_n.jpg"
+  "original": "492314181_751071814256029_7890452296160476079_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s194",
@@ -1790,7 +1952,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "492331774_750267491003128_4846006572897109369_n.jpg"
+  "original": "492331774_750267491003128_4846006572897109369_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s196",
@@ -1801,7 +1964,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo.php?fbid=623215507041661",
-  "original": "492357792_750263247670219_1249557436381760554_n.jpg"
+  "original": "492357792_750263247670219_1249557436381760554_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s197",
@@ -1812,7 +1976,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "492540086_751094450920432_8739074207347536363_n.jpg"
+  "original": "492540086_751094450920432_8739074207347536363_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s198",
@@ -1823,7 +1988,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "493180367_750263447670199_4002987472888317863_n.jpg"
+  "original": "493180367_750263447670199_4002987472888317863_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s202",
@@ -1834,7 +2000,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "6415fa2702f4b.jpg"
+  "original": "6415fa2702f4b.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s203",
@@ -1845,7 +2012,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "645d2467eb0d0.jpg"
+  "original": "645d2467eb0d0.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s204",
@@ -1856,7 +2024,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "648713fc8e2e7.jpg"
+  "original": "648713fc8e2e7.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s205",
@@ -1867,7 +2036,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "662913608_1034253719271169_1480653823077775809_n.jpg"
+  "original": "662913608_1034253719271169_1480653823077775809_n.jpg",
+  "group": "Михайловские ворота"
  },
  {
   "id": "s206",
@@ -1878,7 +2048,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo.php?fbid=1055286957167845",
-  "original": "681812534_1055286967167844_18899659323937853_n.jpg"
+  "original": "681812534_1055286967167844_18899659323937853_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s207",
@@ -1889,7 +2060,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "681936959_1055347383828469_8097647330525574666_n.jpg"
+  "original": "681936959_1055347383828469_8097647330525574666_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s208",
@@ -1900,7 +2072,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "683817617_1055339163829291_8000772478266975221_n.jpg"
+  "original": "683817617_1055339163829291_8000772478266975221_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s209",
@@ -1911,7 +2084,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "684352654_1055342273828980_9128696822232386271_n.jpg"
+  "original": "684352654_1055342273828980_9128696822232386271_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s210",
@@ -1922,7 +2096,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "684833173_1055330777163463_4589177173678030203_n.jpg"
+  "original": "684833173_1055330777163463_4589177173678030203_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s211",
@@ -1933,7 +2108,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02p6fah3i9iCBELfvdZFKiqZtxsf8kJzEXGn8aZaGjVM8bMWpepYQ89hyZ5Vtw9yFYl",
-  "original": "685292375_1055330633830144_6254828130334277182_n.jpg"
+  "original": "685292375_1055330633830144_6254828130334277182_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s212",
@@ -1944,7 +2120,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "685998702_1055352397161301_8316080517398811324_n.jpg"
+  "original": "685998702_1055352397161301_8316080517398811324_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s213",
@@ -1955,7 +2132,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02p6fah3i9iCBELfvdZFKiqZtxsf8kJzEXGn8aZaGjVM8bMWpepYQ89hyZ5Vtw9yFYl",
-  "original": "686271454_1055330343830173_3284379439157108761_n.jpg"
+  "original": "686271454_1055330343830173_3284379439157108761_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s214",
@@ -1966,7 +2144,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "686331519_1055309940498880_367600941652521651_n.jpg"
+  "original": "686331519_1055309940498880_367600941652521651_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s215",
@@ -1977,7 +2156,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "686921643_1055344630495411_8632284377695311142_n.jpg"
+  "original": "686921643_1055344630495411_8632284377695311142_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s216",
@@ -1988,7 +2168,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "686929551_1055336090496265_8200699808387145657_n.jpg"
+  "original": "686929551_1055336090496265_8200699808387145657_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s217",
@@ -1999,7 +2180,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "686940305_1055330350496839_338402901606323133_n.jpg"
+  "original": "686940305_1055330350496839_338402901606323133_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s218",
@@ -2010,7 +2192,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "687034173_1055295743833633_739575654393728590_n.jpg"
+  "original": "687034173_1055295743833633_739575654393728590_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s219",
@@ -2021,7 +2204,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "687428115_1055290617167479_5847630197421297207_n.jpg"
+  "original": "687428115_1055290617167479_5847630197421297207_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s220",
@@ -2032,7 +2216,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "687477333_1055334523829755_5021529279989532669_n.jpg"
+  "original": "687477333_1055334523829755_5021529279989532669_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s221",
@@ -2043,7 +2228,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "687822583_1055349550494919_1619297745856924780_n.jpg"
+  "original": "687822583_1055349550494919_1619297745856924780_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s222",
@@ -2054,7 +2240,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "687833666_1055354683827739_2062656675378275991_n.jpg"
+  "original": "687833666_1055354683827739_2062656675378275991_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s223",
@@ -2065,7 +2252,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "687924791_1055310387165502_8206055118453177725_n.jpg"
+  "original": "687924791_1055310387165502_8206055118453177725_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s225",
@@ -2076,7 +2264,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "704149613_1075072885189252_2025538606731238840_n.jpg"
+  "original": "704149613_1075072885189252_2025538606731238840_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s226",
@@ -2087,7 +2276,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "704666765_1073965205300020_8522330006775858212_n.jpg"
+  "original": "704666765_1073965205300020_8522330006775858212_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s229",
@@ -2098,7 +2288,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "874966937_1219410170755522_2210702103177715788_n.jpg"
+  "original": "874966937_1219410170755522_2210702103177715788_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s230",
@@ -2109,7 +2300,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "876029917_1219410207422185_248696698892537931_n.jpg"
+  "original": "876029917_1219410207422185_248696698892537931_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s231",
@@ -2120,7 +2312,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "877739446_1219409997422206_3854620631091076033_n.jpg"
+  "original": "877739446_1219409997422206_3854620631091076033_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s232",
@@ -2131,7 +2324,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02NRFvZpzgmNcKUgLQEHcyVGsUzm1SZs291uGqjLGHPzdMMSAXWV6fveDexxvgb5iil",
-  "original": "880238704_1219410050755534_6996188069888421803_n.avif"
+  "original": "880238704_1219410050755534_6996188069888421803_n.avif",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s236",
@@ -2142,7 +2336,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "885277010_1219410070755532_2050477569789860862_n.jpg"
+  "original": "885277010_1219410070755532_2050477569789860862_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s238",
@@ -2153,7 +2348,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02NRFvZpzgmNcKUgLQEHcyVGsUzm1SZs291uGqjLGHPzdMMSAXWV6fveDexxvgb5iil",
-  "original": "885658718_1219410090755530_4165860231031855903_n.jpg"
+  "original": "885658718_1219410090755530_4165860231031855903_n.jpg",
+  "group": "Комендантский сад и парк"
  },
  {
   "id": "s239",
@@ -2164,7 +2360,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "892323698_1224768903552982_8820432604141383591_n.jpg"
+  "original": "892323698_1224768903552982_8820432604141383591_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s240",
@@ -2175,7 +2372,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "892344714_1223970933632779_7330656333259334289_n.jpg"
+  "original": "892344714_1223970933632779_7330656333259334289_n.jpg",
+  "group": "Солдаты и люди"
  },
  {
   "id": "s241",
@@ -2186,7 +2384,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "896158955_1225526990143840_6875489598222331317_n.jpg"
+  "original": "896158955_1225526990143840_6875489598222331317_n.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s242",
@@ -2197,7 +2396,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "900352882_1227171726646033_2914857883699124809_n.jpg"
+  "original": "900352882_1227171726646033_2914857883699124809_n.jpg",
+  "group": "Улицы и здания"
  },
  {
   "id": "s244",
@@ -2208,7 +2408,8 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "Михаиловские ворота.jpg"
+  "original": "Михаиловские ворота.jpg",
+  "group": "Ворота (уточнить)"
  },
  {
   "id": "s245",
@@ -2219,6 +2420,7 @@ window.SPOTS_DATA = [
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
-  "original": "кпп.jpg"
+  "original": "кпп.jpg",
+  "group": "Константиновские ворота"
  }
 ];

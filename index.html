@@ -32,6 +32,15 @@
   label.btn[hidden] { display:none; }
   #adminBar { position:sticky; top:-20px; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; margin-bottom:14px; background:var(--panel); border:1px solid var(--accent); border-radius:10px; font-weight:600; }
   #adminBar[hidden] { display:none; }
+  #chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .chip { padding:8px 12px; font-size:14px; border-radius:18px; border:1px solid var(--line); }
+  .chip.on { background:var(--accent); color:#1d1608; border-color:var(--accent); font-weight:600; }
+  .groupTitle { grid-column:1/-1; font:600 22px/1.2 Georgia,"Times New Roman",serif; margin:10px 0 0; }
+  .cardActions { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:0 12px 12px; }
+  .been { padding:8px 12px; font-size:14px; border:1px solid var(--line); }
+  .been.on { color:var(--ok); border-color:var(--ok); font-weight:600; }
+  .map { color:var(--accent); font-size:14px; }
+  .map[hidden] { display:none; }
   .card.off { opacity:.35; }
   .card .toggle { position:absolute; top:6px; right:6px; padding:8px 12px; font-size:14px; background:rgba(0,0,0,.75); }
   #addInput { position:absolute; opacity:0; width:1px; height:1px; }
@@ -66,6 +75,7 @@
     <span id="adminCount"></span>
     <button id="adminCopy">Скопировать список</button>
   </div>
+  <div id="chips"></div>
   <div id="cards"></div>
   <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
   <label class="btn" for="addInput">+ Добавить старое фото</label>
@@ -143,14 +153,119 @@ const HIDDEN_KEY = 'krepost.hidden';
 const ADMIN = new URLSearchParams(location.search).has('admin');
 let hiddenIds = read(HIDDEN_KEY, []).filter(id => SPOTS.some(s => s.id === id));
 
+const GEO_KEY = 'krepost.geo';
+let geo = read(GEO_KEY, {});
+const coordsOf = s => geo[s.id] || (s.lat != null ? { lat: s.lat, lng: s.lng } : null);
+
+const ALL = 'Все';
+const GROUPS = ['Михайловские ворота', 'Николаевские ворота', 'Константиновские ворота', 'Ворота (уточнить)', 'Собор', 'Редюиты и валы', 'Комендантский сад и парк', 'Мосты и дороги', 'Улицы и здания', 'Солдаты и люди', 'Виды сверху', 'Другое'];
+const groupOf = s => s.group || 'Другое';
+let activeGroup = ALL;
+
+const visibleSpots = () => allSpots().filter(s => ADMIN || !hiddenIds.includes(s.id));
+
+function updateProgress() {
+  const spots = visibleSpots();
+  const doneCount = spots.filter(s => found.includes(s.id)).length;
+  $('progress').textContent = spots.length ? `Уже был: ${doneCount} из ${spots.length}` : '';
+}
+
+function renderChips(spots) {
+  const box = $('chips');
+  box.replaceChildren();
+  if (!SPOTS.length) return;
+  const counts = {};
+  for (const s of spots) counts[groupOf(s)] = (counts[groupOf(s)] || 0) + 1;
+  const names = [ALL, ...GROUPS.filter(g => counts[g])];
+  for (const name of names) {
+    const chip = document.createElement('button');
+    chip.className = 'chip' + (name === activeGroup ? ' on' : '');
+    chip.textContent = `${name} ${name === ALL ? spots.length : counts[name]}`;
+    chip.onclick = () => {
+      activeGroup = name;
+      renderList();
+      $('list').scrollTop = 0;
+    };
+    box.append(chip);
+  }
+}
+
+function cardActions(spot) {
+  const row = document.createElement('div');
+  row.className = 'cardActions';
+
+  const been = document.createElement('button');
+  const paintBeen = () => {
+    const on = found.includes(spot.id);
+    been.className = on ? 'been on' : 'been';
+    been.textContent = on ? '✓ Уже был' : 'Уже был здесь';
+  };
+  been.onclick = () => {
+    found = found.includes(spot.id) ? found.filter(f => f !== spot.id) : [...found, spot.id];
+    write(FOUND_KEY, found);
+    paintBeen();
+    updateProgress();
+  };
+  paintBeen();
+  row.append(been);
+
+  const map = document.createElement('a');
+  map.className = 'map';
+  map.target = '_blank';
+  map.rel = 'noopener';
+  map.textContent = 'На карте';
+  const paintMap = () => {
+    const p = coordsOf(spot);
+    map.hidden = !p;
+    if (p) map.href = `https://www.google.com/maps?q=${p.lat},${p.lng}`;
+  };
+  paintMap();
+
+  if (ADMIN) {
+    const pin = document.createElement('button');
+    const paintPin = () => {
+      const p = geo[spot.id];
+      pin.className = p ? 'been on' : 'been';
+      pin.textContent = p ? `Точка ±${p.acc} м` : 'Указать геолокацию';
+    };
+    pin.onclick = () => {
+      if (!navigator.geolocation) { alert('Этот браузер не умеет определять место.'); return; }
+      if (geo[spot.id] && !confirm('Заменить сохранённую точку на текущее место?')) return;
+      pin.textContent = 'Определяем…';
+      navigator.geolocation.getCurrentPosition(pos => {
+        geo = { ...geo, [spot.id]: {
+          lat: +pos.coords.latitude.toFixed(6),
+          lng: +pos.coords.longitude.toFixed(6),
+          acc: Math.round(pos.coords.accuracy)
+        } };
+        write(GEO_KEY, geo);
+        if (!found.includes(spot.id)) { found = [...found, spot.id]; write(FOUND_KEY, found); paintBeen(); updateProgress(); }
+        paintPin(); paintMap(); updateAdminBar();
+      }, err => {
+        paintPin();
+        alert(err.code === 1 ? 'Нет разрешения на геолокацию. Разрешите её в настройках браузера.' : 'Не получилось определить место. Попробуйте ещё раз на открытом месте.');
+      }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 });
+    };
+    paintPin();
+    row.append(pin);
+  }
+
+  row.append(map);
+  return row;
+}
+
 function updateAdminBar() {
   if (!ADMIN) return;
   $('adminBar').hidden = false;
-  $('adminCount').textContent = `Убрано: ${hiddenIds.length} из ${allSpots().length}`;
+  $('adminCount').textContent = `Убрано: ${hiddenIds.length} из ${allSpots().length} · Точек: ${Object.keys(geo).length}`;
 }
 
 $('adminCopy').onclick = async () => {
-  const text = hiddenIds.length ? 'Убрать из приложения: ' + hiddenIds.join(', ') : 'Ничего не убрано';
+  const lines = [];
+  if (hiddenIds.length) lines.push('Убрать из приложения: ' + hiddenIds.join(', '));
+  const pts = Object.entries(geo);
+  if (pts.length) lines.push('Геолокация: ' + pts.map(([id, p]) => `${id} ${p.lat},${p.lng} ±${p.acc}`).join('; '));
+  const text = lines.length ? lines.join('\n') : 'Пока ничего не отмечено';
   try {
     await navigator.clipboard.writeText(text);
     $('adminCopy').textContent = 'Скопировано';
@@ -169,13 +284,28 @@ function show(id) {
 function renderList() {
   const box = $('cards');
   box.replaceChildren();
-  const spots = allSpots().filter(s => ADMIN || !hiddenIds.includes(s.id));
+  const spots = visibleSpots();
   updateAdminBar();
+  updateProgress();
+  renderChips(spots);
   $('empty').hidden = spots.length > 0;
-  const doneCount = spots.filter(s => found.includes(s.id)).length;
-  $('progress').textContent = spots.length ? `Найдено: ${doneCount} из ${spots.length}` : '';
 
-  for (const spot of spots) {
+  const rank = s => GROUPS.indexOf(groupOf(s));
+  const shown = spots
+    .filter(s => activeGroup === ALL || groupOf(s) === activeGroup)
+    .map((s, i) => [s, i])
+    .sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1])
+    .map(x => x[0]);
+
+  let lastGroup = null;
+  for (const spot of shown) {
+    if (groupOf(spot) !== lastGroup) {
+      lastGroup = groupOf(spot);
+      const head = document.createElement('h2');
+      head.className = 'groupTitle';
+      head.textContent = lastGroup;
+      box.append(head);
+    }
     const card = document.createElement('div');
     card.className = 'card';
 
@@ -205,14 +335,9 @@ function renderList() {
       credit.textContent = spot.credit;
       info.append(credit);
     }
-    if (found.includes(spot.id)) {
-      const done = document.createElement('div');
-      done.className = 'done';
-      done.textContent = '✓ Найдено';
-      info.append(done);
-    }
     open.append(img, info);
     card.append(open);
+    card.append(cardActions(spot));
 
     if (ADMIN && !added.some(a => a.id === spot.id)) {
       const toggle = document.createElement('button');
