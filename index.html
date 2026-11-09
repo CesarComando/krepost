@@ -141,7 +141,7 @@ let current = null, stream = null, nowUrl = null, camToken = 0;
 /* Режим админа: открыть сайт с ?admin=1. Скрывает снимки только в этом браузере. */
 const HIDDEN_KEY = 'krepost.hidden';
 const ADMIN = new URLSearchParams(location.search).has('admin');
-let hiddenIds = read(HIDDEN_KEY, []);
+let hiddenIds = read(HIDDEN_KEY, []).filter(id => SPOTS.some(s => s.id === id));
 
 function updateAdminBar() {
   if (!ADMIN) return;

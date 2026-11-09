@@ -33,17 +33,6 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot03.jpg"
  },
  {
-  "id": "s04",
-  "src": "photos/spot04.jpg",
-  "title": "Двор Александровской казармы",
-  "year": "1920-е",
-  "hint": "Справа за забором был военный госпиталь",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=391123930250821",
-  "original": "489815515_737779778918566_8719172863630720848_n.jpg",
-  "thumb": "photos/thumbs/spot04.jpg"
- },
- {
   "id": "s05",
   "src": "photos/spot05.jpg",
   "title": "2-я Офицерская улица",
@@ -88,50 +77,6 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot08.jpg"
  },
  {
-  "id": "s09",
-  "src": "photos/spot09.jpg",
-  "title": "Предмостное укрепление",
-  "year": "1925",
-  "hint": "Арка в каменной стене",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=393099350053279",
-  "original": "490299724_737786778917866_8662972111727204125_n.jpg",
-  "thumb": "photos/thumbs/spot09.jpg"
- },
- {
-  "id": "s10",
-  "src": "photos/spot10.jpg",
-  "title": "Вид на вход в крепость",
-  "year": "1907–1930",
-  "hint": "Старая открытка",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
-  "original": "490242738_737696462260231_5372933445014006430_n.jpg",
-  "thumb": "photos/thumbs/spot10.jpg"
- },
- {
-  "id": "s11",
-  "src": "photos/spot11.jpg",
-  "title": "Пейзаж у входа в крепость",
-  "year": "1907–1930",
-  "hint": "Старая открытка",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
-  "original": "490194047_737696475593563_4169602529073893534_n.jpg",
-  "thumb": "photos/thumbs/spot11.jpg"
- },
- {
-  "id": "s12",
-  "src": "photos/spot12.jpg",
-  "title": "Дамба у крепости",
-  "year": "1907–1930",
-  "hint": "Старая открытка",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
-  "original": "489828190_737696832260194_8419062529574031298_n.jpg",
-  "thumb": "photos/thumbs/spot12.jpg"
- },
- {
   "id": "s13",
   "src": "photos/spot13.jpg",
   "title": "Шоссейная улица (Šosejas iela)",
@@ -163,17 +108,6 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
   "original": "490343775_737696465593564_7585436451181115167_n.jpg",
   "thumb": "photos/thumbs/spot15.jpg"
- },
- {
-  "id": "s16",
-  "src": "photos/spot16.jpg",
-  "title": "Двинск: вид возле крепости",
-  "year": "1907–1930",
-  "hint": "Старая открытка",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
-  "original": "490349980_737696835593527_5971820373698502534_n.jpg",
-  "thumb": "photos/thumbs/spot16.jpg"
  },
  {
   "id": "s17",
@@ -264,17 +198,6 @@ window.SPOTS_DATA = [
   "original": "1.jpg"
  },
  {
-  "id": "s025",
-  "src": "photos/spot025.jpg",
-  "thumb": "photos/thumbs/spot025.jpg",
-  "title": "Старый снимок № 25",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "20261107_103152.jpg"
- },
- {
   "id": "s026",
   "src": "photos/spot026.jpg",
   "thumb": "photos/thumbs/spot026.jpg",
@@ -284,17 +207,6 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378478611742&set=pcb.107381791944744",
   "original": "277800585_107378451945078_2882600075453609382_n.png"
- },
- {
-  "id": "s027",
-  "src": "photos/spot027.jpg",
-  "thumb": "photos/thumbs/spot027.jpg",
-  "title": "Старый снимок № 27",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "43843.png"
  },
  {
   "id": "s028",
@@ -341,17 +253,6 @@ window.SPOTS_DATA = [
   "original": "469010149_584956127520639_4515998323807538988_n.jpg"
  },
  {
-  "id": "s032",
-  "src": "photos/spot032.jpg",
-  "thumb": "photos/thumbs/spot032.jpg",
-  "title": "Руины крепостного собора. Время постройки 1737-1746 (строительство 9 лет). 26…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0cFjcKVKuhQRg8ytr2GZcsA7ydQ5WUE6W2fji2wMJMDDoBpsfkkDWQoNC5acrYmQHl",
-  "original": "469042598_584955974187321_6708818153210918700_n.jpg"
- },
- {
   "id": "s033",
   "src": "photos/spot033.jpg",
   "thumb": "photos/thumbs/spot033.jpg",
@@ -363,17 +264,6 @@ window.SPOTS_DATA = [
   "original": "469074487_584956120853973_5595155640745170488_n.jpg"
  },
  {
-  "id": "s034",
-  "src": "photos/spot034.jpg",
-  "thumb": "photos/thumbs/spot034.jpg",
-  "title": "Крепостной собор. Время постройки 1737-1746 (строительство 9 лет). 26 мая…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=107378718611718&set=pcb.107381791944744",
-  "original": "469094780_584955957520656_4612413534094282356_n.jpg"
- },
- {
   "id": "s035",
   "src": "photos/spot035.jpg",
   "thumb": "photos/thumbs/spot035.jpg",
@@ -383,17 +273,6 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377888611801&set=pcb.107381791944744",
   "original": "469096825_584955884187330_6317374574251915569_n.jpg"
- },
- {
-  "id": "s036",
-  "src": "photos/spot036.jpg",
-  "thumb": "photos/thumbs/spot036.jpg",
-  "title": "Крепостной собор. Время постройки 1737-1746 (строительство 9 лет). 26 мая…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=107377828611807&set=pcb.107381791944744",
-  "original": "469097734_584956007520651_7462443715049910776_n.jpg"
  },
  {
   "id": "s037",
@@ -427,17 +306,6 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377801945143&set=pcb.107381791944744",
   "original": "469122418_584956094187309_6724379559263303296_n.jpg"
- },
- {
-  "id": "s040",
-  "src": "photos/spot040.jpg",
-  "thumb": "photos/thumbs/spot040.jpg",
-  "title": "Крепостной собор. Время постройки 1737-1746 (строительство 9 лет). 26 мая…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=107378015278455&set=pcb.107381791944744",
-  "original": "469124858_584955834187335_8007191019680480817_n.jpg"
  },
  {
   "id": "s041",
@@ -561,28 +429,6 @@ window.SPOTS_DATA = [
   "original": "469998171_591463733536545_6463079825683265629_n.jpg"
  },
  {
-  "id": "s052",
-  "src": "photos/spot052.jpg",
-  "thumb": "photos/thumbs/spot052.jpg",
-  "title": "Старый снимок № 52",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "470174049_592179216798330_4767635942859957824_n.jpg"
- },
- {
-  "id": "s053",
-  "src": "photos/spot053.jpg",
-  "thumb": "photos/thumbs/spot053.jpg",
-  "title": "Старый снимок № 53",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "470177292_592187776797474_3300991288047863820_n.jpg"
- },
- {
   "id": "s054",
   "src": "photos/spot054.jpg",
   "thumb": "photos/thumbs/spot054.jpg",
@@ -625,17 +471,6 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "470205956_591464013536517_8016974389044086127_n.jpg"
- },
- {
-  "id": "s058",
-  "src": "photos/spot058.jpg",
-  "thumb": "photos/thumbs/spot058.jpg",
-  "title": "Старый снимок № 58",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "470206176_592904380059147_407242447618927835_n.jpg"
  },
  {
   "id": "s059",
@@ -781,28 +616,6 @@ window.SPOTS_DATA = [
   "original": "488575514_733585989337945_7112225636572201731_n.jpg"
  },
  {
-  "id": "s072",
-  "src": "photos/spot072.jpg",
-  "thumb": "photos/thumbs/spot072.jpg",
-  "title": "Daugavpils cietoksnis. Šāda panorāma būtu redzama no cietokšņa (bijušās…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02Dfkxg2jzdbtkcPRNqoJzfLp6gFwHg6m3sRjp1ZXz1waAteCzrhER5TnKCywUyJQul",
-  "original": "488688609_732640896099121_5580245355001960947_n.jpg"
- },
- {
-  "id": "s073",
-  "src": "photos/spot073.jpg",
-  "thumb": "photos/thumbs/spot073.jpg",
-  "title": "Старый снимок № 73",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "488704798_732641119432432_2257240090309562580_n.jpg"
- },
- {
   "id": "s074",
   "src": "photos/spot074.jpg",
   "thumb": "photos/thumbs/spot074.jpg",
@@ -825,17 +638,6 @@ window.SPOTS_DATA = [
   "original": "488814447_733521242677753_1420537054288927487_n.jpg"
  },
  {
-  "id": "s076",
-  "src": "photos/spot076.jpg",
-  "thumb": "photos/thumbs/spot076.jpg",
-  "title": "Старый снимок № 76",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "488816441_732641156099095_2466133734527922906_n.jpg"
- },
- {
   "id": "s077",
   "src": "photos/spot077.jpg",
   "thumb": "photos/thumbs/spot077.jpg",
@@ -847,17 +649,6 @@ window.SPOTS_DATA = [
   "original": "488892339_733586006004610_6709986998483773397_n.jpg"
  },
  {
-  "id": "s078",
-  "src": "photos/spot078.jpg",
-  "thumb": "photos/thumbs/spot078.jpg",
-  "title": "Старый снимок № 78",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "488967107_732641149432429_6002043461630688936_n.jpg"
- },
- {
   "id": "s079",
   "src": "photos/spot079.jpg",
   "thumb": "photos/thumbs/spot079.jpg",
@@ -867,28 +658,6 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489006929_733522652677612_907594319715915683_n.jpg"
- },
- {
-  "id": "s080",
-  "src": "photos/spot080.jpg",
-  "thumb": "photos/thumbs/spot080.jpg",
-  "title": "Старый снимок № 80",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "489022375_732640892765788_1313596241505178336_n.jpg"
- },
- {
-  "id": "s081",
-  "src": "photos/spot081.jpg",
-  "thumb": "photos/thumbs/spot081.jpg",
-  "title": "Старый снимок № 81",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "489028875_732640752765802_8722739468801533471_n.jpg"
  },
  {
   "id": "s082",
@@ -955,17 +724,6 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489479733_737689318927612_1130034804424972830_n.jpg"
- },
- {
-  "id": "s088",
-  "src": "photos/spot088.jpg",
-  "thumb": "photos/thumbs/spot088.jpg",
-  "title": "Старый снимок № 88",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "489480755_733585939337950_851423391302130122_n.jpg"
  },
  {
   "id": "s089",
@@ -1232,28 +990,6 @@ window.SPOTS_DATA = [
   "original": "489954561_737699438926600_2197416576484120621_n.jpg"
  },
  {
-  "id": "s113",
-  "src": "photos/spot113.jpg",
-  "thumb": "photos/thumbs/spot113.jpg",
-  "title": "Вид около Даугавпилсской крепости с 1907 г. и до 1930 г.",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
-  "original": "489968408_737696745593536_4632508059841724257_n.jpg"
- },
- {
-  "id": "s114",
-  "src": "photos/spot114.jpg",
-  "thumb": "photos/thumbs/spot114.jpg",
-  "title": "Daugavpils cietoksnis. Tilta nocietinājums",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0m8zGxSXVuTcsSK8kQb5ayQ8uywa9KFMr1qbBhCMYSjD7VqzAg815M3BNtunrhEXJl",
-  "original": "489999941_738194575543753_6470247699057748317_n.jpg"
- },
- {
   "id": "s115",
   "src": "photos/spot115.jpg",
   "thumb": "photos/thumbs/spot115.jpg",
@@ -1463,17 +1199,6 @@ window.SPOTS_DATA = [
   "original": "490270227_740076822022195_5647634789989503389_n.jpg"
  },
  {
-  "id": "s134",
-  "src": "photos/spot134.jpg",
-  "thumb": "photos/thumbs/spot134.jpg",
-  "title": "Daugavpils cietoksnis. Kara hospitālis. Aptieka.",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=446880131341867",
-  "original": "490278222_738667188829825_1058025377345489583_n.jpg"
- },
- {
   "id": "s135",
   "src": "photos/spot135.jpg",
   "thumb": "photos/thumbs/spot135.jpg",
@@ -1516,17 +1241,6 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490297810_743543685008842_2268272422598792620_n.jpg"
- },
- {
-  "id": "s139",
-  "src": "photos/spot139.jpg",
-  "thumb": "photos/thumbs/spot139.jpg",
-  "title": "Daugavpils cietoksnis. Tilta nocietinājums",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0m8zGxSXVuTcsSK8kQb5ayQ8uywa9KFMr1qbBhCMYSjD7VqzAg815M3BNtunrhEXJl",
-  "original": "490299208_738194668877077_8770903303964557785_n.jpg"
  },
  {
   "id": "s140",
@@ -1716,17 +1430,6 @@ window.SPOTS_DATA = [
   "original": "490461750_740077088688835_1512118363027907362_n.jpg"
  },
  {
-  "id": "s157",
-  "src": "photos/spot157.jpg",
-  "thumb": "photos/thumbs/spot157.jpg",
-  "title": "Daugavpils Cietoksnis. Latvijas armijas karavīri. Zemgales divīzija. 11…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0xBqHFhK1aUdiq7ZB9nH6TMwxU1SUSdijfkjJ2ZzZepgZQ4pWtppVijHrqW1CLyBol",
-  "original": "490469609_738358562194021_3830985279932385650_n.jpg"
- },
- {
   "id": "s158",
   "src": "photos/spot158.jpg",
   "thumb": "photos/thumbs/spot158.jpg",
@@ -1837,17 +1540,6 @@ window.SPOTS_DATA = [
   "original": "490737638_740077112022166_4541911777336828436_n.jpg"
  },
  {
-  "id": "s168",
-  "src": "photos/spot168.jpg",
-  "thumb": "photos/thumbs/spot168.jpg",
-  "title": "Daugavpils cietoksnis. Skats no lidmašīnas. 1940 gads.",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=441713738525173",
-  "original": "490738426_738656818830862_5485873739002166260_n.jpg"
- },
- {
   "id": "s169",
   "src": "photos/spot169.jpg",
   "thumb": "photos/thumbs/spot169.jpg",
@@ -1857,17 +1549,6 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490744464_738768328819711_6843932063214558603_n.jpg"
- },
- {
-  "id": "s170",
-  "src": "photos/spot170.jpg",
-  "thumb": "photos/thumbs/spot170.jpg",
-  "title": "Skats uz ceļu Daugavpils Cietoksni. 1908 gads.",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=442270935136120",
-  "original": "490744818_738659102163967_3043894922897443257_n.jpg"
  },
  {
   "id": "s171",
@@ -1912,17 +1593,6 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490756215_738663852163492_1431150970900486428_n.jpg"
- },
- {
-  "id": "s175",
-  "src": "photos/spot175.jpg",
-  "thumb": "photos/thumbs/spot175.jpg",
-  "title": "Daugavpils cietoksnis. Tilta nocietinājums",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0m8zGxSXVuTcsSK8kQb5ayQ8uywa9KFMr1qbBhCMYSjD7VqzAg815M3BNtunrhEXJl",
-  "original": "490773546_738194708877073_8144472712230091833_n.jpg"
  },
  {
   "id": "s176",
@@ -2079,17 +1749,6 @@ window.SPOTS_DATA = [
   "original": "491925853_748218081208069_8571233200676111769_n.jpg"
  },
  {
-  "id": "s190",
-  "src": "photos/spot190.jpg",
-  "thumb": "photos/thumbs/spot190.jpg",
-  "title": "Старый снимок № 190",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=553341424029070",
-  "original": "491996233_742785315084679_4017795270129976853_n.jpg"
- },
- {
   "id": "s191",
   "src": "photos/spot191.jpg",
   "thumb": "photos/thumbs/spot191.jpg",
@@ -2134,17 +1793,6 @@ window.SPOTS_DATA = [
   "original": "492331774_750267491003128_4846006572897109369_n.jpg"
  },
  {
-  "id": "s195",
-  "src": "photos/spot195.jpg",
-  "thumb": "photos/thumbs/spot195.jpg",
-  "title": "Старый снимок № 195",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "492347586_750267601003117_1943248881577669010_n.jpg"
- },
- {
   "id": "s196",
   "src": "photos/spot196.jpg",
   "thumb": "photos/thumbs/spot196.jpg",
@@ -2176,39 +1824,6 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "493180367_750263447670199_4002987472888317863_n.jpg"
- },
- {
-  "id": "s199",
-  "src": "photos/spot199.jpg",
-  "thumb": "photos/thumbs/spot199.jpg",
-  "title": "Daugavpils cietoksnis, 1941. gads — priekštilta nocietinājums. Šajā unikālajā…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo.php?fbid=786206397409237",
-  "original": "504076178_786206404075903_5774555611008876723_n.jpg"
- },
- {
-  "id": "s200",
-  "src": "photos/spot200.jpg",
-  "thumb": "photos/thumbs/spot200.jpg",
-  "title": "Старый снимок № 200",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "634a4a46611f8.jpg"
- },
- {
-  "id": "s201",
-  "src": "photos/spot201.jpg",
-  "thumb": "photos/thumbs/spot201.jpg",
-  "title": "Старый снимок № 201",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "63521ab300cf0.jpg"
  },
  {
   "id": "s202",
@@ -2453,17 +2068,6 @@ window.SPOTS_DATA = [
   "original": "687924791_1055310387165502_8206055118453177725_n.jpg"
  },
  {
-  "id": "s224",
-  "src": "photos/spot224.jpg",
-  "thumb": "photos/thumbs/spot224.jpg",
-  "title": "Daugavpils cietoksnis, 1920-1930. g. Šajās retajās fotogrāfijās redzama vecā…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0wVrzakibdkwqaxPnbaYDk4qorTGfNvvP755CwKZCNiChSCCyBcvEDDCMBpNLWvDQl",
-  "original": "704121221_1075074201855787_4635282302090904491_n.jpg"
- },
- {
   "id": "s225",
   "src": "photos/spot225.jpg",
   "thumb": "photos/thumbs/spot225.jpg",
@@ -2484,28 +2088,6 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "704666765_1073965205300020_8522330006775858212_n.jpg"
- },
- {
-  "id": "s227",
-  "src": "photos/spot227.jpg",
-  "thumb": "photos/thumbs/spot227.jpg",
-  "title": "Daugavpils cietoksnis, 1920-1930. g. Šajās retajās fotogrāfijās redzama vecā…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0wVrzakibdkwqaxPnbaYDk4qorTGfNvvP755CwKZCNiChSCCyBcvEDDCMBpNLWvDQl",
-  "original": "707669167_1075074121855795_4864554994690758240_n.jpg"
- },
- {
-  "id": "s228",
-  "src": "photos/spot228.jpg",
-  "thumb": "photos/thumbs/spot228.jpg",
-  "title": "Старый снимок № 228",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "708222578_1077434061619801_1165279256889223620_n.jpg"
  },
  {
   "id": "s229",
@@ -2552,39 +2134,6 @@ window.SPOTS_DATA = [
   "original": "880238704_1219410050755534_6996188069888421803_n.avif"
  },
  {
-  "id": "s233",
-  "src": "photos/spot233.jpg",
-  "thumb": "photos/thumbs/spot233.jpg",
-  "title": "Skats pa Komandanta mājas logiem uz cietokšņa dārzu, 1920. gadi. Skats uz…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02KPKaJZks137e4AamZ5C7T2Uhiwt5x6WRmLniBVm441EBgYzRENGBm9MxcVafaRmbl",
-  "original": "881594022_1219409990755540_8681217476587247082_n.jpg"
- },
- {
-  "id": "s234",
-  "src": "photos/spot234.jpg",
-  "thumb": "photos/thumbs/spot234.jpg",
-  "title": "Старый снимок № 234",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "881898596_1219410177422188_4789809019719548262_n.jpg"
- },
- {
-  "id": "s235",
-  "src": "photos/spot235.jpg",
-  "thumb": "photos/thumbs/spot235.jpg",
-  "title": "Старый снимок № 235",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "884621820_1219410110755528_1120846475238619822_n.jpg"
- },
- {
   "id": "s236",
   "src": "photos/spot236.jpg",
   "thumb": "photos/thumbs/spot236.jpg",
@@ -2594,17 +2143,6 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "885277010_1219410070755532_2050477569789860862_n.jpg"
- },
- {
-  "id": "s237",
-  "src": "photos/spot237.jpg",
-  "thumb": "photos/thumbs/spot237.jpg",
-  "title": "Skats pa Komandanta mājas logiem uz cietokšņa dārzu, 1920. gadi. Skats uz…",
-  "year": "",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02KPKaJZks137e4AamZ5C7T2Uhiwt5x6WRmLniBVm441EBgYzRENGBm9MxcVafaRmbl",
-  "original": "885450371_1219410054088867_5564759624286900113_n.jpg"
  },
  {
   "id": "s238",
@@ -2660,17 +2198,6 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "900352882_1227171726646033_2914857883699124809_n.jpg"
- },
- {
-  "id": "s243",
-  "src": "photos/spot243.jpg",
-  "thumb": "photos/thumbs/spot243.jpg",
-  "title": "Старый снимок № 243",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "_превью_партия_2.jpg"
  },
  {
   "id": "s244",
