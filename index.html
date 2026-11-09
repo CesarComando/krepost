@@ -30,6 +30,10 @@
   .card .del { position:absolute; top:6px; right:6px; width:34px; height:34px; padding:0; border-radius:50%; background:rgba(0,0,0,.65); }
   #empty { color:var(--muted); padding:28px 16px; border:1px dashed var(--line); border-radius:12px; text-align:center; margin-bottom:18px; }
   label.btn[hidden] { display:none; }
+  #adminBar { position:sticky; top:-20px; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; margin-bottom:14px; background:var(--panel); border:1px solid var(--accent); border-radius:10px; font-weight:600; }
+  #adminBar[hidden] { display:none; }
+  .card.off { opacity:.35; }
+  .card .toggle { position:absolute; top:6px; right:6px; padding:8px 12px; font-size:14px; background:rgba(0,0,0,.75); }
   #addInput { position:absolute; opacity:0; width:1px; height:1px; }
 
   .bar { display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--bg); }
@@ -58,6 +62,10 @@
   <h1>Крепость сквозь время</h1>
   <p class="sub">Найди в Даугавпилсской крепости место со старой фотографии и встань точно туда, откуда снимал фотограф.</p>
   <p id="progress"></p>
+  <div id="adminBar" hidden>
+    <span id="adminCount"></span>
+    <button id="adminCopy">Скопировать список</button>
+  </div>
   <div id="cards"></div>
   <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
   <label class="btn" for="addInput">+ Добавить старое фото</label>
@@ -130,6 +138,28 @@ let added = read(ADDED_KEY, []);
 let found = read(FOUND_KEY, []);
 let current = null, stream = null, nowUrl = null, camToken = 0;
 
+/* Режим админа: открыть сайт с ?admin=1. Скрывает снимки только в этом браузере. */
+const HIDDEN_KEY = 'krepost.hidden';
+const ADMIN = new URLSearchParams(location.search).has('admin');
+let hiddenIds = read(HIDDEN_KEY, []);
+
+function updateAdminBar() {
+  if (!ADMIN) return;
+  $('adminBar').hidden = false;
+  $('adminCount').textContent = `Убрано: ${hiddenIds.length} из ${allSpots().length}`;
+}
+
+$('adminCopy').onclick = async () => {
+  const text = hiddenIds.length ? 'Убрать из приложения: ' + hiddenIds.join(', ') : 'Ничего не убрано';
+  try {
+    await navigator.clipboard.writeText(text);
+    $('adminCopy').textContent = 'Скопировано';
+    setTimeout(() => { $('adminCopy').textContent = 'Скопировать список'; }, 2000);
+  } catch {
+    prompt('Скопируйте этот список:', text);
+  }
+};
+
 const allSpots = () => [...SPOTS, ...added];
 
 function show(id) {
@@ -139,7 +169,8 @@ function show(id) {
 function renderList() {
   const box = $('cards');
   box.replaceChildren();
-  const spots = allSpots();
+  const spots = allSpots().filter(s => ADMIN || !hiddenIds.includes(s.id));
+  updateAdminBar();
   $('empty').hidden = spots.length > 0;
   const doneCount = spots.filter(s => found.includes(s.id)).length;
   $('progress').textContent = spots.length ? `Найдено: ${doneCount} из ${spots.length}` : '';
@@ -152,7 +183,7 @@ function renderList() {
     open.className = 'open';
     open.onclick = () => openSpot(spot);
     const img = document.createElement('img');
-    img.src = spot.src;
+    img.src = spot.thumb || spot.src;
     img.alt = spot.title;
     img.loading = 'lazy';
     const info = document.createElement('div');
@@ -182,6 +213,24 @@ function renderList() {
     }
     open.append(img, info);
     card.append(open);
+
+    if (ADMIN && !added.some(a => a.id === spot.id)) {
+      const toggle = document.createElement('button');
+      toggle.className = 'toggle';
+      const paint = () => {
+        const off = hiddenIds.includes(spot.id);
+        card.classList.toggle('off', off);
+        toggle.textContent = off ? 'Вернуть' : 'Убрать';
+      };
+      toggle.onclick = () => {
+        hiddenIds = hiddenIds.includes(spot.id) ? hiddenIds.filter(i => i !== spot.id) : [...hiddenIds, spot.id];
+        write(HIDDEN_KEY, hiddenIds);
+        paint();
+        updateAdminBar();
+      };
+      paint();
+      card.append(toggle);
+    }
 
     if (added.some(a => a.id === spot.id)) {
       const del = document.createElement('button');
