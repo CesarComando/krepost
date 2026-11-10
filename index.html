@@ -58,7 +58,8 @@
   #camArea,#resArea { flex:1; min-height:0; display:flex; align-items:center; justify-content:center; background:#000; }
   .stage { position:relative; overflow:hidden; background:#000; }
   .stage video,.stage img { position:absolute; inset:0; width:100%; height:100%; display:block; }
-  .stage video { object-fit:cover; }
+  .stage video { object-fit:cover; transform-origin:50% 50%; }
+  .stage { touch-action:none; }
   .stage img { object-fit:fill; }
   #camMsg { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:20px; text-align:center; background:rgba(0,0,0,.72); }
   #camMsg[hidden] { display:none; }
@@ -67,6 +68,25 @@
   .controls input[type=range] { flex:1; accent-color:var(--accent); height:32px; }
   .controls .hint { color:var(--muted); font-size:14px; text-align:center; margin:2px 0 10px; }
   .actions { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  /* Телефон лёжа: кнопка «снять» сбоку, под большой палец. По умолчанию справа, «⇄» — переставить налево (для левши). */
+  #handSwap { display:none; }
+  @media (orientation: landscape) and (max-height: 600px) {
+    #cam.screen { display:grid; grid-template-columns:minmax(0,1fr) 230px; grid-template-rows:auto minmax(0,1fr); }
+    #cam .bar { grid-column:1 / -1; padding:4px 12px; }
+    #cam .bar button { padding:6px 12px; }
+    #cam #camArea { grid-row:2; grid-column:1; }
+    #cam .controls { grid-row:2; grid-column:2; display:flex; flex-direction:column; justify-content:center; gap:14px;
+      padding:10px max(12px, env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) 12px; }
+    #cam .controls .hint { margin:0; font-size:13px; }
+    #cam .controls .row { font-size:13px; gap:6px; }
+    #cam .controls input[type=range] { min-width:0; width:100%; }
+    #cam .actions { flex-direction:column; align-items:stretch; }
+    #cam #shoot { min-height:76px; font-size:18px; border-radius:18px; }
+    #handSwap { display:block; align-self:center; }
+    #cam.left { grid-template-columns:230px minmax(0,1fr); }
+    #cam.left #camArea { grid-column:2; }
+    #cam.left .controls { grid-column:1; padding-left:max(12px, env(safe-area-inset-left)); padding-right:12px; }
+  }
   #shoot { min-width:190px; }
   #cmpRange { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize; }
   #cmpLine { position:absolute; top:0; bottom:0; width:2px; background:var(--accent); pointer-events:none; }
@@ -113,7 +133,13 @@
       <input id="opacity" type="range" min="0" max="100" value="50" aria-label="Прозрачность старого фото">
       <span>Тогда</span>
     </div>
-    <div class="actions"><button id="shoot" class="main">Совпало — снять</button></div>
+    <div class="row">
+      <span aria-hidden="true">🔍</span>
+      <input id="zoom" type="range" min="1" max="4" step="0.1" value="1" aria-label="Увеличение камеры">
+      <span id="zoomVal" style="min-width:3.2em;text-align:right">1×</span>
+    </div>
+    <div class="actions"><button id="shoot" class="main">Совпало — снять</button>
+      <button id="handSwap" aria-label="Перенести кнопку на другую сторону">⇄ Кнопка слева</button></div>
   </div>
 </section>
 
@@ -461,6 +487,17 @@ function refit() {
   if (!$('result').hidden) fit($('resStage'), $('resArea'), ratio);
 }
 addEventListener('resize', refit);
+
+/* Сторона кнопки «снять» в горизонтальном положении: справа (по умолчанию) или слева. Запоминается. */
+const HAND_KEY = 'krepost.hand';
+function applyHand() {
+  const left = read(HAND_KEY, 'right') === 'left';
+  $('cam').classList.toggle('left', left);
+  $('handSwap').textContent = left ? '⇄ Кнопка справа' : '⇄ Кнопка слева';
+  requestAnimationFrame(refit);
+}
+$('handSwap').onclick = () => { write(HAND_KEY, read(HAND_KEY, 'right') === 'left' ? 'right' : 'left'); applyHand(); };
+applyHand();
 addEventListener('orientationchange', refit);
 
 function camMessage(text) {
@@ -485,6 +522,7 @@ async function startCam() {
     $('video').srcObject = s;
     await $('video').play();
     camMessage('');
+    setupZoom(s);
   } catch (err) {
     if (token !== camToken) return;
     camMessage(err && err.name === 'NotAllowedError'
@@ -508,10 +546,53 @@ async function openSpot(spot) {
   $('camHint').textContent = spot.hint || 'Двигайтесь, пока линии старого и нового снимка не совпадут';
   $('opacity').value = 50;
   img.style.opacity = 0.5;
+  hwZoom = null; setZoom(1);
   show('cam');
   try { await img.decode(); } catch { /* размер всё равно возьмём ниже */ }
   refit();
   startCam();
+}
+
+/* Увеличение: оптический/цифровой зум камеры телефона, если он есть (Chrome на Android),
+   иначе — увеличение картинки на экране; снимок обрезается так же. Ползунок 🔍 и щипок двумя пальцами. */
+let zoom = 1, hwZoom = null;
+function setupZoom(s) {
+  hwZoom = null;
+  const track = s.getVideoTracks()[0];
+  const caps = track && track.getCapabilities ? track.getCapabilities() : {};
+  const r = $('zoom');
+  if (caps && caps.zoom && caps.zoom.max > caps.zoom.min) {
+    hwZoom = { track, min: caps.zoom.min, max: Math.min(caps.zoom.max, 10) };
+    r.min = hwZoom.min; r.max = hwZoom.max; r.step = caps.zoom.step || 0.1;
+  } else {
+    r.min = 1; r.max = 4; r.step = 0.1;
+  }
+  setZoom(hwZoom ? hwZoom.min : 1);
+}
+function setZoom(z) {
+  const r = $('zoom');
+  z = Math.min(+r.max, Math.max(+r.min, z));
+  zoom = z;
+  r.value = z;
+  $('zoomVal').textContent = (Math.round(z * 10) / 10).toString().replace('.', ',') + '×';
+  if (hwZoom) {
+    $('video').style.transform = '';
+    hwZoom.track.applyConstraints({ advanced: [{ zoom: z }] }).catch(() => {});
+  } else {
+    $('video').style.transform = z > 1 ? `scale(${z})` : '';
+  }
+}
+$('zoom').oninput = e => setZoom(+e.target.value);
+{
+  let startDist = 0, startZoom = 1;
+  const dist = t => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+  $('camStage').addEventListener('touchstart', e => {
+    if (e.touches.length === 2) { startDist = dist(e.touches); startZoom = zoom; }
+  }, { passive: true });
+  $('camStage').addEventListener('touchmove', e => {
+    if (e.touches.length === 2 && startDist) { e.preventDefault(); setZoom(startZoom * dist(e.touches) / startDist); }
+  }, { passive: false });
+  $('camStage').addEventListener('touchend', e => { if (e.touches.length < 2) startDist = 0; });
 }
 
 $('opacity').oninput = e => { $('oldImg').style.opacity = e.target.value / 100; };
@@ -534,7 +615,8 @@ $('shoot').onclick = () => {
   c.width = W; c.height = H;
   /* Обрезаем кадр камеры так же, как он виден на экране */
   const k = Math.max(W / video.videoWidth, H / video.videoHeight);
-  const sw = W / k, sh = H / k;
+  const dz = hwZoom ? 1 : zoom; // цифровое увеличение — обрезаем середину кадра
+  const sw = W / k / dz, sh = H / k / dz;
   c.getContext('2d').drawImage(video, (video.videoWidth - sw) / 2, (video.videoHeight - sh) / 2, sw, sh, 0, 0, W, H);
   nowUrl = c.toDataURL('image/jpeg', 0.88);
   stopCam();
