@@ -52,6 +52,16 @@
   .card.off { opacity:.35; }
   .card .toggle { position:absolute; top:6px; right:6px; padding:8px 12px; font-size:14px; background:rgba(0,0,0,.75); }
   #addInput { position:absolute; opacity:0; width:1px; height:1px; }
+  /* Моя библиотека — свои снимки «тогда и сейчас» */
+  #tabs { display:flex; gap:8px; margin:0 0 16px; }
+  .tab { flex:1; padding:12px 10px; font-weight:600; border:1px solid var(--line); }
+  .tab.on { background:var(--accent); color:#1d1608; border-color:var(--accent); }
+  #lib { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin-bottom:18px; }
+  #lib[hidden], #cards[hidden], #chips[hidden] { display:none; }
+  .shot .pair { position:relative; }
+  .shot .pair img.now { filter:none; }
+  .shot .pair img.old { position:absolute; left:8px; bottom:8px; width:34%; height:auto; aspect-ratio:4/3; object-fit:cover; border:2px solid var(--text); border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.6); }
+  .libEmpty { grid-column:1/-1; color:var(--muted); padding:28px 16px; border:1px dashed var(--line); border-radius:12px; text-align:center; }
 
   .bar { display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--bg); }
   .bar .title { flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:600; }
@@ -103,12 +113,17 @@
     <p id="installHelp" hidden></p>
   </div>
   <p id="progress"></p>
+  <div id="tabs" role="tablist">
+    <button class="tab on" data-view="all" role="tab">Все места</button>
+    <button class="tab" data-view="lib" role="tab">Моя библиотека<span id="libCount"></span></button>
+  </div>
   <div id="adminBar" hidden>
     <span id="adminCount"></span>
     <button id="adminCopy">Скопировать список</button>
   </div>
   <div id="chips"></div>
   <div id="cards"></div>
+  <div id="lib" hidden></div>
   <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
   <label class="btn" for="addInput">+ Добавить старое фото</label>
   <input id="addInput" type="file" accept="image/*">
@@ -334,7 +349,108 @@ function show(id) {
   for (const s of document.querySelectorAll('.screen')) s.hidden = s.id !== id;
 }
 
+/* ===== Моя библиотека: снимки, сделанные в приложении, хранятся в телефоне (IndexedDB) ===== */
+let view = 'all';
+const LIB_DB = 'krepost-lib';
+function libDb() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open(LIB_DB, 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('shots', { keyPath: 'id', autoIncrement: true });
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function libTx(mode, fn) {
+  const db = await libDb();
+  return new Promise((res, rej) => {
+    const tx = db.transaction('shots', mode);
+    const out = fn(tx.objectStore('shots'));
+    tx.oncomplete = () => res(out && 'result' in out ? out.result : undefined);
+    tx.onerror = () => rej(tx.error);
+  });
+}
+const libAdd = rec => libTx('readwrite', s => s.add(rec));
+const libAll = () => libTx('readonly', s => s.getAll());
+const libDel = id => libTx('readwrite', s => s.delete(id));
+try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch { /* не страшно */ }
+
+let libUrls = [];
+async function updateLibCount() {
+  try { const n = (await libAll()).length; $('libCount').textContent = n ? ` · ${n}` : ''; } catch { /* нет IndexedDB */ }
+}
+async function renderLib() {
+  const box = $('lib');
+  libUrls.forEach(u => URL.revokeObjectURL(u)); libUrls = [];
+  let shots = [];
+  try { shots = await libAll(); } catch {
+    box.innerHTML = '<div class="libEmpty">Этот браузер не даёт хранить снимки. Откройте приложение в Chrome.</div>'; return;
+  }
+  box.replaceChildren();
+  $('libCount').textContent = shots.length ? ` · ${shots.length}` : '';
+  if (!shots.length) {
+    box.innerHTML = '<div class="libEmpty">Здесь будут ваши снимки «тогда и сейчас». Откройте старое фото, встаньте на то же место и нажмите «Совпало — снять».</div>';
+    return;
+  }
+  shots.sort((a, b) => b.at - a.at);
+  for (const shot of shots) {
+    const spot = allSpots().find(s => s.id === shot.spotId) || { id: shot.spotId, title: shot.title, year: shot.year, src: shot.src };
+    const url = URL.createObjectURL(shot.now); libUrls.push(url);
+    const card = document.createElement('div');
+    card.className = 'card shot';
+    const open = document.createElement('button');
+    open.className = 'open';
+    open.onclick = () => openResult(spot, url, shot.id);
+    const pair = document.createElement('div'); pair.className = 'pair';
+    const now = document.createElement('img'); now.className = 'now'; now.src = url; now.alt = 'Сейчас';
+    const old = document.createElement('img'); old.className = 'old'; old.src = spot.thumb || spot.src; old.alt = 'Тогда'; old.loading = 'lazy';
+    pair.append(now, old);
+    const info = document.createElement('div'); info.className = 'info';
+    const name = document.createElement('div'); name.className = 'name'; name.textContent = spot.title;
+    const meta = document.createElement('div'); meta.className = 'meta';
+    meta.textContent = 'Снято ' + new Date(shot.at).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+    info.append(name, meta);
+    open.append(pair, info);
+    const row = document.createElement('div'); row.className = 'cardActions';
+    const cmp = document.createElement('button'); cmp.className = 'been'; cmp.textContent = 'Сравнить';
+    cmp.onclick = () => openResult(spot, url, shot.id);
+    const del = document.createElement('button'); del.className = 'been'; del.textContent = 'Удалить';
+    del.onclick = async () => {
+      if (!confirm('Удалить этот снимок из библиотеки? Вернуть его будет нельзя.')) return;
+      await libDel(shot.id); renderLib();
+    };
+    row.append(cmp, del);
+    card.append(open, row);
+    box.append(card);
+  }
+}
+function setView(v) {
+  view = v;
+  for (const b of document.querySelectorAll('.tab')) b.classList.toggle('on', b.dataset.view === v);
+  const lib = v === 'lib';
+  $('lib').hidden = !lib;
+  $('cards').hidden = lib; $('chips').hidden = lib;
+  document.querySelector('label.btn[for=addInput]').style.display = lib ? 'none' : '';
+  if (lib) { $('empty').hidden = true; renderLib(); } else renderList();
+}
+for (const b of document.querySelectorAll('.tab')) b.onclick = () => setView(b.dataset.view);
+
+/* Открыть пару «тогда / сейчас» на экране сравнения (из библиотеки или сразу после съёмки) */
+function openResult(spot, url, shotId) {
+  current = spot;
+  nowUrl = url;
+  $('cmpNow').src = url;
+  $('cmpOld').src = spot.src;
+  $('resTitle').textContent = spot.title;
+  $('cmpRange').value = 50;
+  setCompare(50);
+  show('result');
+  const img = $('oldImg');
+  if (img.getAttribute('src') !== spot.src) { img.src = spot.src; img.decode().then(refit, refit); } else refit();
+}
+
 function renderList() {
+  if (view === 'lib') { updateProgress(); renderLib(); return; }
+  updateLibCount();
   const box = $('cards');
   box.replaceChildren();
   const spots = visibleSpots();
@@ -620,6 +736,14 @@ $('shoot').onclick = () => {
   c.getContext('2d').drawImage(video, (video.videoWidth - sw) / 2, (video.videoHeight - sh) / 2, sw, sh, 0, 0, W, H);
   nowUrl = c.toDataURL('image/jpeg', 0.88);
   stopCam();
+  // в «Мою библиотеку»
+  const shotSpot = current;
+  c.toBlob(blob => {
+    if (!blob) return;
+    libAdd({ spotId: shotSpot.id, title: shotSpot.title, year: shotSpot.year || '', src: shotSpot.src, at: Date.now(), now: blob })
+      .then(updateLibCount)
+      .catch(() => alert('Не получилось сохранить снимок в библиотеку: закончилось место в телефоне.'));
+  }, 'image/jpeg', 0.88);
 
   if (!found.includes(current.id)) { found.push(current.id); write(FOUND_KEY, found); }
   $('cmpNow').src = nowUrl;
