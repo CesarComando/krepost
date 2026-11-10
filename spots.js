@@ -1827,13 +1827,13 @@ window.SPOTS_DATA = [
   "id": "s184",
   "src": "photos/spot184.jpg",
   "thumb": "photos/thumbs/spot184.jpg",
-  "title": "Старый снимок № 184",
+  "title": "Imperatora iela (улица Императора)",
   "year": "",
-  "hint": "",
+  "hint": "Нынешняя Imperatora iela, где сейчас магазин",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "491212471_742297678466776_2763886715533922819_n.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Улицы и здания"
  },
  {
   "id": "s185",
