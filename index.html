@@ -690,7 +690,12 @@ $('installBtn').onclick = async () => {
     : 'Откройте меню браузера (три точки ⋮) и выберите «Установить приложение» или «Добавить на главный экран».';
   $('installHelp').hidden = false;
 };
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').then(reg => {
+    // вернулись в приложение — проверить, нет ли новой версии
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') reg.update().catch(() => {}); });
+  }).catch(() => {});
+}
 
 /* Кнопка добавления нужна только пока своих точек нет */
 if (SPOTS.length) document.querySelector('label[for=addInput]').hidden = true;
