@@ -1383,13 +1383,13 @@ window.SPOTS_DATA = [
   "id": "s143",
   "src": "photos/spot143.jpg",
   "thumb": "photos/thumbs/spot143.jpg",
-  "title": "Старый снимок № 143",
+  "title": "Александровские ворота",
   "year": "",
-  "hint": "",
+  "hint": "Зимой, у ворот солдаты",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490329598_737925855570625_2731676249589293737_n.jpg",
-  "group": "Редюиты и валы"
+  "group": "Александровские ворота"
  },
  {
   "id": "s144",
@@ -1443,13 +1443,13 @@ window.SPOTS_DATA = [
   "id": "s148",
   "src": "photos/spot148.jpg",
   "thumb": "photos/thumbs/spot148.jpg",
-  "title": "1923 Gads.",
-  "year": "",
-  "hint": "",
+  "title": "Мост к Николаевским воротам",
+  "year": "1923",
+  "hint": "Деревянный мост через ров",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0Jc7HHtCL5zK1U9SFZDmiecPYGgGdXnARdvWrxujBPM83omjZ3GgCegyk1JTh3hrJl",
   "original": "490356762_739059112123966_2240644202201659235_n.jpg",
-  "group": "Редюиты и валы"
+  "group": "Николаевские ворота"
  },
  {
   "id": "s149",
