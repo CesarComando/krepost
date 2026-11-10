@@ -540,18 +540,6 @@ window.SPOTS_DATA = [
   "group": "Собор"
  },
  {
-  "id": "s061",
-  "src": "photos/spot061.jpg",
-  "thumb": "photos/thumbs/spot061.jpg",
-  "title": "Старый снимок № 61",
-  "year": "",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "470217886_591468273536091_125834721888115275_n.jpg",
-  "group": "Виды сверху"
- },
- {
   "id": "s062",
   "src": "photos/spot062.jpg",
   "thumb": "photos/thumbs/spot062.jpg",

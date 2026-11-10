@@ -252,7 +252,7 @@ function cardActions(spot) {
         } };
         write(GEO_KEY, geo);
         if (!found.includes(spot.id)) { found = [...found, spot.id]; write(FOUND_KEY, found); paintBeen(); updateProgress(); }
-        paintPin(); paintMap(); updateAdminBar();
+        paintPin(); paintMap(); paintUnpin(); updateAdminBar();
       }, err => {
         paintPin();
         alert(err.code === 1 ? 'Нет разрешения на геолокацию. Разрешите её в настройках браузера.' : 'Не получилось определить место. Попробуйте ещё раз на открытом месте.');
@@ -260,6 +260,21 @@ function cardActions(spot) {
     };
     paintPin();
     row.append(pin);
+
+    // Ошибся точкой — сбросить и указать заново
+    const unpin = document.createElement('button');
+    unpin.className = 'been';
+    unpin.textContent = 'Сбросить точку';
+    const paintUnpin = () => { unpin.hidden = !geo[spot.id]; };
+    unpin.onclick = () => {
+      if (!confirm('Убрать сохранённую точку для этого снимка?')) return;
+      const { [spot.id]: _, ...rest } = geo;
+      geo = rest;
+      write(GEO_KEY, geo);
+      paintPin(); paintMap(); paintUnpin(); updateAdminBar();
+    };
+    paintUnpin();
+    row.append(unpin);
   }
 
   row.append(map);
