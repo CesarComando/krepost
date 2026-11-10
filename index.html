@@ -10,6 +10,8 @@
 <meta name="theme-color" content="#17130f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Крепость">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root { --bg:#17130f; --panel:#262019; --line:#40362a; --text:#f2e8d8; --muted:#b5a68f; --accent:#d9a441; --ok:#8fbf6a; }
   * { box-sizing:border-box; }
@@ -101,6 +103,63 @@
   #cmpRange { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize; }
   #cmpLine { position:absolute; top:0; bottom:0; width:2px; background:var(--accent); pointer-events:none; }
   .tag { position:absolute; bottom:8px; padding:2px 8px; border-radius:6px; background:rgba(0,0,0,.65); font-size:13px; pointer-events:none; }
+
+  /* ===== Дизайн 10.11.2026 (макет Nano Banana): архив, старое золото, Playfair + Inter ===== */
+  :root { --gold-dim:rgba(217,164,65,.22); --serif:"Playfair Display",Georgia,"Times New Roman",serif; }
+  html,body { font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  body::after { content:""; position:fixed; inset:0; pointer-events:none; z-index:1000; opacity:.05;
+    background-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>'); }
+  button,label.btn { border-radius:12px; }
+  button.main,label.btn { box-shadow:0 0 14px rgba(217,164,65,.28); }
+  button:active { filter:brightness(.9); }
+  #list h1, .groupTitle, .card .name { font-family:var(--serif); }
+  #list h1 { font-size:30px; font-weight:600; }
+  /* прогресс */
+  #progress { display:flex; justify-content:space-between; font-size:14px; font-weight:500; margin:10px 0 6px; }
+  #progress .lbl { color:var(--muted); }
+  #progress .num { color:var(--accent); }
+  #list > * { flex-shrink:0; }
+  #progressBar { height:6px; border-radius:3px; background:rgba(242,232,216,.2); overflow:hidden; margin:0 0 16px; }
+  #progressBar i { display:block; height:100%; background:var(--accent); border-radius:3px; transition:width .4s; }
+  /* фильтры в одну строку с прокруткой */
+  #chips { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; margin:0 -16px 16px; padding:2px 16px; }
+  #chips::-webkit-scrollbar { display:none; }
+  .chip { white-space:nowrap; flex:none; border-radius:999px; background:var(--panel); border-color:var(--gold-dim); color:var(--muted); }
+  .chip.on { color:#1d1608; }
+  .tab { border-color:var(--gold-dim); background:var(--panel); }
+  /* карточки */
+  #cards, #lib { grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:18px; }
+  .card { border-radius:18px; border-color:var(--gold-dim); padding:12px; }
+  .card .open { border-radius:12px; }
+  .card .imgbox { position:relative; border-radius:12px; overflow:hidden; }
+  .card img { height:190px; border-radius:12px; filter:sepia(.45); }
+  .shot .pair img.now { border-radius:12px; }
+  .card .year { position:absolute; top:8px; right:8px; background:rgba(0,0,0,.6); backdrop-filter:blur(4px); padding:3px 8px; border-radius:6px; font-size:12px; }
+  .card .info { padding:12px 4px 10px; }
+  .card .name { font-size:20px; font-weight:600; line-height:1.2; margin-bottom:4px; }
+  .cardActions { padding:0 4px 2px; flex-wrap:nowrap; }
+  .been { flex:1; padding:12px; border-radius:12px; border:1px solid var(--gold-dim); background:transparent; font-weight:500; }
+  .been.on { background:var(--accent); color:#1d1608; border-color:var(--accent); }
+  .map { flex:none; width:48px; height:46px; display:flex; align-items:center; justify-content:center; border:1px solid var(--gold-dim); border-radius:12px; }
+  .map svg { width:22px; height:22px; }
+  .card .toggle { top:18px; right:18px; }
+  /* верхние полосы экранов */
+  .bar { padding:12px 14px; }
+  .bar .title { font-family:var(--serif); font-size:19px; }
+  #camBack, #resBack { width:46px; height:46px; padding:0; border-radius:50%; border:1px solid var(--gold-dim); font-size:20px; flex:none; }
+  /* камера */
+  #cam .controls, #result .controls { background:linear-gradient(to top, #000 0%, rgba(23,19,15,.96) 100%); }
+  .controls .row { margin-bottom:4px; }
+  #shoot { width:100%; max-width:420px; padding:16px; font-size:17px; }
+  input[type=range] { accent-color:var(--accent); }
+  /* результат: ползунок с ручкой ↔ */
+  #resArea { padding:0 14px; background:var(--bg); }
+  #resStage { border-radius:16px; border:1px solid var(--gold-dim); }
+  #cmpLine { width:4px; margin-left:-2px; box-shadow:0 0 10px rgba(0,0,0,.5); }
+  #cmpLine::after { content:"↔"; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:34px; height:34px; border-radius:50%;
+    background:var(--accent); color:#17130f; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px; box-shadow:0 2px 6px rgba(0,0,0,.4); }
+  #result .actions button { flex:1; max-width:220px; }
+  #toList { display:block; margin:8px auto 0; background:none; color:var(--muted); font-size:14px; padding:6px; text-decoration:underline; text-underline-offset:4px; }
 </style>
 </head>
 <body>
@@ -112,7 +171,8 @@
     <button id="installBtn" class="main">Скачать на телефон</button>
     <p id="installHelp" hidden></p>
   </div>
-  <p id="progress"></p>
+  <div id="progress"></div>
+  <div id="progressBar"><i></i></div>
   <div id="tabs" role="tablist">
     <button class="tab on" data-view="all" role="tab">Все места</button>
     <button class="tab" data-view="lib" role="tab">Моя библиотека<span id="libCount"></span></button>
@@ -153,7 +213,7 @@
       <input id="zoom" type="range" min="1" max="4" step="0.1" value="1" aria-label="Увеличение камеры">
       <span id="zoomVal" style="min-width:3.2em;text-align:right">1×</span>
     </div>
-    <div class="actions"><button id="shoot" class="main">Совпало — снять</button>
+    <div class="actions"><button id="shoot" class="main">Совпало — сделать фото</button>
       <button id="handSwap" aria-label="Перенести кнопку на другую сторону">⇄ Кнопка слева</button></div>
   </div>
 </section>
@@ -174,11 +234,13 @@
     </div>
   </div>
   <div class="controls">
-    <p class="hint">Проведите по снимку, чтобы сравнить</p>
+    <p class="hint">↔ Потяните ползунок, чтобы сравнить</p>
     <div class="actions">
       <button id="save" class="main">Сохранить</button>
+      <button id="share">Поделиться</button>
       <button id="retry">Переснять</button>
     </div>
+    <button id="toList">Вернуться к списку</button>
   </div>
 </section>
 
@@ -220,7 +282,8 @@ const visibleSpots = () => allSpots().filter(s => ADMIN || !hiddenIds.includes(s
 function updateProgress() {
   const spots = visibleSpots();
   const doneCount = spots.filter(s => found.includes(s.id)).length;
-  $('progress').textContent = spots.length ? `Уже был: ${doneCount} из ${spots.length}` : '';
+  $('progress').innerHTML = spots.length ? `<span class="lbl">Уже посетили:</span><span class="num">${doneCount} из ${spots.length}</span>` : '';
+  $('progressBar').firstElementChild.style.width = spots.length ? (100 * doneCount / spots.length).toFixed(1) + '%' : '0';
 }
 
 function renderChips(spots) {
@@ -251,7 +314,7 @@ function cardActions(spot) {
   const paintBeen = () => {
     const on = found.includes(spot.id);
     been.className = on ? 'been on' : 'been';
-    been.textContent = on ? '✓ Уже был' : 'Уже был здесь';
+    been.textContent = on ? 'Был здесь ✓' : 'Уже был здесь';
   };
   been.onclick = () => {
     found = found.includes(spot.id) ? found.filter(f => f !== spot.id) : [...found, spot.id];
@@ -266,7 +329,8 @@ function cardActions(spot) {
   map.className = 'map';
   map.target = '_blank';
   map.rel = 'noopener';
-  map.textContent = 'На карте';
+  map.setAttribute('aria-label', 'На карте');
+  map.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>';
   const paintMap = () => {
     const p = coordsOf(spot);
     map.hidden = !p;
@@ -491,7 +555,7 @@ function renderList() {
     name.className = 'name';
     name.textContent = (ADMIN && /^s\d+$/.test(spot.id) ? `№ ${+spot.id.slice(1)} · ` : '') + spot.title;
     info.append(name);
-    const metaText = [spot.year, spot.hint].filter(Boolean).join(' · ');
+    const metaText = spot.hint || '';
     if (metaText) {
       const meta = document.createElement('div');
       meta.className = 'meta';
@@ -504,7 +568,11 @@ function renderList() {
       credit.textContent = spot.credit;
       info.append(credit);
     }
-    open.append(img, info);
+    const imgBox = document.createElement('div');
+    imgBox.className = 'imgbox';
+    imgBox.append(img);
+    if (spot.year) { const y = document.createElement('span'); y.className = 'year'; y.textContent = spot.year; imgBox.append(y); }
+    open.append(imgBox, info);
     card.append(open);
     card.append(cardActions(spot));
 
@@ -767,7 +835,7 @@ function label(ctx, text, x, y) {
   ctx.fillText(text, x + pad, y - h / 2 - pad * 2);
 }
 
-$('save').onclick = async () => {
+async function pairBlob() {
   const [oldI, nowI] = await Promise.all([loadImage(current.src), loadImage(nowUrl)]);
   const W = oldI.naturalWidth, H = oldI.naturalHeight;
   const c = document.createElement('canvas');
@@ -778,21 +846,28 @@ $('save').onclick = async () => {
   label(ctx, current.year ? `Тогда · ${current.year}` : 'Тогда', H / 60, H);
   label(ctx, 'Сейчас', W + H / 60, H);
 
-  let blob;
-  try { blob = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.9)); }
-  catch { alert('Сохранение работает, когда приложение открыто по ссылке, а не как файл с компьютера.'); return; }
+  try { return await new Promise(r => c.toBlob(r, 'image/jpeg', 0.9)); }
+  catch { alert('Сохранение работает, когда приложение открыто по ссылке, а не как файл с компьютера.'); return null; }
+}
+function downloadBlob(blob) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'krepost-togda-i-seichas.jpg';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+}
+$('save').onclick = async () => { const blob = await pairBlob(); if (blob) downloadBlob(blob); };
+$('share').onclick = async () => {
+  const blob = await pairBlob();
+  if (!blob) return;
   const file = new File([blob], 'krepost-togda-i-seichas.jpg', { type: 'image/jpeg' });
-  const isTouch = matchMedia('(pointer: coarse)').matches;
-  if (isTouch && navigator.canShare && navigator.canShare({ files: [file] })) {
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
     try { await navigator.share({ files: [file], title: current.title }); return; }
     catch (err) { if (err.name === 'AbortError') return; }
   }
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = file.name;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  downloadBlob(blob);
 };
+$('toList').onclick = () => $('resBack').click();
 
 /* «Скачать на телефон»: установка как приложение */
 let installEvt = null;
