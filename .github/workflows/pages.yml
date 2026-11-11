@@ -23,7 +23,7 @@ jobs:
       - name: Собрать сайт (только нужные файлы)
         run: |
           mkdir _site
-          cp -r index.html spots.js sw.js manifest.webmanifest icons photos _site/
+          cp -r index.html spots.js quests.js sw.js manifest.webmanifest icons photos _site/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
