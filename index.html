@@ -398,6 +398,38 @@
     #cam #shoot { width:66px; height:66px; min-height:0; min-width:0; max-width:none; padding:0; border-radius:50%; font-size:13px; line-height:1.05; }
     #cam #shoot .long { display:none; }
   }
+
+  /* ===== Истории о местах ===== */
+  #histBox { display:flex; flex-direction:column; gap:8px; }
+  #histBox:empty { display:none; }
+  .hist { background:var(--paper); color:var(--ink); padding:12px 14px 10px; border-radius:3px; box-shadow:inset 0 0 20px rgba(120,90,40,.25); }
+  .hist h4 { margin:0 0 8px; font:700 15px var(--cond); text-transform:uppercase; letter-spacing:.04em; color:#7a2e1c; }
+  .hist ul { margin:0; padding-left:18px; }
+  .hist li { font:15px/1.45 var(--old); margin-bottom:6px; }
+  .hist .src { font:12px var(--mono, monospace); color:#6a5a44; margin-top:6px; }
+  .hist details summary { cursor:pointer; font:600 14px var(--cond); text-transform:uppercase; color:#5a4630; }
+  .factsSub { margin:6px 0 0; font:700 15px var(--cond); text-transform:uppercase; letter-spacing:.04em; color:var(--accent); }
+  .facts { flex:none; min-width:48px; height:46px; border:0; border-radius:3px; background:var(--paper); color:var(--ink); font-size:18px; padding:0 8px; position:relative; }
+  .facts b { font:700 12px var(--cond); margin-left:2px; }
+  #factsDlg { width:min(640px, calc(100vw - 16px)); max-height:calc(100vh - 24px); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text);
+    box-shadow:0 0 0 2px var(--brass2), 0 20px 50px rgba(0,0,0,.7); }
+  #factsDlg::backdrop { background:rgba(0,0,0,.7); }
+  .factsBox { padding:16px; display:flex; flex-direction:column; gap:12px; }
+  .factsHead { display:flex; gap:10px; align-items:flex-start; }
+  .factsHead h3 { flex:1; margin:0; font:700 21px/1.2 var(--old); }
+  #factsClose { flex:none; width:40px; height:40px; border-radius:50%; background:var(--paper); color:var(--ink); padding:0; font-size:18px; }
+  #factsImg { width:100%; max-height:220px; object-fit:cover; filter:sepia(.5); border:6px solid #f1e6cc; box-sizing:border-box; }
+  .fact { background:var(--paper); color:var(--ink); padding:12px 14px; border-radius:3px; box-shadow:inset 0 0 20px rgba(120,90,40,.25); }
+  .fact p { margin:0 0 8px; font:16px/1.45 var(--old); white-space:pre-wrap; }
+  .fact .by { font:600 13px var(--cond); text-transform:uppercase; letter-spacing:.03em; color:#5a4630; }
+  .factsEmpty { color:var(--muted); font-family:var(--old); text-align:center; padding:8px; }
+  #factsFormBox summary { cursor:pointer; padding:12px; text-align:center; font:700 17px var(--cond); text-transform:uppercase; background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; border-radius:8px; list-style:none; }
+  #factsFormBox summary::-webkit-details-marker { display:none; }
+  #factsForm { display:flex; flex-direction:column; gap:10px; margin-top:12px; }
+  #factsForm label { display:flex; flex-direction:column; gap:5px; font-size:14px; color:var(--muted); }
+  #factsForm input, #factsForm textarea, #factsForm select { font:16px Inter,system-ui,sans-serif; color:var(--ink); background:var(--paper); border:0; border-radius:8px; padding:10px 12px; }
+  .fNote { margin:0; font-size:13px; color:#d9cbb2; }
+  #pendingFacts { color:var(--accent); font-weight:600; }
 </style>
 </head>
 <body>
@@ -496,6 +528,31 @@
     </div>
   </div>
 </dialog>
+<dialog id="factsDlg">
+  <div class="factsBox">
+    <div class="factsHead"><h3 id="factsTitle"></h3><button type="button" id="factsClose" aria-label="Закрыть">✕</button></div>
+    <img id="factsImg" alt="">
+    <section id="histBox"></section>
+    <h4 class="factsSub">Рассказы людей</h4>
+    <div id="factsList"></div>
+    <details id="factsFormBox">
+      <summary>✍ Я знаю про это место</summary>
+      <form id="factsForm">
+        <p class="fNote">Работали здесь, жили рядом, слышали от родных, нашли в архиве? Расскажите — после проверки рассказ появится у всех.</p>
+        <label>Ваше имя (как подписать)<input id="fAuthor" maxlength="80" autocomplete="name" placeholder="например, Иван П."></label>
+        <label>Откуда вы знаете<select id="fRole">
+          <option value="">— выберите —</option>
+          <option>Работал(а) здесь</option><option>Служил(а) здесь</option><option>Жил(а) рядом</option>
+          <option>Рассказывали родные</option><option>Краевед / исследователь</option><option>Из архива или книги</option><option>Другое</option>
+        </select></label>
+        <label>Рассказ<textarea id="fBody" rows="6" maxlength="4000" required placeholder="Что здесь было, кто работал, какие случаи помните, годы…"></textarea></label>
+        <label>Контакт для связи (необязательно — увидит только разработчик)<input id="fContact" maxlength="120" autocomplete="email" placeholder="телефон или e-mail"></label>
+        <p class="fNote" id="fMsg"></p>
+        <button type="submit" class="main" id="fSend">Отправить разработчику</button>
+      </form>
+    </details>
+  </div>
+</dialog>
 <dialog id="editDlg">
   <form method="dialog" id="editForm">
     <h3>Описание снимка</h3>
@@ -516,6 +573,7 @@
 </dialog>
 <script src="spots.js"></script>
 <script src="quests.js"></script>
+<script src="history.js"></script>
 <script>
 /* Точки маршрута лежат в spots.js, снимки — в папке photos. */
 const SPOTS = window.SPOTS_DATA || [];
@@ -653,6 +711,14 @@ function cardActions(spot) {
     row.append(unpin);
   }
 
+  const fb = document.createElement('button');
+  fb.className = 'facts';
+  const nf = (facts[spot.id] || []).length;
+  fb.innerHTML = '📜' + (nf ? `<b>${nf}</b>` : '');
+  fb.setAttribute('aria-label', 'Истории об этом месте');
+  fb.onclick = () => openFacts(spot);
+  row.append(fb);
+
   const ed = document.createElement('button');
   ed.className = 'edit';
   ed.textContent = '✎';
@@ -768,6 +834,7 @@ function navPush() { navDepth++; history.pushState({ d: navDepth }, ''); }
 function navBack() { if (navDepth > 0) history.back(); else stepBack(); }
 function stepBack() {
   if ($('editDlg').open) { $('editDlg').close(); editing = null; return; }
+  if ($('factsDlg').open) { $('factsDlg').close(); factsSpot = null; return; }
   if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); renderList(); return; }
   if (!$('result').hidden) { current = null; show('list'); renderList(); return; }
   if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
@@ -950,6 +1017,108 @@ function renderQuests() {
     const fin = document.createElement('div'); fin.className = 'qdone'; fin.textContent = '🎖 Квест пройден! Все кадры — в «Библиотеке».';
     box.append(fin);
   }
+}
+
+/* ===== Истории о местах: присылают люди, разработчик проверяет, затем видят все =====
+   Хранятся в Supabase (таблица krepost_facts). Новые рассказы — со статусом «на проверке»;
+   одобрить: панель Supabase → Table Editor → krepost_facts → status = approved. */
+const FACTS_URL = 'https://latnwksisoziluhdadgy.supabase.co/rest/v1';
+const FACTS_KEY = 'sb_publishable_3-Gt0ELg3dm5JhnVWB3Tkw_crsYB0J6';
+const FACTS_CACHE = 'krepost.facts';
+let facts = read(FACTS_CACHE, {}); // spot_id -> [{author, role, body, created_at}]
+async function loadFacts() {
+  try {
+    const r = await fetch(`${FACTS_URL}/krepost_facts?select=spot_id,author,role,body,created_at&status=eq.approved&order=created_at.asc`,
+      { headers: { apikey: FACTS_KEY } });
+    if (!r.ok) return;
+    const rows = await r.json();
+    const next = {};
+    for (const f of rows) (next[f.spot_id] = next[f.spot_id] || []).push(f);
+    facts = next;
+    write(FACTS_CACHE, facts);
+    if (!$('list').hidden && view === 'all') renderList();
+  } catch { /* без сети — показываем сохранённые */ }
+}
+let factsSpot = null;
+const HIST = window.HISTORY_DATA || { groups: {}, spots: {} };
+function histCard(title, lines, sources, folded) {
+  const box = document.createElement('div'); box.className = 'hist';
+  const ul = document.createElement('ul');
+  for (const t of lines) { const li = document.createElement('li'); li.textContent = t; ul.append(li); }
+  const src = document.createElement('div'); src.className = 'src';
+  src.textContent = sources && sources.length ? 'Источники: ' + sources.join('; ') : '';
+  if (folded) {
+    const d = document.createElement('details'); const s = document.createElement('summary');
+    s.textContent = title; d.append(s, ul, src); box.append(d);
+  } else {
+    const h = document.createElement('h4'); h.textContent = title; box.append(h, ul, src);
+  }
+  return box;
+}
+function renderHistory(spot) {
+  const box = $('histBox'); box.replaceChildren();
+  const own = HIST.spots[spot.id];
+  const g = HIST.groups[groupOf(spot)];
+  if (own) box.append(histCard('Об этом месте', own));
+  if (g) box.append(histCard('Из истории: ' + groupOf(spot), g.text, g.sources, !!own));
+  if (HIST.fortress) box.append(histCard('История крепости 1810–сегодня', HIST.fortress.text, ['Wikipedia — Daugavpils Fortress', 'Путеводитель Daugavpils Fortress'], true));
+}
+function openFacts(spot) {
+  factsSpot = spot;
+  $('factsTitle').textContent = spot.title + (spot.year ? ', ' + spot.year : '');
+  $('factsImg').src = spot.thumb || spot.src;
+  renderHistory(spot);
+  const list = $('factsList');
+  list.replaceChildren();
+  const items = facts[spot.id] || [];
+  if (!items.length) {
+    const e = document.createElement('p'); e.className = 'factsEmpty';
+    e.textContent = 'Пока никто не рассказал об этом месте. Если знаете что-то — напишите, это очень ценно.';
+    list.append(e);
+  }
+  for (const f of items) {
+    const d = document.createElement('div'); d.className = 'fact';
+    const t = document.createElement('p'); t.textContent = f.body;
+    const by = document.createElement('div'); by.className = 'by';
+    by.textContent = [f.author || 'Без подписи', f.role, new Date(f.created_at).getFullYear()].filter(Boolean).join(' · ');
+    d.append(t, by); list.append(d);
+  }
+  $('factsFormBox').open = false;
+  $('fMsg').textContent = '';
+  $('factsDlg').showModal();
+  navPush();
+}
+$('factsClose').onclick = () => navBack();
+$('factsDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
+$('factsForm').onsubmit = async e => {
+  e.preventDefault();
+  const body = $('fBody').value.trim();
+  if (body.length < 10) { $('fMsg').textContent = 'Напишите хотя бы пару предложений.'; return; }
+  $('fSend').disabled = true;
+  $('fMsg').textContent = 'Отправляем…';
+  try {
+    const r = await fetch(`${FACTS_URL}/krepost_facts`, {
+      method: 'POST',
+      headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify({ spot_id: factsSpot.id, author: $('fAuthor').value.trim() || null, role: $('fRole').value || null,
+        body, contact: $('fContact').value.trim() || null })
+    });
+    if (!r.ok) throw new Error(r.status);
+    $('fBody').value = ''; $('fContact').value = '';
+    $('fMsg').textContent = '✓ Спасибо! Рассказ отправлен разработчику. После проверки его увидят все.';
+  } catch {
+    $('fMsg').textContent = 'Не получилось отправить — нужен интернет. Текст не стёрт, попробуйте ещё раз.';
+  } finally { $('fSend').disabled = false; }
+};
+async function updatePendingFacts() {
+  if (!ADMIN || !$('adminBar')) return;
+  try {
+    const r = await fetch(`${FACTS_URL}/rpc/krepost_pending_count`, { method: 'POST', headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json' }, body: '{}' });
+    const n = await r.json();
+    let el = $('pendingFacts');
+    if (!el) { el = document.createElement('p'); el.id = 'pendingFacts'; $('adminBar').append(el); }
+    el.textContent = n > 0 ? `📜 Новых рассказов на проверке: ${n} (одобрить: Supabase → krepost_facts → status = approved)` : '';
+  } catch { /* без сети */ }
 }
 
 function renderList() {
@@ -1359,6 +1528,8 @@ if ('serviceWorker' in navigator) {
 /* Кнопка добавления нужна только пока своих точек нет */
 if (SPOTS.length) document.querySelector('label[for=addInput]').hidden = true;
 renderList();
+loadFacts();
+updatePendingFacts();
 </script>
 </body>
 </html>
