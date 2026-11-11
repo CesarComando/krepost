@@ -714,6 +714,7 @@ function openEdit(spot) {
   $('edNote').textContent = '';
   paintEdMap();
   $('editDlg').showModal();
+  navPush();
 }
 function paintEdMap() {
   const p = parseCoords($('edCoords').value);
@@ -721,7 +722,8 @@ function paintEdMap() {
   if (p) $('edMap').href = `https://www.google.com/maps?q=${p.lat},${p.lng}`;
 }
 $('edCoords').oninput = paintEdMap;
-$('edCancel').onclick = () => $('editDlg').close();
+$('edCancel').onclick = () => navBack();
+$('editDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
 $('edHere').onclick = () => {
   if (!navigator.geolocation) { $('edNote').textContent = 'Этот браузер не умеет определять место.'; return; }
   $('edNote').textContent = 'Определяем место…';
@@ -750,14 +752,31 @@ $('editForm').onsubmit = e => {
   if (p) geo = { ...geo, [editing.id]: { lat: p.lat, lng: p.lng, acc: geo[editing.id] && geo[editing.id].lat === p.lat ? geo[editing.id].acc : 0 } };
   else if (geo[editing.id]) { const { [editing.id]: _, ...rest } = geo; geo = rest; }
   write(GEO_KEY, geo);
-  $('editDlg').close();
-  editing = null;
+  navBack(); // закрывает окно
   renderList();
 };
 
 function show(id) {
   for (const s of document.querySelectorAll('.screen')) s.hidden = s.id !== id;
 }
+
+/* ===== Кнопка «Назад» телефона: шаг назад внутри приложения, а не выход =====
+   Каждый переход «вглубь» (камера, сравнение, раздел, квест, окно описания) кладёт шаг в историю браузера.
+   «Назад» (телефона или стрелка в приложении) снимает один шаг. Из главного списка — выход, как обычно. */
+let navDepth = 0;
+function navPush() { navDepth++; history.pushState({ d: navDepth }, ''); }
+function navBack() { if (navDepth > 0) history.back(); else stepBack(); }
+function stepBack() {
+  if ($('editDlg').open) { $('editDlg').close(); editing = null; return; }
+  if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); renderList(); return; }
+  if (!$('result').hidden) { current = null; show('list'); renderList(); return; }
+  if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
+  if (view !== 'all') { setView('all'); return; }
+}
+addEventListener('popstate', e => {
+  const target = (e.state && e.state.d) || 0;
+  while (navDepth > target) { navDepth--; stepBack(); }
+});
 
 /* ===== Моя библиотека: снимки, сделанные в приложении, хранятся в телефоне (IndexedDB) ===== */
 let view = 'all';
@@ -844,10 +863,18 @@ function setView(v) {
   if (other) $('empty').hidden = true;
   if (lib) renderLib(); else if (qs) { openQuest = null; renderQuests(); } else renderList();
 }
-for (const b of document.querySelectorAll('.tab')) b.onclick = () => setView(b.dataset.view);
+for (const b of document.querySelectorAll('.tab')) b.onclick = () => {
+  const v = b.dataset.view;
+  if (v === view) return;
+  if (v === 'all') { if (navDepth > 0) history.go(-navDepth); else setView('all'); return; }
+  if (view === 'all') navPush();
+  else if (openQuest) { openQuest = null; } // из квеста сразу в другой раздел — тот же шаг
+  setView(v);
+};
 
 /* Открыть пару «тогда / сейчас» на экране сравнения (из библиотеки или сразу после съёмки) */
 function openResult(spot, url, shotId) {
+  if (!$('list').hidden) navPush();
   current = spot;
   nowUrl = url;
   $('cmpNow').src = url;
@@ -883,7 +910,7 @@ function renderQuests() {
       b.querySelector('p').textContent = q.desc;
       b.querySelector('.lvl').textContent = q.level || '';
       if (steps.length && n === steps.length) { const st = document.createElement('span'); st.className = 'stamp'; st.textContent = 'Пройден'; b.append(st); }
-      b.onclick = () => { openQuest = q.id; renderQuests(); $('list').scrollTop = 0; };
+      b.onclick = () => { navPush(); openQuest = q.id; renderQuests(); $('list').scrollTop = 0; };
       box.append(b);
     }
     return;
@@ -891,7 +918,7 @@ function renderQuests() {
   const q = QUESTS.find(x => x.id === openQuest);
   const back = document.createElement('button');
   back.className = 'qback'; back.textContent = '← Все квесты';
-  back.onclick = () => { openQuest = null; renderQuests(); };
+  back.onclick = () => navBack();
   const head = document.createElement('div'); head.className = 'qhead';
   head.innerHTML = '<h2></h2><p></p>';
   head.querySelector('h2').textContent = q.title;
@@ -1147,6 +1174,7 @@ function stopCam() {
 
 async function openSpot(spot, ctx) {
   if (read(HAND_KEY, null) === null) await askHand();
+  if (!$('list').hidden) navPush(); // из списка в камеру — шаг вглубь (из «Переснять» — нет)
   current = spot;
   questCtx = ctx || null;
   $('questTask').textContent = questCtx ? `🎯 ${questCtx.step.task}` : '';
@@ -1207,8 +1235,8 @@ $('zoom').oninput = e => setZoom(+e.target.value);
 
 $('opacity').oninput = e => { $('oldImg').style.opacity = e.target.value / 100; };
 
-$('camBack').onclick = () => { stopCam(); current = null; show('list'); renderList(); };
-$('resBack').onclick = () => { current = null; show('list'); renderList(); };
+$('camBack').onclick = () => navBack();
+$('resBack').onclick = () => navBack();
 $('retry').onclick = () => { if (current) openSpot(current); };
 
 function setCompare(value) {
