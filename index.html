@@ -399,6 +399,13 @@
     #cam #shoot .long { display:none; }
   }
 
+  /* ===== О приложении ===== */
+  .free { text-align:center; margin:-4px 0 12px; font-size:13px; color:var(--muted); }
+  #aboutLink { background:none; border:0; padding:0; color:var(--accent); text-decoration:underline; font:inherit; min-height:0; }
+  #about { margin:16px 0 8px; padding:12px 14px; border:1px solid var(--brass2); border-radius:8px; color:var(--muted); font-size:14px; line-height:1.5; }
+  #about summary { cursor:pointer; color:var(--text); font:700 15px var(--cond); text-transform:uppercase; letter-spacing:.03em; }
+  #about p { margin:10px 0 0; }
+  #about b { color:var(--text); }
   /* ===== Истории о местах ===== */
   #histBox { display:flex; flex-direction:column; gap:8px; }
   #histBox:empty { display:none; }
@@ -437,6 +444,7 @@
 <section id="list" class="screen">
   <div class="titleBox"><span class="orn">❦</span><h1>Крепость<br>сквозь время</h1><span class="orn r">❦</span></div>
   <p class="sub">Найди в Даугавпилсской крепости место со старой фотографии и встань точно туда, откуда снимал фотограф.</p>
+  <p class="free">Бесплатно · фото принадлежат авторам и архивам · <button type="button" id="aboutLink">подробнее</button></p>
   <div id="installBox" hidden>
     <button id="installBtn" class="main">Скачать на телефон</button>
     <p id="installHelp" hidden></p>
@@ -457,6 +465,14 @@
   <div id="lib" hidden></div>
   <div id="quests" hidden></div>
   <p id="handSet"><button type="button" id="handChange"></button></p>
+  <details id="about">
+    <summary>О приложении и правах на фото</summary>
+    <p><b>«Крепость сквозь время» — бесплатный краеведческий проект.</b> Пользоваться им можно без оплаты и без регистрации.</p>
+    <p>Старые фотографии принадлежат их авторам, наследникам и архивам. У каждого снимка указан источник. Фото здесь показаны только для того, чтобы сохранить историю Даугавпилсской крепости: они не продаются, не передаются третьим лицам и не используются в рекламе.</p>
+    <p>Если вы автор снимка, наследник или владелец прав и хотите, чтобы фото подписали иначе или убрали, нажмите 📜 у этого снимка и напишите в форме, оставив контакт. Исправим или уберём.</p>
+    <p>Исторические справки собраны по открытым источникам и могут содержать неточности. Поправки и воспоминания очень ценны — пишите через 📜.</p>
+    <p>Ваши снимки из «Библиотеки» хранятся только на вашем телефоне. Рассказы, отправленные через 📜, после проверки видят все; контакт видит только разработчик.</p>
+  </details>
   <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
   <label class="btn" for="addInput">+ Добавить старое фото</label>
   <input id="addInput" type="file" accept="image/*">
@@ -1089,6 +1105,7 @@ function openFacts(spot) {
   navPush();
 }
 $('factsClose').onclick = () => navBack();
+$('aboutLink').onclick = () => { $('about').open = true; $('about').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
 $('factsDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
 $('factsForm').onsubmit = async e => {
   e.preventDefault();
