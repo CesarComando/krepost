@@ -369,6 +369,35 @@
     #cam #shoot br, #cam #shoot .long { display:none; }
     #cam #questTask { padding:4px 4px 0; font-size:10px; }
   }
+
+  /* ===== Стоя (11.11): как лёжа — снимок крупно, «просвет» вертикально сбоку, зум и маленькая кнопка снизу ===== */
+  @media (orientation: portrait) {
+    #cam.screen { display:grid; position:relative; grid-template-columns:44px minmax(0,1fr); grid-template-rows:minmax(0,1fr) auto auto; }
+    #cam.left { grid-template-columns:minmax(0,1fr) 44px; }
+    #cam .bar { position:absolute; top:4px; left:0; right:0; z-index:6; padding:0; pointer-events:none; }
+    #cam .bar .title { font-size:12px; padding:4px 10px; max-width:62%; margin:0 auto; }
+    #cam .bar .title::before { width:44px; margin-left:-22px; height:12px; top:-6px; }
+    #camBack { pointer-events:auto; position:absolute; top:4px !important; left:4px; width:40px; height:40px; }
+    #cam.left #camBack { left:auto; right:4px; }
+    #cam .controls { display:contents; }
+    #cam #camArea { grid-column:2; grid-row:1; padding:40px 4px 4px; min-height:0; }
+    #cam.left #camArea { grid-column:1; }
+    #cam #opRow { grid-column:1; grid-row:1 / span 3; flex-direction:column-reverse; justify-content:center; align-items:center; gap:6px; padding:52px 0 12px; margin:0; min-height:0; }
+    #cam.left #opRow { grid-column:2; }
+    #cam #opacity { writing-mode:vertical-lr; direction:rtl; width:28px; height:auto; flex:1 1 auto; min-height:120px; max-height:360px; }
+    #cam #opacity::-webkit-slider-runnable-track { width:12px; height:100%; }
+    #cam #opacity::-webkit-slider-thumb { width:34px; height:22px; margin-top:0; margin-left:-11px; }
+    #cam #opRow > span { font-size:10px !important; padding:1px 3px; }
+    #cam .hint { display:none; }
+    #cam #questTask { grid-column:2; grid-row:2; margin:0; padding:2px 8px; font-size:12px; text-align:center; }
+    #cam.left #questTask { grid-column:1; }
+    #cam #zoomRow { grid-column:2; grid-row:3; align-self:center; margin:0; padding:6px 84px calc(8px + env(safe-area-inset-bottom)) 8px; gap:6px; }
+    #cam.left #zoomRow { grid-column:1; padding:6px 8px calc(8px + env(safe-area-inset-bottom)) 84px; }
+    #cam .actions { grid-column:2; grid-row:3; justify-self:end; align-self:center; padding:4px 8px calc(6px + env(safe-area-inset-bottom)); margin:0; }
+    #cam.left .actions { grid-column:1; justify-self:start; }
+    #cam #shoot { width:66px; height:66px; min-height:0; min-width:0; max-width:none; padding:0; border-radius:50%; font-size:13px; line-height:1.05; }
+    #cam #shoot .long { display:none; }
+  }
 </style>
 </head>
 <body>
