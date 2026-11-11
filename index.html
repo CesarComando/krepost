@@ -329,6 +329,36 @@
     #cam .actions { grid-column:3; grid-row:3 / span 2; align-self:center; padding:0 10px 10px; }
     #cam.left .actions { grid-column:1; }
   }
+
+  /* ===== Правша/левша — настройка один раз; снимок ещё шире лёжа ===== */
+  #handSwap { display:none !important; }
+  #handDlg { width:min(480px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text);
+    box-shadow:0 0 0 2px var(--brass2), 0 20px 50px rgba(0,0,0,.7); }
+  #handDlg::backdrop { background:rgba(0,0,0,.7); }
+  .handBox { padding:20px; text-align:center; }
+  .handBox h3 { margin:0 0 8px; font:700 22px var(--old); }
+  .handBox p { margin:0 0 16px; color:#d9cbb2; font:15px/1.4 var(--old); }
+  .handBtns { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .handBtns button { padding:16px 8px; font:700 18px var(--cond); text-transform:uppercase; background:var(--paper); color:var(--ink); border-radius:10px; }
+  .handBtns button.main { background:radial-gradient(ellipse at 40% 30%, #ffe27a, #d9a52c); color:#3a2608; }
+  .handBtns small { font:500 12px Inter,system-ui,sans-serif; text-transform:none; opacity:.8; }
+  #handSet { text-align:center; margin:18px 0 4px; }
+  #handChange { background:none; color:var(--muted); font-size:13px; text-decoration:underline; text-underline-offset:3px; padding:6px; }
+  @media (orientation: landscape) and (max-height: 600px) {
+    #cam.screen, #cam.left { grid-template-columns:46px minmax(0,1fr) 132px; }
+    #cam.left { grid-template-columns:132px minmax(0,1fr) 46px; }
+    #cam #camArea, #cam.left #camArea { grid-row:1 / span 4; padding:2px 2px; }
+    #cam #zoomRow { grid-row:4; align-self:end; z-index:4; margin:0 10% 6px; padding:2px 10px; background:rgba(18,14,10,.72); border-radius:16px; }
+    #cam #opRow { padding:54px 0 8px; }
+    #cam #opRow > span { font-size:10px !important; padding:1px 3px; }
+    #cam #opacity { width:28px; }
+    #cam .hint { display:none; }
+    #cam .actions { padding:0 6px 8px; }
+    #cam #shoot { min-height:64px; font-size:15px; padding:6px 8px; }
+    #camBack { width:40px; height:40px; top:4px !important; left:3px; }
+    #cam.left #camBack { right:3px; }
+    #cam .bar .title { font-size:11px; }
+  }
 </style>
 </head>
 <body>
@@ -355,6 +385,7 @@
   <div id="cards"></div>
   <div id="lib" hidden></div>
   <div id="quests" hidden></div>
+  <p id="handSet"><button type="button" id="handChange"></button></p>
   <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
   <label class="btn" for="addInput">+ Добавить старое фото</label>
   <input id="addInput" type="file" accept="image/*">
@@ -416,6 +447,16 @@
   </div>
 </section>
 
+<dialog id="handDlg">
+  <div class="handBox">
+    <h3>Какой рукой удобнее снимать?</h3>
+    <p>Когда телефон лежит горизонтально, большая кнопка «Совпало — снять» будет под этим пальцем, а ползунок «Тогда / Сейчас» — с другой стороны. Спросим один раз; поменять можно внизу главного экрана.</p>
+    <div class="handBtns">
+      <button type="button" data-hand="left">✋ Левой<br><small>кнопка слева</small></button>
+      <button type="button" data-hand="right" class="main">Правой 🤚<br><small>кнопка справа</small></button>
+    </div>
+  </div>
+</dialog>
 <dialog id="editDlg">
   <form method="dialog" id="editForm">
     <h3>Описание снимка</h3>
@@ -1011,10 +1052,19 @@ const HAND_KEY = 'krepost.hand';
 function applyHand() {
   const left = read(HAND_KEY, 'right') === 'left';
   $('cam').classList.toggle('left', left);
-  $('handSwap').textContent = left ? '⇄ Кнопка справа' : '⇄ Кнопка слева';
+  $('handChange').textContent = `Кнопка «снять» лёжа: ${left ? 'слева (левша)' : 'справа (правша)'} · сменить`;
   requestAnimationFrame(refit);
 }
-$('handSwap').onclick = () => { write(HAND_KEY, read(HAND_KEY, 'right') === 'left' ? 'right' : 'left'); applyHand(); };
+/* Один раз при первом открытии камеры спрашиваем, какой рукой удобнее */
+function askHand() {
+  return new Promise(res => {
+    const d = $('handDlg');
+    for (const b of d.querySelectorAll('[data-hand]')) b.onclick = () => { write(HAND_KEY, b.dataset.hand); applyHand(); d.close(); res(); };
+    d.oncancel = e => { e.preventDefault(); };
+    d.showModal();
+  });
+}
+$('handChange').onclick = () => askHand();
 applyHand();
 addEventListener('orientationchange', refit);
 
@@ -1057,6 +1107,7 @@ function stopCam() {
 }
 
 async function openSpot(spot, ctx) {
+  if (read(HAND_KEY, null) === null) await askHand();
   current = spot;
   questCtx = ctx || null;
   $('questTask').textContent = questCtx ? `🎯 ${questCtx.step.task}` : '';
