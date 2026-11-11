@@ -399,6 +399,22 @@
     #cam #shoot .long { display:none; }
   }
 
+  /* ===== Спасибо каждые 10 снимков ===== */
+  #thanksDlg { width:min(420px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text);
+    box-shadow:0 0 0 2px var(--brass2), 0 20px 50px rgba(0,0,0,.7); }
+  #thanksDlg::backdrop { background:rgba(0,0,0,.7); }
+  .thanksBox { padding:22px 20px 18px; display:flex; flex-direction:column; gap:12px; text-align:center; }
+  .thanksIcon { font-size:44px; line-height:1; }
+  .thanksBox h3 { margin:0; font:700 23px/1.2 var(--old); }
+  .thanksBox p { margin:0; color:#d9cbb2; font-size:15px; line-height:1.45; }
+  #donateBtn { display:block; text-decoration:none; padding:14px; border-radius:10px; text-align:center; font:700 18px var(--cond); text-transform:uppercase;
+    background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; }
+  #donateBtn[hidden] { display:none; }
+  #sponsorBox { background:var(--paper); color:var(--ink); padding:12px; border-radius:4px; font:15px/1.4 var(--old); }
+  #thanksLater { background:none; border:0; color:var(--muted); font-size:15px; text-decoration:underline; padding:6px; }
+  #shotStats { color:var(--accent); font-weight:600; }
+  #adminBar { flex-wrap:wrap; }
+  #adminBar p { flex-basis:100%; margin:0; font-size:13px; }
   /* ===== О приложении ===== */
   .free { text-align:center; margin:-4px 0 12px; font-size:13px; color:var(--muted); }
   #aboutLink { background:none; border:0; padding:0; color:var(--accent); text-decoration:underline; font:inherit; min-height:0; }
@@ -471,7 +487,7 @@
     <p>Старые фотографии принадлежат их авторам, наследникам и архивам. У каждого снимка указан источник. Фото здесь показаны только для того, чтобы сохранить историю Даугавпилсской крепости: они не продаются, не передаются третьим лицам и не используются в рекламе.</p>
     <p>Если вы автор снимка, наследник или владелец прав и хотите, чтобы фото подписали иначе или убрали, нажмите 📜 у этого снимка и напишите в форме, оставив контакт. Исправим или уберём.</p>
     <p>Исторические справки собраны по открытым источникам и могут содержать неточности. Поправки и воспоминания очень ценны — пишите через 📜.</p>
-    <p>Ваши снимки из «Библиотеки» хранятся только на вашем телефоне. Рассказы, отправленные через 📜, после проверки видят все; контакт видит только разработчик.</p>
+    <p>Ваши снимки из «Библиотеки» хранятся только на вашем телефоне. Рассказы, отправленные через 📜, после проверки видят все; контакт видит только разработчик. Приложение считает только общее число сделанных снимков — без имён, фото и местоположения.</p>
   </details>
   <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
   <label class="btn" for="addInput">+ Добавить старое фото</label>
@@ -542,6 +558,16 @@
       <button type="button" data-hand="left">✋ Левой<br><small>кнопка слева</small></button>
       <button type="button" data-hand="right" class="main">Правой 🤚<br><small>кнопка справа</small></button>
     </div>
+  </div>
+</dialog>
+<dialog id="thanksDlg">
+  <div class="thanksBox">
+    <div class="thanksIcon">🎉</div>
+    <h3 id="thanksTitle"></h3>
+    <p>«Крепость сквозь время» — бесплатный проект. Новые снимки, квесты и истории появляются благодаря тем, кто его поддерживает.</p>
+    <a id="donateBtn" class="main" target="_blank" rel="noopener">☕ Поддержать проект</a>
+    <div id="sponsorBox" hidden></div>
+    <button type="button" id="thanksLater">Позже</button>
   </div>
 </dialog>
 <dialog id="factsDlg">
@@ -851,6 +877,7 @@ function navBack() { if (navDepth > 0) history.back(); else stepBack(); }
 function stepBack() {
   if ($('editDlg').open) { $('editDlg').close(); editing = null; return; }
   if ($('factsDlg').open) { $('factsDlg').close(); factsSpot = null; return; }
+  if ($('thanksDlg').open) { $('thanksDlg').close(); return; }
   if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); renderList(); return; }
   if (!$('result').hidden) { current = null; show('list'); renderList(); return; }
   if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
@@ -1105,6 +1132,51 @@ function openFacts(spot) {
   navPush();
 }
 $('factsClose').onclick = () => navBack();
+/* ===== Каждые 10 снимков — «спасибо» с кнопкой поддержки (и место для спонсора) =====
+   DONATE_URL — ссылка Revolut.me разработчика. Пока пусто — кнопка спрятана.
+   SPONSOR — текст предложения партнёра (например, скидка в кафе), пока null. */
+const DONATE_URL = '';
+const SPONSOR = null; // { text: 'Кафе … дарит −10 % — покажите этот экран', until: '2027-09-30' }
+const SHOTS_KEY = 'krepost.shots';
+const DEVICE_KEY = 'krepost.device';
+function deviceId() {
+  let d = read(DEVICE_KEY, '');
+  if (!d) { d = crypto.randomUUID ? crypto.randomUUID() : '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, c => (c ^ Math.random() * 16 >> c / 4).toString(16)); write(DEVICE_KEY, d); }
+  return d;
+}
+function countShot(spotId) {
+  const n = read(SHOTS_KEY, 0) + 1;
+  write(SHOTS_KEY, n);
+  // анонимный счётчик: только случайный номер телефона и номер снимка
+  fetch(`${FACTS_URL}/krepost_shots`, { method: 'POST', keepalive: true,
+    headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+    body: JSON.stringify({ device: deviceId(), spot_id: spotId }) }).catch(() => {});
+  if (n % 10 === 0 && (DONATE_URL || SPONSOR)) setTimeout(() => showThanks(n), 1500);
+}
+function showThanks(n) {
+  if ($('result').hidden || document.querySelector('dialog[open]')) return;
+  $('thanksTitle').textContent = `Уже ${n} снимков «тогда / сейчас»!`;
+  $('donateBtn').hidden = !DONATE_URL;
+  if (DONATE_URL) $('donateBtn').href = DONATE_URL;
+  const sp = SPONSOR && (!SPONSOR.until || new Date() <= new Date(SPONSOR.until)) ? SPONSOR : null;
+  $('sponsorBox').hidden = !sp;
+  if (sp) $('sponsorBox').textContent = sp.text;
+  $('thanksDlg').showModal();
+  navPush();
+}
+$('thanksLater').onclick = () => navBack();
+$('donateBtn').onclick = () => setTimeout(() => { if ($('thanksDlg').open) navBack(); }, 300);
+$('thanksDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
+async function updateShotStats() {
+  if (!ADMIN || !$('adminBar')) return;
+  try {
+    const r = await fetch(`${FACTS_URL}/rpc/krepost_stats`, { method: 'POST', headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json' }, body: '{}' });
+    const s = await r.json();
+    let el = $('shotStats');
+    if (!el) { el = document.createElement('p'); el.id = 'shotStats'; $('adminBar').append(el); }
+    el.textContent = `📷 Снимков всего: ${s.shots} · телефонов: ${s.phones} · за 30 дней — снимков: ${s.shots30}, телефонов: ${s.phones30}`;
+  } catch { /* без сети */ }
+}
 $('aboutLink').onclick = () => { $('about').open = true; $('about').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
 $('factsDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
 $('factsForm').onsubmit = async e => {
@@ -1467,6 +1539,7 @@ $('shoot').onclick = () => {
   setCompare(50);
   show('result');
   refit();
+  countShot(current.id);
 };
 
 function label(ctx, text, x, y) {
@@ -1547,6 +1620,7 @@ if (SPOTS.length) document.querySelector('label[for=addInput]').hidden = true;
 renderList();
 loadFacts();
 updatePendingFacts();
+updateShotStats();
 </script>
 </body>
 </html>
