@@ -1640,12 +1640,26 @@ async function pairBlob() {
   const [oldI, nowI] = await Promise.all([loadImage(current.src), loadImage(nowUrl)]);
   const W = oldI.naturalWidth, H = oldI.naturalHeight;
   const c = document.createElement('canvas');
-  c.width = W * 2; c.height = H;
+  const F = Math.round(H / 11); // полоска-подпись снизу: название места и адрес приложения
+  c.width = W * 2; c.height = H + F;
   const ctx = c.getContext('2d');
   ctx.drawImage(oldI, 0, 0, W, H);
   ctx.drawImage(nowI, W, 0, W, H);
   label(ctx, current.year ? `Тогда · ${current.year}` : 'Тогда', H / 60, H);
   label(ctx, 'Сейчас', W + H / 60, H);
+  ctx.fillStyle = '#1c1610'; ctx.fillRect(0, H, W * 2, F);
+  ctx.fillStyle = '#c9a24a'; ctx.fillRect(0, H, W * 2, Math.max(2, F / 18));
+  ctx.textBaseline = 'middle';
+  ctx.fillStyle = '#f1e6cc';
+  ctx.font = `700 ${Math.round(F * 0.36)}px Georgia, 'Times New Roman', serif`;
+  ctx.textAlign = 'left';
+  const place = current.title.length > 60 ? current.title.slice(0, 58) + '…' : current.title;
+  ctx.fillText(place, F * 0.35, H + F * 0.53, W * 1.1);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#f4c64b';
+  ctx.font = `600 ${Math.round(F * 0.3)}px system-ui, sans-serif`;
+  ctx.fillText('Крепость сквозь время · cesarcomando.github.io/krepost', W * 2 - F * 0.35, H + F * 0.53, W * 0.85);
+  ctx.textAlign = 'left';
 
   try { return await new Promise(r => c.toBlob(r, 'image/jpeg', 0.9)); }
   catch { alert('Сохранение работает, когда приложение открыто по ссылке, а не как файл с компьютера.'); return null; }
