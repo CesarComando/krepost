@@ -19,7 +19,7 @@
   button,label.btn { font:inherit; cursor:pointer; border:0; border-radius:10px; padding:12px 16px; background:var(--panel); color:var(--text); display:inline-block; text-align:center; }
   button.main,label.btn { background:var(--accent); color:#1d1608; font-weight:600; }
   .screen { height:100dvh; display:flex; flex-direction:column; }
-  .screen[hidden] { display:none; }
+  .screen[hidden] { display:none !important; }
 
   #list { overflow-y:auto; padding:20px 16px 32px; }
   #list h1 { font:600 28px/1.15 Georgia,"Times New Roman",serif; margin:0 0 6px; }
@@ -399,6 +399,21 @@
     #cam #shoot .long { display:none; }
   }
 
+  /* ===== Результат: старое фото уменьшается в уголок, «сейчас» — на весь кадр; «назад» — снимок улетает в альбом ===== */
+  #cmpOld { transform-origin:0 0; transition:transform .9s cubic-bezier(.2,.8,.2,1), box-shadow .9s; z-index:2; }
+  #resStage.inset #cmpOld { clip-path:none !important; transform:translate(5%,5%) rotate(-4deg) scale(.38); cursor:pointer;
+    box-shadow:0 0 0 16px #f1e6cc, 0 0 0 17px rgba(0,0,0,.25), 12px 22px 40px 14px rgba(0,0,0,.6); }
+  #cmpLine, #resStage .tag { transition:opacity .4s; }
+  #cmpLine { z-index:3; } #resStage .tag { z-index:3; }
+  #resStage.inset #cmpLine, #resStage.inset .tag:first-of-type { opacity:0; }
+  #resStage.inset #cmpRange { pointer-events:none; }
+  #cmpRange { z-index:4; }
+  #cmpMode { display:block; margin:0 auto 6px; background:none; border:0; padding:6px 10px; color:#efe3cb; text-decoration:underline; text-underline-offset:4px; min-height:0; }
+  .flyAlbum { position:fixed; z-index:50; pointer-events:none; overflow:hidden; border-radius:10px; background:#000 center/cover no-repeat;
+    box-shadow:0 0 0 5px #f1e6cc, 0 14px 40px rgba(0,0,0,.7); }
+  .flyAlbum img { position:absolute; left:5%; top:5%; width:38%; height:38%; transform:rotate(-4deg); box-shadow:0 0 0 6px #f1e6cc; }
+  .tab.gotShot { animation:gotShot .7s ease-out; }
+  @keyframes gotShot { 0% { transform:scale(1); } 35% { transform:scale(1.14); box-shadow:0 0 0 4px var(--accent), 0 0 24px var(--accent); } 100% { transform:scale(1); } }
   /* ===== Спасибо каждые 10 снимков ===== */
   #thanksDlg { width:min(420px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text);
     box-shadow:0 0 0 2px var(--brass2), 0 20px 50px rgba(0,0,0,.7); }
@@ -540,7 +555,7 @@
     </div>
   </div>
   <div class="controls">
-    <p class="hint">↔ Потяните ползунок, чтобы сравнить</p>
+    <button type="button" id="cmpMode" class="hint">↔ Сравнить ползунком</button>
     <div class="actions">
       <button id="save" class="main">Сохранить</button>
       <button id="share">Поделиться</button>
@@ -879,7 +894,7 @@ function stepBack() {
   if ($('factsDlg').open) { $('factsDlg').close(); factsSpot = null; return; }
   if ($('thanksDlg').open) { $('thanksDlg').close(); return; }
   if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); renderList(); return; }
-  if (!$('result').hidden) { current = null; show('list'); renderList(); return; }
+  if (!$('result').hidden) { const go = flyToAlbum(); setInset(false); current = null; show('list'); renderList(); requestAnimationFrame(go); return; }
   if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
   if (view !== 'all') { setView('all'); return; }
 }
@@ -991,8 +1006,8 @@ function openResult(spot, url, shotId) {
   $('cmpOld').src = spot.src;
   $('resTitle').textContent = spot.title;
   $('cmpRange').value = 50;
-  setCompare(50);
   show('result');
+  enterInset();
   const img = $('oldImg');
   if (img.getAttribute('src') !== spot.src) { img.src = spot.src; img.decode().then(refit, refit); } else refit();
 }
@@ -1497,9 +1512,66 @@ $('camBack').onclick = () => navBack();
 $('resBack').onclick = () => navBack();
 $('retry').onclick = () => { if (current) openSpot(current); };
 
+/* Режимы результата: «в уголке» (старое фото маленькой карточкой поверх нового снимка) и «ползунок» */
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let insetTimer = 0;
+function setInset(on) {
+  clearTimeout(insetTimer);
+  $('resStage').classList.toggle('inset', on);
+  $('cmpMode').textContent = on ? '↔ Сравнить ползунком' : '▣ Старое фото в уголок';
+}
+function enterInset() {
+  setInset(false);
+  setCompare(100); // сначала старое фото целиком, как в камере…
+  insetTimer = setTimeout(() => setInset(true), reduceMotion ? 0 : 450); // …и оно уменьшается, открывая «сейчас»
+}
+function toSlider() {
+  setCompare(100);
+  setInset(false);
+  if (reduceMotion) { $('cmpRange').value = 50; setCompare(50); return; }
+  const t0 = performance.now() + 700;
+  const step = t => {
+    const k = Math.min(1, Math.max(0, (t - t0) / 600));
+    const v = 100 - 50 * (1 - Math.pow(1 - k, 3));
+    $('cmpRange').value = v; setCompare(v);
+    if (k < 1 && !$('resStage').classList.contains('inset')) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+$('cmpOld').addEventListener('click', () => { if ($('resStage').classList.contains('inset')) toSlider(); });
+$('cmpMode').onclick = () => { if ($('resStage').classList.contains('inset')) toSlider(); else setInset(true); };
+/* «Назад» с результата: снимок сворачивается и улетает во вкладку «Библиотека» */
+function flyToAlbum() {
+  const st = $('resStage'), r = st.getBoundingClientRect();
+  if (reduceMotion || !nowUrl || !r.width) return () => {};
+  const fly = document.createElement('div');
+  fly.className = 'flyAlbum';
+  Object.assign(fly.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px', backgroundImage: `url("${nowUrl}")` });
+  const mini = document.createElement('img'); mini.src = $('cmpOld').src; fly.append(mini);
+  document.body.append(fly);
+  return () => {
+    const tab = document.querySelector('.tab[data-view=lib]');
+    const t = tab.getBoundingClientRect();
+    const tx = t.width ? t.left + t.width / 2 : innerWidth - 40;
+    const ty = t.height && t.bottom > 0 && t.top < innerHeight ? t.top + t.height / 2 : 30;
+    const s = Math.max(0.06, 56 / r.width);
+    const dx = tx - (r.left + r.width / 2), dy = ty - (r.top + r.height / 2);
+    const a = fly.animate([
+      { transform: 'translate(0,0) scale(1) rotate(0deg)', opacity: 1, borderRadius: '10px' },
+      { transform: `translate(${dx * 0.25}px, ${dy * 0.15 - 30}px) scale(.55) rotate(-6deg)`, opacity: 1, offset: 0.35 },
+      { transform: `translate(${dx}px, ${dy}px) scale(${s}) rotate(-12deg)`, opacity: 0.3, borderRadius: '30px' }
+    ], { duration: 750, easing: 'cubic-bezier(.45,0,.2,1)', fill: 'forwards' });
+    a.onfinish = () => {
+      fly.remove();
+      tab.classList.remove('gotShot'); void tab.offsetWidth; tab.classList.add('gotShot');
+    };
+  };
+}
+
 function setCompare(value) {
   $('cmpOld').style.clipPath = `inset(0 ${100 - value}% 0 0)`;
   $('cmpLine').style.left = value + '%';
+  $('cmpLine').style.visibility = value >= 99.5 ? 'hidden' : '';
 }
 $('cmpRange').oninput = e => setCompare(+e.target.value);
 
@@ -1539,6 +1611,7 @@ $('shoot').onclick = () => {
   setCompare(50);
   show('result');
   refit();
+  enterInset();
   countShot(current.id);
 };
 
