@@ -405,7 +405,13 @@
     box-shadow:0 0 0 16px #f1e6cc, 0 0 0 17px rgba(0,0,0,.25), 12px 22px 40px 14px rgba(0,0,0,.6); }
   #cmpLine, #resStage .tag { transition:opacity .4s; }
   #cmpLine { z-index:3; } #resStage .tag { z-index:3; }
-  #resStage.inset #cmpLine, #resStage.inset .tag:first-of-type { opacity:0; }
+  #resStage.inset #cmpLine, #resStage.inset .tag:first-of-type, #resStage.inset #cmpTrack { opacity:0; }
+  #resStage.inset #cmpOld { opacity:1 !important; }
+  /* просвет: дорожка с ручкой внизу между «Тогда» и «Сейчас» */
+  #cmpTrack { position:absolute; left:21%; right:21%; bottom:19px; height:4px; border-radius:2px; z-index:3; pointer-events:none;
+    background:linear-gradient(90deg, rgba(241,230,204,.9), rgba(241,230,204,.35)); box-shadow:0 1px 4px rgba(0,0,0,.6); transition:opacity .4s; }
+  #resStage #cmpLine { top:auto; bottom:4px; width:34px; height:34px; margin-left:-17px; background:none; box-shadow:none; }
+  #resStage #cmpLine::after { top:50%; }
   #resStage.inset #cmpRange { pointer-events:none; }
   #cmpRange { z-index:4; }
   #cmpMode { display:block; margin:0 auto 6px; background:none; border:0; padding:6px 10px; color:#efe3cb; text-decoration:underline; text-underline-offset:4px; min-height:0; }
@@ -548,6 +554,7 @@
     <div class="stage" id="resStage">
       <img id="cmpNow" alt="Снимок сейчас">
       <img id="cmpOld" alt="Старая фотография">
+      <div id="cmpTrack"></div>
       <div id="cmpLine"></div>
       <span class="tag" style="left:8px">Тогда</span>
       <span class="tag" style="right:8px">Сейчас</span>
@@ -555,7 +562,7 @@
     </div>
   </div>
   <div class="controls">
-    <button type="button" id="cmpMode" class="hint">↔ Сравнить ползунком</button>
+    <button type="button" id="cmpMode" class="hint">↔ Сравнить просветом</button>
     <div class="actions">
       <button id="save" class="main">Сохранить</button>
       <button id="share">Поделиться</button>
@@ -1518,21 +1525,21 @@ let insetTimer = 0;
 function setInset(on) {
   clearTimeout(insetTimer);
   $('resStage').classList.toggle('inset', on);
-  $('cmpMode').textContent = on ? '↔ Сравнить ползунком' : '▣ Старое фото в уголок';
+  $('cmpMode').textContent = on ? '↔ Сравнить просветом' : '▣ Старое фото в уголок';
 }
 function enterInset() {
   setInset(false);
-  setCompare(100); // сначала старое фото целиком, как в камере…
+  $('cmpRange').value = 0; setCompare(0); // сначала старое фото целиком, как в камере…
   insetTimer = setTimeout(() => setInset(true), reduceMotion ? 0 : 450); // …и оно уменьшается, открывая «сейчас»
 }
 function toSlider() {
-  setCompare(100);
+  $('cmpRange').value = 0; setCompare(0);
   setInset(false);
   if (reduceMotion) { $('cmpRange').value = 50; setCompare(50); return; }
   const t0 = performance.now() + 700;
   const step = t => {
     const k = Math.min(1, Math.max(0, (t - t0) / 600));
-    const v = 100 - 50 * (1 - Math.pow(1 - k, 3));
+    const v = 50 * (1 - Math.pow(1 - k, 3));
     $('cmpRange').value = v; setCompare(v);
     if (k < 1 && !$('resStage').classList.contains('inset')) requestAnimationFrame(step);
   };
@@ -1568,10 +1575,12 @@ function flyToAlbum() {
   };
 }
 
+/* Сравнение «просветом»: водите пальцем по фото — старое фото плавно проступает и тает (не шторка).
+   0 — только «тогда», 100 — только «сейчас». Ручка внизу показывает, где вы сейчас. */
 function setCompare(value) {
-  $('cmpOld').style.clipPath = `inset(0 ${100 - value}% 0 0)`;
-  $('cmpLine').style.left = value + '%';
-  $('cmpLine').style.visibility = value >= 99.5 ? 'hidden' : '';
+  const t = Math.min(1, Math.max(0, (value - 8) / 84)); // у краёв — полностью «тогда» или «сейчас»
+  $('cmpOld').style.opacity = String(1 - t);
+  $('cmpLine').style.left = (21 + value * 0.58) + '%';
 }
 $('cmpRange').oninput = e => setCompare(+e.target.value);
 
