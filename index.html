@@ -585,6 +585,7 @@
     <p>Старые фотографии принадлежат их авторам, наследникам и архивам. У каждого снимка указан источник. Фото здесь показаны только для того, чтобы сохранить историю Даугавпилсской крепости: они не продаются, не передаются третьим лицам и не используются в рекламе.</p>
     <p>Если вы автор снимка, наследник или владелец прав и хотите, чтобы фото подписали иначе или убрали, нажмите 📜 у этого снимка и напишите в форме, оставив контакт. Исправим или уберём.</p>
     <p><b>⚠ Безопасность прежде всего.</b> Некоторые старые снимки сделаны с точек, которых сегодня нет: с разрушенных построек, крыш, стен, края рва или воды. Такие места снимайте примерно, с ближайшей безопасной точки. Автор проекта просит вести себя аккуратно и не рисковать ради фото. Выполняя квесты, не мешайте дорожному движению и соблюдайте правила дорожного движения: не стойте на проезжей части и ставьте транспорт только там, где парковка разрешена. Если заметили, что какой-то снимок может быть опасен для фотографа, сразу сообщите: нажмите 📜 у снимка и выберите «⚠ Здесь опасно снимать».</p>
+    <p><b>🏰 Берегите крепость.</b> Это наследие не только наше, но и всего человечества. Не оставляйте после себя мусор, не царапайте и не разбирайте стены. Если видите брошенный мусор, старые покрышки, грязь или что-то, что портит крепость и что хочется изменить, — смело сообщите: нажмите 📜 у ближайшего снимка и выберите «🗑 Мусор, нужно убрать». А ещё попросите коменданта крепости, чтобы найденное убрали.</p>
     <p>Исторические справки собраны по открытым источникам и могут содержать неточности. Поправки и воспоминания очень ценны — пишите через 📜.</p>
     <p>Ваши снимки из «Библиотеки» хранятся только на вашем телефоне. Рассказы, отправленные через 📜, после проверки видят все; контакт видит только разработчик. Приложение считает только общее число сделанных снимков — без имён, фото и местоположения.</p>
   </details>
@@ -666,7 +667,7 @@
       <button type="button" data-hand="left">✋ Левой<br><small>кнопка слева</small></button>
       <button type="button" data-hand="right" class="main">Правой 🤚<br><small>кнопка справа</small></button>
     </div>
-    <p class="safety">⚠ Берегите себя. Некоторые старые снимки сделаны с точек, которых сегодня нет или куда опасно лезть: с валов, стен, крыш, у самой воды. Снимайте примерно с того же места, где безопасно, — не рискуйте ради кадра. Не мешайте дорожному движению и соблюдайте ПДД.</p>
+    <p class="safety">⚠ Берегите себя. Некоторые старые снимки сделаны с точек, которых сегодня нет или куда опасно лезть: с валов, стен, крыш, у самой воды. Снимайте примерно с того же места, где безопасно, — не рискуйте ради кадра. Не мешайте дорожному движению и соблюдайте ПДД.<br>🏰 Берегите и крепость — это наследие всего человечества. Увидели мусор или покрышки — сообщите через 📜 у снимка или коменданту крепости.</p>
   </div>
 </dialog>
 <dialog id="surveyDlg">
@@ -710,7 +711,7 @@
         <label>Откуда вы знаете<select id="fRole">
           <option value="">— выберите —</option>
           <option>Работал(а) здесь</option><option>Служил(а) здесь</option><option>Жил(а) рядом</option>
-          <option>Рассказывали родные</option><option>Краевед / исследователь</option><option>Из архива или книги</option><option>⚠ Здесь опасно снимать</option><option>Другое</option>
+          <option>Рассказывали родные</option><option>Краевед / исследователь</option><option>Из архива или книги</option><option>⚠ Здесь опасно снимать</option><option>🗑 Мусор, нужно убрать</option><option>Другое</option>
         </select></label>
         <label>Рассказ<textarea id="fBody" rows="6" maxlength="4000" required placeholder="Что здесь было, кто работал, какие случаи помните, годы…"></textarea></label>
         <label>Контакт для связи (необязательно — увидит только разработчик)<input id="fContact" maxlength="120" autocomplete="email" placeholder="телефон или e-mail"></label>
@@ -1625,8 +1626,14 @@ async function openSpot(spot, ctx) {
   $('edgeImg').removeAttribute('src');
   applyMode();
   $('tipBox').hidden = !!read(TIP_KEY, 0) || shootMode !== 'explorer';
-  $('opacity').value = sliderFromOp(0.5);
-  img.style.opacity = 0.5;
+  $('opacity').value = sliderFromOp(OLD_START);
+  img.style.opacity = OLD_START;
+  enhanceOld(spot.src).then(url => {
+    if (current === spot && !$('cam').hidden && img.getAttribute('src') === spot.src) {
+      img.src = url;
+      img.decode().then(refit, refit);
+    }
+  }).catch(() => { /* не вышло — остаётся обычный снимок */ });
   hwZoom = null; setZoom(1, true);
   show('cam');
   try { await img.decode(); } catch { /* размер всё равно возьмём ниже */ }
@@ -1694,8 +1701,57 @@ $('zoom').oninput = e => setZoom(+e.target.value);
   $('camStage').addEventListener('touchend', e => { if (e.touches.length < 2) startDist = 0; });
 }
 
-/* Просвет чуть плавнее в бледной части, но старое фото видно почти как раньше */
-const OP_GAMMA = 1.3; // 1 — как было (линейно), 2 — слишком бледно; 1,3 — посередине, ближе к прежнему
+/* Просвет: ползунок линейный (как было вначале), старое фото при открытии видно сильнее (OLD_START) */
+const OP_GAMMA = 1; // 1 — линейно, 1,3 — бледнее, 2 — совсем бледно
+const OLD_START = 0.6;
+
+/* Тёмные и мутные старые снимки в камере: растягиваем яркость (самое тёмное → чёрное, самое светлое → белое)
+   и слегка подчёркиваем края. Только для показа поверх камеры; архивный снимок не меняется. */
+const enhCache = new Map();
+function enhanceOld(src) {
+  if (enhCache.has(src)) return enhCache.get(src);
+  const p = new Promise((resolve, reject) => {
+    const im = new Image();
+    im.onload = () => {
+      try {
+        const W = im.naturalWidth, H = im.naturalHeight, n = W * H;
+        const c = document.createElement('canvas'); c.width = W; c.height = H;
+        const g = c.getContext('2d', { willReadFrequently: true });
+        g.drawImage(im, 0, 0);
+        const id = g.getImageData(0, 0, W, H), d = id.data;
+        const Y = new Float32Array(n), hist = new Uint32Array(256);
+        for (let i = 0, j = 0; i < n; i++, j += 4) {
+          const y = 0.299 * d[j] + 0.587 * d[j + 1] + 0.114 * d[j + 2];
+          Y[i] = y; hist[y | 0]++;
+        }
+        let lo = 0, hi = 255, acc = 0;
+        for (let v = 0; v < 256; v++) { acc += hist[v]; if (acc >= n * 0.005) { lo = v; break; } }
+        acc = 0;
+        for (let v = 255; v >= 0; v--) { acc += hist[v]; if (acc >= n * 0.005) { hi = v; break; } }
+        if (hi - lo < 40) { lo = 0; hi = 255; }
+        const k = 255 / (hi - lo);
+        // размытие 3×3 для подчёркивания краёв (по яркости)
+        const T = new Float32Array(n), B = new Float32Array(n);
+        for (let y = 0; y < H; y++) { const r = y * W;
+          for (let x = 0; x < W; x++) T[r + x] = (Y[r + Math.max(0, x - 1)] + Y[r + x] + Y[r + Math.min(W - 1, x + 1)]) / 3; }
+        for (let y = 0; y < H; y++) { const u = Math.max(0, y - 1) * W, r = y * W, w = Math.min(H - 1, y + 1) * W;
+          for (let x = 0; x < W; x++) B[r + x] = (T[u + x] + T[r + x] + T[w + x]) / 3; }
+        const AMT = 0.8;
+        for (let i = 0, j = 0; i < n; i++, j += 4) {
+          const add = AMT * (Y[i] - B[i]);
+          for (let ch = 0; ch < 3; ch++) d[j + ch] = (d[j + ch] + add - lo) * k; // Uint8Clamped сам обрежет 0–255
+        }
+        g.putImageData(id, 0, 0);
+        c.toBlob(b => b ? resolve(URL.createObjectURL(b)) : reject(), 'image/jpeg', 0.9);
+      } catch (e) { reject(e); }
+    };
+    im.onerror = reject;
+    im.src = src;
+  });
+  p.catch(() => enhCache.delete(src));
+  enhCache.set(src, p);
+  return p;
+}
 const opFromSlider = v => Math.pow(v / 100, OP_GAMMA);
 const sliderFromOp = o => Math.round(Math.pow(o, 1 / OP_GAMMA) * 100);
 $('opacity').oninput = e => { $('oldImg').style.opacity = opFromSlider(+e.target.value).toFixed(3); };
