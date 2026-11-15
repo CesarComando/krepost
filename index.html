@@ -479,9 +479,18 @@
   #edgeImg { pointer-events:none; }
   #edgeImg:not([src]) { display:none; }
   #camStage:not(.explorer) #edgeImg { display:none; }
-  #modeBtn { position:absolute; top:8px; left:8px; z-index:5; min-height:0; padding:6px 11px; border:0; border-radius:16px;
+  #modeBox { position:absolute; top:8px; left:8px; right:8px; z-index:5; display:flex; flex-wrap:wrap; gap:6px; pointer-events:none; }
+  #modeBtn, #contourBtn { pointer-events:auto; min-height:0; padding:6px 11px; border:0; border-radius:16px;
     font:600 12px/1.2 Inter,system-ui,sans-serif; background:rgba(18,14,10,.78); color:#f1e6cc; box-shadow:0 0 0 1px rgba(243,210,122,.55); }
   #camStage.explorer #modeBtn { color:#ffd77a; }
+  #camStage:not(.explorer) #contourBtn { display:none; }
+  #oldImg { transition:opacity .12s linear; }
+  #tipBox { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:7; width:min(340px, 88%); max-height:90%; overflow:auto;
+    background:rgba(18,14,10,.92); color:#f1e6cc; border-radius:12px; padding:12px 14px; box-shadow:0 0 0 1px rgba(243,210,122,.6), 0 10px 30px rgba(0,0,0,.6);
+    font:14px/1.4 Inter,system-ui,sans-serif; text-align:center; }
+  #tipBox[hidden] { display:none; }
+  #tipBox p { margin:0 0 8px; }
+  #tipOk { padding:8px 22px; min-height:0; font:700 15px var(--cond); text-transform:uppercase; }
   #cmpNow { transform-origin:0 0; }
   #resStage.zooming #cmpOld { transition:none; }
   #resStage #cmpRange { pointer-events:none; }
@@ -511,7 +520,7 @@
   #sSend { padding:12px; font:700 17px var(--cond); text-transform:uppercase; }
   #sSkip { background:none; border:0; color:var(--muted); font-size:15px; text-decoration:underline; padding:4px; min-height:0; }
   @media (orientation: landscape) and (max-height: 600px) {
-    #modeBtn { top:46px; } /* лёжа название места висит над снимком — кнопку режима ниже него */
+    #modeBox { top:46px; } /* лёжа название места висит над снимком — кнопки режима ниже него */
     .surveyBox { gap:6px; padding:12px 16px 8px; }
     .surveyBox h3 { font-size:18px; }
     .surveyBox .q:not(label) { flex-direction:row; align-items:center; gap:8px; font-size:14px; }
@@ -588,7 +597,9 @@
       <video id="video" playsinline muted autoplay></video>
       <img id="oldImg" alt="Старая фотография">
       <img id="edgeImg" alt="" aria-hidden="true">
-      <button type="button" id="modeBtn"></button>
+      <div id="modeBox"><button type="button" id="modeBtn"></button><button type="button" id="contourBtn"></button></div>
+      <div id="tipBox" hidden><p>Золотые линии — очертания со старого фото. Подойдите или отойдите, чтобы они легли на те же стены, арки и крыши.</p>
+        <p>Ползунок сбоку делает старое фото ярче или бледнее, 🔍 внизу — увеличение.</p><button type="button" id="tipOk" class="main">Понятно</button></div>
       <div id="steady" hidden><span>Держите ровно… выбираем самый чёткий кадр</span><i><b id="steadyBar"></b></i></div>
       <div id="camMsg" hidden></div>
     </div>
@@ -1606,9 +1617,10 @@ async function openSpot(spot, ctx) {
   $('camHint').textContent = spot.hint || 'Двигайтесь, пока линии старого и нового снимка не совпадут';
   $('edgeImg').removeAttribute('src');
   applyMode();
-  $('opacity').value = 50;
+  $('tipBox').hidden = !!read(TIP_KEY, 0) || shootMode !== 'explorer';
+  $('opacity').value = sliderFromOp(0.5);
   img.style.opacity = 0.5;
-  hwZoom = null; setZoom(1);
+  hwZoom = null; setZoom(1, true);
   show('cam');
   try { await img.decode(); } catch { /* размер всё равно возьмём ниже */ }
   refit();
@@ -1625,24 +1637,42 @@ function setupZoom(s) {
   const r = $('zoom');
   if (caps && caps.zoom && caps.zoom.max > caps.zoom.min) {
     hwZoom = { track, min: caps.zoom.min, max: Math.min(caps.zoom.max, 10) };
-    r.min = hwZoom.min; r.max = hwZoom.max; r.step = caps.zoom.step || 0.1;
+    r.min = hwZoom.min; r.max = hwZoom.max;
   } else {
-    r.min = 1; r.max = 4; r.step = 0.1;
+    r.min = 1; r.max = 4;
   }
-  setZoom(hwZoom ? hwZoom.min : 1);
+  r.step = ZOOM_STEP;
+  setZoom(hwZoom ? hwZoom.min : 1, true);
 }
-function setZoom(z) {
-  const r = $('zoom');
-  z = Math.min(+r.max, Math.max(+r.min, z));
+/* Зум ступеньками по 0,25×: на каждой ступеньке телефон коротко вибрирует («тык»).
+   Камере отправляем не каждое движение пальца, а последнее значение, когда она готова, — иначе ползунок заедает. */
+const ZOOM_STEP = 0.25;
+let zoomBusy = false, zoomWant = null;
+function pushHwZoom(z) {
+  if (zoomBusy) { zoomWant = z; return; }
+  zoomBusy = true;
+  hwZoom.track.applyConstraints({ advanced: [{ zoom: z }] }).catch(() => {}).finally(() => {
+    zoomBusy = false;
+    const next = zoomWant; zoomWant = null;
+    if (next !== null && next !== z && hwZoom) pushHwZoom(next);
+  });
+}
+function tick() { try { if (navigator.vibrate) navigator.vibrate(8); } catch { /* нет вибрации */ } }
+function setZoom(z, silent) {
+  const r = $('zoom'), min = +r.min, max = +r.max;
+  z = Math.min(max, Math.max(min, z));
+  z = +Math.min(max, min + Math.round((z - min) / ZOOM_STEP) * ZOOM_STEP).toFixed(2);
+  const changed = z !== zoom;
   zoom = z;
   r.value = z;
-  $('zoomVal').textContent = (Math.round(z * 10) / 10).toString().replace('.', ',') + '×';
+  $('zoomVal').textContent = z.toString().replace('.', ',') + '×';
   if (hwZoom) {
     $('video').style.transform = '';
-    hwZoom.track.applyConstraints({ advanced: [{ zoom: z }] }).catch(() => {});
+    if (changed || silent) pushHwZoom(z);
   } else {
     $('video').style.transform = z > 1 ? `scale(${z})` : '';
   }
+  if (changed && !silent) tick();
 }
 $('zoom').oninput = e => setZoom(+e.target.value);
 {
@@ -1657,21 +1687,31 @@ $('zoom').oninput = e => setZoom(+e.target.value);
   $('camStage').addEventListener('touchend', e => { if (e.touches.length < 2) startDist = 0; });
 }
 
-$('opacity').oninput = e => { $('oldImg').style.opacity = e.target.value / 100; };
+/* Просвет плавнее в бледной части: первая половина ползунка — от «еле видно» до четверти яркости */
+const OP_GAMMA = 2;
+const opFromSlider = v => Math.pow(v / 100, OP_GAMMA);
+const sliderFromOp = o => Math.round(Math.pow(o, 1 / OP_GAMMA) * 100);
+$('opacity').oninput = e => { $('oldImg').style.opacity = opFromSlider(+e.target.value).toFixed(3); };
 
 /* ===== Режимы съёмки: «Исследователь» — поверх старого фото золотой контур (легче попасть в кадр),
    «Историк» — только просвет, без подсказок. Выбор запоминается в телефоне. ===== */
 const MODE_KEY = 'krepost.mode';
 let shootMode = read(MODE_KEY, 'explorer') === 'historian' ? 'historian' : 'explorer';
+const CONTOUR_KEY = 'krepost.contour';
+let contourLevel = read(CONTOUR_KEY, 'main') === 'detail' ? 'detail' : 'main';
+/* «Главное»: снимок помельче и сильнее размыт — остаются крупные очертания (здание, арка, пушка), не больше 8 линий.
+   «Подробно»: все заметные края. */
+const CONTOUR = { main: { side: 360, blur: 4, keep: 0.10, minLen: 40, maxLines: 8 }, detail: { side: 520, blur: 2, keep: 0.12, minLen: 24, maxLines: 0 } };
 const edgeCache = new Map();
 function edgeUrl(src) {
-  if (!edgeCache.has(src)) edgeCache.set(src, makeEdges(src).catch(() => { edgeCache.delete(src); return ''; }));
-  return edgeCache.get(src);
+  const key = contourLevel + '|' + src;
+  if (!edgeCache.has(key)) edgeCache.set(key, makeEdges(src, CONTOUR[contourLevel]).catch(() => { edgeCache.delete(key); return ''; }));
+  return edgeCache.get(key);
 }
 /* Контур: размываем зерно, ищем резкие перепады яркости (края стен, арок, крыш), оставляем самые сильные тонкими линиями */
-async function makeEdges(src) {
+async function makeEdges(src, opt) {
   const img = await loadImage(src);
-  const k = Math.min(1, 520 / Math.max(img.naturalWidth, img.naturalHeight));
+  const k = Math.min(1, opt.side / Math.max(img.naturalWidth, img.naturalHeight));
   const W = Math.max(8, Math.round(img.naturalWidth * k)), H = Math.max(8, Math.round(img.naturalHeight * k));
   const c = document.createElement('canvas'); c.width = W; c.height = H;
   const ctx = c.getContext('2d', { willReadFrequently: true });
@@ -1679,7 +1719,7 @@ async function makeEdges(src) {
   const px = ctx.getImageData(0, 0, W, H).data, N = W * H;
   let g = new Float32Array(N);
   for (let i = 0; i < N; i++) g[i] = px[i * 4] * .299 + px[i * 4 + 1] * .587 + px[i * 4 + 2] * .114;
-  for (let pass = 0; pass < 2; pass++) { // дважды размытие 3×3
+  for (let pass = 0; pass < opt.blur; pass++) { // размытие 3×3
     const b = new Float32Array(N);
     for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
       let s = 0, n = 0;
@@ -1702,7 +1742,7 @@ async function makeEdges(src) {
   if (!max) return '';
   const hist = new Uint32Array(256);
   for (let i = 0; i < N; i++) hist[Math.min(255, mag[i] / max * 255 | 0)]++;
-  let acc = 0, t = 255; const want = N * 0.12; // ~12 % самых сильных перепадов
+  let acc = 0, t = 255; const want = N * opt.keep; // доля самых сильных перепадов
   while (t > 0 && acc + hist[t] < want) acc += hist[t--];
   const thr = t / 255 * max;
   const edge = new Uint8Array(N), off = [[1, 0], [1, 1], [0, 1], [-1, 1]], m = 3; // у самой рамки фото не обводим
@@ -1712,8 +1752,8 @@ async function makeEdges(src) {
     const [ox, oy] = off[dir[i]];
     if (v >= mag[i + oy * W + ox] && v >= mag[i - oy * W - ox]) edge[i] = 1;
   }
-  // убираем мелкие обрывки (текстура кирпича, зерно): оставляем линии длиной от 24 точек
-  const seen = new Uint8Array(N), stack = [], comp = [];
+  // убираем мелкие обрывки (текстура кирпича, зерно); в «Главном» — ещё и оставляем только самые длинные линии
+  const seen = new Uint8Array(N), stack = [], comp = [], lines = [];
   for (let i0 = 0; i0 < N; i0++) {
     if (!edge[i0] || seen[i0]) continue;
     stack.length = 0; comp.length = 0; stack.push(i0); seen[i0] = 1;
@@ -1725,7 +1765,12 @@ async function makeEdges(src) {
         if (xx >= 0 && xx < W && yy >= 0 && yy < H && edge[j] && !seen[j]) { seen[j] = 1; stack.push(j); }
       }
     }
-    if (comp.length < 24) for (const i of comp) edge[i] = 0;
+    if (comp.length < opt.minLen) for (const i of comp) edge[i] = 0;
+    else if (opt.maxLines) lines.push(comp.slice());
+  }
+  if (opt.maxLines && lines.length > opt.maxLines) {
+    lines.sort((a, b) => b.length - a.length);
+    for (const l of lines.slice(opt.maxLines)) for (const i of l) edge[i] = 0;
   }
   const out = ctx.createImageData(W, H), o = out.data;
   for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
@@ -1746,14 +1791,20 @@ async function applyMode() {
   $('camStage').classList.toggle('explorer', ex);
   $('modeBtn').textContent = ex ? '🧭 Исследователь · с контуром' : '📜 Историк · без контура';
   $('modeBtn').setAttribute('aria-label', (ex ? 'Режим «Исследователь»: золотой контур помогает совместить кадр.' : 'Режим «Историк»: без подсказок.') + ' Нажмите, чтобы сменить режим');
+  $('contourBtn').textContent = contourLevel === 'main' ? '✏️ Контур: главное' : '✏️ Контур: подробно';
+  $('contourBtn').setAttribute('aria-label', 'Сменить контур: только главные линии или подробно');
   if (current) $('camHint').textContent = ex ? 'Совместите золотой контур с тем, что видите в камере'
     : (current.hint || 'Двигайтесь, пока линии старого и нового снимка не совпадут');
   if (ex && current) {
-    const src = current.src, url = await edgeUrl(src);
-    if (current && current.src === src) { if (url) $('edgeImg').src = url; else $('edgeImg').removeAttribute('src'); }
+    const src = current.src, lvl = contourLevel, url = await edgeUrl(src);
+    if (current && current.src === src && lvl === contourLevel) { if (url) $('edgeImg').src = url; else $('edgeImg').removeAttribute('src'); }
   }
 }
 $('modeBtn').onclick = () => { shootMode = shootMode === 'explorer' ? 'historian' : 'explorer'; write(MODE_KEY, shootMode); applyMode(); };
+$('contourBtn').onclick = () => { contourLevel = contourLevel === 'main' ? 'detail' : 'main'; write(CONTOUR_KEY, contourLevel); applyMode(); };
+/* Подсказка для новичка — один раз, при первом открытии камеры */
+const TIP_KEY = 'krepost.tipSeen';
+$('tipOk').onclick = () => { $('tipBox').hidden = true; write(TIP_KEY, 1); };
 
 $('camBack').onclick = () => navBack();
 $('resBack').onclick = () => navBack();
