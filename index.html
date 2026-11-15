@@ -810,9 +810,13 @@ function renderChips(spots) {
     chip.className = 'chip' + (name === activeGroup ? ' on' : '');
     chip.textContent = `${T(name)} ${name === ALL ? spots.length : counts[name]}`;
     chip.onclick = () => {
+      if (name === activeGroup) return;
+      // Раздел (например, «Михайловские ворота») — шаг вглубь: «Назад» вернёт во «Все» и наверх списка.
+      if (name === ALL) { navBack(); return; }
+      if (activeGroup === ALL) navPush();
       activeGroup = name;
       renderList();
-      $('list').scrollTop = 0;
+      toListTop();
     };
     box.append(chip);
   }
@@ -1024,7 +1028,9 @@ function stepBack() {
   if (!$('result').hidden) { const go = flyToAlbum(); setInset(false); current = null; show('list'); renderList(); requestAnimationFrame(go); return; }
   if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
   if (view !== 'all') { setView('all'); return; }
+  if (activeGroup !== ALL) { activeGroup = ALL; renderList(); toListTop(); return; }
 }
+function toListTop() { $('list').scrollTop = 0; window.scrollTo(0, 0); }
 addEventListener('popstate', e => {
   const target = (e.state && e.state.d) || 0;
   while (navDepth > target) { navDepth--; stepBack(); }
