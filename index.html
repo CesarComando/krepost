@@ -545,6 +545,12 @@
     #cmpMode { font-size:14px; padding:4px 2px; margin:0 auto; text-align:center; }
     #toList { margin:0 auto; font-size:13px; padding:4px; }
   }
+  /* 15.11: стоя — подсказка повернуть телефон, лёжа снимок крупнее */
+  #rotHint { display:none; margin:0 0 8px; text-align:center; color:#e9d9b6; font:14px/1.3 Inter,system-ui,sans-serif; }
+  #rotHint b { color:#f4c64b; font-size:17px; font-weight:700; }
+  @media (orientation: portrait) and (max-width: 700px) {
+    #rotHint { display:block; }
+  }
 </style>
 </head>
 <body>
@@ -641,6 +647,7 @@
     </div>
   </div>
   <div class="controls">
+    <p id="rotHint"><b>↻</b> Поверните телефон — снимок будет крупнее</p>
     <button type="button" id="cmpMode" class="hint">◐ Наложить старое фото</button>
     <div class="actions">
       <button id="save" class="main">Сохранить</button>
