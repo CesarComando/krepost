@@ -2228,6 +2228,17 @@ renderList();
 loadFacts();
 updatePendingFacts();
 updateShotStats();
+
+/* Прямая ссылка на снимок (QR-табличка «точка для фото»): …/krepost/?spot=s153 — сразу камера с этим снимком.
+   Номер из адреса убираем, чтобы «Назад» и перезагрузка вели в обычный список. */
+(() => {
+  const q = new URLSearchParams(location.search), id = q.get('spot');
+  if (!id) return;
+  q.delete('spot');
+  history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + location.hash);
+  const sp = allSpots().find(s => s.id === id);
+  if (sp) openSpot(sp);
+})();
 </script>
 </body>
 </html>

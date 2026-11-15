@@ -1,6 +1,6 @@
 // Сначала сеть, при её отсутствии — сохранённая копия. Так новые снимки
 // появляются сразу, а уже открытое работает и без интернета.
-const CACHE = 'krepost-v10';
+const CACHE = 'krepost-v11';
 
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
