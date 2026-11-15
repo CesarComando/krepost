@@ -1687,8 +1687,8 @@ $('zoom').oninput = e => setZoom(+e.target.value);
   $('camStage').addEventListener('touchend', e => { if (e.touches.length < 2) startDist = 0; });
 }
 
-/* Просвет плавнее в бледной части: первая половина ползунка — от «еле видно» до четверти яркости */
-const OP_GAMMA = 2;
+/* Просвет чуть плавнее в бледной части, но старое фото видно почти как раньше */
+const OP_GAMMA = 1.3; // 1 — как было (линейно), 2 — слишком бледно; 1,3 — посередине, ближе к прежнему
 const opFromSlider = v => Math.pow(v / 100, OP_GAMMA);
 const sliderFromOp = o => Math.round(Math.pow(o, 1 / OP_GAMMA) * 100);
 $('opacity').oninput = e => { $('oldImg').style.opacity = opFromSlider(+e.target.value).toFixed(3); };
