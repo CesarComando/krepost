@@ -551,11 +551,17 @@
   @media (orientation: portrait) and (max-width: 700px) {
     #rotHint { display:block; }
   }
+  /* 15.11: языки */
+  #langBar { display:flex; justify-content:flex-end; gap:6px; margin:0 0 4px; }
+  #langBar button { min-height:0; padding:5px 10px; border-radius:14px; font:600 13px/1 Inter,system-ui,sans-serif; letter-spacing:.04em;
+    background:rgba(255,255,255,.06); color:#d9cbb2; border:1px solid rgba(243,210,122,.35); box-shadow:none; }
+  #langBar button.on { background:#f4c64b; color:#1c1610; border-color:#f4c64b; }
 </style>
 </head>
 <body>
 
 <section id="list" class="screen">
+  <div id="langBar" role="group" aria-label="Valoda / Язык / Language"><button type="button" data-lang="lv" lang="lv">LV</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="ru" lang="ru">RU</button></div>
   <div class="titleBox"><span class="orn">❦</span><h1>Крепость<br>сквозь время</h1><span class="orn r">❦</span></div>
   <p class="sub">Найди в Даугавпилсской крепости место со старой фотографии и встань точно туда, откуда снимал фотограф.</p>
   <p class="free">Бесплатно · фото принадлежат авторам и архивам · <button type="button" id="aboutLink">подробнее</button></p>
@@ -742,7 +748,16 @@
 <script src="spots.js"></script>
 <script src="quests.js"></script>
 <script src="history.js"></script>
+<script src="i18n-lv.js"></script>
+<script src="i18n-en.js"></script>
+<script src="i18n.js"></script>
 <script>
+translateDom(document.body); // язык: i18n.js
+for (const b of document.querySelectorAll('#langBar button')) {
+  b.classList.toggle('on', b.dataset.lang === LANG);
+  b.setAttribute('aria-pressed', b.dataset.lang === LANG);
+  b.onclick = () => { if (b.dataset.lang !== LANG) setLang(b.dataset.lang); };
+}
 /* Точки маршрута лежат в spots.js, снимки — в папке photos. */
 const SPOTS = window.SPOTS_DATA || [];
 
@@ -779,7 +794,7 @@ const visibleSpots = () => allSpots().filter(s => ADMIN || !hiddenIds.includes(s
 function updateProgress() {
   const spots = visibleSpots();
   const doneCount = spots.filter(s => found.includes(s.id)).length;
-  $('progress').innerHTML = spots.length ? `<span class="lbl">Уже посетили:</span><span class="num">${doneCount} из ${spots.length}</span>` : '';
+  $('progress').innerHTML = spots.length ? `<span class="lbl">${T('Уже посетили:')}</span><span class="num">${Tf('{a} из {b}', { a: doneCount, b: spots.length })}</span>` : '';
   $('progressBar').firstElementChild.style.width = spots.length ? (100 * doneCount / spots.length).toFixed(1) + '%' : '0';
 }
 
@@ -793,7 +808,7 @@ function renderChips(spots) {
   for (const name of names) {
     const chip = document.createElement('button');
     chip.className = 'chip' + (name === activeGroup ? ' on' : '');
-    chip.textContent = `${name} ${name === ALL ? spots.length : counts[name]}`;
+    chip.textContent = `${T(name)} ${name === ALL ? spots.length : counts[name]}`;
     chip.onclick = () => {
       activeGroup = name;
       renderList();
@@ -811,7 +826,7 @@ function cardActions(spot) {
   const paintBeen = () => {
     const on = found.includes(spot.id);
     been.className = on ? 'been on' : 'been';
-    been.textContent = on ? 'Был здесь ✓' : 'Уже был здесь';
+    been.textContent = on ? T('Был здесь ✓') : T('Уже был здесь');
   };
   been.onclick = () => {
     found = found.includes(spot.id) ? found.filter(f => f !== spot.id) : [...found, spot.id];
@@ -826,7 +841,7 @@ function cardActions(spot) {
   map.className = 'map';
   map.target = '_blank';
   map.rel = 'noopener';
-  map.setAttribute('aria-label', 'На карте');
+  map.setAttribute('aria-label', T('На карте'));
   map.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>';
   const paintMap = () => {
     const p = coordsOf(spot);
@@ -840,12 +855,12 @@ function cardActions(spot) {
     const paintPin = () => {
       const p = geo[spot.id];
       pin.className = p ? 'been on' : 'been';
-      pin.textContent = p ? `Точка ±${p.acc} м` : 'Указать геолокацию';
+      pin.textContent = p ? Tf('Точка ±{n} м', { n: p.acc }) : T('Указать геолокацию');
     };
     pin.onclick = () => {
-      if (!navigator.geolocation) { alert('Этот браузер не умеет определять место.'); return; }
-      if (geo[spot.id] && !confirm('Заменить сохранённую точку на текущее место?')) return;
-      pin.textContent = 'Определяем…';
+      if (!navigator.geolocation) { alert(T('Этот браузер не умеет определять место.')); return; }
+      if (geo[spot.id] && !confirm(T('Заменить сохранённую точку на текущее место?'))) return;
+      pin.textContent = T('Определяем…');
       navigator.geolocation.getCurrentPosition(pos => {
         geo = { ...geo, [spot.id]: {
           lat: +pos.coords.latitude.toFixed(6),
@@ -857,7 +872,7 @@ function cardActions(spot) {
         paintPin(); paintMap(); paintUnpin(); updateAdminBar();
       }, err => {
         paintPin();
-        alert(err.code === 1 ? 'Нет разрешения на геолокацию. Разрешите её в настройках браузера.' : 'Не получилось определить место. Попробуйте ещё раз на открытом месте.');
+        alert(err.code === 1 ? T('Нет разрешения на геолокацию. Разрешите её в настройках браузера.') : T('Не получилось определить место. Попробуйте ещё раз на открытом месте.'));
       }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 });
     };
     paintPin();
@@ -866,10 +881,10 @@ function cardActions(spot) {
     // Ошибся точкой — сбросить и указать заново
     const unpin = document.createElement('button');
     unpin.className = 'been';
-    unpin.textContent = 'Сбросить точку';
+    unpin.textContent = T('Сбросить точку');
     const paintUnpin = () => { unpin.hidden = !geo[spot.id]; };
     unpin.onclick = () => {
-      if (!confirm('Убрать сохранённую точку для этого снимка?')) return;
+      if (!confirm(T('Убрать сохранённую точку для этого снимка?'))) return;
       const { [spot.id]: _, ...rest } = geo;
       geo = rest;
       write(GEO_KEY, geo);
@@ -883,14 +898,14 @@ function cardActions(spot) {
   fb.className = 'facts';
   const nf = (facts[spot.id] || []).length;
   fb.innerHTML = '📜' + (nf ? `<b>${nf}</b>` : '');
-  fb.setAttribute('aria-label', 'Истории об этом месте');
+  fb.setAttribute('aria-label', T('Истории об этом месте'));
   fb.onclick = () => openFacts(spot);
   row.append(fb);
 
   const ed = document.createElement('button');
   ed.className = 'edit';
   ed.textContent = '✎';
-  ed.setAttribute('aria-label', 'Описание, год и координаты');
+  ed.setAttribute('aria-label', T('Описание, год и координаты'));
   ed.onclick = () => openEdit(spot);
   row.append(ed);
 
@@ -959,21 +974,21 @@ $('edCoords').oninput = paintEdMap;
 $('edCancel').onclick = () => navBack();
 $('editDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
 $('edHere').onclick = () => {
-  if (!navigator.geolocation) { $('edNote').textContent = 'Этот браузер не умеет определять место.'; return; }
-  $('edNote').textContent = 'Определяем место…';
+  if (!navigator.geolocation) { $('edNote').textContent = T('Этот браузер не умеет определять место.'); return; }
+  $('edNote').textContent = T('Определяем место…');
   navigator.geolocation.getCurrentPosition(pos => {
     $('edCoords').value = `${pos.coords.latitude.toFixed(6)}, ${pos.coords.longitude.toFixed(6)}`;
-    $('edNote').textContent = `Точность ±${Math.round(pos.coords.accuracy)} м`;
+    $('edNote').textContent = Tf('Точность ±{n} м', { n: Math.round(pos.coords.accuracy) });
     paintEdMap();
   }, err => {
-    $('edNote').textContent = err.code === 1 ? 'Нет разрешения на геолокацию — разрешите в настройках браузера.' : 'Не получилось определить место, попробуйте на открытом месте.';
+    $('edNote').textContent = err.code === 1 ? T('Нет разрешения на геолокацию — разрешите в настройках браузера.') : T('Не получилось определить место, попробуйте на открытом месте.');
   }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 });
 };
 $('editForm').onsubmit = e => {
   e.preventDefault();
   if (!editing) return;
   const p = parseCoords($('edCoords').value);
-  if (p === undefined) { $('edNote').textContent = 'Не понял координаты. Пример: 55.8738, 26.5139'; return; }
+  if (p === undefined) { $('edNote').textContent = T('Не понял координаты. Пример: 55.8738, 26.5139'); return; }
   const base = [...SPOTS, ...added].find(s => s.id === editing.id) || {};
   const ch = {};
   for (const [k, el] of [['title', 'edTitle'], ['year', 'edYear'], ['hint', 'edHint']]) {
@@ -1049,12 +1064,12 @@ async function renderLib() {
   libUrls.forEach(u => URL.revokeObjectURL(u)); libUrls = [];
   let shots = [];
   try { shots = await libAll(); } catch {
-    box.innerHTML = '<div class="libEmpty">Этот браузер не даёт хранить снимки. Откройте приложение в Chrome.</div>'; return;
+    box.innerHTML = T('<div class="libEmpty">Этот браузер не даёт хранить снимки. Откройте приложение в Chrome.</div>'); return;
   }
   box.replaceChildren();
   $('libCount').textContent = shots.length ? ` · ${shots.length}` : '';
   if (!shots.length) {
-    box.innerHTML = '<div class="libEmpty">Здесь будут ваши снимки «тогда и сейчас». Откройте старое фото, встаньте на то же место и нажмите «Совпало — снять».</div>';
+    box.innerHTML = T('<div class="libEmpty">Здесь будут ваши снимки «тогда и сейчас». Откройте старое фото, встаньте на то же место и нажмите «Совпало — снять».</div>');
     return;
   }
   shots.sort((a, b) => b.at - a.at);
@@ -1067,21 +1082,21 @@ async function renderLib() {
     open.className = 'open';
     open.onclick = () => openResult(spot, url, shot.id);
     const pair = document.createElement('div'); pair.className = 'pair';
-    const now = document.createElement('img'); now.className = 'now'; now.src = url; now.alt = 'Сейчас';
-    const old = document.createElement('img'); old.className = 'old'; old.src = spot.thumb || spot.src; old.alt = 'Тогда'; old.loading = 'lazy';
+    const now = document.createElement('img'); now.className = 'now'; now.src = url; now.alt = T('Сейчас');
+    const old = document.createElement('img'); old.className = 'old'; old.src = spot.thumb || spot.src; old.alt = T('Тогда'); old.loading = 'lazy';
     pair.append(now, old);
     const info = document.createElement('div'); info.className = 'info';
     const name = document.createElement('div'); name.className = 'name'; name.textContent = spot.title;
     const meta = document.createElement('div'); meta.className = 'meta';
-    meta.textContent = 'Снято ' + new Date(shot.at).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+    meta.textContent = T('Снято ') + new Date(shot.at).toLocaleDateString(LOCALE, { day: 'numeric', month: 'long', year: 'numeric' });
     info.append(name, meta);
     open.append(pair, info);
     const row = document.createElement('div'); row.className = 'cardActions';
-    const cmp = document.createElement('button'); cmp.className = 'been'; cmp.textContent = 'Сравнить';
+    const cmp = document.createElement('button'); cmp.className = 'been'; cmp.textContent = T('Сравнить');
     cmp.onclick = () => openResult(spot, url, shot.id);
-    const del = document.createElement('button'); del.className = 'been'; del.textContent = 'Удалить';
+    const del = document.createElement('button'); del.className = 'been'; del.textContent = T('Удалить');
     del.onclick = async () => {
-      if (!confirm('Удалить этот снимок из библиотеки? Вернуть его будет нельзя.')) return;
+      if (!confirm(T('Удалить этот снимок из библиотеки? Вернуть его будет нельзя.'))) return;
       await libDel(shot.id); renderLib();
     };
     row.append(cmp, del);
@@ -1132,7 +1147,7 @@ const QUEST_KEY = 'krepost.quests';
 let questDone = read(QUEST_KEY, {});
 let openQuest = null;
 let questCtx = null; // { quest, step } пока снимаем кадр квеста
-const KIND = { angle: 'Ракурс', pose: 'Позы людей', vehicle: 'Техника' };
+const KIND = { angle: T('Ракурс'), pose: T('Позы людей'), vehicle: T('Техника') };
 const questSteps = q => q.steps.filter(st => spotById(st.spot));
 const doneIn = q => questSteps(q).filter(st => (questDone[q.id] || {})[st.spot]).length;
 
@@ -1142,7 +1157,7 @@ function renderQuests() {
   if (!openQuest) {
     const warn = document.createElement('p');
     warn.className = 'safety';
-    warn.textContent = '⚠ Выполняя квесты, не мешайте дорожному движению и соблюдайте ПДД: не стойте и не ставьте машину на проезжей части ради кадра, переходите дорогу только по переходу. Не лезьте на валы, стены и к краю воды — снимайте примерно, с безопасной точки.';
+    warn.textContent = T('⚠ Выполняя квесты, не мешайте дорожному движению и соблюдайте ПДД: не стойте и не ставьте машину на проезжей части ради кадра, переходите дорогу только по переходу. Не лезьте на валы, стены и к краю воды — снимайте примерно, с безопасной точки.');
     box.append(warn);
     for (const q of QUESTS) {
       const steps = questSteps(q), n = doneIn(q);
@@ -1152,7 +1167,7 @@ function renderQuests() {
       b.querySelector('h3').textContent = q.title;
       b.querySelector('p').textContent = q.desc;
       b.querySelector('.lvl').textContent = q.level || '';
-      if (steps.length && n === steps.length) { const st = document.createElement('span'); st.className = 'stamp'; st.textContent = 'Пройден'; b.append(st); }
+      if (steps.length && n === steps.length) { const st = document.createElement('span'); st.className = 'stamp'; st.textContent = T('Пройден'); b.append(st); }
       b.onclick = () => { navPush(); openQuest = q.id; renderQuests(); $('list').scrollTop = 0; };
       box.append(b);
     }
@@ -1160,7 +1175,7 @@ function renderQuests() {
   }
   const q = QUESTS.find(x => x.id === openQuest);
   const back = document.createElement('button');
-  back.className = 'qback'; back.textContent = '← Все квесты';
+  back.className = 'qback'; back.textContent = T('← Все квесты');
   back.onclick = () => navBack();
   const head = document.createElement('div'); head.className = 'qhead';
   head.innerHTML = '<h2></h2><p></p>';
@@ -1177,20 +1192,20 @@ function renderQuests() {
     const body = document.createElement('div');
     body.innerHTML = `<div class="qt"></div><div class="qtask"></div><div class="row2"></div>`;
     body.querySelector('.qt').textContent = `${i + 1}. ${spot.title}${spot.year ? ', ' + spot.year : ''}`;
-    const kind = document.createElement('span'); kind.className = 'qk ' + st.kind; kind.textContent = KIND[st.kind] + (st.people ? ` · ${st.people} чел.` : '');
+    const kind = document.createElement('span'); kind.className = 'qk ' + st.kind; kind.textContent = KIND[st.kind] + (st.people ? Tf(' · {n} чел.', { n: st.people }) : '');
     body.querySelector('.qtask').append(kind, document.createTextNode(st.task));
     const r2 = body.querySelector('.row2');
-    const go = document.createElement('button'); go.className = 'go'; go.textContent = done ? 'Переснять' : 'Снять кадр';
+    const go = document.createElement('button'); go.className = 'go'; go.textContent = done ? T('Переснять') : T('Снять кадр');
     go.onclick = () => openSpot(spot, { quest: q, step: st });
     r2.append(go);
     const p = coordsOf(spot);
-    if (p) { const a = document.createElement('a'); a.href = `https://www.google.com/maps?q=${p.lat},${p.lng}`; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'На карте'; r2.append(a); }
-    if (done) { const ok = document.createElement('span'); ok.className = 'ok'; ok.textContent = '✓ Снято'; r2.append(ok); }
+    if (p) { const a = document.createElement('a'); a.href = `https://www.google.com/maps?q=${p.lat},${p.lng}`; a.target = '_blank'; a.rel = 'noopener'; a.textContent = T('На карте'); r2.append(a); }
+    if (done) { const ok = document.createElement('span'); ok.className = 'ok'; ok.textContent = T('✓ Снято'); r2.append(ok); }
     row.append(img, body);
     box.append(row);
   });
   if (steps.length && doneIn(q) === steps.length) {
-    const fin = document.createElement('div'); fin.className = 'qdone'; fin.textContent = '🎖 Квест пройден! Все кадры — в «Библиотеке».';
+    const fin = document.createElement('div'); fin.className = 'qdone'; fin.textContent = T('🎖 Квест пройден! Все кадры — в «Библиотеке».');
     box.append(fin);
   }
 }
@@ -1222,7 +1237,7 @@ function histCard(title, lines, sources, folded) {
   const ul = document.createElement('ul');
   for (const t of lines) { const li = document.createElement('li'); li.textContent = t; ul.append(li); }
   const src = document.createElement('div'); src.className = 'src';
-  src.textContent = sources && sources.length ? 'Источники: ' + sources.join('; ') : '';
+  src.textContent = sources && sources.length ? T('Источники: ') + sources.join('; ') : '';
   if (folded) {
     const d = document.createElement('details'); const s = document.createElement('summary');
     s.textContent = title; d.append(s, ul, src); box.append(d);
@@ -1235,9 +1250,9 @@ function renderHistory(spot) {
   const box = $('histBox'); box.replaceChildren();
   const own = HIST.spots[spot.id];
   const g = HIST.groups[groupOf(spot)];
-  if (own) box.append(histCard('Об этом месте', own));
-  if (g) box.append(histCard('Из истории: ' + groupOf(spot), g.text, g.sources, !!own));
-  if (HIST.fortress) box.append(histCard('История крепости 1810–сегодня', HIST.fortress.text, ['Wikipedia — Daugavpils Fortress', 'Путеводитель Daugavpils Fortress'], true));
+  if (own) box.append(histCard(T('Об этом месте'), own));
+  if (g) box.append(histCard(T('Из истории: ') + T(groupOf(spot)), g.text, g.sources, !!own));
+  if (HIST.fortress) box.append(histCard(T('История крепости 1810–сегодня'), HIST.fortress.text, ['Wikipedia — Daugavpils Fortress', T('Путеводитель Daugavpils Fortress')], true));
 }
 function openFacts(spot) {
   factsSpot = spot;
@@ -1249,14 +1264,14 @@ function openFacts(spot) {
   const items = facts[spot.id] || [];
   if (!items.length) {
     const e = document.createElement('p'); e.className = 'factsEmpty';
-    e.textContent = 'Пока никто не рассказал об этом месте. Если знаете что-то — напишите, это очень ценно.';
+    e.textContent = T('Пока никто не рассказал об этом месте. Если знаете что-то — напишите, это очень ценно.');
     list.append(e);
   }
   for (const f of items) {
     const d = document.createElement('div'); d.className = 'fact';
     const t = document.createElement('p'); t.textContent = f.body;
     const by = document.createElement('div'); by.className = 'by';
-    by.textContent = [f.author || 'Без подписи', f.role, new Date(f.created_at).getFullYear()].filter(Boolean).join(' · ');
+    by.textContent = [f.author || T('Без подписи'), f.role, new Date(f.created_at).getFullYear()].filter(Boolean).join(' · ');
     d.append(t, by); list.append(d);
   }
   $('factsFormBox').open = false;
@@ -1288,7 +1303,7 @@ function countShot(spotId) {
 }
 function showThanks(n) {
   if ($('result').hidden || document.querySelector('dialog[open]')) return;
-  $('thanksTitle').textContent = `Уже ${n} снимков «тогда / сейчас»!`;
+  $('thanksTitle').textContent = Tf('Уже {n} снимков «тогда / сейчас»!', { n });
   $('donateBtn').hidden = !DONATE_URL;
   if (DONATE_URL) $('donateBtn').href = DONATE_URL;
   const sp = SPONSOR && (!SPONSOR.until || new Date() <= new Date(SPONSOR.until)) ? SPONSOR : null;
@@ -1307,7 +1322,7 @@ let survey = null;
 for (const box of document.querySelectorAll('.stars')) {
   for (let n = 1; n <= 5; n++) {
     const b = document.createElement('button');
-    b.type = 'button'; b.textContent = '★'; b.dataset.n = n; b.setAttribute('aria-label', `${n} из 5`);
+    b.type = 'button'; b.textContent = '★'; b.dataset.n = n; b.setAttribute('aria-label', Tf('{n} из 5', { n }));
     b.onclick = () => { if (!survey) return; survey.r[box.dataset.k] = n; paintStars(); };
     box.append(b);
   }
@@ -1332,9 +1347,9 @@ $('surveyForm').onsubmit = async e => {
   e.preventDefault();
   if (!survey) return;
   const comment = $('sComment').value.trim();
-  if (!Object.keys(survey.r).length && !comment) { $('sMsg').textContent = 'Поставьте хотя бы одну оценку или напишите пару слов.'; return; }
+  if (!Object.keys(survey.r).length && !comment) { $('sMsg').textContent = T('Поставьте хотя бы одну оценку или напишите пару слов.'); return; }
   $('sSend').disabled = true;
-  $('sMsg').textContent = 'Отправляем…';
+  $('sMsg').textContent = T('Отправляем…');
   try {
     const r = await fetch(`${FACTS_URL}/krepost_feedback`, {
       method: 'POST',
@@ -1342,10 +1357,10 @@ $('surveyForm').onsubmit = async e => {
       body: JSON.stringify({ device: deviceId(), spot_id: survey.spotId, mode: survey.mode, ...survey.r, comment: comment || null })
     });
     if (!r.ok) throw new Error(r.status);
-    $('sMsg').textContent = '✓ Спасибо! Ответ отправлен.';
+    $('sMsg').textContent = T('✓ Спасибо! Ответ отправлен.');
     setTimeout(() => { if ($('surveyDlg').open) navBack(); }, 800);
   } catch {
-    $('sMsg').textContent = 'Не получилось отправить — нужен интернет. Попробуйте ещё раз или нажмите «Пропустить».';
+    $('sMsg').textContent = T('Не получилось отправить — нужен интернет. Попробуйте ещё раз или нажмите «Пропустить».');
     $('sSend').disabled = false;
   }
 };
@@ -1364,9 +1379,9 @@ $('factsDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); }
 $('factsForm').onsubmit = async e => {
   e.preventDefault();
   const body = $('fBody').value.trim();
-  if (body.length < 10) { $('fMsg').textContent = 'Напишите хотя бы пару предложений.'; return; }
+  if (body.length < 10) { $('fMsg').textContent = T('Напишите хотя бы пару предложений.'); return; }
   $('fSend').disabled = true;
-  $('fMsg').textContent = 'Отправляем…';
+  $('fMsg').textContent = T('Отправляем…');
   try {
     const r = await fetch(`${FACTS_URL}/krepost_facts`, {
       method: 'POST',
@@ -1376,9 +1391,9 @@ $('factsForm').onsubmit = async e => {
     });
     if (!r.ok) throw new Error(r.status);
     $('fBody').value = ''; $('fContact').value = '';
-    $('fMsg').textContent = '✓ Спасибо! Рассказ отправлен разработчику. После проверки его увидят все.';
+    $('fMsg').textContent = T('✓ Спасибо! Рассказ отправлен разработчику. После проверки его увидят все.');
   } catch {
-    $('fMsg').textContent = 'Не получилось отправить — нужен интернет. Текст не стёрт, попробуйте ещё раз.';
+    $('fMsg').textContent = T('Не получилось отправить — нужен интернет. Текст не стёрт, попробуйте ещё раз.');
   } finally { $('fSend').disabled = false; }
 };
 async function updatePendingFacts() {
@@ -1417,7 +1432,7 @@ function renderList() {
       lastGroup = groupOf(spot);
       const head = document.createElement('h2');
       head.className = 'groupTitle';
-      head.textContent = lastGroup;
+      head.textContent = T(lastGroup);
       box.append(head);
     }
     const card = document.createElement('div');
@@ -1479,9 +1494,9 @@ function renderList() {
       const del = document.createElement('button');
       del.className = 'del';
       del.textContent = '×';
-      del.setAttribute('aria-label', 'Удалить фото');
+      del.setAttribute('aria-label', T('Удалить фото'));
       del.onclick = () => {
-        if (!confirm(`Удалить «${spot.title}»?`)) return;
+        if (!confirm(Tf('Удалить «{t}»?', { t: spot.title }))) return;
         added = added.filter(a => a.id !== spot.id);
         found = found.filter(f => f !== spot.id);
         write(ADDED_KEY, added);
@@ -1524,11 +1539,11 @@ $('addInput').onchange = async e => {
   if (!file) return;
   let src;
   try { src = await shrink(file, 1200); }
-  catch { alert('Не получилось открыть этот файл как фотографию.'); return; }
-  const title = (prompt('Как называется это место?', '') || '').trim() || 'Без названия';
+  catch { alert(T('Не получилось открыть этот файл как фотографию.')); return; }
+  const title = (prompt(T('Как называется это место?'), '') || '').trim() || T('Без названия');
   const spot = { id: 'a' + Date.now(), src, title };
   if (!write(ADDED_KEY, [...added, spot])) {
-    alert('Закончилось место для фотографий в браузере. Удалите одно из старых фото.');
+    alert(T('Закончилось место для фотографий в браузере. Удалите одно из старых фото.'));
     return;
   }
   added.push(spot);
@@ -1559,7 +1574,7 @@ function applyHand() {
   const left = read(HAND_KEY, 'right') === 'left';
   $('cam').classList.toggle('left', left);
   $('result').classList.toggle('left', left);
-  $('handChange').textContent = `Кнопка «снять» лёжа: ${left ? 'слева (левша)' : 'справа (правша)'} · сменить`;
+  $('handChange').textContent = Tf('Кнопка «снять» лёжа: {side} · сменить', { side: left ? T('слева (левша)') : T('справа (правша)') });
   requestAnimationFrame(refit);
 }
 /* Один раз при первом открытии камеры спрашиваем, какой рукой удобнее */
@@ -1582,9 +1597,9 @@ function camMessage(text) {
 
 async function startCam() {
   const token = ++camToken;
-  camMessage('Включаем камеру…');
+  camMessage(T('Включаем камеру…'));
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-    camMessage('Камера недоступна. Откройте приложение по защищённой ссылке (https) в обычном браузере.');
+    camMessage(T('Камера недоступна. Откройте приложение по защищённой ссылке (https) в обычном браузере.'));
     return;
   }
   try {
@@ -1601,8 +1616,8 @@ async function startCam() {
   } catch (err) {
     if (token !== camToken) return;
     camMessage(err && err.name === 'NotAllowedError'
-      ? 'Нет доступа к камере. Разрешите камеру в настройках браузера и откройте фото снова.'
-      : 'Не получилось включить камеру.');
+      ? T('Нет доступа к камере. Разрешите камеру в настройках браузера и откройте фото снова.')
+      : T('Не получилось включить камеру.'));
   }
 }
 
@@ -1622,7 +1637,7 @@ async function openSpot(spot, ctx) {
   const img = $('oldImg');
   img.src = spot.src;
   $('camTitle').textContent = [spot.title, spot.year].filter(Boolean).join(', ');
-  $('camHint').textContent = spot.hint || 'Двигайтесь, пока линии старого и нового снимка не совпадут';
+  $('camHint').textContent = spot.hint || T('Двигайтесь, пока линии старого и нового снимка не совпадут');
   $('edgeImg').removeAttribute('src');
   applyMode();
   $('tipBox').hidden = !!read(TIP_KEY, 0) || shootMode !== 'explorer';
@@ -1852,12 +1867,12 @@ async function makeEdges(src, opt) {
 async function applyMode() {
   const ex = shootMode === 'explorer';
   $('camStage').classList.toggle('explorer', ex);
-  $('modeBtn').textContent = ex ? '🧭 Исследователь · с контуром' : '📜 Историк · без контура';
-  $('modeBtn').setAttribute('aria-label', (ex ? 'Режим «Исследователь»: золотой контур помогает совместить кадр.' : 'Режим «Историк»: без подсказок.') + ' Нажмите, чтобы сменить режим');
-  $('contourBtn').textContent = contourLevel === 'main' ? '✏️ Контур: главное' : '✏️ Контур: подробно';
-  $('contourBtn').setAttribute('aria-label', 'Сменить контур: только главные линии или подробно');
-  if (current) $('camHint').textContent = ex ? 'Совместите золотой контур с тем, что видите в камере'
-    : (current.hint || 'Двигайтесь, пока линии старого и нового снимка не совпадут');
+  $('modeBtn').textContent = ex ? T('🧭 Исследователь · с контуром') : T('📜 Историк · без контура');
+  $('modeBtn').setAttribute('aria-label', (ex ? T('Режим «Исследователь»: золотой контур помогает совместить кадр.') : T('Режим «Историк»: без подсказок.')) + T(' Нажмите, чтобы сменить режим'));
+  $('contourBtn').textContent = contourLevel === 'main' ? T('✏️ Контур: главное') : T('✏️ Контур: подробно');
+  $('contourBtn').setAttribute('aria-label', T('Сменить контур: только главные линии или подробно'));
+  if (current) $('camHint').textContent = ex ? T('Совместите золотой контур с тем, что видите в камере')
+    : (current.hint || T('Двигайтесь, пока линии старого и нового снимка не совпадут'));
   if (ex && current) {
     const src = current.src, lvl = contourLevel, url = await edgeUrl(src);
     if (current && current.src === src && lvl === contourLevel) { if (url) $('edgeImg').src = url; else $('edgeImg').removeAttribute('src'); }
@@ -1879,7 +1894,7 @@ let insetTimer = 0;
 function setInset(on) {
   clearTimeout(insetTimer);
   $('resStage').classList.toggle('inset', on);
-  $('cmpMode').textContent = on ? '◐ Наложить старое фото' : '▣ Старое фото в уголок';
+  $('cmpMode').textContent = on ? T('◐ Наложить старое фото') : T('▣ Старое фото в уголок');
   applyRZ();
 }
 function enterInset() {
@@ -2092,7 +2107,7 @@ $('shoot').onclick = async () => {
     if (!blob) return;
     libAdd({ spotId: shotSpot.id, title: shotSpot.title, year: shotSpot.year || '', src: shotSpot.src, at: Date.now(), now: blob })
       .then(updateLibCount)
-      .catch(() => alert('Не получилось сохранить снимок в библиотеку: закончилось место в телефоне.'));
+      .catch(() => alert(T('Не получилось сохранить снимок в библиотеку: закончилось место в телефоне.')));
   }, 'image/jpeg', 0.88);
 
   if (!found.includes(current.id)) { found.push(current.id); write(FOUND_KEY, found); }
@@ -2130,11 +2145,11 @@ async function pairBlob() {
   const ctx = c.getContext('2d');
   ctx.drawImage(oldI, 0, 0, W, H);
   ctx.drawImage(nowI, W, 0, W, H);
-  label(ctx, current.year ? `Тогда · ${current.year}` : 'Тогда', H / 60, H);
-  label(ctx, 'Сейчас', W + H / 60, H);
+  label(ctx, current.year ? Tf('Тогда · {y}', { y: current.year }) : T('Тогда'), H / 60, H);
+  label(ctx, T('Сейчас'), W + H / 60, H);
 
   try { return await new Promise(r => c.toBlob(r, 'image/jpeg', 0.9)); }
-  catch { alert('Сохранение работает, когда приложение открыто по ссылке, а не как файл с компьютера.'); return null; }
+  catch { alert(T('Сохранение работает, когда приложение открыто по ссылке, а не как файл с компьютера.')); return null; }
 }
 function downloadBlob(blob) {
   const a = document.createElement('a');
@@ -2172,8 +2187,8 @@ $('installBtn').onclick = async () => {
   }
   const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
   $('installHelp').textContent = ios
-    ? 'На iPhone: откройте эту страницу в Safari, нажмите «Поделиться» (квадрат со стрелкой вверх) и выберите «На экран „Домой“».'
-    : 'Откройте меню браузера (три точки ⋮) и выберите «Установить приложение» или «Добавить на главный экран».';
+    ? T('На iPhone: откройте эту страницу в Safari, нажмите «Поделиться» (квадрат со стрелкой вверх) и выберите «На экран „Домой“».')
+    : T('Откройте меню браузера (три точки ⋮) и выберите «Установить приложение» или «Добавить на главный экран».');
   $('installHelp').hidden = false;
 };
 if ('serviceWorker' in navigator) {
