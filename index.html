@@ -556,6 +556,13 @@
   #langBar button { min-height:0; padding:5px 10px; border-radius:14px; font:600 13px/1 Inter,system-ui,sans-serif; letter-spacing:.04em;
     background:rgba(255,255,255,.06); color:#d9cbb2; border:1px solid rgba(243,210,122,.35); box-shadow:none; }
   #langBar button.on { background:#f4c64b; color:#1c1610; border-color:#f4c64b; }
+  #fbBox { text-align:center; margin:22px 0 0; }
+  #fbBox button { padding:12px 22px; font-weight:600; }
+  #fbBox small { display:inline-block; margin-top:6px; color:var(--muted); font-size:12px; }
+  #surveyForm .gen { display:none; }
+  #surveyForm.general .gen { display:block; }
+  #surveyForm.general .q.gen { display:flex; }
+  #surveyForm.general .shot { display:none; }
 </style>
 </head>
 <body>
@@ -584,6 +591,7 @@
   <div id="cards"></div>
   <div id="lib" hidden></div>
   <div id="quests" hidden></div>
+  <p id="fbBox"><button type="button" id="fbOpen">💬 Оставить отзыв</button><br><small>Анонимно: без имён, телефонов и местоположения</small></p>
   <p id="handSet"><button type="button" id="handChange"></button></p>
   <details id="about">
     <summary>О приложении и правах на фото</summary>
@@ -678,13 +686,16 @@
 </dialog>
 <dialog id="surveyDlg">
   <form class="surveyBox" id="surveyForm">
-    <h3>Как прошла съёмка?</h3>
-    <p class="sNote">Пара секунд — это поможет сделать приложение удобнее. Оценка от 1 до 5 звёзд.</p>
-    <div class="q"><span>Насколько легко было сделать снимок?</span><div class="stars" data-k="ease"></div></div>
-    <div class="q"><span>Ракурс: реально ли встать так же, как стоял фотограф?</span><div class="stars" data-k="angle"></div></div>
-    <div class="q"><span>Насколько удобно управлять зумом?</span><div class="stars" data-k="zoom"></div></div>
-    <div class="q"><span>Насколько удобно просвечивать старое фото (ползунок «Тогда / Сейчас»)?</span><div class="stars" data-k="blend"></div></div>
-    <div class="q"><span>Насколько удобно совмещать всё вместе?</span><div class="stars" data-k="overall"></div></div>
+    <h3 class="shot">Как прошла съёмка?</h3>
+    <h3 class="gen">Ваш отзыв о приложении</h3>
+    <p class="sNote shot">Пара секунд — это поможет сделать приложение удобнее. Оценка от 1 до 5 звёзд.</p>
+    <p class="sNote gen">Анонимно: без имён, телефонов и местоположения. Пишите что угодно — что удобно, что неудобно, что повторяется.</p>
+    <div class="q gen"><span>Как вам приложение в целом?</span><div class="stars" data-k="overall"></div></div>
+    <div class="q shot"><span>Насколько легко было сделать снимок?</span><div class="stars" data-k="ease"></div></div>
+    <div class="q shot"><span>Ракурс: реально ли встать так же, как стоял фотограф?</span><div class="stars" data-k="angle"></div></div>
+    <div class="q shot"><span>Насколько удобно управлять зумом?</span><div class="stars" data-k="zoom"></div></div>
+    <div class="q shot"><span>Насколько удобно просвечивать старое фото (ползунок «Тогда / Сейчас»)?</span><div class="stars" data-k="blend"></div></div>
+    <div class="q shot"><span>Насколько удобно совмещать всё вместе?</span><div class="stars" data-k="overall"></div></div>
     <label class="q">Что бы вы добавили или убрали?
       <textarea id="sComment" rows="3" maxlength="1000" placeholder="Необязательно"></textarea></label>
     <p id="sMsg" class="sNote" aria-live="polite"></p>
@@ -1341,7 +1352,14 @@ function paintStars() {
 }
 function openSurvey(spotId) {
   if ($('result').hidden || document.querySelector('dialog[open]')) return;
-  survey = { spotId: String(spotId).slice(0, 64), mode: shootMode, r: {} };
+  showSurvey({ spotId: String(spotId).slice(0, 64), mode: shootMode, r: {} });
+}
+/* Общий отзыв с главного экрана — без съёмки: одна оценка и текст; spot_id и mode пустые. */
+$('fbOpen').onclick = () => { if (!document.querySelector('dialog[open]')) showSurvey({ spotId: null, mode: null, r: {} }); };
+function showSurvey(sv) {
+  survey = sv;
+  $('surveyForm').classList.toggle('general', !sv.spotId);
+  $('sSkip').textContent = sv.spotId ? T('Пропустить') : T('Закрыть');
   paintStars();
   $('sComment').value = ''; $('sMsg').textContent = ''; $('sSend').disabled = false;
   $('surveyDlg').showModal();

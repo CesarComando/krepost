@@ -205,7 +205,12 @@ window.I18N.en = {
   "Источник: Facebook, Old Daugavpils. Автор не установлен": "Source: Facebook, Old Daugavpils. Author unknown",
   "1920-е": "1920s",
   "1930-е": "1930s",
-  "до 1911": "before 1911"
+  "до 1911": "before 1911",
+  "💬 Оставить отзыв": "💬 Leave feedback",
+  "Анонимно: без имён, телефонов и местоположения": "Anonymous: no names, phone numbers or location",
+  "Ваш отзыв о приложении": "Your feedback on the app",
+  "Анонимно: без имён, телефонов и местоположения. Пишите что угодно — что удобно, что неудобно, что повторяется.": "Anonymous: no names, phone numbers or location. Write anything — what works, what doesn’t, what repeats.",
+  "Как вам приложение в целом?": "How do you like the app overall?"
  },
  "titles": {
   "Мост к Михайловским воротам": "Bridge to Michael Gate",

@@ -205,7 +205,12 @@ window.I18N.lv = {
   "Источник: Facebook, Old Daugavpils. Автор не установлен": "Avots: Facebook, Old Daugavpils. Autors nav noskaidrots",
   "1920-е": "1920. gadi",
   "1930-е": "1930. gadi",
-  "до 1911": "līdz 1911"
+  "до 1911": "līdz 1911",
+  "💬 Оставить отзыв": "💬 Atstāt atsauksmi",
+  "Анонимно: без имён, телефонов и местоположения": "Anonīmi: bez vārdiem, tālruņiem un atrašanās vietas",
+  "Ваш отзыв о приложении": "Jūsu atsauksme par lietotni",
+  "Анонимно: без имён, телефонов и местоположения. Пишите что угодно — что удобно, что неудобно, что повторяется.": "Anonīmi: bez vārdiem, tālruņiem un atrašanās vietas. Rakstiet jebko — kas ērti, kas neērti, kas atkārtojas.",
+  "Как вам приложение в целом?": "Kā jums patīk lietotne kopumā?"
  },
  "titles": {
   "Мост к Михайловским воротам": "Tilts uz Mihaila vārtiem",
