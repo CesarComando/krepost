@@ -41,13 +41,22 @@
     return ru;
   }
 
+  /* Годы: «1940-е» → «1940. gadi» / «1940s», «ок. 1910» → «ap. 1910» / «c. 1910». */
+  function yearT(y) {
+    if (!D) return y;
+    const t = T(y); if (t !== y) return t;
+    let v = String(y);
+    v = v.replace(/^ок\. /, lang === 'lv' ? 'ap. ' : 'c. ');
+    v = v.replace(/(\d{4})-е/g, (m, d) => lang === 'lv' ? d + '. gadi' : d + 's');
+    return v;
+  }
   /* Данные: подписи снимков, квесты, исторические справки. Группы (s.group) остаются ключами на русском. */
   if (D) {
     for (const s of (window.SPOTS_DATA || [])) {
       s.title = title(s.title);
       if (s.hint) s.hint = D.hints[norm(s.hint)] || s.hint;
       if (s.credit) s.credit = T(s.credit);
-      if (s.year) s.year = T(s.year);
+      if (s.year) s.year = yearT(s.year);
     }
     for (const q of (window.QUESTS_DATA || [])) {
       const t = D.quests && D.quests[q.id];
