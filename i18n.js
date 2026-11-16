@@ -91,7 +91,7 @@
 
   window.LANG = lang;
   window.LOCALE = { ru: 'ru-RU', lv: 'lv-LV', en: 'en-GB' }[lang];
-  window.T = T; window.Tf = Tf; window.translateDom = translateDom; window.setLang = setLang;
+  window.yearT = yearT; window.T = T; window.Tf = Tf; window.translateDom = translateDom; window.setLang = setLang;
   document.documentElement.lang = lang;
   if (D) document.title = T(document.title);
 })();

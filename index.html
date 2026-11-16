@@ -134,6 +134,7 @@
   .card .imgbox { position:relative; border-radius:12px; overflow:hidden; }
   .card img { height:190px; border-radius:12px; filter:sepia(.45); }
   .shot .pair img.now { border-radius:12px; }
+  .card .num { position:absolute; top:8px; left:8px; background:rgba(0,0,0,.6); padding:3px 8px; border-radius:6px; font-size:12px; font-weight:600; }
   .card .year { position:absolute; top:8px; right:8px; background:rgba(0,0,0,.6); backdrop-filter:blur(4px); padding:3px 8px; border-radius:6px; font-size:12px; }
   .card .info { padding:12px 4px 10px; }
   .card .name { font-size:20px; font-weight:600; line-height:1.2; margin-bottom:4px; }
@@ -199,6 +200,8 @@
   .card .imgbox::before, .card .imgbox::after, .card .imgbox .c1, .card .imgbox .c2 { content:""; position:absolute; width:26px; height:26px; background:#3a2c1d; z-index:2; }
   .card .imgbox::before { top:0; left:0; clip-path:polygon(0 0,100% 0,0 100%); }
   .card .imgbox::after { bottom:0; right:0; clip-path:polygon(100% 0,100% 100%,0 100%); }
+  .groupTitle.decade { text-transform:none; }
+  .card .num { top:16px; left:16px; font:700 12px var(--mono); background:var(--paper); color:var(--ink); border-radius:0; box-shadow:0 1px 2px rgba(0,0,0,.4); }
   .card .year { top:16px; right:16px; font:400 12px var(--mono); background:var(--paper); color:var(--ink); border-radius:0; backdrop-filter:none; box-shadow:0 1px 2px rgba(0,0,0,.4); }
   .card .info { padding:14px 4px 10px; }
   .card .name { font:700 20px/1.2 var(--old); }
@@ -1444,21 +1447,28 @@ function renderList() {
   $('empty').hidden = spots.length > 0;
 
   const rank = s => GROUPS.indexOf(groupOf(s));
-  // Внутри каждого места — по годам, от старых к новым; без года — в конце.
+  // «Все» — одна лента по годам, от старых к новым, с заголовками по десятилетиям.
+  // Конкретный объект — тоже по годам, на карточке номер «5/40».
   const yearOf = s => { const m = String(s.year || '').match(/\d{4}/); return m ? +m[0] : 9999; };
+  const isAll = activeGroup === ALL;
   const shown = spots
-    .filter(s => activeGroup === ALL || groupOf(s) === activeGroup)
+    .filter(s => isAll || groupOf(s) === activeGroup)
     .map((s, i) => [s, i])
-    .sort((a, b) => rank(a[0]) - rank(b[0]) || yearOf(a[0]) - yearOf(b[0]) || a[1] - b[1])
+    .sort((a, b) => (isAll ? 0 : rank(a[0]) - rank(b[0])) || yearOf(a[0]) - yearOf(b[0]) || a[1] - b[1])
     .map(x => x[0]);
+  const headOf = s => {
+    if (!isAll) return T(groupOf(s));
+    const y = yearOf(s);
+    return y === 9999 ? T('Без года') : yearT(Math.floor(y / 10) * 10 + '-е');
+  };
 
-  let lastGroup = null;
-  for (const spot of shown) {
-    if (groupOf(spot) !== lastGroup) {
-      lastGroup = groupOf(spot);
+  let lastHead = null;
+  shown.forEach((spot, idx) => {
+    if (headOf(spot) !== lastHead) {
+      lastHead = headOf(spot);
       const head = document.createElement('h2');
-      head.className = 'groupTitle';
-      head.textContent = T(lastGroup);
+      head.className = isAll ? 'groupTitle decade' : 'groupTitle';
+      head.textContent = lastHead;
       box.append(head);
     }
     const card = document.createElement('div');
@@ -1477,6 +1487,12 @@ function renderList() {
     name.className = 'name';
     name.textContent = (ADMIN && /^s\d+$/.test(spot.id) ? `№ ${+spot.id.slice(1)} · ` : '') + spot.title;
     info.append(name);
+    if (isAll) {
+      const place = document.createElement('div');
+      place.className = 'meta';
+      place.textContent = '📍 ' + T(groupOf(spot));
+      info.append(place);
+    }
     const metaText = spot.hint || '';
     if (metaText) {
       const meta = document.createElement('div');
@@ -1494,6 +1510,7 @@ function renderList() {
     imgBox.className = 'imgbox';
     imgBox.append(img);
     if (spot.year) { const y = document.createElement('span'); y.className = 'year'; y.textContent = spot.year; imgBox.append(y); }
+    if (!isAll) { const n = document.createElement('span'); n.className = 'num'; n.textContent = `${idx + 1}/${shown.length}`; imgBox.append(n); }
     open.append(imgBox, info);
     card.append(open);
     card.append(cardActions(spot));
@@ -1532,7 +1549,7 @@ function renderList() {
       card.append(del);
     }
     box.append(card);
-  }
+  });
 }
 
 function loadImage(url) {

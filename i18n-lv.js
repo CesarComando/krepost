@@ -16,6 +16,7 @@ window.I18N.lv = {
   "Уже посетили:": "Jau apmeklētas:",
   "{a} из {b}": "{a} no {b}",
   "Все": "Visas",
+  "Без года": "Bez gada",
   "О приложении и правах на фото": "Par lietotni un tiesībām uz foto",
   "«Крепость сквозь время» — бесплатный краеведческий проект.": "«Cietoksnis cauri laikiem» ir bezmaksas novadpētniecības projekts.",
   "Пользоваться им можно без оплаты и без регистрации.": "To var izmantot bez maksas un bez reģistrācijas.",

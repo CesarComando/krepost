@@ -16,6 +16,7 @@ window.I18N.en = {
   "Уже посетили:": "Visited:",
   "{a} из {b}": "{a} of {b}",
   "Все": "All",
+  "Без года": "Year unknown",
   "О приложении и правах на фото": "About the app and photo rights",
   "«Крепость сквозь время» — бесплатный краеведческий проект.": "“Fortress Through Time” is a free local-history project.",
   "Пользоваться им можно без оплаты и без регистрации.": "You can use it without paying or signing up.",
