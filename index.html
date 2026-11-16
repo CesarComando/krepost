@@ -1432,6 +1432,9 @@ async function renderMap() {
     lmap = L.map('map', { zoomControl: true, attributionControl: true }).setView([55.8838, 26.4985], 15);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(lmap);
     markLayer = L.layerGroup().addTo(lmap);
+    // Первое открытие: вписать в экран все точки снимков
+    const all = visibleSpots().map(coordsOf).filter(Boolean).map(p => [p.lat, p.lng]);
+    if (all.length) lmap.fitBounds(L.latLngBounds(all).pad(0.05), { maxZoom: 16 });
   }
   setTimeout(() => { lmap.invalidateSize(); drawPins(); }, 50);
   if (!lmap._pinsHooked) { lmap.on('zoomend', drawPins); lmap.on('popupclose', () => setTimeout(drawPins, 0)); lmap._pinsHooked = true; }
