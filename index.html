@@ -566,36 +566,209 @@
   #surveyForm.general .gen { display:block; }
   #surveyForm.general .q.gen { display:flex; }
   #surveyForm.general .shot { display:none; }
+
+  /* ===== 17.11.2026: новый главный экран, нижнее меню, поиск, карта ===== */
+  #list { border:0; outline:0; box-shadow:none; padding:0 0 calc(84px + env(safe-area-inset-bottom)); background:#120e0a; }
+  #list > #home, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests, #list > #empty, #list > #adminBar { margin-left:16px; margin-right:16px; }
+  #hero { position:relative; height:min(330px, 46vh); min-height:250px; overflow:hidden; }
+  #hero[hidden], #home[hidden], #subBar[hidden], #filters[hidden], #mapView[hidden] { display:none; }
+  #heroImg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 35%; filter:sepia(.35) contrast(1.05); }
+  #hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,14,10,.55) 0%, rgba(18,14,10,0) 30%, rgba(18,14,10,.25) 55%, #120e0a 100%); }
+  #heroTop { position:absolute; z-index:2; top:calc(12px + env(safe-area-inset-top)); left:16px; right:16px; display:flex; justify-content:flex-end; align-items:center; gap:8px; }
+  #heroTop #langBar { margin:0; }
+  #langBar button { background:rgba(18,14,10,.65); backdrop-filter:blur(4px); }
+  #setOpen { width:38px; height:38px; min-height:0; padding:8px; border-radius:50%; background:rgba(18,14,10,.65); border:1px solid rgba(243,210,122,.35); color:#f2e8d8; box-shadow:none; }
+  #setOpen svg { width:100%; height:100%; display:block; }
+  #heroText { position:absolute; z-index:2; left:18px; right:18px; bottom:14px; }
+  #list #heroText h1 { font:700 38px/1.02 var(--serif); text-transform:none; letter-spacing:0; border:0; padding:0; margin:0 0 8px; color:#f6ecd8; text-shadow:0 2px 12px rgba(0,0,0,.7); text-align:left; }
+  #list #heroText .sub { text-align:left; margin:0; color:#e6d8bd; font-size:14px; line-height:1.35; text-shadow:0 1px 6px rgba(0,0,0,.8); max-width:30em; }
+
+  #progCard { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:6px 0 14px; padding:12px; border-radius:18px; background:linear-gradient(#211a13,#1a140f); border:1px solid rgba(217,164,65,.28); box-shadow:0 8px 24px rgba(0,0,0,.35); }
+  #ring { position:relative; flex:none; width:76px; height:76px; }
+  #ring svg { width:100%; height:100%; transform:rotate(-90deg); }
+  #ring circle { fill:none; stroke-width:3.4; }
+  #ring .trk { stroke:rgba(242,232,216,.13); }
+  #ringArc { stroke:#e8b84a; stroke-linecap:round; stroke-dasharray:0 200; transition:stroke-dasharray .5s; }
+  #ring > div { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1; }
+  #ringN { font:700 24px var(--serif); color:#f6ecd8; }
+  #ringOf { font-size:11px; color:var(--muted); margin-top:3px; }
+  .pcTxt { flex:1; min-width:0; display:flex; flex-direction:column; gap:3px; }
+  .pcTxt b { font:600 16px Inter,system-ui,sans-serif; }
+  .pcTxt small { color:var(--muted); font-size:12px; line-height:1.3; }
+  #contBtn { flex:1 0 100%; padding:12px 14px; font:700 14px Inter,system-ui,sans-serif; border-radius:14px; background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; text-transform:none; letter-spacing:0; }
+  #installBox { margin:0 0 14px; }
+  #installBtn { width:100%; }
+
+  #tiles { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:0 0 22px; }
+  .tile { position:relative; height:112px; padding:12px; border-radius:16px; border:1px solid rgba(217,164,65,.25); display:flex; align-items:flex-end; gap:8px; text-align:left;
+    background:linear-gradient(0deg, rgba(14,10,7,.92) 10%, rgba(14,10,7,.35) 70%), var(--img) center/cover; color:#f6ecd8; box-shadow:0 6px 16px rgba(0,0,0,.35); text-transform:none; letter-spacing:0; font:600 15px/1.2 Inter,system-ui,sans-serif; }
+  .tile svg { flex:none; width:28px; height:28px; color:#f3d27a; }
+  .tile em { font-style:normal; color:#f3d27a; }
+
+  .secTitle { font:700 22px var(--serif); margin:0 0 10px; color:#f6ecd8; display:flex; align-items:center; gap:8px; }
+  .secTitle::before { content:"🏰"; font-size:20px; }
+  #places { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+  .place { display:flex; align-items:center; gap:12px; padding:0 12px 0 0; min-height:74px; border-radius:16px; overflow:hidden; text-align:left; background:#1c1610; border:1px solid rgba(217,164,65,.18); color:var(--text); box-shadow:none; text-transform:none; letter-spacing:0; font:inherit; }
+  .place.all { border-color:#d9a441; box-shadow:0 0 0 1px rgba(217,164,65,.35); }
+  .place img { flex:none; width:104px; height:74px; object-fit:cover; filter:sepia(.25); }
+  .ptxt { flex:1; min-width:0; display:flex; flex-direction:column; gap:3px; }
+  .ptxt b { font:600 16px/1.2 var(--serif); }
+  .ptxt small { color:var(--muted); font-size:13px; }
+  .chev { flex:none; width:34px; height:34px; border-radius:50%; background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; font:700 22px/32px Inter,sans-serif; text-align:center; font-style:normal; }
+  #home .free { margin:8px 0 6px; }
+
+  #subBar { position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:10px; padding:calc(10px + env(safe-area-inset-top)) 16px 10px; background:rgba(18,14,10,.96); border-bottom:1px solid rgba(217,164,65,.2); margin-bottom:12px; }
+  #subBack { flex:none; width:40px; height:40px; min-height:0; padding:0; border-radius:50%; background:#1c1610; border:1px solid rgba(217,164,65,.35); color:#f3d27a; font:400 30px/36px Inter,sans-serif; box-shadow:none; }
+  #subTitle { margin:0; font:700 20px/1.15 var(--serif); color:#f6ecd8; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+  #filters { display:flex; flex-direction:column; gap:10px; margin-bottom:12px; }
+  #q { width:100%; padding:12px 14px 12px 40px; border-radius:14px; border:1px solid rgba(217,164,65,.3); background:#1c1610 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b5a68f' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") 12px center/20px no-repeat; color:var(--text); font:16px Inter,system-ui,sans-serif; }
+  #q:focus { outline:2px solid #d9a441; outline-offset:1px; }
+  #seg { display:flex; background:#1c1610; border:1px solid rgba(217,164,65,.25); border-radius:12px; padding:3px; }
+  #seg button { flex:1; min-height:0; padding:8px 4px; border-radius:9px; background:transparent; color:var(--muted); font:600 13px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
+  #seg button.on { background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; }
+  #fRow { display:flex; gap:8px; }
+  #period { flex:1; min-width:0; padding:9px 10px; border-radius:12px; border:1px solid rgba(217,164,65,.25); background:#1c1610; color:var(--text); font:14px Inter,system-ui,sans-serif; }
+  #storyOnly { flex:none; min-height:0; padding:9px 12px; border-radius:12px; background:#1c1610; border:1px solid rgba(217,164,65,.25); color:var(--muted); font:600 13px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
+  #storyOnly.on { background:rgba(244,198,75,.18); color:#f3d27a; border-color:#d9a441; }
+  #foundN { margin:0; color:var(--muted); font-size:13px; }
+  #foundN:empty { display:none; }
+  #list #chips { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; gap:8px; padding:2px 16px; margin:0 0 14px; }
+  #list #chips[hidden] { display:none; }
+  #list .chip { flex:none; white-space:nowrap; border-radius:999px; padding:8px 14px; background:#1c1610; color:#d9cbb2; border:1px solid rgba(217,164,65,.28); font:500 14px Inter,system-ui,sans-serif; box-shadow:none; }
+  #list .chip::before, #list .chip::after { display:none; }
+  #list .chip.on { background:#f6ecd8; color:#1c1610; border-color:#f6ecd8; font-weight:700; box-shadow:none; }
+
+  #botNav { position:fixed; z-index:30; left:0; right:0; bottom:0; display:flex; padding:6px 6px calc(6px + env(safe-area-inset-bottom)); background:rgba(16,12,9,.97); border-top:1px solid rgba(217,164,65,.25); backdrop-filter:blur(8px); }
+  #botNav .tab { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; min-height:0; padding:6px 2px 4px; background:none; border:0; border-radius:0; box-shadow:none; color:#a8987f; font:500 12px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; position:relative; }
+  #botNav .tab svg { width:24px; height:24px; }
+  #botNav .tab.on { color:#f3c650; background:none; }
+  #botNav .tab.on::after { content:""; position:absolute; bottom:-2px; left:28%; right:28%; height:3px; border-radius:2px; background:#f3c650; }
+
+  #mapView { margin:0; }
+  #map { height:calc(100dvh - 205px - env(safe-area-inset-bottom) - env(safe-area-inset-top)); min-height:280px; background:#2a231b; }
+  #mapBar { display:flex; align-items:center; gap:10px; padding:10px 16px 4px; }
+  #locBtn { flex:none; min-height:0; padding:9px 14px; border-radius:12px; background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; font:700 14px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
+  #mapInfo { color:var(--muted); font-size:13px; }
+  #mapLegend { margin:2px 16px 0; color:var(--muted); font-size:12px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .lg { display:inline-block; width:12px; height:12px; border-radius:50%; margin-left:6px; }
+  .lg.todo { background:#1c1610; border:2px solid #e8b84a; }
+  .lg.done { background:#5f9e45; border:2px solid #fff; }
+  .lg.near { background:#f4c64b; border:2px solid #fff; }
+  .pin span { display:flex; align-items:center; justify-content:center; width:24px; height:24px; margin:3px; border-radius:50%; box-sizing:border-box; font:700 11px Inter,sans-serif; color:#f6ecd8; box-shadow:0 2px 6px rgba(0,0,0,.5); }
+  .pin.many span { width:30px; height:30px; margin:0; font-size:12px; }
+  .pin.todo span { background:#1c1610; border:3px solid #e8b84a; }
+  .pin.done span { background:#5f9e45; border:3px solid #fff; }
+  .pin.near span { background:#f4c64b; border:3px solid #fff; color:#2b1d08; animation:pinPulse 1.6s infinite; }
+  @keyframes pinPulse { 0%{box-shadow:0 0 0 0 rgba(244,198,75,.7)} 100%{box-shadow:0 0 0 14px rgba(244,198,75,0)} }
+  #map .leaflet-popup-content-wrapper, #map .leaflet-popup-tip { background:#1c1610; color:#f2e8d8; box-shadow:0 0 0 1px rgba(217,164,65,.5), 0 8px 24px rgba(0,0,0,.6); }
+  #map .leaflet-popup-content { margin:10px; }
+  #cards .groupTitle:not(.decade) { display:none; }
+  .leaflet-container a.leaflet-popup-close-button { color:#f3d27a; }
+  .mpop { max-height:300px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; }
+  .mnear { margin:0; color:#f3d27a; font-weight:700; }
+  .mrow { display:flex; gap:8px; }
+  .mrow img { flex:none; width:72px; height:56px; object-fit:cover; border-radius:6px; filter:sepia(.3); }
+  .mrow b { display:block; font:600 13px/1.25 Inter,sans-serif; }
+  .mrow small { display:block; color:var(--muted); font-size:11px; margin:2px 0 5px; }
+  .macts { display:flex; gap:6px; }
+  .macts button { min-height:0; padding:6px 8px; font:600 12px Inter,sans-serif; border-radius:8px; box-shadow:none; text-transform:none; letter-spacing:0; }
+  .macts button:not(.main) { background:#2a231b; color:#e6d8bd; }
+  .macts button.on { background:#5f9e45; color:#fff; }
+
+  #setDlg { width:min(560px, calc(100vw - 16px)); max-height:calc(100dvh - 24px); border:0; padding:0; border-radius:16px; background:#1c1610; color:var(--text); box-shadow:0 0 0 2px var(--brass2), 0 20px 50px rgba(0,0,0,.7); }
+  #setDlg::backdrop { background:rgba(0,0,0,.7); }
+  .setBox { padding:16px; display:flex; flex-direction:column; gap:6px; }
+  .setHead { display:flex; align-items:center; justify-content:space-between; }
+  .setHead h3 { margin:0; font:700 22px var(--serif); }
+  #setClose { width:40px; height:40px; min-height:0; padding:0; border-radius:50%; background:var(--paper); color:var(--ink); }
+  #setDlg #fbBox { margin:8px 0 0; }
+  #setDlg #about { margin:8px 0; }
+  @media (min-width: 700px) {
+    #list > #home, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests { width:min(760px, calc(100% - 32px)); margin-left:auto; margin-right:auto; }
+    #tiles { grid-template-columns:repeat(4, 1fr); }
+  }
 </style>
 </head>
 <body>
 
 <section id="list" class="screen">
-  <div id="langBar" role="group" aria-label="Valoda / Язык / Language"><button type="button" data-lang="lv" lang="lv">LV</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="ru" lang="ru">RU</button></div>
-  <div class="titleBox"><span class="orn">❦</span><h1>Крепость<br>сквозь время</h1><span class="orn r">❦</span></div>
-  <p class="sub">Найди в Даугавпилсской крепости место со старой фотографии и встань точно туда, откуда снимал фотограф.</p>
-  <p class="free">Бесплатно · фото принадлежат авторам и архивам · <button type="button" id="aboutLink">подробнее</button></p>
-  <div id="installBox" hidden>
-    <button id="installBtn" class="main">Скачать на телефон</button>
-    <p id="installHelp" hidden></p>
+  <header id="hero">
+    <img id="heroImg" src="photos/spot253.jpg" alt="">
+    <div id="heroTop">
+      <div id="langBar" role="group" aria-label="Valoda / Язык / Language"><button type="button" data-lang="lv" lang="lv">LV</button><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="ru" lang="ru">RU</button></div>
+      <button type="button" id="setOpen" aria-label="Настройки"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+    </div>
+    <div id="heroText">
+      <h1>Крепость сквозь время</h1>
+      <p class="sub">Найди в Даугавпилсской крепости место со старой фотографии и встань точно туда, откуда снимал фотограф.</p>
+    </div>
+  </header>
+  <div id="subBar" hidden><button type="button" id="subBack" aria-label="Назад">‹</button><h2 id="subTitle"></h2></div>
+  <div id="home">
+    <div id="progCard">
+      <div id="ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="19" class="trk"/><circle cx="22" cy="22" r="19" id="ringArc"/></svg><div><b id="ringN">0</b><span id="ringOf"></span></div></div>
+      <div class="pcTxt"><b>Ваш прогресс</b><small>Отмечайте «Уже был здесь» на местах, где побывали</small></div>
+      <button type="button" id="contBtn" class="main">▶ Продолжить</button>
+    </div>
+    <div id="installBox" hidden>
+      <button id="installBtn" class="main">Скачать на телефон</button>
+      <p id="installHelp" hidden></p>
+    </div>
+    <div id="tiles">
+      <button type="button" class="tile" data-go="map" style="--img:url(photos/thumbs/spot542.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg><span>Карта крепости</span></button>
+      <button type="button" class="tile" data-go="all" style="--img:url(photos/thumbs/spot246.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Фотографии из прошлого</span></button>
+      <button type="button" class="tile" data-go="quests" style="--img:url(photos/thumbs/spot254.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4"/></svg><span>Квесты и задания</span></button>
+      <button type="button" class="tile" data-go="lib" style="--img:url(photos/thumbs/spot262.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4z"/><path d="M16.5 5.2l3.6-1 3 15.4-3.6 1z" transform="translate(-2 0)"/></svg><span>Библиотека<em id="libCount"></em></span></button>
+    </div>
+    <h2 class="secTitle">Места крепости</h2>
+    <div id="places"></div>
+    <p class="free">Бесплатно · фото принадлежат авторам и архивам · <button type="button" id="aboutLink">подробнее</button></p>
   </div>
-  <div id="progress"></div>
-  <div id="progressBar"><i></i></div>
-  <div id="tabs" role="tablist">
-    <button class="tab on" data-view="all" role="tab">Все места</button>
-    <button class="tab" data-view="quests" role="tab">Квесты</button>
-    <button class="tab" data-view="lib" role="tab">Библиотека<span id="libCount"></span></button>
+  <div id="filters" hidden>
+    <input id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Поиск: ворота, собор, 1930…">
+    <div id="seg" role="group"><button type="button" data-st="all" class="on">Все</button><button type="button" data-st="todo">Ещё не был</button><button type="button" data-st="done">Был ✓</button></div>
+    <div id="fRow">
+      <select id="period" aria-label="Годы">
+        <option value="">Все годы</option>
+        <option value="0-1914">До 1915</option>
+        <option value="1915-1919">1915–1919</option>
+        <option value="1920-1940">1920–1940</option>
+        <option value="1941-1945">1941–1945</option>
+        <option value="1946-2100">После 1945</option>
+        <option value="none">Без года</option>
+      </select>
+      <button type="button" id="storyOnly" aria-pressed="false">📜 С рассказами</button>
+    </div>
+    <p id="foundN"></p>
   </div>
   <div id="adminBar" hidden>
     <span id="adminCount"></span>
     <button id="adminCopy">Скопировать список</button>
   </div>
-  <div id="chips"></div>
-  <div id="cards"></div>
+  <div id="chips" hidden></div>
+  <div id="cards" hidden></div>
+  <div id="mapView" hidden>
+    <div id="map"></div>
+    <div id="mapBar"><button type="button" id="locBtn">📍 Где я</button><span id="mapInfo"></span></div>
+    <p id="mapLegend"><i class="lg todo"></i> ещё не был <i class="lg done"></i> был <i class="lg near"></i> рядом с вами</p>
+  </div>
   <div id="lib" hidden></div>
   <div id="quests" hidden></div>
-  <p id="fbBox"><button type="button" id="fbOpen">💬 Оставить отзыв</button><br><small>Анонимно: без имён, телефонов и местоположения</small></p>
-  <p id="handSet"><button type="button" id="handChange"></button></p>
+  <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
+  <nav id="botNav">
+    <button type="button" class="tab on" data-view="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Главная</span></button>
+    <button type="button" class="tab" data-view="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg><span>Карта</span></button>
+    <button type="button" class="tab" data-view="quests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4"/></svg><span>Квесты</span></button>
+    <button type="button" class="tab" data-view="lib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4z"/><path d="M16.5 5.2l3.6-1 3 15.4-3.6 1z" transform="translate(-2 0)"/></svg><span>Библиотека</span></button>
+  </nav>
+</section>
+
+<dialog id="setDlg">
+  <div class="setBox">
+    <div class="setHead"><h3>Настройки</h3><button type="button" id="setClose" aria-label="Закрыть">✕</button></div>
+    <p id="fbBox"><button type="button" id="fbOpen">💬 Оставить отзыв</button><br><small>Анонимно: без имён, телефонов и местоположения</small></p>
+    <p id="handSet"><button type="button" id="handChange"></button></p>
   <details id="about">
     <summary>О приложении и правах на фото</summary>
     <p><b>«Крепость сквозь время» — бесплатный краеведческий проект.</b> Пользоваться им можно без оплаты и без регистрации.</p>
@@ -606,10 +779,10 @@
     <p>Исторические справки собраны по открытым источникам и могут содержать неточности. Поправки и воспоминания очень ценны — пишите через 📜.</p>
     <p>Ваши снимки из «Библиотеки» хранятся только на вашем телефоне. Рассказы, отправленные через 📜, после проверки видят все; контакт видит только разработчик. Приложение считает только общее число сделанных снимков — без имён, фото и местоположения.</p>
   </details>
-  <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
-  <label class="btn" for="addInput">+ Добавить старое фото</label>
-  <input id="addInput" type="file" accept="image/*">
-</section>
+    <label class="btn" for="addInput">+ Добавить старое фото</label>
+    <input id="addInput" type="file" accept="image/*">
+  </div>
+</dialog>
 
 <section id="cam" class="screen" hidden>
   <div class="bar">
@@ -808,8 +981,10 @@ const visibleSpots = () => allSpots().filter(s => ADMIN || !hiddenIds.includes(s
 function updateProgress() {
   const spots = visibleSpots();
   const doneCount = spots.filter(s => found.includes(s.id)).length;
-  $('progress').innerHTML = spots.length ? `<span class="lbl">${T('Уже посетили:')}</span><span class="num">${Tf('{a} из {b}', { a: doneCount, b: spots.length })}</span>` : '';
-  $('progressBar').firstElementChild.style.width = spots.length ? (100 * doneCount / spots.length).toFixed(1) + '%' : '0';
+  $('ringN').textContent = doneCount;
+  $('ringOf').textContent = Tf('из {b}', { b: spots.length });
+  const C = 2 * Math.PI * 19, part = spots.length ? doneCount / spots.length : 0;
+  $('ringArc').style.strokeDasharray = `${(C * part).toFixed(2)} ${C.toFixed(2)}`;
 }
 
 function renderChips(spots) {
@@ -825,9 +1000,6 @@ function renderChips(spots) {
     chip.textContent = `${T(name)} ${name === ALL ? spots.length : counts[name]}`;
     chip.onclick = () => {
       if (name === activeGroup) return;
-      // Раздел (например, «Михайловские ворота») — шаг вглубь: «Назад» вернёт во «Все» и наверх списка.
-      if (name === ALL) { navBack(); return; }
-      if (activeGroup === ALL) navPush();
       activeGroup = name;
       renderList();
       toListTop();
@@ -1041,8 +1213,8 @@ function stepBack() {
   if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); renderList(); return; }
   if (!$('result').hidden) { const go = flyToAlbum(); setInset(false); current = null; show('list'); renderList(); requestAnimationFrame(go); return; }
   if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
-  if (view !== 'all') { setView('all'); return; }
-  if (activeGroup !== ALL) { activeGroup = ALL; renderList(); toListTop(); return; }
+  if ($('setDlg').open) { $('setDlg').close(); return; }
+  if (view !== 'home') { setView('home'); return; }
 }
 function toListTop() { $('list').scrollTop = 0; window.scrollTo(0, 0); }
 addEventListener('popstate', e => {
@@ -1051,7 +1223,7 @@ addEventListener('popstate', e => {
 });
 
 /* ===== Моя библиотека: снимки, сделанные в приложении, хранятся в телефоне (IndexedDB) ===== */
-let view = 'all';
+let view = 'home';
 const LIB_DB = 'krepost-lib';
 function libDb() {
   return new Promise((res, rej) => {
@@ -1126,22 +1298,217 @@ async function renderLib() {
 }
 function setView(v) {
   view = v;
-  for (const b of document.querySelectorAll('.tab')) b.classList.toggle('on', b.dataset.view === v);
-  const lib = v === 'lib', qs = v === 'quests', other = lib || qs;
-  $('lib').hidden = !lib;
-  $('quests').hidden = !qs;
-  $('cards').hidden = other; $('chips').hidden = other;
-  document.querySelector('label.btn[for=addInput]').style.display = other ? 'none' : '';
-  if (other) $('empty').hidden = true;
-  if (lib) renderLib(); else if (qs) { openQuest = null; renderQuests(); } else renderList();
+  const navOf = { home: 'home', all: 'home', map: 'map', quests: 'quests', lib: 'lib' }[v];
+  for (const b of document.querySelectorAll('#botNav .tab')) b.classList.toggle('on', b.dataset.view === navOf);
+  const home = v === 'home', all = v === 'all';
+  $('hero').hidden = !home; $('home').hidden = !home;
+  $('subBar').hidden = home;
+  $('filters').hidden = !all; $('chips').hidden = !all; $('cards').hidden = !all;
+  $('mapView').hidden = v !== 'map';
+  $('lib').hidden = v !== 'lib';
+  $('quests').hidden = v !== 'quests';
+  $('list').classList.toggle('mapMode', v === 'map');
+  if (!all) $('empty').hidden = true;
+  if (v === 'quests') openQuest = null;
+  renderList();
 }
-for (const b of document.querySelectorAll('.tab')) b.onclick = () => {
-  const v = b.dataset.view;
-  if (v === view) return;
-  if (v === 'all') { if (navDepth > 0) history.go(-navDepth); else setView('all'); return; }
-  if (view === 'all') navPush();
-  else if (openQuest) { openQuest = null; } // из квеста сразу в другой раздел — тот же шаг
+/* Переход в раздел. С главной — шаг вглубь (кнопка «Назад» вернёт на главную), между разделами — без нового шага. */
+function goView(v, group) {
+  if (v === 'home') { if (navDepth > 0) history.go(-navDepth); else setView('home'); toListTop(); return; }
+  if (v === 'all') activeGroup = group || ALL;
+  if (view === 'home') navPush();
   setView(v);
+  toListTop();
+}
+for (const b of document.querySelectorAll('#botNav .tab')) b.onclick = () => {
+  if (b.dataset.view === view && !(view === 'quests' && openQuest)) { toListTop(); return; }
+  goView(b.dataset.view);
+};
+for (const b of document.querySelectorAll('#tiles .tile')) b.onclick = () => goView(b.dataset.go);
+$('subBack').onclick = () => navBack();
+
+/* Настройки (шестерёнка): отзыв, рука, о приложении */
+$('setOpen').onclick = () => { navPush(); $('setDlg').showModal(); };
+$('setClose').onclick = () => navBack();
+$('setDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
+
+/* ===== Главная: прогресс, «Продолжить», места крепости ===== */
+const LAST_KEY = 'krepost.last';
+const yearOfSpot = s => { const m = String(s.year || '').match(/\d{4}/); return m ? +m[0] : 9999; };
+const byYear = list => list.map((s, i) => [s, i]).sort((a, b) => yearOfSpot(a[0]) - yearOfSpot(b[0]) || a[1] - b[1]).map(x => x[0]);
+function nextSpot() {
+  const spots = visibleSpots();
+  const last = spots.find(s => s.id === read(LAST_KEY, null));
+  const order = list => byYear(list).filter(s => !found.includes(s.id));
+  if (last) {
+    const same = order(spots.filter(s => groupOf(s) === groupOf(last)));
+    const after = same.find(s => yearOfSpot(s) >= yearOfSpot(last) && s.id !== last.id);
+    if (after || same[0]) return after || same[0];
+  }
+  return order(spots)[0] || null;
+}
+$('contBtn').onclick = () => { const sp = nextSpot(); if (sp) openSpot(sp); else goView('all'); };
+
+function renderHome() {
+  updateLibCount();
+  const box = $('places');
+  box.replaceChildren();
+  const spots = visibleSpots();
+  const rows = [[ALL, spots], ...GROUPS.map(g => [g, spots.filter(s => groupOf(s) === g)]).filter(r => r[1].length)];
+  for (const [name, list] of rows) {
+    const done = list.filter(s => found.includes(s.id)).length;
+    const pic = byYear(list).find(s => s.thumb) || list[0];
+    const row = document.createElement('button');
+    row.type = 'button';
+    row.className = 'place' + (name === ALL ? ' all' : '');
+    const img = document.createElement('img');
+    img.src = pic.thumb || pic.src; img.alt = ''; img.loading = 'lazy';
+    const txt = document.createElement('span');
+    txt.className = 'ptxt';
+    const b = document.createElement('b'); b.textContent = name === ALL ? T('Все места') : T(name);
+    const m = document.createElement('small');
+    m.textContent = `📷 ${list.length}` + (done ? ` · ✓ ${done}` : '');
+    txt.append(b, m);
+    const go = document.createElement('i'); go.className = 'chev'; go.textContent = '›';
+    row.append(img, txt, go);
+    row.onclick = () => goView('all', name);
+    box.append(row);
+  }
+}
+
+/* ===== Поиск и фильтры ===== */
+let fText = '', fStatus = 'all', fPeriod = '', fStory = false;
+const hasStory = s => !!((HIST.spots && HIST.spots[s.id]) || (facts[s.id] || []).length);
+function passFilters(s) {
+  if (fStatus === 'todo' && found.includes(s.id)) return false;
+  if (fStatus === 'done' && !found.includes(s.id)) return false;
+  if (fStory && !hasStory(s)) return false;
+  if (fPeriod) {
+    const y = yearOfSpot(s);
+    if (fPeriod === 'none') { if (y !== 9999) return false; }
+    else { const [lo, hi] = fPeriod.split('-').map(Number); if (y < lo || y > hi) return false; }
+  }
+  if (fText) {
+    const hay = [s.title, s.hint, s.year, T(groupOf(s)), groupOf(s), s.credit].join(' ').toLowerCase();
+    if (!fText.split(/\s+/).every(w => hay.includes(w))) return false;
+  }
+  return true;
+}
+let qTimer = 0;
+$('q').oninput = () => { clearTimeout(qTimer); qTimer = setTimeout(() => { fText = $('q').value.trim().toLowerCase(); renderList(); }, 200); };
+$('q').onkeydown = e => { if (e.key === 'Enter') $('q').blur(); };
+for (const b of document.querySelectorAll('#seg button')) b.onclick = () => {
+  fStatus = b.dataset.st;
+  for (const x of document.querySelectorAll('#seg button')) x.classList.toggle('on', x === b);
+  renderList();
+};
+$('period').onchange = () => { fPeriod = $('period').value; renderList(); };
+$('storyOnly').onclick = () => { fStory = !fStory; $('storyOnly').setAttribute('aria-pressed', fStory); $('storyOnly').classList.toggle('on', fStory); renderList(); };
+
+/* ===== Карта-гид (OpenStreetMap через Leaflet, файлы лежат в vendor/leaflet) ===== */
+let lmap = null, markLayer = null, meDot = null, mePos = null, leafletLoading = null;
+const NEAR_M = 120;
+function loadLeaflet() {
+  if (window.L) return Promise.resolve();
+  if (leafletLoading) return leafletLoading;
+  leafletLoading = new Promise((res, rej) => {
+    const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = 'vendor/leaflet/leaflet.css';
+    const js = document.createElement('script'); js.src = 'vendor/leaflet/leaflet.js';
+    js.onload = res; js.onerror = () => { leafletLoading = null; rej(); };
+    document.head.append(css, js);
+  });
+  return leafletLoading;
+}
+function distM(a, b) {
+  const R = 6371000, r = Math.PI / 180;
+  const x = (b.lng - a.lng) * r * Math.cos((a.lat + b.lat) / 2 * r), y = (b.lat - a.lat) * r;
+  return Math.hypot(x, y) * R;
+}
+async function renderMap() {
+  $('subTitle').textContent = T('Карта крепости');
+  try { await loadLeaflet(); } catch { $('mapInfo').textContent = T('Карта не загрузилась. Проверьте интернет.'); return; }
+  if (view !== 'map') return;
+  if (!lmap) {
+    lmap = L.map('map', { zoomControl: true, attributionControl: true }).setView([55.8838, 26.4985], 15);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(lmap);
+    markLayer = L.layerGroup().addTo(lmap);
+  }
+  setTimeout(() => { lmap.invalidateSize(); drawPins(); }, 50);
+  if (!lmap._pinsHooked) { lmap.on('zoomend', drawPins); lmap.on('popupclose', () => setTimeout(drawPins, 0)); lmap._pinsHooked = true; }
+  drawPins();
+}
+/* Метки: снимки ближе ~40 пикселей друг к другу на экране собираются в одну метку с числом.
+   Нажатие на такую метку приближает карту; на самом крупном масштабе — открывает список снимков. */
+function drawPins() {
+  if (!lmap || view !== 'map') return;
+  markLayer.clearLayers();
+  const z = lmap.getZoom(), CELL = 40;
+  const cells = new Map();
+  let n = 0;
+  for (const s of visibleSpots()) {
+    const p = coordsOf(s);
+    if (!p) continue;
+    n++;
+    const pt = lmap.project([p.lat, p.lng], z);
+    const k = Math.floor(pt.x / CELL) + ':' + Math.floor(pt.y / CELL);
+    if (!cells.has(k)) cells.set(k, []);
+    cells.get(k).push([s, p]);
+  }
+  for (const group of cells.values()) {
+    const list = group.map(g => g[0]);
+    const lat = group.reduce((a, g) => a + g[1].lat, 0) / group.length;
+    const lng = group.reduce((a, g) => a + g[1].lng, 0) / group.length;
+    const done = list.filter(s => found.includes(s.id)).length;
+    const near = mePos && group.some(g => distM(mePos, g[1]) < NEAR_M);
+    const cls = done === list.length ? 'done' : near ? 'near' : 'todo';
+    const big = list.length > 1 ? ' many' : '';
+    const icon = L.divIcon({ className: 'pin ' + cls + big, html: `<span>${list.length > 1 ? list.length : ''}</span>`, iconSize: [30, 30], iconAnchor: [15, 15] });
+    const m = L.marker([lat, lng], { icon }).addTo(markLayer);
+    const samePlace = group.every(g => distM(g[1], group[0][1]) < 15);
+    if (list.length > 1 && !samePlace && z < 18) {
+      m.on('click', () => lmap.fitBounds(L.latLngBounds(group.map(g => [g[1].lat, g[1].lng])).pad(0.4), { maxZoom: 19 }));
+    } else {
+      m.bindPopup(() => mapPopup(byYear(list), near), { maxWidth: 260, minWidth: 220 });
+    }
+  }
+  $('mapInfo').textContent = Tf('На карте {a} из {b} снимков', { a: n, b: visibleSpots().length });
+}
+function mapPopup(list, near) {
+  const box = document.createElement('div');
+  box.className = 'mpop';
+  if (near) { const h = document.createElement('p'); h.className = 'mnear'; h.textContent = T('Вы рядом с этим местом'); box.append(h); }
+  for (const s of list) {
+    const row = document.createElement('div'); row.className = 'mrow';
+    const img = document.createElement('img'); img.src = s.thumb || s.src; img.alt = '';
+    const t = document.createElement('div');
+    const b = document.createElement('b'); b.textContent = s.title;
+    const y = document.createElement('small'); y.textContent = [s.year, T(groupOf(s))].filter(Boolean).join(' · ');
+    const acts = document.createElement('div'); acts.className = 'macts';
+    const open = document.createElement('button'); open.type = 'button'; open.className = 'main'; open.textContent = T('Открыть');
+    open.onclick = () => { lmap.closePopup(); openSpot(s); };
+    const been = document.createElement('button'); been.type = 'button';
+    const paint = () => { been.textContent = found.includes(s.id) ? T('Был здесь ✓') : T('Уже был здесь'); been.classList.toggle('on', found.includes(s.id)); };
+    been.onclick = () => { found = found.includes(s.id) ? found.filter(f => f !== s.id) : [...found, s.id]; write(FOUND_KEY, found); paint(); updateProgress(); };
+    paint();
+    acts.append(open, been);
+    t.append(b, y, acts);
+    row.append(img, t);
+    box.append(row);
+  }
+  return box;
+}
+$('locBtn').onclick = () => {
+  if (!navigator.geolocation) { $('mapInfo').textContent = T('Телефон не может определить место.'); return; }
+  $('mapInfo').textContent = T('Определяю, где вы…');
+  // Место определяется только на телефоне и никуда не отправляется.
+  navigator.geolocation.getCurrentPosition(pos => {
+    mePos = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+    if (!lmap) return;
+    if (meDot) meDot.remove();
+    meDot = L.circleMarker([mePos.lat, mePos.lng], { radius: 9, color: '#fff', weight: 3, fillColor: '#3b82f6', fillOpacity: 1 }).addTo(lmap);
+    lmap.setView([mePos.lat, mePos.lng], Math.max(lmap.getZoom(), 17));
+    renderMap();
+  }, () => { $('mapInfo').textContent = T('Не удалось определить место. Разрешите доступ к местоположению.'); }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 });
 };
 
 /* Открыть пару «тогда / сейчас» на экране сравнения (из библиотеки или сразу после съёмки) */
@@ -1247,7 +1614,7 @@ async function loadFacts() {
     for (const f of rows) (next[f.spot_id] = next[f.spot_id] || []).push(f);
     facts = next;
     write(FACTS_CACHE, facts);
-    if (!$('list').hidden && view === 'all') renderList();
+    if (!$('list').hidden && (view === 'all' || view === 'home')) renderList();
   } catch { /* без сети — показываем сохранённые */ }
 }
 let factsSpot = null;
@@ -1401,7 +1768,7 @@ async function updateShotStats() {
     el.textContent = `📷 Снимков всего: ${s.shots} · телефонов: ${s.phones} · за 30 дней — снимков: ${s.shots30}, телефонов: ${s.phones30}`;
   } catch { /* без сети */ }
 }
-$('aboutLink').onclick = () => { $('about').open = true; $('about').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+$('aboutLink').onclick = () => { navPush(); $('setDlg').showModal(); $('about').open = true; };
 $('factsDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
 $('factsForm').onsubmit = async e => {
   e.preventDefault();
@@ -1435,8 +1802,10 @@ async function updatePendingFacts() {
 }
 
 function renderList() {
-  if (view === 'lib') { updateProgress(); renderLib(); return; }
-  if (view === 'quests') { updateProgress(); renderQuests(); return; }
+  if (view === 'lib') { updateProgress(); $('subTitle').textContent = T('Библиотека'); renderLib(); return; }
+  if (view === 'quests') { updateProgress(); $('subTitle').textContent = T('Квесты'); renderQuests(); return; }
+  if (view === 'home') { updateProgress(); renderHome(); return; }
+  if (view === 'map') { updateProgress(); renderMap(); return; }
   updateLibCount();
   const box = $('cards');
   box.replaceChildren();
@@ -1451,8 +1820,9 @@ function renderList() {
   // Конкретный объект — тоже по годам, на карточке номер «5/40».
   const yearOf = s => { const m = String(s.year || '').match(/\d{4}/); return m ? +m[0] : 9999; };
   const isAll = activeGroup === ALL;
+  $('subTitle').textContent = isAll ? T('Фотографии из прошлого') : T(activeGroup);
   const shown = spots
-    .filter(s => isAll || groupOf(s) === activeGroup)
+    .filter(s => (isAll || groupOf(s) === activeGroup) && passFilters(s))
     .map((s, i) => [s, i])
     .sort((a, b) => (isAll ? 0 : rank(a[0]) - rank(b[0])) || yearOf(a[0]) - yearOf(b[0]) || a[1] - b[1])
     .map(x => x[0]);
@@ -1462,6 +1832,8 @@ function renderList() {
     return y === 9999 ? T('Без года') : yearT(Math.floor(y / 10) * 10 + '-е');
   };
 
+  const filtering = fText || fStatus !== 'all' || fPeriod || fStory;
+  $('foundN').textContent = filtering ? (shown.length ? Tf('Найдено: {n}', { n: shown.length }) : T('Ничего не нашлось. Попробуйте другое слово или сбросьте фильтры.')) : '';
   let lastHead = null;
   shown.forEach((spot, idx) => {
     if (headOf(spot) !== lastHead) {
@@ -1675,6 +2047,7 @@ async function openSpot(spot, ctx) {
   if (read(HAND_KEY, null) === null) await askHand();
   if (!$('list').hidden) navPush(); // из списка в камеру — шаг вглубь (из «Переснять» — нет)
   current = spot;
+  write(LAST_KEY, spot.id);
   questCtx = ctx || null;
   $('questTask').textContent = questCtx ? `🎯 ${questCtx.step.task}` : '';
   const img = $('oldImg');
