@@ -577,7 +577,12 @@ window.I18N.lv = {
   "Курсанты 42-й роты на склоне": "42. rotas kursanti uz nogāzes",
   "Аэрофото бастионов и валов": "Bastionu un vaļņu aerofoto",
   "Ж/д мост через Даугаву с воздуха": "Dzelzceļa tilts pār Daugavu no gaisa",
-  "Въезд в цитадель: мост и столбы ворот, 1915–1918": "Iebrauktuve citadelē: tilts un vārtu stabi, 1915–1918"
+  "Въезд в цитадель: мост и столбы ворот, 1915–1918": "Iebrauktuve citadelē: tilts un vārtu stabi, 1915–1918",
+  "Михайловские ворота, группа у арки": "Mihaila vārti, grupa pie arkas",
+  "Выпуск офицеров училища, 1988": "Skolas virsnieku izlaidums, 1988",
+  "Курсант у водоподъёмного здания": "Kursants pie ūdens pacelšanas ēkas",
+  "Курсант-регулировщик на улице Вальню": "Kursants-regulētājs Vaļņu ielā",
+  "Михайловские ворота и бывший Артиллерийский арсенал": "Mihaila vārti un bijušais Artilērijas arsenāls"
  },
  "hints": {
   "Старая открытка": "Veca pastkarte",

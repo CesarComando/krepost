@@ -1444,10 +1444,12 @@ function renderList() {
   $('empty').hidden = spots.length > 0;
 
   const rank = s => GROUPS.indexOf(groupOf(s));
+  // Внутри каждого места — по годам, от старых к новым; без года — в конце.
+  const yearOf = s => { const m = String(s.year || '').match(/\d{4}/); return m ? +m[0] : 9999; };
   const shown = spots
     .filter(s => activeGroup === ALL || groupOf(s) === activeGroup)
     .map((s, i) => [s, i])
-    .sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1])
+    .sort((a, b) => rank(a[0]) - rank(b[0]) || yearOf(a[0]) - yearOf(b[0]) || a[1] - b[1])
     .map(x => x[0]);
 
   let lastGroup = null;

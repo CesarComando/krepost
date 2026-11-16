@@ -577,7 +577,12 @@ window.I18N.en = {
   "Курсанты 42-й роты на склоне": "Cadets of the 42nd company on a slope",
   "Аэрофото бастионов и валов": "Aerial photo of bastions and ramparts",
   "Ж/д мост через Даугаву с воздуха": "Railway bridge over the Daugava from the air",
-  "Въезд в цитадель: мост и столбы ворот, 1915–1918": "Entrance to the citadel: bridge and gate pillars, 1915–1918"
+  "Въезд в цитадель: мост и столбы ворот, 1915–1918": "Entrance to the citadel: bridge and gate pillars, 1915–1918",
+  "Михайловские ворота, группа у арки": "Michael Gate, a group by the arch",
+  "Выпуск офицеров училища, 1988": "Officers’ graduation at the school, 1988",
+  "Курсант у водоподъёмного здания": "Cadet by the water-lifting building",
+  "Курсант-регулировщик на улице Вальню": "Cadet directing traffic on Vaļņu Street",
+  "Михайловские ворота и бывший Артиллерийский арсенал": "Michael Gate and the former Artillery Arsenal"
  },
  "hints": {
   "Старая открытка": "Old postcard",

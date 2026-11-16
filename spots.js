@@ -2469,7 +2469,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1253766",
   "original": "1927-1929__pastvu_1253766.jpg",
   "thumb": "photos/thumbs/spot254.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.882379,
+  "lng": 26.499823
  },
  {
   "id": "s255",
@@ -2505,7 +2507,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1253753",
   "original": "1942__pastvu_1253753.jpg",
   "thumb": "photos/thumbs/spot257.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.883293,
+  "lng": 26.498918
  },
  {
   "id": "s258",
@@ -2517,7 +2521,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1258359",
   "original": "1958__pastvu_1258359.jpg",
   "thumb": "photos/thumbs/spot258.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.883368,
+  "lng": 26.4991
  },
  {
   "id": "s259",
@@ -2529,7 +2535,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1239492",
   "original": "1960-1967__pastvu_1239492.jpg",
   "thumb": "photos/thumbs/spot259.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.883028,
+  "lng": 26.49924
  },
  {
   "id": "s260",
@@ -2541,7 +2549,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244742",
   "original": "1970-1975__pastvu_1244742.jpg",
   "thumb": "photos/thumbs/spot260.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.883812,
+  "lng": 26.499024
  },
  {
   "id": "s261",
@@ -2553,7 +2563,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244330",
   "original": "1971__pastvu_1244330.jpg",
   "thumb": "photos/thumbs/spot261.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.883779,
+  "lng": 26.498772
  },
  {
   "id": "s262",
@@ -2565,7 +2577,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242255",
   "original": "1975-1980__pastvu_1242255.jpg",
   "thumb": "photos/thumbs/spot262.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.883137,
+  "lng": 26.499189
  },
  {
   "id": "s263",
@@ -2577,7 +2591,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244323",
   "original": "1975-1980__pastvu_1244323.jpg",
   "thumb": "photos/thumbs/spot263.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.882565,
+  "lng": 26.499314
  },
  {
   "id": "s264",
@@ -2589,7 +2605,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1225073",
   "original": "1975-1985__pastvu_1225073.jpg",
   "thumb": "photos/thumbs/spot264.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.883142,
+  "lng": 26.499448
  },
  {
   "id": "s265",
@@ -2601,7 +2619,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242256",
   "original": "1975-1985__pastvu_1242256.jpg",
   "thumb": "photos/thumbs/spot265.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.883155,
+  "lng": 26.499554
  },
  {
   "id": "s266",
@@ -2613,7 +2633,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/685387",
   "original": "1975-1985__pastvu_685387.jpg",
   "thumb": "photos/thumbs/spot266.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.88211,
+  "lng": 26.499855
  },
  {
   "id": "s267",
@@ -2625,7 +2647,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244162",
   "original": "1976-1985__pastvu_1244162.jpg",
   "thumb": "photos/thumbs/spot267.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.883922,
+  "lng": 26.498199
  },
  {
   "id": "s268",
@@ -2637,7 +2661,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1225052",
   "original": "1980-1985__pastvu_1225052.jpg",
   "thumb": "photos/thumbs/spot268.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.883244,
+  "lng": 26.499177
  },
  {
   "id": "s269",
@@ -2649,7 +2675,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1238935",
   "original": "1920-1939__pastvu_1238935.jpg",
   "thumb": "photos/thumbs/spot269.jpg",
-  "group": "Константиновские ворота"
+  "group": "Константиновские ворота",
+  "lat": 55.889345,
+  "lng": 26.489311
  },
  {
   "id": "s270",
@@ -2661,7 +2689,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252005",
   "original": "1925-1940__pastvu_1252005.jpg",
   "thumb": "photos/thumbs/spot270.jpg",
-  "group": "Константиновские ворота"
+  "group": "Константиновские ворота",
+  "lat": 55.888748,
+  "lng": 26.487883
  },
  {
   "id": "s271",
@@ -2673,7 +2703,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244741",
   "original": "1960-1970__pastvu_1244741.jpg",
   "thumb": "photos/thumbs/spot271.jpg",
-  "group": "Константиновские ворота"
+  "group": "Константиновские ворота",
+  "lat": 55.888142,
+  "lng": 26.491085
  },
  {
   "id": "s272",
@@ -2685,7 +2717,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1239491",
   "original": "1964__pastvu_1239491.jpg",
   "thumb": "photos/thumbs/spot272.jpg",
-  "group": "Константиновские ворота"
+  "group": "Константиновские ворота",
+  "lat": 55.889024,
+  "lng": 26.488612
  },
  {
   "id": "s273",
@@ -2697,7 +2731,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244421",
   "original": "1976-1985__pastvu_1244421.jpg",
   "thumb": "photos/thumbs/spot273.jpg",
-  "group": "Константиновские ворота"
+  "group": "Константиновские ворота",
+  "lat": 55.888257,
+  "lng": 26.490298
  },
  {
   "id": "s274",
@@ -2709,7 +2745,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1802923",
   "original": "1918__pastvu_1802923.jpg",
   "thumb": "photos/thumbs/spot274.jpg",
-  "group": "Николаевские ворота"
+  "group": "Николаевские ворота",
+  "lat": 55.882931,
+  "lng": 26.495246
  },
  {
   "id": "s275",
@@ -2733,7 +2771,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1801747",
   "original": "1920-1930__pastvu_1801747.jpg",
   "thumb": "photos/thumbs/spot276.jpg",
-  "group": "Николаевские ворота"
+  "group": "Николаевские ворота",
+  "lat": 55.883111,
+  "lng": 26.495332
  },
  {
   "id": "s277",
@@ -2757,7 +2797,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252859",
   "original": "1925-1930__pastvu_1252859.jpg",
   "thumb": "photos/thumbs/spot278.jpg",
-  "group": "Николаевские ворота"
+  "group": "Николаевские ворота",
+  "lat": 55.884368,
+  "lng": 26.497047
  },
  {
   "id": "s279",
@@ -2769,7 +2811,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252137",
   "original": "1925-1940__pastvu_1252137.jpg",
   "thumb": "photos/thumbs/spot279.jpg",
-  "group": "Николаевские ворота"
+  "group": "Николаевские ворота",
+  "lat": 55.883617,
+  "lng": 26.496845
  },
  {
   "id": "s280",
@@ -2793,7 +2837,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244596",
   "original": "1970-1980__pastvu_1244596.jpg",
   "thumb": "photos/thumbs/spot281.jpg",
-  "group": "Николаевские ворота"
+  "group": "Николаевские ворота",
+  "lat": 55.882924,
+  "lng": 26.496636
  },
  {
   "id": "s282",
@@ -2817,7 +2863,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244416",
   "original": "1975-1980__pastvu_1244416.jpg",
   "thumb": "photos/thumbs/spot283.jpg",
-  "group": "Александровские ворота"
+  "group": "Александровские ворота",
+  "lat": 55.886935,
+  "lng": 26.500821
  },
  {
   "id": "s284",
@@ -2829,7 +2877,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1555378",
   "original": "1897-1898__pastvu_1555378.jpg",
   "thumb": "photos/thumbs/spot284.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.883882,
+  "lng": 26.49932
  },
  {
   "id": "s285",
@@ -2937,7 +2987,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1253762",
   "original": "1920-1940__pastvu_1253762.jpg",
   "thumb": "photos/thumbs/spot293.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884216,
+  "lng": 26.498093
  },
  {
   "id": "s294",
@@ -2949,7 +3001,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252089",
   "original": "1930-1940__pastvu_1252089.jpg",
   "thumb": "photos/thumbs/spot294.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884442,
+  "lng": 26.499192
  },
  {
   "id": "s295",
@@ -3033,7 +3087,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/2653849",
   "original": "1940__pastvu_2653849.jpg",
   "thumb": "photos/thumbs/spot301.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884067,
+  "lng": 26.498723
  },
  {
   "id": "s302",
@@ -3045,7 +3101,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/2653850",
   "original": "1940__pastvu_2653850.jpg",
   "thumb": "photos/thumbs/spot302.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884109,
+  "lng": 26.498304
  },
  {
   "id": "s303",
@@ -3057,7 +3115,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/2653852",
   "original": "1940__pastvu_2653852.jpg",
   "thumb": "photos/thumbs/spot303.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884217,
+  "lng": 26.499162
  },
  {
   "id": "s304",
@@ -3069,7 +3129,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/2653853",
   "original": "1940__pastvu_2653853.jpg",
   "thumb": "photos/thumbs/spot304.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884187,
+  "lng": 26.499323
  },
  {
   "id": "s305",
@@ -3081,7 +3143,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/2653854",
   "original": "1940__pastvu_2653854.jpg",
   "thumb": "photos/thumbs/spot305.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884356,
+  "lng": 26.499023
  },
  {
   "id": "s306",
@@ -3093,7 +3157,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/2653855",
   "original": "1940__pastvu_2653855.jpg",
   "thumb": "photos/thumbs/spot306.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884383,
+  "lng": 26.499254
  },
  {
   "id": "s307",
@@ -3105,7 +3171,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252080",
   "original": "1941-1944__pastvu_1252080.jpg",
   "thumb": "photos/thumbs/spot307.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.883724,
+  "lng": 26.498337
  },
  {
   "id": "s308",
@@ -3141,7 +3209,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251613",
   "original": "1944-1945__pastvu_1251613.jpg",
   "thumb": "photos/thumbs/spot310.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884356,
+  "lng": 26.498756
  },
  {
   "id": "s311",
@@ -3165,7 +3235,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1230038",
   "original": "1944-1950__pastvu_1230038.jpg",
   "thumb": "photos/thumbs/spot312.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884471,
+  "lng": 26.498523
  },
  {
   "id": "s313",
@@ -3177,7 +3249,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1230039",
   "original": "1944-1955__pastvu_1230039.jpg",
   "thumb": "photos/thumbs/spot313.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884778,
+  "lng": 26.499169
  },
  {
   "id": "s314",
@@ -3189,7 +3263,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252090",
   "original": "1944-1955__pastvu_1252090.jpg",
   "thumb": "photos/thumbs/spot314.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884422,
+  "lng": 26.499658
  },
  {
   "id": "s315",
@@ -3225,7 +3301,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251622",
   "original": "1960-1980__pastvu_1251622.jpg",
   "thumb": "photos/thumbs/spot317.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.884749,
+  "lng": 26.499346
  },
  {
   "id": "s318",
@@ -3333,7 +3411,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1253763",
   "original": "1917-1920__pastvu_1253763.jpg",
   "thumb": "photos/thumbs/spot326.jpg",
-  "group": "Редюиты и валы"
+  "group": "Редюиты и валы",
+  "lat": 55.88239,
+  "lng": 26.498229
  },
  {
   "id": "s327",
@@ -3369,7 +3449,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1253578",
   "original": "1920-1940__pastvu_1253578.jpg",
   "thumb": "photos/thumbs/spot329.jpg",
-  "group": "Редюиты и валы"
+  "group": "Редюиты и валы",
+  "lat": 55.886533,
+  "lng": 26.48604
  },
  {
   "id": "s330",
@@ -3405,7 +3487,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244591",
   "original": "1970-1980__pastvu_1244591.jpg",
   "thumb": "photos/thumbs/spot332.jpg",
-  "group": "Редюиты и валы"
+  "group": "Редюиты и валы",
+  "lat": 55.882434,
+  "lng": 26.498463
  },
  {
   "id": "s333",
@@ -3417,7 +3501,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244729",
   "original": "1970-1980__pastvu_1244729.jpg",
   "thumb": "photos/thumbs/spot333.jpg",
-  "group": "Редюиты и валы"
+  "group": "Редюиты и валы",
+  "lat": 55.882379,
+  "lng": 26.498671
  },
  {
   "id": "s334",
@@ -3429,7 +3515,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244318",
   "original": "1975-1980__pastvu_1244318.jpg",
   "thumb": "photos/thumbs/spot334.jpg",
-  "group": "Редюиты и валы"
+  "group": "Редюиты и валы",
+  "lat": 55.88239,
+  "lng": 26.497894
  },
  {
   "id": "s335",
@@ -3441,7 +3529,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1247425",
   "original": "1983-1988__pastvu_1247425.jpg",
   "thumb": "photos/thumbs/spot335.jpg",
-  "group": "Редюиты и валы"
+  "group": "Редюиты и валы",
+  "lat": 55.882653,
+  "lng": 26.498793
  },
  {
   "id": "s336",
@@ -3621,7 +3711,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252163",
   "original": "1955-1960__pastvu_1252163.jpg",
   "thumb": "photos/thumbs/spot350.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.883738,
+  "lng": 26.496871
  },
  {
   "id": "s351",
@@ -3645,7 +3737,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251703",
   "original": "1970-1985__pastvu_1251703.jpg",
   "thumb": "photos/thumbs/spot352.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.883671,
+  "lng": 26.496989
  },
  {
   "id": "s353",
@@ -3705,7 +3799,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251790",
   "original": "1930-1940__pastvu_1251790.jpg",
   "thumb": "photos/thumbs/spot357.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.888471,
+  "lng": 26.497329
  },
  {
   "id": "s358",
@@ -3765,7 +3861,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242417",
   "original": "1970-1979__pastvu_1242417.jpg",
   "thumb": "photos/thumbs/spot362.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885463,
+  "lng": 26.494034
  },
  {
   "id": "s363",
@@ -3777,7 +3875,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242424",
   "original": "1970-1979__pastvu_1242424.jpg",
   "thumb": "photos/thumbs/spot363.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885712,
+  "lng": 26.49316
  },
  {
   "id": "s364",
@@ -3789,7 +3889,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244536",
   "original": "1970-1979__pastvu_1244536.jpg",
   "thumb": "photos/thumbs/spot364.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885113,
+  "lng": 26.494641
  },
  {
   "id": "s365",
@@ -3801,7 +3903,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244344",
   "original": "1970-1985__pastvu_1244344.jpg",
   "thumb": "photos/thumbs/spot365.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.883685,
+  "lng": 26.49645
  },
  {
   "id": "s366",
@@ -3813,7 +3917,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244812",
   "original": "1975-1980__pastvu_1244812.jpg",
   "thumb": "photos/thumbs/spot366.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887032,
+  "lng": 26.490648
  },
  {
   "id": "s367",
@@ -3825,7 +3931,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244816",
   "original": "1975-1980__pastvu_1244816.jpg",
   "thumb": "photos/thumbs/spot367.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.886146,
+  "lng": 26.490777
  },
  {
   "id": "s368",
@@ -3837,7 +3945,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245000",
   "original": "1975-1980__pastvu_1245000.jpg",
   "thumb": "photos/thumbs/spot368.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887316,
+  "lng": 26.490515
  },
  {
   "id": "s369",
@@ -3849,7 +3959,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245045",
   "original": "1975-1980__pastvu_1245045.jpg",
   "thumb": "photos/thumbs/spot369.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.886714,
+  "lng": 26.491255
  },
  {
   "id": "s370",
@@ -3861,7 +3973,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245065",
   "original": "1975-1980__pastvu_1245065.jpg",
   "thumb": "photos/thumbs/spot370.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887063,
+  "lng": 26.490161
  },
  {
   "id": "s371",
@@ -3873,7 +3987,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245085",
   "original": "1975-1980__pastvu_1245085.jpg",
   "thumb": "photos/thumbs/spot371.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887214,
+  "lng": 26.489549
  },
  {
   "id": "s372",
@@ -3885,7 +4001,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242422",
   "original": "1975-1985__pastvu_1242422.jpg",
   "thumb": "photos/thumbs/spot372.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.886775,
+  "lng": 26.48897
  },
  {
   "id": "s373",
@@ -3897,7 +4015,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244583",
   "original": "1975-1985__pastvu_1244583.jpg",
   "thumb": "photos/thumbs/spot373.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.884075,
+  "lng": 26.49621
  },
  {
   "id": "s374",
@@ -3909,7 +4029,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244661",
   "original": "1975-1985__pastvu_1244661.jpg",
   "thumb": "photos/thumbs/spot374.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.88675,
+  "lng": 26.495461
  },
  {
   "id": "s375",
@@ -3921,7 +4043,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244986",
   "original": "1975-1985__pastvu_1244986.jpg",
   "thumb": "photos/thumbs/spot375.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887479,
+  "lng": 26.49088
  },
  {
   "id": "s376",
@@ -3933,7 +4057,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245060",
   "original": "1975-1985__pastvu_1245060.jpg",
   "thumb": "photos/thumbs/spot376.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887172,
+  "lng": 26.492069
  },
  {
   "id": "s377",
@@ -3945,7 +4071,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245884",
   "original": "1975-1985__pastvu_1245884.jpg",
   "thumb": "photos/thumbs/spot377.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887424,
+  "lng": 26.492049
  },
  {
   "id": "s378",
@@ -3957,7 +4085,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1247064",
   "original": "1975-1985__pastvu_1247064.jpg",
   "thumb": "photos/thumbs/spot378.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885005,
+  "lng": 26.493819
  },
  {
   "id": "s379",
@@ -3969,7 +4099,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245033",
   "original": "1976-1977__pastvu_1245033.jpg",
   "thumb": "photos/thumbs/spot379.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887178,
+  "lng": 26.490857
  },
  {
   "id": "s380",
@@ -3981,7 +4113,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245057",
   "original": "1976-1979__pastvu_1245057.jpg",
   "thumb": "photos/thumbs/spot380.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887479,
+  "lng": 26.491084
  },
  {
   "id": "s381",
@@ -3993,7 +4127,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245062",
   "original": "1976-1979__pastvu_1245062.jpg",
   "thumb": "photos/thumbs/spot381.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887039,
+  "lng": 26.491952
  },
  {
   "id": "s382",
@@ -4005,7 +4141,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244401",
   "original": "1976-1980__pastvu_1244401.jpg",
   "thumb": "photos/thumbs/spot382.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.884025,
+  "lng": 26.49914
  },
  {
   "id": "s383",
@@ -4017,7 +4155,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245035",
   "original": "1976-1980__pastvu_1245035.jpg",
   "thumb": "photos/thumbs/spot383.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887178,
+  "lng": 26.490697
  },
  {
   "id": "s384",
@@ -4029,7 +4169,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244158",
   "original": "1976-1985__pastvu_1244158.jpg",
   "thumb": "photos/thumbs/spot384.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.883479,
+  "lng": 26.498997
  },
  {
   "id": "s385",
@@ -4041,7 +4183,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244597",
   "original": "1976-1985__pastvu_1244597.jpg",
   "thumb": "photos/thumbs/spot385.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.883358,
+  "lng": 26.498474
  },
  {
   "id": "s386",
@@ -4053,7 +4197,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245011",
   "original": "1977-1978__pastvu_1245011.jpg",
   "thumb": "photos/thumbs/spot386.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887328,
+  "lng": 26.491008
  },
  {
   "id": "s387",
@@ -4065,7 +4211,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245022",
   "original": "1977-1978__pastvu_1245022.jpg",
   "thumb": "photos/thumbs/spot387.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887393,
+  "lng": 26.491319
  },
  {
   "id": "s388",
@@ -4077,7 +4225,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245023",
   "original": "1977-1978__pastvu_1245023.jpg",
   "thumb": "photos/thumbs/spot388.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887412,
+  "lng": 26.490793
  },
  {
   "id": "s389",
@@ -4089,7 +4239,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245030",
   "original": "1977-1978__pastvu_1245030.jpg",
   "thumb": "photos/thumbs/spot389.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887232,
+  "lng": 26.490986
  },
  {
   "id": "s390",
@@ -4101,7 +4253,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242420",
   "original": "1977-1982__pastvu_1242420.jpg",
   "thumb": "photos/thumbs/spot390.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885712,
+  "lng": 26.493921
  },
  {
   "id": "s391",
@@ -4113,7 +4267,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245088",
   "original": "1978-1979__pastvu_1245088.jpg",
   "thumb": "photos/thumbs/spot391.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.886889,
+  "lng": 26.49178
  },
  {
   "id": "s392",
@@ -4125,7 +4281,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1247063",
   "original": "1978-1980__pastvu_1247063.jpg",
   "thumb": "photos/thumbs/spot392.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885487,
+  "lng": 26.495054
  },
  {
   "id": "s393",
@@ -4137,7 +4295,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1243039",
   "original": "1978-1985__pastvu_1243039.jpg",
   "thumb": "photos/thumbs/spot393.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887009,
+  "lng": 26.49177
  },
  {
   "id": "s394",
@@ -4149,7 +4309,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242427",
   "original": "1978__pastvu_1242427.jpg",
   "thumb": "photos/thumbs/spot394.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885502,
+  "lng": 26.493643
  },
  {
   "id": "s395",
@@ -4161,7 +4323,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245040",
   "original": "1978__pastvu_1245040.jpg",
   "thumb": "photos/thumbs/spot395.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885574,
+  "lng": 26.494549
  },
  {
   "id": "s396",
@@ -4173,7 +4337,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245086",
   "original": "1978__pastvu_1245086.jpg",
   "thumb": "photos/thumbs/spot396.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887232,
+  "lng": 26.491147
  },
  {
   "id": "s397",
@@ -4185,7 +4351,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244004",
   "original": "1980-1985__pastvu_1244004.jpg",
   "thumb": "photos/thumbs/spot397.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.886971,
+  "lng": 26.489992
  },
  {
   "id": "s398",
@@ -4197,7 +4365,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242249",
   "original": "1980-1990__pastvu_1242249.jpg",
   "thumb": "photos/thumbs/spot398.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885487,
+  "lng": 26.492822
  },
  {
   "id": "s399",
@@ -4209,7 +4379,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242412",
   "original": "1980-1990__pastvu_1242412.jpg",
   "thumb": "photos/thumbs/spot399.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887057,
+  "lng": 26.489582
  },
  {
   "id": "s400",
@@ -4221,7 +4393,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242428",
   "original": "1980-1990__pastvu_1242428.jpg",
   "thumb": "photos/thumbs/spot400.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.886907,
+  "lng": 26.489528
  },
  {
   "id": "s401",
@@ -4233,7 +4407,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1223045",
   "original": "1980__pastvu_1223045.jpg",
   "thumb": "photos/thumbs/spot401.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885474,
+  "lng": 26.494536
  },
  {
   "id": "s402",
@@ -4245,7 +4421,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1223067",
   "original": "1980__pastvu_1223067.jpg",
   "thumb": "photos/thumbs/spot402.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885783,
+  "lng": 26.493914
  },
  {
   "id": "s403",
@@ -4257,7 +4435,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244548",
   "original": "1982-1985__pastvu_1244548.jpg",
   "thumb": "photos/thumbs/spot403.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.883692,
+  "lng": 26.498795
  },
  {
   "id": "s404",
@@ -4269,7 +4449,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1223065",
   "original": "1985__pastvu_1223065.jpg",
   "thumb": "photos/thumbs/spot404.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.88566,
+  "lng": 26.494353
  },
  {
   "id": "s405",
@@ -4365,7 +4547,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244408",
   "original": "1950-1962__pastvu_1244408.jpg",
   "thumb": "photos/thumbs/spot412.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.883441,
+  "lng": 26.499655
  },
  {
   "id": "s413",
@@ -4401,7 +4585,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244405",
   "original": "1965-1975__pastvu_1244405.jpg",
   "thumb": "photos/thumbs/spot415.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.88353,
+  "lng": 26.499579
  },
  {
   "id": "s416",
@@ -4413,7 +4599,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242254",
   "original": "1970-1979__pastvu_1242254.jpg",
   "thumb": "photos/thumbs/spot416.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885697,
+  "lng": 26.493498
  },
  {
   "id": "s417",
@@ -4425,7 +4613,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242257",
   "original": "1971-1974__pastvu_1242257.jpg",
   "thumb": "photos/thumbs/spot417.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885403,
+  "lng": 26.494195
  },
  {
   "id": "s418",
@@ -4437,7 +4627,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242259",
   "original": "1971-1974__pastvu_1242259.jpg",
   "thumb": "photos/thumbs/spot418.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885306,
+  "lng": 26.494581
  },
  {
   "id": "s419",
@@ -4449,7 +4641,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242252",
   "original": "1975-1985__pastvu_1242252.jpg",
   "thumb": "photos/thumbs/spot419.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.883688,
+  "lng": 26.49906
  },
  {
   "id": "s420",
@@ -4461,7 +4655,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244410",
   "original": "1975__pastvu_1244410.jpg",
   "thumb": "photos/thumbs/spot420.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.883544,
+  "lng": 26.499784
  },
  {
   "id": "s421",
@@ -4473,7 +4669,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242258",
   "original": "1976-1981__pastvu_1242258.jpg",
   "thumb": "photos/thumbs/spot421.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885848,
+  "lng": 26.494785
  },
  {
   "id": "s422",
@@ -4485,7 +4683,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244148",
   "original": "1980-1985__pastvu_1244148.jpg",
   "thumb": "photos/thumbs/spot422.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885123,
+  "lng": 26.494264
  },
  {
   "id": "s423",
@@ -4497,7 +4697,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244529",
   "original": "1980-1985__pastvu_1244529.jpg",
   "thumb": "photos/thumbs/spot423.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885997,
+  "lng": 26.493145
  },
  {
   "id": "s424",
@@ -4569,7 +4771,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1253772",
   "original": "1920-1940__pastvu_1253772.jpg",
   "thumb": "photos/thumbs/spot429.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.8864,
+  "lng": 26.494867
  },
  {
   "id": "s430",
@@ -4581,7 +4785,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1255468",
   "original": "1924__pastvu_1255468.jpg",
   "thumb": "photos/thumbs/spot430.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886898,
+  "lng": 26.495698
  },
  {
   "id": "s431",
@@ -4653,7 +4859,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252836",
   "original": "1957-1958__pastvu_1252836.jpg",
   "thumb": "photos/thumbs/spot436.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886129,
+  "lng": 26.495053
  },
  {
   "id": "s437",
@@ -4689,7 +4897,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1243048",
   "original": "1955-1970__pastvu_1243048.jpg",
   "thumb": "photos/thumbs/spot439.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886377,
+  "lng": 26.495171
  },
  {
   "id": "s440",
@@ -4701,7 +4911,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242250",
   "original": "1971-1974__pastvu_1242250.jpg",
   "thumb": "photos/thumbs/spot440.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886245,
+  "lng": 26.494925
  },
  {
   "id": "s441",
@@ -4713,7 +4925,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244381",
   "original": "1975-1980__pastvu_1244381.jpg",
   "thumb": "photos/thumbs/spot441.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886223,
+  "lng": 26.494626
  },
  {
   "id": "s442",
@@ -4725,7 +4939,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1225072",
   "original": "1975-1985__pastvu_1225072.jpg",
   "thumb": "photos/thumbs/spot442.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886672,
+  "lng": 26.495096
  },
  {
   "id": "s443",
@@ -4737,7 +4953,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1239493",
   "original": "1975-1985__pastvu_1239493.jpg",
   "thumb": "photos/thumbs/spot443.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886243,
+  "lng": 26.495836
  },
  {
   "id": "s444",
@@ -4749,7 +4967,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242251",
   "original": "1975-1985__pastvu_1242251.jpg",
   "thumb": "photos/thumbs/spot444.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.88648,
+  "lng": 26.495085
  },
  {
   "id": "s445",
@@ -4761,7 +4981,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242415",
   "original": "1917__pastvu_1242415.jpg",
   "thumb": "photos/thumbs/spot445.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.883649,
+  "lng": 26.498417
  },
  {
   "id": "s446",
@@ -5205,7 +5427,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252131",
   "original": "1924-1927__pastvu_1252131.jpg",
   "thumb": "photos/thumbs/spot482.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.886674,
+  "lng": 26.495993
  },
  {
   "id": "s483",
@@ -5217,7 +5441,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251792",
   "original": "1924__pastvu_1251792.jpg",
   "thumb": "photos/thumbs/spot483.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.88687,
+  "lng": 26.496195
  },
  {
   "id": "s484",
@@ -5229,7 +5455,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251808",
   "original": "1924__pastvu_1251808.jpg",
   "thumb": "photos/thumbs/spot484.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.886665,
+  "lng": 26.495872
  },
  {
   "id": "s485",
@@ -5265,7 +5493,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251073",
   "original": "1925-1935__pastvu_1251073.jpg",
   "thumb": "photos/thumbs/spot487.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.882865,
+  "lng": 26.497195
  },
  {
   "id": "s488",
@@ -5277,7 +5507,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251722",
   "original": "1925-1940__pastvu_1251722.jpg",
   "thumb": "photos/thumbs/spot488.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.886782,
+  "lng": 26.495807
  },
  {
   "id": "s489",
@@ -5289,7 +5521,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251914",
   "original": "1925-1940__pastvu_1251914.jpg",
   "thumb": "photos/thumbs/spot489.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.884063,
+  "lng": 26.495842
  },
  {
   "id": "s490",
@@ -5301,7 +5535,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252138",
   "original": "1925-1940__pastvu_1252138.jpg",
   "thumb": "photos/thumbs/spot490.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.884165,
+  "lng": 26.495371
  },
  {
   "id": "s491",
@@ -5313,7 +5549,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252139",
   "original": "1925-1940__pastvu_1252139.jpg",
   "thumb": "photos/thumbs/spot491.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.883437,
+  "lng": 26.498447
  },
  {
   "id": "s492",
@@ -5337,7 +5575,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251812",
   "original": "1927__pastvu_1251812.jpg",
   "thumb": "photos/thumbs/spot493.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.883845,
+  "lng": 26.494861
  },
  {
   "id": "s494",
@@ -5349,7 +5589,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251815",
   "original": "1927__pastvu_1251815.jpg",
   "thumb": "photos/thumbs/spot494.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.88376,
+  "lng": 26.494655
  },
  {
   "id": "s495",
@@ -5421,7 +5663,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251122",
   "original": "1930-1940__pastvu_1251122.jpg",
   "thumb": "photos/thumbs/spot500.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.883855,
+  "lng": 26.493719
  },
  {
   "id": "s501",
@@ -5433,7 +5677,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251826",
   "original": "1930-1940__pastvu_1251826.jpg",
   "thumb": "photos/thumbs/spot501.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.883648,
+  "lng": 26.494175
  },
  {
   "id": "s502",
@@ -5445,7 +5691,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251908",
   "original": "1930-1940__pastvu_1251908.jpg",
   "thumb": "photos/thumbs/spot502.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.883599,
+  "lng": 26.495277
  },
  {
   "id": "s503",
@@ -5457,7 +5705,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251933",
   "original": "1930-1940__pastvu_1251933.jpg",
   "thumb": "photos/thumbs/spot503.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.88718,
+  "lng": 26.500448
  },
  {
   "id": "s504",
@@ -5469,7 +5719,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252052",
   "original": "1930-1940__pastvu_1252052.jpg",
   "thumb": "photos/thumbs/spot504.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.886788,
+  "lng": 26.499278
  },
  {
   "id": "s505",
@@ -5529,7 +5781,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251737",
   "original": "1932__pastvu_1251737.jpg",
   "thumb": "photos/thumbs/spot509.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.887224,
+  "lng": 26.499839
  },
  {
   "id": "s510",
@@ -5541,7 +5795,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251788",
   "original": "1932__pastvu_1251788.jpg",
   "thumb": "photos/thumbs/spot510.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.887394,
+  "lng": 26.497145
  },
  {
   "id": "s511",
@@ -5589,7 +5845,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251574",
   "original": "1936__pastvu_1251574.jpg",
   "thumb": "photos/thumbs/spot514.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.887139,
+  "lng": 26.494018
  },
  {
   "id": "s515",
@@ -5685,7 +5943,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/413378",
   "original": "1954__pastvu_413378.jpg",
   "thumb": "photos/thumbs/spot522.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.886371,
+  "lng": 26.490107
  },
  {
   "id": "s523",
@@ -5697,7 +5957,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/413772",
   "original": "1954__pastvu_413772.jpg",
   "thumb": "photos/thumbs/spot523.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.88441,
+  "lng": 26.499989
  },
  {
   "id": "s524",
@@ -5733,7 +5995,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1224988",
   "original": "1969__pastvu_1224988.jpg",
   "thumb": "photos/thumbs/spot526.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.884296,
+  "lng": 26.495367
  },
  {
   "id": "s527",
@@ -5745,7 +6009,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1224993",
   "original": "1969__pastvu_1224993.jpg",
   "thumb": "photos/thumbs/spot527.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.884197,
+  "lng": 26.495651
  },
  {
   "id": "s528",
@@ -5757,7 +6023,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242418",
   "original": "1975-1985__pastvu_1242418.jpg",
   "thumb": "photos/thumbs/spot528.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.887056,
+  "lng": 26.49427
  },
  {
   "id": "s529",
@@ -5769,7 +6037,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244999",
   "original": "1975-1985__pastvu_1244999.jpg",
   "thumb": "photos/thumbs/spot529.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.885228,
+  "lng": 26.494774
  },
  {
   "id": "s530",
@@ -5781,7 +6051,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244799",
   "original": "1975__pastvu_1244799.jpg",
   "thumb": "photos/thumbs/spot530.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.885528,
+  "lng": 26.494788
  },
  {
   "id": "s531",
@@ -5793,7 +6065,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244806",
   "original": "1975__pastvu_1244806.jpg",
   "thumb": "photos/thumbs/spot531.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.88559,
+  "lng": 26.495276
  },
  {
   "id": "s532",
@@ -5805,7 +6079,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244836",
   "original": "1975__pastvu_1244836.jpg",
   "thumb": "photos/thumbs/spot532.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.88751,
+  "lng": 26.491766
  },
  {
   "id": "s533",
@@ -5817,7 +6093,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245885",
   "original": "1976__pastvu_1245885.jpg",
   "thumb": "photos/thumbs/spot533.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.885553,
+  "lng": 26.493476
  },
  {
   "id": "s534",
@@ -5829,7 +6107,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245025",
   "original": "1977-1978__pastvu_1245025.jpg",
   "thumb": "photos/thumbs/spot534.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.887298,
+  "lng": 26.491104
  },
  {
   "id": "s535",
@@ -5841,7 +6121,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245044",
   "original": "1977-1980__pastvu_1245044.jpg",
   "thumb": "photos/thumbs/spot535.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.887274,
+  "lng": 26.490446
  },
  {
   "id": "s536",
@@ -5853,7 +6135,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242419",
   "original": "1980-1989__pastvu_1242419.jpg",
   "thumb": "photos/thumbs/spot536.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.885637,
+  "lng": 26.49368
  },
  {
   "id": "s537",
@@ -5865,7 +6149,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244345",
   "original": "1982-1987__pastvu_1244345.jpg",
   "thumb": "photos/thumbs/spot537.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.88352,
+  "lng": 26.496522
  },
  {
   "id": "s538",
@@ -6057,7 +6343,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251090",
   "original": "1920-1940__pastvu_1251090.jpg",
   "thumb": "photos/thumbs/spot553.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "lat": 55.888251,
+  "lng": 26.48777
  },
  {
   "id": "s554",
@@ -6069,7 +6357,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1252027",
   "original": "1922-1931__pastvu_1252027.jpg",
   "thumb": "photos/thumbs/spot554.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "lat": 55.890194,
+  "lng": 26.497983
  },
  {
   "id": "s555",
@@ -6141,7 +6431,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251782",
   "original": "1941-1944__pastvu_1251782.jpg",
   "thumb": "photos/thumbs/spot560.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "lat": 55.880098,
+  "lng": 26.503275
  },
  {
   "id": "s561",
@@ -6153,7 +6445,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/574551",
   "original": "1944__pastvu_574551.jpg",
   "thumb": "photos/thumbs/spot561.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "lat": 55.885878,
+  "lng": 26.495376
  },
  {
   "id": "s562",
@@ -6165,7 +6459,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/574552",
   "original": "1944__pastvu_574552.jpg",
   "thumb": "photos/thumbs/spot562.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "lat": 55.885926,
+  "lng": 26.495504
  },
  {
   "id": "s563",
@@ -6177,7 +6473,9 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244248",
   "original": "1970-1985__pastvu_1244248.jpg",
   "thumb": "photos/thumbs/spot563.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "lat": 55.885194,
+  "lng": 26.507556
  },
  {
   "id": "s564",
@@ -6189,6 +6487,78 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1245827",
   "original": "1975-1985__pastvu_1245827.jpg",
   "thumb": "photos/thumbs/spot564.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "lat": 55.873288,
+  "lng": 26.495424
+ },
+ {
+  "id": "s565",
+  "src": "photos/spot565.jpg",
+  "title": "Михайловские ворота, группа у арки",
+  "year": "1989",
+  "hint": "",
+  "credit": "Источник: PastVu",
+  "source": "https://pastvu.com/p/1225106",
+  "original": "pastvu_1225106.jpg",
+  "thumb": "photos/thumbs/spot565.jpg",
+  "group": "Михайловские ворота",
+  "lat": 55.88309,
+  "lng": 26.49926
+ },
+ {
+  "id": "s566",
+  "src": "photos/spot566.jpg",
+  "title": "Выпуск офицеров училища, 1988",
+  "year": "1988",
+  "hint": "",
+  "credit": "Источник: PastVu",
+  "source": "https://pastvu.com/p/1242423",
+  "original": "pastvu_1242423.jpg",
+  "thumb": "photos/thumbs/spot566.jpg",
+  "group": "Улицы и здания",
+  "lat": 55.88558,
+  "lng": 26.49413
+ },
+ {
+  "id": "s567",
+  "src": "photos/spot567.jpg",
+  "title": "Курсант у водоподъёмного здания",
+  "year": "1986",
+  "hint": "",
+  "credit": "Источник: PastVu",
+  "source": "https://pastvu.com/p/1244341",
+  "original": "pastvu_1244341.jpg",
+  "thumb": "photos/thumbs/spot567.jpg",
+  "group": "Улицы и здания",
+  "lat": 55.88338,
+  "lng": 26.49708
+ },
+ {
+  "id": "s568",
+  "src": "photos/spot568.jpg",
+  "title": "Курсант-регулировщик на улице Вальню",
+  "year": "1975",
+  "hint": "",
+  "credit": "Источник: PastVu",
+  "source": "https://pastvu.com/p/1244430",
+  "original": "pastvu_1244430.jpg",
+  "thumb": "photos/thumbs/spot568.jpg",
+  "group": "Улицы и здания",
+  "lat": 55.89213,
+  "lng": 26.49917
+ },
+ {
+  "id": "s569",
+  "src": "photos/spot569.jpg",
+  "title": "Михайловские ворота и бывший Артиллерийский арсенал",
+  "year": "1950",
+  "hint": "",
+  "credit": "Источник: PastVu",
+  "source": "https://pastvu.com/p/1244728",
+  "original": "pastvu_1244728.jpg",
+  "thumb": "photos/thumbs/spot569.jpg",
+  "group": "Михайловские ворота",
+  "lat": 55.88389,
+  "lng": 26.50029
  }
 ];
