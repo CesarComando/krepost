@@ -11,7 +11,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Крепость">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&family=Old+Standard+TT:wght@400;700&family=Oswald:wght@500;600;700&family=PT+Mono&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Шрифты грузятся без задержки показа страницы; пока не пришли — видны системные -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&family=Old+Standard+TT:wght@400;700&family=Oswald:wght@500;600;700&family=PT+Mono&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&family=Old+Standard+TT:wght@400;700&family=Oswald:wght@500;600;700&family=PT+Mono&display=swap"></noscript>
 <style>
   :root { --bg:#17130f; --panel:#262019; --line:#40362a; --text:#f2e8d8; --muted:#b5a68f; --accent:#d9a441; --ok:#8fbf6a; }
   * { box-sizing:border-box; }
@@ -695,6 +698,21 @@
   #yearBubble b { font:700 17px var(--mono); }
   #yearBubble small { font:600 11px Inter,system-ui,sans-serif; color:#6b5434; }
   #yearBubble small:empty { display:none; }
+
+  /* ===== Плавность: карточки за пределами экрана не рисуются, пока до них не долистали ===== */
+  #cards .card { content-visibility:auto; contain-intrinsic-size:auto 430px; }
+
+  /* ===== Отзывчивость: нажатие «вдавливает» кнопку, разделы мягко проявляются ===== */
+  button, .tile, .place, .chip { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+  .tile, .place, #botNav .tab, #contBtn, #offHome, .oActs button, .oPic, #seg button, #langBtn, #setOpen, #subBack, #list .chip, .oDecs button, #decBar button, .badge { transition:transform .12s ease, filter .12s ease; }
+  .tile:active, .place:active, #contBtn:active, #offHome:active, .oActs button:active, .oPic:active, #seg button:active, #langBtn:active, #setOpen:active, #subBack:active, #list .chip:active, .oDecs button:active, #decBar button:active { transform:scale(.97); filter:brightness(1.08); }
+  #botNav .tab:active { transform:scale(.92); }
+  @keyframes viewIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+  #home:not([hidden]), #objView:not([hidden]), #filters:not([hidden]), #lib:not([hidden]), #quests:not([hidden]), #mapView:not([hidden]) { animation:viewIn .22s ease-out; }
+  @media (prefers-reduced-motion: reduce) {
+    #home, #objView, #filters, #lib, #quests, #mapView { animation:none !important; }
+    .tile:active, .place:active, #contBtn:active, #botNav .tab:active { transform:none; }
+  }
   /* ===== 17.11.2026: новый главный экран, нижнее меню, поиск, карта ===== */
   #list { border:0; outline:0; box-shadow:none; padding:0 0 calc(84px + env(safe-area-inset-bottom)); background:#120e0a; }
   #list > #home, #list > #objView, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests, #list > #empty, #list > #adminBar { margin-left:16px; margin-right:16px; }
@@ -823,7 +841,7 @@
 
 <section id="list" class="screen">
   <header id="hero">
-    <img id="heroImg" src="photos/spot253.jpg" alt="">
+    <img id="heroImg" src="photos/hero.jpg" alt="" fetchpriority="high">
     <div id="heroTop">
       <div id="langBox"><button type="button" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Valoda / Язык / Language">🌐 <b id="langCur">RU</b> ▾</button><div id="langList" role="listbox" hidden></div></div>
       <button type="button" id="setOpen" aria-label="Настройки"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
@@ -1081,9 +1099,21 @@
 <script src="spots.js"></script>
 <script src="quests.js"></script>
 <script src="history.js"></script>
-<script src="i18n-lv.js"></script>
-<script src="i18n-en.js"></script>
-<script src="i18n-more.js"></script>
+<script>
+/* Переводы: грузим только файл нужного языка (выбранного или языка телефона), а не все сразу. */
+(function () {
+  var L = ['ru', 'lv', 'en', 'lt', 'et', 'pl', 'de', 'fr', 'it', 'es', 'zh'], l = null;
+  try { l = JSON.parse(localStorage.getItem('krepost.lang')); } catch (e) { /* нет хранилища */ }
+  if (L.indexOf(l) < 0) {
+    l = 'en';
+    var ls = navigator.languages || [navigator.language || ''];
+    for (var i = 0; i < ls.length; i++) { var c = String(ls[i]).slice(0, 2).toLowerCase(); if (L.indexOf(c) >= 0) { l = c; break; } }
+  }
+  var f = l === 'ru' ? [] : l === 'lv' ? ['i18n-lv.js'] : l === 'en' ? ['i18n-en.js'] : ['i18n-en.js', 'i18n-' + l + '.js'];
+  window.I18N_FILES = f;
+  for (var j = 0; j < f.length; j++) document.write('<script src="' + f[j] + '"><\/script>');
+})();
+</script>
 <script src="i18n.js"></script>
 <script>
 translateDom(document.body); // язык: i18n.js
@@ -1197,6 +1227,7 @@ function cardActions(spot) {
     updateProgress();
   };
   paintBeen();
+  row._paint = paintBeen; // чтобы обновить отметку без перестройки всей ленты
   row.append(been);
 
   const map = document.createElement('a');
@@ -1367,8 +1398,12 @@ $('editForm').onsubmit = e => {
   renderList();
 };
 
+let listScroll = 0;
 function show(id) {
+  const list = $('list');
+  if (id !== 'list' && !list.hidden) listScroll = list.scrollTop; // запомнить место в ленте
   for (const s of document.querySelectorAll('.screen')) s.hidden = s.id !== id;
+  if (id === 'list') requestAnimationFrame(() => { if (view === 'all' && listScroll) list.scrollTop = listScroll; });
 }
 
 /* ===== Кнопка «Назад» телефона: шаг назад внутри приложения, а не выход =====
@@ -1382,8 +1417,8 @@ function stepBack() {
   if ($('editDlg').open) { $('editDlg').close(); editing = null; return; }
   if ($('factsDlg').open) { $('factsDlg').close(); factsSpot = null; return; }
   if ($('thanksDlg').open) { $('thanksDlg').close(); return; }
-  if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); renderList(); return; }
-  if (!$('result').hidden) { const go = flyToAlbum(); setInset(false); current = null; show('list'); renderList(); requestAnimationFrame(go); return; }
+  if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); softRefresh(); return; }
+  if (!$('result').hidden) { const go = flyToAlbum(); setInset(false); current = null; show('list'); softRefresh(); requestAnimationFrame(go); return; }
   if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
   if ($('setDlg').open) { $('setDlg').close(); return; }
   if (view !== 'home') {
@@ -1507,7 +1542,7 @@ function renderPassport(box, shots) {
     const st = document.createElement('button');
     st.type = 'button';
     st.className = 'stampCard' + (shot ? ' mine' : '');
-    const img = document.createElement('img'); img.src = url; img.alt = ''; img.loading = 'lazy';
+    const img = document.createElement('img'); img.src = url; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
     const cap = document.createElement('span'); cap.className = 'sCap'; cap.textContent = sp.title;
     const d = document.createElement('span'); d.className = 'sDate';
     const when = shot ? shot.at : at[sp.id];
@@ -1548,7 +1583,7 @@ async function renderLib() {
     open.onclick = () => openResult(spot, url, shot.id);
     const pair = document.createElement('div'); pair.className = 'pair';
     const now = document.createElement('img'); now.className = 'now'; now.src = url; now.alt = T('Сейчас');
-    const old = document.createElement('img'); old.className = 'old'; old.src = spot.thumb || spot.src; old.alt = T('Тогда'); old.loading = 'lazy';
+    const old = document.createElement('img'); old.className = 'old'; old.src = spot.thumb || spot.src; old.alt = T('Тогда'); old.loading = 'lazy'; old.decoding = 'async';
     pair.append(now, old);
     const info = document.createElement('div'); info.className = 'info';
     const name = document.createElement('div'); name.className = 'name'; name.textContent = spot.title;
@@ -1642,7 +1677,7 @@ function renderHome() {
     row.type = 'button';
     row.className = 'place' + (name === ALL ? ' all' : '');
     const img = document.createElement('img');
-    img.src = pic.thumb || pic.src; img.alt = ''; img.loading = 'lazy';
+    img.src = pic.thumb || pic.src; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
     const txt = document.createElement('span');
     txt.className = 'ptxt';
     const b = document.createElement('b'); b.textContent = name === ALL ? T('Все места') : T(name);
@@ -1695,7 +1730,7 @@ $('list').addEventListener('scroll', railUpdate, { passive: true });
     const f = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
     list.scrollTop = f * (list.scrollHeight - list.clientHeight);
   };
-  bub.addEventListener('pointerdown', e => { railDrag = true; bub.setPointerCapture(e.pointerId); bub.classList.add('drag'); e.preventDefault(); });
+  bub.addEventListener('pointerdown', e => { flushList(); railDrag = true; bub.setPointerCapture(e.pointerId); bub.classList.add('drag'); e.preventDefault(); });
   bub.addEventListener('pointermove', e => { if (railDrag) go(e); });
   const end = () => { railDrag = false; bub.classList.remove('drag'); railUpdate(); };
   bub.addEventListener('pointerup', end); bub.addEventListener('pointercancel', end);
@@ -1786,7 +1821,7 @@ function renderObj() {
     grid.replaceChildren();
     for (const s of sel) {
       const b = document.createElement('button'); b.type = 'button'; b.className = 'oPic' + (found.includes(s.id) ? ' been' : '');
-      const im = document.createElement('img'); im.src = s.thumb || s.src; im.alt = ''; im.loading = 'lazy';
+      const im = document.createElement('img'); im.src = s.thumb || s.src; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async';
       const y = document.createElement('span'); y.textContent = s.year || '—';
       b.append(im, y);
       b.onclick = () => openSpot(s);
@@ -1821,8 +1856,8 @@ function renderObj() {
 
 /* ===== Без интернета: заранее сохранить снимки (и саму страницу) в памяти телефона ===== */
 const PHOTO_CACHE = 'krepost-photos', OFF_CACHE = 'krepost-offline';
-const SHELL = ['./', 'index.html', 'spots.js', 'quests.js', 'history.js', 'i18n.js', 'i18n-lv.js', 'i18n-en.js', 'i18n-more.js',
-  'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'manifest.webmanifest'];
+const SHELL = ['./', 'index.html', 'spots.js', 'quests.js', 'history.js', 'i18n.js', ...(window.I18N_FILES || []),
+  'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'manifest.webmanifest', 'photos/hero.jpg'];
 const pathOf = u => new URL(u, location.href).pathname;
 function photoUrls(list, full) {
   const out = [];
@@ -2139,7 +2174,7 @@ function renderQuests() {
     const done = (questDone[q.id] || {})[st.spot];
     const row = document.createElement('div');
     row.className = 'qstep' + (done ? ' done' : '');
-    const img = document.createElement('img'); img.src = spot.thumb || spot.src; img.alt = spot.title; img.loading = 'lazy';
+    const img = document.createElement('img'); img.src = spot.thumb || spot.src; img.alt = spot.title; img.loading = 'lazy'; img.decoding = 'async';
     const body = document.createElement('div');
     body.innerHTML = `<div class="qt"></div><div class="qtask"></div><div class="row2"></div>`;
     body.querySelector('.qt').textContent = `${i + 1}. ${spot.title}${spot.year ? ', ' + spot.year : ''}`;
@@ -2365,6 +2400,25 @@ async function updatePendingFacts() {
   } catch { /* без сети */ }
 }
 
+/* Лента строится частями: первые карточки — сразу, остальные — небольшими порциями в следующих кадрах.
+   Так экран не «замирает» на полсекунды, пока создаются все 521 карточка. */
+let listJob = 0, listFlush = () => {};
+function renderBatch(items, add) {
+  const job = ++listJob;
+  let i = 0;
+  const run = n => { const end = Math.min(items.length, i + n); for (; i < end; i++) add(items[i], i); };
+  run(14);
+  listFlush = () => { if (job === listJob) run(items.length); };
+  const next = () => { if (job !== listJob || i >= items.length) return; run(24); requestAnimationFrame(next); };
+  requestAnimationFrame(next);
+}
+function flushList() { listFlush(); }
+/* Возврат со снимка в ленту: не перестраивать её заново (место прокрутки сохраняется), только обновить отметки */
+function softRefresh() {
+  if (view !== 'all' || !$('cards').children.length) { renderList(); return; }
+  updateProgress(); updateLibCount();
+  for (const r of $('cards').querySelectorAll('.cardActions')) if (r._paint) r._paint();
+}
 function renderList() {
   if (view === 'lib') { updateProgress(); $('subTitle').textContent = T('Паспорт исследователя'); renderLib(); return; }
   if (view === 'quests') { updateProgress(); $('subTitle').textContent = T('Квесты'); renderQuests(); return; }
@@ -2401,7 +2455,8 @@ function renderList() {
   $('foundN').textContent = filtering ? (shown.length ? Tf('Найдено: {n}', { n: shown.length }) : T('Ничего не нашлось. Попробуйте другое слово или сбросьте фильтры.')) : '';
   let lastHead = null;
   const decs = [];
-  shown.forEach((spot, idx) => {
+  if (isAll) { let lh = null; for (const sp of shown) { const h = headOf(sp); if (h !== lh) { lh = h; decs.push([decadeOf(sp), h]); } } }
+  const addOne = (spot, idx) => {
     if (headOf(spot) !== lastHead) {
       lastHead = headOf(spot);
       const head = document.createElement('h2');
@@ -2412,7 +2467,6 @@ function renderList() {
         head.id = 'dec-' + dec;
         const era = eraOf(dec);
         if (era) { const e = document.createElement('small'); e.className = 'era'; e.textContent = era; head.append(e); }
-        decs.push([dec, lastHead]);
       }
       box.append(head);
     }
@@ -2427,7 +2481,7 @@ function renderList() {
     const img = document.createElement('img');
     img.src = spot.thumb || spot.src;
     img.alt = spot.title;
-    img.loading = 'lazy';
+    img.loading = 'lazy'; img.decoding = 'async';
     const info = document.createElement('div');
     info.className = 'info';
     const name = document.createElement('div');
@@ -2496,7 +2550,8 @@ function renderList() {
       card.append(del);
     }
     box.append(card);
-  });
+  };
+  renderBatch(shown, addOne);
   // Хронология: полоска десятилетий для быстрого перехода
   const bar = $('decBar');
   bar.hidden = !isAll || decs.length < 2;
@@ -2504,7 +2559,7 @@ function renderList() {
   for (const [dec, label] of decs) {
     const b = document.createElement('button');
     b.type = 'button'; b.textContent = label;
-    b.onclick = () => { const h = document.getElementById('dec-' + dec); if (h) h.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+    b.onclick = () => { flushList(); const h = document.getElementById('dec-' + dec); if (h) h.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
     bar.append(b);
   }
   const ol = $('objLink');
@@ -3238,6 +3293,14 @@ if ('serviceWorker' in navigator) {
 /* Кнопка добавления нужна только пока своих точек нет */
 if (SPOTS.length) document.querySelector('label[for=addInput]').hidden = true;
 renderList();
+/* Пока телефон простаивает, заранее подгрузить файл карты — тогда «Карта» откроется сразу.
+   Не делаем этого в режиме экономии трафика. */
+(() => {
+  const c = navigator.connection;
+  if (c && (c.saveData || /2g/.test(c.effectiveType || ''))) return;
+  const go = () => loadLeaflet().catch(() => {});
+  setTimeout(() => ('requestIdleCallback' in window ? requestIdleCallback(go, { timeout: 8000 }) : go()), 4000);
+})();
 loadFacts();
 updatePendingFacts();
 updateShotStats();

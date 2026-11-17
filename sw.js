@@ -2,11 +2,13 @@
 // • Страница и скрипты: сначала сеть, при её отсутствии — сохранённая копия (новые версии появляются сразу).
 // • Снимки (папка photos): сразу из памяти телефона, а в фоне — проверка, не обновился ли файл.
 //   Хранятся в отдельном складе, который не стирается при обновлении приложения.
+// • Шрифты Google — тоже сохраняются.
 // • Плитки карты OpenStreetMap: сохраняются те, что уже открывались (не больше ~1500 штук).
-const CACHE = 'krepost-v26';
+const CACHE = 'krepost-v27';
 const PHOTO_CACHE = 'krepost-photos';
 const TILE_CACHE = 'krepost-tiles';
 const TILE_MAX = 1500;
+const FONT_CACHE = 'krepost-fonts';
 
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil((async () => {
@@ -15,12 +17,12 @@ self.addEventListener('activate', e => e.waitUntil((async () => {
   await self.clients.claim();
 })()));
 
-function staleWhileRevalidate(e, cacheName, after) {
+function staleWhileRevalidate(e, cacheName, after, opaqueOk) {
   const req = e.request;
   e.respondWith(caches.open(cacheName).then(async c => {
     const hit = await c.match(req, { ignoreSearch: true });
     const net = fetch(req).then(res => {
-      if (res.ok) { c.put(req, res.clone()).then(after).catch(() => {}); }
+      if (res.ok || (opaqueOk && res.type === 'opaque')) { c.put(req, res.clone()).then(after || (() => {})).catch(() => {}); }
       return res;
     }).catch(() => null);
     if (hit) { e.waitUntil(net); return hit; }
@@ -38,6 +40,8 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.hostname === 'tile.openstreetmap.org') { staleWhileRevalidate(e, TILE_CACHE, trimTiles); return; }
+  // Шрифты Google: сохранить, чтобы и без интернета приложение выглядело так же
+  if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') { staleWhileRevalidate(e, FONT_CACHE, null, true); return; }
   if (url.origin !== location.origin) return;
   if (url.pathname.includes('/photos/')) { staleWhileRevalidate(e, PHOTO_CACHE); return; }
   e.respondWith(
