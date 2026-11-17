@@ -2,6 +2,21 @@
 window.I18N = window.I18N || {};
 window.I18N.lv = {
  "ui": {
+  "📖 История места": "📖 Vietas vēsture",
+  "История места": "Vietas vēsture",
+  "Российская империя": "Krievijas impērija",
+  "Российская империя и Первая мировая война": "Krievijas impērija un Pirmais pasaules karš",
+  "Латвийская Республика": "Latvijas Republika",
+  "Вторая мировая война и послевоенные годы": "Otrais pasaules karš un pēckara gadi",
+  "Советская Латвия": "Padomju Latvija",
+  "Исторический объект": "Vēsturisks objekts",
+  "Даугавпилсская крепость · Латвия": "Daugavpils cietoksnis · Latvija",
+  "Все снимки места · {n}": "Visas vietas fotogrāfijas · {n}",
+  "📍 На карте": "📍 Kartē",
+  "Снимки по годам": "Fotogrāfijas pa gadiem",
+  "Все · {n}": "Visas · {n}",
+  "Рядом": "Tuvumā",
+  "м": "m",
   "⇆ Шторка": "⇆ Aizkars",
   "◐ Просвет": "◐ Caurspīdīgi",
   "Мои снимки «тогда и сейчас»": "Mani «toreiz un tagad» kadri",

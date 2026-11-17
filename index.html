@@ -608,9 +608,47 @@
     border:2px solid rgba(160,40,30,.85); color:rgba(160,40,30,.9); background:rgba(239,227,200,.55); transform:rotate(-14deg); box-shadow:inset 0 0 0 2px rgba(239,227,200,.6), inset 0 0 0 3px rgba(160,40,30,.6); }
   .sDate { position:absolute; left:5px; right:5px; bottom:3px; font:700 10px var(--mono); text-align:left; color:#7a2a1c; }
   .sCap { position:absolute; left:7px; right:7px; top:7px; font:600 10px/1.15 Inter,sans-serif; color:#fff; text-shadow:0 1px 3px #000; text-align:left; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+  /* ===== Страница места и хронология ===== */
+  #objView[hidden], #decBar[hidden], #objLink[hidden] { display:none; }
+  .oHero { margin:0 -16px; height:230px; overflow:hidden; }
+  .oHero img { width:100%; height:100%; object-fit:cover; filter:sepia(.3); }
+  .oHead { position:relative; margin:-26px 0 18px; padding:14px; border-radius:16px; background:#1c1610; border:1px solid rgba(217,164,65,.3); box-shadow:0 8px 22px rgba(0,0,0,.45); }
+  .oTags { display:flex; justify-content:space-between; align-items:center; }
+  .oTag { font:600 12px Inter,sans-serif; color:#9fd28a; background:rgba(95,158,69,.18); padding:3px 9px; border-radius:999px; }
+  .oNum { font:600 12px var(--mono); color:var(--muted); background:#2a231b; padding:3px 8px; border-radius:999px; }
+  .oHead h2 { margin:8px 0 2px; font:700 28px/1.1 var(--serif); color:#f6ecd8; }
+  .oWhere { margin:0; color:var(--muted); font-size:13px; }
+  .oStats { margin:6px 0 12px; color:#e6d8bd; font-size:14px; }
+  .oActs { display:flex; gap:8px; flex-wrap:wrap; }
+  .oActs button { flex:1 1 auto; min-height:0; padding:11px 12px; border-radius:12px; font:700 14px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; box-shadow:none; }
+  .oActs button.main { background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; }
+  .oActs button:not(.main) { background:#2a231b; color:#f3d27a; border:1px solid rgba(217,164,65,.35); }
+  .oH { margin:18px 0 10px; font:700 20px var(--serif); color:#f6ecd8; }
+  .oTime { list-style:none; margin:0; padding:0 0 0 18px; border-left:2px solid rgba(217,164,65,.45); }
+  .oTime li { position:relative; margin:0 0 12px; color:#e6d8bd; font-size:15px; line-height:1.45; }
+  .oTime li::before { content:""; position:absolute; left:-25px; top:6px; width:10px; height:10px; border-radius:50%; background:#e8b84a; box-shadow:0 0 0 3px #120e0a; }
+  .oTime li.plain::before { background:#5a4a35; }
+  .oTime li b { display:block; color:#f3c650; font:700 14px var(--mono); margin-bottom:2px; }
+  .oSrc { color:var(--muted); font-size:12px; margin:4px 0 0; }
+  .oDecs, #decBar { display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px; }
+  .oDecs button, #decBar button { flex:none; min-height:0; padding:7px 12px; border-radius:999px; background:#1c1610; color:#d9cbb2; border:1px solid rgba(217,164,65,.28); font:600 13px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
+  .oDecs button.on { background:#f6ecd8; color:#1c1610; border-color:#f6ecd8; }
+  .oEra { margin:8px 0 0; color:#f3c650; font-size:13px; min-height:1em; }
+  .oEra:empty { display:none; }
+  .oGrid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:10px; }
+  .oPic { position:relative; padding:0; min-height:0; border-radius:8px; overflow:hidden; aspect-ratio:1; background:#2a231b; border:0; box-shadow:none; }
+  .oPic img { width:100%; height:100%; object-fit:cover; filter:sepia(.25); }
+  .oPic span { position:absolute; left:4px; bottom:4px; padding:1px 5px; border-radius:4px; background:rgba(0,0,0,.65); color:#f6ecd8; font:600 10px var(--mono); }
+  .oPic.been::after { content:"✓"; position:absolute; right:4px; top:4px; width:18px; height:18px; border-radius:50%; background:#5f9e45; color:#fff; font:700 11px/18px Inter,sans-serif; text-align:center; }
+  .oNear { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+  .oNear button { min-height:0; padding:9px 12px; border-radius:12px; background:#1c1610; color:#e6d8bd; border:1px solid rgba(217,164,65,.3); font:600 13px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
+  #objLink { align-self:flex-start; min-height:0; padding:8px 12px; border-radius:12px; background:#2a231b; color:#f3d27a; border:1px solid rgba(217,164,65,.35); font:600 14px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
+  #cards .groupTitle.decade { scroll-margin-top:70px; }
+  #cards .groupTitle .era { display:block; margin-top:4px; font:500 13px Inter,system-ui,sans-serif; color:#f3c650; letter-spacing:0; }
   /* ===== 17.11.2026: новый главный экран, нижнее меню, поиск, карта ===== */
   #list { border:0; outline:0; box-shadow:none; padding:0 0 calc(84px + env(safe-area-inset-bottom)); background:#120e0a; }
-  #list > #home, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests, #list > #empty, #list > #adminBar { margin-left:16px; margin-right:16px; }
+  #list > #home, #list > #objView, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests, #list > #empty, #list > #adminBar { margin-left:16px; margin-right:16px; }
   #hero { position:relative; height:min(330px, 46vh); min-height:250px; overflow:hidden; }
   #hero[hidden], #home[hidden], #subBar[hidden], #filters[hidden], #mapView[hidden] { display:none; }
   #heroImg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 35%; filter:sepia(.35) contrast(1.05); }
@@ -726,7 +764,7 @@
   #setDlg #fbBox { margin:8px 0 0; }
   #setDlg #about { margin:8px 0; }
   @media (min-width: 700px) {
-    #list > #home, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests { width:min(760px, calc(100% - 32px)); margin-left:auto; margin-right:auto; }
+    #list > #home, #list > #objView, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests { width:min(760px, calc(100% - 32px)); margin-left:auto; margin-right:auto; }
     #tiles { grid-template-columns:repeat(4, 1fr); }
   }
 </style>
@@ -766,7 +804,10 @@
     <div id="places"></div>
     <p class="free">Бесплатно · фото принадлежат авторам и архивам · <button type="button" id="aboutLink">подробнее</button></p>
   </div>
+  <div id="objView" hidden></div>
   <div id="filters" hidden>
+    <button type="button" id="objLink" hidden>📖 История места</button>
+    <div id="decBar" hidden></div>
     <input id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Поиск: ворота, собор, 1930…">
     <div id="seg" role="group"><button type="button" data-st="all" class="on">Все</button><button type="button" data-st="todo">Ещё не был</button><button type="button" data-st="done">Был ✓</button></div>
     <div id="fRow">
@@ -1266,7 +1307,13 @@ function stepBack() {
   if (!$('result').hidden) { const go = flyToAlbum(); setInset(false); current = null; show('list'); renderList(); requestAnimationFrame(go); return; }
   if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
   if ($('setDlg').open) { $('setDlg').close(); return; }
-  if (view !== 'home') { setView('home'); return; }
+  if (view !== 'home') {
+    const prev = viewStack.pop() || { view: 'home' };
+    if (prev.activeGroup) activeGroup = prev.activeGroup;
+    if (prev.objGroup !== undefined) objGroup = prev.objGroup;
+    setView(prev.view);
+    return;
+  }
 }
 function toListTop() { $('list').scrollTop = 0; window.scrollTo(0, 0); }
 addEventListener('popstate', e => {
@@ -1445,13 +1492,14 @@ async function renderLib() {
 }
 function setView(v) {
   view = v;
-  const navOf = { home: 'home', all: 'home', map: 'map', quests: 'quests', lib: 'lib' }[v];
+  const navOf = { home: 'home', all: 'home', obj: 'home', map: 'map', quests: 'quests', lib: 'lib' }[v];
   for (const b of document.querySelectorAll('#botNav .tab')) b.classList.toggle('on', b.dataset.view === navOf);
   const home = v === 'home', all = v === 'all';
   $('hero').hidden = !home; $('home').hidden = !home;
   $('subBar').hidden = home;
   $('filters').hidden = !all; $('chips').hidden = !all; $('cards').hidden = !all;
   $('mapView').hidden = v !== 'map';
+  $('objView').hidden = v !== 'obj';
   $('lib').hidden = v !== 'lib';
   $('quests').hidden = v !== 'quests';
   $('list').classList.toggle('mapMode', v === 'map');
@@ -1459,11 +1507,16 @@ function setView(v) {
   if (v === 'quests') openQuest = null;
   renderList();
 }
+/* Стопка экранов для кнопки «Назад»: главная → место → все снимки места → … */
+const viewStack = [];
+let objGroup = null, objDecade = '', mapFocus = null;
+function pushView() { viewStack.push({ view, activeGroup, objGroup }); navPush(); }
+function openObj(g) { pushView(); objGroup = g; objDecade = ''; setView('obj'); toListTop(); }
 /* Переход в раздел. С главной — шаг вглубь (кнопка «Назад» вернёт на главную), между разделами — без нового шага. */
 function goView(v, group) {
   if (v === 'home') { if (navDepth > 0) history.go(-navDepth); else setView('home'); toListTop(); return; }
   if (v === 'all') activeGroup = group || ALL;
-  if (view === 'home') navPush();
+  if (view === 'home') pushView();
   setView(v);
   toListTop();
 }
@@ -1518,8 +1571,121 @@ function renderHome() {
     txt.append(b, m);
     const go = document.createElement('i'); go.className = 'chev'; go.textContent = '›';
     row.append(img, txt, go);
-    row.onclick = () => goView('all', name);
+    row.onclick = () => name === ALL ? goView('all', ALL) : openObj(name);
     box.append(row);
+  }
+}
+
+/* ===== Хронология: десятилетия и эпохи ===== */
+const decadeOf = s => { const y = yearOfSpot(s); return y === 9999 ? 'none' : Math.floor(y / 10) * 10; };
+function eraOf(dec) {
+  if (dec === 'none') return '';
+  if (dec < 1910) return T('Российская империя');
+  if (dec < 1920) return T('Российская империя и Первая мировая война');
+  if (dec < 1940) return T('Латвийская Республика');
+  if (dec < 1950) return T('Вторая мировая война и послевоенные годы');
+  return T('Советская Латвия');
+}
+
+/* ===== Страница места: история по датам, снимки по десятилетиям, места рядом ===== */
+function groupCenter(g) {
+  const pts = visibleSpots().filter(s => groupOf(s) === g).map(coordsOf).filter(Boolean);
+  if (!pts.length) return null;
+  return { lat: pts.reduce((a, p) => a + p.lat, 0) / pts.length, lng: pts.reduce((a, p) => a + p.lng, 0) / pts.length };
+}
+function renderObj() {
+  const g = objGroup, box = $('objView');
+  $('subTitle').textContent = T(g);
+  box.replaceChildren();
+  const list = byYear(visibleSpots().filter(s => groupOf(s) === g));
+  if (!list.length) return;
+  const done = list.filter(s => found.includes(s.id)).length;
+  const years = list.map(yearOfSpot).filter(y => y !== 9999);
+  const hero = list.find(s => yearOfSpot(s) !== 9999) || list[0];
+
+  const top = document.createElement('div'); top.className = 'oHero';
+  const img = document.createElement('img'); img.src = hero.src; img.alt = '';
+  top.append(img);
+  const head = document.createElement('div'); head.className = 'oHead';
+  head.innerHTML = '<div class="oTags"><span class="oTag"></span><span class="oNum"></span></div><h2></h2><p class="oWhere"></p><p class="oStats"></p>';
+  head.querySelector('.oTag').textContent = T('Исторический объект');
+  head.querySelector('.oNum').textContent = '№ ' + (GROUPS.indexOf(g) + 1);
+  head.querySelector('h2').textContent = T(g);
+  head.querySelector('.oWhere').textContent = T('Даугавпилсская крепость · Латвия');
+  head.querySelector('.oStats').textContent = `📷 ${list.length}` + (done ? ` · ✓ ${done}` : '') + (years.length ? ` · ${Math.min(...years)}–${Math.max(...years)}` : '');
+  const acts = document.createElement('div'); acts.className = 'oActs';
+  const all = document.createElement('button'); all.type = 'button'; all.className = 'main'; all.textContent = Tf('Все снимки места · {n}', { n: list.length });
+  all.onclick = () => { pushView(); activeGroup = g; setView('all'); toListTop(); };
+  acts.append(all);
+  if (groupCenter(g)) {
+    const mp = document.createElement('button'); mp.type = 'button'; mp.textContent = T('📍 На карте');
+    mp.onclick = () => { pushView(); mapFocus = g; setView('map'); };
+    acts.append(mp);
+  }
+  head.append(acts);
+  box.append(top, head);
+
+  // История по датам
+  const H = HIST.groups && HIST.groups[g];
+  if (H && H.text && H.text.length) {
+    const h = document.createElement('h3'); h.className = 'oH'; h.textContent = T('История места');
+    const ul = document.createElement('ul'); ul.className = 'oTime';
+    for (const line of H.text) {
+      const li = document.createElement('li');
+      const m = line.match(/^(.{2,40}?)\s[—–]\s(.+)$/);
+      if (m && /\d{3,4}|век|gs|gadsimt|centur/i.test(m[1])) {
+        const b = document.createElement('b'); b.textContent = m[1];
+        li.append(b, document.createTextNode(m[2]));
+      } else { li.classList.add('plain'); li.textContent = line; }
+      ul.append(li);
+    }
+    box.append(h, ul);
+    if (H.sources && H.sources.length) { const src = document.createElement('p'); src.className = 'oSrc'; src.textContent = T('Источники: ') + H.sources.join('; '); box.append(src); }
+  }
+
+  // Исторический ракурс: выбрать десятилетие — увидеть место таким, каким оно было
+  const h2 = document.createElement('h3'); h2.className = 'oH'; h2.textContent = T('Снимки по годам');
+  const decs = [...new Set(list.map(decadeOf))];
+  const chips = document.createElement('div'); chips.className = 'oDecs';
+  const grid = document.createElement('div'); grid.className = 'oGrid';
+  const era = document.createElement('p'); era.className = 'oEra';
+  const paint = () => {
+    for (const c of chips.children) c.classList.toggle('on', c.dataset.d === String(objDecade));
+    const sel = objDecade === '' ? list : list.filter(s => String(decadeOf(s)) === String(objDecade));
+    era.textContent = objDecade === '' || objDecade === 'none' ? '' : eraOf(+objDecade);
+    grid.replaceChildren();
+    for (const s of sel) {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'oPic' + (found.includes(s.id) ? ' been' : '');
+      const im = document.createElement('img'); im.src = s.thumb || s.src; im.alt = ''; im.loading = 'lazy';
+      const y = document.createElement('span'); y.textContent = s.year || '—';
+      b.append(im, y);
+      b.onclick = () => openSpot(s);
+      grid.append(b);
+    }
+  };
+  const mk = (d, label) => { const c = document.createElement('button'); c.type = 'button'; c.dataset.d = d; c.textContent = label; c.onclick = () => { objDecade = d; paint(); }; chips.append(c); };
+  mk('', Tf('Все · {n}', { n: list.length }));
+  for (const d of decs) mk(String(d), d === 'none' ? T('Без года') : yearT(d + '-е'));
+  paint();
+  box.append(h2, chips, era, grid);
+
+  // Связи: места рядом (по точкам снимков на карте)
+  const c0 = groupCenter(g);
+  if (c0) {
+    const NOT_PLACE = ['Виды сверху', 'Солдаты и люди', 'Другое', 'Ворота (уточнить)'];
+    const near = GROUPS.filter(x => x !== g && !NOT_PLACE.includes(x)).map(x => [x, groupCenter(x)]).filter(x => x[1])
+      .map(([x, c]) => [x, distM(c0, c)]).filter(x => x[1] < 700).sort((a, b) => a[1] - b[1]).slice(0, 4);
+    if (near.length) {
+      const h3 = document.createElement('h3'); h3.className = 'oH'; h3.textContent = T('Рядом');
+      const row = document.createElement('div'); row.className = 'oNear';
+      for (const [x, d] of near) {
+        const b = document.createElement('button'); b.type = 'button';
+        b.textContent = `${T(x)} · ${Math.round(d / 10) * 10} ${T('м')}`;
+        b.onclick = () => openObj(x);
+        row.append(b);
+      }
+      box.append(h3, row);
+    }
   }
 }
 
@@ -1584,7 +1750,11 @@ async function renderMap() {
   }
   setTimeout(() => {
     lmap.invalidateSize();
-    if (lmap._fitFirst) {
+    if (mapFocus) {
+      const pts = visibleSpots().filter(s => groupOf(s) === mapFocus).map(coordsOf).filter(Boolean).map(p => [p.lat, p.lng]);
+      mapFocus = null; lmap._fitFirst = false;
+      if (pts.length) lmap.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 18 });
+    } else if (lmap._fitFirst) {
       lmap._fitFirst = false;
       const all = visibleSpots().map(coordsOf).filter(Boolean).map(p => [p.lat, p.lng]);
       if (all.length) lmap.fitBounds(L.latLngBounds(all), { padding: [24, 24], maxZoom: 16 });
@@ -1964,6 +2134,7 @@ function renderList() {
   if (view === 'quests') { updateProgress(); $('subTitle').textContent = T('Квесты'); renderQuests(); return; }
   if (view === 'home') { updateProgress(); renderHome(); return; }
   if (view === 'map') { updateProgress(); renderMap(); return; }
+  if (view === 'obj') { updateProgress(); renderObj(); return; }
   updateLibCount();
   const box = $('cards');
   box.replaceChildren();
@@ -1993,12 +2164,20 @@ function renderList() {
   const filtering = fText || fStatus !== 'all' || fPeriod || fStory;
   $('foundN').textContent = filtering ? (shown.length ? Tf('Найдено: {n}', { n: shown.length }) : T('Ничего не нашлось. Попробуйте другое слово или сбросьте фильтры.')) : '';
   let lastHead = null;
+  const decs = [];
   shown.forEach((spot, idx) => {
     if (headOf(spot) !== lastHead) {
       lastHead = headOf(spot);
       const head = document.createElement('h2');
       head.className = isAll ? 'groupTitle decade' : 'groupTitle';
       head.textContent = lastHead;
+      if (isAll) {
+        const dec = decadeOf(spot);
+        head.id = 'dec-' + dec;
+        const era = eraOf(dec);
+        if (era) { const e = document.createElement('small'); e.className = 'era'; e.textContent = era; head.append(e); }
+        decs.push([dec, lastHead]);
+      }
       box.append(head);
     }
     const card = document.createElement('div');
@@ -2080,6 +2259,19 @@ function renderList() {
     }
     box.append(card);
   });
+  // Хронология: полоска десятилетий для быстрого перехода
+  const bar = $('decBar');
+  bar.hidden = !isAll || decs.length < 2;
+  bar.replaceChildren();
+  for (const [dec, label] of decs) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = label;
+    b.onclick = () => { const h = document.getElementById('dec-' + dec); if (h) h.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+    bar.append(b);
+  }
+  const ol = $('objLink');
+  ol.hidden = isAll || !(HIST.groups && HIST.groups[activeGroup]);
+  ol.onclick = () => openObj(activeGroup);
 }
 
 function loadImage(url) {

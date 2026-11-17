@@ -2,6 +2,21 @@
 window.I18N = window.I18N || {};
 window.I18N.en = {
  "ui": {
+  "📖 История места": "📖 History of the place",
+  "История места": "History of the place",
+  "Российская империя": "Russian Empire",
+  "Российская империя и Первая мировая война": "Russian Empire and the First World War",
+  "Латвийская Республика": "Republic of Latvia",
+  "Вторая мировая война и послевоенные годы": "Second World War and the post-war years",
+  "Советская Латвия": "Soviet Latvia",
+  "Исторический объект": "Historic site",
+  "Даугавпилсская крепость · Латвия": "Daugavpils Fortress · Latvia",
+  "Все снимки места · {n}": "All photos of the place · {n}",
+  "📍 На карте": "📍 On the map",
+  "Снимки по годам": "Photos by year",
+  "Все · {n}": "All · {n}",
+  "Рядом": "Nearby",
+  "м": "m",
   "⇆ Шторка": "⇆ Swipe",
   "◐ Просвет": "◐ Fade",
   "Мои снимки «тогда и сейчас»": "My “then and now” shots",
