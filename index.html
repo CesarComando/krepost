@@ -1173,6 +1173,21 @@ let current = null, stream = null, nowUrl = null, camToken = 0;
 /* Режим админа: открыть сайт с ?admin=1. Скрывает снимки только в этом браузере. */
 const HIDDEN_KEY = 'krepost.hidden';
 const ADMIN = new URLSearchParams(location.search).has('admin');
+// Анонимная статистика: что открывают и какие фото нажимают. Без имён, только случайный номер телефона.
+function track(kind, target) {
+  const q = window.__evq || (window.__evq = []);
+  if (q.length < 200) q.push({ kind, target: target == null ? null : String(target).slice(0, 80) });
+}
+function flushTrack() {
+  const q = window.__evq;
+  if (!q || !q.length) return;
+  const lang = (window.LANG || document.documentElement.lang || '').slice(0, 5) || null;
+  const rows = q.splice(0).map(e => ({ device: deviceId(), kind: e.kind, target: e.target, lang, adm: ADMIN }));
+  fetch(`${FACTS_URL}/krepost_events`, { method: 'POST', keepalive: true,
+    headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+    body: JSON.stringify(rows) }).catch(() => {});
+}
+track('open', matchMedia('(display-mode: standalone)').matches ? 'app' : 'web');
 let hiddenIds = read(HIDDEN_KEY, []).filter(id => SPOTS.some(s => s.id === id));
 
 const GEO_KEY = 'krepost.geo';
@@ -1611,6 +1626,7 @@ async function renderLib() {
   }
 }
 function setView(v) {
+  if (v !== view) track('view', v);
   view = v;
   const navOf = { home: 'home', all: 'home', obj: 'home', map: 'map', quests: 'quests', lib: 'lib' }[v];
   for (const b of document.querySelectorAll('#botNav .tab')) b.classList.toggle('on', b.dataset.view === navOf);
@@ -1632,11 +1648,12 @@ function setView(v) {
 const viewStack = [];
 let objGroup = null, objDecade = '', mapFocus = null;
 function pushView() { viewStack.push({ view, activeGroup, objGroup }); navPush(); }
-function openObj(g) { pushView(); objGroup = g; objDecade = ''; setView('obj'); toListTop(); }
+function openObj(g) { track('obj', g); pushView(); objGroup = g; objDecade = ''; setView('obj'); toListTop(); }
 /* Переход в раздел. С главной — шаг вглубь (кнопка «Назад» вернёт на главную), между разделами — без нового шага. */
 function goView(v, group) {
   if (v === 'home') { if (navDepth > 0) history.go(-navDepth); else setView('home'); toListTop(); return; }
   if (v === 'all') activeGroup = group || ALL;
+  if (group) track('obj', group);
   if (view === 'home') pushView();
   setView(v);
   toListTop();
@@ -1877,6 +1894,7 @@ async function offCount(urls) { const have = await cachedPaths(); return [urls.f
 let offJob = null;
 async function saveOffline(urls, btn) {
   if (offJob) return;
+  track('feature', 'offline');
   if (!('caches' in window)) { alert(T('Этот браузер не умеет сохранять файлы для работы без интернета.')); return; }
   const have = await cachedPaths();
   const todo = urls.filter(u => !have.has(pathOf(u)));
@@ -2082,6 +2100,7 @@ function ovDraw() {
 }
 function setOldLayer(on) {
   if (!lmap) return;
+  if (on) track('feature', 'map1944');
   ovOn = on;
   if (on && !ovImg) {
     ovImg = document.createElement('img');
@@ -2160,7 +2179,7 @@ function renderQuests() {
       b.querySelector('p').textContent = q.desc;
       b.querySelector('.lvl').textContent = q.level || '';
       if (steps.length && n === steps.length) { const st = document.createElement('span'); st.className = 'stamp'; st.textContent = T('Пройден'); b.append(st); }
-      b.onclick = () => { navPush(); openQuest = q.id; renderQuests(); $('list').scrollTop = 0; };
+      b.onclick = () => { track('quest', q.id); navPush(); openQuest = q.id; renderQuests(); $('list').scrollTop = 0; };
       box.append(b);
     }
     return;
@@ -2207,6 +2226,10 @@ function renderQuests() {
    одобрить: панель Supabase → Table Editor → krepost_facts → status = approved. */
 const FACTS_URL = 'https://latnwksisoziluhdadgy.supabase.co/rest/v1';
 const FACTS_KEY = 'sb_publishable_3-Gt0ELg3dm5JhnVWB3Tkw_crsYB0J6';
+setTimeout(flushTrack, 3000);
+setInterval(flushTrack, 20000);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flushTrack(); });
+addEventListener('pagehide', flushTrack);
 const FACTS_CACHE = 'krepost.facts';
 let facts = read(FACTS_CACHE, {}); // spot_id -> [{author, role, body, created_at}]
 async function loadFacts() {
@@ -2247,6 +2270,7 @@ function renderHistory(spot) {
   if (HIST.fortress) box.append(histCard(T('История крепости 1810–сегодня'), HIST.fortress.text, ['Wikipedia — Daugavpils Fortress', T('Путеводитель Daugavpils Fortress')], true));
 }
 function openFacts(spot) {
+  track('facts', spot.id);
   factsSpot = spot;
   $('factsTitle').textContent = spot.title + (spot.year ? ', ' + spot.year : '');
   $('factsImg').src = spot.thumb || spot.src;
@@ -2306,7 +2330,8 @@ function showThanks(n) {
 }
 $('thanksLater').onclick = () => navBack();
 if (DONATE_URL) { $('supBox').hidden = false; $('supBtn').href = DONATE_URL; }
-$('donateBtn').onclick = () => setTimeout(() => { if ($('thanksDlg').open) navBack(); }, 300);
+$('supBtn').addEventListener('click', () => track('feature', 'donate'));
+$('donateBtn').onclick = () => track('feature', 'donate') || setTimeout(() => { if ($('thanksDlg').open) navBack(); }, 300);
 $('thanksDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
 
 /* ===== Опрос после снимка (пока проверяем удобство). Анонимно: случайный номер телефона, место, режим, оценки, отзыв.
@@ -2694,6 +2719,7 @@ function stopCam() {
 }
 
 async function openSpot(spot, ctx) {
+  track('photo', spot.id);
   if (read(HAND_KEY, null) === null) await askHand();
   if (!$('list').hidden) navPush(); // из списка в камеру — шаг вглубь (из «Переснять» — нет)
   current = spot;
@@ -3035,14 +3061,15 @@ function setCompare(value) {
   old.style.opacity = String(1 - t);
   $('cmpLine').style.left = (21 + value * 0.58) + '%';
 }
-function setCmpKind(k) {
+function setCmpKind(k, user) {
+  if (user) track('feature', 'cmp_' + k);
   cmpKind = k; write(CMP_KEY, k);
   $('resStage').classList.toggle('swipe', k === 'swipe');
   for (const b of document.querySelectorAll('#cmpKind button')) b.classList.toggle('on', b.dataset.k === k);
   setCompare(+$('cmpRange').value);
 }
 for (const b of document.querySelectorAll('#cmpKind button')) b.onclick = () => {
-  setCmpKind(b.dataset.k);
+  setCmpKind(b.dataset.k, true);
   if ($('resStage').classList.contains('inset')) toSlider();
 };
 $('cmpRange').oninput = e => setCompare(+e.target.value);
