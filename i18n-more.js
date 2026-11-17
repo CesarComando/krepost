@@ -306,7 +306,8 @@ window.I18N_UI = {
 "🕰 1944": "🕰 1944",
 "Прозрачность старого слоя": "Senojo sluoksnio skaidrumas",
 "Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "1944 m. vokiečių aerofotonuotrauka uždėta ant žemėlapio apytiksliai — paklaida iki kelių dešimčių metrų.",
-"Аэрофото 1944: PastVu": "1944 m. aerofoto: PastVu"
+"Аэрофото 1944: PastVu": "1944 m. aerofoto: PastVu",
+"Год": "Metai"
 },
 "et": {
 "📖 История места": "📖 Koha ajalugu",
@@ -613,7 +614,8 @@ window.I18N_UI = {
 "🕰 1944": "🕰 1944",
 "Прозрачность старого слоя": "Vana kihi läbipaistvus",
 "Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "1944. aasta Saksa aerofoto on kaardile asetatud ligikaudu — viga kuni mõnikümmend meetrit.",
-"Аэрофото 1944: PastVu": "Aerofoto 1944: PastVu"
+"Аэрофото 1944: PastVu": "Aerofoto 1944: PastVu",
+"Год": "Aasta"
 },
 "pl": {
 "📖 История места": "📖 Historia miejsca",
@@ -920,7 +922,8 @@ window.I18N_UI = {
 "🕰 1944": "🕰 1944",
 "Прозрачность старого слоя": "Przezroczystość starej warstwy",
 "Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "Niemieckie zdjęcie lotnicze z 1944 roku nałożono na mapę w przybliżeniu — błąd do kilkudziesięciu metrów.",
-"Аэрофото 1944: PastVu": "Zdjęcie lotnicze 1944: PastVu"
+"Аэрофото 1944: PastVu": "Zdjęcie lotnicze 1944: PastVu",
+"Год": "Rok"
 },
 "de": {
 "📖 История места": "📖 Geschichte des Ortes",
@@ -1227,7 +1230,8 @@ window.I18N_UI = {
 "🕰 1944": "🕰 1944",
 "Прозрачность старого слоя": "Transparenz der alten Ebene",
 "Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "Das deutsche Luftbild von 1944 ist ungefähr auf die Karte gelegt — Abweichung bis zu einigen Dutzend Metern.",
-"Аэрофото 1944: PastVu": "Luftbild 1944: PastVu"
+"Аэрофото 1944: PastVu": "Luftbild 1944: PastVu",
+"Год": "Jahr"
 },
 "fr": {
 "📖 История места": "📖 Histoire du lieu",
@@ -1534,7 +1538,8 @@ window.I18N_UI = {
 "🕰 1944": "🕰 1944",
 "Прозрачность старого слоя": "Transparence de l’ancienne couche",
 "Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "La photo aérienne allemande de 1944 est superposée approximativement — l’écart peut atteindre quelques dizaines de mètres.",
-"Аэрофото 1944: PastVu": "Photo aérienne 1944 : PastVu"
+"Аэрофото 1944: PastVu": "Photo aérienne 1944 : PastVu",
+"Год": "Année"
 },
 "it": {
 "📖 История места": "📖 Storia del luogo",
@@ -1841,7 +1846,8 @@ window.I18N_UI = {
 "🕰 1944": "🕰 1944",
 "Прозрачность старого слоя": "Trasparenza del livello storico",
 "Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "La foto aerea tedesca del 1944 è sovrapposta in modo approssimativo: l’errore può arrivare a qualche decina di metri.",
-"Аэрофото 1944: PastVu": "Foto aerea 1944: PastVu"
+"Аэрофото 1944: PastVu": "Foto aerea 1944: PastVu",
+"Год": "Anno"
 },
 "es": {
 "📖 История места": "📖 Historia del lugar",
@@ -2148,7 +2154,8 @@ window.I18N_UI = {
 "🕰 1944": "🕰 1944",
 "Прозрачность старого слоя": "Transparencia de la capa antigua",
 "Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "La foto aérea alemana de 1944 está superpuesta de forma aproximada: el error puede ser de varias decenas de metros.",
-"Аэрофото 1944: PastVu": "Foto aérea 1944: PastVu"
+"Аэрофото 1944: PastVu": "Foto aérea 1944: PastVu",
+"Год": "Año"
 },
 "zh": {
 "📖 История места": "📖 地点历史",
@@ -2455,6 +2462,7 @@ window.I18N_UI = {
 "🕰 1944": "🕰 1944",
 "Прозрачность старого слоя": "旧图层透明度",
 "Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "1944 年德国航拍照片是大致叠加在地图上的，误差可能达几十米。",
-"Аэрофото 1944: PastVu": "1944 年航拍：PastVu"
+"Аэрофото 1944: PastVu": "1944 年航拍：PastVu",
+"Год": "年份"
 }
 };

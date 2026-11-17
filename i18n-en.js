@@ -2,6 +2,7 @@
 window.I18N = window.I18N || {};
 window.I18N.en = {
  "ui": {
+  "Год": "Year",
   "🕰 1944": "🕰 1944",
   "Прозрачность старого слоя": "Old layer transparency",
   "Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "The 1944 German aerial photo is laid over the map approximately — it may be off by a few tens of metres.",

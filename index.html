@@ -683,6 +683,18 @@
   #oldBar label { color:#e6d8bd; font-size:13px; }
   #oldBar input { width:100%; accent-color:#e8b84a; }
   #oldNote { margin:0; color:var(--muted); font-size:12px; }
+
+  /* ===== Плашка года при прокрутке ===== */
+  #yearRail { position:fixed; z-index:25; right:0; top:calc(78px + env(safe-area-inset-top)); bottom:calc(96px + env(safe-area-inset-bottom)); width:10px; pointer-events:none; }
+  #yearRail[hidden] { display:none; }
+  #yearBubble { position:absolute; right:4px; top:0; transform:translateY(-50%); display:flex; flex-direction:column; align-items:flex-end; gap:1px; padding:7px 12px 7px 14px; border-radius:16px 6px 6px 16px;
+    background:rgba(246,236,216,.96); color:#1c1610; box-shadow:0 6px 18px rgba(0,0,0,.55); white-space:nowrap; pointer-events:none; touch-action:none; cursor:grab;
+    opacity:0; transition:opacity .3s; }
+  #yearBubble.show, #yearBubble.drag { opacity:1; pointer-events:auto; }
+  #yearBubble.drag { cursor:grabbing; background:#f4c64b; }
+  #yearBubble b { font:700 17px var(--mono); }
+  #yearBubble small { font:600 11px Inter,system-ui,sans-serif; color:#6b5434; }
+  #yearBubble small:empty { display:none; }
   /* ===== 17.11.2026: новый главный экран, нижнее меню, поиск, карта ===== */
   #list { border:0; outline:0; box-shadow:none; padding:0 0 calc(84px + env(safe-area-inset-bottom)); background:#120e0a; }
   #list > #home, #list > #objView, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests, #list > #empty, #list > #adminBar { margin-left:16px; margin-right:16px; }
@@ -878,6 +890,7 @@
   <div id="lib" hidden></div>
   <div id="quests" hidden></div>
   <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
+  <div id="yearRail" hidden><div id="yearBubble" role="slider" aria-label="Год"><b></b><small></small></div></div>
   <nav id="botNav">
     <button type="button" class="tab on" data-view="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Главная</span></button>
     <button type="button" class="tab" data-view="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg><span>Карта</span></button>
@@ -1569,6 +1582,7 @@ function setView(v) {
   $('lib').hidden = v !== 'lib';
   $('quests').hidden = v !== 'quests';
   $('list').classList.toggle('mapMode', v === 'map');
+  $('yearRail').hidden = true;
   if (!all) $('empty').hidden = true;
   if (v === 'quests') openQuest = null;
   renderList();
@@ -1641,6 +1655,51 @@ function renderHome() {
     box.append(row);
   }
 }
+
+/* ===== Хронология при прокрутке: справа плашка с годом снимка на экране и эпохой.
+   Едет вдоль края, как ползунок; её можно тянуть пальцем, чтобы быстро перемотать ленту по годам. ===== */
+let railTimer = 0, railDrag = false;
+function railCurrent() {
+  const cards = $('cards').children;
+  const line = $('subBar').getBoundingClientRect().bottom + 40;
+  let lo = 0, hi = cards.length - 1, best = null;
+  while (lo <= hi) { // первая карточка, нижний край которой ниже линии
+    const mid = (lo + hi) >> 1, el = cards[mid];
+    if (el.getBoundingClientRect().bottom > line) { best = mid; hi = mid - 1; } else lo = mid + 1;
+  }
+  for (let i = best == null ? cards.length - 1 : best; i < cards.length; i++) if (cards[i].classList.contains('card')) return cards[i];
+  return null;
+}
+function railUpdate() {
+  const rail = $('yearRail'), list = $('list');
+  if (view !== 'all' || !$('cards').children.length || list.hidden) { rail.hidden = true; return; }
+  const max = list.scrollHeight - list.clientHeight;
+  if (max < 600) { rail.hidden = true; return; }
+  const c = railCurrent();
+  if (!c) return;
+  rail.hidden = false;
+  const bub = $('yearBubble');
+  bub.querySelector('b').textContent = c.dataset.yl || '—';
+  bub.querySelector('small').textContent = c.dataset.era || '';
+  const r = rail.getBoundingClientRect();
+  bub.style.top = (Math.min(1, Math.max(0, list.scrollTop / max)) * r.height) + 'px';
+  bub.classList.add('show');
+  clearTimeout(railTimer);
+  if (!railDrag) railTimer = setTimeout(() => bub.classList.remove('show'), 1200);
+}
+$('list').addEventListener('scroll', railUpdate, { passive: true });
+(() => {
+  const bub = $('yearBubble'), list = $('list');
+  const go = e => {
+    const r = $('yearRail').getBoundingClientRect();
+    const f = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+    list.scrollTop = f * (list.scrollHeight - list.clientHeight);
+  };
+  bub.addEventListener('pointerdown', e => { railDrag = true; bub.setPointerCapture(e.pointerId); bub.classList.add('drag'); e.preventDefault(); });
+  bub.addEventListener('pointermove', e => { if (railDrag) go(e); });
+  const end = () => { railDrag = false; bub.classList.remove('drag'); railUpdate(); };
+  bub.addEventListener('pointerup', end); bub.addEventListener('pointercancel', end);
+})();
 
 /* ===== Хронология: десятилетия и эпохи ===== */
 const decadeOf = s => { const y = yearOfSpot(s); return y === 9999 ? 'none' : Math.floor(y / 10) * 10; };
@@ -2359,6 +2418,8 @@ function renderList() {
     }
     const card = document.createElement('div');
     card.className = 'card';
+    card.dataset.yl = yearOfSpot(spot) === 9999 ? T('Без года') : (spot.year || '');
+    card.dataset.era = eraOf(decadeOf(spot));
 
     const open = document.createElement('button');
     open.className = 'open';
