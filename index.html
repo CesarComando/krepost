@@ -713,6 +713,11 @@
     #home, #objView, #filters, #lib, #quests, #mapView { animation:none !important; }
     .tile:active, .place:active, #contBtn:active, #botNav .tab:active { transform:none; }
   }
+
+  #supBox { margin:8px 0 0; text-align:center; }
+  #supBox[hidden] { display:none; }
+  #supBtn { display:inline-block; padding:10px 16px; border-radius:12px; background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; font:700 15px Inter,system-ui,sans-serif; text-decoration:none; }
+  #supBox small { color:var(--muted); font-size:12px; }
   /* ===== 17.11.2026: новый главный экран, нижнее меню, поиск, карта ===== */
   #list { border:0; outline:0; box-shadow:none; padding:0 0 calc(84px + env(safe-area-inset-bottom)); background:#120e0a; }
   #list > #home, #list > #objView, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests, #list > #empty, #list > #adminBar { margin-left:16px; margin-right:16px; }
@@ -921,6 +926,7 @@
   <div class="setBox">
     <div class="setHead"><h3>Настройки</h3><button type="button" id="setClose" aria-label="Закрыть">✕</button></div>
     <p id="fbBox"><button type="button" id="fbOpen">💬 Оставить отзыв</button><br><small>Анонимно: без имён, телефонов и местоположения</small></p>
+    <p id="supBox" hidden><a id="supBtn" target="_blank" rel="noopener">☕ Поддержать проект</a><br><small>Через Revolut: картой, Apple Pay или Google Pay</small></p>
     <p id="handSet"><button type="button" id="handChange"></button></p>
     <div id="offBox">
       <h4>📥 Без интернета</h4>
@@ -2267,9 +2273,9 @@ function openFacts(spot) {
 }
 $('factsClose').onclick = () => navBack();
 /* ===== Каждые 10 снимков — «спасибо» с кнопкой поддержки (и место для спонсора) =====
-   DONATE_URL — ссылка Revolut.me разработчика. Пока пусто — кнопка спрятана.
+   DONATE_URL — ссылка Revolut.me разработчика (оплата картой, номер счёта не виден). Пусто — кнопка спрятана.
    SPONSOR — текст предложения партнёра (например, скидка в кафе), пока null. */
-const DONATE_URL = '';
+const DONATE_URL = 'https://revolut.me/dainis9d0x';
 const SPONSOR = null; // { text: 'Кафе … дарит −10 % — покажите этот экран', until: '2027-09-30' }
 const SHOTS_KEY = 'krepost.shots';
 const DEVICE_KEY = 'krepost.device';
@@ -2299,6 +2305,7 @@ function showThanks(n) {
   navPush();
 }
 $('thanksLater').onclick = () => navBack();
+if (DONATE_URL) { $('supBox').hidden = false; $('supBtn').href = DONATE_URL; }
 $('donateBtn').onclick = () => setTimeout(() => { if ($('thanksDlg').open) navBack(); }, 300);
 $('thanksDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
 
