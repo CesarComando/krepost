@@ -1,8 +1,9 @@
-/* Языки приложения: ru (исходный), lv, en. Переводы лежат в i18n-lv.js и i18n-en.js, ключ — русский текст.
-   Язык: выбранный вручную (переключатель RU / LV / EN) → иначе язык телефона → иначе английский.
+/* Языки приложения: ru (исходный), lv, en — полностью; lt, et, pl, de, fr, it, es, zh — интерфейс (i18n-more.js),
+   а подписи снимков, история и квесты для них берутся из английского. Ключ перевода — русский текст.
+   Язык: выбранный вручную (список языков) → иначе язык телефона → иначе английский.
    Смена языка перезагружает страницу: всё рисуется заново уже на новом языке. */
 (function () {
-  const LANGS = ['ru', 'lv', 'en'];
+  const LANGS = ['ru', 'lv', 'en', 'lt', 'et', 'pl', 'de', 'fr', 'it', 'es', 'zh'];
   const KEY = 'krepost.lang';
   let lang = null;
   try { lang = JSON.parse(localStorage.getItem(KEY)); } catch { /* нет хранилища */ }
@@ -13,7 +14,13 @@
       if (LANGS.includes(c)) { lang = c; break; }
     }
   }
-  const D = lang === 'ru' ? null : (window.I18N || {})[lang] || null;
+  const ALL = window.I18N || {};
+  let D = null;
+  if (lang === 'lv' || lang === 'en') D = ALL[lang] || null;
+  else if (lang !== 'ru' && ALL.en) {
+    const own = (window.I18N_UI || {})[lang] || {};
+    D = Object.assign({}, ALL.en, { ui: Object.assign({}, ALL.en.ui, own) });
+  }
   const norm = s => String(s).replace(/\s+/g, ' ').trim();
 
   /* T('русский текст') → перевод; пробелы по краям сохраняются. Нет перевода — остаётся русский. */
@@ -42,12 +49,15 @@
   }
 
   /* Годы: «1940-е» → «1940. gadi» / «1940s», «ок. 1910» → «ap. 1910» / «c. 1910». */
+  const APPROX = { lv: 'ap. ', en: 'c. ', lt: 'apie ', et: 'u ', pl: 'ok. ', de: 'ca. ', fr: 'vers ', it: 'ca. ', es: 'c. ', zh: '约 ' };
+  const DECADE = { lv: d => d + '. gadi', en: d => d + 's', lt: d => d + '-ieji', et: d => d + '. aastad', pl: d => 'lata ' + d + '.',
+    de: d => d + 'er', fr: d => 'années ' + d, it: d => 'anni ' + d, es: d => 'años ' + d, zh: d => d + ' 年代' };
   function yearT(y) {
     if (!D) return y;
     const t = T(y); if (t !== y) return t;
     let v = String(y);
-    v = v.replace(/^ок\. /, lang === 'lv' ? 'ap. ' : 'c. ');
-    v = v.replace(/(\d{4})-е/g, (m, d) => lang === 'lv' ? d + '. gadi' : d + 's');
+    v = v.replace(/^ок\. /, APPROX[lang] || 'c. ');
+    v = v.replace(/(\d{4})-е/g, (m, d) => (DECADE[lang] || DECADE.en)(d));
     return v;
   }
   /* Данные: подписи снимков, квесты, исторические справки. Группы (s.group) остаются ключами на русском. */
@@ -90,7 +100,8 @@
   }
 
   window.LANG = lang;
-  window.LOCALE = { ru: 'ru-RU', lv: 'lv-LV', en: 'en-GB' }[lang];
+  window.LOCALE = { ru: 'ru-RU', lv: 'lv-LV', en: 'en-GB', lt: 'lt-LT', et: 'et-EE', pl: 'pl-PL', de: 'de-DE', fr: 'fr-FR', it: 'it-IT', es: 'es-ES', zh: 'zh-CN' }[lang];
+  window.LANGS = LANGS;
   window.yearT = yearT; window.T = T; window.Tf = Tf; window.translateDom = translateDom; window.setLang = setLang;
   document.documentElement.lang = lang;
   if (D) document.title = T(document.title);
