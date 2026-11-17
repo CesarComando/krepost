@@ -657,6 +657,21 @@
   #langList button small { color:var(--muted); font:600 11px var(--mono); }
   #langList button.on { background:rgba(244,198,75,.16); color:#f3c650; }
   #langList button.on small { color:#f3c650; }
+
+  /* ===== Без интернета ===== */
+  #offBox { margin:10px 0; padding:12px; border-radius:14px; background:#2a231b; border:1px solid rgba(217,164,65,.3); display:flex; flex-direction:column; gap:8px; }
+  #offBox h4 { margin:0; font:700 17px var(--serif); color:#f6ecd8; }
+  #offInfo, .offState { margin:0; color:var(--muted); font-size:13px; }
+  .offState:empty { display:none; }
+  #offBox button { min-height:0; padding:10px 12px; border-radius:12px; font:600 14px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; box-shadow:none; }
+  #offBox button:not(.main) { background:#1c1610; color:#e6d8bd; border:1px solid rgba(217,164,65,.3); }
+  #offBox small { color:var(--muted); font-size:12px; }
+  .offProg { height:6px; border-radius:3px; background:rgba(242,232,216,.12); overflow:hidden; }
+  .offProg[hidden], #offBox [hidden] { display:none !important; }
+  .offProg i { display:block; height:100%; width:0; background:#e8b84a; transition:width .2s; }
+  #offHome { width:100%; margin:0 0 22px; min-height:0; padding:12px; border-radius:14px; background:#1c1610; color:#f3d27a; border:1px dashed rgba(217,164,65,.5); font:600 14px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; box-shadow:none; }
+  .oActs button.oOff { flex:1 0 100%; background:#1c1610; color:#e6d8bd; border:1px dashed rgba(217,164,65,.45); }
+  .oActs button.oOff.done { color:#9fd28a; border-style:solid; border-color:rgba(95,158,69,.6); }
   /* ===== 17.11.2026: новый главный экран, нижнее меню, поиск, карта ===== */
   #list { border:0; outline:0; box-shadow:none; padding:0 0 calc(84px + env(safe-area-inset-bottom)); background:#120e0a; }
   #list > #home, #list > #objView, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests, #list > #empty, #list > #adminBar { margin-left:16px; margin-right:16px; }
@@ -812,6 +827,7 @@
       <button type="button" class="tile" data-go="quests" style="--img:url(photos/thumbs/spot254.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4"/></svg><span>Квесты и задания</span></button>
       <button type="button" class="tile" data-go="lib" style="--img:url(photos/thumbs/spot262.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/></svg><span>Паспорт исследователя<em id="libCount"></em></span></button>
     </div>
+    <button type="button" id="offHome">📥 Скачать для прогулки без интернета</button>
     <h2 class="secTitle">Места крепости</h2>
     <div id="places"></div>
     <p class="free">Бесплатно · фото принадлежат авторам и архивам · <button type="button" id="aboutLink">подробнее</button></p>
@@ -863,6 +879,16 @@
     <div class="setHead"><h3>Настройки</h3><button type="button" id="setClose" aria-label="Закрыть">✕</button></div>
     <p id="fbBox"><button type="button" id="fbOpen">💬 Оставить отзыв</button><br><small>Анонимно: без имён, телефонов и местоположения</small></p>
     <p id="handSet"><button type="button" id="handChange"></button></p>
+    <div id="offBox">
+      <h4>📥 Без интернета</h4>
+      <p id="offInfo"></p>
+      <button type="button" class="main" data-off="full">⬇ Скачать все снимки для прогулки</button>
+      <button type="button" data-off="thumbs">⬇ Только миниатюры (быстрее)</button>
+      <div class="offProg" hidden><i></i></div>
+      <p class="offState"></p>
+      <button type="button" class="offStop" hidden>Остановить</button>
+      <small>Карта без интернета показывает только те участки, которые вы уже открывали на ней.</small>
+    </div>
   <details id="about">
     <summary>О приложении и правах на фото</summary>
     <p><b>«Крепость сквозь время» — бесплатный краеведческий проект.</b> Пользоваться им можно без оплаты и без регистрации.</p>
@@ -1556,7 +1582,7 @@ for (const b of document.querySelectorAll('#tiles .tile')) b.onclick = () => goV
 $('subBack').onclick = () => navBack();
 
 /* Настройки (шестерёнка): отзыв, рука, о приложении */
-$('setOpen').onclick = () => { navPush(); $('setDlg').showModal(); };
+$('setOpen').onclick = () => { navPush(); $('setDlg').showModal(); paintOffInfo(); };
 $('setClose').onclick = () => navBack();
 $('setDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
 
@@ -1650,6 +1676,11 @@ function renderObj() {
     mp.onclick = () => { pushView(); mapFocus = g; setView('map'); };
     acts.append(mp);
   }
+  const off = document.createElement('button'); off.type = 'button'; off.className = 'oOff';
+  off.textContent = Tf('⬇ Для прогулки · ≈ {mb} МБ', { mb: Math.max(1, Math.round(list.length * 0.22)) });
+  off.onclick = () => saveOffline(photoUrls(list, true), off);
+  acts.append(off);
+  offCount(photoUrls(list, true)).then(([have, all]) => { if (have >= all) { off.textContent = T('✓ Сохранено для прогулки'); off.classList.add('done'); } });
   head.append(acts);
   box.append(top, head);
 
@@ -1717,6 +1748,78 @@ function renderObj() {
   }
 }
 
+/* ===== Без интернета: заранее сохранить снимки (и саму страницу) в памяти телефона ===== */
+const PHOTO_CACHE = 'krepost-photos', OFF_CACHE = 'krepost-offline';
+const SHELL = ['./', 'index.html', 'spots.js', 'quests.js', 'history.js', 'i18n.js', 'i18n-lv.js', 'i18n-en.js', 'i18n-more.js',
+  'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'manifest.webmanifest'];
+const pathOf = u => new URL(u, location.href).pathname;
+function photoUrls(list, full) {
+  const out = [];
+  for (const s of list) { if (s.thumb) out.push(s.thumb); if (full && s.src) out.push(s.src); }
+  return [...new Set(out.filter(u => !/^(blob|data):/.test(u)))];
+}
+async function cachedPaths() {
+  try { const c = await caches.open(PHOTO_CACHE); return new Set((await c.keys()).map(r => new URL(r.url).pathname)); } catch { return new Set(); }
+}
+async function offCount(urls) { const have = await cachedPaths(); return [urls.filter(u => have.has(pathOf(u))).length, urls.length]; }
+let offJob = null;
+async function saveOffline(urls, btn) {
+  if (offJob) return;
+  if (!('caches' in window)) { alert(T('Этот браузер не умеет сохранять файлы для работы без интернета.')); return; }
+  const have = await cachedPaths();
+  const todo = urls.filter(u => !have.has(pathOf(u)));
+  let done = urls.length - todo.length, fail = 0, i = 0;
+  offJob = { stop: false };
+  const label = btn ? btn.textContent : '';
+  const paint = () => {
+    const pct = Math.round(100 * done / Math.max(1, urls.length));
+    if (btn) btn.textContent = Tf('Сохраняю… {p}%', { p: pct });
+    document.querySelectorAll('.offProg').forEach(b => { b.hidden = false; b.firstElementChild.style.width = pct + '%'; });
+    document.querySelectorAll('.offState').forEach(x => { x.textContent = Tf('Сохранено {a} из {b} файлов', { a: done, b: urls.length }); });
+    document.querySelectorAll('.offStop').forEach(x => { x.hidden = false; });
+  };
+  paint();
+  try {
+    const sh = await caches.open(OFF_CACHE);
+    await Promise.all(SHELL.map(u => sh.add(u).catch(() => {})));
+    const c = await caches.open(PHOTO_CACHE);
+    const worker = async () => {
+      while (!offJob.stop && i < todo.length) {
+        const u = todo[i++];
+        try { await c.add(u); } catch { fail++; }
+        done++; paint();
+      }
+    };
+    await Promise.all([worker(), worker(), worker(), worker()]);
+  } catch { fail++; }
+  const stopped = offJob.stop;
+  offJob = null;
+  document.querySelectorAll('.offStop').forEach(x => { x.hidden = true; });
+  const msg = stopped ? T('Остановлено. Уже сохранённое останется.')
+    : fail ? Tf('Готово, но {n} файлов не сохранились — проверьте интернет и нажмите ещё раз.', { n: fail })
+    : T('✓ Готово! Эти снимки откроются и без интернета.');
+  document.querySelectorAll('.offState').forEach(x => { x.textContent = msg; });
+  if (btn) { btn.textContent = !stopped && !fail ? T('✓ Сохранено для прогулки') : label; btn.classList.toggle('done', !stopped && !fail); }
+  if (!stopped && !fail && btn && btn.closest('#setDlg')) btn.textContent = label;
+  paintOffInfo();
+}
+document.querySelectorAll('.offStop').forEach(b => { b.onclick = () => { if (offJob) offJob.stop = true; }; });
+async function paintOffInfo() {
+  const spots = visibleSpots();
+  const have = await cachedPaths();
+  const full = spots.filter(s => have.has(pathOf(s.src))).length;
+  const th = spots.filter(s => s.thumb && have.has(pathOf(s.thumb))).length;
+  let free = '';
+  try { const e = await navigator.storage.estimate(); if (e && e.quota) free = Tf(' · свободно ≈ {mb} МБ', { mb: Math.round((e.quota - e.usage) / 1048576) }); } catch { /* нет оценки */ }
+  $('offInfo').textContent = Tf('Сохранено снимков: {a} из {b}', { a: full, b: spots.length }) + Tf(' · миниатюр: {c}', { c: th }) + free;
+  const fb = document.querySelector('[data-off=full]'), tb = document.querySelector('[data-off=thumbs]');
+  fb.textContent = Tf('⬇ Скачать все снимки для прогулки · ≈ {mb} МБ', { mb: Math.round(spots.length * 0.22) });
+  tb.textContent = Tf('⬇ Только миниатюры (быстрее) · ≈ {mb} МБ', { mb: Math.round(spots.length * 0.035) });
+}
+document.querySelector('[data-off=full]').onclick = e => saveOffline(photoUrls(visibleSpots(), true), e.currentTarget);
+document.querySelector('[data-off=thumbs]').onclick = e => saveOffline(photoUrls(visibleSpots(), false), e.currentTarget);
+$('offHome').onclick = () => { navPush(); $('setDlg').showModal(); paintOffInfo(); $('offBox').scrollIntoView({ block: 'center' }); };
+
 /* ===== Поиск и фильтры ===== */
 let fText = '', fStatus = 'all', fPeriod = '', fStory = false;
 const hasStory = s => !!((HIST.spots && HIST.spots[s.id]) || (facts[s.id] || []).length);
@@ -1771,7 +1874,7 @@ async function renderMap() {
   if (view !== 'map') return;
   if (!lmap) {
     lmap = L.map('map', { zoomControl: true, attributionControl: true }).setView([55.8838, 26.4985], 15);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(lmap);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap', crossOrigin: true }).addTo(lmap);
     markLayer = L.layerGroup().addTo(lmap);
     // Первое открытие: вписать в экран все точки снимков
     lmap._fitFirst = true;
