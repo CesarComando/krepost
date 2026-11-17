@@ -567,6 +567,47 @@
   #surveyForm.general .q.gen { display:flex; }
   #surveyForm.general .shot { display:none; }
 
+
+  /* «Шторка»: линия во всю высоту с круглой ручкой */
+  #resStage.swipe #cmpTrack { display:none; }
+  #resStage.swipe #cmpLine { top:0; bottom:0; height:auto; width:3px; margin-left:-1.5px; background:#f1e6cc; box-shadow:0 0 8px rgba(0,0,0,.65); }
+  #resStage.swipe #cmpOld { transition:transform .9s cubic-bezier(.2,.8,.2,1), box-shadow .9s; }
+  #cmpKind { display:flex; justify-content:center; gap:6px; margin:0 auto 8px; }
+  #cmpKind button { min-height:0; padding:6px 12px; border-radius:999px; background:rgba(28,22,16,.9); border:1px solid rgba(217,164,65,.35); color:#d9cbb2; font:600 13px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
+  #cmpKind button.on { background:#f6ecd8; color:#1c1610; border-color:#f6ecd8; }
+
+  /* ===== Паспорт исследователя ===== */
+  .pCover { position:relative; margin:4px 0 18px; padding:20px 16px 16px; border-radius:18px; text-align:center; color:#f6ecd8;
+    background:radial-gradient(circle at 50% 0%, rgba(244,198,75,.18), transparent 60%), linear-gradient(#2a1f14,#1b140d); border:1px solid rgba(217,164,65,.45); box-shadow:inset 0 0 0 6px rgba(18,14,10,.6), inset 0 0 0 7px rgba(217,164,65,.35), 0 10px 26px rgba(0,0,0,.4); }
+  .pEmblem { width:64px; height:64px; margin:0 auto 6px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:32px; border:2px dashed rgba(244,198,75,.7); }
+  .pCover h2 { margin:0; font:700 24px var(--serif); letter-spacing:.02em; }
+  .pSince { margin:6px auto 14px; color:var(--muted); font-size:13px; max-width:26em; }
+  .pStats { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; border-top:1px solid rgba(217,164,65,.25); padding-top:12px; }
+  .pStats b { display:block; font:700 26px var(--serif); color:#f3c650; }
+  .pStats span { font-size:12px; color:var(--muted); }
+  .secTitle.badgeTitle::before { content:"🎖"; } .secTitle.stampTitle::before { content:"📮"; } .secTitle.shotsTitle::before { content:"📷"; }
+  .badges { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:20px; }
+  .badge { display:flex; flex-direction:column; align-items:center; gap:3px; padding:10px 6px 9px; border-radius:14px; background:#1c1610; border:1px solid rgba(217,164,65,.15); text-align:center; }
+  .badge .bIcon { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; background:#2a231b; filter:grayscale(1); opacity:.7; }
+  .badge.ok .bIcon { filter:none; opacity:1; background:radial-gradient(circle,#f8d978,#c9921f); box-shadow:0 0 0 3px #1c1610, 0 0 0 4px #e8b84a, 0 4px 12px rgba(232,184,74,.35); }
+  .badge b { font:600 12px/1.2 Inter,system-ui,sans-serif; color:#e6d8bd; }
+  .badge small { font-size:11px; color:var(--muted); }
+  .badge.ok small { color:#f3c650; }
+  .bBar { display:block; width:80%; height:4px; border-radius:2px; background:rgba(242,232,216,.12); overflow:hidden; }
+  .bBar i { display:block; height:100%; background:#e8b84a; }
+  .badge.ok .bBar { display:none; }
+  .stamps { display:grid; grid-template-columns:repeat(3,1fr); gap:12px 10px; margin-bottom:22px; }
+  .stampCard { position:relative; display:block; padding:5px; min-height:0; border:0; border-radius:0; background:#efe3c8; color:#2b1d08; filter:drop-shadow(0 3px 5px rgba(0,0,0,.5)); transform:rotate(-1.5deg); text-transform:none; letter-spacing:0; box-shadow:none;
+    -webkit-mask:linear-gradient(#000 0 0) content-box, radial-gradient(circle 3px, #0000 92%, #000) -5px -5px / 10px 10px round;
+    mask:linear-gradient(#000 0 0) content-box, radial-gradient(circle 3px, #0000 92%, #000) -5px -5px / 10px 10px round; }
+  .sIn { position:relative; display:block; padding:4px 4px 20px; background:#efe3c8; }
+  .stampCard:nth-child(even) { transform:rotate(1.4deg); }
+  .stampCard img { display:block; width:100%; aspect-ratio:1; object-fit:cover; filter:sepia(.35); }
+  .stampCard.mine img { filter:none; }
+  .sRing { position:absolute; right:3px; top:46%; width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px;
+    border:2px solid rgba(160,40,30,.85); color:rgba(160,40,30,.9); background:rgba(239,227,200,.55); transform:rotate(-14deg); box-shadow:inset 0 0 0 2px rgba(239,227,200,.6), inset 0 0 0 3px rgba(160,40,30,.6); }
+  .sDate { position:absolute; left:5px; right:5px; bottom:3px; font:700 10px var(--mono); text-align:left; color:#7a2a1c; }
+  .sCap { position:absolute; left:7px; right:7px; top:7px; font:600 10px/1.15 Inter,sans-serif; color:#fff; text-shadow:0 1px 3px #000; text-align:left; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
   /* ===== 17.11.2026: новый главный экран, нижнее меню, поиск, карта ===== */
   #list { border:0; outline:0; box-shadow:none; padding:0 0 calc(84px + env(safe-area-inset-bottom)); background:#120e0a; }
   #list > #home, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests, #list > #empty, #list > #adminBar { margin-left:16px; margin-right:16px; }
@@ -719,7 +760,7 @@
       <button type="button" class="tile" data-go="map" style="--img:url(photos/thumbs/spot542.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg><span>Карта крепости</span></button>
       <button type="button" class="tile" data-go="all" style="--img:url(photos/thumbs/spot246.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Фотографии из прошлого</span></button>
       <button type="button" class="tile" data-go="quests" style="--img:url(photos/thumbs/spot254.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4"/></svg><span>Квесты и задания</span></button>
-      <button type="button" class="tile" data-go="lib" style="--img:url(photos/thumbs/spot262.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4z"/><path d="M16.5 5.2l3.6-1 3 15.4-3.6 1z" transform="translate(-2 0)"/></svg><span>Библиотека<em id="libCount"></em></span></button>
+      <button type="button" class="tile" data-go="lib" style="--img:url(photos/thumbs/spot262.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/></svg><span>Паспорт исследователя<em id="libCount"></em></span></button>
     </div>
     <h2 class="secTitle">Места крепости</h2>
     <div id="places"></div>
@@ -760,7 +801,7 @@
     <button type="button" class="tab on" data-view="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Главная</span></button>
     <button type="button" class="tab" data-view="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg><span>Карта</span></button>
     <button type="button" class="tab" data-view="quests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4"/></svg><span>Квесты</span></button>
-    <button type="button" class="tab" data-view="lib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4z"/><path d="M16.5 5.2l3.6-1 3 15.4-3.6 1z" transform="translate(-2 0)"/></svg><span>Библиотека</span></button>
+    <button type="button" class="tab" data-view="lib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/></svg><span>Паспорт</span></button>
   </nav>
 </section>
 
@@ -840,6 +881,7 @@
   <div class="controls">
     <p id="rotHint"><b>↻</b> Поверните телефон — снимок будет крупнее</p>
     <button type="button" id="cmpMode" class="hint">◐ Наложить старое фото</button>
+    <div id="cmpKind" role="group" aria-label="Как сравнивать"><button type="button" data-k="swipe">⇆ Шторка</button><button type="button" data-k="fade">◐ Просвет</button></div>
     <div class="actions">
       <button id="save" class="main">Сохранить</button>
       <button id="share">Поделиться</button>
@@ -955,7 +997,17 @@ function read(key, fallback) {
   try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch { return fallback; }
 }
 function write(key, value) {
+  if (key === FOUND_KEY) stampDates(value);
   try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; }
+}
+/* Дата каждой «печати» в паспорте: когда место отмечено впервые. Хранится только в телефоне. */
+const FOUND_AT_KEY = 'krepost.foundAt';
+function stampDates(list) {
+  let at; try { at = JSON.parse(localStorage.getItem(FOUND_AT_KEY)) || {}; } catch { at = {}; }
+  const now = Date.now();
+  for (const id of list) if (!at[id]) at[id] = now;
+  for (const id of Object.keys(at)) if (!list.includes(id)) delete at[id];
+  try { localStorage.setItem(FOUND_AT_KEY, JSON.stringify(at)); } catch { /* нет места */ }
 }
 
 let added = read(ADDED_KEY, []);
@@ -1251,6 +1303,98 @@ let libUrls = [];
 async function updateLibCount() {
   try { const n = (await libAll()).length; $('libCount').textContent = n ? ` · ${n}` : ''; } catch { /* нет IndexedDB */ }
 }
+/* ===== Паспорт исследователя: печати за посещённые места и значки. Всё считается в телефоне, без регистрации. ===== */
+const BADGE_ICON = { 'Михайловские ворота': '🏰', 'Николаевские ворота': '🦅', 'Константиновские ворота': '🏛', 'Александровские ворота': '👑',
+  'Инженерный арсенал': '⚙️', 'Собор': '⛪', 'Редюиты и валы': '🛡', 'Комендантский сад и парк': '🌳', 'Мосты и дороги': '🌉',
+  'Улицы и здания': '🏘', 'Солдаты и люди': '🎖', 'Виды сверху': '🛩' };
+const GATES = ['Михайловские ворота', 'Николаевские ворота', 'Константиновские ворота', 'Александровские ворота'];
+function passportBadges(shots) {
+  const spots = visibleSpots(), seen = new Set(found);
+  const inGroup = g => spots.filter(s => groupOf(s) === g);
+  const out = [];
+  const n = spots.filter(s => seen.has(s.id)).length;
+  for (const [need, icon, name] of [[1, '👣', 'Первая печать'], [10, '🧭', '10 мест'], [50, '🗺', '50 мест'], [100, '🏆', '100 мест']])
+    out.push({ icon, name: T(name), have: Math.min(n, need), need });
+  const gatesHave = GATES.filter(g => inGroup(g).some(s => seen.has(s.id))).length;
+  out.push({ icon: '🚪', name: T('Все четверо ворот'), have: gatesHave, need: GATES.length });
+  out.push({ icon: '📷', name: T('Фотограф: 5 снимков «тогда и сейчас»'), have: Math.min(new Set(shots.map(x => x.spotId)).size, 5), need: 5 });
+  for (const g of Object.keys(BADGE_ICON)) {
+    const list = inGroup(g);
+    if (!list.length) continue;
+    const need = Math.min(3, list.length);
+    out.push({ icon: BADGE_ICON[g], name: T(g), have: Math.min(list.filter(s => seen.has(s.id)).length, need), need, of: list.filter(s => seen.has(s.id)).length + ' / ' + list.length });
+  }
+  for (const q of QUESTS) {
+    const steps = questSteps(q);
+    if (!steps.length) continue;
+    out.push({ icon: '🎯', name: Tf('Квест: {q}', { q: q.title }), have: doneIn(q), need: steps.length });
+  }
+  return out;
+}
+function renderPassport(box, shots) {
+  const at = read(FOUND_AT_KEY, {});
+  const spots = visibleSpots();
+  const mine = spots.filter(s => found.includes(s.id));
+  const badges = passportBadges(shots);
+  const got = badges.filter(b => b.have >= b.need).length;
+  const placesHave = new Set(mine.map(groupOf)).size;
+  const cover = document.createElement('div');
+  cover.className = 'pCover';
+  const first = Object.values(at).sort((a, b) => a - b)[0];
+  cover.innerHTML = `<div class="pEmblem">🏰</div><h2></h2><p class="pSince"></p>
+    <div class="pStats"><div><b>${mine.length}</b><span></span></div><div><b>${placesHave}</b><span></span></div><div><b>${got}</b><span></span></div></div>`;
+  cover.querySelector('h2').textContent = T('Паспорт исследователя');
+  cover.querySelector('.pSince').textContent = first
+    ? Tf('Исследует крепость с {d}', { d: new Date(first).toLocaleDateString(LOCALE, { day: 'numeric', month: 'long', year: 'numeric' }) })
+    : T('Отмечайте «Уже был здесь» или снимайте «тогда и сейчас» — в паспорте появятся печати.');
+  const lbl = cover.querySelectorAll('.pStats span');
+  lbl[0].textContent = T('печатей'); lbl[1].textContent = Tf('мест из {n}', { n: GROUPS.filter(g => spots.some(s => groupOf(s) === g)).length }); lbl[2].textContent = Tf('значков из {n}', { n: badges.length });
+  box.append(cover);
+
+  // Значки: полученные — цветные, остальные — с полоской прогресса
+  const bh = document.createElement('h2'); bh.className = 'secTitle badgeTitle'; bh.textContent = T('Значки');
+  const grid = document.createElement('div'); grid.className = 'badges';
+  for (const b of badges.sort((x, y) => (y.have >= y.need) - (x.have >= x.need))) {
+    const ok = b.have >= b.need;
+    const el = document.createElement('div');
+    el.className = 'badge' + (ok ? ' ok' : '');
+    el.innerHTML = `<span class="bIcon"></span><b></b><small></small><i class="bBar"><i style="width:${(100 * b.have / b.need).toFixed(0)}%"></i></i>`;
+    el.querySelector('.bIcon').textContent = ok ? b.icon : '🔒';
+    el.querySelector('b').textContent = b.name;
+    el.querySelector('small').textContent = ok ? (b.of ? Tf('Получен · {x}', { x: b.of }) : T('Получен')) : `${b.have} / ${b.need}`;
+    grid.append(el);
+  }
+  box.append(bh, grid);
+
+  // Печати: каждое посещённое место — марка со снимком (ваш снимок, если есть) и датой
+  const sh = document.createElement('h2'); sh.className = 'secTitle stampTitle'; sh.textContent = Tf('Печати · {n}', { n: mine.length });
+  box.append(sh);
+  if (!mine.length) return;
+  const lastShot = {};
+  for (const x of shots) if (!lastShot[x.spotId]) lastShot[x.spotId] = x;
+  const wall = document.createElement('div'); wall.className = 'stamps';
+  const sorted = mine.slice().sort((a, b) => (at[b.id] || 0) - (at[a.id] || 0));
+  for (const sp of sorted) {
+    const shot = lastShot[sp.id];
+    let url = sp.thumb || sp.src;
+    if (shot) { url = URL.createObjectURL(shot.now); libUrls.push(url); }
+    const st = document.createElement('button');
+    st.type = 'button';
+    st.className = 'stampCard' + (shot ? ' mine' : '');
+    const img = document.createElement('img'); img.src = url; img.alt = ''; img.loading = 'lazy';
+    const cap = document.createElement('span'); cap.className = 'sCap'; cap.textContent = sp.title;
+    const d = document.createElement('span'); d.className = 'sDate';
+    const when = shot ? shot.at : at[sp.id];
+    d.textContent = when ? new Date(when).toLocaleDateString(LOCALE, { day: '2-digit', month: '2-digit', year: 'numeric' }) : '✓';
+    const ring = document.createElement('span'); ring.className = 'sRing'; ring.textContent = BADGE_ICON[groupOf(sp)] || '🏰';
+    const inner = document.createElement('span'); inner.className = 'sIn';
+    inner.append(img, ring, d, cap);
+    st.append(inner);
+    st.onclick = () => shot ? openResult(sp, url, shot.id) : openSpot(sp);
+    wall.append(st);
+  }
+  box.append(wall);
+}
 async function renderLib() {
   const box = $('lib');
   libUrls.forEach(u => URL.revokeObjectURL(u)); libUrls = [];
@@ -1260,11 +1404,14 @@ async function renderLib() {
   }
   box.replaceChildren();
   $('libCount').textContent = shots.length ? ` · ${shots.length}` : '';
+  shots.sort((a, b) => b.at - a.at);
+  renderPassport(box, shots);
+  const h = document.createElement('h2'); h.className = 'secTitle shotsTitle'; h.textContent = T('Мои снимки «тогда и сейчас»');
+  box.append(h);
   if (!shots.length) {
-    box.innerHTML = T('<div class="libEmpty">Здесь будут ваши снимки «тогда и сейчас». Откройте старое фото, встаньте на то же место и нажмите «Совпало — снять».</div>');
+    box.insertAdjacentHTML('beforeend', T('<div class="libEmpty">Здесь будут ваши снимки «тогда и сейчас». Откройте старое фото, встаньте на то же место и нажмите «Совпало — снять».</div>'));
     return;
   }
-  shots.sort((a, b) => b.at - a.at);
   for (const shot of shots) {
     const spot = allSpots().find(s => s.id === shot.spotId) || { id: shot.spotId, title: shot.title, year: shot.year, src: shot.src };
     const url = URL.createObjectURL(shot.now); libUrls.push(url);
@@ -1532,6 +1679,7 @@ function openResult(spot, url, shotId) {
   $('cmpRange').value = 50;
   show('result');
   resetRZ();
+  setCmpKind(cmpKind);
   enterInset();
   showResHint();
   const img = $('oldImg');
@@ -1812,7 +1960,7 @@ async function updatePendingFacts() {
 }
 
 function renderList() {
-  if (view === 'lib') { updateProgress(); $('subTitle').textContent = T('Библиотека'); renderLib(); return; }
+  if (view === 'lib') { updateProgress(); $('subTitle').textContent = T('Паспорт исследователя'); renderLib(); return; }
   if (view === 'quests') { updateProgress(); $('subTitle').textContent = T('Квесты'); renderQuests(); return; }
   if (view === 'home') { updateProgress(); renderHome(); return; }
   if (view === 'map') { updateProgress(); renderMap(); return; }
@@ -2373,11 +2521,38 @@ function flyToAlbum() {
 
 /* Сравнение «просветом»: водите пальцем по фото — старое фото плавно проступает и тает (не шторка).
    0 — только «тогда», 100 — только «сейчас». Ручка внизу показывает, где вы сейчас. */
+/* Два режима сравнения (выбор запоминается на телефоне):
+   «Шторка» — вертикальная линия с ручкой: слева «тогда», справа «сейчас», линия идёт за пальцем;
+   «Просвет» — старое фото плавно проступает и тает. В обоих 0 — только «тогда», 100 — только «сейчас». */
+const CMP_KEY = 'krepost.cmpKind';
+let cmpKind = read(CMP_KEY, 'swipe');
 function setCompare(value) {
+  const st = $('resStage'), old = $('cmpOld');
+  if (cmpKind === 'swipe') {
+    const pos = 100 - value; // где стоит линия, % ширины экрана
+    const W = st.clientWidth || 1;
+    const lx = ((pos / 100) * W - (RZ.s > 1.001 ? RZ.x : 0)) / RZ.s; // та же точка на увеличенном снимке
+    const keep = Math.min(100, Math.max(0, lx / W * 100));
+    old.style.opacity = '1';
+    old.style.clipPath = `inset(0 ${(100 - keep).toFixed(2)}% 0 0)`;
+    $('cmpLine').style.left = pos + '%';
+    return;
+  }
+  old.style.clipPath = '';
   const t = Math.min(1, Math.max(0, (value - 8) / 84)); // у краёв — полностью «тогда» или «сейчас»
-  $('cmpOld').style.opacity = String(1 - t);
+  old.style.opacity = String(1 - t);
   $('cmpLine').style.left = (21 + value * 0.58) + '%';
 }
+function setCmpKind(k) {
+  cmpKind = k; write(CMP_KEY, k);
+  $('resStage').classList.toggle('swipe', k === 'swipe');
+  for (const b of document.querySelectorAll('#cmpKind button')) b.classList.toggle('on', b.dataset.k === k);
+  setCompare(+$('cmpRange').value);
+}
+for (const b of document.querySelectorAll('#cmpKind button')) b.onclick = () => {
+  setCmpKind(b.dataset.k);
+  if ($('resStage').classList.contains('inset')) toSlider();
+};
 $('cmpRange').oninput = e => setCompare(+e.target.value);
 
 /* ===== Результат: увеличить и проверить совпадение — щипок двумя пальцами, двойное касание, перетаскивание одним пальцем.
@@ -2393,6 +2568,7 @@ function applyRZ() {
   $('cmpNow').style.transform = t;
   $('cmpOld').style.transform = st.classList.contains('inset') ? '' : t;
   $('zoomBadge').hidden = !t;
+  if (cmpKind === 'swipe' && !st.classList.contains('inset')) setCompare(+$('cmpRange').value);
   $('zoomBadge').textContent = (Math.round(RZ.s * 10) / 10).toString().replace('.', ',') + '× · ✕';
 }
 function resetRZ() { RZ.s = 1; RZ.x = 0; RZ.y = 0; applyRZ(); }
@@ -2441,7 +2617,11 @@ addEventListener('resize', () => { if (!$('result').hidden) requestAnimationFram
     const dx = p.x - g.sx, dy = p.y - g.sy;
     if (!g.moved && Math.hypot(dx, dy) < 6) return;
     g.moved = true;
-    if (g.blend) { const v = Math.min(100, Math.max(0, p.x / st.clientWidth * 100)); $('cmpRange').value = v; setCompare(v); }
+    if (g.blend) {
+      const x = Math.min(100, Math.max(0, p.x / st.clientWidth * 100));
+      const v = cmpKind === 'swipe' ? 100 - x : x;
+      $('cmpRange').value = v; setCompare(v);
+    }
     else if (RZ.s > 1.001) { RZ.x = g.x + dx; RZ.y = g.y + dy; applyRZ(); }
   });
   const end = e => {
@@ -2545,6 +2725,7 @@ $('shoot').onclick = async () => {
   show('result');
   refit();
   resetRZ();
+  setCmpKind(cmpKind);
   enterInset();
   showResHint();
   countShot(current.id);
