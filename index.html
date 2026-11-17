@@ -672,6 +672,17 @@
   #offHome { width:100%; margin:0 0 22px; min-height:0; padding:12px; border-radius:14px; background:#1c1610; color:#f3d27a; border:1px dashed rgba(217,164,65,.5); font:600 14px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; box-shadow:none; }
   .oActs button.oOff { flex:1 0 100%; background:#1c1610; color:#e6d8bd; border:1px dashed rgba(217,164,65,.45); }
   .oActs button.oOff.done { color:#9fd28a; border-style:solid; border-color:rgba(95,158,69,.6); }
+
+  /* ===== Исторический слой карты ===== */
+  .oldLayer { position:absolute; left:0; top:0; transform-origin:0 0; pointer-events:none; max-width:none !important; filter:sepia(.25) contrast(1.05); }
+  .oldLayer[hidden] { display:none; }
+  #oldBtn { flex:none; min-height:0; padding:9px 12px; border-radius:12px; background:#1c1610; color:#f3d27a; border:1px solid rgba(217,164,65,.45); font:700 14px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
+  #oldBtn.on { background:#f6ecd8; color:#1c1610; border-color:#f6ecd8; }
+  #oldBar { margin:6px 16px 0; display:flex; flex-direction:column; gap:4px; }
+  #oldBar[hidden] { display:none; }
+  #oldBar label { color:#e6d8bd; font-size:13px; }
+  #oldBar input { width:100%; accent-color:#e8b84a; }
+  #oldNote { margin:0; color:var(--muted); font-size:12px; }
   /* ===== 17.11.2026: новый главный экран, нижнее меню, поиск, карта ===== */
   #list { border:0; outline:0; box-shadow:none; padding:0 0 calc(84px + env(safe-area-inset-bottom)); background:#120e0a; }
   #list > #home, #list > #objView, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests, #list > #empty, #list > #adminBar { margin-left:16px; margin-right:16px; }
@@ -860,7 +871,8 @@
   <div id="cards" hidden></div>
   <div id="mapView" hidden>
     <div id="map"></div>
-    <div id="mapBar"><button type="button" id="locBtn">📍 Где я</button><span id="mapInfo"></span></div>
+    <div id="mapBar"><button type="button" id="locBtn">📍 Где я</button><button type="button" id="oldBtn" aria-pressed="false">🕰 1944</button><span id="mapInfo"></span></div>
+    <div id="oldBar" hidden><label for="oldOp">Прозрачность старого слоя</label><input id="oldOp" type="range" min="15" max="100" value="65"><p id="oldNote">Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.</p></div>
     <p id="mapLegend"><i class="lg todo"></i> ещё не был <i class="lg done"></i> был <i class="lg near"></i> рядом с вами</p>
   </div>
   <div id="lib" hidden></div>
@@ -1955,6 +1967,40 @@ function mapPopup(list, near) {
   }
   return box;
 }
+/* Исторический слой: немецкая аэросъёмка 1944 года (снимок s562, источник PastVu) поверх карты.
+   Совмещён вручную по звезде цитадели, бастионам и берегу Даугавы: точка снимка (ax, ay) стоит в (lat, lng),
+   снимок повёрнут на rot градусов, один его пиксель — mpp метров. */
+const OLD_LAYER = { src: 'photos/spot562.jpg', ax: 490, ay: 325, lat: 55.886215, lng: 26.494528, mpp: 1.94, rot: -20.5 };
+let ovImg = null, ovOn = false;
+function ovDraw() {
+  if (!ovImg || !lmap) return;
+  const o = OLD_LAYER;
+  const mppMap = 156543.03392 * Math.cos(o.lat * Math.PI / 180) / Math.pow(2, lmap.getZoom());
+  const p = lmap.latLngToLayerPoint([o.lat, o.lng]);
+  ovImg.style.transform = `translate(${p.x}px,${p.y}px) rotate(${o.rot}deg) scale(${o.mpp / mppMap}) translate(${-o.ax}px,${-o.ay}px)`;
+  ovImg.style.visibility = 'visible';
+}
+function setOldLayer(on) {
+  if (!lmap) return;
+  ovOn = on;
+  if (on && !ovImg) {
+    ovImg = document.createElement('img');
+    ovImg.src = OLD_LAYER.src; ovImg.alt = ''; ovImg.className = 'oldLayer';
+    lmap.getPane('overlayPane').append(ovImg);
+    lmap.on('zoomstart', () => { if (ovImg) ovImg.style.visibility = 'hidden'; });
+    lmap.on('zoomend viewreset', ovDraw);
+    ovImg.onload = ovDraw;
+  }
+  if (ovImg) { ovImg.hidden = !on; ovImg.style.opacity = $('oldOp').value / 100; ovDraw(); }
+  $('oldBtn').classList.toggle('on', on);
+  $('oldBtn').setAttribute('aria-pressed', on);
+  $('oldBar').hidden = !on;
+  const attr = T('Аэрофото 1944: PastVu');
+  if (on) lmap.attributionControl.addAttribution(attr); else lmap.attributionControl.removeAttribution(attr);
+}
+$('oldBtn').onclick = () => setOldLayer(!ovOn);
+$('oldOp').oninput = () => { if (ovImg) ovImg.style.opacity = $('oldOp').value / 100; };
+
 $('locBtn').onclick = () => {
   if (!navigator.geolocation) { $('mapInfo').textContent = T('Телефон не может определить место.'); return; }
   $('mapInfo').textContent = T('Определяю, где вы…');

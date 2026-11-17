@@ -302,7 +302,11 @@ window.I18N_UI = {
 "Сохранено снимков: {a} из {b}": "Išsaugota nuotraukų: {a} iš {b}",
 "⬇ Скачать все снимки для прогулки · ≈ {mb} МБ": "⬇ Atsisiųsti visas nuotraukas · ≈ {mb} MB",
 "⬇ Только миниатюры (быстрее) · ≈ {mb} МБ": "⬇ Tik miniatiūros (greičiau) · ≈ {mb} MB",
-"· миниатюр: {c}": " · miniatiūrų: {c}"
+"· миниатюр: {c}": " · miniatiūrų: {c}",
+"🕰 1944": "🕰 1944",
+"Прозрачность старого слоя": "Senojo sluoksnio skaidrumas",
+"Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "1944 m. vokiečių aerofotonuotrauka uždėta ant žemėlapio apytiksliai — paklaida iki kelių dešimčių metrų.",
+"Аэрофото 1944: PastVu": "1944 m. aerofoto: PastVu"
 },
 "et": {
 "📖 История места": "📖 Koha ajalugu",
@@ -605,7 +609,11 @@ window.I18N_UI = {
 "Сохранено снимков: {a} из {b}": "Salvestatud fotod: {a} / {b}",
 "⬇ Скачать все снимки для прогулки · ≈ {mb} МБ": "⬇ Laadi kõik fotod · ≈ {mb} MB",
 "⬇ Только миниатюры (быстрее) · ≈ {mb} МБ": "⬇ Ainult pisipildid (kiirem) · ≈ {mb} MB",
-"· миниатюр: {c}": " · pisipilte: {c}"
+"· миниатюр: {c}": " · pisipilte: {c}",
+"🕰 1944": "🕰 1944",
+"Прозрачность старого слоя": "Vana kihi läbipaistvus",
+"Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "1944. aasta Saksa aerofoto on kaardile asetatud ligikaudu — viga kuni mõnikümmend meetrit.",
+"Аэрофото 1944: PastVu": "Aerofoto 1944: PastVu"
 },
 "pl": {
 "📖 История места": "📖 Historia miejsca",
@@ -908,7 +916,11 @@ window.I18N_UI = {
 "Сохранено снимков: {a} из {b}": "Zapisane zdjęcia: {a} z {b}",
 "⬇ Скачать все снимки для прогулки · ≈ {mb} МБ": "⬇ Pobierz wszystkie zdjęcia · ≈ {mb} MB",
 "⬇ Только миниатюры (быстрее) · ≈ {mb} МБ": "⬇ Tylko miniatury (szybciej) · ≈ {mb} MB",
-"· миниатюр: {c}": " · miniatur: {c}"
+"· миниатюр: {c}": " · miniatur: {c}",
+"🕰 1944": "🕰 1944",
+"Прозрачность старого слоя": "Przezroczystość starej warstwy",
+"Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "Niemieckie zdjęcie lotnicze z 1944 roku nałożono na mapę w przybliżeniu — błąd do kilkudziesięciu metrów.",
+"Аэрофото 1944: PastVu": "Zdjęcie lotnicze 1944: PastVu"
 },
 "de": {
 "📖 История места": "📖 Geschichte des Ortes",
@@ -1211,7 +1223,11 @@ window.I18N_UI = {
 "Сохранено снимков: {a} из {b}": "Gespeicherte Fotos: {a} von {b}",
 "⬇ Скачать все снимки для прогулки · ≈ {mb} МБ": "⬇ Alle Fotos laden · ≈ {mb} MB",
 "⬇ Только миниатюры (быстрее) · ≈ {mb} МБ": "⬇ Nur Vorschaubilder (schneller) · ≈ {mb} MB",
-"· миниатюр: {c}": " · Vorschaubilder: {c}"
+"· миниатюр: {c}": " · Vorschaubilder: {c}",
+"🕰 1944": "🕰 1944",
+"Прозрачность старого слоя": "Transparenz der alten Ebene",
+"Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "Das deutsche Luftbild von 1944 ist ungefähr auf die Karte gelegt — Abweichung bis zu einigen Dutzend Metern.",
+"Аэрофото 1944: PastVu": "Luftbild 1944: PastVu"
 },
 "fr": {
 "📖 История места": "📖 Histoire du lieu",
@@ -1514,7 +1530,11 @@ window.I18N_UI = {
 "Сохранено снимков: {a} из {b}": "Photos enregistrées : {a} sur {b}",
 "⬇ Скачать все снимки для прогулки · ≈ {mb} МБ": "⬇ Télécharger toutes les photos · ≈ {mb} Mo",
 "⬇ Только миниатюры (быстрее) · ≈ {mb} МБ": "⬇ Miniatures seulement (plus rapide) · ≈ {mb} Mo",
-"· миниатюр: {c}": " · miniatures : {c}"
+"· миниатюр: {c}": " · miniatures : {c}",
+"🕰 1944": "🕰 1944",
+"Прозрачность старого слоя": "Transparence de l’ancienne couche",
+"Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "La photo aérienne allemande de 1944 est superposée approximativement — l’écart peut atteindre quelques dizaines de mètres.",
+"Аэрофото 1944: PastVu": "Photo aérienne 1944 : PastVu"
 },
 "it": {
 "📖 История места": "📖 Storia del luogo",
@@ -1817,7 +1837,11 @@ window.I18N_UI = {
 "Сохранено снимков: {a} из {b}": "Foto salvate: {a} su {b}",
 "⬇ Скачать все снимки для прогулки · ≈ {mb} МБ": "⬇ Scarica tutte le foto · ≈ {mb} MB",
 "⬇ Только миниатюры (быстрее) · ≈ {mb} МБ": "⬇ Solo miniature (più veloce) · ≈ {mb} MB",
-"· миниатюр: {c}": " · miniature: {c}"
+"· миниатюр: {c}": " · miniature: {c}",
+"🕰 1944": "🕰 1944",
+"Прозрачность старого слоя": "Trasparenza del livello storico",
+"Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "La foto aerea tedesca del 1944 è sovrapposta in modo approssimativo: l’errore può arrivare a qualche decina di metri.",
+"Аэрофото 1944: PastVu": "Foto aerea 1944: PastVu"
 },
 "es": {
 "📖 История места": "📖 Historia del lugar",
@@ -2120,7 +2144,11 @@ window.I18N_UI = {
 "Сохранено снимков: {a} из {b}": "Fotos guardadas: {a} de {b}",
 "⬇ Скачать все снимки для прогулки · ≈ {mb} МБ": "⬇ Descargar todas las fotos · ≈ {mb} MB",
 "⬇ Только миниатюры (быстрее) · ≈ {mb} МБ": "⬇ Solo miniaturas (más rápido) · ≈ {mb} MB",
-"· миниатюр: {c}": " · miniaturas: {c}"
+"· миниатюр: {c}": " · miniaturas: {c}",
+"🕰 1944": "🕰 1944",
+"Прозрачность старого слоя": "Transparencia de la capa antigua",
+"Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "La foto aérea alemana de 1944 está superpuesta de forma aproximada: el error puede ser de varias decenas de metros.",
+"Аэрофото 1944: PastVu": "Foto aérea 1944: PastVu"
 },
 "zh": {
 "📖 История места": "📖 地点历史",
@@ -2423,6 +2451,10 @@ window.I18N_UI = {
 "Сохранено снимков: {a} из {b}": "已保存照片：{a} / {b}",
 "⬇ Скачать все снимки для прогулки · ≈ {mb} МБ": "⬇ 下载全部照片 · ≈ {mb} MB",
 "⬇ Только миниатюры (быстрее) · ≈ {mb} МБ": "⬇ 仅缩略图（更快） · ≈ {mb} MB",
-"· миниатюр: {c}": " · 缩略图：{c}"
+"· миниатюр: {c}": " · 缩略图：{c}",
+"🕰 1944": "🕰 1944",
+"Прозрачность старого слоя": "旧图层透明度",
+"Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "1944 年德国航拍照片是大致叠加在地图上的，误差可能达几十米。",
+"Аэрофото 1944: PastVu": "1944 年航拍：PastVu"
 }
 };

@@ -3,7 +3,7 @@
 // • Снимки (папка photos): сразу из памяти телефона, а в фоне — проверка, не обновился ли файл.
 //   Хранятся в отдельном складе, который не стирается при обновлении приложения.
 // • Плитки карты OpenStreetMap: сохраняются те, что уже открывались (не больше ~1500 штук).
-const CACHE = 'krepost-v24';
+const CACHE = 'krepost-v25';
 const PHOTO_CACHE = 'krepost-photos';
 const TILE_CACHE = 'krepost-tiles';
 const TILE_MAX = 1500;

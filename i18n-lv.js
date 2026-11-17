@@ -2,6 +2,10 @@
 window.I18N = window.I18N || {};
 window.I18N.lv = {
  "ui": {
+  "🕰 1944": "🕰 1944",
+  "Прозрачность старого слоя": "Vecā slāņa caurspīdīgums",
+  "Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.": "1944. gada vācu aerofotouzņēmums uzlikts kartei aptuveni — kļūda līdz dažiem desmitiem metru.",
+  "Аэрофото 1944: PastVu": "Aerofoto 1944: PastVu",
   "· миниатюр: {c}": " · sīktēli: {c}",
   "📥 Без интернета": "📥 Bez interneta",
   "⬇ Скачать все снимки для прогулки": "⬇ Lejupielādēt visas fotogrāfijas pastaigai",
