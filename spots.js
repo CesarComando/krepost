@@ -2418,7 +2418,7 @@ window.SPOTS_DATA = [
   "src": "photos/spot241.jpg",
   "thumb": "photos/thumbs/spot241.jpg",
   "title": "Караульня и мост у Михайловских ворот",
-  "year": "1930-1940",
+  "year": "1920-1926",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
