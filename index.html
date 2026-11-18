@@ -460,6 +460,8 @@
   .hist li { font:15px/1.45 var(--old); margin-bottom:6px; }
   .hist .src { font:12px var(--mono, monospace); color:#6a5a44; margin-top:6px; }
   .hist details summary { cursor:pointer; font:600 14px var(--cond); text-transform:uppercase; color:#5a4630; }
+  .hist .oIllItem { color:var(--ink); }
+  .hist .archArt > summary { color:#7a2e1c; }
   .factsSub { margin:6px 0 0; font:700 15px var(--cond); text-transform:uppercase; letter-spacing:.04em; color:var(--accent); }
   .facts { flex:none; min-width:48px; height:46px; border:0; border-radius:3px; background:var(--paper); color:var(--ink); font-size:18px; padding:0 8px; position:relative; }
   .facts b { font:700 12px var(--cond); margin-left:2px; }
@@ -916,6 +918,7 @@
     #cmpMode { line-height:1.25; margin-bottom:4px; }
   }
   /* ===== 18.11.2026: рисунки, открытки и интерьеры в описании места ===== */
+  .archArt { margin:6px 0; } .archArt > summary { font-weight:600; cursor:pointer; padding:4px 0; }
   .oIll { display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:10px; margin:6px 0 18px; }
   .oIllItem { display:flex; flex-direction:column; gap:6px; min-height:0; padding:0; background:none; border:0; box-shadow:none; color:#e6d8bd; text-align:left; text-transform:none; letter-spacing:0; font:500 12.5px/1.3 Inter,system-ui,sans-serif; }
   .oIllItem img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:10px; filter:sepia(.3); border:1px solid rgba(217,164,65,.25); }
@@ -1338,8 +1341,10 @@ let activeGroup = ALL;
 
 // Рисунки, открытки и интерьеры, которые нельзя переснять (illus), — не в ленте и не в камере, а в описании места
 // hidden: убраны модератором для всех (файлы остаются, модератор их видит и может вернуть)
-const visibleSpots = () => allSpots().filter(s => !s.illus && (ADMIN || (!s.hidden && !hiddenIds.includes(s.id))));
+const visibleSpots = () => allSpots().filter(s => !s.illus && !s.arch && (ADMIN || (!s.hidden && !hiddenIds.includes(s.id))));
 const illusOf = g => byYear(allSpots().filter(s => s.illus && groupOf(s) === g));
+// Архив (arch): снимки, которые не переснять (с воздуха и т. п.), — только в «Истории крепости», мини-статьями по объектам
+const archGroups = () => { const m = new Map(); for (const s of allSpots()) if (s.arch && !s.hidden && !hiddenIds.includes(s.id)) { const g = groupOf(s); if (!m.has(g)) m.set(g, []); m.get(g).push(s); } return [...m].map(([g, l]) => [g, byYear(l)]); };
 
 function updateProgress() {
   const spots = visibleSpots();
@@ -2625,6 +2630,27 @@ function renderHistory(spot) {
   if (own) box.append(histCard(T('Об этом месте'), own));
   if (g) box.append(histCard(T('Из истории: ') + T(groupOf(spot)), g.text, g.sources, !!own));
   if (HIST.fortress) box.append(histCard(T('История крепости 1810–сегодня'), HIST.fortress.text, ['Wikipedia — Daugavpils Fortress', T('Путеводитель Daugavpils Fortress')], true));
+  const ag = archGroups();
+  if (ag.length) {
+    const wrap = document.createElement('div'); wrap.className = 'hist';
+    const d = document.createElement('details'); const sm = document.createElement('summary');
+    sm.textContent = T('Из архива: объекты крепости'); d.append(sm);
+    for (const [g, l] of ag) {
+      const art = document.createElement('details'); art.className = 'archArt';
+      const st = document.createElement('summary'); st.textContent = T(g) + ' · ' + l.length; art.append(st);
+      const H = HIST.groups[g];
+      if (H && H.text && H.text.length) { const ul = document.createElement('ul'); for (const t of H.text) { const li = document.createElement('li'); li.textContent = t; ul.append(li); } art.append(ul); }
+      const gi = document.createElement('div'); gi.className = 'oIll';
+      for (const sp of l) {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'oIllItem';
+        const im = document.createElement('img'); im.src = sp.thumb || sp.src; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async';
+        const t = document.createElement('span'); t.textContent = [sp.title, sp.year].filter(Boolean).join(', ');
+        b.append(im, t); b.onclick = () => openIllus(sp); gi.append(b);
+      }
+      art.append(gi); d.append(art);
+    }
+    wrap.append(d); box.append(wrap);
+  }
 }
 function openFacts(spot) {
   track('facts', spot.id);
