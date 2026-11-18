@@ -901,6 +901,7 @@
   .badge b, .badge small { overflow-wrap:anywhere; }
   .ptile b { hyphens:auto; -webkit-hyphens:auto; overflow-wrap:break-word; }
   @media (max-width: 360px) { .ptile b { font-size:13.5px; } .ptile { padding:8px 9px; } }
+  #resHint { white-space:normal; width:max-content; text-align:center; line-height:1.25; }
   #resNext small { display:block; margin-top:2px; font:500 12px Inter,system-ui,sans-serif; opacity:.8; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   #resNext { white-space:normal; }
   #inPass { margin:2px 0 8px; text-align:center; font:600 13px Inter,system-ui,sans-serif; color:#9fd28a; }
@@ -958,6 +959,18 @@
   .modFact .ok { background:#5f9e45; color:#fff; border:0; }
   .modFact .no { background:#2a231b; color:#f3d27a; border:1px solid rgba(217,164,65,.35); }
   #modOut, #modOpen { min-height:0; padding:10px; border-radius:12px; background:#2a231b; color:#f3d27a; border:1px solid rgba(217,164,65,.35); box-shadow:none; font:600 14px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; }
+  /* ===== 19.11.2026: низкий экран стоя (до 640 точек в высоту): кнопки результата компактнее, чтобы снимок не сжимался до размера марки ===== */
+  @media (orientation: portrait) and (max-height: 640px) {
+    #rotHint { display:none; }
+    #result .actions { flex-wrap:nowrap; gap:6px; }
+    #result .actions button { flex:1 1 0; min-width:0; max-width:none; min-height:44px; padding:8px 4px; font-size:12px; letter-spacing:0; }
+    #resNext { margin-top:6px; padding:9px 10px; }
+    #resNext small { display:none; }
+    #toList { display:none; } /* назад ведёт кнопка ← */
+    #cmpMode { margin-bottom:2px; padding:4px 10px; }
+    #cmpKind { margin-bottom:4px; }
+    #inPass { margin:0 0 4px; }
+  }
 </style>
 </head>
 <body>
@@ -1462,12 +1475,14 @@ function cardActions(spot) {
   fb.onclick = () => openFacts(spot);
   row.append(fb);
 
-  const ed = document.createElement('button');
-  ed.className = 'edit';
-  ed.textContent = '✎';
-  ed.setAttribute('aria-label', T('Описание, год и координаты'));
-  ed.onclick = () => openEdit(spot);
-  row.append(ed);
+  if (ADMIN) { // правка названия, года и координат — только модератору: у остальных она оставалась бы в их телефоне и никуда не уходила
+    const ed = document.createElement('button');
+    ed.className = 'edit';
+    ed.textContent = '✎';
+    ed.setAttribute('aria-label', T('Описание, год и координаты'));
+    ed.onclick = () => openEdit(spot);
+    row.append(ed);
+  }
 
   row.append(map);
   return row;
@@ -1899,7 +1914,7 @@ function renderNear() {
   go.onclick = () => openSpot(s, n.route ? { route: true } : undefined);
   acts.append(go);
   if (coordsOf(s)) {
-    const rt = document.createElement('button'); rt.type = 'button'; rt.className = 'nRoute'; rt.textContent = T('Маршрут');
+    const rt = document.createElement('button'); rt.type = 'button'; rt.className = 'nRoute'; rt.textContent = T('На карте');
     rt.onclick = () => { pushView(); mapFocus = { spot: s }; setView('map'); };
     acts.append(rt);
   }
@@ -3192,6 +3207,7 @@ $('resNext').onclick = () => camGo(1);
 /* Увеличение: оптический/цифровой зум камеры телефона, если он есть (Chrome на Android),
    иначе — увеличение картинки на экране; снимок обрезается так же. Ползунок 🔍 и щипок двумя пальцами. */
 let zoom = 1, hwZoom = null;
+const decT = n => /^(en|zh)$/.test(LANG) ? String(n) : String(n).replace('.', ','); // 1.5× по-английски, 1,5× по-русски и по-латышски
 function setupZoom(s) {
   hwZoom = null;
   const track = s.getVideoTracks()[0];
@@ -3227,7 +3243,7 @@ function setZoom(z, silent) {
   const changed = z !== zoom;
   zoom = z;
   r.value = z;
-  $('zoomVal').textContent = z.toString().replace('.', ',') + '×';
+  $('zoomVal').textContent = decT(z) + '×';
   if (hwZoom) {
     $('video').style.transform = '';
     if (changed || silent) pushHwZoom(z);
@@ -3529,7 +3545,7 @@ function applyRZ() {
   $('cmpOld').style.transform = st.classList.contains('inset') ? '' : t;
   $('zoomBadge').hidden = !t;
   if (cmpKind === 'swipe' && !st.classList.contains('inset')) setCompare(+$('cmpRange').value);
-  $('zoomBadge').textContent = (Math.round(RZ.s * 10) / 10).toString().replace('.', ',') + '× · ✕';
+  $('zoomBadge').textContent = decT(Math.round(RZ.s * 10) / 10) + '× · ✕';
 }
 function resetRZ() { RZ.s = 1; RZ.x = 0; RZ.y = 0; applyRZ(); }
 function zoomAt(s, cx, cy) { // точка (cx, cy) на снимке остаётся под пальцем
