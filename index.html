@@ -1347,7 +1347,7 @@ let activeGroup = ALL;
 const visibleSpots = () => allSpots().filter(s => !s.illus && !s.arch && (ADMIN || (!s.hidden && !hiddenIds.includes(s.id))));
 const illusOf = g => byYear(allSpots().filter(s => s.illus && groupOf(s) === g));
 // Архив (arch): снимки, которые не переснять (с воздуха и т. п.), — только в «Истории крепости», мини-статьями по объектам
-const archGroups = () => { const m = new Map(); for (const s of allSpots()) if (s.arch && !s.hidden && !hiddenIds.includes(s.id)) { const g = groupOf(s); if (!m.has(g)) m.set(g, []); m.get(g).push(s); } return [...m].map(([g, l]) => [g, byYear(l)]); };
+const archGroups = () => { const m = new Map(); for (const s of allSpots()) if (s.arch && !s.hidden) { const g = groupOf(s); if (!m.has(g)) m.set(g, []); m.get(g).push(s); } return [...m].map(([g, l]) => [g, byYear(l)]); };
 
 function updateProgress() {
   const spots = visibleSpots();

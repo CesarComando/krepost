@@ -534,7 +534,8 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "470184446_592187423464176_3244501568797605742_n.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s056",
@@ -2093,7 +2094,8 @@ window.SPOTS_DATA = [
   "original": "681812534_1055286967167844_18899659323937853_n.jpg",
   "group": "Комендантский сад и парк",
   "lat": 55.885935,
-  "lng": 26.49432
+  "lng": 26.49432,
+  "hidden": true
  },
  {
   "id": "s207",
@@ -2263,7 +2265,8 @@ window.SPOTS_DATA = [
   "original": "687428115_1055290617167479_5847630197421297207_n.jpg",
   "group": "Комендантский сад и парк",
   "lat": 55.8859,
-  "lng": 26.4943
+  "lng": 26.4943,
+  "hidden": true
  },
  {
   "id": "s220",
@@ -4813,7 +4816,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot416.jpg",
   "group": "Улицы и здания",
   "lat": 55.885697,
-  "lng": 26.493498
+  "lng": 26.493498,
+  "hidden": true
  },
  {
   "id": "s417",
@@ -4827,7 +4831,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot417.jpg",
   "group": "Улицы и здания",
   "lat": 55.885403,
-  "lng": 26.494195
+  "lng": 26.494195,
+  "hidden": true
  },
  {
   "id": "s418",
@@ -5185,7 +5190,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot443.jpg",
   "group": "Комендантский сад и парк",
   "lat": 55.886243,
-  "lng": 26.495836
+  "lng": 26.495836,
+  "hidden": true
  },
  {
   "id": "s444",
@@ -5285,7 +5291,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110984558251134",
   "original": "1920-1940__fb_110984558251134.jpg",
   "thumb": "photos/thumbs/spot450.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s451",
@@ -6308,7 +6315,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1910-1930__6aafab898a36d.jpg",
   "thumb": "photos/thumbs/spot525.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s576",
@@ -6320,7 +6328,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1910-1930__6aafab898a36d.jpg",
   "thumb": "photos/thumbs/spot576.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s526",
@@ -6553,7 +6562,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=217468397616376",
   "original": "ок-1912__fb_217468397616376.jpg",
   "thumb": "photos/thumbs/spot541.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "arch": true
  },
  {
   "id": "s542",
