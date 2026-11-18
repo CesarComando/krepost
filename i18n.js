@@ -1,5 +1,5 @@
-/* Языки приложения: ru (исходный), lv, en — полностью; lt, et, pl, de, fr, it, es, zh — интерфейс (i18n-lt.js, i18n-de.js …),
-   а подписи снимков, история и квесты для них берутся из английского. Ключ перевода — русский текст.
+/* Языки приложения: ru (исходный), lv, en — полностью; lt, et, pl, de, fr, it, es, zh — интерфейс, подписи снимков и квесты
+   (i18n-lt.js, i18n-de.js …), а история крепости для них пока берётся из английского. Ключ перевода — русский текст.
    Язык: выбранный вручную (список языков) → иначе язык телефона → иначе английский.
    Смена языка перезагружает страницу: всё рисуется заново уже на новом языке. */
 (function () {
@@ -19,7 +19,14 @@
   if (lang === 'lv' || lang === 'en') D = ALL[lang] || null;
   else if (lang !== 'ru' && ALL.en) {
     const own = (window.I18N_UI || {})[lang] || {};
-    D = Object.assign({}, ALL.en, { ui: Object.assign({}, ALL.en.ui, own) });
+    const data = (window.I18N_DATA || {})[lang] || {}; // подписи, подсказки, квесты этого языка (история — пока английская)
+    D = Object.assign({}, ALL.en, {
+      ui: Object.assign({}, ALL.en.ui, own),
+      titles: Object.assign({}, ALL.en.titles, data.titles || {}),
+      hints: Object.assign({}, ALL.en.hints, data.hints || {}),
+      patterns: data.patterns || ALL.en.patterns,
+      quests: Object.assign({}, ALL.en.quests, data.quests || {})
+    });
   }
   const norm = s => String(s).replace(/\s+/g, ' ').trim();
 

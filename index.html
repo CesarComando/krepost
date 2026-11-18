@@ -892,6 +892,28 @@
   #camPos:empty { display:none; }
   #resNext { display:block; width:100%; margin:10px 0 0; padding:13px 14px; border-radius:14px; font:700 15px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   #resNext[hidden] { display:none; }
+  /* ===== 18.11.2026: исправления после теста ===== */
+  .badges { grid-template-columns:repeat(auto-fill, minmax(96px, 1fr)); }
+  .badge { min-width:0; }
+  .badge b, .badge small { overflow-wrap:anywhere; }
+  .ptile b { hyphens:auto; -webkit-hyphens:auto; overflow-wrap:break-word; }
+  @media (max-width: 360px) { .ptile b { font-size:13.5px; } .ptile { padding:8px 9px; } }
+  #resNext small { display:block; margin-top:2px; font:500 12px Inter,system-ui,sans-serif; opacity:.8; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #resNext { white-space:normal; }
+  #inPass { margin:2px 0 8px; text-align:center; font:600 13px Inter,system-ui,sans-serif; color:#9fd28a; }
+  #camPos { right:8px; bottom:8px; }
+  @media (orientation: landscape) and (max-height: 600px) {
+    #hero { height:min(250px, 52vh); }
+    #list #heroText h1 { font-size:26px; margin-bottom:4px; }
+    #list #heroText .sub { font-size:12.5px; }
+    #resNext { padding:9px 8px; font-size:13px; margin-top:6px; }
+    #resNext small { display:none; }
+    #inPass { font-size:11.5px; margin:0 0 4px; }
+    #cmpKind { max-width:100%; box-sizing:border-box; }
+    #cmpKind button { min-width:0; padding-left:6px; padding-right:6px; }
+    #toList { display:none; } /* лёжа места мало, а назад ведёт кнопка ← */
+    #cmpMode { line-height:1.25; margin-bottom:4px; }
+  }
 </style>
 </head>
 <body>
@@ -1012,10 +1034,10 @@
         <p>Ползунок сбоку делает старое фото ярче или бледнее, 🔍 внизу — увеличение.</p><button type="button" id="tipOk" class="main">Понятно</button></div>
       <div id="steady" hidden><span>Держите ровно… выбираем самый чёткий кадр</span><i><b id="steadyBar"></b></i></div>
       <div id="camMsg" hidden></div>
+      <button type="button" id="camPrev" class="camNav" aria-label="Предыдущее фото" hidden>‹</button>
+      <button type="button" id="camNext" class="camNav" aria-label="Следующее фото" hidden>›</button>
+      <span id="camPos"></span>
     </div>
-    <button type="button" id="camPrev" class="camNav" aria-label="Предыдущее фото" hidden>‹</button>
-    <button type="button" id="camNext" class="camNav" aria-label="Следующее фото" hidden>›</button>
-    <span id="camPos"></span>
   </div>
   <div class="controls">
     <p class="hint" id="camHint"></p>
@@ -1057,8 +1079,9 @@
     <p id="rotHint"><b>↻</b> Поверните телефон — снимок будет крупнее</p>
     <button type="button" id="cmpMode" class="hint">◐ Наложить старое фото</button>
     <div id="cmpKind" role="group" aria-label="Как сравнивать"><button type="button" data-k="swipe">⇆ Шторка</button><button type="button" data-k="fade">◐ Просвет</button></div>
+    <p id="inPass">✓ Снимок уже в паспорте</p>
     <div class="actions">
-      <button id="save" class="main">Сохранить</button>
+      <button id="save" class="main">⬇ Скачать</button>
       <button id="share">Поделиться</button>
       <button id="retry">Переснять</button>
     </div>
@@ -2894,7 +2917,7 @@ function paintCamNav() {
   $('camPos').textContent = i >= 0 && camSeq.length > 1 ? `${i + 1} / ${camSeq.length}` : '';
   const nx = camNeighbor(1);
   $('resNext').hidden = !nx;
-  if (nx) $('resNext').textContent = Tf('Следующее фото ›  {t}', { t: nx.title });
+  if (nx) { $('resNext').replaceChildren(T('Следующее фото ›'), Object.assign(document.createElement('small'), { textContent: nx.title })); }
 }
 $('camPrev').onclick = () => camGo(-1);
 $('camNext').onclick = () => camGo(1);
@@ -3130,7 +3153,7 @@ $('tipOk').onclick = () => { $('tipBox').hidden = true; write(TIP_KEY, 1); };
 
 $('camBack').onclick = () => navBack();
 $('resBack').onclick = () => navBack();
-$('retry').onclick = () => { if (current) openSpot(current); };
+$('retry').onclick = () => { if (current) openSpot(current, questCtx); }; // в квесте пересъёмка засчитывается тому же шагу
 
 /* Режимы результата: «в уголке» (старое фото маленькой карточкой поверх нового снимка) и «ползунок» */
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
