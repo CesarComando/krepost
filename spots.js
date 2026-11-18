@@ -2274,20 +2274,6 @@ window.SPOTS_DATA = [
   "group": "Улицы и здания"
  },
  {
-  "id": "s222",
-  "src": "photos/spot222.jpg",
-  "thumb": "photos/thumbs/spot222.jpg",
-  "title": "Старый снимок № 222",
-  "year": "1920-1930",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "687833666_1055354683827739_2062656675378275991_n.jpg",
-  "group": "Улицы и здания",
-  "lat": 55.8863,
-  "lng": 26.4937
- },
- {
   "id": "s223",
   "src": "photos/spot223.jpg",
   "thumb": "photos/thumbs/spot223.jpg",
