@@ -840,6 +840,48 @@
     #list > #home, #list > #objView, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests { width:min(760px, calc(100% - 32px)); margin-left:auto; margin-right:auto; }
     #tiles { grid-template-columns:repeat(4, 1fr); }
   }
+  /* ===== 18.11.2026: главная «Сводка», меню с кнопкой «Снять» ===== */
+  #hero { height:250px; min-height:0; }
+  #list #heroText h1 { font-size:32px; }
+  #home { display:flex; flex-direction:column; gap:14px; padding-top:16px; }
+  #home > .secTitle { margin:6px 0 -4px; }
+  #nearCard { padding:12px; border-radius:18px; background:linear-gradient(#211a13,#1a140f); border:1px solid rgba(217,164,65,.35); box-shadow:0 8px 24px rgba(0,0,0,.35); }
+  .nHead { display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:10px; }
+  .nLbl { font:600 12px Inter,system-ui,sans-serif; text-transform:uppercase; letter-spacing:.06em; color:#f3c650; }
+  .nDist { font:600 12px 'PT Mono',ui-monospace,monospace; color:#b5a68f; white-space:nowrap; }
+  .nBody { display:flex; align-items:center; gap:12px; width:100%; min-height:0; padding:0; margin:0 0 12px; background:none; border:0; box-shadow:none; color:var(--text); text-align:left; text-transform:none; letter-spacing:0; font:inherit; }
+  .nBody img { flex:none; width:96px; height:72px; border-radius:10px; object-fit:cover; filter:sepia(.35); }
+  .nBody b { display:block; font:700 18px/1.15 var(--serif); color:#f6ecd8; }
+  .nBody small { display:block; margin-top:4px; font-size:13px; color:var(--muted); }
+  .nActs { display:flex; gap:8px; }
+  .nActs button { min-height:0; padding:12px; border-radius:12px; font:700 14px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; box-shadow:none; }
+  .nGo { flex:1; background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; border:0; }
+  .nRoute { flex:none; padding:12px 16px !important; background:#2a231b; color:#f3d27a; border:1px solid rgba(217,164,65,.35); }
+  #questRow { display:grid; grid-template-columns:28px 1fr auto; align-items:center; gap:4px 12px; width:100%; min-height:0; padding:12px 14px; border-radius:16px; background:#1c1610; border:1px solid rgba(217,164,65,.25); box-shadow:none; color:var(--text); text-align:left; text-transform:none; letter-spacing:0; }
+  #questRow[hidden], #nearCard[hidden] { display:none; }
+  #questRow svg { grid-row:1 / 3; width:28px; height:28px; color:#f3d27a; }
+  .qrT { font:600 15px Inter,system-ui,sans-serif; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .qrN { font:600 13px 'PT Mono',ui-monospace,monospace; color:#f3c650; }
+  .qrBar { grid-column:2 / 4; height:6px; border-radius:3px; background:rgba(242,232,216,.13); overflow:hidden; }
+  .qrBar i, .pBar i { display:block; height:100%; border-radius:3px; background:linear-gradient(90deg,#b8862f,#f3d27a); }
+  #progLine { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--muted); }
+  .pBar { flex:0 0 32%; height:6px; border-radius:3px; background:rgba(242,232,216,.13); overflow:hidden; }
+  .pBar i { background:#e8b84a; }
+  #progTxt b { color:#f6ecd8; }
+  #places { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:6px; }
+  .ptile { position:relative; height:118px; min-height:0; padding:10px 12px; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; gap:2px; text-align:left; border:1px solid rgba(217,164,65,.22); background:#1c1610; box-shadow:none; color:#f6ecd8; text-transform:none; letter-spacing:0; font:inherit; }
+  .ptile.all { grid-column:1 / -1; height:96px; border-color:#d9a441; }
+  .ptile img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:sepia(.3); }
+  .ptile::after { content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(14,10,7,.94) 12%, rgba(14,10,7,.2) 75%); }
+  .ptile b, .ptile small { position:relative; z-index:1; }
+  .ptile b { font:600 15px/1.15 var(--serif); }
+  .ptile small { font-size:12px; color:#d8c9ab; }
+  .ptile:active, .nActs button:active, #questRow:active, .nBody:active { transform:scale(.97); filter:brightness(1.08); }
+  #botNav { align-items:flex-end; overflow:visible; }
+  #botNav .tab.shoot { color:#f3c650; }
+  #botNav .tab.shoot .sBall { display:flex; align-items:center; justify-content:center; width:58px; height:58px; margin:-26px 0 2px; border-radius:50%; background:radial-gradient(ellipse at 40% 30%, #ffe27a 0%, #f2c13a 45%, #c8901d 100%); box-shadow:0 0 0 3px #120e0a, 0 0 0 5px #b8862f, 0 8px 18px rgba(0,0,0,.6); color:#3a2608; }
+  #botNav .tab.shoot .sBall svg { width:26px; height:26px; }
+  #botNav .tab.shoot:active .sBall { transform:scale(.94); }
 </style>
 </head>
 <body>
@@ -858,22 +900,13 @@
   </header>
   <div id="subBar" hidden><button type="button" id="subBack" aria-label="Назад">‹</button><h2 id="subTitle"></h2></div>
   <div id="home">
-    <div id="progCard">
-      <div id="ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="19" class="trk"/><circle cx="22" cy="22" r="19" id="ringArc"/></svg><div><b id="ringN">0</b><span id="ringOf"></span></div></div>
-      <div class="pcTxt"><b>Ваш прогресс</b><small>Отмечайте «Уже был здесь» на местах, где побывали</small></div>
-      <button type="button" id="contBtn" class="main">▶ Продолжить</button>
-    </div>
+    <div id="nearCard" hidden></div>
+    <button type="button" id="questRow" hidden></button>
+    <div id="progLine"><span class="pBar"><i id="progFill"></i></span><span id="progTxt"></span></div>
     <div id="installBox" hidden>
       <button id="installBtn" class="main">Скачать на телефон</button>
       <p id="installHelp" hidden></p>
     </div>
-    <div id="tiles">
-      <button type="button" class="tile" data-go="map" style="--img:url(photos/thumbs/spot542.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg><span>Карта крепости</span></button>
-      <button type="button" class="tile" data-go="all" style="--img:url(photos/thumbs/spot246.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Фотографии из прошлого</span></button>
-      <button type="button" class="tile" data-go="quests" style="--img:url(photos/thumbs/spot254.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4"/></svg><span>Квесты и задания</span></button>
-      <button type="button" class="tile" data-go="lib" style="--img:url(photos/thumbs/spot262.jpg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/></svg><span>Паспорт исследователя<em id="libCount"></em></span></button>
-    </div>
-    <button type="button" id="offHome">📥 Скачать для прогулки без интернета</button>
     <h2 class="secTitle">Места крепости</h2>
     <div id="places"></div>
     <p class="free">Бесплатно · фото принадлежат авторам и архивам · <button type="button" id="aboutLink">подробнее</button></p>
@@ -917,6 +950,7 @@
   <nav id="botNav">
     <button type="button" class="tab on" data-view="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Главная</span></button>
     <button type="button" class="tab" data-view="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg><span>Карта</span></button>
+    <button type="button" class="tab shoot" id="shootTab"><i class="sBall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></i><span>Снять</span></button>
     <button type="button" class="tab" data-view="quests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4"/></svg><span>Квесты</span></button>
     <button type="button" class="tab" data-view="lib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/></svg><span>Паспорт</span></button>
   </nav>
@@ -1204,10 +1238,8 @@ const visibleSpots = () => allSpots().filter(s => ADMIN || !hiddenIds.includes(s
 function updateProgress() {
   const spots = visibleSpots();
   const doneCount = spots.filter(s => found.includes(s.id)).length;
-  $('ringN').textContent = doneCount;
-  $('ringOf').textContent = Tf('из {b}', { b: spots.length });
-  const C = 2 * Math.PI * 19, part = spots.length ? doneCount / spots.length : 0;
-  $('ringArc').style.strokeDasharray = `${(C * part).toFixed(2)} ${C.toFixed(2)}`;
+  $('progTxt').innerHTML = Tf('Отмечено мест: {a} из {b}', { a: '<b>' + doneCount + '</b>', b: spots.length });
+  $('progFill').style.width = (spots.length ? 100 * doneCount / spots.length : 0).toFixed(1) + '%';
 }
 
 function renderChips(spots) {
@@ -1483,7 +1515,7 @@ try { navigator.storage && navigator.storage.persist && navigator.storage.persis
 
 let libUrls = [];
 async function updateLibCount() {
-  try { const n = (await libAll()).length; $('libCount').textContent = n ? ` · ${n}` : ''; } catch { /* нет IndexedDB */ }
+  try { const n = (await libAll()).length; if ($('libCount')) $('libCount').textContent = n ? ` · ${n}` : ''; } catch { /* нет IndexedDB */ }
 }
 /* ===== Паспорт исследователя: печати за посещённые места и значки. Всё считается в телефоне, без регистрации. ===== */
 const BADGE_ICON = { 'Михайловские ворота': '🏰', 'Николаевские ворота': '🦅', 'Константиновские ворота': '🏛', 'Александровские ворота': '👑',
@@ -1585,7 +1617,7 @@ async function renderLib() {
     box.innerHTML = T('<div class="libEmpty">Этот браузер не даёт хранить снимки. Откройте приложение в Chrome.</div>'); return;
   }
   box.replaceChildren();
-  $('libCount').textContent = shots.length ? ` · ${shots.length}` : '';
+  if ($('libCount')) $('libCount').textContent = shots.length ? ` · ${shots.length}` : '';
   shots.sort((a, b) => b.at - a.at);
   renderPassport(box, shots);
   const h = document.createElement('h2'); h.className = 'secTitle shotsTitle'; h.textContent = T('Мои снимки «тогда и сейчас»');
@@ -1658,11 +1690,10 @@ function goView(v, group) {
   setView(v);
   toListTop();
 }
-for (const b of document.querySelectorAll('#botNav .tab')) b.onclick = () => {
+for (const b of document.querySelectorAll('#botNav .tab[data-view]')) b.onclick = () => {
   if (b.dataset.view === view && !(view === 'quests' && openQuest)) { toListTop(); return; }
   goView(b.dataset.view);
 };
-for (const b of document.querySelectorAll('#tiles .tile')) b.onclick = () => goView(b.dataset.go);
 $('subBack').onclick = () => navBack();
 
 /* Настройки (шестерёнка): отзыв, рука, о приложении */
@@ -1685,10 +1716,81 @@ function nextSpot() {
   }
   return order(spots)[0] || null;
 }
-$('contBtn').onclick = () => { const sp = nextSpot(); if (sp) openSpot(sp); else goView('all'); };
+/* ===== 18.11.2026: главная «Сводка» и кнопка «Снять» в меню =====
+   Ближайшая непройденная точка: по месту телефона, если доступ к нему уже разрешён; иначе — следующая по порядку.
+   Место определяется только в телефоне и никуда не отправляется. */
+function refreshPos() {
+  if (!navigator.geolocation || !navigator.permissions) return;
+  navigator.permissions.query({ name: 'geolocation' }).then(p => {
+    if (p.state !== 'granted') return;
+    navigator.geolocation.getCurrentPosition(pos => {
+      mePos = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+      if (view === 'home') renderNear();
+    }, () => {}, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
+  }, () => {});
+}
+function nearestTodo() {
+  if (mePos) {
+    let best = null, bd = Infinity;
+    for (const s of visibleSpots()) {
+      if (found.includes(s.id)) continue;
+      const p = coordsOf(s); if (!p) continue;
+      const d = distM(mePos, p); if (d < bd) { bd = d; best = s; }
+    }
+    if (best) return { spot: best, d: bd };
+  }
+  let s = nextSpot();
+  if (s && !coordsOf(s)) s = byYear(visibleSpots().filter(x => !found.includes(x.id) && coordsOf(x)))[0] || s; // точка на карте понятнее, чем неопознанный снимок
+  return s ? { spot: s, d: null } : null;
+}
+const spotNo = s => /^s\d+$/.test(s.id) ? +s.id.slice(1) : null;
+function renderNear() {
+  const box = $('nearCard'), n = nearestTodo();
+  box.hidden = !n; box.replaceChildren();
+  if (!n) return;
+  const s = n.spot, head = document.createElement('div'); head.className = 'nHead';
+  const lbl = document.createElement('span'); lbl.className = 'nLbl'; lbl.textContent = T(n.d == null ? 'Следующая точка' : 'Ближайшая точка');
+  head.append(lbl);
+  if (n.d != null) { const d = document.createElement('span'); d.className = 'nDist'; const min = Math.max(1, Math.round(n.d / 80)); d.textContent = n.d < 1000 ? Tf('≈ {m} м · {min} мин', { m: Math.round(n.d / 10) * 10, min }) : Tf('≈ {m} км · {min} мин', { m: (n.d / 1000).toFixed(1), min }); head.append(d); }
+  const body = document.createElement('button'); body.type = 'button'; body.className = 'nBody';
+  const img = document.createElement('img'); img.src = s.thumb || s.src; img.alt = ''; img.decoding = 'async';
+  const txt = document.createElement('span');
+  const b = document.createElement('b'); b.textContent = s.title;
+  const m = document.createElement('small'); m.textContent = [yearT(s.year), spotNo(s) ? Tf('снимок №{n}', { n: spotNo(s) }) : ''].filter(Boolean).join(' · ');
+  txt.append(b, m); body.append(img, txt);
+  body.onclick = () => openObj(groupOf(s));
+  const acts = document.createElement('div'); acts.className = 'nActs';
+  const go = document.createElement('button'); go.type = 'button'; go.className = 'nGo'; go.textContent = T('📷 Встать на точку');
+  go.onclick = () => openSpot(s);
+  acts.append(go);
+  if (coordsOf(s)) {
+    const rt = document.createElement('button'); rt.type = 'button'; rt.className = 'nRoute'; rt.textContent = T('Маршрут');
+    rt.onclick = () => { pushView(); mapFocus = { spot: s }; setView('map'); };
+    acts.append(rt);
+  }
+  box.append(head, body, acts);
+}
+function renderQuestRow() {
+  const row = $('questRow'), qs = QUESTS.filter(q => questSteps(q).length);
+  const open = qs.filter(q => doneIn(q) < questSteps(q).length);
+  const q = open.find(q => doneIn(q) > 0) || open[0];
+  row.hidden = !q; if (!q) return;
+  const n = doneIn(q), all = questSteps(q).length;
+  row.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M10 17h4"/></svg><span class="qrT"></span><span class="qrN"></span><span class="qrBar"><i></i></span>';
+  row.querySelector('.qrT').textContent = Tf('Квест «{t}»', { t: q.title });
+  row.querySelector('.qrN').textContent = `${n}/${all}`;
+  row.querySelector('.qrBar i').style.width = (100 * n / all).toFixed(1) + '%';
+  row.onclick = () => { goView('quests'); navPush(); openQuest = q.id; renderQuests(); $('list').scrollTop = 0; };
+}
+$('shootTab').onclick = () => {
+  track('feature', 'shoot_tab');
+  const n = nearestTodo();
+  if (n) openSpot(n.spot); else goView('all');
+};
 
 function renderHome() {
   updateLibCount();
+  renderNear(); renderQuestRow(); refreshPos();
   const box = $('places');
   box.replaceChildren();
   const spots = visibleSpots();
@@ -1698,17 +1800,13 @@ function renderHome() {
     const pic = byYear(list).find(s => s.thumb) || list[0];
     const row = document.createElement('button');
     row.type = 'button';
-    row.className = 'place' + (name === ALL ? ' all' : '');
+    row.className = 'ptile' + (name === ALL ? ' all' : '');
     const img = document.createElement('img');
     img.src = pic.thumb || pic.src; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
-    const txt = document.createElement('span');
-    txt.className = 'ptxt';
     const b = document.createElement('b'); b.textContent = name === ALL ? T('Все места') : T(name);
     const m = document.createElement('small');
-    m.textContent = `📷 ${list.length}` + (done ? ` · ✓ ${done}` : '');
-    txt.append(b, m);
-    const go = document.createElement('i'); go.className = 'chev'; go.textContent = '›';
-    row.append(img, txt, go);
+    m.textContent = Tf('{a} из {b}', { a: done, b: list.length });
+    row.append(img, b, m);
     row.onclick = () => name === ALL ? goView('all', ALL) : openObj(name);
     box.append(row);
   }
@@ -1948,7 +2046,6 @@ async function paintOffInfo() {
 }
 document.querySelector('[data-off=full]').onclick = e => saveOffline(photoUrls(visibleSpots(), true), e.currentTarget);
 document.querySelector('[data-off=thumbs]').onclick = e => saveOffline(photoUrls(visibleSpots(), false), e.currentTarget);
-$('offHome').onclick = () => { navPush(); $('setDlg').showModal(); paintOffInfo(); $('offBox').scrollIntoView({ block: 'center' }); };
 
 /* ===== Поиск и фильтры ===== */
 let fText = '', fStatus = 'all', fPeriod = '', fStory = false;
@@ -2011,7 +2108,10 @@ async function renderMap() {
   }
   setTimeout(() => {
     lmap.invalidateSize();
-    if (mapFocus) {
+    if (mapFocus && mapFocus.spot) {
+      const p = coordsOf(mapFocus.spot); mapFocus = null; lmap._fitFirst = false;
+      if (p) lmap.setView([p.lat, p.lng], 18);
+    } else if (mapFocus) {
       const pts = visibleSpots().filter(s => groupOf(s) === mapFocus).map(coordsOf).filter(Boolean).map(p => [p.lat, p.lng]);
       mapFocus = null; lmap._fitFirst = false;
       if (pts.length) lmap.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 18 });
