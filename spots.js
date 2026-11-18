@@ -105,7 +105,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
   "original": "489924397_737696825593528_8896885690954861260_n.jpg",
   "thumb": "photos/thumbs/spot13.jpg",
-  "group": "Мосты и дороги"
+  "group": "Мосты и дороги",
+  "hidden": true
  },
  {
   "id": "s14",
@@ -117,7 +118,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
   "original": "490348282_737696838926860_1721376415922042285_n.jpg",
   "thumb": "photos/thumbs/spot14.jpg",
-  "group": "Мосты и дороги"
+  "group": "Мосты и дороги",
+  "hidden": true
  },
  {
   "id": "s15",
@@ -131,7 +133,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot15.jpg",
   "group": "Мосты и дороги",
   "lat": 55.879571,
-  "lng": 26.501566
+  "lng": 26.501566,
+  "hidden": true
  },
  {
   "id": "s17",
@@ -1567,7 +1570,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02sJS2qnWns8aGPefuQAyQtBgCRuLtxUUy27wVTX8aK9GzqWq6qrDGsy7hBxYJvvaGl",
   "original": "490409736_740076755355535_6050240267208918825_n.jpg",
-  "group": "Инженерный арсенал"
+  "group": "Инженерный арсенал",
+  "hidden": true
  },
  {
   "id": "s155",
@@ -2855,7 +2859,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110174821665441",
   "original": "ок-1915-1918__fb_110174821665441.jpg",
   "thumb": "photos/thumbs/spot275.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "hidden": true
  },
  {
   "id": "s276",
@@ -3434,7 +3439,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=385023430860871",
   "original": "ок-1900-1914__fb_385023430860871.jpg",
   "thumb": "photos/thumbs/spot318.jpg",
-  "group": "Мосты и дороги"
+  "group": "Мосты и дороги",
+  "hidden": true
  },
  {
   "id": "s319",
@@ -3446,7 +3452,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=385023440860870",
   "original": "ок-1900-1914__fb_385023440860870.jpg",
   "thumb": "photos/thumbs/spot319.jpg",
-  "group": "Мосты и дороги"
+  "group": "Мосты и дороги",
+  "hidden": true
  },
  {
   "id": "s320",
@@ -3582,7 +3589,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1930-1940__504076178_786206404075903_5774555611008876723_n.jpg",
   "thumb": "photos/thumbs/spot330.jpg",
-  "group": "Редюиты и валы"
+  "group": "Редюиты и валы",
+  "hidden": true
  },
  {
   "id": "s331",
@@ -3770,7 +3778,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=697839012912643",
   "original": "1925__fb_697839012912643.jpg",
   "thumb": "photos/thumbs/spot345.jpg",
-  "group": "Редюиты и валы"
+  "group": "Редюиты и валы",
+  "hidden": true
  },
  {
   "id": "s346",
@@ -3894,7 +3903,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=446880131341867",
   "original": "1920-1940__fb_446880131341867.jpg",
   "thumb": "photos/thumbs/spot355.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "hidden": true
  },
  {
   "id": "s356",
@@ -4066,7 +4076,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot368.jpg",
   "group": "Улицы и здания",
   "lat": 55.887316,
-  "lng": 26.490515
+  "lng": 26.490515,
+  "hidden": true
  },
  {
   "id": "s369",
@@ -4178,7 +4189,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot376.jpg",
   "group": "Улицы и здания",
   "lat": 55.887172,
-  "lng": 26.492069
+  "lng": 26.492069,
+  "hidden": true
  },
  {
   "id": "s377",
@@ -4206,7 +4218,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot378.jpg",
   "group": "Улицы и здания",
   "lat": 55.885005,
-  "lng": 26.493819
+  "lng": 26.493819,
+  "hidden": true
  },
  {
   "id": "s379",
@@ -4234,7 +4247,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot380.jpg",
   "group": "Улицы и здания",
   "lat": 55.887479,
-  "lng": 26.491084
+  "lng": 26.491084,
+  "hidden": true
  },
  {
   "id": "s381",
@@ -4248,7 +4262,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot381.jpg",
   "group": "Улицы и здания",
   "lat": 55.887039,
-  "lng": 26.491952
+  "lng": 26.491952,
+  "hidden": true
  },
  {
   "id": "s382",
@@ -4318,7 +4333,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot386.jpg",
   "group": "Улицы и здания",
   "lat": 55.887328,
-  "lng": 26.491008
+  "lng": 26.491008,
+  "hidden": true
  },
  {
   "id": "s387",
@@ -4332,7 +4348,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot387.jpg",
   "group": "Улицы и здания",
   "lat": 55.887393,
-  "lng": 26.491319
+  "lng": 26.491319,
+  "hidden": true
  },
  {
   "id": "s388",
@@ -4360,7 +4377,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot389.jpg",
   "group": "Улицы и здания",
   "lat": 55.887232,
-  "lng": 26.490986
+  "lng": 26.490986,
+  "hidden": true
  },
  {
   "id": "s390",
@@ -4374,7 +4392,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot390.jpg",
   "group": "Улицы и здания",
   "lat": 55.885712,
-  "lng": 26.493921
+  "lng": 26.493921,
+  "hidden": true
  },
  {
   "id": "s391",
@@ -4388,7 +4407,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot391.jpg",
   "group": "Улицы и здания",
   "lat": 55.886889,
-  "lng": 26.49178
+  "lng": 26.49178,
+  "hidden": true
  },
  {
   "id": "s392",
@@ -4402,7 +4422,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot392.jpg",
   "group": "Улицы и здания",
   "lat": 55.885487,
-  "lng": 26.495054
+  "lng": 26.495054,
+  "hidden": true
  },
  {
   "id": "s393",
@@ -4430,7 +4451,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot394.jpg",
   "group": "Улицы и здания",
   "lat": 55.885502,
-  "lng": 26.493643
+  "lng": 26.493643,
+  "hidden": true
  },
  {
   "id": "s395",
@@ -4444,7 +4466,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot395.jpg",
   "group": "Улицы и здания",
   "lat": 55.885574,
-  "lng": 26.494549
+  "lng": 26.494549,
+  "hidden": true
  },
  {
   "id": "s396",
@@ -4458,7 +4481,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot396.jpg",
   "group": "Улицы и здания",
   "lat": 55.887232,
-  "lng": 26.491147
+  "lng": 26.491147,
+  "hidden": true
  },
  {
   "id": "s397",
@@ -4486,7 +4510,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot398.jpg",
   "group": "Улицы и здания",
   "lat": 55.885487,
-  "lng": 26.492822
+  "lng": 26.492822,
+  "hidden": true
  },
  {
   "id": "s399",
@@ -4528,7 +4553,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot401.jpg",
   "group": "Улицы и здания",
   "lat": 55.885474,
-  "lng": 26.494536
+  "lng": 26.494536,
+  "hidden": true
  },
  {
   "id": "s402",
@@ -4542,7 +4568,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot402.jpg",
   "group": "Улицы и здания",
   "lat": 55.885783,
-  "lng": 26.493914
+  "lng": 26.493914,
+  "hidden": true
  },
  {
   "id": "s403",
@@ -4570,7 +4597,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot404.jpg",
   "group": "Улицы и здания",
   "lat": 55.88566,
-  "lng": 26.494353
+  "lng": 26.494353,
+  "hidden": true
  },
  {
   "id": "s405",
@@ -4654,7 +4682,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/35588/",
   "original": "193X__zudusilatvija_35588.jpg",
   "thumb": "photos/thumbs/spot411.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "hidden": true
  },
  {
   "id": "s412",
@@ -4680,7 +4709,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/50373/",
   "original": "194X__zudusilatvija_50373.jpg",
   "thumb": "photos/thumbs/spot413.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "hidden": true
  },
  {
   "id": "s414",
@@ -4804,7 +4834,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot422.jpg",
   "group": "Улицы и здания",
   "lat": 55.885123,
-  "lng": 26.494264
+  "lng": 26.494264,
+  "hidden": true
  },
  {
   "id": "s423",
@@ -4830,7 +4861,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/51582/",
   "original": "1982__zudusilatvija_51582.jpg",
   "thumb": "photos/thumbs/spot424.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "hidden": true
  },
  {
   "id": "s425",
@@ -5016,7 +5048,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/51926/",
   "original": "195X__zudusilatvija_51926.jpg",
   "thumb": "photos/thumbs/spot438.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "hidden": true
  },
  {
   "id": "s439",
@@ -5198,7 +5231,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110984614917795",
   "original": "1920-1940__fb_110984614917795.jpg",
   "thumb": "photos/thumbs/spot451.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s452",
@@ -5222,7 +5256,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110984778251112",
   "original": "1920-1940__fb_110984778251112.jpg",
   "thumb": "photos/thumbs/spot453.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s454",
@@ -5234,7 +5269,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110984781584445",
   "original": "1920-1940__fb_110984781584445.jpg",
   "thumb": "photos/thumbs/spot454.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s455",
@@ -5246,7 +5282,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110984818251108",
   "original": "1920-1940__fb_110984818251108.jpg",
   "thumb": "photos/thumbs/spot455.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s456",
@@ -5258,7 +5295,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110984861584437",
   "original": "1920-1940__fb_110984861584437.jpg",
   "thumb": "photos/thumbs/spot456.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s457",
@@ -5270,7 +5308,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110984878251102",
   "original": "1920-1940__fb_110984878251102.jpg",
   "thumb": "photos/thumbs/spot457.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s458",
@@ -5282,7 +5321,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110984888251101",
   "original": "1920-1940__fb_110984888251101.jpg",
   "thumb": "photos/thumbs/spot458.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s459",
@@ -5354,7 +5394,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=376257441737470",
   "original": "1920-1940__fb_376257441737470.jpg",
   "thumb": "photos/thumbs/spot464.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s465",
@@ -5366,7 +5407,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=421249057238308",
   "original": "1920-1940__fb_421249057238308.jpg",
   "thumb": "photos/thumbs/spot465.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s466",
@@ -5378,7 +5420,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=421249167238297",
   "original": "1920-1940__fb_421249167238297.jpg",
   "thumb": "photos/thumbs/spot466.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s467",
@@ -5390,7 +5433,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=421250493904831",
   "original": "1920-1940__fb_421250493904831.jpg",
   "thumb": "photos/thumbs/spot467.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s468",
@@ -5402,7 +5446,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=428224779874069",
   "original": "1920-1940__fb_428224779874069.jpg",
   "thumb": "photos/thumbs/spot468.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s469",
@@ -5414,7 +5459,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=428224783207402",
   "original": "1920-1940__fb_428224783207402.jpg",
   "thumb": "photos/thumbs/spot469.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s470",
@@ -5426,7 +5472,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=428224786540735",
   "original": "1920-1940__fb_428224786540735.jpg",
   "thumb": "photos/thumbs/spot470.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s471",
@@ -5438,7 +5485,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=428224789874068",
   "original": "1920-1940__fb_428224789874068.jpg",
   "thumb": "photos/thumbs/spot471.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s472",
@@ -5450,7 +5498,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=428224939874053",
   "original": "1920-1940__fb_428224939874053.jpg",
   "thumb": "photos/thumbs/spot472.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s473",
@@ -5462,7 +5511,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=428224943207386",
   "original": "1920-1940__fb_428224943207386.jpg",
   "thumb": "photos/thumbs/spot473.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s474",
@@ -5474,7 +5524,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=428224949874052",
   "original": "1920-1940__fb_428224949874052.jpg",
   "thumb": "photos/thumbs/spot474.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s475",
@@ -5486,7 +5537,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=428224956540718",
   "original": "1920-1940__fb_428224956540718.jpg",
   "thumb": "photos/thumbs/spot475.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s476",
@@ -5498,7 +5550,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=428224966540717",
   "original": "1920-1940__fb_428224966540717.jpg",
   "thumb": "photos/thumbs/spot476.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s477",
@@ -5510,7 +5563,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=428225073207373",
   "original": "1920-1940__fb_428225073207373.jpg",
   "thumb": "photos/thumbs/spot477.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s478",
@@ -5612,7 +5666,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/53993/",
   "original": "1924__zudusilatvija_53993_1.jpg",
   "thumb": "photos/thumbs/spot485.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s486",
@@ -5624,7 +5679,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/53994/",
   "original": "1924__zudusilatvija_53994_1.jpg",
   "thumb": "photos/thumbs/spot486.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s487",
@@ -5720,7 +5776,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot493.jpg",
   "group": "Солдаты и люди",
   "lat": 55.883845,
-  "lng": 26.494861
+  "lng": 26.494861,
+  "hidden": true
  },
  {
   "id": "s494",
@@ -5758,7 +5815,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/38647/",
   "original": "1929__zudusilatvija_38647_1.jpg",
   "thumb": "photos/thumbs/spot496.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s497",
@@ -5770,7 +5828,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/39736/",
   "original": "1929__zudusilatvija_39736_1.jpg",
   "thumb": "photos/thumbs/spot497.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s498",
@@ -5782,7 +5841,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1930-1940__6aafabc5b9e6a.jpg",
   "thumb": "photos/thumbs/spot498.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s573",
@@ -5794,7 +5854,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1930-1940__6aafabc5b9e6a.jpg",
   "thumb": "photos/thumbs/spot573.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s574",
@@ -5806,7 +5867,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1930-1940__6aafabc5b9e6a.jpg",
   "thumb": "photos/thumbs/spot574.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s575",
@@ -5818,7 +5880,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1930-1940__6aafabc5b9e6a.jpg",
   "thumb": "photos/thumbs/spot575.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s499",
@@ -5948,7 +6011,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/6923/",
   "original": "1930__zudusilatvija_6923.jpg",
   "thumb": "photos/thumbs/spot508.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s509",
@@ -5988,7 +6052,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/49910/",
   "original": "1932__zudusilatvija_49910.jpg",
   "thumb": "photos/thumbs/spot511.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s512",
@@ -6000,7 +6065,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110984921584431",
   "original": "1935__fb_110984921584431.jpg",
   "thumb": "photos/thumbs/spot512.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s513",
@@ -6012,7 +6078,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110984658251124",
   "original": "1936__fb_110984658251124.jpg",
   "thumb": "photos/thumbs/spot513.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s514",
@@ -6026,7 +6093,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot514.jpg",
   "group": "Солдаты и люди",
   "lat": 55.887139,
-  "lng": 26.494018
+  "lng": 26.494018,
+  "hidden": true
  },
  {
   "id": "s515",
@@ -6038,7 +6106,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/45459/",
   "original": "193X__zudusilatvija_45459.jpg",
   "thumb": "photos/thumbs/spot515.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s516",
@@ -6050,7 +6119,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/51443/",
   "original": "193X__zudusilatvija_51443_1.jpg",
   "thumb": "photos/thumbs/spot516.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s517",
@@ -6062,7 +6132,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/56763/",
   "original": "193X__zudusilatvija_56763.jpg",
   "thumb": "photos/thumbs/spot517.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s518",
@@ -6074,7 +6145,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/6884/",
   "original": "193X__zudusilatvija_6884.jpg",
   "thumb": "photos/thumbs/spot518.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s519",
@@ -6086,7 +6158,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/6887/",
   "original": "193X__zudusilatvija_6887.jpg",
   "thumb": "photos/thumbs/spot519.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s520",
@@ -6098,7 +6171,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/38648/",
   "original": "19XX__zudusilatvija_38648_1.jpg",
   "thumb": "photos/thumbs/spot520.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s521",
@@ -6110,7 +6184,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/46641/",
   "original": "19XX__zudusilatvija_46641_1.jpg",
   "thumb": "photos/thumbs/spot521.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true
  },
  {
   "id": "s522",
@@ -6124,7 +6199,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot522.jpg",
   "group": "Солдаты и люди",
   "lat": 55.886371,
-  "lng": 26.490107
+  "lng": 26.490107,
+  "hidden": true
  },
  {
   "id": "s523",
@@ -6188,7 +6264,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot526.jpg",
   "group": "Солдаты и люди",
   "lat": 55.884296,
-  "lng": 26.495367
+  "lng": 26.495367,
+  "hidden": true
  },
  {
   "id": "s527",
@@ -6202,7 +6279,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot527.jpg",
   "group": "Солдаты и люди",
   "lat": 55.884197,
-  "lng": 26.495651
+  "lng": 26.495651,
+  "hidden": true
  },
  {
   "id": "s528",
@@ -6216,7 +6294,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot528.jpg",
   "group": "Солдаты и люди",
   "lat": 55.887056,
-  "lng": 26.49427
+  "lng": 26.49427,
+  "hidden": true
  },
  {
   "id": "s529",
@@ -6230,7 +6309,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot529.jpg",
   "group": "Солдаты и люди",
   "lat": 55.885228,
-  "lng": 26.494774
+  "lng": 26.494774,
+  "hidden": true
  },
  {
   "id": "s530",
@@ -6258,7 +6338,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot531.jpg",
   "group": "Солдаты и люди",
   "lat": 55.88559,
-  "lng": 26.495276
+  "lng": 26.495276,
+  "hidden": true
  },
  {
   "id": "s532",
@@ -6272,7 +6353,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot532.jpg",
   "group": "Солдаты и люди",
   "lat": 55.88751,
-  "lng": 26.491766
+  "lng": 26.491766,
+  "hidden": true
  },
  {
   "id": "s533",
@@ -6300,7 +6382,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot534.jpg",
   "group": "Солдаты и люди",
   "lat": 55.887298,
-  "lng": 26.491104
+  "lng": 26.491104,
+  "hidden": true
  },
  {
   "id": "s535",
@@ -6314,7 +6397,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot535.jpg",
   "group": "Солдаты и люди",
   "lat": 55.887274,
-  "lng": 26.490446
+  "lng": 26.490446,
+  "hidden": true
  },
  {
   "id": "s536",
@@ -6328,7 +6412,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot536.jpg",
   "group": "Солдаты и люди",
   "lat": 55.885637,
-  "lng": 26.49368
+  "lng": 26.49368,
+  "hidden": true
  },
  {
   "id": "s537",
@@ -6342,7 +6427,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot537.jpg",
   "group": "Солдаты и люди",
   "lat": 55.88352,
-  "lng": 26.496522
+  "lng": 26.496522,
+  "hidden": true
  },
  {
   "id": "s538",
@@ -6378,7 +6464,8 @@ window.SPOTS_DATA = [
   "source": "https://www.europeana.eu/item/92023/images_billed_2010_okt_billeder_object179411",
   "original": "1918__europeana_kb-object179411.jpg",
   "thumb": "photos/thumbs/spot540.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s541",
@@ -6414,7 +6501,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1918-1940__0304_2_20261103_103755.jpg",
   "thumb": "photos/thumbs/spot543.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s544",
@@ -6426,7 +6514,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=112910888058501",
   "original": "1920-1925__fb_112910888058501.jpg",
   "thumb": "photos/thumbs/spot544.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s545",
@@ -6438,7 +6527,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1920-1930__470217886_591468273536091_125834721888115275_n.jpg",
   "thumb": "photos/thumbs/spot545.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s546",
@@ -6450,7 +6540,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1920-1930__488688609_732640896099121_5580245355001960947_n.jpg",
   "thumb": "photos/thumbs/spot546.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s547",
@@ -6462,7 +6553,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1920-1930__488704798_732641119432432_2257240090309562580_n.jpg",
   "thumb": "photos/thumbs/spot547.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s548",
@@ -6474,7 +6566,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1920-1930__491996233_742785315084679_4017795270129976853_n.jpg",
   "thumb": "photos/thumbs/spot548.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s549",
@@ -6486,7 +6579,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1920-1930__63521ab300cf0.jpg",
   "thumb": "photos/thumbs/spot549.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s550",
@@ -6498,7 +6592,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=258631373500078",
   "original": "1920-1930__fb_258631373500078.jpg",
   "thumb": "photos/thumbs/spot550.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s551",
@@ -6510,7 +6605,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1920-1930__панорама_с_башни_собора_1.jpg",
   "thumb": "photos/thumbs/spot551.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s552",
@@ -6522,7 +6618,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1920-1930__Снимок экрана 2026-11-16 125149.png",
   "thumb": "photos/thumbs/spot552.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s553",
@@ -6536,7 +6633,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot553.jpg",
   "group": "Виды сверху",
   "lat": 55.888251,
-  "lng": 26.48777
+  "lng": 26.48777,
+  "hidden": true
  },
  {
   "id": "s554",
@@ -6550,7 +6648,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot554.jpg",
   "group": "Виды сверху",
   "lat": 55.890194,
-  "lng": 26.497983
+  "lng": 26.497983,
+  "hidden": true
  },
  {
   "id": "s555",
@@ -6562,7 +6661,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/18439/",
   "original": "192X__zudusilatvija_18439_1.jpg",
   "thumb": "photos/thumbs/spot555.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s556",
@@ -6574,7 +6674,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/15143/",
   "original": "193X__zudusilatvija_15143.jpg",
   "thumb": "photos/thumbs/spot556.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s557",
@@ -6586,7 +6687,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/54775/",
   "original": "193X__zudusilatvija_54775.jpg",
   "thumb": "photos/thumbs/spot557.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s558",
@@ -6598,7 +6700,8 @@ window.SPOTS_DATA = [
   "source": "https://zudusilatvija.lv/objects/object/6890/",
   "original": "193X__zudusilatvija_6890_1.jpg",
   "thumb": "photos/thumbs/spot558.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s559",
@@ -6610,7 +6713,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=441713738525173",
   "original": "1940__fb_441713738525173.jpg",
   "thumb": "photos/thumbs/spot559.jpg",
-  "group": "Виды сверху"
+  "group": "Виды сверху",
+  "hidden": true
  },
  {
   "id": "s560",
@@ -6624,7 +6728,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot560.jpg",
   "group": "Виды сверху",
   "lat": 55.880098,
-  "lng": 26.503275
+  "lng": 26.503275,
+  "hidden": true
  },
  {
   "id": "s561",
@@ -6638,7 +6743,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot561.jpg",
   "group": "Виды сверху",
   "lat": 55.885878,
-  "lng": 26.495376
+  "lng": 26.495376,
+  "hidden": true
  },
  {
   "id": "s562",
@@ -6652,7 +6758,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot562.jpg",
   "group": "Виды сверху",
   "lat": 55.885926,
-  "lng": 26.495504
+  "lng": 26.495504,
+  "hidden": true
  },
  {
   "id": "s563",
@@ -6666,7 +6773,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot563.jpg",
   "group": "Виды сверху",
   "lat": 55.885194,
-  "lng": 26.507556
+  "lng": 26.507556,
+  "hidden": true
  },
  {
   "id": "s564",
@@ -6680,7 +6788,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot564.jpg",
   "group": "Виды сверху",
   "lat": 55.873288,
-  "lng": 26.495424
+  "lng": 26.495424,
+  "hidden": true
  },
  {
   "id": "s565",
@@ -6694,7 +6803,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot565.jpg",
   "group": "Михайловские ворота",
   "lat": 55.88309,
-  "lng": 26.49926
+  "lng": 26.49926,
+  "hidden": true
  },
  {
   "id": "s566",
@@ -6708,7 +6818,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot566.jpg",
   "group": "Улицы и здания",
   "lat": 55.88558,
-  "lng": 26.49413
+  "lng": 26.49413,
+  "hidden": true
  },
  {
   "id": "s567",
@@ -6722,7 +6833,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot567.jpg",
   "group": "Улицы и здания",
   "lat": 55.88338,
-  "lng": 26.49708
+  "lng": 26.49708,
+  "hidden": true
  },
  {
   "id": "s568",

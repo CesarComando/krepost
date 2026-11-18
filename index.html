@@ -1336,7 +1336,8 @@ const groupOf = s => s.group || 'Другое';
 let activeGroup = ALL;
 
 // Рисунки, открытки и интерьеры, которые нельзя переснять (illus), — не в ленте и не в камере, а в описании места
-const visibleSpots = () => allSpots().filter(s => !s.illus && (ADMIN || !hiddenIds.includes(s.id)));
+// hidden: убраны модератором для всех (файлы остаются, модератор их видит и может вернуть)
+const visibleSpots = () => allSpots().filter(s => !s.illus && (ADMIN || (!s.hidden && !hiddenIds.includes(s.id))));
 const illusOf = g => byYear(allSpots().filter(s => s.illus && groupOf(s) === g));
 
 function updateProgress() {
