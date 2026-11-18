@@ -349,7 +349,8 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378185278438&set=pcb.107381791944744",
   "original": "469115002_584955887520663_3556234438919068877_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "illus": true
  },
  {
   "id": "s039",
@@ -427,7 +428,8 @@ window.SPOTS_DATA = [
   "original": "469158458_584956130853972_3951381031250255598_n.jpg",
   "group": "Собор",
   "lat": 55.883471,
-  "lng": 26.498507
+  "lng": 26.498507,
+  "illus": true
  },
  {
   "id": "s046",
@@ -2973,7 +2975,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot284.jpg",
   "group": "Собор",
   "lat": 55.883882,
-  "lng": 26.49932
+  "lng": 26.49932,
+  "illus": true
  },
  {
   "id": "s285",
@@ -2985,7 +2988,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1900__40814_20160801_203651.jpg",
   "thumb": "photos/thumbs/spot285.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "illus": true
  },
  {
   "id": "s286",
@@ -2997,7 +3001,8 @@ window.SPOTS_DATA = [
   "source": "https://commons.wikimedia.org/wiki/File:Dynaburg,_Rynak,_Jezuicki._%D0%94%D1%8B%D0%BD%D0%B0%D0%B1%D1%83%D1%80%D0%B3,_%D0%A0%D1%8B%D0%BD%D0%B0%D0%BA,_%D0%95%D0%B7%D1%83%D1%96%D1%86%D0%BA%D1%96_(1901-17)_(2).jpg",
   "original": "1901-1917__commons_83659397.jpg",
   "thumb": "photos/thumbs/spot286.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "illus": true
  },
  {
   "id": "s287",
@@ -3009,7 +3014,8 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=107377995278457",
   "original": "год-__fb_107377995278457.jpg",
   "thumb": "photos/thumbs/spot287.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "illus": true
  },
  {
   "id": "s288",
@@ -3109,7 +3115,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot294.jpg",
   "group": "Собор",
   "lat": 55.884442,
-  "lng": 26.499192
+  "lng": 26.499192,
+  "illus": true
  },
  {
   "id": "s295",
@@ -3145,7 +3152,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1930__40814_20160801_203752.jpg",
   "thumb": "photos/thumbs/spot297.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "illus": true
  },
  {
   "id": "s298",
@@ -3157,7 +3165,8 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1930__40814_20160801_204032.jpg",
   "thumb": "photos/thumbs/spot298.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "illus": true
  },
  {
   "id": "s299",
@@ -3223,7 +3232,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot303.jpg",
   "group": "Собор",
   "lat": 55.884217,
-  "lng": 26.499162
+  "lng": 26.499162,
+  "illus": true
  },
  {
   "id": "s304",
@@ -3237,7 +3247,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot304.jpg",
   "group": "Собор",
   "lat": 55.884187,
-  "lng": 26.499323
+  "lng": 26.499323,
+  "illus": true
  },
  {
   "id": "s305",
@@ -3251,7 +3262,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot305.jpg",
   "group": "Собор",
   "lat": 55.884356,
-  "lng": 26.499023
+  "lng": 26.499023,
+  "illus": true
  },
  {
   "id": "s306",
@@ -3265,7 +3277,8 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot306.jpg",
   "group": "Собор",
   "lat": 55.884383,
-  "lng": 26.499254
+  "lng": 26.499254,
+  "illus": true
  },
  {
   "id": "s307",
