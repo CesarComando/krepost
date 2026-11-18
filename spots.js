@@ -9,7 +9,9 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0wwxqdxTdg5p8e1zjEKDUi4vKcqTfv72bVDRSmNizkcgXMPsBMpgThMWNb8dRPhXWl",
   "original": "488363915_733585706004640_2063632195152577580_n.jpg",
   "thumb": "photos/thumbs/spot01.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.8823,
+  "lng": 26.4998
  },
  {
   "id": "s02",
@@ -33,7 +35,9 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0RtKFDQ13AZkBk2qY4vAY2thyrpWVVMXrCDpp3KwR9Huzou76HZxB2NTjTWDggcyWl",
   "original": "489339465_733585882671289_3284612479246191142_n.jpg",
   "thumb": "photos/thumbs/spot03.jpg",
-  "group": "Редюиты и валы"
+  "group": "Редюиты и валы",
+  "lat": 55.882183,
+  "lng": 26.501265
  },
  {
   "id": "s05",
@@ -45,7 +49,9 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=533883462641533",
   "original": "492023161_742388471791030_3400678634038058358_n.jpg",
   "thumb": "photos/thumbs/spot05.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.8871,
+  "lng": 26.4943
  },
  {
   "id": "s06",
@@ -57,7 +63,9 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=539890788707467",
   "original": "490536104_742464525116758_675542424662661152_n.jpg",
   "thumb": "photos/thumbs/spot06.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.885909,
+  "lng": 26.494384
  },
  {
   "id": "s07",
@@ -69,7 +77,9 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=544479058248640",
   "original": "491341231_742464728450071_7416061140947829490_n.jpg",
   "thumb": "photos/thumbs/spot07.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886688,
+  "lng": 26.494878
  },
  {
   "id": "s08",
@@ -81,7 +91,9 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid033M4tfnPKsnWQ1zPXKiWaCeYts2q8MtZGS7W7PQgNLfNRvdGpR8q29um1ggVcGzm2l",
   "original": "708277263_1076607218369152_2186363187117378939_n.jpg",
   "thumb": "photos/thumbs/spot08.jpg",
-  "group": "Константиновские ворота"
+  "group": "Константиновские ворота",
+  "lat": 55.888346,
+  "lng": 26.490144
  },
  {
   "id": "s13",
@@ -117,7 +129,9 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid031jtHbEeFyvZTjMnT1yJfPcETK5eauwJ78KG37KnTe48ftNCPNL9xL52nKLmD66ol",
   "original": "490343775_737696465593564_7585436451181115167_n.jpg",
   "thumb": "photos/thumbs/spot15.jpg",
-  "group": "Мосты и дороги"
+  "group": "Мосты и дороги",
+  "lat": 55.879571,
+  "lng": 26.501566
  },
  {
   "id": "s17",
@@ -153,7 +167,9 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02dmeYaBMDmFZT6KfR5GBdgFJN9EwC2uvwH1XPNrCDK9oCQAh7b3CEVLA4MctuwE8wl",
   "original": "708209978_1077433194953221_1120243343787519750_n.jpg",
   "thumb": "photos/thumbs/spot19.jpg",
-  "group": "Редюиты и валы"
+  "group": "Редюиты и валы",
+  "lat": 55.890244,
+  "lng": 26.489198
  },
  {
   "id": "s20",
@@ -237,7 +253,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0cFjcKVKuhQRg8ytr2GZcsA7ydQ5WUE6W2fji2wMJMDDoBpsfkkDWQoNC5acrYmQHl",
   "original": "469009002_584955897520662_8935759319512018143_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.882502,
+  "lng": 26.498984
  },
  {
   "id": "s029",
@@ -249,7 +267,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377698611820&set=pcb.107381791944744",
   "original": "469009398_584955844187334_971039392454788469_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.8829,
+  "lng": 26.4992
  },
  {
   "id": "s030",
@@ -273,7 +293,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378248611765&set=pcb.107381791944744",
   "original": "469010149_584956127520639_4515998323807538988_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.882265,
+  "lng": 26.498634
  },
  {
   "id": "s033",
@@ -285,7 +307,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378345278422&set=pcb.107381791944744",
   "original": "469074487_584956120853973_5595155640745170488_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.8826,
+  "lng": 26.4991
  },
  {
   "id": "s035",
@@ -297,7 +321,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377888611801&set=pcb.107381791944744",
   "original": "469096825_584955884187330_6317374574251915569_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.882418,
+  "lng": 26.498873
  },
  {
   "id": "s037",
@@ -309,7 +335,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377968611793&set=pcb.107381791944744",
   "original": "469108288_584955900853995_3460619888247434748_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.882339,
+  "lng": 26.499304
  },
  {
   "id": "s038",
@@ -333,7 +361,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377801945143&set=pcb.107381791944744",
   "original": "469122418_584956094187309_6724379559263303296_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.882804,
+  "lng": 26.499319
  },
  {
   "id": "s041",
@@ -369,7 +399,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377911945132&set=pcb.107381791944744",
   "original": "469141492_584955790854006_4835181550574155336_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.881875,
+  "lng": 26.499778
  },
  {
   "id": "s044",
@@ -393,7 +425,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377758611814&set=pcb.107381791944744",
   "original": "469158458_584956130853972_3951381031250255598_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.883471,
+  "lng": 26.498507
  },
  {
   "id": "s046",
@@ -405,7 +439,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378368611753&set=pcb.107381791944744",
   "original": "469163660_584956144187304_718926113660435160_n.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.8826,
+  "lng": 26.4991
  },
  {
   "id": "s047",
@@ -417,7 +453,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107378001945123&set=pcb.107381791944744",
   "original": "469180480_584956090853976_2077894905452397017_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.881386,
+  "lng": 26.502069
  },
  {
   "id": "s048",
@@ -441,7 +479,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=107377771945146&set=pcb.107381791944744",
   "original": "469292791_584956084187310_4606624244781198322_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.8824,
+  "lng": 26.499
  },
  {
   "id": "s050",
@@ -501,7 +541,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "470185466_591462533536665_3191858994277036621_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.88383,
+  "lng": 26.496462
  },
  {
   "id": "s057",
@@ -525,7 +567,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "470214104_591467220202863_5372301924303375384_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.88724,
+  "lng": 26.494791
  },
  {
   "id": "s060",
@@ -549,7 +593,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "470226345_591451106871141_8519268482160495196_n.jpg",
-  "group": "Константиновские ворота"
+  "group": "Константиновские ворота",
+  "lat": 55.883709,
+  "lng": 26.498663
  },
  {
   "id": "s063",
@@ -585,7 +631,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "471591667_602564452426473_9027189579637723076_n.jpg",
-  "group": "Николаевские ворота"
+  "group": "Николаевские ворота",
+  "lat": 55.883259,
+  "lng": 26.495564
  },
  {
   "id": "s066",
@@ -681,7 +729,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "488814447_733521242677753_1420537054288927487_n.jpg",
-  "group": "Мосты и дороги"
+  "group": "Мосты и дороги",
+  "lat": 55.8821,
+  "lng": 26.4997
  },
  {
   "id": "s077",
@@ -729,7 +779,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489140854_737699445593266_3739867424044438135_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887744,
+  "lng": 26.492073
  },
  {
   "id": "s085",
@@ -737,11 +789,11 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot085.jpg",
   "title": "Daugavpils cietoksnis. Šāda panorāma būtu redzama no cietokšņa (bijušās…",
   "year": "1920-1930",
-  "hint": "",
+  "hint": "Реконструкция: так мог выглядеть вид из крепости (не фотография)",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02Dfkxg2jzdbtkcPRNqoJzfLp6gFwHg6m3sRjp1ZXz1waAteCzrhER5TnKCywUyJQul",
   "original": "489294774_732640979432446_9139480994228305828_n.jpg",
-  "group": "Мосты и дороги"
+  "group": "Виды сверху"
  },
  {
   "id": "s086",
@@ -777,7 +829,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489542489_737690215594189_507549765832897493_n.jpg",
-  "group": "Михайловские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.882713,
+  "lng": 26.498829
  },
  {
   "id": "s090",
@@ -837,7 +891,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489817209_737925745570636_2393715834988413268_n.jpg",
-  "group": "Александровские ворота"
+  "group": "Александровские ворота",
+  "lat": 55.8869,
+  "lng": 26.499986
  },
  {
   "id": "s096",
@@ -849,7 +905,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489822487_737925858903958_6548017730769548286_n.jpg",
-  "group": "Николаевские ворота"
+  "group": "Николаевские ворота",
+  "lat": 55.883785,
+  "lng": 26.496364
  },
  {
   "id": "s097",
@@ -861,7 +919,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489828777_737925838903960_7466463034200938883_n.jpg",
-  "group": "Александровские ворота"
+  "group": "Александровские ворота",
+  "lat": 55.887047,
+  "lng": 26.500996
  },
  {
   "id": "s098",
@@ -885,7 +945,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489835980_737929625570248_8474698662953692993_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.882553,
+  "lng": 26.499023
  },
  {
   "id": "s100",
@@ -933,7 +995,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489912215_737636828932861_8561603842077780156_n.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.88353,
+  "lng": 26.49689
  },
  {
   "id": "s104",
@@ -981,7 +1045,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489918493_737768895586321_7918307893977986356_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.887352,
+  "lng": 26.491624
  },
  {
   "id": "s108",
@@ -1029,7 +1095,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489951270_737692542260623_1921791790077964040_n.jpg",
-  "group": "Николаевские ворота"
+  "group": "Николаевские ворота",
+  "lat": 55.8828,
+  "lng": 26.4953
  },
  {
   "id": "s112",
@@ -1065,7 +1133,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490019126_737699492259928_5671603682845670978_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.88761,
+  "lng": 26.491957
  },
  {
   "id": "s117",
@@ -1077,7 +1147,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490019639_737685665594644_4647040057024112093_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "lat": 55.8828,
+  "lng": 26.4993
  },
  {
   "id": "s118",
@@ -1107,13 +1179,13 @@ window.SPOTS_DATA = [
   "id": "s120",
   "src": "photos/spot120.jpg",
   "thumb": "photos/thumbs/spot120.jpg",
-  "title": "Инженерный арсенал, крыша",
+  "title": "Солдат с пулемётом",
   "year": "",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490023893_740077085355502_8367157190442196756_n.jpg",
-  "group": "Инженерный арсенал"
+  "group": "Солдаты и люди"
  },
  {
   "id": "s121",
@@ -1263,9 +1335,9 @@ window.SPOTS_DATA = [
   "id": "s135",
   "src": "photos/spot135.jpg",
   "thumb": "photos/thumbs/spot135.jpg",
-  "title": "Даугавпилсская крепость. Константиновские ворота. Советское время. Внешняя…",
+  "title": "Даугавпилсская крепость. Константиновские ворота. Внешняя…",
   "year": "1920-1940",
-  "hint": "",
+  "hint": "Форма латвийской армии 1920–30-х годов",
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=390245613671986",
   "original": "490281592_737777822252095_3290682520224235809_n.jpg",
@@ -1305,7 +1377,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490297810_743543685008842_2268272422598792620_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.8868,
+  "lng": 26.4964
  },
  {
   "id": "s140",
@@ -1413,7 +1487,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0Jc7HHtCL5zK1U9SFZDmiecPYGgGdXnARdvWrxujBPM83omjZ3GgCegyk1JTh3hrJl",
   "original": "490356762_739059112123966_2240644202201659235_n.jpg",
-  "group": "Николаевские ворота"
+  "group": "Николаевские ворота",
+  "lat": 55.882809,
+  "lng": 26.496663
  },
  {
   "id": "s149",
@@ -1425,7 +1501,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490363341_737699228926621_2643859807801353000_n.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.887763,
+  "lng": 26.492261
  },
  {
   "id": "s150",
@@ -1473,7 +1551,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490383901_737925802237297_6888565236327664955_n.jpg",
-  "group": "Николаевские ворота"
+  "group": "Николаевские ворота",
+  "lat": 55.8832,
+  "lng": 26.4955
  },
  {
   "id": "s154",
@@ -1497,7 +1577,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490434443_738191305544080_630417721187800032_n.jpg",
-  "group": "Мосты и дороги"
+  "group": "Мосты и дороги",
+  "lat": 55.876696,
+  "lng": 26.497216
  },
  {
   "id": "s156",
@@ -1605,7 +1687,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490712390_740077095355501_8330379479717795318_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.8857,
+  "lng": 26.4988
  },
  {
   "id": "s166",
@@ -1665,7 +1749,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490751353_740077068688837_6915384358313109053_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.885434,
+  "lng": 26.498066
  },
  {
   "id": "s173",
@@ -1773,7 +1859,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=554038937292652",
   "original": "491056820_742785498417994_4863785619218655446_n.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886103,
+  "lng": 26.494911
  },
  {
   "id": "s183",
@@ -1989,7 +2077,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo.php?fbid=1055286957167845",
   "original": "681812534_1055286967167844_18899659323937853_n.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.885935,
+  "lng": 26.49432
  },
  {
   "id": "s207",
@@ -2025,7 +2115,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "684352654_1055342273828980_9128696822232386271_n.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.887026,
+  "lng": 26.494654
  },
  {
   "id": "s210",
@@ -2037,7 +2129,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "684833173_1055330777163463_4589177173678030203_n.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886323,
+  "lng": 26.494656
  },
  {
   "id": "s211",
@@ -2049,7 +2143,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02p6fah3i9iCBELfvdZFKiqZtxsf8kJzEXGn8aZaGjVM8bMWpepYQ89hyZ5Vtw9yFYl",
   "original": "685292375_1055330633830144_6254828130334277182_n.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "lat": 55.886166,
+  "lng": 26.494845
  },
  {
   "id": "s212",
@@ -2061,7 +2157,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "685998702_1055352397161301_8316080517398811324_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.8863,
+  "lng": 26.4937
  },
  {
   "id": "s213",
@@ -2085,7 +2183,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "686331519_1055309940498880_367600941652521651_n.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.886237,
+  "lng": 26.494403
  },
  {
   "id": "s215",
@@ -2145,7 +2245,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "687428115_1055290617167479_5847630197421297207_n.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.8859,
+  "lng": 26.4943
  },
  {
   "id": "s220",
@@ -2181,7 +2283,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "687833666_1055354683827739_2062656675378275991_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "lat": 55.8863,
+  "lng": 26.4937
  },
  {
   "id": "s223",
@@ -2241,7 +2345,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "876029917_1219410207422185_248696698892537931_n.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "lat": 55.887142,
+  "lng": 26.494659
  },
  {
   "id": "s231",
@@ -2319,13 +2425,15 @@ window.SPOTS_DATA = [
   "id": "s241",
   "src": "photos/spot241.jpg",
   "thumb": "photos/thumbs/spot241.jpg",
-  "title": "Мост с воротами у Константиновских ворот",
+  "title": "Караульня и мост у Михайловских ворот",
   "year": "1930-1940",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "896158955_1225526990143840_6875489598222331317_n.jpg",
-  "group": "Константиновские ворота"
+  "group": "Михайловские ворота",
+  "lat": 55.8823,
+  "lng": 26.4998
  },
  {
   "id": "s242",
