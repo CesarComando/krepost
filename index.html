@@ -3760,6 +3760,9 @@ $('installBtn').onclick = async () => {
   $('installHelp').hidden = false;
 };
 if ('serviceWorker' in navigator) {
+  // Первый заход или новая версия: как только сохранение в телефоне заработало, запросить файлы приложения ещё раз —
+  // они лягут в память, и приложение откроется без интернета уже после первого захода
+  navigator.serviceWorker.addEventListener('controllerchange', () => SHELL.forEach(u => fetch(u).catch(() => {})));
   navigator.serviceWorker.register('sw.js').then(reg => {
     // вернулись в приложение — проверить, нет ли новой версии
     document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') reg.update().catch(() => {}); });

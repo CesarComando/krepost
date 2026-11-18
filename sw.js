@@ -4,7 +4,7 @@
 //   Хранятся в отдельном складе, который не стирается при обновлении приложения.
 // • Шрифты Google — тоже сохраняются.
 // • Плитки карты OpenStreetMap: сохраняются те, что уже открывались (не больше ~1500 штук).
-const CACHE = 'krepost-v43';
+const CACHE = 'krepost-v44';
 const PHOTO_CACHE = 'krepost-photos';
 const TILE_CACHE = 'krepost-tiles';
 const TILE_MAX = 1500;
@@ -54,6 +54,9 @@ self.addEventListener('fetch', e => {
         }
         return res;
       })
-      .catch(() => caches.match(req, { ignoreSearch: true }).then(r => r || caches.match('./index.html', { ignoreSearch: true })))
+      // Нет сети: сначала самая свежая сохранённая копия этой версии, потом любая другая (например, из «Скачать для прогулки»)
+      .catch(() => caches.open(CACHE).then(c => c.match(req, { ignoreSearch: true }))
+        .then(r => r || caches.match(req, { ignoreSearch: true }))
+        .then(r => r || caches.match('./index.html', { ignoreSearch: true })))
   );
 });
