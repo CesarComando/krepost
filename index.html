@@ -1314,7 +1314,10 @@ const MOD_KEY = 'krepost.mod';
 let modSess = (() => { try { return JSON.parse(localStorage.getItem(MOD_KEY)); } catch { return null; } })();
 const ADMIN = !!(modSess && modSess.admin);
 // Анонимная статистика: что открывают и какие фото нажимают. Без имён, только случайный номер телефона.
+// Автотесты и локальная копия не пишут в статистику
+const NOTRACK = navigator.webdriver === true || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
 function track(kind, target) {
+  if (NOTRACK) return;
   const q = window.__evq || (window.__evq = []);
   if (q.length < 200) q.push({ kind, target: target == null ? null : String(target).slice(0, 80) });
 }

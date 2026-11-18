@@ -1458,7 +1458,9 @@ window.SPOTS_DATA = [
   "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
   "source": "https://www.facebook.com/photo/?fbid=475241085172438",
   "original": "490353110_739713115391899_7974158494479597172_n.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true,
+  "sov": true
  },
  {
   "id": "s146",
@@ -1647,7 +1649,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490573649_740076762022201_4406410934887207312_n.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true,
+  "sov": true
  },
  {
   "id": "s162",
@@ -1721,7 +1725,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490737638_740077112022166_4541911777336828436_n.jpg",
-  "group": "Солдаты и люди"
+  "group": "Солдаты и люди",
+  "hidden": true,
+  "sov": true
  },
  {
   "id": "s169",
@@ -2229,7 +2235,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "686940305_1055330350496839_338402901606323133_n.jpg",
-  "group": "Комендантский сад и парк"
+  "group": "Комендантский сад и парк",
+  "hidden": true,
+  "sov": true
  },
  {
   "id": "s218",
