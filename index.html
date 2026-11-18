@@ -3690,7 +3690,9 @@ $('shoot').onclick = async () => {
   enterInset();
   showResHint();
   countShot(current.id);
-  setTimeout(() => openSurvey(shotSpot.id), 1400); // опрос — когда старое фото уже ушло в уголок
+  // Опрос — не после каждого снимка: после первого и потом на каждом десятом (5-й, 15-й, 25-й…). На 10-м, 20-м… показывается «спасибо».
+  const nShot = read(SHOTS_KEY, 0);
+  if (nShot === 1 || nShot % 10 === 5) setTimeout(() => openSurvey(shotSpot.id), 1400); // когда старое фото уже ушло в уголок
 };
 
 function label(ctx, text, x, y) {
@@ -3791,7 +3793,7 @@ updateShotStats();
   if (!id) return;
   q.delete('spot');
   history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + location.hash);
-  const sp = allSpots().find(s => s.id === id);
+  const sp = visibleSpots().find(s => s.id === id); // скрытые снимки по ссылке не открываются
   if (sp) openSpot(sp);
 })();
 </script>
