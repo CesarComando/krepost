@@ -1848,7 +1848,23 @@ function refreshPos() {
     }, () => {}, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
   }, () => {});
 }
+// Маршрут для новичка: начинать с дальнего вида на Михайловские ворота (от ул. Valņu), затем через ворота к Константиновским и дальше
+const RT_G = { lat: 55.8831, lng: 26.4992 }, RT_K = { lat: 55.8883, lng: 26.4902 };
+function routeIds() {
+  const pts = visibleSpots().map(s => ({ s, p: coordsOf(s) })).filter(o => o.p);
+  const appr = pts.filter(o => o.p.lat < 55.8834 && o.p.lng > 26.4985).sort((a, b) => a.p.lat - b.p.lat);
+  const ax = RT_K.lat - RT_G.lat, ay = (RT_K.lng - RT_G.lng) * 0.56, L = ax * ax + ay * ay;
+  const pr = o => ((o.p.lat - RT_G.lat) * ax + (o.p.lng - RT_G.lng) * 0.56 * ay) / L;
+  const rest = pts.filter(o => !appr.includes(o)).map(o => ({ o, t: pr(o) }));
+  const fwd = rest.filter(r => r.t >= 0).sort((a, b) => a.t - b.t), back = rest.filter(r => r.t < 0).sort((a, b) => b.t - a.t);
+  return [...appr, ...fwd.map(r => r.o), ...back.map(r => r.o)].map(o => o.s.id);
+}
 function nearestTodo() {
+  const rt = routeIds(), nx = rt.find(id => !found.includes(id));
+  if (nx) {
+    const s = allSpots().find(x => x.id === nx), p = coordsOf(s);
+    return { spot: s, d: mePos && p ? distM(mePos, p) : null, route: true, first: !rt.some(id => found.includes(id)) };
+  }
   if (mePos) {
     let best = null, bd = Infinity;
     for (const s of visibleSpots()) {
@@ -1868,7 +1884,7 @@ function renderNear() {
   box.hidden = !n; box.replaceChildren();
   if (!n) return;
   const s = n.spot, head = document.createElement('div'); head.className = 'nHead';
-  const lbl = document.createElement('span'); lbl.className = 'nLbl'; lbl.textContent = T(n.d == null ? 'Следующая точка' : 'Ближайшая точка');
+  const lbl = document.createElement('span'); lbl.className = 'nLbl'; lbl.textContent = T(n.route ? (n.first ? 'Начните отсюда — дальний вид на Михайловские ворота' : 'Следующая точка маршрута') : n.d == null ? 'Следующая точка' : 'Ближайшая точка');
   head.append(lbl);
   if (n.d != null) { const d = document.createElement('span'); d.className = 'nDist'; const min = Math.max(1, Math.round(n.d / 80)); d.textContent = n.d < 1000 ? Tf('≈ {m} м · {min} мин', { m: Math.round(n.d / 10) * 10, min }) : Tf('≈ {m} км · {min} мин', { m: (n.d / 1000).toFixed(1), min }); head.append(d); }
   const body = document.createElement('button'); body.type = 'button'; body.className = 'nBody';
@@ -1880,7 +1896,7 @@ function renderNear() {
   body.onclick = () => openObj(groupOf(s));
   const acts = document.createElement('div'); acts.className = 'nActs';
   const go = document.createElement('button'); go.type = 'button'; go.className = 'nGo'; go.textContent = T('📷 Встать на точку');
-  go.onclick = () => openSpot(s);
+  go.onclick = () => openSpot(s, n.route ? { route: true } : undefined);
   acts.append(go);
   if (coordsOf(s)) {
     const rt = document.createElement('button'); rt.type = 'button'; rt.className = 'nRoute'; rt.textContent = T('Маршрут');
@@ -1904,7 +1920,7 @@ function renderQuestRow() {
 $('shootTab').onclick = () => {
   track('feature', 'shoot_tab');
   const n = nearestTodo();
-  if (n) openSpot(n.spot); else goView('all');
+  if (n) openSpot(n.spot, n.route ? { route: true } : undefined); else goView('all');
 };
 
 function renderHome() {
@@ -3109,12 +3125,13 @@ async function openSpot(spot, ctx) {
   if (!$('list').hidden) { // из списка в камеру — шаг вглубь (из «Переснять» и ‹ › — нет)
     navPush();
     if (ctx && ctx.quest) camSeq = questSteps(ctx.quest).map(st => st.spot);
+    else if (ctx && ctx.route) camSeq = routeIds();
     else if (view === 'all' && lastShown.includes(spot.id)) camSeq = lastShown.slice();
     else camSeq = byYear(visibleSpots().filter(s => groupOf(s) === groupOf(spot))).map(s => s.id);
   }
   current = spot;
   write(LAST_KEY, spot.id);
-  questCtx = ctx || null;
+  questCtx = ctx && ctx.quest ? ctx : null;
   $('questTask').textContent = questCtx ? `🎯 ${questCtx.step.task}` : '';
   const img = $('oldImg');
   img.src = spot.src;
