@@ -882,6 +882,16 @@
   #botNav .tab.shoot .sBall { display:flex; align-items:center; justify-content:center; width:58px; height:58px; margin:-26px 0 2px; border-radius:50%; background:radial-gradient(ellipse at 40% 30%, #ffe27a 0%, #f2c13a 45%, #c8901d 100%); box-shadow:0 0 0 3px #120e0a, 0 0 0 5px #b8862f, 0 8px 18px rgba(0,0,0,.6); color:#3a2608; }
   #botNav .tab.shoot .sBall svg { width:26px; height:26px; }
   #botNav .tab.shoot:active .sBall { transform:scale(.94); }
+  /* ===== 18.11.2026: ‹ › в камере и «Следующее фото» ===== */
+  #camArea { position:relative; }
+  .camNav { position:absolute; z-index:8; top:50%; transform:translateY(-50%); width:46px; height:64px; min-height:0; padding:0; border-radius:14px; background:rgba(18,14,10,.72); border:1px solid rgba(243,210,122,.55); color:#f3d27a; font:700 34px/1 Inter,system-ui,sans-serif; box-shadow:0 4px 14px rgba(0,0,0,.5); text-transform:none; letter-spacing:0; }
+  .camNav[hidden] { display:none; }
+  #camPrev { left:6px; } #camNext { right:6px; }
+  .camNav:active { transform:translateY(-50%) scale(.94); }
+  #camPos { position:absolute; z-index:8; right:10px; bottom:8px; padding:2px 8px; border-radius:999px; background:rgba(18,14,10,.72); color:#f3d27a; font:600 12px 'PT Mono',ui-monospace,monospace; pointer-events:none; }
+  #camPos:empty { display:none; }
+  #resNext { display:block; width:100%; margin:10px 0 0; padding:13px 14px; border-radius:14px; font:700 15px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #resNext[hidden] { display:none; }
 </style>
 </head>
 <body>
@@ -1003,6 +1013,9 @@
       <div id="steady" hidden><span>Держите ровно… выбираем самый чёткий кадр</span><i><b id="steadyBar"></b></i></div>
       <div id="camMsg" hidden></div>
     </div>
+    <button type="button" id="camPrev" class="camNav" aria-label="Предыдущее фото" hidden>‹</button>
+    <button type="button" id="camNext" class="camNav" aria-label="Следующее фото" hidden>›</button>
+    <span id="camPos"></span>
   </div>
   <div class="controls">
     <p class="hint" id="camHint"></p>
@@ -1049,6 +1062,7 @@
       <button id="share">Поделиться</button>
       <button id="retry">Переснять</button>
     </div>
+    <button type="button" id="resNext" class="main" hidden></button>
     <button id="toList">Вернуться к списку</button>
   </div>
 </section>
@@ -1203,6 +1217,7 @@ function stampDates(list) {
 let added = read(ADDED_KEY, []);
 let found = read(FOUND_KEY, []);
 let current = null, stream = null, nowUrl = null, camToken = 0;
+let lastShown = [], camSeq = []; // порядок фото для кнопок ‹ › в камере и «Следующее фото»
 
 /* Режим админа: открыть сайт с ?admin=1. Скрывает снимки только в этом браузере. */
 const HIDDEN_KEY = 'krepost.hidden';
@@ -2236,6 +2251,7 @@ $('locBtn').onclick = () => {
 
 /* Открыть пару «тогда / сейчас» на экране сравнения (из библиотеки или сразу после съёмки) */
 function openResult(spot, url, shotId) {
+  const fromCam = $('list').hidden; // из паспорта «Следующее фото» не показываем
   if (!$('list').hidden) navPush();
   current = spot;
   nowUrl = url;
@@ -2244,6 +2260,7 @@ function openResult(spot, url, shotId) {
   $('resTitle').textContent = spot.title;
   $('cmpRange').value = 50;
   show('result');
+  if (fromCam) paintCamNav(); else $('resNext').hidden = true;
   resetRZ();
   setCmpKind(cmpKind);
   enterInset();
@@ -2577,6 +2594,7 @@ function renderList() {
     .map((s, i) => [s, i])
     .sort((a, b) => (isAll ? 0 : rank(a[0]) - rank(b[0])) || yearOf(a[0]) - yearOf(b[0]) || a[1] - b[1])
     .map(x => x[0]);
+  lastShown = shown.map(s => s.id);
   const headOf = s => {
     if (!isAll) return T(groupOf(s));
     const y = yearOf(s);
@@ -2821,7 +2839,12 @@ function stopCam() {
 async function openSpot(spot, ctx) {
   track('photo', spot.id);
   if (read(HAND_KEY, null) === null) await askHand();
-  if (!$('list').hidden) navPush(); // из списка в камеру — шаг вглубь (из «Переснять» — нет)
+  if (!$('list').hidden) { // из списка в камеру — шаг вглубь (из «Переснять» и ‹ › — нет)
+    navPush();
+    if (ctx && ctx.quest) camSeq = questSteps(ctx.quest).map(st => st.spot);
+    else if (view === 'all' && lastShown.includes(spot.id)) camSeq = lastShown.slice();
+    else camSeq = byYear(visibleSpots().filter(s => groupOf(s) === groupOf(spot))).map(s => s.id);
+  }
   current = spot;
   write(LAST_KEY, spot.id);
   questCtx = ctx || null;
@@ -2843,10 +2866,39 @@ async function openSpot(spot, ctx) {
   }).catch(() => { /* не вышло — остаётся обычный снимок */ });
   hwZoom = null; setZoom(1, true);
   show('cam');
+  paintCamNav();
   try { await img.decode(); } catch { /* размер всё равно возьмём ниже */ }
   refit();
-  startCam();
+  if (!(stream && stream.active)) startCam(); // при переходе ‹ › камера уже работает
 }
+/* ‹ › в камере и «Следующее фото» на экране результата: по тому же списку, откуда открыли камеру */
+function camNeighbor(dir) {
+  if (!current) return null;
+  const i = camSeq.indexOf(current.id);
+  if (i < 0) return null;
+  for (let j = i + dir; j >= 0 && j < camSeq.length; j += dir) { const sp = spotById(camSeq[j]); if (sp) return sp; }
+  return null;
+}
+function camGo(dir) {
+  const sp = camNeighbor(dir);
+  if (!sp) return;
+  track('feature', dir > 0 ? 'cam_next' : 'cam_prev');
+  const q = questCtx && questCtx.quest;
+  const st = q && questSteps(q).find(x => x.spot === sp.id);
+  openSpot(sp, st ? { quest: q, step: st } : null);
+}
+function paintCamNav() {
+  const i = camSeq.indexOf(current && current.id);
+  $('camPrev').hidden = !camNeighbor(-1);
+  $('camNext').hidden = !camNeighbor(1);
+  $('camPos').textContent = i >= 0 && camSeq.length > 1 ? `${i + 1} / ${camSeq.length}` : '';
+  const nx = camNeighbor(1);
+  $('resNext').hidden = !nx;
+  if (nx) $('resNext').textContent = Tf('Следующее фото ›  {t}', { t: nx.title });
+}
+$('camPrev').onclick = () => camGo(-1);
+$('camNext').onclick = () => camGo(1);
+$('resNext').onclick = () => camGo(1);
 
 /* Увеличение: оптический/цифровой зум камеры телефона, если он есть (Chrome на Android),
    иначе — увеличение картинки на экране; снимок обрезается так же. Ползунок 🔍 и щипок двумя пальцами. */
@@ -3342,6 +3394,7 @@ $('shoot').onclick = async () => {
   $('cmpRange').value = 50;
   setCompare(50);
   show('result');
+  paintCamNav();
   refit();
   resetRZ();
   setCmpKind(cmpKind);

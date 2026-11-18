@@ -3062,13 +3062,25 @@ window.SPOTS_DATA = [
  {
   "id": "s292",
   "src": "photos/spot292.jpg",
-  "title": "Два снимка собора снизу",
+  "title": "Собор снизу: башня и боковой фасад",
   "year": "1920-1940",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "1920-1940__5e3r7mtpnqi0-large.png",
   "thumb": "photos/thumbs/spot292.jpg",
+  "group": "Собор"
+ },
+ {
+  "id": "s570",
+  "src": "photos/spot570.jpg",
+  "title": "Собор снизу: угол главного фасада",
+  "year": "1920-1940",
+  "hint": "",
+  "credit": "Источник и автор не установлены",
+  "source": "",
+  "original": "1920-1940__5e3r7mtpnqi0-large.png",
+  "thumb": "photos/thumbs/spot570.jpg",
   "group": "Собор"
  },
  {
@@ -4822,13 +4834,25 @@ window.SPOTS_DATA = [
  {
   "id": "s426",
   "src": "photos/spot426.jpg",
-  "title": "Памятник в Комендантском саду",
+  "title": "Памятник в Комендантском саду, вид вблизи",
   "year": "1920-1930",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "1920-1930__6aa8edee0527e.jpg",
   "thumb": "photos/thumbs/spot426.jpg",
+  "group": "Комендантский сад и парк"
+ },
+ {
+  "id": "s571",
+  "src": "photos/spot571.jpg",
+  "title": "Памятник в Комендантском саду за оградой, вид издали",
+  "year": "1920-1930",
+  "hint": "",
+  "credit": "Источник и автор не установлены",
+  "source": "",
+  "original": "1920-1930__6aa8edee0527e.jpg",
+  "thumb": "photos/thumbs/spot571.jpg",
   "group": "Комендантский сад и парк"
  },
  {
@@ -5125,6 +5149,18 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1920-1930__6aafab54457dc.jpg",
   "thumb": "photos/thumbs/spot449.jpg",
+  "group": "Солдаты и люди"
+ },
+ {
+  "id": "s572",
+  "src": "photos/spot572.jpg",
+  "title": "Всадник у входа в казарму",
+  "year": "1920-1930",
+  "hint": "",
+  "credit": "Источник и автор не установлены",
+  "source": "",
+  "original": "1920-1930__6aafab54457dc.jpg",
+  "thumb": "photos/thumbs/spot572.jpg",
   "group": "Солдаты и люди"
  },
  {
@@ -5726,13 +5762,49 @@ window.SPOTS_DATA = [
  {
   "id": "s498",
   "src": "photos/spot498.jpg",
-  "title": "Солдаты с лошадьми и повозками",
+  "title": "Солдаты с повозкой на заснеженной дороге у вала",
   "year": "1930-1940",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "1930-1940__6aafabc5b9e6a.jpg",
   "thumb": "photos/thumbs/spot498.jpg",
+  "group": "Солдаты и люди"
+ },
+ {
+  "id": "s573",
+  "src": "photos/spot573.jpg",
+  "title": "Солдаты с повозкой в сосновом лесу",
+  "year": "1930-1940",
+  "hint": "",
+  "credit": "Источник и автор не установлены",
+  "source": "",
+  "original": "1930-1940__6aafabc5b9e6a.jpg",
+  "thumb": "photos/thumbs/spot573.jpg",
+  "group": "Солдаты и люди"
+ },
+ {
+  "id": "s574",
+  "src": "photos/spot574.jpg",
+  "title": "Повозка и солдаты у вала зимой",
+  "year": "1930-1940",
+  "hint": "",
+  "credit": "Источник и автор не установлены",
+  "source": "",
+  "original": "1930-1940__6aafabc5b9e6a.jpg",
+  "thumb": "photos/thumbs/spot574.jpg",
+  "group": "Солдаты и люди"
+ },
+ {
+  "id": "s575",
+  "src": "photos/spot575.jpg",
+  "title": "Всадники на дороге зимой",
+  "year": "1930-1940",
+  "hint": "",
+  "credit": "Источник и автор не установлены",
+  "source": "",
+  "original": "1930-1940__6aafabc5b9e6a.jpg",
+  "thumb": "photos/thumbs/spot575.jpg",
   "group": "Солдаты и люди"
  },
  {
@@ -6070,13 +6142,25 @@ window.SPOTS_DATA = [
  {
   "id": "s525",
   "src": "photos/spot525.jpg",
-  "title": "Конные повозки с людьми",
+  "title": "Конная повозка у здания",
   "year": "1910-1930",
   "hint": "",
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "1910-1930__6aafab898a36d.jpg",
   "thumb": "photos/thumbs/spot525.jpg",
+  "group": "Солдаты и люди"
+ },
+ {
+  "id": "s576",
+  "src": "photos/spot576.jpg",
+  "title": "Солдаты с конными повозками",
+  "year": "1910-1930",
+  "hint": "",
+  "credit": "Источник и автор не установлены",
+  "source": "",
+  "original": "1910-1930__6aafab898a36d.jpg",
+  "thumb": "photos/thumbs/spot576.jpg",
   "group": "Солдаты и люди"
  },
  {
