@@ -925,6 +925,35 @@
   #illCap { margin:0; color:#f6ecd8; font:600 15px var(--serif); text-align:center; }
   #illCredit { color:var(--muted); font-size:12px; text-align:center; }
   #illClose { position:absolute; top:6px; right:6px; width:40px; height:40px; min-height:0; padding:0; border-radius:50%; background:rgba(18,14,10,.8); color:#f2e8d8; border:1px solid rgba(243,210,122,.4); box-shadow:none; }
+  /* ===== 18.11.2026: вход и панель модератора ===== */
+  #modDlg { width:min(560px, calc(100vw - 16px)); max-height:calc(100dvh - 24px); border:0; padding:0; border-radius:16px; background:#1c1610; color:var(--text); box-shadow:0 0 0 2px var(--brass2), 0 20px 50px rgba(0,0,0,.7); }
+  #modDlg::backdrop { background:rgba(0,0,0,.75); }
+  .modBox { padding:16px; display:flex; flex-direction:column; gap:10px; }
+  #modLogin, #modPanel { display:flex; flex-direction:column; gap:10px; }
+  #modLogin[hidden], #modPanel[hidden], #modBox[hidden] { display:none; }
+  #modLogin label { display:flex; flex-direction:column; gap:4px; font:600 13px Inter,system-ui,sans-serif; color:#e6d8bd; }
+  #modLogin input { padding:11px 12px; border-radius:10px; border:1px solid rgba(217,164,65,.35); background:#120e0a; color:#f6ecd8; font:500 16px Inter,system-ui,sans-serif; }
+  .modNote { margin:0; font-size:13px; color:var(--muted); }
+  .modTabs { display:flex; gap:6px; }
+  .modTabs button { flex:1; min-height:0; padding:8px; border-radius:10px; background:#2a231b; color:#f3d27a; border:1px solid rgba(217,164,65,.3); box-shadow:none; font:600 13px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; }
+  .modTabs button.on { background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; }
+  #modStats table { width:100%; border-collapse:collapse; font:500 13px Inter,system-ui,sans-serif; }
+  #modStats td, #modStats th { padding:5px 6px; border-bottom:1px solid rgba(217,164,65,.15); text-align:left; }
+  #modStats th { color:#f3c650; font-weight:600; }
+  #modStats .num { text-align:right; font-family:var(--mono); }
+  #modStats h4, #modPanel h4 { margin:10px 0 4px; font:700 15px var(--serif); color:#f6ecd8; }
+  .modKpi { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+  .modKpi div { padding:8px; border-radius:10px; background:#120e0a; border:1px solid rgba(217,164,65,.2); text-align:center; }
+  .modKpi b { display:block; font:700 20px var(--mono); color:#f3c650; }
+  .modKpi small { color:var(--muted); font-size:11.5px; }
+  .modFact { padding:10px; border-radius:12px; background:#120e0a; border:1px solid rgba(217,164,65,.25); margin-bottom:8px; }
+  .modFact p { margin:4px 0; white-space:pre-wrap; font-size:14px; }
+  .modFact small { color:var(--muted); }
+  .modFact .row { display:flex; gap:8px; margin-top:6px; }
+  .modFact .row button { flex:1; min-height:0; padding:9px; border-radius:10px; font:700 13px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; box-shadow:none; }
+  .modFact .ok { background:#5f9e45; color:#fff; border:0; }
+  .modFact .no { background:#2a231b; color:#f3d27a; border:1px solid rgba(217,164,65,.35); }
+  #modOut, #modOpen { min-height:0; padding:10px; border-radius:12px; background:#2a231b; color:#f3d27a; border:1px solid rgba(217,164,65,.35); box-shadow:none; font:600 14px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; }
 </style>
 </head>
 <body>
@@ -1000,6 +1029,24 @@
 </section>
 
 <dialog id="illDlg"><div class="illBox"><button type="button" id="illClose" aria-label="Закрыть">✕</button><img id="illImg" alt=""><p id="illCap"></p><small id="illCredit"></small></div></dialog>
+<dialog id="modDlg"><div class="modBox">
+  <div class="setHead"><h3>Модератор</h3><button type="button" id="modClose" aria-label="Закрыть">✕</button></div>
+  <form id="modLogin" hidden>
+    <p class="modNote">Войдите тем же номером телефона и паролем, что и в приложении клуба (нужна роль администратора).</p>
+    <label>Телефон<input id="modPhone" type="tel" inputmode="tel" autocomplete="username" placeholder="2xxxxxxx"></label>
+    <label>Пароль<input id="modPass" type="password" autocomplete="current-password"></label>
+    <button type="submit" class="main" id="modGo">Войти</button>
+    <p id="modMsg" class="modNote"></p>
+  </form>
+  <div id="modPanel" hidden>
+    <div class="modTabs"><button type="button" data-d="1">Сегодня</button><button type="button" data-d="7" class="on">7 дней</button><button type="button" data-d="30">30 дней</button></div>
+    <div id="modStats"></div>
+    <h4>📜 Рассказы на проверке</h4>
+    <div id="modFacts"></div>
+    <p class="modNote">Точки на карте, подписи и скрытые фото, которые вы правите, сохраняются в базе и одинаковы на всех ваших устройствах.</p>
+    <button type="button" id="modOut">Выйти из режима модератора</button>
+  </div>
+</div></dialog>
 <dialog id="setDlg">
   <div class="setBox">
     <div class="setHead"><h3>Настройки</h3><button type="button" id="setClose" aria-label="Закрыть">✕</button></div>
@@ -1016,6 +1063,7 @@
       <button type="button" class="offStop" hidden>Остановить</button>
       <small>Карта без интернета показывает только те участки, которые вы уже открывали на ней.</small>
     </div>
+  <p id="modBox" hidden><button type="button" id="modOpen">🛡 Модератор: статистика и рассказы</button></p>
   <details id="about">
     <summary>О приложении и правах на фото</summary>
     <p><b>«Крепость сквозь время» — бесплатный краеведческий проект.</b> Пользоваться им можно без оплаты и без регистрации.</p>
@@ -1237,6 +1285,7 @@ function read(key, fallback) {
 }
 function write(key, value) {
   if (key === FOUND_KEY) stampDates(value);
+  if (ADMIN && ['krepost.geo', 'krepost.edits', 'krepost.hidden'].includes(key)) modQueue(key, value);
   try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; }
 }
 /* Дата каждой «печати» в паспорте: когда место отмечено впервые. Хранится только в телефоне. */
@@ -1256,7 +1305,10 @@ let lastShown = [], camSeq = []; // порядок фото для кнопок 
 
 /* Режим админа: открыть сайт с ?admin=1. Скрывает снимки только в этом браузере. */
 const HIDDEN_KEY = 'krepost.hidden';
-const ADMIN = new URLSearchParams(location.search).has('admin');
+// Модератор: вход по номеру телефона и паролю администратора клубного приложения (Supabase). Ссылка ?admin открывает форму входа.
+const MOD_KEY = 'krepost.mod';
+let modSess = (() => { try { return JSON.parse(localStorage.getItem(MOD_KEY)); } catch { return null; } })();
+const ADMIN = !!(modSess && modSess.admin);
 // Анонимная статистика: что открывают и какие фото нажимают. Без имён, только случайный номер телефона.
 function track(kind, target) {
   const q = window.__evq || (window.__evq = []);
@@ -1522,6 +1574,7 @@ function stepBack() {
   if ($('editDlg').open) { $('editDlg').close(); editing = null; return; }
   if ($('factsDlg').open) { $('factsDlg').close(); factsSpot = null; return; }
   if ($('thanksDlg').open) { $('thanksDlg').close(); return; }
+  if ($('modDlg').open) { $('modDlg').close(); return; }
   if ($('illDlg').open) { $('illDlg').close(); $('illImg').removeAttribute('src'); return; }
   if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); softRefresh(); return; }
   if (!$('result').hidden) { const go = flyToAlbum(); setInset(false); current = null; show('list'); softRefresh(); requestAnimationFrame(go); return; }
@@ -2409,6 +2462,126 @@ function renderQuests() {
 const FACTS_URL = 'https://latnwksisoziluhdadgy.supabase.co/rest/v1';
 const FACTS_KEY = 'sb_publishable_3-Gt0ELg3dm5JhnVWB3Tkw_crsYB0J6';
 setTimeout(flushTrack, 3000);
+
+/* ===== Модератор: вход, токен, панель, синхронизация правок ===== */
+const AUTH_URL = FACTS_URL.replace('/rest/v1', '/auth/v1');
+function modSave(sess) { modSess = sess; try { sess ? localStorage.setItem(MOD_KEY, JSON.stringify(sess)) : localStorage.removeItem(MOD_KEY); } catch { /* нет хранилища */ } }
+async function modToken() {
+  if (!modSess) throw new Error('no session');
+  if (Date.now() / 1000 < (modSess.expires_at || 0) - 60) return modSess.access_token;
+  const r = await fetch(`${AUTH_URL}/token?grant_type=refresh_token`, { method: 'POST', headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ refresh_token: modSess.refresh_token }) });
+  if (!r.ok) { if (r.status === 400 || r.status === 401) { modSave(null); location.reload(); } throw new Error('refresh ' + r.status); }
+  const j = await r.json();
+  modSave({ ...modSess, access_token: j.access_token, refresh_token: j.refresh_token, expires_at: j.expires_at || Math.floor(Date.now() / 1000) + (j.expires_in || 3600) });
+  return modSess.access_token;
+}
+async function modFetch(path, opts = {}) {
+  const t = await modToken();
+  const r = await fetch(`${FACTS_URL}${path}`, { ...opts, headers: { apikey: FACTS_KEY, Authorization: 'Bearer ' + t, 'Content-Type': 'application/json', ...(opts.headers || {}) } });
+  if (!r.ok) throw new Error(r.status);
+  return r.status === 204 ? null : r.json().catch(() => null);
+}
+const modRpc = (name, body = {}) => modFetch(`/rpc/${name}`, { method: 'POST', body: JSON.stringify(body) });
+const modTimers = {};
+function modQueue(key, value) {
+  const k = key.replace('krepost.', '');
+  clearTimeout(modTimers[k]);
+  modTimers[k] = setTimeout(() => modFetch('/krepost_mod', { method: 'POST', headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
+    body: JSON.stringify({ key: k, value, updated_at: new Date().toISOString() }) }).catch(() => {}), 800);
+}
+async function modPull(first) {
+  const rows = await modFetch('/krepost_mod?select=key,value');
+  const KEYS = { geo: 'krepost.geo', edits: 'krepost.edits', hidden: 'krepost.hidden' };
+  if (first && !rows.length) { // первый вход: то, что уже есть на этом устройстве, — в базу
+    for (const [k, lk] of Object.entries(KEYS)) { const v = read(lk, null); if (v) modQueue(lk, v); }
+    return false;
+  }
+  let changed = false;
+  for (const r of rows) {
+    const lk = KEYS[r.key]; if (!lk) continue;
+    if (JSON.stringify(read(lk, null)) !== JSON.stringify(r.value)) { try { localStorage.setItem(lk, JSON.stringify(r.value)); changed = true; } catch { /* */ } }
+  }
+  return changed;
+}
+$('modLogin').onsubmit = async e => {
+  e.preventDefault();
+  const raw = $('modPhone').value.trim(), pass = $('modPass').value;
+  let email = raw;
+  if (!raw.includes('@')) { let d = raw.replace(/\D/g, ''); if (d.length === 8) d = '371' + d; email = d + '@dtt.local'; }
+  $('modGo').disabled = true; $('modMsg').textContent = 'Проверяем…';
+  try {
+    const r = await fetch(`${AUTH_URL}/token?grant_type=password`, { method: 'POST', headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password: pass }) });
+    if (!r.ok) throw new Error('auth');
+    const j = await r.json();
+    modSave({ access_token: j.access_token, refresh_token: j.refresh_token, expires_at: j.expires_at || Math.floor(Date.now() / 1000) + (j.expires_in || 3600), admin: false });
+    const ok = await modRpc('is_admin');
+    if (!ok) { modSave(null); $('modMsg').textContent = 'Вход выполнен, но у этого аккаунта нет роли администратора.'; return; }
+    modSave({ ...modSess, admin: true });
+    $('modPass').value = '';
+    $('modMsg').textContent = '✓ Готово, загружаем правки…';
+    await modPull(true).catch(() => {});
+    location.replace(location.pathname);
+  } catch { $('modMsg').textContent = 'Неверный телефон или пароль, или нет интернета.'; }
+  finally { $('modGo').disabled = false; }
+};
+let modDays = 7;
+async function modRender() {
+  const box = $('modStats'); box.textContent = 'Загружаем…';
+  try {
+    const s = await modRpc('krepost_mod_stats', { p_days: modDays });
+    const sum = (a, k) => a.reduce((x, r) => x + (r[k] || 0), 0);
+    const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+    const name = id => { const sp = spotById(id) || allSpots().find(x => x.id === id); return sp ? `${id} · ${sp.title}` : id; };
+    box.innerHTML = `<div class="modKpi"><div><b>${sum(s.days, 'opens')}</b><small>открытий</small></div><div><b>${sum(s.days, 'photos')}</b><small>нажатий на фото</small></div><div><b>${s.shots}</b><small>снимков · ${s.shot_phones} тел.</small></div></div>
+      <h4>По дням</h4><table><tr><th>День</th><th class="num">Телефонов</th><th class="num">Открытий</th><th class="num">Фото</th></tr>${s.days.map(d => `<tr><td>${esc(d.day)}</td><td class="num">${d.phones}</td><td class="num">${d.opens}</td><td class="num">${d.photos}</td></tr>`).join('') || '<tr><td colspan="4">Пока пусто</td></tr>'}</table>
+      <h4>Чаще всего нажимают</h4><table>${s.photos.map(p => `<tr><td>${esc(name(p.id))}</td><td class="num">${p.n}</td></tr>`).join('') || '<tr><td>Пока пусто</td></tr>'}</table>
+      <h4>Разделы и функции</h4><table>${s.features.map(f => `<tr><td>${esc(f.kind)} · ${esc(f.target)}</td><td class="num">${f.n}</td></tr>`).join('') || '<tr><td>Пока пусто</td></tr>'}</table>
+      <h4>Языки</h4><table>${s.langs.map(l => `<tr><td>${esc(l.lang || '—')}</td><td class="num">${l.n}</td></tr>`).join('') || '<tr><td>Пока пусто</td></tr>'}</table>
+      <p class="modNote">Ваши собственные действия в режиме модератора не считаются.</p>`;
+  } catch { box.textContent = 'Не удалось загрузить статистику. Проверьте интернет.'; }
+  modFactsRender();
+}
+async function modFactsRender() {
+  const box = $('modFacts'); box.textContent = 'Загружаем…';
+  try {
+    const list = await modFetch('/krepost_facts?status=eq.pending&select=id,spot_id,author,role,body,contact,created_at&order=created_at.asc');
+    box.replaceChildren();
+    if (!list.length) { box.textContent = 'Новых рассказов нет.'; return; }
+    for (const f of list) {
+      const el = document.createElement('div'); el.className = 'modFact';
+      const sp = allSpots().find(x => x.id === f.spot_id);
+      const h = document.createElement('small'); h.textContent = `${f.spot_id}${sp ? ' · ' + sp.title : ''} · ${new Date(f.created_at).toLocaleString('ru-RU')}`;
+      const b = document.createElement('p'); b.textContent = f.body;
+      const who = document.createElement('small'); who.textContent = [f.author, f.role, f.contact].filter(Boolean).join(' · ') || 'без подписи';
+      const row = document.createElement('div'); row.className = 'row';
+      const ok = document.createElement('button'); ok.type = 'button'; ok.className = 'ok'; ok.textContent = '✓ Опубликовать';
+      const no = document.createElement('button'); no.type = 'button'; no.className = 'no'; no.textContent = '✕ Отклонить';
+      const set = st => async () => { ok.disabled = no.disabled = true; try { await modFetch(`/krepost_facts?id=eq.${f.id}`, { method: 'PATCH', headers: { Prefer: 'return=minimal' }, body: JSON.stringify({ status: st }) }); el.remove(); if (!box.children.length) box.textContent = 'Новых рассказов нет.'; updatePendingFacts(); } catch { ok.disabled = no.disabled = false; alert('Не получилось — нужен интернет.'); } };
+      ok.onclick = set('approved'); no.onclick = set('rejected');
+      row.append(ok, no); el.append(h, b, who, row); box.append(el);
+    }
+  } catch { box.textContent = 'Не удалось загрузить рассказы.'; }
+}
+function modShow() {
+  $('modLogin').hidden = ADMIN; $('modPanel').hidden = !ADMIN;
+  if (!$('modDlg').open) { navPush(); $('modDlg').showModal(); }
+  if (ADMIN) modRender(); else setTimeout(() => $('modPhone').focus(), 50);
+}
+for (const b of document.querySelectorAll('.modTabs button')) b.onclick = () => {
+  modDays = +b.dataset.d; for (const x of document.querySelectorAll('.modTabs button')) x.classList.toggle('on', x === b); modRender();
+};
+$('modClose').onclick = () => navBack();
+$('modDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
+$('modOpen').onclick = () => { $('setDlg').close(); history.back(); setTimeout(modShow, 60); };
+$('modOut').onclick = async () => {
+  try { await fetch(`${AUTH_URL}/logout`, { method: 'POST', headers: { apikey: FACTS_KEY, Authorization: 'Bearer ' + modSess.access_token } }); } catch { /* */ }
+  modSave(null); location.replace(location.pathname);
+};
+if (ADMIN) {
+  $('modBox').hidden = false;
+  modPull(false).then(ch => { if (ch && !sessionStorage.getItem('krepost.modSync')) { sessionStorage.setItem('krepost.modSync', '1'); location.reload(); } }).catch(() => {});
+}
+if (new URLSearchParams(location.search).has('admin')) setTimeout(modShow, 400);
 setInterval(flushTrack, 20000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flushTrack(); });
 addEventListener('pagehide', flushTrack);
@@ -2574,8 +2747,7 @@ $('surveyForm').onsubmit = async e => {
 async function updateShotStats() {
   if (!ADMIN || !$('adminBar')) return;
   try {
-    const r = await fetch(`${FACTS_URL}/rpc/krepost_stats`, { method: 'POST', headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json' }, body: '{}' });
-    const s = await r.json();
+    const s = await modRpc('krepost_stats');
     let el = $('shotStats');
     if (!el) { el = document.createElement('p'); el.id = 'shotStats'; $('adminBar').append(el); }
     el.textContent = `📷 Снимков всего: ${s.shots} · телефонов: ${s.phones} · за 30 дней — снимков: ${s.shots30}, телефонов: ${s.phones30}`;
@@ -2606,11 +2778,10 @@ $('factsForm').onsubmit = async e => {
 async function updatePendingFacts() {
   if (!ADMIN || !$('adminBar')) return;
   try {
-    const r = await fetch(`${FACTS_URL}/rpc/krepost_pending_count`, { method: 'POST', headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json' }, body: '{}' });
-    const n = await r.json();
+    const n = await modRpc('krepost_pending_count');
     let el = $('pendingFacts');
     if (!el) { el = document.createElement('p'); el.id = 'pendingFacts'; $('adminBar').append(el); }
-    el.textContent = n > 0 ? `📜 Новых рассказов на проверке: ${n} (одобрить: Supabase → krepost_facts → status = approved)` : '';
+    el.textContent = n > 0 ? `📜 Новых рассказов на проверке: ${n} — откройте ⚙ → «Модератор»` : '';
   } catch { /* без сети */ }
 }
 
