@@ -2758,7 +2758,12 @@ function openSurvey(spotId) {
   showSurvey({ spotId: String(spotId).slice(0, 64), mode: shootMode, r: {} });
 }
 /* Общий отзыв с главного экрана — без съёмки: одна оценка и текст; spot_id и mode пустые. */
-$('fbOpen').onclick = () => { if (!document.querySelector('dialog[open]')) showSurvey({ spotId: null, mode: null, r: {} }); };
+$('fbOpen').onclick = () => {
+  const open = () => { if (!document.querySelector('dialog[open]')) showSurvey({ spotId: null, mode: null, r: {} }); };
+  // Кнопка стоит внутри окна настроек: сначала закрыть его (шаг «Назад»), потом открыть отзыв
+  if ($('setDlg').open) { addEventListener('popstate', () => setTimeout(open, 0), { once: true }); navBack(); }
+  else open();
+};
 function showSurvey(sv) {
   survey = sv;
   $('surveyForm').classList.toggle('general', !sv.spotId);
