@@ -1688,7 +1688,9 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490701414_738660338830510_6832959252128877930_n.jpg",
-  "group": "Собор"
+  "group": "Собор",
+  "hidden": true,
+  "naz": true
  },
  {
   "id": "s165",
@@ -2696,7 +2698,9 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot262.jpg",
   "group": "Михайловские ворота",
   "lat": 55.883137,
-  "lng": 26.499189
+  "lng": 26.499189,
+  "hidden": true,
+  "sov": true
  },
  {
   "id": "s263",
@@ -2780,7 +2784,9 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot268.jpg",
   "group": "Михайловские ворота",
   "lat": 55.883244,
-  "lng": 26.499177
+  "lng": 26.499177,
+  "hidden": true,
+  "sov": true
  },
  {
   "id": "s269",
@@ -4005,7 +4011,9 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110549778294612",
   "original": "1941-1944__fb_110549778294612.jpg",
   "thumb": "photos/thumbs/spot361.jpg",
-  "group": "Улицы и здания"
+  "group": "Улицы и здания",
+  "hidden": true,
+  "naz": true
  },
  {
   "id": "s362",
@@ -4648,7 +4656,9 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot403.jpg",
   "group": "Улицы и здания",
   "lat": 55.883692,
-  "lng": 26.498795
+  "lng": 26.498795,
+  "hidden": true,
+  "sov": true
  },
  {
   "id": "s404",
