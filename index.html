@@ -1109,7 +1109,7 @@
     <p><b>⚠ Безопасность прежде всего.</b> Некоторые старые снимки сделаны с точек, которых сегодня нет: с разрушенных построек, крыш, стен, края рва или воды. Такие места снимайте примерно, с ближайшей безопасной точки. Автор проекта просит вести себя аккуратно и не рисковать ради фото. Выполняя квесты, не мешайте дорожному движению и соблюдайте правила дорожного движения: не стойте на проезжей части и ставьте транспорт только там, где парковка разрешена. Если заметили, что какой-то снимок может быть опасен для фотографа, сразу сообщите: нажмите 📜 у снимка и выберите «⚠ Здесь опасно снимать».</p>
     <p><b>🏰 Берегите крепость.</b> Это наследие не только наше, но и всего человечества. Не оставляйте после себя мусор, не царапайте и не разбирайте стены. Если видите брошенный мусор, старые покрышки, грязь или что-то, что портит крепость и что хочется изменить, — смело сообщите: нажмите 📜 у ближайшего снимка и выберите «🗑 Мусор, нужно убрать». А ещё попросите коменданта крепости, чтобы найденное убрали.</p>
     <p>Исторические справки собраны по открытым источникам и могут содержать неточности. Поправки и воспоминания очень ценны — пишите через 📜.</p>
-    <p>Ваши снимки из «Библиотеки» хранятся только на вашем телефоне. Рассказы, отправленные через 📜, после проверки видят все; контакт видит только разработчик. Чтобы понимать, что людям интересно, приложение отправляет разработчику анонимную статистику: случайный номер этого телефона, язык, какие разделы и фото открывались и какие места сняты. Имена, сами снимки и координаты телефона не отправляются. Карта, статистика и сам сайт загружаются с серверов OpenStreetMap, Supabase и GitHub; как любые сайты, они видят сетевой адрес вашего устройства.</p>
+    <p>Ваши снимки из «Библиотеки» хранятся только на вашем телефоне. Рассказы, отправленные через 📜, после проверки видят все; контакт видит только модератор. Чтобы понимать, что людям интересно, приложение отправляет анонимную статистику: язык, какие разделы и фото открывались и какие места сняты — без номера телефона или устройства. Если вы присылаете более точное место снимка, отправляется только место метки на карте. Имена, сами снимки и координаты телефона не отправляются. Карта, статистика и сам сайт загружаются с серверов OpenStreetMap, Supabase и GitHub; как любые сайты, они видят сетевой адрес вашего устройства.</p>
   </details>
     <label class="btn" for="addInput">+ Добавить старое фото</label>
     <input id="addInput" type="file" accept="image/*">
@@ -1245,7 +1245,7 @@
           <option>Рассказывали родные</option><option>Краевед / исследователь</option><option>Из архива или книги</option><option>⚠ Здесь опасно снимать</option><option>🗑 Мусор, нужно убрать</option><option>Другое</option>
         </select></label>
         <label>Рассказ<textarea id="fBody" rows="6" maxlength="4000" required placeholder="Что здесь было, кто работал, какие случаи помните, годы…"></textarea></label>
-        <label>Контакт для связи (необязательно — увидит только разработчик)<input id="fContact" maxlength="120" autocomplete="email" placeholder="телефон или e-mail"></label>
+        <label>Контакт для связи (необязательно — увидит только модератор)<input id="fContact" maxlength="120" autocomplete="email" placeholder="телефон или e-mail"></label>
         <p class="fNote" id="fMsg"></p>
         <button type="submit" class="main" id="fSend">Отправить разработчику</button>
       </form>
@@ -1342,11 +1342,11 @@ let lastShown = [], camSeq = []; // порядок фото для кнопок 
 
 /* Режим админа: открыть сайт с ?admin=1. Скрывает снимки только в этом браузере. */
 const HIDDEN_KEY = 'krepost.hidden';
-// Модератор: вход по номеру телефона и паролю администратора клубного приложения (Supabase). Ссылка ?admin открывает форму входа.
+// Модератор крепости: вход по логину и паролю (Supabase; список модераторов — таблица krepost_mods). Ссылка ?admin открывает форму входа.
 const MOD_KEY = 'krepost.mod';
 let modSess = (() => { try { return JSON.parse(localStorage.getItem(MOD_KEY)); } catch { return null; } })();
 const ADMIN = !!(modSess && modSess.admin);
-// Анонимная статистика: что открывают и какие фото нажимают. Без имён, только случайный номер телефона.
+// Анонимная статистика: что открывают и какие фото нажимают. Без имён и без номера устройства.
 // Автотесты и локальная копия не пишут в статистику
 const NOTRACK = navigator.webdriver === true || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
 function track(kind, target) {
@@ -1358,7 +1358,7 @@ function flushTrack() {
   const q = window.__evq;
   if (!q || !q.length) return;
   const lang = (window.LANG || document.documentElement.lang || '').slice(0, 5) || null;
-  const rows = q.splice(0).map(e => ({ device: deviceId(), kind: e.kind, target: e.target, lang, adm: ADMIN }));
+  const rows = q.splice(0).map(e => ({ kind: e.kind, target: e.target, lang, adm: ADMIN })) // без номера устройства: записи нельзя связать в цепочку «где ходил один человек»;
   fetch(`${FACTS_URL}/krepost_events`, { method: 'POST', keepalive: true,
     headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
     body: JSON.stringify(rows) }).catch(() => {});
@@ -2677,11 +2677,11 @@ async function modRender() {
     const sum = (a, k) => a.reduce((x, r) => x + (r[k] || 0), 0);
     const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
     const name = id => { const sp = spotById(id) || allSpots().find(x => x.id === id); return sp ? `${id} · ${sp.title}` : id; };
-    box.innerHTML = `<div class="modKpi"><div><b>${sum(s.days, 'opens')}</b><small>открытий</small></div><div><b>${sum(s.days, 'photos')}</b><small>нажатий на фото</small></div><div><b>${s.shots}</b><small>снимков · ${s.shot_phones} тел.</small></div></div>
-      <h4>По дням</h4><table><tr><th>День</th><th class="num">Телефонов</th><th class="num">Открытий</th><th class="num">Фото</th></tr>${s.days.map(d => `<tr><td>${esc(d.day)}</td><td class="num">${d.phones}</td><td class="num">${d.opens}</td><td class="num">${d.photos}</td></tr>`).join('') || '<tr><td colspan="4">Пока пусто</td></tr>'}</table>
+    box.innerHTML = `<div class="modKpi"><div><b>${sum(s.days, 'opens')}</b><small>открытий</small></div><div><b>${sum(s.days, 'photos')}</b><small>нажатий на фото</small></div><div><b>${s.shots}</b><small>снимков</small></div></div>
+      <h4>По дням</h4><table><tr><th>День</th><th class="num">Открытий</th><th class="num">Фото</th></tr>${s.days.map(d => `<tr><td>${esc(d.day)}</td><td class="num">${d.opens}</td><td class="num">${d.photos}</td></tr>`).join('') || '<tr><td colspan="3">Пока пусто</td></tr>'}</table>
       <h4>Чаще всего нажимают</h4><table>${s.photos.map(p => `<tr><td>${esc(name(p.id))}</td><td class="num">${p.n}</td></tr>`).join('') || '<tr><td>Пока пусто</td></tr>'}</table>
       <h4>Разделы и функции</h4><table>${s.features.map(f => `<tr><td>${esc(f.kind)} · ${esc(f.target)}</td><td class="num">${f.n}</td></tr>`).join('') || '<tr><td>Пока пусто</td></tr>'}</table>
-      <h4>Языки</h4><table>${s.langs.map(l => `<tr><td>${esc(l.lang || '—')}</td><td class="num">${l.n}</td></tr>`).join('') || '<tr><td>Пока пусто</td></tr>'}</table>
+      <h4>Языки (по числу открытий)</h4><table>${s.langs.map(l => `<tr><td>${esc(l.lang || '—')}</td><td class="num">${l.n}</td></tr>`).join('') || '<tr><td>Пока пусто</td></tr>'}</table>
       <p class="modNote">Ваши собственные действия в режиме модератора не считаются.</p>`;
   } catch { box.textContent = 'Не удалось загрузить статистику. Проверьте интернет.'; }
   modFactsRender();
@@ -2856,19 +2856,14 @@ $('factsClose').onclick = () => navBack();
 const DONATE_URL = 'https://revolut.me/dainis9d0x';
 const SPONSOR = null; // { text: 'Кафе … дарит −10 % — покажите этот экран', until: '2027-09-30' }
 const SHOTS_KEY = 'krepost.shots';
-const DEVICE_KEY = 'krepost.device';
-function deviceId() {
-  let d = read(DEVICE_KEY, '');
-  if (!d) { d = crypto.randomUUID ? crypto.randomUUID() : '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, c => (c ^ Math.random() * 16 >> c / 4).toString(16)); write(DEVICE_KEY, d); }
-  return d;
-}
+try { localStorage.removeItem('krepost.device'); } catch { /* нет хранилища */ } // случайный номер устройства больше не нужен: стираем и тот, что был сохранён раньше
 function countShot(spotId) {
   const n = read(SHOTS_KEY, 0) + 1;
   write(SHOTS_KEY, n);
-  // анонимный счётчик: только случайный номер телефона и номер снимка
+  // анонимный счётчик: только номер точки, без номера устройства
   fetch(`${FACTS_URL}/krepost_shots`, { method: 'POST', keepalive: true,
     headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-    body: JSON.stringify({ device: deviceId(), spot_id: spotId }) }).catch(() => {});
+    body: JSON.stringify({ spot_id: spotId }) }).catch(() => {});
   if (n % 10 === 0 && (DONATE_URL || SPONSOR)) setTimeout(() => showThanks(n), 1500);
 }
 function showThanks(n) {
@@ -2888,7 +2883,7 @@ $('supBtn').addEventListener('click', () => track('feature', 'donate'));
 $('donateBtn').onclick = () => track('feature', 'donate') || setTimeout(() => { if ($('thanksDlg').open) navBack(); }, 300);
 $('thanksDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
 
-/* ===== Опрос после снимка (пока проверяем удобство). Анонимно: случайный номер телефона, место, режим, оценки, отзыв.
+/* ===== Опрос после снимка (пока проверяем удобство). Анонимно: место, режим, оценки, отзыв — без номера устройства.
    Ответы — Supabase → таблица krepost_feedback. ===== */
 let survey = null;
 for (const box of document.querySelectorAll('.stars')) {
@@ -2938,7 +2933,7 @@ $('surveyForm').onsubmit = async e => {
     const r = await fetch(`${FACTS_URL}/krepost_feedback`, {
       method: 'POST',
       headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-      body: JSON.stringify({ device: deviceId(), spot_id: survey.spotId, mode: survey.mode, ...survey.r, comment: comment || null })
+      body: JSON.stringify({ spot_id: survey.spotId, mode: survey.mode, ...survey.r, comment: comment || null })
     });
     if (!r.ok) throw new Error(r.status);
     $('sMsg').textContent = T('✓ Спасибо! Ответ отправлен.');
@@ -2954,7 +2949,7 @@ async function updateShotStats() {
     const s = await modRpc('krepost_stats');
     let el = $('shotStats');
     if (!el) { el = document.createElement('p'); el.id = 'shotStats'; $('adminBar').append(el); }
-    el.textContent = `📷 Снимков всего: ${s.shots} · телефонов: ${s.phones} · за 30 дней — снимков: ${s.shots30}, телефонов: ${s.phones30}`;
+    el.textContent = `📷 Снимков всего: ${s.shots} · за 30 дней: ${s.shots30}`;
   } catch { /* без сети */ }
 }
 $('aboutLink').onclick = () => { navPush(); $('setDlg').showModal(); $('about').open = true; };
@@ -2974,7 +2969,7 @@ $('factsForm').onsubmit = async e => {
     });
     if (!r.ok) throw new Error(r.status);
     $('fBody').value = ''; $('fContact').value = '';
-    $('fMsg').textContent = T('✓ Спасибо! Рассказ отправлен разработчику. После проверки его увидят все.');
+    $('fMsg').textContent = T('✓ Спасибо! Рассказ отправлен модератору. После проверки его увидят все.');
   } catch {
     $('fMsg').textContent = T('Не получилось отправить — нужен интернет. Текст не стёрт, попробуйте ещё раз.');
   } finally { $('fSend').disabled = false; }
