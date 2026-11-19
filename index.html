@@ -830,6 +830,24 @@
   .macts button { min-height:0; padding:6px 8px; font:600 12px Inter,sans-serif; border-radius:8px; box-shadow:none; text-transform:none; letter-spacing:0; }
   .macts button:not(.main) { background:#2a231b; color:#e6d8bd; }
   .macts button.on { background:#5f9e45; color:#fff; }
+  .mhere { display:flex; flex-direction:column; gap:4px; }
+  .mhere button { min-height:0; padding:8px 10px; font:700 13px Inter,sans-serif; border-radius:8px; box-shadow:none; text-transform:none; letter-spacing:0; }
+  .mhere small { color:#e6d8bd; font-size:12px; line-height:1.3; }
+  .mhere small:empty { display:none; }
+  .mrow .mfix { display:block; margin-top:6px; padding:4px 0; min-height:0; background:none; border:0; border-radius:0; box-shadow:none; color:#f3d27a; font:500 12px Inter,sans-serif; text-decoration:underline; text-align:left; text-transform:none; letter-spacing:0; }
+  #mapView { position:relative; }
+  #tipBar { position:absolute; top:8px; left:8px; right:8px; z-index:1100; display:flex; flex-direction:column; gap:8px; padding:12px; border-radius:14px; background:#1c1610; color:#f2e8d8; box-shadow:0 0 0 1px rgba(217,164,65,.5), 0 8px 24px rgba(0,0,0,.6); }
+  #tipBar[hidden] { display:none; }
+  #tipBar b { font:600 14px/1.25 Inter,sans-serif; }
+  #tipBar p { margin:0; font-size:13px; line-height:1.35; }
+  #tipBar small { color:var(--muted); font-size:12px; line-height:1.3; }
+  #tipBar input { padding:10px 12px; border-radius:10px; border:1px solid rgba(217,164,65,.35); background:#120e0a; color:#f6ecd8; font:500 16px Inter,system-ui,sans-serif; min-width:0; }
+  #tipBar .row { display:flex; gap:8px; }
+  #tipBar .row button { flex:1; min-height:44px; padding:8px 10px; border-radius:12px; font:700 14px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
+  #tipBar .row button:not(.main) { background:#2a231b; color:#f3d27a; border:1px solid rgba(217,164,65,.35); }
+  #tipMsg:empty { display:none; }
+  .pin.tip span { width:36px; height:36px; margin:0; background:#c0392b; border:3px solid #fff; color:#fff; font-size:18px; }
+  .modFact a { color:#f3d27a; font-size:13px; }
 
   #setDlg { width:min(560px, calc(100vw - 16px)); max-height:calc(100dvh - 24px); border:0; padding:0; border-radius:16px; background:#1c1610; color:var(--text); box-shadow:0 0 0 2px var(--brass2), 0 20px 50px rgba(0,0,0,.7); }
   #setDlg::backdrop { background:rgba(0,0,0,.7); }
@@ -1028,6 +1046,7 @@
   <div id="cards" hidden></div>
   <div id="mapView" hidden>
     <div id="map"></div>
+    <div id="tipBar" hidden></div>
     <div id="mapBar"><button type="button" id="locBtn">📍 Где я</button><button type="button" id="oldBtn" aria-pressed="false">🕰 1944</button><span id="mapInfo"></span></div>
     <div id="oldBar" hidden><label for="oldOp">Прозрачность старого слоя</label><input id="oldOp" type="range" min="15" max="100" value="65"><p id="oldNote">Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.</p></div>
     <p id="mapLegend"><i class="lg todo"></i> ещё не был <i class="lg done"></i> был <i class="lg near"></i> рядом с вами</p>
@@ -1060,6 +1079,9 @@
     <div id="modStats"></div>
     <h4>📜 Рассказы на проверке</h4>
     <div id="modFacts"></div>
+    <h4>📍 Предложенные точки</h4>
+    <p class="modNote">Посетители двигают метку на карте и присылают её место. Перед тем как принять, проверьте, что точка не на проезжей части.</p>
+    <div id="modTips"></div>
     <p class="modNote">Точки на карте, подписи и скрытые фото, которые вы правите, сохраняются в базе и одинаковы на всех ваших устройствах.</p>
     <button type="button" id="modOut">Выйти из режима модератора</button>
   </div>
@@ -2253,6 +2275,8 @@ $('storyOnly').onclick = () => { fStory = !fStory; $('storyOnly').setAttribute('
 /* ===== Карта-гид (OpenStreetMap через Leaflet, файлы лежат в vendor/leaflet) ===== */
 let lmap = null, markLayer = null, meDot = null, mePos = null, leafletLoading = null;
 const NEAR_M = 120;
+const HERE_M = 40; // «Я здесь»: отметка ставится, если стоите не дальше 40 м от точки
+let tip = null; // режим «точка стоит не там»: { spot, marker, moved }
 function loadLeaflet() {
   if (window.L) return Promise.resolve();
   if (leafletLoading) return leafletLoading;
@@ -2304,6 +2328,7 @@ async function renderMap() {
 function drawPins() {
   if (!lmap || view !== 'map') return;
   markLayer.clearLayers();
+  if (tip) return; // идёт «точка стоит не там»: на карте только передвигаемая метка
   const z = lmap.getZoom(), CELL = 40;
   const cells = new Map();
   let n = 0;
@@ -2339,6 +2364,30 @@ function mapPopup(list, near) {
   const box = document.createElement('div');
   box.className = 'mpop';
   if (near) { const h = document.createElement('p'); h.className = 'mnear'; h.textContent = T('Вы рядом с этим местом'); box.append(h); }
+  // «Я здесь»: телефон сам сверяет своё место с точкой; место никуда не отправляется
+  const paints = [];
+  const here = document.createElement('div'); here.className = 'mhere';
+  const hb = document.createElement('button'); hb.type = 'button'; hb.className = 'main'; hb.textContent = '📍 ' + T('Я здесь');
+  const hm = document.createElement('small');
+  // Текст под кнопкой делает окошко выше: пересчитать его место, чтобы оно не уехало за край карты
+  const say = t => { hm.textContent = t; const pp = lmap && lmap._popup; if (pp && pp._container) { pp._updateLayout(); pp._updatePosition(); pp._adjustPan(); } };
+  hb.onclick = () => {
+    if (!navigator.geolocation) { say(T('Телефон не может определить место.')); return; }
+    say(T('Определяю, где вы…')); hb.disabled = true;
+    navigator.geolocation.getCurrentPosition(pos => {
+      hb.disabled = false;
+      const me = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+      const d = Math.min(...list.map(s => distM(me, coordsOf(s))));
+      const slack = Math.min(pos.coords.accuracy || 0, 30); // поправка на неточность GPS, не больше 30 м
+      if (d - slack <= HERE_M) {
+        const add = list.filter(s => !found.includes(s.id)).map(s => s.id);
+        if (add.length) { found = [...found, ...add]; write(FOUND_KEY, found); updateProgress(); }
+        paints.forEach(f => f());
+        say(T('✓ Вы на месте — отмечено'));
+      } else say(Tf('До этого места {n} м. Подойдите ближе — и отметка поставится.', { n: Math.round(d) }));
+    }, () => { hb.disabled = false; say(T('Не удалось определить место. Разрешите доступ к местоположению.')); }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 });
+  };
+  here.append(hb, hm); box.append(here);
   for (const s of list) {
     const row = document.createElement('div'); row.className = 'mrow';
     const img = document.createElement('img'); img.src = s.thumb || s.src; img.alt = '';
@@ -2351,13 +2400,66 @@ function mapPopup(list, near) {
     const been = document.createElement('button'); been.type = 'button';
     const paint = () => { been.textContent = found.includes(s.id) ? T('Был здесь ✓') : T('Уже был здесь'); been.classList.toggle('on', found.includes(s.id)); };
     been.onclick = () => { found = found.includes(s.id) ? found.filter(f => f !== s.id) : [...found, s.id]; write(FOUND_KEY, found); paint(); updateProgress(); };
-    paint();
+    paint(); paints.push(paint);
     acts.append(open, been);
-    t.append(b, y, acts);
+    const fix = document.createElement('button'); fix.type = 'button'; fix.className = 'mfix'; fix.textContent = T('Точка стоит не там?');
+    fix.onclick = () => tipStart(s);
+    t.append(b, y, acts, fix);
     row.append(img, t);
     box.append(row);
   }
   return box;
+}
+/* «Точка стоит не там?»: посетитель двигает метку на карте и присылает её место модераторам.
+   Отправляется только место метки и комментарий; место самого телефона не определяется и не отправляется.
+   Точку снимка меняют только модераторы — после проверки. */
+function tipClick(e) { if (tip) { tip.marker.setLatLng(e.latlng); tip.moved = true; } }
+function tipStop() {
+  if (!tip) return;
+  tip.marker.remove(); lmap.off('click', tipClick); tip = null;
+  $('tipBar').hidden = true; $('tipBar').replaceChildren();
+  drawPins();
+}
+function tipStart(s) {
+  const p = coordsOf(s); if (!p || !lmap) return;
+  lmap.closePopup();
+  if (tip) tipStop();
+  const icon = L.divIcon({ className: 'pin tip', html: '<span>✥</span>', iconSize: [36, 36], iconAnchor: [18, 18] });
+  const marker = L.marker([p.lat, p.lng], { icon, draggable: true, zIndexOffset: 1000 }).addTo(lmap);
+  tip = { spot: s, marker, moved: false };
+  marker.on('dragend', () => { if (tip) tip.moved = true; });
+  setTimeout(() => { if (tip) lmap.on('click', tipClick); }, 0);
+  lmap.setView([p.lat, p.lng], Math.max(lmap.getZoom(), 18), { animate: false });
+  const bar = $('tipBar');
+  const h = document.createElement('b'); h.textContent = s.title;
+  const t1 = document.createElement('p'); t1.textContent = T('Передвиньте метку туда, откуда сделан снимок, или нажмите на это место на карте.');
+  const t2 = document.createElement('small'); t2.textContent = T('Отправится только место метки — ваше местоположение не отправляется.');
+  const inp = document.createElement('input'); inp.type = 'text'; inp.maxLength = 300; inp.placeholder = T('Комментарий (необязательно)'); inp.setAttribute('aria-label', T('Комментарий (необязательно)'));
+  const msg = document.createElement('small'); msg.id = 'tipMsg';
+  const row = document.createElement('div'); row.className = 'row';
+  const send = document.createElement('button'); send.type = 'button'; send.className = 'main'; send.textContent = T('Отправить');
+  const no = document.createElement('button'); no.type = 'button'; no.textContent = T('Отмена');
+  no.onclick = tipStop;
+  send.onclick = async () => {
+    if (!tip) return;
+    if (!tip.moved) { msg.textContent = T('Сначала передвиньте метку.'); return; }
+    const ll = tip.marker.getLatLng();
+    if (ll.lat < 55.85 || ll.lat > 55.92 || ll.lng < 26.45 || ll.lng > 26.55) { msg.textContent = T('Метка слишком далеко от крепости.'); return; }
+    send.disabled = true; msg.textContent = T('Отправляем…');
+    try {
+      const r = await fetch(`${FACTS_URL}/krepost_geo_tips`, { method: 'POST',
+        headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({ spot_id: s.id, lat: +ll.lat.toFixed(6), lng: +ll.lng.toFixed(6), comment: inp.value.trim() || null }) });
+      if (!r.ok) throw new Error(r.status);
+      msg.textContent = T('✓ Спасибо! Модератор проверит точку.');
+      setTimeout(tipStop, 1600);
+    } catch { msg.textContent = T('Не получилось отправить — нужен интернет.'); send.disabled = false; }
+  };
+  row.append(send, no);
+  bar.replaceChildren(h, t1, t2, inp, msg, row);
+  bar.hidden = false;
+  lmap.panBy([0, -Math.round(bar.offsetHeight / 2 + 4)], { animate: false }); // метка — в середине свободной части карты, а не под подсказкой
+  drawPins();
 }
 /* Исторический слой: немецкая аэросъёмка 1944 года (снимок s562, источник PastVu) поверх карты.
    Совмещён вручную по звезде цитадели, бастионам и берегу Даугавы: точка снимка (ax, ay) стоит в (lat, lng),
@@ -2585,6 +2687,39 @@ async function modRender() {
       <p class="modNote">Ваши собственные действия в режиме модератора не считаются.</p>`;
   } catch { box.textContent = 'Не удалось загрузить статистику. Проверьте интернет.'; }
   modFactsRender();
+  modTipsRender();
+}
+async function modTipsRender() {
+  const box = $('modTips'); box.textContent = 'Загружаем…';
+  try {
+    const list = await modFetch('/krepost_geo_tips?status=eq.pending&select=id,spot_id,lat,lng,comment,created_at&order=created_at.asc');
+    box.replaceChildren();
+    if (!list.length) { box.textContent = 'Новых предложений нет.'; return; }
+    for (const t of list) {
+      const el = document.createElement('div'); el.className = 'modFact';
+      const sp = allSpots().find(x => x.id === t.spot_id);
+      const cur = sp && coordsOf(sp);
+      const h = document.createElement('small'); h.textContent = `${t.spot_id}${sp ? ' · ' + sp.title : ' · снимок не найден'} · ${new Date(t.created_at).toLocaleString('ru-RU')}`;
+      const b = document.createElement('p'); b.textContent = `Предлагают: ${t.lat}, ${t.lng}` + (cur ? ` — в ${Math.round(distM(cur, t))} м от нынешней точки` : ' — у снимка точки ещё нет');
+      const a = document.createElement('a'); a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Посмотреть место на карте';
+      a.href = `https://www.openstreetmap.org/?mlat=${t.lat}&mlon=${t.lng}#map=19/${t.lat}/${t.lng}`;
+      const row = document.createElement('div'); row.className = 'row';
+      const ok = document.createElement('button'); ok.type = 'button'; ok.className = 'ok'; ok.textContent = '✓ Принять'; ok.disabled = !sp;
+      const no = document.createElement('button'); no.type = 'button'; no.className = 'no'; no.textContent = '✕ Отклонить';
+      const set = st => async () => {
+        ok.disabled = no.disabled = true;
+        try {
+          await modFetch(`/krepost_geo_tips?id=eq.${t.id}`, { method: 'PATCH', headers: { Prefer: 'return=minimal' }, body: JSON.stringify({ status: st }) });
+          if (st === 'accepted') { geo = { ...geo, [t.spot_id]: { lat: t.lat, lng: t.lng, acc: 0 } }; write(GEO_KEY, geo); }
+          el.remove(); if (!box.children.length) box.textContent = 'Новых предложений нет.';
+        } catch { ok.disabled = !sp; no.disabled = false; alert('Не получилось — нужен интернет.'); }
+      };
+      ok.onclick = set('accepted'); no.onclick = set('rejected');
+      row.append(ok, no); el.append(h, b);
+      if (t.comment) { const c = document.createElement('p'); c.textContent = '«' + t.comment + '»'; el.append(c); }
+      el.append(a, row); box.append(el);
+    }
+  } catch { box.textContent = 'Не удалось загрузить предложения.'; }
 }
 async function modFactsRender() {
   const box = $('modFacts'); box.textContent = 'Загружаем…';

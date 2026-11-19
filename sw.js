@@ -4,7 +4,7 @@
 //   Хранятся в отдельном складе, который не стирается при обновлении приложения.
 // • Шрифты Google — тоже сохраняются.
 // • Плитки карты OpenStreetMap: сохраняются те, что уже открывались (не больше ~1500 штук).
-const CACHE = 'krepost-v47';
+const CACHE = 'krepost-v48';
 const PHOTO_CACHE = 'krepost-photos';
 const TILE_CACHE = 'krepost-tiles';
 const TILE_MAX = 1500;
