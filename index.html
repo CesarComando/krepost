@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="icons/fort-apple-180.png">
 <meta name="theme-color" content="#17130f">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Крепость">
+<meta name="apple-mobile-web-app-title" content="Dinaburga 1810">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Шрифты грузятся без задержки показа страницы; пока не пришли — видны системные -->
@@ -1023,7 +1023,7 @@
     <button type="button" id="objLink" hidden>📖 История места</button>
     <div id="decBar" hidden></div>
     <input id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Поиск: ворота, собор, 1930…">
-    <div id="seg" role="group"><button type="button" data-st="all" class="on">Все</button><button type="button" data-st="todo">Ещё не был</button><button type="button" data-st="done">Был ✓</button></div>
+    <div id="seg" role="group"><button type="button" data-st="all" class="on">Все</button><button type="button" data-st="todo">Не посещено</button><button type="button" data-st="done">Посещено ✓</button></div>
     <div id="fRow">
       <select id="period" aria-label="Годы">
         <option value="">Все годы</option>
@@ -1049,7 +1049,7 @@
     <div id="tipBar" hidden></div>
     <div id="mapBar"><button type="button" id="locBtn">📍 Где я</button><button type="button" id="oldBtn" aria-pressed="false">🕰 1944</button><span id="mapInfo"></span></div>
     <div id="oldBar" hidden><label for="oldOp">Прозрачность старого слоя</label><input id="oldOp" type="range" min="15" max="100" value="65"><p id="oldNote">Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.</p></div>
-    <p id="mapLegend"><i class="lg todo"></i> ещё не был <i class="lg done"></i> был <i class="lg near"></i> рядом с вами</p>
+    <p id="mapLegend"><i class="lg todo"></i> не посещено <i class="lg done"></i> посещено <i class="lg near"></i> рядом с вами</p>
   </div>
   <div id="lib" hidden></div>
   <div id="quests" hidden></div>
@@ -1278,7 +1278,7 @@
 <script>
 /* Переводы: грузим только файл нужного языка (выбранного или языка телефона), а не все сразу. */
 (function () {
-  var L = ['ru', 'lv', 'en', 'lt', 'et', 'pl', 'de', 'fr', 'it', 'es', 'zh'], l = null;
+  var L = ['ru', 'lv', 'en', 'lt', 'pl', 'de'], l = null; // эстонский, французский, итальянский, испанский и китайский убраны из списка до проверки носителями
   try { l = JSON.parse(localStorage.getItem('krepost.lang')); } catch (e) { /* нет хранилища */ }
   if (L.indexOf(l) < 0) {
     l = 'en';
@@ -1298,7 +1298,7 @@ translateDom(document.body); // язык: i18n.js
   const NAMES = { lv: 'Latviešu', en: 'English', ru: 'Русский', lt: 'Lietuvių', et: 'Eesti', pl: 'Polski', de: 'Deutsch', fr: 'Français', it: 'Italiano', es: 'Español', zh: '中文' };
   const list = document.getElementById('langList'), btn = document.getElementById('langBtn');
   document.getElementById('langCur').textContent = LANG.toUpperCase();
-  for (const l of ['lv', 'en', 'ru', 'lt', 'et', 'pl', 'de', 'fr', 'it', 'es', 'zh']) {
+  for (const l of ['lv', 'en', 'ru', 'lt', 'pl', 'de']) {
     const o = document.createElement('button');
     o.type = 'button'; o.setAttribute('role', 'option'); o.lang = l;
     o.setAttribute('aria-selected', l === LANG);
@@ -1420,7 +1420,7 @@ function cardActions(spot) {
   const paintBeen = () => {
     const on = found.includes(spot.id);
     been.className = on ? 'been on' : 'been';
-    been.textContent = on ? T('Был здесь ✓') : T('Уже был здесь');
+    been.textContent = on ? T('✓ Посещено') : T('☐ Посещено');
   };
   been.onclick = () => {
     found = found.includes(spot.id) ? found.filter(f => f !== spot.id) : [...found, spot.id];
@@ -1713,7 +1713,7 @@ function renderPassport(box, shots) {
   cover.querySelector('h2').textContent = T('Паспорт исследователя');
   cover.querySelector('.pSince').textContent = first
     ? Tf('Исследует крепость с {d}', { d: new Date(first).toLocaleDateString(LOCALE, { day: 'numeric', month: 'long', year: 'numeric' }) })
-    : T('Отмечайте «Уже был здесь» или снимайте «тогда и сейчас» — в паспорте появятся печати.');
+    : T('Отмечайте «Посещено» или снимайте «тогда и сейчас» — в паспорте появятся печати.');
   const lbl = cover.querySelectorAll('.pStats span');
   lbl[0].textContent = T('печатей'); lbl[1].textContent = Tf('мест из {n}', { n: GROUPS.filter(g => spots.some(s => groupOf(s) === g)).length }); lbl[2].textContent = Tf('значков из {n}', { n: badges.length });
   box.append(cover);
@@ -2398,7 +2398,7 @@ function mapPopup(list, near) {
     const open = document.createElement('button'); open.type = 'button'; open.className = 'main'; open.textContent = T('Открыть');
     open.onclick = () => { lmap.closePopup(); openSpot(s); };
     const been = document.createElement('button'); been.type = 'button';
-    const paint = () => { been.textContent = found.includes(s.id) ? T('Был здесь ✓') : T('Уже был здесь'); been.classList.toggle('on', found.includes(s.id)); };
+    const paint = () => { been.textContent = found.includes(s.id) ? T('✓ Посещено') : T('☐ Посещено'); been.classList.toggle('on', found.includes(s.id)); };
     been.onclick = () => { found = found.includes(s.id) ? found.filter(f => f !== s.id) : [...found, s.id]; write(FOUND_KEY, found); paint(); updateProgress(); };
     paint(); paints.push(paint);
     acts.append(open, been);

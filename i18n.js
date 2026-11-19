@@ -3,7 +3,7 @@
    Язык: выбранный вручную (список языков) → иначе язык телефона → иначе английский.
    Смена языка перезагружает страницу: всё рисуется заново уже на новом языке. */
 (function () {
-  const LANGS = ['ru', 'lv', 'en', 'lt', 'et', 'pl', 'de', 'fr', 'it', 'es', 'zh'];
+  const LANGS = ['ru', 'lv', 'en', 'lt', 'pl', 'de']; // et, fr, it, es, zh убраны из списка до проверки носителями (файлы переводов остались)
   const KEY = 'krepost.lang';
   let lang = null;
   try { lang = JSON.parse(localStorage.getItem(KEY)); } catch { /* нет хранилища */ }
