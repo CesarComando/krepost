@@ -2,9 +2,9 @@
 // • Страница и скрипты: сначала сеть, при её отсутствии — сохранённая копия (новые версии появляются сразу).
 // • Снимки (папка photos): сразу из памяти телефона, а в фоне — проверка, не обновился ли файл.
 //   Хранятся в отдельном складе, который не стирается при обновлении приложения.
-// • Шрифты Google — тоже сохраняются.
+// • Шрифты (лежат на самом сайте) — тоже сохраняются.
 // • Плитки карты OpenStreetMap: сохраняются те, что уже открывались (не больше ~1500 штук).
-const CACHE = 'krepost-v49';
+const CACHE = 'krepost-v50';
 const PHOTO_CACHE = 'krepost-photos';
 const TILE_CACHE = 'krepost-tiles';
 const TILE_MAX = 1500;
@@ -40,9 +40,9 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.hostname === 'tile.openstreetmap.org') { staleWhileRevalidate(e, TILE_CACHE, trimTiles); return; }
-  // Шрифты Google: сохранить, чтобы и без интернета приложение выглядело так же
-  if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') { staleWhileRevalidate(e, FONT_CACHE, null, true); return; }
   if (url.origin !== location.origin) return;
+  // Шрифты лежат на самом сайте: сохранить отдельно, чтобы не скачивать заново при каждом обновлении приложения
+  if (url.pathname.includes('/vendor/fonts/')) { staleWhileRevalidate(e, FONT_CACHE); return; }
   if (url.pathname.includes('/photos/')) { staleWhileRevalidate(e, PHOTO_CACHE); return; }
   e.respondWith(
     // no-cache: всегда спрашиваем сервер, не изменился ли файл (иначе новая версия ждёт до 10 минут)
