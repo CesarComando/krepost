@@ -6965,5 +6965,54 @@ window.SPOTS_DATA = [
   "group": "Михайловские ворота",
   "lat": 55.88389,
   "lng": 26.50029
+ },
+ {
+  "id": "s577",
+  "src": "photos/spot577.jpg",
+  "title": "Башни собора снизу, сквозь ветви",
+  "year": "до 1944",
+  "hint": "",
+  "credit": "Источник: группа «Мой город Даугавпилс», публикация П. Лесовса",
+  "source": "https://www.facebook.com/groups/1056472761595804/",
+  "original": "lesovs_fb_7_1.jpg",
+  "thumb": "photos/thumbs/spot577.jpg",
+  "group": "Собор"
+ },
+ {
+  "id": "s578",
+  "src": "photos/spot578.jpg",
+  "title": "Главный вход собора, портик с колоннами",
+  "year": "до 1944",
+  "hint": "",
+  "credit": "Источник: группа «Мой город Даугавпилс», публикация П. Лесовса",
+  "source": "https://www.facebook.com/groups/1056472761595804/",
+  "original": "lesovs_fb_7_3.jpg",
+  "thumb": "photos/thumbs/spot578.jpg",
+  "group": "Собор"
+ },
+ {
+  "id": "s579",
+  "src": "photos/spot579.jpg",
+  "title": "Собор и здание иезуитского коллегиума",
+  "year": "до 1944",
+  "hint": "",
+  "credit": "Источник: группа «Мой город Даугавпилс», публикация П. Лесовса",
+  "source": "https://www.facebook.com/groups/1056472761595804/",
+  "original": "lesovs_fb_8_2.jpg",
+  "thumb": "photos/thumbs/spot579.jpg",
+  "group": "Собор"
+ },
+ {
+  "id": "s580",
+  "src": "photos/spot580.jpg",
+  "title": "Вид с башни собора на валы и редюит",
+  "year": "до 1944",
+  "hint": "",
+  "credit": "Источник: группа «Мой город Даугавпилс», публикация П. Лесовса",
+  "source": "https://www.facebook.com/groups/1056472761595804/",
+  "original": "lesovs_fb_10_1.jpg",
+  "thumb": "photos/thumbs/spot580.jpg",
+  "group": "Виды сверху",
+  "arch": true
  }
 ];
