@@ -2084,10 +2084,24 @@ function openGuide() {
     const h = document.createElement('div'); h.className = 'gNo'; h.textContent = g.n + '. ' + T(g.t);
     if (lang !== L) { const tag = document.createElement('span'); tag.className = 'gLang'; tag.textContent = T('(на русском)'); h.append(tag); }
     const a = document.createElement('audio'); a.controls = true; a.preload = 'none'; a.src = `audio/${String(g.n).padStart(2, '0')}_${lang}.mp3`;
-    a.addEventListener('play', () => { track('feature', 'audio_' + g.n + '_' + lang); for (const o of box.querySelectorAll('audio')) if (o !== a) o.pause(); });
+    a.addEventListener('play', () => { track('feature', 'audio_' + g.n + '_' + lang); for (const o of box.querySelectorAll('audio')) if (o !== a) o.pause(); guideMedia(a, g, sp); });
     it.append(im, h, a); box.append(it);
   }
   navPush(); $('guideDlg').showModal();
+}
+// Экран блокировки: название трека и кнопки ⏯ ⏮ ⏭ — можно слушать с погашенным экраном и телефоном в кармане
+function guideMedia(a, g, sp) {
+  if (!('mediaSession' in navigator)) return;
+  try {
+    const art = new URL(sp ? (sp.thumb || sp.src) : 'icons/fort-512.png', location.href).href;
+    navigator.mediaSession.metadata = new MediaMetadata({ title: g.n + '. ' + T(g.t), artist: T('Аудиогид') + ' · Dinaburga 1810', album: 'Dinaburga 1810', artwork: [{ src: art, sizes: '512x512' }] });
+    const list = [...$('guideList').querySelectorAll('audio')], i = list.indexOf(a);
+    const go = j => { const b = list[j]; if (b) { a.pause(); b.play(); } };
+    navigator.mediaSession.setActionHandler('play', () => a.play());
+    navigator.mediaSession.setActionHandler('pause', () => a.pause());
+    navigator.mediaSession.setActionHandler('previoustrack', i > 0 ? () => go(i - 1) : null);
+    navigator.mediaSession.setActionHandler('nexttrack', i < list.length - 1 ? () => go(i + 1) : null);
+  } catch (e) {}
 }
 function closeGuide() { for (const a of $('guideList').querySelectorAll('audio')) a.pause(); $('guideDlg').close(); }
 $('guideRow').onclick = openGuide;
