@@ -6183,7 +6183,7 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "ridzenieks_rainis_1920.jpg",
   "thumb": "photos/thumbs/spot581.jpg",
-  "group": "Редюиты и валы",
+  "group": "Райнис, 1920 (демо)",
   "lat": 55.8827,
   "lng": 26.4972,
   "hidden": true
