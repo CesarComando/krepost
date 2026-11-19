@@ -1049,8 +1049,8 @@
 <dialog id="modDlg"><div class="modBox">
   <div class="setHead"><h3>Модератор</h3><button type="button" id="modClose" aria-label="Закрыть">✕</button></div>
   <form id="modLogin" hidden>
-    <p class="modNote">Войдите тем же номером телефона и паролем, что и в приложении клуба (нужна роль администратора).</p>
-    <label>Телефон<input id="modPhone" type="tel" inputmode="tel" autocomplete="username" placeholder="2xxxxxxx"></label>
+    <p class="modNote">Вход для модераторов крепости: логин и пароль, которые вам выдали.</p>
+    <label>Логин<input id="modPhone" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false"></label>
     <label>Пароль<input id="modPass" type="password" autocomplete="current-password"></label>
     <button type="submit" class="main" id="modGo">Войти</button>
     <p id="modMsg" class="modNote"></p>
@@ -2548,21 +2548,25 @@ $('modLogin').onsubmit = async e => {
   e.preventDefault();
   const raw = $('modPhone').value.trim(), pass = $('modPass').value;
   let email = raw;
-  if (!raw.includes('@')) { let d = raw.replace(/\D/g, ''); if (d.length === 8) d = '371' + d; email = d + '@dtt.local'; }
+  if (!raw.includes('@')) {
+    const d = raw.replace(/[\s+()-]/g, '');
+    if (/^\d+$/.test(d)) email = (d.length === 8 ? '371' + d : d) + '@dtt.local'; // одни цифры — телефон администратора клуба, как раньше
+    else email = d.toLowerCase() + '@krepost.local'; // логин модератора крепости: отдельный вход, к клубу отношения не имеет
+  }
   $('modGo').disabled = true; $('modMsg').textContent = 'Проверяем…';
   try {
     const r = await fetch(`${AUTH_URL}/token?grant_type=password`, { method: 'POST', headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password: pass }) });
     if (!r.ok) throw new Error('auth');
     const j = await r.json();
     modSave({ access_token: j.access_token, refresh_token: j.refresh_token, expires_at: j.expires_at || Math.floor(Date.now() / 1000) + (j.expires_in || 3600), admin: false });
-    const ok = await modRpc('is_admin');
-    if (!ok) { modSave(null); $('modMsg').textContent = 'Вход выполнен, но у этого аккаунта нет роли администратора.'; return; }
+    const ok = await modRpc('krepost_is_mod');
+    if (!ok) { modSave(null); $('modMsg').textContent = 'Вход выполнен, но этот аккаунт не модератор крепости.'; return; }
     modSave({ ...modSess, admin: true });
     $('modPass').value = '';
     $('modMsg').textContent = '✓ Готово, загружаем правки…';
     await modPull(true).catch(() => {});
     location.replace(location.pathname);
-  } catch { $('modMsg').textContent = 'Неверный телефон или пароль, или нет интернета.'; }
+  } catch { $('modMsg').textContent = 'Неверный логин или пароль, или нет интернета.'; }
   finally { $('modGo').disabled = false; }
 };
 let modDays = 7;
