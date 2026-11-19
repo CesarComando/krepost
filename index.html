@@ -882,13 +882,25 @@
   #guideRow { display:grid; grid-template-columns:28px 1fr; align-items:center; gap:2px 12px; width:100%; min-height:0; padding:12px 14px; border-radius:16px; background:#1c1610; border:1px solid rgba(217,164,65,.25); box-shadow:none; color:var(--text); text-align:left; text-transform:none; letter-spacing:0; margin-top:10px; }
   #guideRow b { grid-row:1 / 3; font-size:22px; line-height:1; }
   #guideRow .gT { font-weight:600; } #guideRow .gN { color:var(--muted, #b8a98f); }
-  #guideDlg { width:min(96vw, 560px); max-height:90vh; padding:0; border:1px solid rgba(217,164,65,.35); border-radius:18px; background:#17120d; color:var(--text, #f2e8d8); }
-  #guideDlg::backdrop { background:rgba(10,8,6,.85); }
-  .guideBox { padding:14px 16px 18px; } #guideNote { margin:4px 0 12px; font-size:14px; opacity:.8; }
-  .gItem { display:grid; grid-template-columns:64px 1fr; gap:6px 12px; align-items:center; padding:10px 0; border-top:1px solid rgba(217,164,65,.18); }
-  .gItem img { width:64px; height:64px; object-fit:cover; border-radius:10px; grid-row:1 / 3; }
-  .gItem .gNo { font-weight:600; } .gItem .gLang { font-size:12px; opacity:.75; margin-left:6px; }
-  .gItem audio { width:100%; height:36px; }
+  #guideDlg { width:100vw; max-width:100vw; height:100dvh; max-height:100dvh; margin:0; padding:0; border:0; background:#17120d; color:var(--text, #f2e8d8); }
+  #guideDlg::backdrop { background:rgba(10,8,6,.9); }
+  #guideDlg [hidden] { display:none !important; }
+  .guideBox { display:flex; flex-direction:column; height:100%; max-width:640px; margin:0 auto; }
+  .gTop { display:flex; align-items:center; gap:8px; padding:10px 14px 6px; } .gTop h3 { flex:1; margin:0; font-size:18px; }
+  .gTop button { min-height:36px; padding:4px 10px; } .gSmall { font-size:13px; background:transparent; border:1px solid rgba(217,164,65,.35); color:var(--text); border-radius:10px; }
+  #guideStart { padding:8px 16px 16px; overflow:auto; } #guideStart h4 { margin:8px 0 12px; font-size:20px; }
+  #guideStart button { display:block; width:100%; text-align:left; margin:0 0 10px; padding:14px; border-radius:14px; text-transform:none; letter-spacing:0; }
+  #guideStart button b { display:block; font-size:16px; } #guideStart button small { opacity:.75; }
+  #guidePager { flex:1; display:flex; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-x:contain; }
+  #guidePager::-webkit-scrollbar { display:none; }
+  .gCard { flex:0 0 100%; scroll-snap-align:center; overflow-y:auto; padding:4px 16px 24px; box-sizing:border-box; }
+  .gCard .gImg { width:100%; height:30vh; max-height:240px; object-fit:cover; border-radius:14px; background:#221a12; display:block; }
+  .gCard .gNum { margin:10px 0 2px; font-size:13px; color:var(--muted, #b8a98f); }
+  .gCard h4 { margin:0 0 4px; font-size:21px; line-height:1.2; } .gCard .gCap { margin:0 0 10px; font-size:14px; opacity:.8; }
+  .gCard audio { width:100%; margin:4px 0 6px; } .gCard .gWait { font-size:13px; opacity:.75; margin:4px 0 8px; }
+  .gCard .gText p { margin:0 0 12px; line-height:1.55; font-size:16px; } .gCard .gPhotos { margin:6px 0 12px; }
+  .gNav { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 14px calc(10px + env(safe-area-inset-bottom)); border-top:1px solid rgba(217,164,65,.18); }
+  .gNav button { min-width:56px; min-height:44px; font-size:24px; padding:0; } #gPos { font-size:13px; opacity:.8; text-align:center; flex:1; }
   #questRow svg { grid-row:1 / 3; width:28px; height:28px; color:#f3d27a; }
   .qrT { font:600 15px Inter,system-ui,sans-serif; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .qrN { font:600 13px 'PT Mono',ui-monospace,monospace; color:#f3c650; }
@@ -1074,7 +1086,7 @@
   </nav>
 </section>
 
-<dialog id="guideDlg"><div class="guideBox"><div class="setHead"><h3 id="guideH"></h3><button type="button" id="guideClose" aria-label="Закрыть">✕</button></div><p id="guideNote"></p><div id="guideList"></div></div></dialog>
+<dialog id="guideDlg"><div class="guideBox"><div class="gTop"><h3 id="guideH"></h3><button type="button" id="guideStartBtn" class="gSmall"></button><button type="button" id="guideClose" aria-label="Закрыть">✕</button></div><div id="guideStart" hidden></div><div id="guidePager"></div><div class="gNav"><button type="button" id="gPrev" aria-label="Назад">‹</button><span id="gPos"></span><button type="button" id="gNext" aria-label="Дальше">›</button></div></div></dialog>
 <dialog id="illDlg"><div class="illBox"><button type="button" id="illClose" aria-label="Закрыть">✕</button><img id="illImg" alt=""><p id="illCap"></p><small id="illCredit"></small></div></dialog>
 <dialog id="modDlg"><div class="modBox">
   <div class="setHead"><h3>Модератор</h3><button type="button" id="modClose" aria-label="Закрыть">✕</button></div>
@@ -1286,6 +1298,7 @@
 <script src="spots.js"></script>
 <script src="quests.js"></script>
 <script src="history.js"></script>
+<script src="guide.js"></script>
 <script>
 /* Переводы: грузим только файл нужного языка (выбранного или языка телефона), а не все сразу. */
 (function () {
@@ -2060,56 +2073,130 @@ function groupCenter(g) {
   if (!pts.length) return null;
   return { lat: pts.reduce((a, p) => a + p.lat, 0) / pts.length, lng: pts.reduce((a, p) => a + p.lng, 0) / pts.length };
 }
-// Аудиогид — проба: 4 трека. Файлы audio/NN_<язык>.mp3; если перевода нет — русская озвучка с пометкой.
-const GUIDE = [
-  { n: 1, t: 'Водоподъёмная башня', spot: null, langs: ['ru'] },
-  { n: 2, t: 'Николаевские ворота', spot: 's065', langs: ['ru', 'lv'] },
-  { n: 7, t: 'Артиллерийский арсенал — центр Марка Ротко', spot: 's352', langs: ['ru', 'lv'] },
-  { n: 9, t: 'Дом коменданта', spot: 's230', langs: ['ru'] },
-];
+// Аудиогид: кольцевой маршрут (guide.js). Отдельная функция — фотографировать не нужно.
+// Карточки листаются свайпом (scroll-snap). Два старта: точка 1 (Михайловские ворота) или 4 (Николаевские ворота).
+const GD = window.GUIDE_DATA || { stops: [] };
+const GUIDE_KEY = 'krepost.guide';
+let guideSeq = [], guideCur = 0;
 function renderGuideRow() {
   $('guideRow').querySelector('.gT').textContent = T('Аудиогид');
-  $('guideRow').querySelector('.gN').textContent = Tf('{n} точки · слушать', { n: GUIDE.length });
+  $('guideRow').querySelector('.gN').textContent = Tf('Маршрут по кругу · {n} точек', { n: GD.stops.length });
+}
+function guideOrder(start) {
+  const st = GD.stops, i = Math.max(0, st.findIndex(x => x.n === start));
+  return [GD.intro, ...st.slice(i), ...st.slice(0, i), GD.outro].filter(Boolean);
+}
+function guideAudioOf(g) {
+  const L = (window.LANG || 'ru').slice(0, 2), a = g.audio || {};
+  if (a[L]) return { src: a[L], lang: L };
+  if (a.ru) return { src: a.ru, lang: 'ru' };
+  return null;
+}
+function guideCard(g, k) {
+  const L = (window.LANG || 'ru').slice(0, 2);
+  const c = document.createElement('section'); c.className = 'gCard';
+  const sp = g.spot && allSpots().find(x => x.id === g.spot);
+  const im = document.createElement('img'); im.className = 'gImg'; im.alt = ''; im.loading = 'lazy';
+  im.src = sp ? (sp.thumb || sp.src) : 'photos/hero.jpg';
+  const num = document.createElement('div'); num.className = 'gNum';
+  num.textContent = g.n >= 1 && g.n <= GD.stops.length ? Tf('Точка {n} из {m}', { n: g.n, m: GD.stops.length }) : '🎧';
+  const h = document.createElement('h4'); h.textContent = T(g.title);
+  const cap = document.createElement('p'); cap.className = 'gCap'; cap.textContent = T(g.caption || '');
+  c.append(im, num, h, cap);
+  const au = guideAudioOf(g);
+  if (au) {
+    const a = document.createElement('audio'); a.controls = true; a.preload = 'none'; a.src = au.src;
+    a.addEventListener('play', () => { track('feature', 'audio_' + g.n + '_' + au.lang); for (const o of $('guidePager').querySelectorAll('audio')) if (o !== a) o.pause(); guideMedia(a, g, sp); });
+    c.append(a);
+    if (au.lang !== L) { const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T('(на русском)'); c.append(w); }
+    if (g.audioOld) { const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T('Озвучена прежняя, короткая версия текста.'); c.append(w); }
+  } else {
+    const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T('Озвучка готовится — пока можно прочитать текст.'); c.append(w);
+  }
+  if (g.group && GROUPS.includes(g.group)) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'gPhotos'; b.textContent = T('📷 Снимки этого места');
+    b.onclick = () => { for (const o of $('guidePager').querySelectorAll('audio')) o.pause(); navBack(); setTimeout(() => openObj(g.group), 80); };
+    c.append(b);
+  }
+  const tx = document.createElement('div'); tx.className = 'gText';
+  if (L !== 'ru') { const p = document.createElement('p'); p.className = 'gWait'; p.textContent = T('Текст рассказа пока на русском.'); tx.append(p); }
+  for (const para of String(g.text || '').split(/\n\s*\n/)) { const p = document.createElement('p'); p.textContent = para.trim(); tx.append(p); }
+  c.append(tx);
+  c.dataset.k = k;
+  return c;
+}
+function guideSave() { try { localStorage.setItem(GUIDE_KEY, JSON.stringify({ start: guideSeq.start, k: guideCur })); } catch {} }
+function guideGo(k, smooth) {
+  const pg = $('guidePager'), n = guideSeq.length;
+  guideCur = Math.max(0, Math.min(n - 1, k));
+  pg.scrollTo({ left: guideCur * pg.clientWidth, behavior: smooth ? 'smooth' : 'auto' });
+  guidePos();
+}
+function guidePos() {
+  const g = guideSeq[guideCur]; if (!g) return;
+  $('gPos').textContent = (guideCur + 1) + ' / ' + guideSeq.length + (guideCur === 0 ? ' · ' + T('Свайп ← → — следующая точка') : '');
+  $('gPrev').disabled = guideCur === 0; $('gNext').disabled = guideCur === guideSeq.length - 1;
+  guideSave();
+}
+function guideBuild(start, k) {
+  const pg = $('guidePager');
+  guideSeq = guideOrder(start); guideSeq.start = start;
+  pg.replaceChildren(...guideSeq.map(guideCard));
+  $('guideStart').hidden = true; pg.hidden = false; document.querySelector('#guideDlg .gNav').hidden = false;
+  $('guideStartBtn').hidden = false;
+  requestAnimationFrame(() => guideGo(k || 0, false));
+}
+function guideChooseStart() {
+  const box = $('guideStart'); box.replaceChildren();
+  const h = document.createElement('h4'); h.textContent = T('С чего начнёте?'); box.append(h);
+  for (const [n, t, d] of [[1, 'От остановки «Cietoksnis» — Михайловские ворота', 'Въезд в крепость из города'], [4, 'От Николаевских ворот — Водоподъёмное здание', 'Центр культуры и информации, у реки']]) {
+    const b = document.createElement('button'); b.type = 'button';
+    const bb = document.createElement('b'); bb.textContent = n + ' · ' + T(t);
+    const sm = document.createElement('small'); sm.textContent = T(d);
+    b.append(bb, sm); b.onclick = () => { track('feature', 'guide_start_' + n); guideBuild(n, 0); };
+    box.append(b);
+  }
+  box.hidden = false; $('guidePager').hidden = true; document.querySelector('#guideDlg .gNav').hidden = true;
+  $('guideStartBtn').hidden = true;
 }
 function openGuide() {
   track('feature', 'guide');
-  const L = (window.LANG || 'ru').slice(0, 2), box = $('guideList');
   $('guideH').textContent = T('Аудиогид');
-  $('guideNote').textContent = T('Нажмите ▶ на месте или дома. Звук включается только по нажатию.');
-  box.replaceChildren();
-  for (const g of GUIDE) {
-    const lang = g.langs.includes(L) ? L : 'ru';
-    const it = document.createElement('div'); it.className = 'gItem';
-    const sp = g.spot && allSpots().find(x => x.id === g.spot);
-    const im = document.createElement('img'); im.alt = ''; im.loading = 'lazy';
-    if (sp) im.src = sp.thumb || sp.src; else im.style.visibility = 'hidden';
-    const h = document.createElement('div'); h.className = 'gNo'; h.textContent = g.n + '. ' + T(g.t);
-    if (lang !== L) { const tag = document.createElement('span'); tag.className = 'gLang'; tag.textContent = T('(на русском)'); h.append(tag); }
-    const a = document.createElement('audio'); a.controls = true; a.preload = 'none'; a.src = `audio/${String(g.n).padStart(2, '0')}_${lang}.mp3`;
-    a.addEventListener('play', () => { track('feature', 'audio_' + g.n + '_' + lang); for (const o of box.querySelectorAll('audio')) if (o !== a) o.pause(); guideMedia(a, g, sp); });
-    it.append(im, h, a); box.append(it);
-  }
+  $('guideStartBtn').textContent = T('Сменить начало');
   navPush(); $('guideDlg').showModal();
+  let saved = null; try { saved = JSON.parse(localStorage.getItem(GUIDE_KEY)); } catch {}
+  if (saved && (saved.start === 1 || saved.start === 4)) guideBuild(saved.start, saved.k || 0); else guideChooseStart();
 }
-// Экран блокировки: название трека и кнопки ⏯ ⏮ ⏭ — можно слушать с погашенным экраном и телефоном в кармане
+{
+  let tm = null;
+  $('guidePager').addEventListener('scroll', () => {
+    clearTimeout(tm);
+    tm = setTimeout(() => {
+      const pg = $('guidePager'), k = Math.round(pg.scrollLeft / Math.max(1, pg.clientWidth));
+      if (k !== guideCur) { for (const a of pg.querySelectorAll('audio')) a.pause(); guideCur = k; guidePos(); }
+    }, 120);
+  }, { passive: true });
+}
+$('gPrev').onclick = () => guideGo(guideCur - 1, true);
+$('gNext').onclick = () => guideGo(guideCur + 1, true);
+$('guideStartBtn').onclick = () => { for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); guideChooseStart(); };
+// Экран блокировки: название трека и кнопки ⏯ ⏮ ⏭ — переход к соседней точке маршрута
 function guideMedia(a, g, sp) {
   if (!('mediaSession' in navigator)) return;
   try {
     const art = new URL(sp ? (sp.thumb || sp.src) : 'icons/fort-512.png', location.href).href;
-    navigator.mediaSession.metadata = new MediaMetadata({ title: g.n + '. ' + T(g.t), artist: T('Аудиогид') + ' · Dinaburga 1810', album: 'Dinaburga 1810', artwork: [{ src: art, sizes: '512x512' }] });
-    const list = [...$('guideList').querySelectorAll('audio')], i = list.indexOf(a);
-    const go = j => { const b = list[j]; if (b) { a.pause(); b.play(); } };
+    navigator.mediaSession.metadata = new MediaMetadata({ title: (g.n >= 1 && g.n <= GD.stops.length ? g.n + '. ' : '') + T(g.title), artist: T('Аудиогид') + ' · Dinaburga 1810', album: 'Dinaburga 1810', artwork: [{ src: art, sizes: '512x512' }] });
+    const go = d => { a.pause(); guideGo(guideCur + d, false); const b = $('guidePager').children[guideCur]?.querySelector('audio'); if (b) b.play(); };
     navigator.mediaSession.setActionHandler('play', () => a.play());
     navigator.mediaSession.setActionHandler('pause', () => a.pause());
-    navigator.mediaSession.setActionHandler('previoustrack', i > 0 ? () => go(i - 1) : null);
-    navigator.mediaSession.setActionHandler('nexttrack', i < list.length - 1 ? () => go(i + 1) : null);
+    navigator.mediaSession.setActionHandler('previoustrack', guideCur > 0 ? () => go(-1) : null);
+    navigator.mediaSession.setActionHandler('nexttrack', guideCur < guideSeq.length - 1 ? () => go(1) : null);
   } catch (e) {}
 }
-function closeGuide() { for (const a of $('guideList').querySelectorAll('audio')) a.pause(); $('guideDlg').close(); }
+function closeGuide() { for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); if ($('guideDlg').open) $('guideDlg').close(); }
 $('guideRow').onclick = openGuide;
 $('guideClose').onclick = () => navBack();
 $('guideDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
-$('guideDlg').onclick = e => { if (e.target === $('guideDlg')) navBack(); };
 function openIllus(s) {
   track('photo', s.id);
   $('illImg').src = s.src;
@@ -2237,7 +2324,7 @@ function renderObj() {
 
 /* ===== Без интернета: заранее сохранить снимки (и саму страницу) в памяти телефона ===== */
 const PHOTO_CACHE = 'krepost-photos', OFF_CACHE = 'krepost-offline';
-const SHELL = ['./', 'index.html', 'spots.js', 'quests.js', 'history.js', 'i18n.js', ...(window.I18N_FILES || []),
+const SHELL = ['./', 'index.html', 'spots.js', 'quests.js', 'history.js', 'guide.js', 'i18n.js', ...(window.I18N_FILES || []),
   'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'manifest.webmanifest', 'photos/hero.jpg'];
 const pathOf = u => new URL(u, location.href).pathname;
 function photoUrls(list, full) {
