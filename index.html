@@ -2589,7 +2589,7 @@ async function modRender() {
 async function modFactsRender() {
   const box = $('modFacts'); box.textContent = 'Загружаем…';
   try {
-    const list = await modFetch('/krepost_facts?status=eq.pending&select=id,spot_id,author,role,body,contact,created_at&order=created_at.asc');
+    const list = await modRpc('krepost_facts_pending'); // контакт автора отдаётся только модератору, отдельной функцией
     box.replaceChildren();
     if (!list.length) { box.textContent = 'Новых рассказов нет.'; return; }
     for (const f of list) {
