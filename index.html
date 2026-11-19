@@ -2865,6 +2865,7 @@ function renderHistory(spot) {
   if (own) box.append(histCard(T('Об этом месте'), own));
   if (g) box.append(histCard(T('Из истории: ') + T(groupOf(spot)), g.text, g.sources, !!own));
   if (HIST.fortress) box.append(histCard(T('История крепости 1810–сегодня'), HIST.fortress.text, ['Wikipedia — Daugavpils Fortress', T('Путеводитель Daugavpils Fortress')], true));
+  if (HIST.legends) box.append(histCard(HIST.legends.title, HIST.legends.text, HIST.legends.sources, true));
   const ag = archGroups();
   if (ag.length) {
     const wrap = document.createElement('div'); wrap.className = 'hist';
