@@ -6176,16 +6176,17 @@ window.SPOTS_DATA = [
  {
   "id": "s581",
   "src": "photos/spot581.jpg",
-  "title": "Райнис отдыхает у 8-го бастиона (демо для модератора)",
+  "title": "Райнис отдыхает под деревом, 1920 (демо)",
   "year": "1920",
   "hint": "Место ищет Дайнис: тропинка, дерево, справа вдали стальной мост через Даугаву",
   "credit": "Фото: V. Rīdzenieks, 1920. Не публиковать: авторские права до конца 2032 года",
   "source": "",
   "original": "ridzenieks_rainis_1920.jpg",
   "thumb": "photos/thumbs/spot581.jpg",
-  "group": "Райнис, 1920 (демо)",
+  "group": "Другое",
   "lat": 55.8827,
   "lng": 26.4972,
-  "hidden": true
+  "hidden": true,
+  "demo": true
  }
 ];
