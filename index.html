@@ -2145,7 +2145,7 @@ function guideCard(g, k) {
     a.addEventListener('play', () => { ttsStop(); track('feature', 'audio_' + g.n + '_' + au.lang); for (const o of $('guidePager').querySelectorAll('audio')) if (o !== a) o.pause(); guideMedia(a, g, sp); });
     c.append(a);
     if (au.lang !== L) { const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T('(на русском)'); c.append(w); }
-    if (g.audioOld) { const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T('Озвучена прежняя, короткая версия текста.'); c.append(w); }
+    if (g.audioOld === true || (g.audioOld && g.audioOld[au.lang])) { const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T('Озвучена прежняя, короткая версия текста.'); c.append(w); }
   }
   if (!ownRec) {
     if ('speechSynthesis' in window) {
