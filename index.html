@@ -660,6 +660,10 @@
   #langList[hidden] { display:none; }
   #langList button.langTest { margin-top:4px; border-top:1px solid var(--line); border-radius:0 0 10px 10px; font-size:13px; color:var(--accent); white-space:normal; }
   .gTester { font-size:13px; margin-top:18px; }
+  .gDonate { margin:22px 0 8px; padding:16px; border:1px solid var(--accent); border-radius:14px; text-align:center; }
+  .gDonate p { margin:0 0 12px; font-weight:600; }
+  .gDonateBtn { display:inline-block; padding:12px 18px; border-radius:12px; background:var(--accent); color:#1d1608; font-weight:700; text-decoration:none; }
+  .gDonate small { display:block; margin-top:8px; color:var(--muted); }
   .gTesterBtn { display:block; margin-top:8px; padding:8px 12px; font-size:13px; }
   #langList button { display:flex; justify-content:space-between; align-items:center; min-height:0; padding:10px 12px; border-radius:10px; background:none; border:0; color:#e6d8bd; font:500 15px Inter,system-ui,sans-serif; text-align:left; box-shadow:none; text-transform:none; letter-spacing:0; }
   #langList button small { color:var(--muted); font:600 11px var(--mono); }
@@ -1168,6 +1172,7 @@ html[data-theme="light"] #cards .groupTitle .era { color:#d51a33; }
 html[data-theme="light"] #langBtn { background:rgba(247,245,245,.65); border:1px solid rgba(213,26,51,.35); color:#1d1718; }
 html[data-theme="light"] #langBtn b { color:#d51a33; }
 html[data-theme="light"] #langList { background:#f7f5f5; border:1px solid rgba(182,22,44,.45); }
+html[data-theme="light"] .gDonateBtn { color:#f7f5f5; }
 html[data-theme="light"] #langList button { color:#e6334b; }
 html[data-theme="light"] #langList button.on { background:rgba(213,26,51,.16); color:#d51a33; }
 html[data-theme="light"] #langList button.on small { color:#d51a33; }
@@ -2480,6 +2485,16 @@ function guideCard(g, k) {
   }
   for (const para of String(gt.text).split(/\n\s*\n/)) { const p = document.createElement('p'); p.textContent = para.trim(); tx.append(p); }
   c.append(tx);
+  // В конце прогулки — мягкая просьба поддержать проект (гид остаётся бесплатным)
+  if (g === GD.outro && typeof DONATE_URL === 'string' && DONATE_URL) {
+    const box = document.createElement('div'); box.className = 'gDonate';
+    const p = document.createElement('p'); p.textContent = T('Понравилась прогулка? Поддержите проект — 1 €');
+    const a = document.createElement('a'); a.href = DONATE_URL; a.target = '_blank'; a.rel = 'noopener'; a.className = 'gDonateBtn';
+    a.textContent = T('☕ Поддержать проект');
+    a.onclick = () => { ttsStop(); track('feature', 'donate_guide'); };
+    const sm = document.createElement('small'); sm.textContent = T('Через Revolut: картой, Apple Pay или Google Pay');
+    box.append(p, a, sm); c.append(box);
+  }
   c.dataset.k = k;
   return c;
 }
