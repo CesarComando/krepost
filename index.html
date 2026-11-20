@@ -1594,7 +1594,7 @@ html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none
     var ls = navigator.languages || [navigator.language || ''];
     for (var i = 0; i < ls.length; i++) { var c = String(ls[i]).slice(0, 2).toLowerCase(); if (L.indexOf(c) >= 0) { l = c; break; } }
   }
-  var f = l === 'ru' ? [] : l === 'lv' ? ['i18n-lv.js'] : l === 'en' ? ['i18n-en.js'] : ['i18n-en.js', 'i18n-' + l + '.js'];
+  var f = l === 'ru' ? [] : l === 'lv' ? ['i18n-lv.js'] : l === 'en' ? ['i18n-en.js'] : ['i18n-en.js', 'i18n-' + l + '.js', 'guide-' + l + '.js']; // guide-xx.js — тексты аудиогида для голоса телефона
   window.I18N_FILES = f;
   for (var j = 0; j < f.length; j++) document.write('<script src="' + f[j] + '"><\/script>');
 })();
@@ -2388,10 +2388,12 @@ function guideAudioOf(g) {
   if (L === 'lv' && a.en) return { src: a.en, lang: 'en' };
   return null;
 }
-// Текст рассказа на языке приложения (guide.js: texts.lv / texts.en), иначе — русский
+// Текст рассказа на языке приложения (guide.js: texts.lv / texts.en; guide-de/lt/pl.js), иначе — русский
 function guideTextOf(g) {
   const L = (window.LANG || 'ru').slice(0, 2), t = g.texts || {};
   if (L !== 'ru' && t[L]) return { text: t[L], lang: L };
+  const gx = (window.GUIDE_TEXTS || {})[L];
+  if (L !== 'ru' && gx && gx[g.n]) return { text: gx[g.n], lang: L };
   return { text: g.text || '', lang: 'ru' };
 }
 // Голос телефона (Web Speech API): читает текст, если нет записи на языке приложения
