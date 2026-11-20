@@ -1596,7 +1596,7 @@ html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none
 <script>
 /* Переводы: грузим только файл нужного языка (выбранного или языка телефона), а не все сразу. */
 (function () {
-  var L = ['ru', 'lv', 'en', 'lt', 'pl', 'de'], l = null; // эстонский, французский, итальянский, испанский и китайский убраны из списка до проверки носителями
+  var L = ['ru', 'lv', 'en', 'lt', 'pl', 'de', 'et', 'fr', 'it', 'es', 'zh'], l = null; // все языки включены 20.11.2026
   try { l = JSON.parse(localStorage.getItem('krepost.lang')); } catch (e) { /* нет хранилища */ }
   if (L.indexOf(l) < 0) {
     l = 'en';
@@ -1616,7 +1616,7 @@ translateDom(document.body); // язык: i18n.js
   const NAMES = { lv: 'Latviešu', en: 'English', ru: 'Русский', lt: 'Lietuvių', et: 'Eesti', pl: 'Polski', de: 'Deutsch', fr: 'Français', it: 'Italiano', es: 'Español', zh: '中文' };
   const list = document.getElementById('langList'), btn = document.getElementById('langBtn');
   document.getElementById('langCur').textContent = LANG.toUpperCase();
-  for (const l of ['lv', 'en', 'ru', 'lt', 'pl', 'de']) {
+  for (const l of ['lv', 'en', 'ru', 'lt', 'pl', 'de', 'et', 'fr', 'it', 'es', 'zh']) {
     const o = document.createElement('button');
     o.type = 'button'; o.setAttribute('role', 'option'); o.lang = l;
     o.setAttribute('aria-selected', l === LANG);
@@ -2412,7 +2412,7 @@ function guideTextOf(g) {
   return { text: g.text || '', lang: 'ru' };
 }
 // Голос телефона (Web Speech API): читает текст, если нет записи на языке приложения
-const TTS_LOCALE = { ru: 'ru-RU', lv: 'lv-LV', en: 'en-GB', lt: 'lt-LT', pl: 'pl-PL', de: 'de-DE' };
+const TTS_LOCALE = { ru: 'ru-RU', lv: 'lv-LV', en: 'en-GB', lt: 'lt-LT', pl: 'pl-PL', de: 'de-DE', et: 'et-EE', fr: 'fr-FR', it: 'it-IT', es: 'es-ES', zh: 'zh-CN' };
 let ttsBtn = null;
 function ttsVoice(lang) {
   if (!('speechSynthesis' in window)) return null;
