@@ -8,7 +8,7 @@ import re, colorsys
 H = open('index.html', encoding='utf-8').read()
 a = H.index('<style>') + 7; b = H.index('</style>')
 css = H[a:b]
-css = re.sub(r'/\* LIGHT-THEME:BEGIN \*/.*?/\* LIGHT-THEME:END \*/\n?', '', css, flags=re.S)
+css = re.sub(r'/\* LIGHT-THEME:BEGIN.*?LIGHT-THEME:END \*/\n?', '', css, flags=re.S)
 SCOPE = 'html[data-theme="light"]'
 RED = 352/360  # оттенок красного
 

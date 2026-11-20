@@ -658,6 +658,9 @@
   #langBtn b { color:#f3c650; }
   #langList { position:absolute; z-index:40; right:0; top:44px; width:200px; max-height:min(420px, 70vh); overflow-y:auto; padding:6px; border-radius:14px; background:#1c1610; border:1px solid rgba(217,164,65,.45); box-shadow:0 14px 34px rgba(0,0,0,.6); display:flex; flex-direction:column; gap:2px; }
   #langList[hidden] { display:none; }
+  #langList button.langTest { margin-top:4px; border-top:1px solid var(--line); border-radius:0 0 10px 10px; font-size:13px; color:var(--accent); white-space:normal; }
+  .gTester { font-size:13px; margin-top:18px; }
+  .gTesterBtn { display:block; margin-top:8px; padding:8px 12px; font-size:13px; }
   #langList button { display:flex; justify-content:space-between; align-items:center; min-height:0; padding:10px 12px; border-radius:10px; background:none; border:0; color:#e6d8bd; font:500 15px Inter,system-ui,sans-serif; text-align:left; box-shadow:none; text-transform:none; letter-spacing:0; }
   #langList button small { color:var(--muted); font:600 11px var(--mono); }
   #langList button.on { background:rgba(244,198,75,.16); color:#f3c650; }
@@ -1617,6 +1620,12 @@ translateDom(document.body); // язык: i18n.js
     o.onclick = () => { if (l !== LANG) setLang(l); else close(); };
     list.append(o);
   }
+  if (LANG !== 'ru') { // перевод проверяют носители языка — приглашаем стать тестировщиком
+    const t = document.createElement('button'); t.type = 'button'; t.className = 'langTest';
+    t.textContent = T('🗣 Ваш родной язык? Помогите проверить перевод');
+    t.onclick = () => { close(); askTranslationFeedback(); };
+    list.append(t);
+  }
   const close = () => { list.hidden = true; btn.setAttribute('aria-expanded', 'false'); };
   btn.onclick = e => { e.stopPropagation(); list.hidden = !list.hidden; btn.setAttribute('aria-expanded', String(!list.hidden)); };
   document.addEventListener('click', e => { if (!list.hidden && !document.getElementById('langBox').contains(e.target)) close(); });
@@ -2462,6 +2471,12 @@ function guideCard(g, k) {
   }
   const tx = document.createElement('div'); tx.className = 'gText';
   if (L !== 'ru' && gt.lang === 'ru') { const p = document.createElement('p'); p.className = 'gWait'; p.textContent = T('Текст рассказа пока на русском.'); tx.append(p); }
+  if (L !== 'ru' && gt.lang === L) {
+    const p = document.createElement('p'); p.className = 'gWait gTester'; p.textContent = T('Перевод ещё проверяется. Вы носитель языка? Станьте тестировщиком — напишите, что исправить.') + ' ';
+    const a = document.createElement('button'); a.type = 'button'; a.className = 'gTesterBtn'; a.textContent = T('🗣 Ваш родной язык? Помогите проверить перевод');
+    a.onclick = () => { ttsStop(); for (const o of $('guidePager').querySelectorAll('audio')) o.pause(); askTranslationFeedback(); };
+    p.append(a); tx.append(p);
+  }
   for (const para of String(gt.text).split(/\n\s*\n/)) { const p = document.createElement('p'); p.textContent = para.trim(); tx.append(p); }
   c.append(tx);
   c.dataset.k = k;
@@ -3407,6 +3422,11 @@ $('fbOpen').onclick = () => {
   if ($('setDlg').open) { addEventListener('popstate', () => setTimeout(open, 0), { once: true }); navBack(); }
   else open();
 };
+/* Отзыв о переводе: открывает обычную форму отзыва с пометкой языка */
+function askTranslationFeedback() {
+  showSurvey({ spotId: null, mode: null, r: {} });
+  $('sComment').value = '[' + LANG.toUpperCase() + '] ';
+}
 function showSurvey(sv) {
   survey = sv;
   $('surveyForm').classList.toggle('general', !sv.spotId);
