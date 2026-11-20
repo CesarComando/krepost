@@ -895,6 +895,15 @@
   #guideDlg [hidden] { display:none !important; }
   .guideBox { display:flex; flex-direction:column; height:100%; max-width:640px; margin:0 auto; }
   .gTop { display:flex; align-items:center; gap:8px; padding:10px 14px 6px; } .gTop h3 { flex:1; margin:0; font-size:18px; }
+  #gBar { display:flex; gap:6px; padding:0 14px 6px; overflow-x:auto; scrollbar-width:none; } #gBar button { flex:none; min-height:34px; padding:4px 10px; white-space:nowrap; } #gBar button.on { background:var(--accent); color:#1d1608; border-color:var(--accent); }
+  #gMapBox { flex:1; display:flex; flex-direction:column; padding:0 14px 8px; } #gMap { flex:1; min-height:300px; border-radius:14px; } #gMapNote { margin:6px 0 0; font-size:12px; color:var(--muted); }
+  .gPin { width:30px; height:30px; border-radius:50%; background:var(--accent); color:#1d1608; font:700 14px/30px Inter,system-ui,sans-serif; text-align:center; border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.45); }
+  .gPin.cur { background:#fff; color:#1d1608; border-color:var(--accent); }
+  #gNear { position:absolute; left:12px; right:12px; bottom:78px; z-index:5; display:flex; align-items:center; gap:8px; padding:12px; border-radius:14px; background:var(--panel); border:1px solid var(--accent); box-shadow:0 10px 30px rgba(0,0,0,.5); }
+  #gNearT { flex:1; font-weight:600; font-size:15px; } #gNearGo { background:var(--accent); color:#1d1608; font-weight:700; } #gNearX { background:none; }
+  .guideBox { position:relative; }
+  #guideStart .gRoutes { display:flex; gap:8px; margin:0 0 14px; } #guideStart .gRoutes button { flex:1; margin:0; padding:10px 12px; border:1px solid var(--line); background:none; } #guideStart .gRoutes button.on { border-color:var(--accent); background:var(--gold-dim, rgba(217,164,65,.22)); }
+  .planCtl { background:var(--panel); color:var(--text); border-radius:12px; padding:6px 8px; box-shadow:0 2px 10px rgba(0,0,0,.35); display:flex; flex-direction:column; gap:6px; max-width:190px; } .planCtl button { min-height:34px; padding:4px 10px; font-size:13px; } .planCtl button.on { background:var(--accent); color:#1d1608; } .planCtl small { font-size:11px; color:var(--muted); } .planCtl input { width:100%; }
   .gTop button { min-height:36px; padding:4px 10px; } .gSmall { font-size:13px; background:transparent; border:1px solid rgba(217,164,65,.35); color:var(--text); border-radius:10px; }
   #guideStart { padding:8px 16px 16px; overflow:auto; } #guideStart h4 { margin:8px 0 12px; font-size:20px; }
   #guideStart button { display:block; width:100%; text-align:left; margin:0 0 10px; padding:14px; border-radius:14px; text-transform:none; letter-spacing:0; }
@@ -1259,6 +1268,12 @@ html[data-theme="light"] #guideRow { background:#f7f5f5; border:1px solid rgba(1
 html[data-theme="light"] #guideRow .gN { color:var(--muted, #d51a33); }
 html[data-theme="light"] #guideDlg { background:#f7f5f5; color:var(--text, #1d1718); }
 html[data-theme="light"] #guideDlg::backdrop { background:rgba(248,246,246,.9); }
+html[data-theme="light"] #gBar button.on { color:#f7f5f5; }
+html[data-theme="light"] .gPin { color:#f7f5f5; border:2px solid #000000; }
+html[data-theme="light"] .gPin.cur { background:#000000; color:#f7f5f5; }
+html[data-theme="light"] #gNearGo { color:#f7f5f5; }
+html[data-theme="light"] #guideStart .gRoutes button.on { background:var(--gold-dim, rgba(182,22,44,.22)); }
+html[data-theme="light"] .planCtl button.on { color:#f7f5f5; }
 html[data-theme="light"] .gSmall { border:1px solid rgba(182,22,44,.35); }
 html[data-theme="light"] .gCard .gImg { background:#f7f5f5; }
 html[data-theme="light"] .gCard .gNum { color:var(--muted, #d51a33); }
@@ -1379,7 +1394,7 @@ html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none
   </nav>
 </section>
 
-<dialog id="guideDlg"><div class="guideBox"><div class="gTop"><h3 id="guideH"></h3><button type="button" id="guideStartBtn" class="gSmall"></button><button type="button" id="guideClose" aria-label="Закрыть">✕</button></div><div id="guideStart" hidden></div><div id="guidePager"></div><div class="gNav"><button type="button" id="gPrev" aria-label="Назад">‹</button><span id="gPos"></span><button type="button" id="gNext" aria-label="Дальше">›</button></div></div></dialog>
+<dialog id="guideDlg"><div class="guideBox"><div class="gTop"><h3 id="guideH"></h3><button type="button" id="guideStartBtn" class="gSmall"></button><button type="button" id="guideClose" aria-label="Закрыть">✕</button></div><div id="gBar"><button type="button" id="gMapBtn" class="gSmall"></button><button type="button" id="gNearBtn" class="gSmall"></button><button type="button" id="gDlBtn" class="gSmall"></button></div><div id="gMapBox" hidden><div id="gMap"></div><p id="gMapNote"></p></div><div id="guideStart" hidden></div><div id="guidePager"></div><div id="gNear" hidden><span id="gNearT"></span><button type="button" id="gNearGo"></button><button type="button" id="gNearX" aria-label="Закрыть">✕</button></div><div class="gNav"><button type="button" id="gPrev" aria-label="Назад">‹</button><span id="gPos"></span><button type="button" id="gNext" aria-label="Дальше">›</button></div></div></dialog>
 <dialog id="illDlg"><div class="illBox"><button type="button" id="illClose" aria-label="Закрыть">✕</button><img id="illImg" alt=""><p id="illCap"></p><small id="illCredit"></small></div></dialog>
 <dialog id="modDlg"><div class="modBox">
   <div class="setHead"><h3>Модератор</h3><button type="button" id="modClose" aria-label="Закрыть">✕</button></div>
@@ -2392,8 +2407,11 @@ function renderGuideRow() {
   $('guideRow').querySelector('.gT').textContent = T('Аудиогид');
   $('guideRow').querySelector('.gN').textContent = Tf('Маршрут по кругу · {n} точек', { n: GD.stops.length });
 }
-function guideOrder(start) {
-  const st = GD.stops, i = Math.max(0, st.findIndex(x => x.n === start));
+// Маршруты (guide.js → routes): полный круг из 13 точек и короткий (1–5, ~45 минут)
+function guideRoute(id) { return (GD.routes || []).find(r => r.id === id) || { id: 'full', stops: GD.stops.map(s => s.n) }; }
+const guideStop = n => GD.stops.find(s => s.n === n);
+function guideOrder(start, routeId) {
+  const st = guideRoute(routeId).stops.map(guideStop).filter(Boolean), i = Math.max(0, st.findIndex(x => x.n === start));
   return [GD.intro, ...st.slice(i), ...st.slice(0, i), GD.outro].filter(Boolean);
 }
 function guideAudioOf(g) {
@@ -2498,7 +2516,7 @@ function guideCard(g, k) {
   c.dataset.k = k;
   return c;
 }
-function guideSave() { try { localStorage.setItem(GUIDE_KEY, JSON.stringify({ start: guideSeq.start, k: guideCur })); } catch {} }
+function guideSave() { try { localStorage.setItem(GUIDE_KEY, JSON.stringify({ start: guideSeq.start, route: guideSeq.route, k: guideCur })); } catch {} }
 function guideGo(k, smooth) {
   const pg = $('guidePager'), n = guideSeq.length;
   guideCur = Math.max(0, Math.min(n - 1, k));
@@ -2511,31 +2529,50 @@ function guidePos() {
   $('gPrev').disabled = guideCur === 0; $('gNext').disabled = guideCur === guideSeq.length - 1;
   guideSave();
 }
-function guideBuild(start, k) {
+function guideBuild(start, k, routeId) {
   const pg = $('guidePager');
-  guideSeq = guideOrder(start); guideSeq.start = start;
+  routeId = routeId || 'full';
+  guideSeq = guideOrder(start, routeId); guideSeq.start = start; guideSeq.route = routeId;
+  guideShowMap(false);
   pg.replaceChildren(...guideSeq.map(guideCard));
   $('guideStart').hidden = true; pg.hidden = false; document.querySelector('#guideDlg .gNav').hidden = false;
   $('guideStartBtn').hidden = false;
   requestAnimationFrame(() => guideGo(k || 0, false));
+  guideNearCheck();
 }
+let guideRouteSel = 'full';
 function guideChooseStart() {
+  guideShowMap(false);
   const box = $('guideStart'); box.replaceChildren();
+  const rh = document.createElement('h4'); rh.textContent = T('Выберите маршрут'); box.append(rh);
+  const rs = document.createElement('div'); rs.className = 'gRoutes';
+  for (const [id, t, d] of [['full', 'Полный круг', '13 точек · ~2 часа'], ['short', 'Короткий', '5 точек · ~45 минут']]) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = id === guideRouteSel ? 'on' : '';
+    const bb = document.createElement('b'); bb.textContent = T(t);
+    const sm = document.createElement('small'); sm.textContent = T(d);
+    b.append(bb, sm); b.onclick = () => { guideRouteSel = id; guideChooseStart(); };
+    rs.append(b);
+  }
+  box.append(rs);
+  const routeId = guideRouteSel, inRoute = guideRoute(routeId).stops;
   const h = document.createElement('h4'); h.textContent = T('С чего начнёте?'); box.append(h);
-  for (const [n, t, d] of [[1, 'От остановки «Cietoksnis» — Михайловские ворота', 'Въезд в крепость из города'], [4, 'От Николаевских ворот — Водоподъёмное здание', 'Центр культуры и информации, у реки']]) {
+  const mains = routeId === 'short'
+    ? [[1, 'От остановки «Cietoksnis» — Михайловские ворота', 'Михайловские ворота → Николаевские ворота, вдоль реки']]
+    : [[1, 'От остановки «Cietoksnis» — Михайловские ворота', 'Въезд в крепость из города'], [4, 'От Николаевских ворот — Водоподъёмное здание', 'Центр культуры и информации, у реки']];
+  for (const [n, t, d] of mains) {
     const b = document.createElement('button'); b.type = 'button';
     const bb = document.createElement('b'); bb.textContent = n + ' · ' + T(t);
     const sm = document.createElement('small'); sm.textContent = T(d);
-    b.append(bb, sm); b.onclick = () => { track('feature', 'guide_start_' + n); guideBuild(n, 0); };
+    b.append(bb, sm); b.onclick = () => { track('feature', 'guide_start_' + routeId + '_' + n); guideBuild(n, 0, routeId); };
     box.append(b);
   }
   // Любая другая точка маршрута (кроме финала) — для тех, кто оказался в крепости не у ворот
   const h2 = document.createElement('h4'); h2.textContent = T('Или с любой точки маршрута:'); box.append(h2);
-  for (const g of GD.stops) {
+  for (const g of GD.stops.filter(s => inRoute.includes(s.n))) {
     const b = document.createElement('button'); b.type = 'button'; b.className = 'gAny';
     const bb = document.createElement('b'); bb.textContent = g.n + ' · ' + T(g.title);
     const sm = document.createElement('small'); sm.textContent = T(g.caption || '');
-    b.append(bb, sm); b.onclick = () => { track('feature', 'guide_start_' + g.n); guideBuild(g.n, 0); };
+    b.append(bb, sm); b.onclick = () => { track('feature', 'guide_start_' + routeId + '_' + g.n); guideBuild(g.n, 0, routeId); };
     box.append(b);
   }
   box.hidden = false; $('guidePager').hidden = true; document.querySelector('#guideDlg .gNav').hidden = true;
@@ -2547,15 +2584,111 @@ function openGuide() {
   $('guideStartBtn').textContent = T('Сменить начало');
   navPush(); $('guideDlg').showModal();
   let saved = null; try { saved = JSON.parse(localStorage.getItem(GUIDE_KEY)); } catch {}
-  if (saved && GD.stops.some(s => s.n === saved.start)) guideBuild(saved.start, saved.k || 0); else guideChooseStart();
+  guideBarPaint();
+  if (saved && GD.stops.some(s => s.n === saved.start)) { guideRouteSel = saved.route || 'full'; guideBuild(saved.start, saved.k || 0, guideRouteSel); } else guideChooseStart();
+  if (read(GUIDE_NEAR_KEY, false)) guideNearStart();
 }
+/* ===== 20.11.2026: карта маршрута, подсказка у остановки, аудиогид без интернета ===== */
+const GUIDE_NEAR_KEY = 'krepost.guideNear', NEAR_STOP_M = 45;
+let gmap = null, gmeDot = null, gPins = {}, guideWatch = null, guideHere = null, nearOff = {}, nearStop = null;
+function guideBarPaint() {
+  $('gMapBtn').textContent = T('🗺 Карта маршрута');
+  $('gNearBtn').textContent = guideWatch != null ? T('📍 Подсказки у остановок: вкл') : T('📍 Подсказывать у остановок');
+  $('gNearBtn').classList.toggle('on', guideWatch != null);
+  $('gNearGo').textContent = T('▶ Включить');
+  offCount(guideOfflineUrls()).then(([a, b]) => { $('gDlBtn').textContent = a >= b ? T('✓ Аудиогид без интернета') : T('⬇ Скачать аудиогид'); $('gDlBtn').classList.toggle('on', a >= b); }).catch(() => { $('gDlBtn').textContent = T('⬇ Скачать аудиогид'); });
+}
+// Всё, что нужно гиду без интернета: записи на языке приложения, картинки карточек, текст гида
+function guideOfflineUrls() {
+  const urls = new Set(['photos/hero.jpg']);
+  for (const g of [GD.intro, ...GD.stops, GD.outro].filter(Boolean)) {
+    const au = guideAudioOf(g); if (au) urls.add(au.src);
+    if (g.img) urls.add(g.img);
+    const sp = g.spot && allSpots().find(x => x.id === g.spot); if (sp) urls.add(sp.thumb || sp.src);
+  }
+  for (const f of (window.I18N_FILES || [])) if (/^guide-/.test(f)) urls.add(f);
+  return [...urls];
+}
+$('gDlBtn').onclick = async e => { track('feature', 'guide_offline'); await saveOffline(guideOfflineUrls(), e.currentTarget); guideBarPaint(); };
+// Карта маршрута: схема по прямой между точками, «вы здесь», нажатие на номер — переход к рассказу
+async function guideShowMap(show) {
+  $('gMapBox').hidden = !show; $('gMapBtn').classList.toggle('on', !!show);
+  const onStart = !$('guideStart').hidden && !show;
+  if (show) { $('guidePager').hidden = true; $('guideStart').hidden = true; document.querySelector('#guideDlg .gNav').hidden = true; $('gNear').hidden = true; }
+  else if (!onStart && guideSeq.length && $('guideStart').hidden) { $('guidePager').hidden = false; document.querySelector('#guideDlg .gNav').hidden = false; }
+  if (!show) return;
+  $('gMapNote').textContent = T('Линия — схема по прямой между точками. Нажмите номер, чтобы открыть рассказ.');
+  try { await loadLeaflet(); } catch { $('gMapNote').textContent = T('Карта не загрузилась. Проверьте интернет.'); return; }
+  const routeId = guideSeq.route || guideRouteSel, ids = guideRoute(routeId).stops, st = ids.map(guideStop).filter(s => s && s.pos);
+  if (!gmap) {
+    gmap = L.map('gMap', { zoomControl: true, attributionControl: true }).setView([55.8855, 26.4955], 16);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap', crossOrigin: true }).addTo(gmap);
+    gmap._route = L.layerGroup().addTo(gmap);
+  }
+  gmap._route.clearLayers(); gPins = {};
+  const line = st.map(s => s.pos); if (routeId === 'full' && line.length > 2) line.push(line[0]);
+  L.polyline(line, { color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#d9a441', weight: 4, opacity: .85, dashArray: '8 8' }).addTo(gmap._route);
+  const cur = guideSeq[guideCur];
+  for (const s of st) {
+    const icon = L.divIcon({ className: '', html: '<div class="gPin' + (cur && cur.n === s.n ? ' cur' : '') + '">' + s.n + '</div>', iconSize: [30, 30], iconAnchor: [15, 15] });
+    const m = L.marker(s.pos, { icon, title: T(s.title) }).addTo(gmap._route);
+    m.on('click', () => guideJumpTo(s.n, false));
+    gPins[s.n] = m;
+  }
+  setTimeout(() => { gmap.invalidateSize(); gmap.fitBounds(L.latLngBounds(st.map(s => s.pos)), { padding: [30, 30] }); guideMeDot(); }, 60);
+  if (!guideHere && navigator.geolocation) navigator.geolocation.getCurrentPosition(p => { guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy }; guideMeDot(); }, () => {}, { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 });
+}
+function guideMeDot() {
+  if (!gmap || !gmap._loaded || !guideHere) return;
+  if (!gmeDot) gmeDot = L.circleMarker([guideHere.lat, guideHere.lng], { radius: 9, color: '#fff', weight: 3, fillColor: '#3b82f6', fillOpacity: 1 }).bindTooltip(T('Вы здесь')).addTo(gmap);
+  else gmeDot.setLatLng([guideHere.lat, guideHere.lng]);
+}
+$('gMapBtn').onclick = () => { ttsStop(); for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); guideShowMap($('gMapBox').hidden); };
+// Перейти к рассказу о точке n (и при желании сразу включить)
+function guideJumpTo(n, play) {
+  if (!guideSeq.length || !guideSeq.some(g => g.n === n)) guideBuild(n, 0, guideRoute(guideSeq.route || guideRouteSel).stops.includes(n) ? (guideSeq.route || guideRouteSel) : 'full');
+  guideShowMap(false); $('guideStart').hidden = true;
+  const k = guideSeq.findIndex(g => g.n === n);
+  if (k < 0) return;
+  guideGo(k, false);
+  if (play) setTimeout(() => {
+    const c = $('guidePager').children[k]; if (!c) return;
+    const a = c.querySelector('audio'); if (a) { a.play().catch(() => {}); return; }
+    const b = c.querySelector('.gTts'); if (b && !b.classList.contains('on')) b.click();
+  }, 350);
+}
+// Подсказка у остановки: телефон следит за местом, пока открыт аудиогид; звук включается только по нажатию
+function guideNearStart() {
+  if (guideWatch != null || !navigator.geolocation) { if (!navigator.geolocation) alert(T('Этот браузер не умеет определять место.')); return; }
+  guideWatch = navigator.geolocation.watchPosition(p => {
+    guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy };
+    guideMeDot(); guideNearCheck();
+  }, err => {
+    if (err && err.code === 1) { guideNearStop(); write(GUIDE_NEAR_KEY, false); alert(T('Нет разрешения на геолокацию. Разрешите её в настройках браузера.')); }
+  }, { enableHighAccuracy: true, maximumAge: 5000, timeout: 30000 });
+  write(GUIDE_NEAR_KEY, true); guideBarPaint();
+}
+function guideNearStop() { if (guideWatch != null) navigator.geolocation.clearWatch(guideWatch); guideWatch = null; $('gNear').hidden = true; guideBarPaint(); }
+function guideNearCheck() {
+  if (!guideHere || guideWatch == null || !$('guideDlg').open || !$('gMapBox').hidden) { $('gNear').hidden = true; return; }
+  let best = null, bd = 1e9;
+  for (const s of GD.stops) { if (!s.pos) continue; const d = distM(guideHere, { lat: s.pos[0], lng: s.pos[1] }); if (d < bd) { bd = d; best = s; } }
+  const cur = guideSeq[guideCur];
+  if (!best || bd > NEAR_STOP_M + Math.min(guideHere.acc || 0, 30) || (cur && cur.n === best.n) || (nearOff[best.n] && Date.now() - nearOff[best.n] < 10 * 60000)) { $('gNear').hidden = true; nearStop = null; return; }
+  nearStop = best.n;
+  $('gNearT').textContent = Tf('Вы у точки {n}: {t}', { n: best.n, t: T(best.title) });
+  $('gNear').hidden = false;
+}
+$('gNearBtn').onclick = () => { if (guideWatch != null) { guideNearStop(); write(GUIDE_NEAR_KEY, false); } else guideNearStart(); };
+$('gNearGo').onclick = () => { const n = nearStop; $('gNear').hidden = true; if (n) { nearOff[n] = Date.now(); track('feature', 'guide_near_' + n); ttsStop(); for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); guideJumpTo(n, true); } };
+$('gNearX').onclick = () => { if (nearStop) nearOff[nearStop] = Date.now(); $('gNear').hidden = true; };
 {
   let tm = null;
   $('guidePager').addEventListener('scroll', () => {
     clearTimeout(tm);
     tm = setTimeout(() => {
       const pg = $('guidePager'), k = Math.round(pg.scrollLeft / Math.max(1, pg.clientWidth));
-      if (k !== guideCur) { ttsStop(); for (const a of pg.querySelectorAll('audio')) a.pause(); guideCur = k; guidePos(); }
+      if (k !== guideCur) { ttsStop(); for (const a of pg.querySelectorAll('audio')) a.pause(); guideCur = k; guidePos(); guideNearCheck(); }
     }, 120);
   }, { passive: true });
 }
@@ -2575,7 +2708,7 @@ function guideMedia(a, g, sp) {
     navigator.mediaSession.setActionHandler('nexttrack', guideCur < guideSeq.length - 1 ? () => go(1) : null);
   } catch (e) {}
 }
-function closeGuide() { ttsStop(); for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); if ($('guideDlg').open) $('guideDlg').close(); }
+function closeGuide() { guideNearStop(); ttsStop(); for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); if ($('guideDlg').open) $('guideDlg').close(); }
 $('guideRow').onclick = openGuide;
 $('guideClose').onclick = () => navBack();
 $('guideDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
@@ -2836,6 +2969,26 @@ async function renderMap() {
     markLayer = L.layerGroup().addTo(lmap);
     // Первое открытие: вписать в экран все точки снимков
     lmap._fitFirst = true;
+    // Старый план крепости (вторая половина XIX века) поверх карты; положение примерное
+    const PLAN_BOUNDS = [[55.8788, 26.483817], [55.889993, 26.503772]];
+    let planLayer = null;
+    const PlanCtl = L.Control.extend({ options: { position: 'topright' }, onAdd() {
+      const d = L.DomUtil.create('div', 'planCtl');
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = T('🗺 Старый план');
+      const r = document.createElement('input'); r.type = 'range'; r.min = 10; r.max = 100; r.value = 65; r.hidden = true; r.setAttribute('aria-label', T('Прозрачность плана'));
+      const sm = document.createElement('small'); sm.textContent = T('Положение плана примерное'); sm.hidden = true;
+      b.onclick = () => {
+        if (planLayer) { lmap.removeLayer(planLayer); planLayer = null; b.classList.remove('on'); r.hidden = true; sm.hidden = true; return; }
+        planLayer = L.imageOverlay('photos/guide_intro_plan.jpg', PLAN_BOUNDS, { opacity: r.value / 100, interactive: false }).addTo(lmap);
+        b.classList.add('on'); r.hidden = false; sm.hidden = false; track('feature', 'old_plan');
+        lmap.fitBounds(PLAN_BOUNDS, { padding: [10, 10] });
+      };
+      r.oninput = () => { if (planLayer) planLayer.setOpacity(r.value / 100); };
+      d.append(b, r, sm);
+      L.DomEvent.disableClickPropagation(d); L.DomEvent.disableScrollPropagation(d);
+      return d;
+    } });
+    new PlanCtl().addTo(lmap);
   }
   setTimeout(() => {
     lmap.invalidateSize();

@@ -3,7 +3,13 @@
 //             4 — от Николаевских ворот, у Водоподъёмного здания (Центр культуры и информации).
 // Тексты — по книге «История Даугавпилсской крепости: правда и легенды» и стендам Центра крепости (сверка 19.11.2026).
 // audio: файлы, которые уже озвучены (папка audio/; русская озвучка ElevenLabs 20.11.2026 — audio/ru/00–14). Нет файла — в приложении показывается текст.
+// pos — место остановки для «подсказки у остановки» и карты маршрута (точность ±20 м).
+// routes — маршруты: полный круг и короткий.
 window.GUIDE_DATA = {
+  routes: [
+    { id: 'full', stops: [1,2,3,4,5,6,7,8,9,10,11,12,13] },
+    { id: 'short', stops: [1,2,3,4,5] }
+  ],
   intro: {
     n: 0, title: 'Вступление', caption: 'Как пользоваться аудиогидом · 2 минуты',
     img: 'photos/guide_intro_plan.jpg', imgPos: '50% 38%',
@@ -47,6 +53,7 @@ Ready? Then play the stop where you are starting.`
   stops: [
     {
       n: 1, id: 'mihaila', title: 'Михайловские ворота', caption: 'Въезд из города · остановка «Cietoksnis» · начало маршрута 1',
+      pos: [55.883273, 26.499206], // примерно, по OSM (20.11.2026)
       img: 'photos/guide_mikhail_gate.jpg', imgPos: '50% 55%',
       spot: 's046', group: 'Михайловские ворота', audio: { ru: 'audio/ru/01.mp3', en: 'audio/en/01.mp3' },
       text: `Вы стоите у главного въезда в крепость со стороны города. Перед вами Михайловские ворота.
@@ -93,6 +100,7 @@ Now walk through the gate into the fortress. In a couple of minutes a large open
     },
     {
       n: 2, id: 'sobor', title: 'Место собора и иезуитский коллегиум', caption: 'Улица Императора · фундамент храма, коллегиум, могила коменданта Пиленко',
+      pos: [55.883983, 26.499238], // примерно, по OSM (20.11.2026)
       img: 'photos/guide_cathedral.jpg', imgPos: '50% 22%',
       spot: 's083', group: 'Собор', audio: { ru: 'audio/ru/02.mp3' },
       text: `Здесь, на этой площадке, двести лет стоял самый высокий храм города. Его две белые башни поднимались примерно на шестьдесят метров. Крестьяне, ехавшие на рынок, видели их за много километров.
@@ -139,6 +147,7 @@ Now walk south-west, to Mihaila Street and the Artillery Arsenal. It is a long t
     },
     {
       n: 3, id: 'arsenal', title: 'Артиллерийский арсенал и пороховой погреб', caption: 'Mihaila 3 · центр Марка Ротко · Дом Мартинсона',
+      pos: [55.883664, 26.497543], // примерно, по OSM (20.11.2026)
       spot: 's352', group: 'Артиллерийский арсенал', audio: { ru: 'audio/ru/03.mp3', en: 'audio/en/03.mp3' },
       text: `Это здание построили, чтобы хранить оружие. А сегодня здесь висят картины художника, который родился в этом городе и прославился на весь мир.
 
@@ -178,6 +187,7 @@ If you are tired, there is a café in the arsenal. Next, walk to the Nicholas Ga
     },
     {
       n: 4, id: 'voda', title: 'Водоподъёмное здание', caption: 'Nikolaja 5 · Центр культуры и информации · начало маршрута 2',
+      pos: [55.883857, 26.495901], // примерно, по OSM (20.11.2026)
       img: 'photos/spot103.jpg', imgPos: '40% 50%',
       spot: null, group: 'Водоподъёмное здание', audio: { ru: 'audio/ru/04.mp3' },
       text: `Если вы начинаете прогулку здесь — сначала послушайте вступление, а потом возвращайтесь к этой точке.
@@ -218,6 +228,7 @@ Now go out to the Nicholas Gate. It is the gate with battlements like a castle a
     },
     {
       n: 5, id: 'nikolaja', title: 'Николаевские ворота и мост через ров', caption: 'Парадный вход с реки · 1-й береговой люнет · вид на мостовое укрепление',
+      pos: [55.883424, 26.495934], // примерно, по OSM (20.11.2026)
       spot: 's065', group: 'Николаевские ворота', audio: { ru: 'audio/ru/05.mp3', lv: 'audio/02_lv.mp3' }, audioOld: { lv: true },
       text: `Эти ворота смотрят на Даугаву. Когда-то через них в крепость въезжали с реки — торжественно, как в настоящий замок.
 
@@ -263,6 +274,7 @@ Now walk through the gate into the fortress and go straight along Nikolaja Stree
     },
     {
       n: 6, id: 'proviant', title: 'Провиантский магазин и «Призрак крепости»', caption: 'Nikolaja 9 · самый большой склад крепости · белый конь',
+      pos: [55.884164, 26.494753], // примерно, по OSM (20.11.2026)
       spot: null, group: 'Улицы и здания', audio: { ru: 'audio/ru/06.mp3' },
       text: `Крепость должна была выдержать долгую осаду. А для этого нужно много еды. Перед вами самый большой склад крепости — Провиантский магазин.
 
@@ -296,6 +308,7 @@ Continue along Nikolaja Street to Komandanta Street. Look for a large, light thr
     },
     {
       n: 7, id: 'komendant', title: 'Комендантский дом', caption: 'Komandanta 7 · путевой дворец · доска Кюхельбекеру',
+      pos: [55.88577, 26.494324], // примерно, по OSM (20.11.2026)
       spot: 's423', group: 'Комендантский дом', audio: { ru: 'audio/ru/07.mp3' },
       text: `У этого дома — история о дружбе, которую не смогла разрушить даже тюрьма.
 
@@ -335,6 +348,7 @@ Across the road is the Commandant's Garden. Go there, to the centre of the garde
     },
     {
       n: 8, id: 'sad', title: 'Комендантский сад', caption: 'Бывший плац · памятник 1812 года · памятник воинам 1924 года',
+      pos: [55.886372, 26.494968], // примерно, по OSM (20.11.2026)
       img: 'photos/guide_garden_postcard.jpg', imgPos: '50% 45%',
       spot: 's429', group: 'Комендантский сад и парк', audio: { ru: 'audio/ru/08.mp3' },
       text: `Когда-то здесь маршировали солдаты. Это было главное место крепости — парадный плац, квадрат сто пятьдесят на сто пятьдесят метров.
@@ -375,6 +389,7 @@ The next stop is the long building beyond the garden, the military hospital.`
     },
     {
       n: 9, id: 'hospital', title: 'Военный госпиталь', caption: 'Hospitāļa 6 · госпиталь с 1820-х до 1994 года',
+      pos: [55.887365, 26.495022], // примерно, по OSM (20.11.2026)
       spot: 's138', group: 'Военный госпиталь', audio: { ru: 'audio/ru/09.mp3' },
       text: `Это одно из самых больших зданий крепости. Почти сто семьдесят лет здесь лечили солдат.
 
@@ -414,6 +429,7 @@ Now walk along Imperatora Street to the north-east, to the Engineering Arsenal. 
     },
     {
       n: 10, id: 'inzhener', title: 'Инженерный арсенал', caption: 'Imperatora 8 · центр техники и промышленного дизайна',
+      pos: [55.88568, 26.498723], // примерно, по OSM (20.11.2026)
       spot: 's347', group: 'Инженерный арсенал', audio: { ru: 'audio/ru/10.mp3' },
       text: `Это последнее здание, которое построил в крепости архитектор Александр Штауберт.
 
@@ -447,6 +463,7 @@ The Alexander Gate is very close. Walk towards the rampart.`
     },
     {
       n: 11, id: 'aleksandra', title: 'Александровские ворота', caption: 'Северо-восток крепости · ворота Лачплесиса · казармы Земгальской дивизии',
+      pos: [55.886763, 26.500418], // примерно, по OSM (20.11.2026)
       spot: 's095', group: 'Александровские ворота', audio: { ru: 'audio/ru/11.mp3' },
       text: `Эти ворота названы в честь самого императора Александра Первого, при котором начали строить крепость.
 
@@ -480,6 +497,7 @@ From here walk west, along the northern part of the fortress, to the Constantine
     },
     {
       n: 12, id: 'konstantina', title: 'Константиновские ворота и главный вал', caption: 'Северо-запад · от ворот остались две стены · бастионы и казематы',
+      pos: [55.888177, 26.490655], // примерно, по OSM (20.11.2026)
       spot: 's132', group: 'Константиновские ворота', audio: { ru: 'audio/ru/12.mp3' },
       text: `От этих ворот остались только две доломитовые стены. А ведь когда-то их называли самыми красивыми в крепости.
 
@@ -513,6 +531,7 @@ Now go down along the rampart to the south, towards the river. After about four 
     },
     {
       n: 13, id: 'rainis', title: 'Место, где отдыхал Райнис', caption: 'У вала над Даугавой · пень старого дерева · 9 апреля 1920 года',
+      pos: [55.8840639, 26.4915746], // примерно, по OSM (20.11.2026)
       spot: 's581', group: 'Другое', audio: { ru: 'audio/ru/13.mp3' },
       text: `Эта точка — самая молодая на нашем маршруте. Её нашли совсем недавно.
 
