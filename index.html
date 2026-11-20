@@ -895,6 +895,7 @@
   #guideStart { padding:8px 16px 16px; overflow:auto; } #guideStart h4 { margin:8px 0 12px; font-size:20px; }
   #guideStart button { display:block; width:100%; text-align:left; margin:0 0 10px; padding:14px; border-radius:14px; text-transform:none; letter-spacing:0; }
   #guideStart button b { display:block; font-size:16px; } #guideStart button small { opacity:.75; }
+  #guideStart h4 + .gAny { margin-top:4px; } #guideStart .gAny { padding:10px 14px; background:none; border:1px solid var(--line); } #guideStart .gAny b { font-size:15px; }
   #guidePager { flex:1; display:flex; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-x:contain; }
   #guidePager::-webkit-scrollbar { display:none; }
   .gCard { flex:0 0 100%; scroll-snap-align:center; overflow-y:auto; padding:4px 16px 24px; box-sizing:border-box; }
@@ -2513,6 +2514,15 @@ function guideChooseStart() {
     b.append(bb, sm); b.onclick = () => { track('feature', 'guide_start_' + n); guideBuild(n, 0); };
     box.append(b);
   }
+  // Любая другая точка маршрута (кроме финала) — для тех, кто оказался в крепости не у ворот
+  const h2 = document.createElement('h4'); h2.textContent = T('Или с любой точки маршрута:'); box.append(h2);
+  for (const g of GD.stops) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'gAny';
+    const bb = document.createElement('b'); bb.textContent = g.n + ' · ' + T(g.title);
+    const sm = document.createElement('small'); sm.textContent = T(g.caption || '');
+    b.append(bb, sm); b.onclick = () => { track('feature', 'guide_start_' + g.n); guideBuild(g.n, 0); };
+    box.append(b);
+  }
   box.hidden = false; $('guidePager').hidden = true; document.querySelector('#guideDlg .gNav').hidden = true;
   $('guideStartBtn').hidden = true;
 }
@@ -2522,7 +2532,7 @@ function openGuide() {
   $('guideStartBtn').textContent = T('Сменить начало');
   navPush(); $('guideDlg').showModal();
   let saved = null; try { saved = JSON.parse(localStorage.getItem(GUIDE_KEY)); } catch {}
-  if (saved && (saved.start === 1 || saved.start === 4)) guideBuild(saved.start, saved.k || 0); else guideChooseStart();
+  if (saved && GD.stops.some(s => s.n === saved.start)) guideBuild(saved.start, saved.k || 0); else guideChooseStart();
 }
 {
   let tm = null;
