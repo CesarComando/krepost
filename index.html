@@ -9,6 +9,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/fort-apple-180.png">
 <meta name="theme-color" content="#17130f">
+<script>try{if(JSON.parse(localStorage.getItem('krepost.theme')||'"dark"')==='light'){document.documentElement.dataset.theme='light';}}catch(e){}</script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Dinaburga 1810">
 <!-- Шрифты лежат на самом сайте и грузятся без задержки показа страницы; пока не пришли — видны системные -->
@@ -1011,6 +1012,288 @@
     #cmpKind { margin-bottom:4px; }
     #inPass { margin:0 0 4px; }
   }
+/* LIGHT-THEME:BEGIN — сгенерировано tools/make_light_theme.py, руками не править */
+html[data-theme="light"] { --bg:#fbf8f6; --panel:#ffffff; --line:#e3a7a7; --text:#2a1a1a; --muted:#7a6262; --accent:#c0182f; --ok:#2e7d32; }
+html[data-theme="light"] button.main, html[data-theme="light"] label.btn { color:#f7f5f5; }
+html[data-theme="light"] .chip.on { color:#f7f5f5; }
+html[data-theme="light"] .tab.on { color:#f7f5f5; }
+html[data-theme="light"] #camArea, html[data-theme="light"] #resArea { background:#ffffff; }
+html[data-theme="light"] .stage { background:#ffffff; }
+html[data-theme="light"] { --gold-dim:rgba(192,24,47,.14); }
+html[data-theme="light"] button.main, html[data-theme="light"] label.btn { box-shadow:0 0 14px rgba(182,22,44,.28); }
+html[data-theme="light"] #progressBar { background:rgba(29,23,24,.2); }
+html[data-theme="light"] .chip.on { color:#f7f5f5; }
+html[data-theme="light"] .been.on { color:#f7f5f5; }
+html[data-theme="light"] #cam .controls, html[data-theme="light"] #result .controls { background:linear-gradient(to top, #ffffff 0%, rgba(247,245,245,.96) 100%); }
+html[data-theme="light"] #cmpLine::after { color:#f7f5f5; }
+html[data-theme="light"] { --paper:#e6334b; --paper2:#d51a33; --ink:#f7f5f5; --brass1:#d51a33; --brass2:#b6162c; --brass3:#6e4c17; }
+html[data-theme="light"], html[data-theme="light"] body { background:#f7f5f5; }
+html[data-theme="light"] #list { background:
+      radial-gradient(ellipse at top, rgba(182,22,44,.08), transparent 60%),
+      linear-gradient(#f7f5f5,#f7f5f5); border:2px solid #b6162c; outline:1px solid #6e4c17; box-shadow:inset 0 0 0 9px #f7f5f5, inset 0 0 0 10px rgba(182,22,44,.55); }
+html[data-theme="light"] #list h1 { color:#1b1516; border-bottom:1px solid rgba(182,22,44,.6); }
+html[data-theme="light"] #list .sub { color:#e6334b; }
+html[data-theme="light"] #progressBar { background:#f7f5f5; border:1px solid #6e4c17; }
+html[data-theme="light"] .chip { box-shadow:0 2px 0 rgba(0,0,0,.35), inset 0 0 0 1px rgba(247,245,245,.25), inset 0 0 18px rgba(120,90,40,.25); }
+html[data-theme="light"] .chip::before, html[data-theme="light"] .chip::after { background:#f7f5f5; }
+html[data-theme="light"] .chip.on { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; box-shadow:0 2px 0 rgba(0,0,0,.4), inset 0 0 0 2px #f7f5f5, inset 0 0 0 4px #d51a33, inset 0 0 0 5px rgba(247,245,245,.6); }
+html[data-theme="light"] .tab { box-shadow:inset 0 0 0 1px rgba(247,245,245,.3), 0 2px 0 rgba(0,0,0,.35); }
+html[data-theme="light"] .tab.on { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; box-shadow:inset 0 0 0 2px #f7f5f5, 0 2px 0 rgba(0,0,0,.4); }
+html[data-theme="light"] .groupTitle { background:linear-gradient(90deg,transparent,rgba(182,22,44,.7),transparent) top/100% 1px no-repeat; }
+html[data-theme="light"] .groupTitle::before { background:#f7f5f5; }
+html[data-theme="light"] .card .imgbox { background:#e6334b; }
+html[data-theme="light"] .card .imgbox::before, html[data-theme="light"] .card .imgbox::after, html[data-theme="light"] .card .imgbox .c1, html[data-theme="light"] .card .imgbox .c2 { background:#f7f5f5; }
+html[data-theme="light"] .card .meta { color:#d51a33; }
+html[data-theme="light"] .been { box-shadow:inset 0 0 0 1px rgba(247,245,245,.3), 0 2px 0 rgba(0,0,0,.35); }
+html[data-theme="light"] .been.on { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; box-shadow:inset 0 0 0 2px #f7f5f5, 0 2px 0 rgba(0,0,0,.4); }
+html[data-theme="light"] .shot .pair { background:#e6334b; }
+html[data-theme="light"] #cam .bar .title, html[data-theme="light"] #result .bar .title { box-shadow:0 3px 8px rgba(0,0,0,.5), inset 0 0 20px rgba(120,90,40,.25); }
+html[data-theme="light"] #cam .bar .title::before, html[data-theme="light"] #result .bar .title::before { background:rgba(230,51,75,.75); }
+html[data-theme="light"] #camBack, html[data-theme="light"] #resBack { color:#f7f5f5; }
+html[data-theme="light"] #cam.screen, html[data-theme="light"] #result.screen { background:radial-gradient(ellipse at center, #f7f5f5 0%, #f7f5f5 75%); }
+html[data-theme="light"] #camStage, html[data-theme="light"] #resStage { background:linear-gradient(#ffffff,#ffffff) padding-box, linear-gradient(135deg,var(--brass1),var(--brass2) 40%,var(--brass3) 60%,var(--brass1)) border-box; box-shadow:0 0 0 2px #f7f5f5, 0 10px 30px rgba(0,0,0,.7), inset 0 0 30px rgba(0,0,0,.6); }
+html[data-theme="light"] .controls .hint { color:#e6334b; }
+html[data-theme="light"] .controls input[type=range]::-webkit-slider-runnable-track { background:linear-gradient(#f7f5f5,#f7f5f5 50%,#f7f5f5); }
+html[data-theme="light"] .controls input[type=range]::-webkit-slider-thumb { background:linear-gradient(90deg,#727272,#161616 45%,#656565); border:2px solid #b4b4b4; }
+html[data-theme="light"] .controls input[type=range]::-moz-range-track { background:#f7f5f5; }
+html[data-theme="light"] .controls input[type=range]::-moz-range-thumb { background:linear-gradient(90deg,#727272,#161616,#656565); border:2px solid #b4b4b4; }
+html[data-theme="light"] #shoot { color:#f7f5f5; background:radial-gradient(ellipse at 40% 30%, #d51a33 0%, #b6162c 45%, #b6162c 100%); box-shadow:0 0 0 3px #7a5414, 0 0 0 6px #d51a33, 0 0 0 8px #d0c2c4, 0 10px 24px rgba(0,0,0,.6), inset 0 -6px 12px rgba(202,187,189,.45), inset 0 4px 10px rgba(0,0,0,.35); text-shadow:0 1px 0 rgba(230,51,75,.6); }
+html[data-theme="light"] #save { background:radial-gradient(ellipse at 40% 30%, #d51a33, #b6162c); color:#f7f5f5; box-shadow:0 0 0 2px #7a5414, 0 4px 10px rgba(0,0,0,.5); }
+html[data-theme="light"] #toList { color:#e6334b; }
+html[data-theme="light"] #editDlg { background:#f7f5f5; }
+html[data-theme="light"] .quest { box-shadow:0 4px 12px rgba(0,0,0,.5), inset 0 0 24px rgba(120,90,40,.25); }
+html[data-theme="light"] .quest .qbar { background:rgba(247,245,245,.18); }
+html[data-theme="light"] .quest .stamp { border:3px solid #8b1d14; color:#8b1d14; }
+html[data-theme="light"] .qhead p { color:#e6334b; }
+html[data-theme="light"] .qstep { background:rgba(230,51,75,.06); border:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] .qstep img { border:4px solid #e6334b; }
+html[data-theme="light"] .qstep .qtask { color:#e6334b; }
+html[data-theme="light"] .qstep .qk.pose { background:#d51a33; }
+html[data-theme="light"] .qstep .qk.vehicle { background:#255073; }
+html[data-theme="light"] .qstep .row2 button.go { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] .qstep.done { border-color:var(--good, #4caf7a); }
+html[data-theme="light"] .qstep .ok { color:#319350; }
+html[data-theme="light"] #questTask { color:#d51a33; }
+@media (orientation: landscape) and (max-height: 600px) {
+html[data-theme="light"] #shoot { box-shadow:0 0 0 2px #7a5414, 0 0 0 4px #d51a33, 0 6px 14px rgba(0,0,0,.6), inset 0 -4px 8px rgba(202,187,189,.45); }
+}
+html[data-theme="light"] #handDlg { background:#f7f5f5; }
+html[data-theme="light"] .handBox p { color:#e6334b; }
+html[data-theme="light"] .handBtns button.main { background:radial-gradient(ellipse at 40% 30%, #d51a33, #b6162c); color:#f7f5f5; }
+@media (orientation: landscape) and (max-height: 600px) {
+html[data-theme="light"] #cam #zoomRow { background:rgba(247,245,245,.72); }
+}
+html[data-theme="light"] #resStage.inset #cmpOld { box-shadow:0 0 0 16px #e6334b, 0 0 0 17px rgba(0,0,0,.25), 12px 22px 40px 14px rgba(0,0,0,.6); }
+html[data-theme="light"] #cmpTrack { background:linear-gradient(90deg, rgba(230,51,75,.9), rgba(230,51,75,.35)); }
+html[data-theme="light"] #cmpMode { color:#e6334b; }
+html[data-theme="light"] .flyAlbum { background:#ffffff center/cover no-repeat; box-shadow:0 0 0 5px #e6334b, 0 14px 40px rgba(0,0,0,.7); }
+html[data-theme="light"] .flyAlbum img { box-shadow:0 0 0 6px #e6334b; }
+html[data-theme="light"] #thanksDlg { background:#f7f5f5; }
+html[data-theme="light"] .thanksBox p { color:#e6334b; }
+html[data-theme="light"] #donateBtn { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] .safety { background:rgba(213,26,51,.12); border:1px solid rgba(213,26,51,.45); color:#e6334b; }
+html[data-theme="light"] .hist { box-shadow:inset 0 0 20px rgba(120,90,40,.25); }
+html[data-theme="light"] .hist h4 { color:#7a2e1c; }
+html[data-theme="light"] .hist .src { color:#b6162c; }
+html[data-theme="light"] .hist details summary { color:#5a4630; }
+html[data-theme="light"] .hist .archArt > summary { color:#7a2e1c; }
+html[data-theme="light"] #factsDlg { background:#f7f5f5; }
+html[data-theme="light"] #factsImg { border:6px solid #e6334b; }
+html[data-theme="light"] .fact { box-shadow:inset 0 0 20px rgba(120,90,40,.25); }
+html[data-theme="light"] .fact .by { color:#5a4630; }
+html[data-theme="light"] #factsFormBox summary { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] .fNote { color:#e6334b; }
+html[data-theme="light"] #modeBtn, html[data-theme="light"] #contourBtn { background:rgba(247,245,245,.78); color:#e6334b; box-shadow:0 0 0 1px rgba(213,26,51,.55); }
+html[data-theme="light"] #camStage.explorer #modeBtn { color:#d51a33; }
+html[data-theme="light"] #tipBox { background:rgba(247,245,245,.92); color:#e6334b; box-shadow:0 0 0 1px rgba(213,26,51,.6), 0 10px 30px rgba(0,0,0,.6); }
+html[data-theme="light"] #zoomBadge { background:rgba(247,245,245,.8); color:#d51a33; box-shadow:0 0 0 1px rgba(213,26,51,.55); }
+html[data-theme="light"] #resHint { color:#e6334b; }
+html[data-theme="light"] #steady { background:rgba(247,245,245,.85); color:#e6334b; box-shadow:0 0 0 1px rgba(213,26,51,.55); }
+html[data-theme="light"] #steady i { background:rgba(0,0,0,.18); }
+html[data-theme="light"] #steady b { background:#d51a33; }
+html[data-theme="light"] #surveyDlg { background:#f7f5f5; }
+html[data-theme="light"] .sNote { color:#e6334b; }
+html[data-theme="light"] .surveyBox .q { color:#e6334b; }
+html[data-theme="light"] .stars button { color:#5d4c33; }
+html[data-theme="light"] .stars button.on { color:#d51a33; text-shadow:0 0 8px rgba(213,26,51,.5); }
+html[data-theme="light"] #rotHint { color:#e6334b; }
+html[data-theme="light"] #rotHint b { color:#d51a33; }
+html[data-theme="light"] #langBar button { background:rgba(0,0,0,.06); color:#e6334b; border:1px solid rgba(213,26,51,.35); }
+html[data-theme="light"] #langBar button.on { background:#d51a33; color:#f7f5f5; border-color:#d51a33; }
+html[data-theme="light"] #resStage.swipe #cmpLine { background:#e6334b; }
+html[data-theme="light"] #cmpKind button { background:rgba(247,245,245,.9); border:1px solid rgba(182,22,44,.35); color:#e6334b; }
+html[data-theme="light"] #cmpKind button.on { background:#1b1516; color:#f7f5f5; border-color:#1b1516; }
+html[data-theme="light"] .pCover { color:#1b1516; background:radial-gradient(circle at 50% 0%, rgba(213,26,51,.18), transparent 60%), linear-gradient(#f7f5f5,#f7f5f5); border:1px solid rgba(182,22,44,.45); box-shadow:inset 0 0 0 6px rgba(247,245,245,.6), inset 0 0 0 7px rgba(182,22,44,.35), 0 10px 26px rgba(0,0,0,.4); }
+html[data-theme="light"] .pEmblem { border:2px dashed rgba(213,26,51,.7); }
+html[data-theme="light"] .pStats { border-top:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] .pStats b { color:#d51a33; }
+html[data-theme="light"] .badge { background:#f7f5f5; border:1px solid rgba(182,22,44,.15); }
+html[data-theme="light"] .badge .bIcon { background:#f7f5f5; }
+html[data-theme="light"] .badge.ok .bIcon { background:radial-gradient(circle,#d51a33,#b6162c); box-shadow:0 0 0 3px #f7f5f5, 0 0 0 4px #b6162c, 0 4px 12px rgba(182,22,44,.35); }
+html[data-theme="light"] .badge b { color:#e6334b; }
+html[data-theme="light"] .badge.ok small { color:#d51a33; }
+html[data-theme="light"] .bBar { background:rgba(29,23,24,.12); }
+html[data-theme="light"] .bBar i { background:#b6162c; }
+html[data-theme="light"] .stampCard { background:#e6334b; color:#f7f5f5; -webkit-mask:linear-gradient(#ffffff 0 0) content-box, radial-gradient(circle 3px, #0000 92%, #ffffff) -5px -5px / 10px 10px round; mask:linear-gradient(#ffffff 0 0) content-box, radial-gradient(circle 3px, #0000 92%, #ffffff) -5px -5px / 10px 10px round; }
+html[data-theme="light"] .sIn { background:#e6334b; }
+html[data-theme="light"] .sRing { border:2px solid rgba(160,40,30,.85); color:rgba(160,40,30,.9); background:rgba(230,51,75,.55); box-shadow:inset 0 0 0 2px rgba(230,51,75,.6), inset 0 0 0 3px rgba(160,40,30,.6); }
+html[data-theme="light"] .sDate { color:#7a2a1c; }
+html[data-theme="light"] .sCap { color:#000000; text-shadow:0 1px 3px #ffffff; }
+html[data-theme="light"] .oHead { background:#f7f5f5; border:1px solid rgba(182,22,44,.3); }
+html[data-theme="light"] .oTag { color:#4c8734; background:rgba(95,158,69,.18); }
+html[data-theme="light"] .oNum { background:#f7f5f5; }
+html[data-theme="light"] .oHead h2 { color:#1b1516; }
+html[data-theme="light"] .oStats { color:#e6334b; }
+html[data-theme="light"] .oActs button.main { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] .oActs button:not(.main) { background:#f7f5f5; color:#d51a33; border:1px solid rgba(182,22,44,.35); }
+html[data-theme="light"] .oH { color:#1b1516; }
+html[data-theme="light"] .oTime { border-left:2px solid rgba(182,22,44,.45); }
+html[data-theme="light"] .oTime li { color:#e6334b; }
+html[data-theme="light"] .oTime li::before { background:#b6162c; box-shadow:0 0 0 3px #f7f5f5; }
+html[data-theme="light"] .oTime li.plain::before { background:#c0afb1; }
+html[data-theme="light"] .oTime li b { color:#d51a33; }
+html[data-theme="light"] .oDecs button, html[data-theme="light"] #decBar button { background:#f7f5f5; color:#e6334b; border:1px solid rgba(182,22,44,.28); }
+html[data-theme="light"] .oDecs button.on { background:#1b1516; color:#f7f5f5; border-color:#1b1516; }
+html[data-theme="light"] .oEra { color:#d51a33; }
+html[data-theme="light"] .oPic { background:#f7f5f5; }
+html[data-theme="light"] .oPic span { color:#1b1516; }
+html[data-theme="light"] .oPic.been::after { background:#5f9e45; color:#000000; }
+html[data-theme="light"] .oNear button { background:#f7f5f5; color:#e6334b; border:1px solid rgba(182,22,44,.3); }
+html[data-theme="light"] #objLink { background:#f7f5f5; color:#d51a33; border:1px solid rgba(182,22,44,.35); }
+html[data-theme="light"] #cards .groupTitle .era { color:#d51a33; }
+html[data-theme="light"] #langBtn { background:rgba(247,245,245,.65); border:1px solid rgba(213,26,51,.35); color:#1d1718; }
+html[data-theme="light"] #langBtn b { color:#d51a33; }
+html[data-theme="light"] #langList { background:#f7f5f5; border:1px solid rgba(182,22,44,.45); }
+html[data-theme="light"] #langList button { color:#e6334b; }
+html[data-theme="light"] #langList button.on { background:rgba(213,26,51,.16); color:#d51a33; }
+html[data-theme="light"] #langList button.on small { color:#d51a33; }
+html[data-theme="light"] #offBox { background:#f7f5f5; border:1px solid rgba(182,22,44,.3); }
+html[data-theme="light"] #offBox h4 { color:#1b1516; }
+html[data-theme="light"] #offBox button:not(.main) { background:#f7f5f5; color:#e6334b; border:1px solid rgba(182,22,44,.3); }
+html[data-theme="light"] .offProg { background:rgba(29,23,24,.12); }
+html[data-theme="light"] .offProg i { background:#b6162c; }
+html[data-theme="light"] #offHome { background:#f7f5f5; color:#d51a33; border:1px dashed rgba(182,22,44,.5); }
+html[data-theme="light"] .oActs button.oOff { background:#f7f5f5; color:#e6334b; border:1px dashed rgba(182,22,44,.45); }
+html[data-theme="light"] .oActs button.oOff.done { color:#4c8734; border-color:rgba(95,158,69,.6); }
+html[data-theme="light"] #oldBtn { background:#f7f5f5; color:#d51a33; border:1px solid rgba(182,22,44,.45); }
+html[data-theme="light"] #oldBtn.on { background:#1b1516; color:#f7f5f5; border-color:#1b1516; }
+html[data-theme="light"] #oldBar label { color:#e6334b; }
+html[data-theme="light"] #oldBar input { accent-color:#b6162c; }
+html[data-theme="light"] #yearBubble { background:rgba(27,21,22,.96); color:#f7f5f5; }
+html[data-theme="light"] #yearBubble.drag { background:#d51a33; }
+html[data-theme="light"] #yearBubble small { color:#6b5434; }
+html[data-theme="light"] #supBtn { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] #list { background:#f7f5f5; }
+html[data-theme="light"] #hero::after { background:linear-gradient(180deg, rgba(247,245,245,.55) 0%, rgba(247,245,245,0) 30%, rgba(247,245,245,.25) 55%, #f7f5f5 100%); }
+html[data-theme="light"] #langBar button { background:rgba(247,245,245,.65); }
+html[data-theme="light"] #setOpen { background:rgba(247,245,245,.65); border:1px solid rgba(213,26,51,.35); color:#1d1718; }
+html[data-theme="light"] #list #heroText h1 { color:#1b1516; }
+html[data-theme="light"] #list #heroText .sub { color:#e6334b; }
+html[data-theme="light"] #progCard { background:linear-gradient(#f7f5f5,#f7f5f5); border:1px solid rgba(182,22,44,.28); }
+html[data-theme="light"] #ring .trk { stroke:rgba(29,23,24,.13); }
+html[data-theme="light"] #ringArc { stroke:#b6162c; }
+html[data-theme="light"] #ringN { color:#1b1516; }
+html[data-theme="light"] #contBtn { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] .tile { border:1px solid rgba(182,22,44,.25); background:linear-gradient(0deg, rgba(247,245,245,.92) 10%, rgba(247,245,245,.35) 70%), var(--img) center/cover; color:#1b1516; }
+html[data-theme="light"] .tile svg { color:#d51a33; }
+html[data-theme="light"] .tile em { color:#d51a33; }
+html[data-theme="light"] .secTitle { color:#1b1516; }
+html[data-theme="light"] .place { background:#f7f5f5; border:1px solid rgba(182,22,44,.18); }
+html[data-theme="light"] .place.all { border-color:#b6162c; box-shadow:0 0 0 1px rgba(182,22,44,.35); }
+html[data-theme="light"] .chev { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] #subBar { background:rgba(247,245,245,.96); border-bottom:1px solid rgba(182,22,44,.2); }
+html[data-theme="light"] #subBack { background:#f7f5f5; border:1px solid rgba(182,22,44,.35); color:#d51a33; }
+html[data-theme="light"] #subTitle { color:#1b1516; }
+html[data-theme="light"] #q { border:1px solid rgba(182,22,44,.3); }
+html[data-theme="light"] #q:focus { outline:2px solid #b6162c; }
+html[data-theme="light"] #seg { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] #seg button.on { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] #period { border:1px solid rgba(182,22,44,.25); background:#f7f5f5; }
+html[data-theme="light"] #storyOnly { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] #storyOnly.on { background:rgba(213,26,51,.18); color:#d51a33; border-color:#b6162c; }
+html[data-theme="light"] #list .chip { background:#f7f5f5; color:#e6334b; border:1px solid rgba(182,22,44,.28); }
+html[data-theme="light"] #list .chip.on { background:#1b1516; color:#f7f5f5; border-color:#1b1516; }
+html[data-theme="light"] #botNav { background:rgba(247,245,245,.97); border-top:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] #botNav .tab { color:#b6162c; }
+html[data-theme="light"] #botNav .tab.on { color:#d51a33; }
+html[data-theme="light"] #botNav .tab.on::after { background:#d51a33; }
+html[data-theme="light"] #map { background:#f7f5f5; }
+html[data-theme="light"] #locBtn { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] .lg.todo { background:#f7f5f5; border:2px solid #b6162c; }
+html[data-theme="light"] .lg.done { background:#5f9e45; border:2px solid #000000; }
+html[data-theme="light"] .lg.near { background:#d51a33; border:2px solid #000000; }
+html[data-theme="light"] .pin span { color:#1b1516; }
+html[data-theme="light"] .pin.todo span { background:#f7f5f5; border:3px solid #b6162c; }
+html[data-theme="light"] .pin.done span { background:#5f9e45; border:3px solid #000000; }
+html[data-theme="light"] .pin.near span { background:#d51a33; border:3px solid #000000; color:#f7f5f5; }
+html[data-theme="light"] #map .leaflet-popup-content-wrapper, html[data-theme="light"] #map .leaflet-popup-tip { background:#f7f5f5; color:#1d1718; box-shadow:0 0 0 1px rgba(182,22,44,.5), 0 8px 24px rgba(0,0,0,.6); }
+html[data-theme="light"] .leaflet-container a.leaflet-popup-close-button { color:#d51a33; }
+html[data-theme="light"] .mnear { color:#d51a33; }
+html[data-theme="light"] .macts button:not(.main) { background:#f7f5f5; color:#e6334b; }
+html[data-theme="light"] .macts button.on { background:#5f9e45; color:#000000; }
+html[data-theme="light"] .mhere small { color:#e6334b; }
+html[data-theme="light"] .mrow .mfix { color:#d51a33; }
+html[data-theme="light"] #tipBar { background:#f7f5f5; color:#1d1718; box-shadow:0 0 0 1px rgba(182,22,44,.5), 0 8px 24px rgba(0,0,0,.6); }
+html[data-theme="light"] #tipBar input { border:1px solid rgba(182,22,44,.35); background:#f7f5f5; color:#1b1516; }
+html[data-theme="light"] #tipBar .row button:not(.main) { background:#f7f5f5; color:#d51a33; border:1px solid rgba(182,22,44,.35); }
+html[data-theme="light"] .pin.tip span { background:#c0392b; border:3px solid #000000; color:#000000; }
+html[data-theme="light"] .modFact a { color:#d51a33; }
+html[data-theme="light"] #setDlg { background:#f7f5f5; }
+html[data-theme="light"] #nearCard { background:linear-gradient(#f7f5f5,#f7f5f5); border:1px solid rgba(182,22,44,.35); }
+html[data-theme="light"] .nLbl { color:#d51a33; }
+html[data-theme="light"] .nDist { color:#d51a33; }
+html[data-theme="light"] .nBody b { color:#1b1516; }
+html[data-theme="light"] .nGo { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] .nRoute { background:#f7f5f5; color:#d51a33; border:1px solid rgba(182,22,44,.35); }
+html[data-theme="light"] #questRow { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] #guideRow { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] #guideRow .gN { color:var(--muted, #d51a33); }
+html[data-theme="light"] #guideDlg { background:#f7f5f5; color:var(--text, #1d1718); }
+html[data-theme="light"] #guideDlg::backdrop { background:rgba(248,246,246,.9); }
+html[data-theme="light"] .gSmall { border:1px solid rgba(182,22,44,.35); }
+html[data-theme="light"] .gCard .gImg { background:#f7f5f5; }
+html[data-theme="light"] .gCard .gNum { color:var(--muted, #d51a33); }
+html[data-theme="light"] .gCard .gTts.on { background:#b6162c; color:#f7f5f5; }
+html[data-theme="light"] .gNav { border-top:1px solid rgba(182,22,44,.18); }
+html[data-theme="light"] #questRow svg { color:#d51a33; }
+html[data-theme="light"] .qrN { color:#d51a33; }
+html[data-theme="light"] .qrBar { background:rgba(29,23,24,.13); }
+html[data-theme="light"] .qrBar i, html[data-theme="light"] .pBar i { background:linear-gradient(90deg,#b6162c,#d51a33); }
+html[data-theme="light"] .pBar { background:rgba(29,23,24,.13); }
+html[data-theme="light"] .pBar i { background:#b6162c; }
+html[data-theme="light"] #progTxt b { color:#1b1516; }
+html[data-theme="light"] .ptile { border:1px solid rgba(182,22,44,.22); background:#f7f5f5; color:#1b1516; }
+html[data-theme="light"] .ptile.all { border-color:#b6162c; }
+html[data-theme="light"] .ptile::after { background:linear-gradient(0deg, rgba(247,245,245,.94) 12%, rgba(247,245,245,.2) 75%); }
+html[data-theme="light"] .ptile small { color:#e6334b; }
+html[data-theme="light"] #botNav .tab.shoot { color:#d51a33; }
+html[data-theme="light"] #botNav .tab.shoot .sBall { background:radial-gradient(ellipse at 40% 30%, #d51a33 0%, #b6162c 45%, #b6162c 100%); box-shadow:0 0 0 3px #f7f5f5, 0 0 0 5px #b6162c, 0 8px 18px rgba(0,0,0,.6); color:#f7f5f5; }
+html[data-theme="light"] .camNav { background:rgba(247,245,245,.72); border:1px solid rgba(213,26,51,.55); color:#d51a33; }
+html[data-theme="light"] #camPos { background:rgba(247,245,245,.72); color:#d51a33; }
+html[data-theme="light"] #inPass { color:#4c8734; }
+html[data-theme="light"] .oIllItem { color:#e6334b; }
+html[data-theme="light"] .oIllItem img { border:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] #illDlg::backdrop { background:rgba(248,246,246,.92); }
+html[data-theme="light"] #illCap { color:#1b1516; }
+html[data-theme="light"] #illClose { background:rgba(247,245,245,.8); color:#1d1718; border:1px solid rgba(213,26,51,.4); }
+html[data-theme="light"] #modDlg { background:#f7f5f5; }
+html[data-theme="light"] #modLogin label { color:#e6334b; }
+html[data-theme="light"] #modLogin input { border:1px solid rgba(182,22,44,.35); background:#f7f5f5; color:#1b1516; }
+html[data-theme="light"] .modTabs button { background:#f7f5f5; color:#d51a33; border:1px solid rgba(182,22,44,.3); }
+html[data-theme="light"] .modTabs button.on { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] #modStats td, html[data-theme="light"] #modStats th { border-bottom:1px solid rgba(182,22,44,.15); }
+html[data-theme="light"] #modStats th { color:#d51a33; }
+html[data-theme="light"] #modStats h4, html[data-theme="light"] #modPanel h4 { color:#1b1516; }
+html[data-theme="light"] .modKpi div { background:#f7f5f5; border:1px solid rgba(182,22,44,.2); }
+html[data-theme="light"] .modKpi b { color:#d51a33; }
+html[data-theme="light"] .modFact { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] .modFact .ok { background:#5f9e45; color:#000000; }
+html[data-theme="light"] .modFact .no { background:#f7f5f5; color:#d51a33; border:1px solid rgba(182,22,44,.35); }
+html[data-theme="light"] #modOut, html[data-theme="light"] #modOpen { background:#f7f5f5; color:#d51a33; border:1px solid rgba(182,22,44,.35); }
+html[data-theme="light"] { color-scheme: light; }
+html[data-theme="light"] body::after { opacity:.025; }
+html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none; }
+/* LIGHT-THEME:END */
 </style>
 </head>
 <body>
@@ -1116,6 +1399,7 @@
     <p id="fbBox"><button type="button" id="fbOpen">💬 Оставить отзыв</button><br><small>Анонимно: без имён, телефонов и местоположения</small></p>
     <p id="supBox" hidden><a id="supBtn" target="_blank" rel="noopener">☕ Поддержать проект</a><br><small>Через Revolut: картой, Apple Pay или Google Pay</small></p>
     <p id="handSet"><button type="button" id="handChange"></button></p>
+    <p id="themeSet"><button type="button" id="themeBtn"></button></p>
     <div id="offBox">
       <h4>📥 Без интернета</h4>
       <p id="offInfo"></p>
@@ -1398,7 +1682,8 @@ let geo = read(GEO_KEY, {});
 const coordsOf = s => geo[s.id] || (s.lat != null ? { lat: s.lat, lng: s.lng } : null);
 
 const ALL = 'Все';
-const GROUPS = ['Райнис, 1920 (демо)', 'Михайловские ворота', 'Николаевские ворота', 'Константиновские ворота', 'Александровские ворота', 'Ворота (уточнить)', 'Инженерный арсенал', 'Собор', 'Редюиты и валы', 'Комендантский сад и парк', 'Мосты и дороги', 'Улицы и здания', 'Солдаты и люди', 'Виды сверху', 'Другое'];
+// Порядок вкладок — как идёт аудиогид (20.11.2026)
+const GROUPS = ['Райнис, 1920 (демо)', 'Михайловские ворота', 'Собор', 'Артиллерийский арсенал', 'Водоподъёмное здание', 'Николаевские ворота', 'Провиантский магазин', 'Комендантский дом', 'Комендантский сад и парк', 'Военный госпиталь', 'Инженерный арсенал', 'Александровские ворота', 'Константиновские ворота', 'Ворота (уточнить)', 'Редюиты и валы', 'Мосты и дороги', 'Улицы и здания', 'Солдаты и люди', 'Виды сверху', 'Другое'];
 const groupOf = s => s.group || 'Другое';
 let activeGroup = ALL;
 
@@ -1700,7 +1985,7 @@ async function updateLibCount() {
 }
 /* ===== Паспорт исследователя: печати за посещённые места и значки. Всё считается в телефоне, без регистрации. ===== */
 const BADGE_ICON = { 'Михайловские ворота': '🏰', 'Николаевские ворота': '🦅', 'Константиновские ворота': '🏛', 'Александровские ворота': '👑',
-  'Инженерный арсенал': '⚙️', 'Собор': '⛪', 'Редюиты и валы': '🛡', 'Комендантский сад и парк': '🌳', 'Мосты и дороги': '🌉',
+  'Инженерный арсенал': '⚙️', 'Артиллерийский арсенал': '💣', 'Водоподъёмное здание': '💧', 'Провиантский магазин': '🌾', 'Комендантский дом': '🏠', 'Военный госпиталь': '⚕️', 'Собор': '⛪', 'Редюиты и валы': '🛡', 'Комендантский сад и парк': '🌳', 'Мосты и дороги': '🌉',
   'Улицы и здания': '🏘', 'Солдаты и люди': '🎖', 'Виды сверху': '🛩' };
 const GATES = ['Михайловские ворота', 'Николаевские ворота', 'Константиновские ворота', 'Александровские ворота'];
 function passportBadges(shots) {
@@ -1877,6 +2162,15 @@ for (const b of document.querySelectorAll('#botNav .tab[data-view]')) b.onclick 
 };
 $('subBack').onclick = () => navBack();
 
+/* Тема оформления: тёмная (чёрно-золотая, по умолчанию) или светлая (бело-красная). Цвета светлой — tools/make_light_theme.py */
+const THEME_KEY = 'krepost.theme';
+function applyTheme(t) {
+  if (t === 'light') document.documentElement.dataset.theme = 'light'; else delete document.documentElement.dataset.theme;
+  const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = t === 'light' ? '#fbf8f6' : '#17130f';
+  const b = $('themeBtn'); if (b) b.textContent = T(t === 'light' ? '🎨 Тема: светлая (бело-красная)' : '🎨 Тема: тёмная (чёрно-золотая)');
+}
+applyTheme(read(THEME_KEY, 'dark'));
+$('themeBtn').onclick = () => { const t = read(THEME_KEY, 'dark') === 'light' ? 'dark' : 'light'; write(THEME_KEY, t); applyTheme(t); };
 /* Настройки (шестерёнка): отзыв, рука, о приложении */
 $('setOpen').onclick = () => { navPush(); $('setDlg').showModal(); paintOffInfo(); };
 $('setClose').onclick = () => navBack();
@@ -2133,7 +2427,8 @@ function guideCard(g, k) {
   const c = document.createElement('section'); c.className = 'gCard';
   const sp = g.spot && allSpots().find(x => x.id === g.spot);
   const im = document.createElement('img'); im.className = 'gImg'; im.alt = ''; im.loading = 'lazy';
-  im.src = sp ? (sp.thumb || sp.src) : 'photos/hero.jpg';
+  im.src = g.img || (sp ? (sp.thumb || sp.src) : 'photos/hero.jpg');
+  if (g.imgPos) im.style.objectPosition = g.imgPos;
   const num = document.createElement('div'); num.className = 'gNum';
   num.textContent = g.n >= 1 && g.n <= GD.stops.length ? Tf('Точка {n} из {m}', { n: g.n, m: GD.stops.length }) : '🎧';
   const h = document.createElement('h4'); h.textContent = T(g.title);

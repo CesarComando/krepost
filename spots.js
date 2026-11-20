@@ -773,7 +773,7 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489076621_733572999339244_951714427475629755_n.jpg",
-  "group": "Улицы и здания"
+  "group": "Собор"
  },
  {
   "id": "s084",
@@ -1001,7 +1001,7 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "489912215_737636828932861_8561603842077780156_n.jpg",
-  "group": "Солдаты и люди",
+  "group": "Водоподъёмное здание",
   "lat": 55.88353,
   "lng": 26.49689
  },
@@ -1371,7 +1371,7 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490297810_743543685008842_2268272422598792620_n.jpg",
-  "group": "Улицы и здания",
+  "group": "Военный госпиталь",
   "lat": 55.8868,
   "lng": 26.4964
  },
@@ -1696,7 +1696,7 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "490751353_740077068688837_6915384358313109053_n.jpg",
-  "group": "Улицы и здания",
+  "group": "Инженерный арсенал",
   "lat": 55.885434,
   "lng": 26.498066
  },
@@ -1988,7 +1988,7 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "6415fa2702f4b.jpg",
-  "group": "Улицы и здания"
+  "group": "Собор"
  },
  {
   "id": "s204",
@@ -2268,7 +2268,7 @@ window.SPOTS_DATA = [
   "credit": "Источник и автор не установлены",
   "source": "",
   "original": "876029917_1219410207422185_248696698892537931_n.jpg",
-  "group": "Комендантский сад и парк",
+  "group": "Комендантский дом",
   "lat": 55.887142,
   "lng": 26.494659
  },
@@ -2710,20 +2710,7 @@ window.SPOTS_DATA = [
   "lat": 55.882931,
   "lng": 26.495246
  },
- {
-  "id": "s275",
-  "src": "photos/spot275.jpg",
-  "title": "Въезд в цитадель: мост и столбы ворот, 1915–1918",
-  "year": "ок. 1915-1918",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=110174821665441",
-  "original": "ок-1915-1918__fb_110174821665441.jpg",
-  "thumb": "photos/thumbs/spot275.jpg",
-  "group": "Михайловские ворота",
-  "hidden": true
- },
- {
+  {
   "id": "s276",
   "src": "photos/spot276.jpg",
   "title": "Кордегардия Николаевских ворот",
@@ -2803,19 +2790,7 @@ window.SPOTS_DATA = [
   "lat": 55.882924,
   "lng": 26.496636
  },
- {
-  "id": "s282",
-  "src": "photos/spot282.jpg",
-  "title": "Кордегардия у деревянного моста, повозка",
-  "year": "1900-1930",
-  "hint": "",
-  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
-  "source": "https://www.facebook.com/photo/?fbid=244079864955229",
-  "original": "год-__fb_244079864955229.jpg",
-  "thumb": "photos/thumbs/spot282.jpg",
-  "group": "Александровские ворота"
- },
- {
+  {
   "id": "s284",
   "src": "photos/spot284.jpg",
   "title": "Крепостной собор, рисунок 1898 года",
@@ -2917,31 +2892,7 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot291.jpg",
   "group": "Собор"
  },
- {
-  "id": "s292",
-  "src": "photos/spot292.jpg",
-  "title": "Собор снизу: башня и боковой фасад",
-  "year": "1920-1940",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "1920-1940__5e3r7mtpnqi0-large.png",
-  "thumb": "photos/thumbs/spot292.jpg",
-  "group": "Собор"
- },
- {
-  "id": "s570",
-  "src": "photos/spot570.jpg",
-  "title": "Собор снизу: угол главного фасада",
-  "year": "1920-1940",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "1920-1940__5e3r7mtpnqi0-large.png",
-  "thumb": "photos/thumbs/spot570.jpg",
-  "group": "Собор"
- },
- {
+   {
   "id": "s293",
   "src": "photos/spot293.jpg",
   "title": "Колокольня собора при луне",
@@ -3624,7 +3575,7 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=255003397196209",
   "original": "1920-1940__fb_255003397196209.jpg",
   "thumb": "photos/thumbs/spot347.jpg",
-  "group": "Инженерный арсенал"
+  "group": "Инженерный арсенал",
  },
  {
   "id": "s348",
@@ -3648,7 +3599,7 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1930-1940__Снимок экрана 2026-11-11 124023.png",
   "thumb": "photos/thumbs/spot349.jpg",
-  "group": "Улицы и здания"
+  "group": "Артиллерийский арсенал"
  },
  {
   "id": "s351",
@@ -3660,7 +3611,7 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1960-1985__491662141_740077158688828_1582703102582581942_n.jpg",
   "thumb": "photos/thumbs/spot351.jpg",
-  "group": "Улицы и здания"
+  "group": "Артиллерийский арсенал"
  },
  {
   "id": "s352",
@@ -3672,7 +3623,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1251703",
   "original": "1970-1985__pastvu_1251703.jpg",
   "thumb": "photos/thumbs/spot352.jpg",
-  "group": "Улицы и здания",
+  "group": "Артиллерийский арсенал",
   "lat": 55.883671,
   "lng": 26.496989
  },
@@ -3710,7 +3661,7 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=446880131341867",
   "original": "1920-1940__fb_446880131341867.jpg",
   "thumb": "photos/thumbs/spot355.jpg",
-  "group": "Улицы и здания",
+  "group": "Военный госпиталь",
   "hidden": true
  },
  {
@@ -3749,7 +3700,7 @@ window.SPOTS_DATA = [
   "source": "",
   "original": "1930-1940__Снимок экрана 2026-11-11 124342.png",
   "thumb": "photos/thumbs/spot358.jpg",
-  "group": "Улицы и здания"
+  "group": "Военный госпиталь"
  },
  {
   "id": "s359",
@@ -3761,7 +3712,7 @@ window.SPOTS_DATA = [
   "source": "https://www.facebook.com/photo/?fbid=110420871640836",
   "original": "1930__fb_110420871640836.jpg",
   "thumb": "photos/thumbs/spot359.jpg",
-  "group": "Улицы и здания"
+  "group": "Военный госпиталь"
  },
  {
   "id": "s360",
@@ -3842,7 +3793,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244583",
   "original": "1975-1985__pastvu_1244583.jpg",
   "thumb": "photos/thumbs/spot373.jpg",
-  "group": "Улицы и здания",
+  "group": "Артиллерийский арсенал",
   "lat": 55.884075,
   "lng": 26.49621
  },
@@ -3856,7 +3807,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244661",
   "original": "1975-1985__pastvu_1244661.jpg",
   "thumb": "photos/thumbs/spot374.jpg",
-  "group": "Улицы и здания",
+  "group": "Военный госпиталь",
   "lat": 55.88675,
   "lng": 26.495461
  },
@@ -3898,7 +3849,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244401",
   "original": "1976-1980__pastvu_1244401.jpg",
   "thumb": "photos/thumbs/spot382.jpg",
-  "group": "Улицы и здания",
+  "group": "Артиллерийский арсенал",
   "lat": 55.884025,
   "lng": 26.49914
  },
@@ -3969,7 +3920,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242249",
   "original": "1980-1990__pastvu_1242249.jpg",
   "thumb": "photos/thumbs/spot398.jpg",
-  "group": "Улицы и здания",
+  "group": "Комендантский дом",
   "lat": 55.885487,
   "lng": 26.492822,
   "arch": true
@@ -4136,7 +4087,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242254",
   "original": "1970-1979__pastvu_1242254.jpg",
   "thumb": "photos/thumbs/spot416.jpg",
-  "group": "Улицы и здания",
+  "group": "Комендантский дом",
   "lat": 55.885697,
   "lng": 26.493498,
   "hidden": true
@@ -4151,7 +4102,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242257",
   "original": "1971-1974__pastvu_1242257.jpg",
   "thumb": "photos/thumbs/spot417.jpg",
-  "group": "Улицы и здания",
+  "group": "Комендантский дом",
   "lat": 55.885403,
   "lng": 26.494195,
   "hidden": true
@@ -4166,7 +4117,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242259",
   "original": "1971-1974__pastvu_1242259.jpg",
   "thumb": "photos/thumbs/spot418.jpg",
-  "group": "Улицы и здания",
+  "group": "Комендантский дом",
   "lat": 55.885306,
   "lng": 26.494581
  },
@@ -4180,7 +4131,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242252",
   "original": "1975-1985__pastvu_1242252.jpg",
   "thumb": "photos/thumbs/spot419.jpg",
-  "group": "Улицы и здания",
+  "group": "Артиллерийский арсенал",
   "lat": 55.883688,
   "lng": 26.49906
  },
@@ -4208,7 +4159,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1242258",
   "original": "1976-1981__pastvu_1242258.jpg",
   "thumb": "photos/thumbs/spot421.jpg",
-  "group": "Улицы и здания",
+  "group": "Комендантский дом",
   "lat": 55.885848,
   "lng": 26.494785
  },
@@ -4222,7 +4173,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244148",
   "original": "1980-1985__pastvu_1244148.jpg",
   "thumb": "photos/thumbs/spot422.jpg",
-  "group": "Улицы и здания",
+  "group": "Комендантский дом",
   "lat": 55.885123,
   "lng": 26.494264,
   "arch": true
@@ -4237,7 +4188,7 @@ window.SPOTS_DATA = [
   "source": "https://pastvu.com/p/1244529",
   "original": "1980-1985__pastvu_1244529.jpg",
   "thumb": "photos/thumbs/spot423.jpg",
-  "group": "Улицы и здания",
+  "group": "Комендантский дом",
   "lat": 55.885997,
   "lng": 26.493145
  },
@@ -4278,19 +4229,7 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot426.jpg",
   "group": "Комендантский сад и парк"
  },
- {
-  "id": "s571",
-  "src": "photos/spot571.jpg",
-  "title": "Памятник в Комендантском саду за оградой, вид издали",
-  "year": "1920-1930",
-  "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
-  "original": "1920-1930__6aa8edee0527e.jpg",
-  "thumb": "photos/thumbs/spot571.jpg",
-  "group": "Комендантский сад и парк"
- },
- {
+  {
   "id": "s427",
   "src": "photos/spot427.jpg",
   "title": "Дорожка в парке, беседка, фонари",
@@ -6009,20 +5948,7 @@ window.SPOTS_DATA = [
   "group": "Виды сверху",
   "arch": true
  },
- {
-  "id": "s558",
-  "src": "photos/spot558.jpg",
-  "title": "Казармы сверху, «Kopskats»",
-  "year": "1930-е",
-  "hint": "",
-  "credit": "Источник: Zudusī Latvija",
-  "source": "https://zudusilatvija.lv/objects/object/6890/",
-  "original": "193X__zudusilatvija_6890_1.jpg",
-  "thumb": "photos/thumbs/spot558.jpg",
-  "group": "Виды сверху",
-  "arch": true
- },
- {
+  {
   "id": "s559",
   "src": "photos/spot559.jpg",
   "title": "Крепость с самолёта, 1940",
@@ -6148,19 +6074,7 @@ window.SPOTS_DATA = [
   "thumb": "photos/thumbs/spot578.jpg",
   "group": "Собор"
  },
- {
-  "id": "s579",
-  "src": "photos/spot579.jpg",
-  "title": "Собор и здание иезуитского коллегиума",
-  "year": "до 1944",
-  "hint": "",
-  "credit": "Источник: группа «Мой город Даугавпилс», публикация П. Лесовса",
-  "source": "https://www.facebook.com/groups/1056472761595804/",
-  "original": "lesovs_fb_8_2.jpg",
-  "thumb": "photos/thumbs/spot579.jpg",
-  "group": "Собор"
- },
- {
+  {
   "id": "s580",
   "src": "photos/spot580.jpg",
   "title": "Вид с башни собора на валы и редюит",
