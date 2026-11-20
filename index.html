@@ -2090,7 +2090,8 @@ function guideOrder(start) {
 function guideAudioOf(g) {
   const L = (window.LANG || 'ru').slice(0, 2), a = g.audio || {};
   if (a[L]) return { src: a[L], lang: L };
-  if (a.ru) return { src: a.ru, lang: 'ru' };
+  // Русскую запись не подставляем в другие языки; латышскому пока можно английскую
+  if (L === 'lv' && a.en) return { src: a.en, lang: 'en' };
   return null;
 }
 // Текст рассказа на языке приложения (guide.js: texts.lv / texts.en), иначе — русский
@@ -2144,7 +2145,7 @@ function guideCard(g, k) {
     const a = document.createElement('audio'); a.controls = true; a.preload = 'none'; a.src = au.src;
     a.addEventListener('play', () => { ttsStop(); track('feature', 'audio_' + g.n + '_' + au.lang); for (const o of $('guidePager').querySelectorAll('audio')) if (o !== a) o.pause(); guideMedia(a, g, sp); });
     c.append(a);
-    if (au.lang !== L) { const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T('(на русском)'); c.append(w); }
+    if (au.lang !== L) { const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T(au.lang === 'en' ? '(на английском)' : '(на русском)'); c.append(w); }
     if (g.audioOld === true || (g.audioOld && g.audioOld[au.lang])) { const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T('Озвучена прежняя, короткая версия текста.'); c.append(w); }
   }
   if (!ownRec) {
