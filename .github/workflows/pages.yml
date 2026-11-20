@@ -23,7 +23,9 @@ jobs:
       - name: Собрать сайт (только нужные файлы)
         run: |
           mkdir _site
-          cp -r index.html spots.js quests.js history.js i18n.js i18n-*.js sw.js manifest.webmanifest icons photos vendor _site/
+          # ВАЖНО: на сайт попадает только то, что перечислено здесь. Новый файл или папку приложения — дописать в список,
+          # иначе на сайте его не будет (так 19.11 пропал аудиогид: guide.js и audio/ не были в списке).
+          cp -r index.html spots.js quests.js history.js guide.js i18n.js i18n-*.js sw.js manifest.webmanifest icons photos audio vendor _site/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
