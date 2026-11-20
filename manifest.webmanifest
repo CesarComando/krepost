@@ -1,4 +1,5 @@
 {
+  "id": "./",
   "name": "Dinaburga 1810",
   "short_name": "Dinaburga 1810",
   "description": "Daugavpils cietoksnis toreiz un tagad · Daugavpils Fortress then and now · Даугавпилсская крепость тогда и сейчас",
@@ -26,5 +27,10 @@
       "type": "image/png",
       "purpose": "maskable"
     }
+  ],
+  "categories": [
+    "travel",
+    "education",
+    "navigation"
   ]
 }
