@@ -33,6 +33,10 @@
 <style>
   :root { --bg:#17130f; --panel:#262019; --line:#40362a; --text:#f2e8d8; --muted:#b5a68f; --accent:#d9a441; --ok:#8fbf6a; }
   * { box-sizing:border-box; }
+  /* 21.11.2026: случайный свайп вниз не перезагружает страницу (в Chrome на Android) */
+  html,body { overscroll-behavior-y:none; }
+  input[type=range] { touch-action:none; } /* тянешь ползунок вниз — двигается ползунок, а не «обновить страницу» */
+  #cam { overscroll-behavior:none; }
   html,body { margin:0; height:100%; background:var(--bg); color:var(--text); font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
   button,label.btn { font:inherit; cursor:pointer; border:0; border-radius:10px; padding:12px 16px; background:var(--panel); color:var(--text); display:inline-block; text-align:center; }
   button.main,label.btn { background:var(--accent); color:#1d1608; font-weight:600; }
@@ -2010,6 +2014,7 @@ function stepBack() {
   if ($('dlAskDlg').open) { $('dlAskDlg').close(); dlAskNext = null; return; }
   if ($('illDlg').open) { $('illDlg').close(); $('illImg').removeAttribute('src'); return; }
   if ($('guideDlg').open) { closeGuide(); return; }
+  try { sessionStorage.removeItem(RESUME_KEY); } catch (e) {}
   if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); softRefresh(); return; }
   if (!$('result').hidden) { const go = flyToAlbum(); setInset(false); current = null; show('list'); softRefresh(); requestAnimationFrame(go); return; }
   if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
@@ -2255,6 +2260,17 @@ $('setDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
 
 /* ===== Главная: прогресс, «Продолжить», места крепости ===== */
 const LAST_KEY = 'krepost.last';
+/* Если страницу случайно обновили, пока человек снимал, — вернуть его к тому же снимку, а не на главную */
+const RESUME_KEY = 'krepost.resume';
+function resumeAfterReload() {
+  let r = null; try { r = JSON.parse(sessionStorage.getItem(RESUME_KEY)); sessionStorage.removeItem(RESUME_KEY); } catch (e) {}
+  const nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+  if (!r || !nav || nav.type !== 'reload' || Date.now() - r.t > 30 * 60 * 1000) return;
+  const sp = allSpots().find(x => x.id === r.id);
+  if (!sp || document.querySelector('dialog[open]')) return;
+  try { history.replaceState(null, ''); } catch (e) {} // после перезагрузки счёт шагов «Назад» начинается заново
+  openSpot(sp);
+}
 const yearOfSpot = s => { const m = String(s.year || '').match(/\d{4}/); return m ? +m[0] : 9999; };
 const byYear = list => list.map((s, i) => [s, i]).sort((a, b) => yearOfSpot(a[0]) - yearOfSpot(b[0]) || a[1] - b[1]).map(x => x[0]);
 function nextSpot() {
@@ -4126,6 +4142,7 @@ async function openSpot(spot, ctx) {
   }
   current = spot;
   write(LAST_KEY, spot.id);
+  try { sessionStorage.setItem(RESUME_KEY, JSON.stringify({ id: spot.id, t: Date.now() })); } catch (e) {}
   questCtx = ctx && ctx.quest ? ctx : null;
   $('questTask').textContent = questCtx ? `🎯 ${questCtx.step.task}` : '';
   const img = $('oldImg');
@@ -4787,6 +4804,7 @@ updateShotStats();
   const sp = visibleSpots().find(s => s.id === id); // скрытые снимки по ссылке не открываются
   if (sp) openSpot(sp);
 })();
+if (!new URLSearchParams(location.search).get('spot')) setTimeout(resumeAfterReload, 300);
 </script>
 </body>
 </html>
