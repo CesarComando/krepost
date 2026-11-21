@@ -1627,7 +1627,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
   <div class="thanksBox">
     <div class="thanksIcon">🎧</div>
     <h3>Вам нравится приложение?</h3>
-    <p id="dlAskText">Аудиогид бесплатный. Если он вам полезен — поддержите разработчика, хотя бы 1 €.</p>
+    <p id="dlAskText">Аудиогид бесплатный. Если он вам полезен, поддержите проект любой суммой — она пойдёт на развитие приложения и связанные расходы.</p>
     <a id="dlAskDonate" class="main" target="_blank" rel="noopener">☕ Поддержать разработчика</a>
     <small>Через Revolut: картой, Apple Pay или Google Pay</small>
     <button type="button" id="dlAskGo">⬇ Просто скачать</button>
@@ -2627,7 +2627,7 @@ function guideCard(g, k) {
   // В конце прогулки — мягкая просьба поддержать проект (гид остаётся бесплатным)
   if (g === GD.outro && typeof DONATE_URL === 'string' && DONATE_URL) {
     const box = document.createElement('div'); box.className = 'gDonate';
-    const p = document.createElement('p'); p.textContent = T('Понравилась прогулка? Поддержите проект — 1 €');
+    const p = document.createElement('p'); p.textContent = T('Понравилась прогулка? Поддержите проект — любой суммой');
     const a = document.createElement('a'); a.href = DONATE_URL; a.target = '_blank'; a.rel = 'noopener'; a.className = 'gDonateBtn';
     a.textContent = T('☕ Поддержать проект');
     a.onclick = () => { ttsStop(); track('feature', 'donate_guide'); };
@@ -2734,7 +2734,7 @@ function guideOfflineUrls() {
 let dlAskNext = null;
 function askDonateThen(kind, go) {
   if (typeof DONATE_URL !== 'string' || !DONATE_URL) { go(); return; }
-  $('dlAskText').textContent = kind === 'ebook' ? T('Книга бесплатная. Если она вам нравится — поддержите разработчика, хотя бы 1 €.') : kind === 'book' ? T('Аудиокнига бесплатная. Если она вам нравится — поддержите разработчика, хотя бы 1 €.') : T('Аудиогид бесплатный. Если он вам полезен — поддержите разработчика, хотя бы 1 €.');
+  $('dlAskText').textContent = kind === 'ebook' ? T('Книга бесплатная. Если она вам нравится, поддержите проект любой суммой — она пойдёт на развитие приложения и связанные расходы.') : kind === 'book' ? T('Аудиокнига бесплатная. Если она вам нравится, поддержите проект любой суммой — она пойдёт на развитие приложения и связанные расходы.') : T('Аудиогид бесплатный. Если он вам полезен, поддержите проект любой суммой — она пойдёт на развитие приложения и связанные расходы.');
   $('dlAskDonate').href = DONATE_URL;
   dlAskNext = go; track('feature', 'dl_ask_' + kind);
   navPush(); $('dlAskDlg').showModal();
