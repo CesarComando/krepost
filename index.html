@@ -1368,6 +1368,10 @@ html[data-theme="light"] { color-scheme: light; }
 html[data-theme="light"] body::after { opacity:.025; }
 html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none; }
 /* LIGHT-THEME:END */
+/* 21.11.2026: светлая тема — заголовок на фото читается: светлая подложка снизу, белое свечение у букв (вне генератора) */
+html[data-theme="light"] #hero::after { background:linear-gradient(180deg, rgba(247,245,245,.35) 0%, rgba(247,245,245,0) 22%, rgba(247,245,245,.55) 48%, rgba(247,245,245,.92) 72%, #f7f5f5 100%); }
+html[data-theme="light"] #list #heroText h1 { color:#1b1516; text-shadow:0 0 2px #fff, 0 0 10px rgba(255,255,255,.95), 0 0 22px rgba(255,255,255,.85); }
+html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; text-shadow:0 0 2px #fff, 0 0 8px rgba(255,255,255,.95); }
 </style>
 </head>
 <body>
