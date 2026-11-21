@@ -463,6 +463,9 @@
   #shotStats { color:var(--accent); font-weight:600; }
   #adminBar { flex-wrap:wrap; }
   #adminBar p { flex-basis:100%; margin:0; font-size:13px; }
+  #safeDlg { width:min(440px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text); }
+  #safeDlg::backdrop { background:rgba(0,0,0,.8); }
+  #safeOk { width:100%; margin-top:14px; } #safeOk:disabled { opacity:.55; }
   .safety { margin:14px 0 0; padding:10px 12px; border-radius:8px; background:rgba(244,198,75,.12); border:1px solid rgba(244,198,75,.45); color:#f1e6cc; font-size:14px; line-height:1.45; text-align:left; }
   /* ===== О приложении ===== */
   .free { text-align:center; margin:-4px 0 12px; font-size:13px; color:var(--muted); }
@@ -1149,6 +1152,7 @@ html[data-theme="light"] .flyAlbum img { box-shadow:0 0 0 6px #e6334b; }
 html[data-theme="light"] #thanksDlg, html[data-theme="light"] #dlAskDlg { background:#f7f5f5; }
 html[data-theme="light"] .thanksBox p { color:#e6334b; }
 html[data-theme="light"] #donateBtn, html[data-theme="light"] #dlAskDonate { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] #safeDlg { background:#f7f5f5; }
 html[data-theme="light"] .safety { background:rgba(213,26,51,.12); border:1px solid rgba(213,26,51,.45); color:#e6334b; }
 html[data-theme="light"] .hist { box-shadow:inset 0 0 20px rgba(120,90,40,.25); }
 html[data-theme="light"] .hist h4 { color:#7a2e1c; }
@@ -1566,6 +1570,13 @@ html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none
   </div>
 </section>
 
+<dialog id="safeDlg">
+  <div class="handBox">
+    <h3>⚠ Безопасность прежде всего.</h3>
+    <p class="safety">⚠ Берегите себя. Некоторые старые снимки сделаны с точек, которых сегодня нет или куда опасно лезть: с валов, стен, крыш, у самой воды. Снимайте примерно с того же места, где безопасно, — не рискуйте ради кадра. Не мешайте дорожному движению и соблюдайте ПДД.<br>🏰 Берегите и крепость — это наследие всего человечества. Увидели мусор или покрышки — сообщите через 📜 у снимка или коменданту крепости.</p>
+    <button type="button" id="safeOk" class="main" disabled>Понятно</button>
+  </div>
+</dialog>
 <dialog id="handDlg">
   <div class="handBox">
     <h3>Какой рукой удобнее снимать?</h3>
@@ -4103,6 +4114,17 @@ function applyHand() {
   requestAnimationFrame(refit);
 }
 /* Один раз при первом открытии камеры спрашиваем, какой рукой удобнее */
+/* Первый запуск: обязательное предупреждение о безопасности — кнопка «Понятно» станет активной через 5 секунд. Один раз. */
+const SAFE_KEY = 'krepost.safetySeen';
+const safetyGate = new Promise(res => {
+  if (read(SAFE_KEY, false)) { res(); return; }
+  const d = $('safeDlg'), b = $('safeOk'), label = b.textContent;
+  let n = 5;
+  const tick = () => { b.textContent = n > 0 ? label + ' (' + n + ')' : label; b.disabled = n > 0; if (n-- > 0) setTimeout(tick, 1000); };
+  d.oncancel = e => { e.preventDefault(); };
+  b.onclick = () => { if (b.disabled) return; write(SAFE_KEY, true); track('feature', 'safety_ok'); d.close(); res(); };
+  setTimeout(() => { d.showModal(); tick(); }, 200);
+});
 function askHand() {
   return new Promise(res => {
     const d = $('handDlg');
@@ -4155,6 +4177,7 @@ function stopCam() {
 
 async function openSpot(spot, ctx) {
   track('photo', spot.id);
+  await safetyGate;
   if (read(HAND_KEY, null) === null) await askHand();
   if (!$('list').hidden) { // из списка в камеру — шаг вглубь (из «Переснять» и ‹ › — нет)
     navPush();
