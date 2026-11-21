@@ -3557,7 +3557,13 @@ if (ADMIN) {
   $('modBox').hidden = false;
   modPull(false).then(ch => { if (ch && !sessionStorage.getItem('krepost.modSync')) { sessionStorage.setItem('krepost.modSync', '1'); location.reload(); } }).catch(() => {});
 }
-if (new URLSearchParams(location.search).has('admin')) setTimeout(modShow, 400);
+// 21.11.2026: роль модератора пока убрана (единственный админ — Дайнис). Ссылка с ?admin больше не открывает вход по паролю —
+// просто открывается обычное приложение, а «?admin» убирается из адреса. Код входа оставлен выключенным, чтобы вернуть позже.
+const MOD_LOGIN_ON = false;
+if (new URLSearchParams(location.search).has('admin')) {
+  if (MOD_LOGIN_ON) setTimeout(modShow, 400);
+  else try { history.replaceState(history.state, '', location.pathname + location.hash); } catch (e) {}
+}
 setInterval(flushTrack, 20000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flushTrack(); });
 addEventListener('pagehide', flushTrack);
