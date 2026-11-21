@@ -2503,7 +2503,7 @@ function renderGuideRow() {
   $('guideRow').querySelector('.gN').textContent = Tf('Маршрут по кругу · {n} точек', { n: GD.stops.length });
 }
 /* Книга о крепости (PDF) на языке приложения: RU, LV, остальные — EN. Перед скачиванием — просьба поддержать (можно просто скачать). */
-const BOOK_PDF = { ru: 'books/Dinaburga1810_book_RU.pdf', lv: 'books/Dinaburga1810_gramata_LV.pdf', en: 'books/Dinaburga1810_book_EN.pdf', de: 'books/Dinaburga1810_Buch_DE.pdf', lt: 'books/Dinaburga1810_knyga_LT.pdf', pl: 'books/Dinaburga1810_ksiazka_PL.pdf', et: 'books/Dinaburga1810_raamat_ET.pdf', fr: 'books/Dinaburga1810_livre_FR.pdf', it: 'books/Dinaburga1810_libro_IT.pdf' };
+const BOOK_PDF = { ru: 'books/Dinaburga1810_book_RU.pdf', lv: 'books/Dinaburga1810_gramata_LV.pdf', en: 'books/Dinaburga1810_book_EN.pdf', de: 'books/Dinaburga1810_Buch_DE.pdf', lt: 'books/Dinaburga1810_knyga_LT.pdf', pl: 'books/Dinaburga1810_ksiazka_PL.pdf', et: 'books/Dinaburga1810_raamat_ET.pdf', fr: 'books/Dinaburga1810_livre_FR.pdf', it: 'books/Dinaburga1810_libro_IT.pdf', es: 'books/Dinaburga1810_libro_ES.pdf', zh: 'books/Dinaburga1810_book_ZH.pdf' };
 const bookLang = () => { const L = (window.LANG || 'ru').slice(0, 2); return BOOK_PDF[L] ? L : 'en'; };
 function renderBookRow() {
   $('bookRow').querySelector('.gT').textContent = T('Книга о крепости');
