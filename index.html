@@ -2872,12 +2872,16 @@ $('illDlg').addEventListener('keydown', e => { if (e.key === 'ArrowLeft') illSte
 const GAL_SKIP_GROUPS = ['Улицы и здания', 'Другое', 'Солдаты и люди'];
 const GAL_SKIP_TITLE = /солдат|курсант|танк|строй|присяг|военные у|офицеры/i;
 function guideGallery(g, mainId) {
-  if (!g.group || GAL_SKIP_GROUPS.includes(g.group)) return [];
+  // Снимки только для аудиогида (их нет в игре): guide.js → extra
+  const extra = (g.extra || []).map((e, i) => ({ id: 'gx' + g.n + '_' + i, src: e.src, thumb: e.thumb, year: e.year, title: T(e.title), credit: T(e.credit), guideOnly: true }));
+  if (!g.group || GAL_SKIP_GROUPS.includes(g.group)) return extra.length >= 2 ? extra : [];
   const seen = {};
   let l = byYear(allSpots().filter(s => groupOf(s) === g.group && !s.hidden && !hiddenIds.includes(s.id) && s.src && s.id !== mainId && !GAL_SKIP_TITLE.test(s.title || '')))
     .filter(s => { const k = (s.title || '').trim(); seen[k] = (seen[k] || 0) + 1; return seen[k] <= 2; });
   const MAX = 12;
   if (l.length > MAX) { const out = []; for (let i = 0; i < MAX; i++) out.push(l[Math.round(i * (l.length - 1) / (MAX - 1))]); l = [...new Set(out)]; }
+  const MAXALL = 14; if (l.length + extra.length > MAXALL) l = l.slice(0, Math.max(0, MAXALL - extra.length));
+  l = [...l, ...extra].sort((a, b) => (parseInt(a.year) || 9999) - (parseInt(b.year) || 9999));
   return l.length >= 2 ? l : [];
 }
 function renderObj() {

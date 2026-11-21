@@ -11,7 +11,7 @@ window.GUIDE_DATA = {
     { id: 'short', stops: [1,2,3,4,5] }
   ],
   intro: {
-    n: 0, title: 'Вступление', caption: 'Как пользоваться аудиогидом · 2 минуты',
+    n: 0, title: 'Вступление', extra: [{ src:'photos/gx_verh_1920.jpg', thumb:'photos/gx_verh_1920_t.jpg', year:'1920-1921', title:'Вид на крепость с собора', credit:'Источник: PastVu' }, { src:'photos/gx_verh_kazarmy.jpg', thumb:'photos/gx_verh_kazarmy_t.jpg', year:'1920-1930', title:'Вид с башни собора на казармы', credit:'Источник и автор не установлены' }, { src:'photos/gx_verh_kopskats.jpg', thumb:'photos/gx_verh_kopskats_t.jpg', year:'1930-е', title:'Крепость сверху, открытка «Kopskats»', credit:'Источник: Zudusī Latvija' }, { src:'photos/gx_verh_daugava.jpg', thumb:'photos/gx_verh_daugava_t.jpg', year:'1930-е', title:'Казармы и Даугава с высоты', credit:'Источник: Zudusī Latvija' }], caption: 'Как пользоваться аудиогидом · 2 минуты',
     img: 'photos/guide_intro_plan.jpg', imgPos: '50% 38%',
     audio: { ru: 'audio/ru/00.mp3', en: 'audio/en/00.mp3', lv: 'audio/lv/00.mp3' },
     text: `Добро пожаловать в Даугавпилсскую крепость. Я буду вашим спутником на этой прогулке.
@@ -52,7 +52,7 @@ Ready? Then play the stop where you are starting.`
   },
   stops: [
     {
-      n: 1, id: 'mihaila', title: 'Михайловские ворота', caption: 'Въезд из города · остановка «Cietoksnis» · начало маршрута 1',
+      n: 1, id: 'mihaila', extra: [{ src:'photos/gx_mihaila_most.jpg', thumb:'photos/gx_mihaila_most_t.jpg', year:'1920-1930', title:'Мост к Михайловским воротам, собор вдали', credit:'Источник и автор не установлены' }, { src:'photos/gx_mihaila_tanki.jpg', thumb:'photos/gx_mihaila_tanki_t.jpg', year:'1935-1938', title:'Танки латвийской армии у Михайловских ворот', credit:'Источник: PastVu' }], title: 'Михайловские ворота', caption: 'Въезд из города · остановка «Cietoksnis» · начало маршрута 1',
       pos: [55.883273, 26.499206], // примерно, по OSM (20.11.2026)
       img: 'photos/guide_mikhail_gate.jpg', imgPos: '50% 55%',
       spot: 's046', group: 'Михайловские ворота', audio: { ru: 'audio/ru/01.mp3', en: 'audio/en/01.mp3', lv: 'audio/lv/01.mp3' },
@@ -99,7 +99,7 @@ Now walk through the gate into the fortress. In a couple of minutes a large open
       }
     },
     {
-      n: 2, id: 'sobor', title: 'Место собора и иезуитский коллегиум', caption: 'Улица Императора · фундамент храма, коллегиум, могила коменданта Пиленко',
+      n: 2, id: 'sobor', extra: [{ src:'photos/gx_sobor_otkrytka.jpg', thumb:'photos/gx_sobor_otkrytka_t.jpg', year:'1900-1920', title:'Открытка: собор над валом', credit:'Источник: Facebook, Old Daugavpils. Автор не установлен' }, { src:'photos/gx_sobor_bashni.jpg', thumb:'photos/gx_sobor_bashni_t.jpg', year:'1920-1940', title:'Башни собора', credit:'Источник и автор не установлены' }], title: 'Место собора и иезуитский коллегиум', caption: 'Улица Императора · фундамент храма, коллегиум, могила коменданта Пиленко',
       pos: [55.883983, 26.499238], // примерно, по OSM (20.11.2026)
       img: 'photos/guide_cathedral.jpg', imgPos: '50% 22%',
       spot: 's083', group: 'Собор', audio: { ru: 'audio/ru/02.mp3', en: 'audio/en/02.mp3', lv: 'audio/lv/02.mp3' },
@@ -227,7 +227,7 @@ Now go out to the Nicholas Gate. It is the gate with battlements like a castle a
       }
     },
     {
-      n: 5, id: 'nikolaja', title: 'Николаевские ворота и мост через ров', caption: 'Парадный вход с реки · 1-й береговой люнет · вид на мостовое укрепление',
+      n: 5, id: 'nikolaja', extra: [{ src:'photos/gx_nikolaja_zima.jpg', thumb:'photos/gx_nikolaja_zima_t.jpg', year:'', title:'Николаевские ворота зимой', credit:'Источник: Facebook, Old Daugavpils. Автор не установлен' }], title: 'Николаевские ворота и мост через ров', caption: 'Парадный вход с реки · 1-й береговой люнет · вид на мостовое укрепление',
       pos: [55.883424, 26.495934], // примерно, по OSM (20.11.2026)
       spot: 's065', group: 'Николаевские ворота', audio: { ru: 'audio/ru/05.mp3', en: 'audio/en/05.mp3', lv: 'audio/lv/05.mp3' },
       text: `Эти ворота смотрят на Даугаву. Когда-то через них в крепость въезжали с реки — торжественно, как в настоящий замок.
@@ -347,7 +347,7 @@ Across the road is the Commandant's Garden. Go there, to the centre of the garde
       }
     },
     {
-      n: 8, id: 'sad', title: 'Комендантский сад', caption: 'Бывший плац · памятник 1812 года · памятник воинам 1924 года',
+      n: 8, id: 'sad', extra: [{ src:'photos/gx_sad_1912.jpg', thumb:'photos/gx_sad_1912_t.jpg', year:'1912-1915', title:'Памятник-фонтан к столетию войны 1812 года', credit:'Источник: PastVu' }, { src:'photos/gx_sad_1924.jpg', thumb:'photos/gx_sad_1924_t.jpg', year:'1920-1930', title:'Памятник воинам Освободительной войны', credit:'Источник и автор не установлены' }], title: 'Комендантский сад', caption: 'Бывший плац · памятник 1812 года · памятник воинам 1924 года',
       pos: [55.886372, 26.494968], // примерно, по OSM (20.11.2026)
       img: 'photos/guide_garden_postcard.jpg', imgPos: '50% 45%',
       spot: 's429', group: 'Комендантский сад и парк', audio: { ru: 'audio/ru/08.mp3', en: 'audio/en/08.mp3', lv: 'audio/lv/08.mp3' },
