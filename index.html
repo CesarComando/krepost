@@ -612,6 +612,10 @@
   .pStats b { display:block; font:700 26px var(--serif); color:#f3c650; }
   .pStats span { font-size:12px; color:var(--muted); }
   .secTitle.badgeTitle::before { content:"🎖"; } .secTitle.stampTitle::before { content:"📮"; } .secTitle.shotsTitle::before { content:"📷"; }
+  button.badge { min-height:0; color:inherit; font:inherit; text-transform:none; letter-spacing:0; box-shadow:none; cursor:pointer; }
+  .badge.open { grid-column:1 / -1; }
+  .badge .bHow { margin:4px 2px 0; font:500 13px/1.35 Inter,system-ui,sans-serif; color:var(--text); }
+  .badgeTip { margin:-6px 0 10px; font-size:13px; color:var(--muted); }
   .badges { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:20px; }
   .badge { display:flex; flex-direction:column; align-items:center; gap:3px; padding:10px 6px 9px; border-radius:14px; background:#1c1610; border:1px solid rgba(217,164,65,.15); text-align:center; }
   .badge .bIcon { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; background:#2a231b; filter:grayscale(1); opacity:.7; }
@@ -707,9 +711,10 @@
   .oActs button.oOff.done { color:#9fd28a; border-style:solid; border-color:rgba(95,158,69,.6); }
 
   /* ===== Исторический слой карты ===== */
-  .oldLayer { position:absolute; left:0; top:0; transform-origin:0 0; pointer-events:none; max-width:none !important; filter:sepia(.25) contrast(1.05); }
+  .oldLayer { position:absolute; left:0; top:0; transform-origin:0 0; pointer-events:none; max-width:none !important; filter:sepia(.25) contrast(1.05); /* обрезаны подпись сайта внизу и белый уголок с надписью сверху справа */ clip-path:polygon(0 0, 88% 0, 100% 13%, 100% 97.3%, 0 97.3%); }
   .oldLayer[hidden] { display:none; }
   #oldBtn { flex:none; min-height:0; padding:9px 12px; border-radius:12px; background:#1c1610; color:#f3d27a; border:1px solid rgba(217,164,65,.45); font:700 14px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
+  #oldBtn[hidden] { display:none; } /* 21.11.2026: слой 1944 года пока убран, остаётся «Старый план» */
   #oldBtn.on { background:#f6ecd8; color:#1c1610; border-color:#f6ecd8; }
   #oldBar { margin:6px 16px 0; display:flex; flex-direction:column; gap:4px; }
   #oldBar[hidden] { display:none; }
@@ -839,6 +844,8 @@
   .lg.near { background:#f4c64b; border:2px solid #fff; }
   .pin span { display:flex; align-items:center; justify-content:center; width:24px; height:24px; margin:3px; border-radius:50%; box-sizing:border-box; font:700 11px Inter,sans-serif; color:#f6ecd8; box-shadow:0 2px 6px rgba(0,0,0,.5); }
   .pin.stopNo span { width:30px; height:30px; margin:0; font-size:14px; font-weight:800; }
+  /* номер точки гида — золотой круг; тёмный круг с числом — просто сколько снимков рядом */
+  .pin.todo.stopNo span { background:#e8b84a; border-color:#1c1610; color:#1c1610; }
   .mstop { margin:0 0 6px; font-weight:600; font-size:13px; }
   .pin.many span { width:30px; height:30px; margin:0; font-size:12px; }
   .pin.todo span { background:#1c1610; border:3px solid #e8b84a; }
@@ -1274,6 +1281,7 @@ html[data-theme="light"] .lg.done { background:#5f9e45; border:2px solid #000000
 html[data-theme="light"] .lg.near { background:#d51a33; border:2px solid #000000; }
 html[data-theme="light"] .pin span { color:#1b1516; }
 html[data-theme="light"] .pin.todo span { background:#f7f5f5; border:3px solid #b6162c; }
+html[data-theme="light"] .pin.todo.stopNo span { background:#b6162c; border-color:#f7f5f5; color:#f7f5f5; }
 html[data-theme="light"] .pin.done span { background:#5f9e45; border:3px solid #000000; }
 html[data-theme="light"] .pin.near span { background:#d51a33; border:3px solid #000000; color:#f7f5f5; }
 html[data-theme="light"] #map .leaflet-popup-content-wrapper, html[data-theme="light"] #map .leaflet-popup-tip { background:#f7f5f5; color:#1d1718; box-shadow:0 0 0 1px rgba(182,22,44,.5), 0 8px 24px rgba(0,0,0,.6); }
@@ -1411,7 +1419,7 @@ html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none
   <div id="mapView" hidden>
     <div id="map"></div>
     <div id="tipBar" hidden></div>
-    <div id="mapBar"><button type="button" id="locBtn">📍 Где я</button><button type="button" id="oldBtn" aria-pressed="false">🕰 1944</button><span id="mapInfo"></span></div>
+    <div id="mapBar"><button type="button" id="locBtn">📍 Где я</button><button type="button" id="oldBtn" aria-pressed="false" hidden>🕰 1944</button><span id="mapInfo"></span></div>
     <div id="oldBar" hidden><label for="oldOp">Прозрачность старого слоя</label><input id="oldOp" type="range" min="15" max="100" value="65"><p id="oldNote">Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.</p></div>
     <p id="mapLegend"><i class="lg todo"></i> не посещено <i class="lg done"></i> посещено <i class="lg near"></i> рядом с вами</p>
   </div>
@@ -2003,6 +2011,8 @@ function show(id) {
    Каждый переход «вглубь» (камера, сравнение, раздел, квест, окно описания) кладёт шаг в историю браузера.
    «Назад» (телефона или стрелка в приложении) снимает один шаг. Из главного списка — выход, как обычно. */
 let navDepth = 0;
+// После перезагрузки страницы в истории остаются старые номера шагов — сбрасываем, иначе «Назад» не срабатывает
+try { if (history.state && history.state.d) history.replaceState(null, ''); } catch (e) {}
 function navPush() { navDepth++; history.pushState({ d: navDepth }, ''); }
 function navBack() { if (navDepth > 0) history.back(); else stepBack(); }
 function stepBack() {
@@ -2030,6 +2040,7 @@ function stepBack() {
 function toListTop() { $('list').scrollTop = 0; window.scrollTo(0, 0); }
 addEventListener('popstate', e => {
   const target = (e.state && e.state.d) || 0;
+  if (target >= navDepth && navDepth > 0) { navDepth--; stepBack(); return; } // старая запись истории: всё равно шаг назад
   while (navDepth > target) { navDepth--; stepBack(); }
 });
 
@@ -2073,20 +2084,20 @@ function passportBadges(shots) {
   const out = [];
   const n = spots.filter(s => seen.has(s.id)).length;
   for (const [need, icon, name] of [[1, '👣', 'Первая печать'], [10, '🧭', '10 мест'], [50, '🗺', '50 мест'], [100, '🏆', '100 мест']])
-    out.push({ icon, name: T(name), have: Math.min(n, need), need });
+    out.push({ icon, name: T(name), have: Math.min(n, need), need, how: need === 1 ? T('Отметьте первое место: «Посещено» или снимок «тогда и сейчас».') : Tf('Отметьте {n} мест: «Посещено» или снимок «тогда и сейчас».', { n: need }) });
   const gatesHave = GATES.filter(g => inGroup(g).some(s => seen.has(s.id))).length;
-  out.push({ icon: '🚪', name: T('Все четверо ворот'), have: gatesHave, need: GATES.length });
-  out.push({ icon: '📷', name: T('Фотограф: 5 снимков «тогда и сейчас»'), have: Math.min(new Set(shots.map(x => x.spotId)).size, 5), need: 5 });
+  out.push({ icon: '🚪', name: T('Все четверо ворот'), have: gatesHave, need: GATES.length, how: T('Побывайте у всех четырёх ворот крепости: Михайловских, Николаевских, Константиновских и Александровских.') });
+  out.push({ icon: '📷', name: T('Фотограф: 5 снимков «тогда и сейчас»'), have: Math.min(new Set(shots.map(x => x.spotId)).size, 5), need: 5, how: T('Сделайте снимки «тогда и сейчас» в 5 разных местах.') });
   for (const g of Object.keys(BADGE_ICON)) {
     const list = inGroup(g);
     if (!list.length) continue;
     const need = Math.min(3, list.length);
-    out.push({ icon: BADGE_ICON[g], name: T(g), have: Math.min(list.filter(s => seen.has(s.id)).length, need), need, of: list.filter(s => seen.has(s.id)).length + ' / ' + list.length });
+    out.push({ icon: BADGE_ICON[g], name: T(g), have: Math.min(list.filter(s => seen.has(s.id)).length, need), need, of: list.filter(s => seen.has(s.id)).length + ' / ' + list.length, how: Tf('Отметьте снимки этого места ({n}): «Посещено» или «тогда и сейчас».', { n: need }) });
   }
   for (const q of QUESTS) {
     const steps = questSteps(q);
     if (!steps.length) continue;
-    out.push({ icon: '🎯', name: Tf('Квест: {q}', { q: q.title }), have: doneIn(q), need: steps.length });
+    out.push({ icon: '🎯', name: Tf('Квест: {q}', { q: q.title }), have: doneIn(q), need: steps.length, how: T('Пройдите все шаги этого квеста.') });
   }
   return out;
 }
@@ -2115,15 +2126,19 @@ function renderPassport(box, shots) {
   const grid = document.createElement('div'); grid.className = 'badges';
   for (const b of badges.sort((x, y) => (y.have >= y.need) - (x.have >= x.need))) {
     const ok = b.have >= b.need;
-    const el = document.createElement('div');
+    const el = document.createElement('button'); el.type = 'button';
     el.className = 'badge' + (ok ? ' ok' : '');
     el.innerHTML = `<span class="bIcon"></span><b></b><small></small><i class="bBar"><i style="width:${(100 * b.have / b.need).toFixed(0)}%"></i></i>`;
     el.querySelector('.bIcon').textContent = ok ? b.icon : '🔒';
     el.querySelector('b').textContent = b.name;
     el.querySelector('small').textContent = ok ? (b.of ? Tf('Получен · {x}', { x: b.of }) : T('Получен')) : `${b.have} / ${b.need}`;
+    // Нажать на значок — видно, за что он даётся
+    if (b.how) { const h = document.createElement('p'); h.className = 'bHow'; h.textContent = b.how; h.hidden = true; el.append(h);
+      el.onclick = () => { const was = !h.hidden; for (const x of grid.querySelectorAll('.bHow')) x.hidden = true; for (const x of grid.querySelectorAll('.badge')) x.classList.remove('open'); h.hidden = was; el.classList.toggle('open', !was); }; }
     grid.append(el);
   }
-  box.append(bh, grid);
+  const bt = document.createElement('p'); bt.className = 'badgeTip'; bt.textContent = T('Нажмите на значок — увидите, за что он.');
+  box.append(bh, bt, grid);
 
   // Печати: каждое посещённое место — марка со снимком (ваш снимок, если есть) и датой
   const sh = document.createElement('h2'); sh.className = 'secTitle stampTitle'; sh.textContent = Tf('Печати · {n}', { n: mine.length });

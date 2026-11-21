@@ -3607,8 +3607,8 @@ window.SPOTS_DATA = [
   "title": "Арсенал зимой сверху",
   "year": "1960-1985",
   "hint": "",
-  "credit": "Источник и автор не установлены",
-  "source": "",
+  "credit": "Источник: PastVu",
+  "source": "https://pastvu.com/p/1247423",
   "original": "1960-1985__491662141_740077158688828_1582703102582581942_n.jpg",
   "thumb": "photos/thumbs/spot351.jpg",
   "group": "Артиллерийский арсенал"
