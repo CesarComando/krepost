@@ -444,12 +444,14 @@
   /* ===== Спасибо каждые 10 снимков ===== */
   #thanksDlg { width:min(420px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text);
     box-shadow:0 0 0 2px var(--brass2), 0 20px 50px rgba(0,0,0,.7); }
-  #thanksDlg::backdrop { background:rgba(0,0,0,.7); }
+  #thanksDlg::backdrop, #dlAskDlg::backdrop { background:rgba(0,0,0,.7); }
+  #dlAskDlg { width:min(420px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text); }
+  #dlAskDlg small { display:block; color:var(--muted); font-size:12px; text-align:center; margin:-4px 0 6px; }
   .thanksBox { padding:22px 20px 18px; display:flex; flex-direction:column; gap:12px; text-align:center; }
   .thanksIcon { font-size:44px; line-height:1; }
   .thanksBox h3 { margin:0; font:700 23px/1.2 var(--old); }
   .thanksBox p { margin:0; color:#d9cbb2; font-size:15px; line-height:1.45; }
-  #donateBtn { display:block; text-decoration:none; padding:14px; border-radius:10px; text-align:center; font:700 18px var(--cond); text-transform:uppercase;
+  #donateBtn, #dlAskDonate { display:block; text-decoration:none; padding:14px; border-radius:10px; text-align:center; font:700 18px var(--cond); text-transform:uppercase;
     background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; }
   #donateBtn[hidden] { display:none; }
   #sponsorBox { background:var(--paper); color:var(--ink); padding:12px; border-radius:4px; font:15px/1.4 var(--old); }
@@ -832,6 +834,8 @@
   .lg.done { background:#5f9e45; border:2px solid #fff; }
   .lg.near { background:#f4c64b; border:2px solid #fff; }
   .pin span { display:flex; align-items:center; justify-content:center; width:24px; height:24px; margin:3px; border-radius:50%; box-sizing:border-box; font:700 11px Inter,sans-serif; color:#f6ecd8; box-shadow:0 2px 6px rgba(0,0,0,.5); }
+  .pin.stopNo span { width:30px; height:30px; margin:0; font-size:14px; font-weight:800; }
+  .mstop { margin:0 0 6px; font-weight:600; font-size:13px; }
   .pin.many span { width:30px; height:30px; margin:0; font-size:12px; }
   .pin.todo span { background:#1c1610; border:3px solid #e8b84a; }
   .pin.done span { background:#5f9e45; border:3px solid #fff; }
@@ -1002,6 +1006,15 @@
   #illImg { max-width:100%; max-height:78vh; border-radius:10px; }
   #illCap { margin:0; color:#f6ecd8; font:600 15px var(--serif); text-align:center; }
   #illCredit { color:var(--muted); font-size:12px; text-align:center; }
+  /* Лента снимков в аудиогиде: место в разные годы */
+  .gGal { display:flex; gap:8px; overflow-x:auto; margin:4px 0 12px; padding-bottom:4px; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; }
+  .gGal button { flex:0 0 auto; width:104px; min-height:0; padding:0; background:none; border:0; box-shadow:none; color:var(--muted); text-transform:none; letter-spacing:0; font:500 11.5px/1.25 Inter,system-ui,sans-serif; text-align:left; scroll-snap-align:start; }
+  .gGal img { width:104px; height:78px; object-fit:cover; border-radius:8px; display:block; margin-bottom:3px; border:1px solid rgba(217,164,65,.3); }
+  .gGalHead { margin:10px 0 2px; font-size:13px; color:var(--muted); }
+  .illNav { position:absolute; top:42%; width:44px; height:44px; min-height:0; padding:0; border-radius:50%; background:rgba(18,14,10,.75); color:#f2e8d8; border:1px solid rgba(243,210,122,.4); box-shadow:none; font-size:24px; line-height:1; }
+  #illPrev { left:6px; } #illNext { right:6px; }
+  .illNav[hidden] { display:none; }
+  #illCount { color:var(--muted); font-size:12px; }
   #illClose { position:absolute; top:6px; right:6px; width:40px; height:40px; min-height:0; padding:0; border-radius:50%; background:rgba(18,14,10,.8); color:#f2e8d8; border:1px solid rgba(243,210,122,.4); box-shadow:none; }
   /* ===== 18.11.2026: вход и панель модератора ===== */
   #modDlg { width:min(560px, calc(100vw - 16px)); max-height:calc(100dvh - 24px); border:0; padding:0; border-radius:16px; background:#1c1610; color:var(--text); box-shadow:0 0 0 2px var(--brass2), 0 20px 50px rgba(0,0,0,.7); }
@@ -1120,9 +1133,9 @@ html[data-theme="light"] #cmpTrack { background:linear-gradient(90deg, rgba(230,
 html[data-theme="light"] #cmpMode { color:#e6334b; }
 html[data-theme="light"] .flyAlbum { background:#ffffff center/cover no-repeat; box-shadow:0 0 0 5px #e6334b, 0 14px 40px rgba(0,0,0,.7); }
 html[data-theme="light"] .flyAlbum img { box-shadow:0 0 0 6px #e6334b; }
-html[data-theme="light"] #thanksDlg { background:#f7f5f5; }
+html[data-theme="light"] #thanksDlg, html[data-theme="light"] #dlAskDlg { background:#f7f5f5; }
 html[data-theme="light"] .thanksBox p { color:#e6334b; }
-html[data-theme="light"] #donateBtn { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
+html[data-theme="light"] #donateBtn, html[data-theme="light"] #dlAskDonate { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
 html[data-theme="light"] .safety { background:rgba(213,26,51,.12); border:1px solid rgba(213,26,51,.45); color:#e6334b; }
 html[data-theme="light"] .hist { box-shadow:inset 0 0 20px rgba(120,90,40,.25); }
 html[data-theme="light"] .hist h4 { color:#7a2e1c; }
@@ -1314,6 +1327,8 @@ html[data-theme="light"] .oIllItem { color:#e6334b; }
 html[data-theme="light"] .oIllItem img { border:1px solid rgba(182,22,44,.25); }
 html[data-theme="light"] #illDlg::backdrop { background:rgba(248,246,246,.92); }
 html[data-theme="light"] #illCap { color:#1b1516; }
+html[data-theme="light"] .gGal img { border-color:rgba(213,26,51,.35); }
+html[data-theme="light"] .illNav { background:rgba(247,245,245,.85); color:#d51a33; border-color:rgba(213,26,51,.5); }
 html[data-theme="light"] #illClose { background:rgba(247,245,245,.8); color:#1d1718; border:1px solid rgba(213,26,51,.4); }
 html[data-theme="light"] #modDlg { background:#f7f5f5; }
 html[data-theme="light"] #modLogin label { color:#e6334b; }
@@ -1410,7 +1425,7 @@ html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none
 </section>
 
 <dialog id="guideDlg"><div class="guideBox"><div class="gTop"><h3 id="guideH"></h3><button type="button" id="guideStartBtn" class="gSmall"></button><button type="button" id="guideClose" aria-label="Закрыть">✕</button></div><div id="gBar"><button type="button" id="gMapBtn" class="gSmall"></button><button type="button" id="gNearBtn" class="gSmall"></button><button type="button" id="gDlBtn" class="gSmall"></button></div><div id="gMapBox" hidden><div id="gMap"></div><p id="gMapNote"></p></div><div id="guideStart" hidden></div><div id="guidePager"></div><div id="gNear" hidden><span id="gNearT"></span><button type="button" id="gNearGo"></button><button type="button" id="gNearX" aria-label="Закрыть">✕</button></div><div class="gNav"><button type="button" id="gPrev" aria-label="Назад">‹</button><span id="gPos"></span><button type="button" id="gNext" aria-label="Дальше">›</button></div></div></dialog>
-<dialog id="illDlg"><div class="illBox"><button type="button" id="illClose" aria-label="Закрыть">✕</button><img id="illImg" alt=""><p id="illCap"></p><small id="illCredit"></small></div></dialog>
+<dialog id="illDlg"><div class="illBox"><button type="button" id="illClose" aria-label="Закрыть">✕</button><button type="button" id="illPrev" class="illNav" aria-label="Предыдущий снимок" hidden>‹</button><button type="button" id="illNext" class="illNav" aria-label="Следующий снимок" hidden>›</button><img id="illImg" alt=""><p id="illCap"></p><small id="illCredit"></small><small id="illCount"></small></div></dialog>
 <dialog id="modDlg"><div class="modBox">
   <div class="setHead"><h3>Модератор</h3><button type="button" id="modClose" aria-label="Закрыть">✕</button></div>
   <form id="modLogin" hidden>
@@ -1574,6 +1589,16 @@ html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none
     <a id="donateBtn" class="main" target="_blank" rel="noopener">☕ Поддержать проект</a>
     <div id="sponsorBox" hidden></div>
     <button type="button" id="thanksLater">Позже</button>
+  </div>
+</dialog>
+<dialog id="dlAskDlg" class="thanksLike">
+  <div class="thanksBox">
+    <div class="thanksIcon">🎧</div>
+    <h3>Вам нравится приложение?</h3>
+    <p id="dlAskText">Аудиогид бесплатный. Если он вам полезен — поддержите разработчика, хотя бы 1 €.</p>
+    <a id="dlAskDonate" class="main" target="_blank" rel="noopener">☕ Поддержать разработчика</a>
+    <small>Через Revolut: картой, Apple Pay или Google Pay</small>
+    <button type="button" id="dlAskGo">⬇ Просто скачать</button>
   </div>
 </dialog>
 <dialog id="factsDlg">
@@ -1744,6 +1769,7 @@ const illusOf = g => byYear(allSpots().filter(s => s.illus && groupOf(s) === g))
 const archGroups = () => { const m = new Map(); for (const s of allSpots()) if (s.arch && !s.hidden) { const g = groupOf(s); if (!m.has(g)) m.set(g, []); m.get(g).push(s); } return [...m].map(([g, l]) => [g, byYear(l)]); };
 
 function updateProgress() {
+  if (typeof groupDoneCheck === 'function') try { groupDoneCheck(); } catch (e) {}
   const spots = visibleSpots();
   const doneCount = spots.filter(s => found.includes(s.id)).length;
   $('progTxt').innerHTML = Tf('Отмечено мест: {a} из {b}', { a: '<b>' + doneCount + '</b>', b: spots.length });
@@ -1981,8 +2007,9 @@ function stepBack() {
   if ($('factsDlg').open) { $('factsDlg').close(); factsSpot = null; return; }
   if ($('thanksDlg').open) { $('thanksDlg').close(); return; }
   if ($('modDlg').open) { $('modDlg').close(); return; }
-  if ($('guideDlg').open) { closeGuide(); return; }
+  if ($('dlAskDlg').open) { $('dlAskDlg').close(); dlAskNext = null; return; }
   if ($('illDlg').open) { $('illDlg').close(); $('illImg').removeAttribute('src'); return; }
+  if ($('guideDlg').open) { closeGuide(); return; }
   if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); softRefresh(); return; }
   if (!$('result').hidden) { const go = flyToAlbum(); setInset(false); current = null; show('list'); softRefresh(); requestAnimationFrame(go); return; }
   if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
@@ -2486,6 +2513,20 @@ function guideCard(g, k) {
   const h = document.createElement('h4'); h.textContent = T(g.title);
   const cap = document.createElement('p'); cap.className = 'gCap'; cap.textContent = T(g.caption || '');
   c.append(im, num, h, cap);
+  const gal = guideGallery(g, !g.img && sp ? sp.id : null);
+  if (gal.length) {
+    const hd = document.createElement('p'); hd.className = 'gGalHead'; hd.textContent = T('Это место в разные годы') + ' (' + gal.length + ')';
+    const box = document.createElement('div'); box.className = 'gGal';
+    for (const s of gal) {
+      const b = document.createElement('button'); b.type = 'button';
+      const ti = document.createElement('img'); ti.loading = 'lazy'; ti.alt = ''; ti.src = s.thumb || s.src;
+      const yr = document.createElement('span'); yr.textContent = s.year || '';
+      b.append(ti, yr);
+      b.onclick = () => { ttsStop(); openIllus(s, gal); };
+      box.append(b);
+    }
+    c.append(hd, box);
+  }
   const au = guideAudioOf(g), gt = guideTextOf(g);
   const ownRec = au && au.lang === L;
   if (au) {
@@ -2626,7 +2667,20 @@ function guideOfflineUrls() {
   for (const f of (window.I18N_FILES || [])) if (/^guide-/.test(f)) urls.add(f);
   return [...urls];
 }
-$('gDlBtn').onclick = async e => { track('feature', 'guide_offline'); await saveOffline(guideOfflineUrls(), e.currentTarget); guideBarPaint(); };
+/* Перед скачиванием (аудиогид, позже — аудиокнига): мягкая просьба поддержать разработчика. Скачать можно и без доната. */
+let dlAskNext = null;
+function askDonateThen(kind, go) {
+  if (typeof DONATE_URL !== 'string' || !DONATE_URL) { go(); return; }
+  $('dlAskText').textContent = kind === 'book' ? T('Аудиокнига бесплатная. Если она вам нравится — поддержите разработчика, хотя бы 1 €.') : T('Аудиогид бесплатный. Если он вам полезен — поддержите разработчика, хотя бы 1 €.');
+  $('dlAskDonate').href = DONATE_URL;
+  dlAskNext = go; track('feature', 'dl_ask_' + kind);
+  navPush(); $('dlAskDlg').showModal();
+}
+function dlAskRun() { const go = dlAskNext; dlAskNext = null; if ($('dlAskDlg').open) navBack(); if (go) setTimeout(go, 150); }
+$('dlAskGo').onclick = dlAskRun;
+$('dlAskDonate').addEventListener('click', () => { track('feature', 'donate_dl'); dlAskRun(); });
+$('dlAskDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
+$('gDlBtn').onclick = e => { const btn = e.currentTarget; askDonateThen('guide', async () => { track('feature', 'guide_offline'); await saveOffline(guideOfflineUrls(), btn); guideBarPaint(); }); };
 // Карта маршрута: схема по прямой между точками, «вы здесь», нажатие на номер — переход к рассказу
 async function guideShowMap(show) {
   $('gMapBox').hidden = !show; $('gMapBtn').classList.toggle('on', !!show);
@@ -2729,12 +2783,39 @@ function closeGuide() { guideNearStop(); ttsStop(); for (const a of $('guidePage
 $('guideRow').onclick = openGuide;
 $('guideClose').onclick = () => navBack();
 $('guideDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
-function openIllus(s) {
-  track('photo', s.id);
+let illList = null, illIdx = 0;
+function illPaint() {
+  const s = illList ? illList[illIdx] : null; if (!s) return;
   $('illImg').src = s.src;
   $('illCap').textContent = [s.title, s.year].filter(Boolean).join(', ');
   $('illCredit').textContent = s.credit || '';
+  const many = illList.length > 1;
+  $('illPrev').hidden = !many || illIdx === 0; $('illNext').hidden = !many || illIdx === illList.length - 1;
+  $('illCount').textContent = many ? (illIdx + 1) + ' / ' + illList.length : '';
+}
+function openIllus(s, list) {
+  track('photo', s.id);
+  illList = list && list.length ? list : [s]; illIdx = Math.max(0, illList.indexOf(s));
+  illPaint();
   navPush(); $('illDlg').showModal();
+}
+function illStep(d) { if (!illList) return; const i = illIdx + d; if (i < 0 || i >= illList.length) return; illIdx = i; track('photo', illList[i].id); illPaint(); }
+$('illPrev').onclick = e => { e.stopPropagation(); illStep(-1); };
+$('illNext').onclick = e => { e.stopPropagation(); illStep(1); };
+{ let x0 = null; $('illDlg').addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  $('illDlg').addEventListener('touchend', e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) illStep(dx < 0 ? 1 : -1); }, { passive: true }); }
+$('illDlg').addEventListener('keydown', e => { if (e.key === 'ArrowLeft') illStep(-1); if (e.key === 'ArrowRight') illStep(1); });
+/* Лента для остановки аудиогида: снимки этого места за разные годы (вместе с архивными — их нет в игре) */
+const GAL_SKIP_GROUPS = ['Улицы и здания', 'Другое', 'Солдаты и люди'];
+const GAL_SKIP_TITLE = /солдат|курсант|танк|строй|присяг|военные у|офицеры/i;
+function guideGallery(g, mainId) {
+  if (!g.group || GAL_SKIP_GROUPS.includes(g.group)) return [];
+  const seen = {};
+  let l = byYear(allSpots().filter(s => groupOf(s) === g.group && !s.hidden && !hiddenIds.includes(s.id) && s.src && s.id !== mainId && !GAL_SKIP_TITLE.test(s.title || '')))
+    .filter(s => { const k = (s.title || '').trim(); seen[k] = (seen[k] || 0) + 1; return seen[k] <= 2; });
+  const MAX = 12;
+  if (l.length > MAX) { const out = []; for (let i = 0; i < MAX; i++) out.push(l[Math.round(i * (l.length - 1) / (MAX - 1))]); l = [...new Set(out)]; }
+  return l.length >= 2 ? l : [];
 }
 function renderObj() {
   const g = objGroup, box = $('objView');
@@ -3028,6 +3109,13 @@ async function renderMap() {
 }
 /* Метки: снимки ближе ~40 пикселей друг к другу на экране собираются в одну метку с числом.
    Нажатие на такую метку приближает карту; на самом крупном масштабе — открывает список снимков. */
+/* Номер точки аудиогида для группы снимка: Михайловские ворота — 1, собор — 2 … (порядок как в гиде) */
+const STOP_NO_SKIP = ['Улицы и здания', 'Другое', 'Солдаты и люди'];
+function stopNoOf(s) {
+  const g = groupOf(s); if (STOP_NO_SKIP.includes(g)) return 0;
+  const st = (GD.stops || []).find(x => x.group === g);
+  return st ? st.n : 0;
+}
 function drawPins() {
   if (!lmap || view !== 'map') return;
   markLayer.clearLayers();
@@ -3052,7 +3140,10 @@ function drawPins() {
     const near = mePos && group.some(g => distM(mePos, g[1]) < NEAR_M);
     const cls = done === list.length ? 'done' : near ? 'near' : 'todo';
     const big = list.length > 1 ? ' many' : '';
-    const icon = L.divIcon({ className: 'pin ' + cls + big, html: `<span>${list.length > 1 ? list.length : ''}</span>`, iconSize: [30, 30], iconAnchor: [15, 15] });
+    const nos = [...new Set(list.map(stopNoOf))];
+    const stopNo = nos.length === 1 && nos[0] ? nos[0] : 0;
+    const label = stopNo ? stopNo : (list.length > 1 ? list.length : '');
+    const icon = L.divIcon({ className: 'pin ' + cls + big + (stopNo ? ' stopNo' : ''), html: `<span>${label}</span>`, iconSize: [30, 30], iconAnchor: [15, 15] });
     const m = L.marker([lat, lng], { icon }).addTo(markLayer);
     const samePlace = group.every(g => distM(g[1], group[0][1]) < 15);
     if (list.length > 1 && !samePlace && z < 18) {
@@ -3067,6 +3158,8 @@ function mapPopup(list, near) {
   const box = document.createElement('div');
   box.className = 'mpop';
   if (near) { const h = document.createElement('p'); h.className = 'mnear'; h.textContent = T('Вы рядом с этим местом'); box.append(h); }
+  const nos = [...new Set(list.map(stopNoOf))];
+  if (nos.length === 1 && nos[0]) { const st = GD.stops.find(x => x.n === nos[0]); const h = document.createElement('p'); h.className = 'mstop'; h.textContent = '🎧 ' + Tf('Точка {n} аудиогида', { n: nos[0] }) + (st ? ' · ' + T(st.title) : ''); box.append(h); }
   // «Я здесь»: телефон сам сверяет своё место с точкой; место никуда не отправляется
   const paints = [];
   const here = document.createElement('div'); here.className = 'mhere';
@@ -3570,7 +3663,7 @@ function countShot(spotId) {
   fetch(`${FACTS_URL}/krepost_shots`, { method: 'POST', keepalive: true,
     headers: { apikey: FACTS_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
     body: JSON.stringify({ spot_id: spotId }) }).catch(() => {});
-  if (n % 10 === 0 && (DONATE_URL || SPONSOR)) setTimeout(() => showThanks(n), 1500);
+  // просьба о поддержке — не по счётчику, а когда пройдены все снимки одного места (см. groupDoneCheck)
 }
 function showThanks(n) {
   if ($('result').hidden || document.querySelector('dialog[open]')) return;
@@ -3584,6 +3677,39 @@ function showThanks(n) {
   navPush();
 }
 $('thanksLater').onclick = () => navBack();
+/* Просьба поддержать — когда пройдены ВСЕ снимки одного места (Михайловские ворота, собор…), в любом порядке.
+   Каждое место — один раз: отказался или задонатил — до следующего полностью пройденного места не спрашиваем. */
+const DON_ASKED_KEY = 'krepost.donAsked';
+function completeGroups() {
+  const m = new Map();
+  for (const s of visibleSpots()) { const g = groupOf(s); if (!m.has(g)) m.set(g, [0, 0]); const c = m.get(g); c[1]++; if (found.includes(s.id)) c[0]++; }
+  return [...m].filter(([g, c]) => c[1] >= 2 && c[0] === c[1]).map(([g]) => g);
+}
+let donPending = null, donTries = 0;
+function groupDoneCheck(silent) {
+  if (!DONATE_URL && !SPONSOR) return;
+  const asked = read(DON_ASKED_KEY, null);
+  const done = completeGroups();
+  if (asked === null || silent) { write(DON_ASKED_KEY, [...new Set([...(asked || []), ...done])]); return; } // первый запуск: уже пройденное не считаем
+  const fresh = done.filter(g => !asked.includes(g));
+  if (!fresh.length) return;
+  write(DON_ASKED_KEY, [...asked, ...fresh]);
+  donPending = fresh[0]; donTries = 0; setTimeout(showGroupThanks, 1500);
+}
+function showGroupThanks() {
+  if (!donPending) return;
+  if (document.querySelector('dialog[open]') || !$('cam').hidden) { if (++donTries < 40) setTimeout(showGroupThanks, 3000); else donPending = null; return; }
+  const g = donPending; donPending = null;
+  $('thanksTitle').textContent = Tf('Все снимки «{g}» пройдены! Нравится?', { g: T(g) });
+  $('thanksLater').textContent = T('▶ Продолжить');
+  $('donateBtn').hidden = !DONATE_URL;
+  if (DONATE_URL) $('donateBtn').href = DONATE_URL;
+  const sp = SPONSOR && (!SPONSOR.until || new Date() <= new Date(SPONSOR.until)) ? SPONSOR : null;
+  $('sponsorBox').hidden = !sp; if (sp) $('sponsorBox').textContent = sp.text;
+  track('feature', 'don_ask_group');
+  $('thanksDlg').showModal(); navPush();
+}
+groupDoneCheck(read(DON_ASKED_KEY, null) === null);
 if (DONATE_URL) { $('supBox').hidden = false; $('supBtn').href = DONATE_URL; }
 $('supBtn').addEventListener('click', () => track('feature', 'donate'));
 $('donateBtn').onclick = () => track('feature', 'donate') || setTimeout(() => { if ($('thanksDlg').open) navBack(); }, 300);
