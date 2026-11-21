@@ -714,6 +714,7 @@
   .oActs button.oOff.done { color:#9fd28a; border-style:solid; border-color:rgba(95,158,69,.6); }
 
   /* ===== Исторический слой карты ===== */
+  .planLayer { position:absolute; left:0; top:0; transform-origin:0 0; pointer-events:none; max-width:none !important; }
   .oldLayer { position:absolute; left:0; top:0; transform-origin:0 0; pointer-events:none; max-width:none !important; filter:sepia(.25) contrast(1.05); /* обрезаны подпись сайта внизу и белый уголок с надписью сверху справа */ clip-path:polygon(0 0, 88% 0, 100% 13%, 100% 97.3%, 0 97.3%); }
   .oldLayer[hidden] { display:none; }
   #oldBtn { flex:none; min-height:0; padding:9px 12px; border-radius:12px; background:#1c1610; color:#f3d27a; border:1px solid rgba(217,164,65,.45); font:700 14px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
@@ -3113,20 +3114,33 @@ async function renderMap() {
     // Первое открытие: вписать в экран все точки снимков
     lmap._fitFirst = true;
     // Старый план крепости (вторая половина XIX века) поверх карты; положение примерное
-    const PLAN_BOUNDS = [[55.8788, 26.483817], [55.889993, 26.503772]];
-    let planLayer = null;
+    // 21.11.2026: план совмещён с картой по зданиям цитадели (OpenStreetMap): центр снимка — PLAN.lat/lng, поворот −8,5°, 2,21 м на пиксель.
+    const PLAN = { src: 'photos/guide_intro_plan.jpg', ax: 357, ay: 357, lat: 55.884111, lng: 26.494609, mpp: 2.208, rot: -8.5 };
+    const PLAN_BOUNDS = [[55.8778, 26.4820], [55.8904, 26.5072]];
+    let planLayer = null, planOp = 0.65;
+    const planDraw = () => {
+      if (!planLayer || !lmap) return;
+      const mppMap = 156543.03392 * Math.cos(PLAN.lat * Math.PI / 180) / Math.pow(2, lmap.getZoom());
+      const pt = lmap.latLngToLayerPoint([PLAN.lat, PLAN.lng]);
+      planLayer.style.transform = `translate(${pt.x}px,${pt.y}px) rotate(${PLAN.rot}deg) scale(${PLAN.mpp / mppMap}) translate(${-PLAN.ax}px,${-PLAN.ay}px)`;
+      planLayer.style.visibility = 'visible';
+    };
+    lmap.on('zoomstart', () => { if (planLayer) planLayer.style.visibility = 'hidden'; });
+    lmap.on('zoomend viewreset', planDraw);
     const PlanCtl = L.Control.extend({ options: { position: 'topright' }, onAdd() {
       const d = L.DomUtil.create('div', 'planCtl');
       const b = document.createElement('button'); b.type = 'button'; b.textContent = T('🗺 Старый план');
       const r = document.createElement('input'); r.type = 'range'; r.min = 10; r.max = 100; r.value = 65; r.hidden = true; r.setAttribute('aria-label', T('Прозрачность плана'));
       const sm = document.createElement('small'); sm.textContent = T('Положение плана примерное'); sm.hidden = true;
       b.onclick = () => {
-        if (planLayer) { lmap.removeLayer(planLayer); planLayer = null; b.classList.remove('on'); r.hidden = true; sm.hidden = true; return; }
-        planLayer = L.imageOverlay('photos/guide_intro_plan.jpg', PLAN_BOUNDS, { opacity: r.value / 100, interactive: false }).addTo(lmap);
+        if (planLayer) { planLayer.remove(); planLayer = null; b.classList.remove('on'); r.hidden = true; sm.hidden = true; return; }
+        planLayer = document.createElement('img'); planLayer.src = PLAN.src; planLayer.alt = ''; planLayer.className = 'planLayer';
+        planLayer.style.opacity = r.value / 100; planLayer.onload = planDraw;
+        lmap.getPane('overlayPane').append(planLayer); planDraw();
         b.classList.add('on'); r.hidden = false; sm.hidden = false; track('feature', 'old_plan');
         lmap.fitBounds(PLAN_BOUNDS, { padding: [10, 10] });
       };
-      r.oninput = () => { if (planLayer) planLayer.setOpacity(r.value / 100); };
+      r.oninput = () => { if (planLayer) planLayer.style.opacity = r.value / 100; };
       d.append(b, r, sm);
       L.DomEvent.disableClickPropagation(d); L.DomEvent.disableScrollPropagation(d);
       return d;
