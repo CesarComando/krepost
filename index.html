@@ -845,6 +845,7 @@
   .pin span { display:flex; align-items:center; justify-content:center; width:24px; height:24px; margin:3px; border-radius:50%; box-sizing:border-box; font:700 11px Inter,sans-serif; color:#f6ecd8; box-shadow:0 2px 6px rgba(0,0,0,.5); }
   .pin.stopNo span { width:30px; height:30px; margin:0; font-size:14px; font-weight:800; }
   /* номер точки гида — золотой круг; тёмный круг с числом — просто сколько снимков рядом */
+  #mapLegend .lg.stop { display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; border-radius:50%; background:#e8b84a; color:#1c1610; font:800 10px Inter,sans-serif; font-style:normal; vertical-align:-3px; }
   .pin.todo.stopNo span { background:#e8b84a; border-color:#1c1610; color:#1c1610; }
   .mstop { margin:0 0 6px; font-weight:600; font-size:13px; }
   .pin.many span { width:30px; height:30px; margin:0; font-size:12px; }
@@ -1281,6 +1282,7 @@ html[data-theme="light"] .lg.done { background:#5f9e45; border:2px solid #000000
 html[data-theme="light"] .lg.near { background:#d51a33; border:2px solid #000000; }
 html[data-theme="light"] .pin span { color:#1b1516; }
 html[data-theme="light"] .pin.todo span { background:#f7f5f5; border:3px solid #b6162c; }
+html[data-theme="light"] #mapLegend .lg.stop { background:#b6162c; color:#f7f5f5; }
 html[data-theme="light"] .pin.todo.stopNo span { background:#b6162c; border-color:#f7f5f5; color:#f7f5f5; }
 html[data-theme="light"] .pin.done span { background:#5f9e45; border:3px solid #000000; }
 html[data-theme="light"] .pin.near span { background:#d51a33; border:3px solid #000000; color:#f7f5f5; }
@@ -1421,7 +1423,7 @@ html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none
     <div id="tipBar" hidden></div>
     <div id="mapBar"><button type="button" id="locBtn">📍 Где я</button><button type="button" id="oldBtn" aria-pressed="false" hidden>🕰 1944</button><span id="mapInfo"></span></div>
     <div id="oldBar" hidden><label for="oldOp">Прозрачность старого слоя</label><input id="oldOp" type="range" min="15" max="100" value="65"><p id="oldNote">Немецкая аэросъёмка 1944 года наложена на карту примерно — погрешность до нескольких десятков метров.</p></div>
-    <p id="mapLegend"><i class="lg todo"></i> не посещено <i class="lg done"></i> посещено <i class="lg near"></i> рядом с вами</p>
+    <p id="mapLegend"><i class="lg todo"></i> не посещено <i class="lg done"></i> посещено <i class="lg near"></i> рядом с вами <i class="lg stop">1</i> точка аудиогида</p>
   </div>
   <div id="lib" hidden></div>
   <div id="quests" hidden></div>
@@ -3159,25 +3161,30 @@ function drawPins() {
     if (!p) continue;
     n++;
     const pt = lmap.project([p.lat, p.lng], z);
-    const k = Math.floor(pt.x / CELL) + ':' + Math.floor(pt.y / CELL);
+    const no = stopNoOf(s);
+    // Издалека (масштаб < 18) все снимки одной точки гида — один кружок с её номером, на месте точки. Ближе — каждый снимок отдельно, с тем же номером.
+    const k = no && z < 18 ? 'stop:' + no : Math.floor(pt.x / CELL) + ':' + Math.floor(pt.y / CELL) + ':' + no;
     if (!cells.has(k)) cells.set(k, []);
     cells.get(k).push([s, p]);
   }
-  for (const group of cells.values()) {
+  for (const [key, group] of cells) {
     const list = group.map(g => g[0]);
-    const lat = group.reduce((a, g) => a + g[1].lat, 0) / group.length;
-    const lng = group.reduce((a, g) => a + g[1].lng, 0) / group.length;
+    const st = key.startsWith('stop:') && GD.stops.find(x => x.n === +key.slice(5));
+    const lat = st && st.pos ? st.pos[0] : group.reduce((a, g) => a + g[1].lat, 0) / group.length;
+    const lng = st && st.pos ? st.pos[1] : group.reduce((a, g) => a + g[1].lng, 0) / group.length;
     const done = list.filter(s => found.includes(s.id)).length;
     const near = mePos && group.some(g => distM(mePos, g[1]) < NEAR_M);
     const cls = done === list.length ? 'done' : near ? 'near' : 'todo';
     const big = list.length > 1 ? ' many' : '';
     const nos = [...new Set(list.map(stopNoOf))];
     const stopNo = nos.length === 1 && nos[0] ? nos[0] : 0;
-    const label = stopNo ? stopNo : (list.length > 1 ? list.length : '');
+    const label = stopNo || ''; // на карте цифра — только номер точки аудиогида; сколько снимков рядом — не пишем, чтобы не путать
     const icon = L.divIcon({ className: 'pin ' + cls + big + (stopNo ? ' stopNo' : ''), html: `<span>${label}</span>`, iconSize: [30, 30], iconAnchor: [15, 15] });
     const m = L.marker([lat, lng], { icon }).addTo(markLayer);
     const samePlace = group.every(g => distM(g[1], group[0][1]) < 15);
-    if (list.length > 1 && !samePlace && z < 18) {
+    if (st && st.pos && list.length > 1) {
+      m.on('click', () => lmap.flyTo(st.pos, 18)); // точка гида: приблизить к ней — видны её снимки по отдельности, с тем же номером
+    } else if (list.length > 1 && !samePlace && z < 18) {
       m.on('click', () => lmap.fitBounds(L.latLngBounds(group.map(g => [g[1].lat, g[1].lng])).pad(0.4), { maxZoom: 19 }));
     } else {
       m.bindPopup(() => mapPopup(byYear(list), near), { maxWidth: 260, minWidth: 220 });
