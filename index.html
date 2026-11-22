@@ -2770,12 +2770,18 @@ async function guideShowMap(show) {
     gPins[s.n] = m;
   }
   setTimeout(() => { gmap.invalidateSize(); gmap.fitBounds(L.latLngBounds(st.map(s => s.pos)), { padding: [30, 30] }); guideMeDot(); }, 60);
-  if (!guideHere && navigator.geolocation) navigator.geolocation.getCurrentPosition(p => { guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy }; guideMeDot(); }, () => {}, { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 });
+  // Место старше 2 минут — спросить заново; пока ответа нет, точка показана серой как «последнее известное»
+  if ((!guideHere || Date.now() - guideHere.t > HERE_FRESH_MS) && navigator.geolocation) navigator.geolocation.getCurrentPosition(p => { guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy, t: Date.now() }; guideMeDot(); }, () => {}, { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 });
 }
+const HERE_FRESH_MS = 2 * 60000;
 function guideMeDot() {
   if (!gmap || !gmap._loaded || !guideHere) return;
   if (!gmeDot) gmeDot = L.circleMarker([guideHere.lat, guideHere.lng], { radius: 9, color: '#fff', weight: 3, fillColor: '#3b82f6', fillOpacity: 1 }).bindTooltip(T('Вы здесь')).addTo(gmap);
   else gmeDot.setLatLng([guideHere.lat, guideHere.lng]);
+  // Старое место — серая точка с подписью, сколько минут назад оно определено
+  const age = Date.now() - (guideHere.t || 0), stale = age > HERE_FRESH_MS;
+  gmeDot.setStyle({ fillColor: stale ? '#9ca3af' : '#3b82f6' });
+  gmeDot.setTooltipContent(stale ? Tf('Последнее известное место · {n} мин назад', { n: Math.round(age / 60000) }) : T('Вы здесь'));
 }
 $('gMapBtn').onclick = () => { ttsStop(); for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); guideShowMap($('gMapBox').hidden); };
 // Перейти к рассказу о точке n (и при желании сразу включить)
@@ -2795,7 +2801,7 @@ function guideJumpTo(n, play) {
 function guideNearStart() {
   if (guideWatch != null || !navigator.geolocation) { if (!navigator.geolocation) alert(T('Этот браузер не умеет определять место.')); return; }
   guideWatch = navigator.geolocation.watchPosition(p => {
-    guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy };
+    guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy, t: Date.now() };
     guideMeDot(); guideNearCheck();
   }, err => {
     if (err && err.code === 1) { guideNearStop(); write(GUIDE_NEAR_KEY, false); alert(T('Нет разрешения на геолокацию. Разрешите её в настройках браузера.')); }
