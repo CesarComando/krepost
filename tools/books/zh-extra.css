@@ -1,0 +1,3 @@
+:root { --serif: "Noto Serif CJK SC", serif; --sans: "Noto Sans CJK SC", sans-serif; --head: "Noto Serif CJK SC", serif; }
+body { line-height: 18.5pt; }
+.tl .t, .li { line-height: 18.5pt; }
