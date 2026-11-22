@@ -59,11 +59,14 @@
   const APPROX = { lv: 'ap. ', en: 'c. ', lt: 'apie ', et: 'u ', pl: 'ok. ', de: 'ca. ', fr: 'vers ', it: 'ca. ', es: 'c. ', zh: '约 ' };
   const DECADE = { lv: d => d + '. gadi', en: d => d + 's', lt: d => d + '-ieji', et: d => d + '. aastad', pl: d => 'lata ' + d + '.',
     de: d => d + 'er', fr: d => 'années ' + d, it: d => 'anni ' + d, es: d => 'años ' + d, zh: d => d + ' 年代' };
+  const BEFORE = { lv: d => 'līdz ' + d, en: d => 'before ' + d, lt: d => 'iki ' + d, et: d => 'enne ' + d, pl: d => 'przed ' + d,
+    de: d => 'vor ' + d, fr: d => 'avant ' + d, it: d => 'prima del ' + d, es: d => 'antes de ' + d, zh: d => d + ' 年以前' };
   function yearT(y) {
     if (!D) return y;
     const t = T(y); if (t !== y) return t;
     let v = String(y);
     v = v.replace(/^ок\. /, APPROX[lang] || 'c. ');
+    v = v.replace(/^до (\d{4})/, (m, d) => (BEFORE[lang] || BEFORE.en)(d));
     v = v.replace(/(\d{4})-е/g, (m, d) => (DECADE[lang] || DECADE.en)(d));
     return v;
   }

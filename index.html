@@ -514,6 +514,9 @@
   #modeBox { position:absolute; top:8px; left:8px; right:8px; z-index:5; display:flex; flex-wrap:wrap; gap:6px; pointer-events:none; }
   #modeBtn, #contourBtn { pointer-events:auto; min-height:0; padding:6px 11px; border:0; border-radius:16px;
     font:600 12px/1.2 Inter,system-ui,sans-serif; background:rgba(18,14,10,.78); color:#f1e6cc; box-shadow:0 0 0 1px rgba(243,210,122,.55); }
+  /* 23.11: вид кнопок прежний, но зона нажатия для пальца выше (~38 px) */
+  #modeBtn, #contourBtn { position:relative; }
+  #modeBtn::after, #contourBtn::after { content:''; position:absolute; inset:-6px -2px; }
   #camStage.explorer #modeBtn { color:#ffd77a; }
   #camStage:not(.explorer) #contourBtn { display:none; }
   #oldImg { transition:opacity .12s linear; }
