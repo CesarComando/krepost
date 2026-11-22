@@ -14,3 +14,8 @@ window.I18N_UI.et["Источник: группа «Мой город Дауга
 
 window.I18N_UI.et["Дальше"] = "Edasi";
 window.I18N_UI.et["Фото: Дайнис Миглан, 19.11.2026"] = "Foto: Dainis Miglāns, 19.11.2026";
+
+window.I18N_UI.et["Вы выбрали короткий маршрут: 5 точек, около 45 минут — от Михайловских ворот к Николаевским, вдоль реки. В записи говорится о полном круге из 13 точек — для вас это точки 1–5."] = "Valisite lühikese marsruudi: 5 peatust, umbes 45 minutit — Miikaeli väravast Nikolai väravani, mööda jõge. Salvestises räägitakse täisringist 13 peatusega — teile on need peatused 1–5.";
+window.I18N_UI.et["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Olete lühikese marsruudi läbinud. Täisringi ülejäänud 8 peatust — laod, komandandi maja, aed, hospital, Aleksandri ja Konstantini värav — ootavad teid järgmisel korral.";
+window.I18N_UI.et["▶ Продолжить полный круг с точки {n}"] = "▶ Jätka täisringi peatusest {n}";
+window.I18N_UI.et["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Siin lühike marsruut lõpeb. Salvestise lõpus on vihje, kuidas minna täisringi 6. peatusse. Kui soovite lõpetada, libistage edasi lõpuni.";

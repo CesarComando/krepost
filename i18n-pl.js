@@ -14,3 +14,8 @@ window.I18N_UI.pl["Источник: группа «Мой город Дауга
 
 window.I18N_UI.pl["Дальше"] = "Dalej";
 window.I18N_UI.pl["Фото: Дайнис Миглан, 19.11.2026"] = "Zdjęcie: Dainis Miglāns, 19.11.2026";
+
+window.I18N_UI.pl["Вы выбрали короткий маршрут: 5 точек, около 45 минут — от Михайловских ворот к Николаевским, вдоль реки. В записи говорится о полном круге из 13 точек — для вас это точки 1–5."] = "Wybrano krótką trasę: 5 przystanków, około 45 minut — od Bramy Michała do Bramy Mikołaja, wzdłuż rzeki. Nagranie mówi o pełnym kręgu z 13 przystankami — dla Ciebie to przystanki 1–5.";
+window.I18N_UI.pl["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Krótka trasa przebyta. Pozostałe 8 przystanków pełnego kręgu — magazyny, Dom Komendanta, ogród, szpital, Brama Aleksandra i Brama Konstantego — czeka na inny raz.";
+window.I18N_UI.pl["▶ Продолжить полный круг с точки {n}"] = "▶ Kontynuuj pełny krąg od przystanku {n}";
+window.I18N_UI.pl["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Tu kończy się krótka trasa. Na końcu nagrania jest wskazówka, jak dojść do przystanku 6 pełnego kręgu. Jeśli chcesz zakończyć, przesuń dalej do finału.";

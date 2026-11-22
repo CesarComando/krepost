@@ -11,3 +11,8 @@ window.I18N.en.ui["Источник: группа «Мой город Дауга
 
 window.I18N.en.ui["Дальше"] = "Next";
 window.I18N.en.ui["Фото: Дайнис Миглан, 19.11.2026"] = "Photo: Dainis Miglāns, 19.11.2026";
+
+window.I18N.en.ui["Вы выбрали короткий маршрут: 5 точек, около 45 минут — от Михайловских ворот к Николаевским, вдоль реки. В записи говорится о полном круге из 13 точек — для вас это точки 1–5."] = "You chose the short route: 5 stops, about 45 minutes — from the Michael Gate to the Nicholas Gate, along the river. The recording speaks of the full circle of 13 stops — for you it is stops 1–5.";
+window.I18N.en.ui["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "You have finished the short route. The other 8 stops of the full circle — the stores, the Commandant’s House, the garden, the hospital, the Alexander and Constantine Gates — are waiting for another time.";
+window.I18N.en.ui["▶ Продолжить полный круг с точки {n}"] = "▶ Continue the full circle from stop {n}";
+window.I18N.en.ui["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "The short route ends here. At the end of the recording there is a hint on how to walk to stop 6 of the full circle. If you want to finish, swipe on to the finale.";

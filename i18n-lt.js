@@ -14,3 +14,8 @@ window.I18N_UI.lt["Источник: группа «Мой город Дауга
 
 window.I18N_UI.lt["Дальше"] = "Toliau";
 window.I18N_UI.lt["Фото: Дайнис Миглан, 19.11.2026"] = "Nuotrauka: Dainis Miglāns, 2026-11-19";
+
+window.I18N_UI.lt["Вы выбрали короткий маршрут: 5 точек, около 45 минут — от Михайловских ворот к Николаевским, вдоль реки. В записи говорится о полном круге из 13 точек — для вас это точки 1–5."] = "Pasirinkote trumpą maršrutą: 5 stotelės, apie 45 minutes — nuo Mykolo vartų iki Nikolajaus vartų, palei upę. Įraše kalbama apie visą 13 stotelių ratą — jums tai stotelės 1–5.";
+window.I18N_UI.lt["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Įveikėte trumpą maršrutą. Kitos 8 viso rato stotelės — sandėliai, Komendanto namas, sodas, ligoninė, Aleksandro ir Konstantino vartai — laukia kitą kartą.";
+window.I18N_UI.lt["▶ Продолжить полный круг с точки {n}"] = "▶ Tęsti visą ratą nuo {n} stotelės";
+window.I18N_UI.lt["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Čia trumpas maršrutas baigiasi. Įrašo pabaigoje — patarimas, kaip eiti į 6 viso rato stotelę. Jei norite baigti, braukite toliau iki pabaigos.";

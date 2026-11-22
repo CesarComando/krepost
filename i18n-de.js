@@ -14,3 +14,8 @@ window.I18N_UI.de["Источник: группа «Мой город Дауга
 
 window.I18N_UI.de["Дальше"] = "Weiter";
 window.I18N_UI.de["Фото: Дайнис Миглан, 19.11.2026"] = "Foto: Dainis Miglāns, 19.11.2026";
+
+window.I18N_UI.de["Вы выбрали короткий маршрут: 5 точек, около 45 минут — от Михайловских ворот к Николаевским, вдоль реки. В записи говорится о полном круге из 13 точек — для вас это точки 1–5."] = "Sie haben die kurze Route gewählt: 5 Stationen, etwa 45 Minuten — vom Michaelstor zum Nikolaitor, am Fluss entlang. Die Aufnahme spricht vom ganzen Rundgang mit 13 Stationen — für Sie sind es die Stationen 1–5.";
+window.I18N_UI.de["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Sie haben die kurze Route geschafft. Die übrigen 8 Stationen des ganzen Rundgangs — die Speicher, das Kommandantenhaus, der Garten, das Lazarett, das Alexander- und das Konstantintor — warten auf ein anderes Mal.";
+window.I18N_UI.de["▶ Продолжить полный круг с точки {n}"] = "▶ Den ganzen Rundgang ab Station {n} fortsetzen";
+window.I18N_UI.de["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Hier endet die kurze Route. Am Ende der Aufnahme kommt ein Hinweis zum Weg zu Station 6 des ganzen Rundgangs. Wenn Sie aufhören möchten, wischen Sie weiter zum Abschluss.";

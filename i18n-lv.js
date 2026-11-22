@@ -11,3 +11,8 @@ window.I18N.lv.ui["Источник: группа «Мой город Дауга
 
 window.I18N.lv.ui["Дальше"] = "Tālāk";
 window.I18N.lv.ui["Фото: Дайнис Миглан, 19.11.2026"] = "Foto: Dainis Miglāns, 19.11.2026";
+
+window.I18N.lv.ui["Вы выбрали короткий маршрут: 5 точек, около 45 минут — от Михайловских ворот к Николаевским, вдоль реки. В записи говорится о полном круге из 13 точек — для вас это точки 1–5."] = "Jūs izvēlējāties īso maršrutu: 5 pieturas, apmēram 45 minūtes — no Mihaila vārtiem līdz Nikolaja vārtiem, gar upi. Ierakstā runāts par pilno apli ar 13 pieturām — jums tās ir pieturas 1–5.";
+window.I18N.lv.ui["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Jūs esat izgājuši īso maršrutu. Pārējās 8 pilnā apļa pieturas — noliktavas, Komandanta nams, dārzs, hospitālis, Aleksandra un Konstantīna vārti — gaida jūs citreiz.";
+window.I18N.lv.ui["▶ Продолжить полный круг с точки {n}"] = "▶ Turpināt pilno apli no {n}. pieturas";
+window.I18N.lv.ui["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Šeit īsais maršruts beidzas. Ieraksta beigās ir norāde, kā iet uz pilnā apļa 6. pieturu. Ja vēlaties beigt, pāršķiriet tālāk līdz noslēgumam.";

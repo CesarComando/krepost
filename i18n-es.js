@@ -14,3 +14,8 @@ window.I18N_UI.es["Источник: группа «Мой город Дауга
 
 window.I18N_UI.es["Дальше"] = "Siguiente";
 window.I18N_UI.es["Фото: Дайнис Миглан, 19.11.2026"] = "Foto: Dainis Miglāns, 19.11.2026";
+
+window.I18N_UI.es["Вы выбрали короткий маршрут: 5 точек, около 45 минут — от Михайловских ворот к Николаевским, вдоль реки. В записи говорится о полном круге из 13 точек — для вас это точки 1–5."] = "Ha elegido la ruta corta: 5 paradas, unos 45 minutos — de la Puerta de Miguel a la Puerta de Nicolás, junto al río. La grabación habla del circuito completo de 13 paradas — para usted son las paradas 1–5.";
+window.I18N_UI.es["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Ha terminado la ruta corta. Las otras 8 paradas del circuito completo — los almacenes, la Casa del Comandante, el jardín, el hospital, las puertas de Alejandro y de Constantino — le esperan otro día.";
+window.I18N_UI.es["▶ Продолжить полный круг с точки {n}"] = "▶ Seguir el circuito completo desde la parada {n}";
+window.I18N_UI.es["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Aquí termina la ruta corta. Al final de la grabación hay una indicación para ir a la parada 6 del circuito completo. Si quiere terminar, deslice hasta el final.";

@@ -14,3 +14,8 @@ window.I18N_UI.fr["Источник: группа «Мой город Дауга
 
 window.I18N_UI.fr["Дальше"] = "Suivant";
 window.I18N_UI.fr["Фото: Дайнис Миглан, 19.11.2026"] = "Photo : Dainis Miglāns, 19.11.2026";
+
+window.I18N_UI.fr["Вы выбрали короткий маршрут: 5 точек, около 45 минут — от Михайловских ворот к Николаевским, вдоль реки. В записи говорится о полном круге из 13 точек — для вас это точки 1–5."] = "Vous avez choisi l’itinéraire court : 5 arrêts, environ 45 minutes — de la porte Saint-Michel à la porte Saint-Nicolas, le long du fleuve. L’enregistrement parle du circuit complet de 13 arrêts — pour vous, ce sont les arrêts 1 à 5.";
+window.I18N_UI.fr["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Vous avez terminé l’itinéraire court. Les 8 autres arrêts du circuit complet — les magasins, la maison du commandant, le jardin, l’hôpital, les portes Alexandre et Constantin — vous attendent une autre fois.";
+window.I18N_UI.fr["▶ Продолжить полный круг с точки {n}"] = "▶ Continuer le circuit complet à partir de l’arrêt {n}";
+window.I18N_UI.fr["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "L’itinéraire court s’arrête ici. À la fin de l’enregistrement, une indication explique comment rejoindre l’arrêt 6 du circuit complet. Pour terminer, faites glisser jusqu’au final.";

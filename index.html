@@ -953,6 +953,9 @@
   .gCard .gImg { width:100%; height:30vh; max-height:240px; object-fit:cover; border-radius:14px; background:#221a12; display:block; }
   .gCard .gNum { margin:10px 0 2px; font-size:13px; color:var(--muted, #b8a98f); }
   .gCard h4 { margin:0 0 4px; font-size:21px; line-height:1.2; } .gCard .gCap { margin:0 0 10px; font-size:14px; opacity:.8; }
+  .gRouteNote { margin:8px 0 10px; padding:10px 12px; border-left:3px solid var(--accent, #d9a441); border-radius:8px; background:rgba(217,164,65,.10); font-size:14px; line-height:1.45; }
+  .gRouteNote p { margin:0; }
+  .gRouteGo { display:block; width:100%; margin-top:10px; min-height:44px; border-radius:12px; border:1px solid var(--accent, #d9a441); background:transparent; color:inherit; font:600 15px Inter,system-ui,sans-serif; }
   .gCard audio { width:100%; margin:4px 0 6px; } .gCard .gWait { font-size:13px; opacity:.75; margin:4px 0 8px; }
   .gCard .gText p { margin:0 0 12px; line-height:1.55; font-size:16px; } .gCard .gPhotos { margin:6px 0 12px; }
   .gCard .gTts { display:block; width:100%; margin:4px 0 8px; min-height:46px; font-size:16px; text-transform:none; letter-spacing:0; } .gCard .gTts.on { background:#d9a441; color:#17120d; }
@@ -2522,7 +2525,9 @@ function guideRoute(id) { return (GD.routes || []).find(r => r.id === id) || { i
 const guideStop = n => GD.stops.find(s => s.n === n);
 function guideOrder(start, routeId) {
   const st = guideRoute(routeId).stops.map(guideStop).filter(Boolean), i = Math.max(0, st.findIndex(x => x.n === start));
-  return [GD.intro, ...st.slice(i), ...st.slice(0, i), GD.outro].filter(Boolean);
+  // Короткий маршрут — не круг, а линия от ворот до ворот: без возврата к началу
+  const tail = routeId === 'short' ? [] : st.slice(0, i);
+  return [GD.intro, ...st.slice(i), ...tail, GD.outro].filter(Boolean);
 }
 function guideAudioOf(g) {
   const L = (window.LANG || 'ru').slice(0, 2), a = g.audio || {};
@@ -2575,10 +2580,22 @@ function guideCard(g, k) {
   im.src = g.img || (sp ? (sp.thumb || sp.src) : 'photos/hero.jpg');
   if (g.imgPos) im.style.objectPosition = g.imgPos;
   const num = document.createElement('div'); num.className = 'gNum';
-  num.textContent = g.n >= 1 && g.n <= GD.stops.length ? Tf('Точка {n} из {m}', { n: g.n, m: GD.stops.length }) : '🎧';
+  // Счёт — по выбранному маршруту: в коротком «Точка 3 из 5», а не «из 13» (23.11.2026)
+  const rStops = guideRoute((guideSeq && guideSeq.route) || 'full').stops, rI = rStops.indexOf(g.n);
+  num.textContent = rI >= 0 ? Tf('Точка {n} из {m}', { n: rI + 1, m: rStops.length }) : '🎧';
   const h = document.createElement('h4'); h.textContent = T(g.title);
   const cap = document.createElement('p'); cap.className = 'gCap'; cap.textContent = T(g.caption || '');
   c.append(im, num, h, cap);
+  // Короткий маршрут: записи сделаны для полного круга — подсказываем, что относится к вам
+  const shortR = guideSeq && guideSeq.route === 'short';
+  const rNote = (t, extra) => { const p = document.createElement('div'); p.className = 'gRouteNote'; const b = document.createElement('p'); b.textContent = T(t); p.append(b); if (extra) p.append(extra); c.append(p); };
+  if (shortR && g === GD.intro) rNote('Вы выбрали короткий маршрут: 5 точек, около 45 минут — от Михайловских ворот к Николаевским, вдоль реки. В записи говорится о полном круге из 13 точек — для вас это точки 1–5.');
+  if (shortR && g === GD.outro) rNote('Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз.');
+  if (shortR && g.n === rStops[rStops.length - 1]) {
+    const go = document.createElement('button'); go.type = 'button'; go.className = 'gRouteGo'; go.textContent = T('▶ Продолжить полный круг с точки {n}').replace('{n}', g.n + 1);
+    go.onclick = () => { track('feature', 'guide_continue_full'); ttsStop(); for (const o of $('guidePager').querySelectorAll('audio')) o.pause(); guideBuild(g.n + 1, 1, 'full'); };
+    rNote('Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу.', go);
+  }
   const gal = guideGallery(g, !g.img && sp ? sp.id : null);
   if (gal.length) {
     const hd = document.createElement('p'); hd.className = 'gGalHead'; hd.textContent = T('Это место в разные годы') + ' (' + gal.length + ')';
@@ -2651,6 +2668,8 @@ function guidePos() {
   const g = guideSeq[guideCur]; if (!g) return;
   $('gPos').textContent = (guideCur + 1) + ' / ' + guideSeq.length + (guideCur === 0 ? ' · ' + T('Свайп ← → — следующая точка') : '');
   $('gPrev').disabled = guideCur === 0; $('gNext').disabled = guideCur === guideSeq.length - 1;
+  // Счётчик «начали — дошли до финала — поддержали»: финал считаем один раз за прогулку
+  if (g === GD.outro && !guideSeq.ended) { guideSeq.ended = true; track('feature', 'guide_end_' + (guideSeq.route || 'full')); }
   guideSave();
 }
 function guideBuild(start, k, routeId) {
@@ -3580,6 +3599,7 @@ async function modRender() {
     const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
     const name = id => { const sp = spotById(id) || allSpots().find(x => x.id === id); return sp ? `${id} · ${sp.title}` : id; };
     box.innerHTML = `<div class="modKpi"><div><b>${sum(s.days, 'opens')}</b><small>открытий</small></div><div><b>${sum(s.days, 'photos')}</b><small>нажатий на фото</small></div><div><b>${s.shots}</b><small>снимков</small></div></div>
+      ${s.guide ? `<h4>Аудиогид: начали → дошли до финала → поддержали</h4><table><tr><th></th><th class="num">Начали</th><th class="num">Финал</th></tr><tr><td>Короткий (5 точек)</td><td class="num">${s.guide.start_short}</td><td class="num">${s.guide.end_short}</td></tr><tr><td>Полный круг (13)</td><td class="num">${s.guide.start_full}</td><td class="num">${s.guide.end_full}</td></tr><tr><td>Открыли гид</td><td class="num">${s.guide.opened}</td><td></td></tr><tr><td>Из короткого пошли на полный</td><td class="num">${s.guide.continue_full}</td><td></td></tr><tr><td>«Поддержать» в финале гида</td><td class="num">${s.guide.donate_guide}</td><td></td></tr><tr><td>«Поддержать» в других местах</td><td class="num">${s.guide.donate_other}</td><td></td></tr></table><p class="modNote">Считаются нажатия, а не люди: телефоны не различаются.</p>` : ''}
       <h4>По дням</h4><table><tr><th>День</th><th class="num">Открытий</th><th class="num">Фото</th></tr>${s.days.map(d => `<tr><td>${esc(d.day)}</td><td class="num">${d.opens}</td><td class="num">${d.photos}</td></tr>`).join('') || '<tr><td colspan="3">Пока пусто</td></tr>'}</table>
       <h4>Чаще всего нажимают</h4><table>${s.photos.map(p => `<tr><td>${esc(name(p.id))}</td><td class="num">${p.n}</td></tr>`).join('') || '<tr><td>Пока пусто</td></tr>'}</table>
       <h4>Разделы и функции</h4><table>${s.features.map(f => `<tr><td>${esc(f.kind)} · ${esc(f.target)}</td><td class="num">${f.n}</td></tr>`).join('') || '<tr><td>Пока пусто</td></tr>'}</table>
