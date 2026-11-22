@@ -4,7 +4,7 @@
 //   Хранятся в отдельном складе, который не стирается при обновлении приложения.
 // • Шрифты (лежат на самом сайте) — тоже сохраняются.
 // • Плитки карты OpenStreetMap: сохраняются те, что уже открывались (не больше ~1500 штук).
-const CACHE = 'krepost-v127';
+const CACHE = 'krepost-v128';
 const PHOTO_CACHE = 'krepost-photos';
 const TILE_CACHE = 'krepost-tiles';
 const TILE_MAX = 1500;
@@ -29,7 +29,10 @@ function staleWhileRevalidate(e, cacheName, after, opaqueOk) {
     return (await net) || Response.error();
   }));
 }
+let writesSinceTrim = 0;
 async function trimTiles() {
+  if (++writesSinceTrim < 32) return;
+  writesSinceTrim = 0;
   const c = await caches.open(TILE_CACHE);
   const keys = await c.keys();
   if (keys.length > TILE_MAX) for (const k of keys.slice(0, keys.length - TILE_MAX + 200)) await c.delete(k);
@@ -44,19 +47,24 @@ self.addEventListener('fetch', e => {
   // Шрифты лежат на самом сайте: сохранить отдельно, чтобы не скачивать заново при каждом обновлении приложения
   if (url.pathname.includes('/vendor/fonts/')) { staleWhileRevalidate(e, FONT_CACHE); return; }
   if (url.pathname.includes('/photos/')) { staleWhileRevalidate(e, PHOTO_CACHE); return; }
-  e.respondWith(
-    // no-cache: всегда спрашиваем сервер, не изменился ли файл (иначе новая версия ждёт до 10 минут)
-    fetch(req, { cache: 'no-cache' })
-      .then(res => {
-        if (res.ok) {
-          const copy = res.clone();
-          caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
-        }
-        return res;
-      })
-      // Нет сети: сначала самая свежая сохранённая копия этой версии, потом любая другая (например, из «Скачать для прогулки»)
-      .catch(() => caches.open(CACHE).then(c => c.match(req, { ignoreSearch: true }))
-        .then(r => r || caches.match(req, { ignoreSearch: true }))
-        .then(r => r || caches.match('./index.html', { ignoreSearch: true })))
-  );
+  // Не подменять запросы частей аудиозаписи целой сохранённой страницей.
+  e.respondWith((async () => {
+    let response;
+    try {
+      response = await fetch(req, { cache: 'no-cache' });
+      if (response.ok && response.status !== 206) {
+        const copy = response.clone();
+        e.waitUntil(caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {}));
+      }
+      if (response.status < 500) return response;
+    } catch { /* Ищем сохранённую версию. */ }
+    const cached = await caches.open(CACHE);
+    const hit = await cached.match(req, {ignoreSearch: true}) || await caches.match(req, {ignoreSearch: true});
+    if (hit) return hit;
+    if (req.mode === 'navigate') {
+      const page = await caches.match('./index.html', {ignoreSearch: true});
+      if (page) return page;
+    }
+    return response || Response.error();
+  })());
 });

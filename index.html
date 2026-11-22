@@ -2572,10 +2572,18 @@ function guideCard(g, k) {
   im.src = g.img || (sp ? (sp.thumb || sp.src) : 'photos/hero.jpg');
   if (g.imgPos) im.style.objectPosition = g.imgPos;
   const num = document.createElement('div'); num.className = 'gNum';
-  num.textContent = g.n >= 1 && g.n <= GD.stops.length ? Tf('Точка {n} из {m}', { n: g.n, m: GD.stops.length }) : '🎧';
+  const routeStops = guideSeq.filter(item => item !== GD.intro && item !== GD.outro);
+  const routeIndex = routeStops.indexOf(g);
+  num.textContent = routeIndex >= 0 ? Tf('Точка {n} из {m}', { n: routeIndex + 1, m: routeStops.length }) : '🎧';
   const h = document.createElement('h4'); h.textContent = T(g.title);
   const cap = document.createElement('p'); cap.className = 'gCap'; cap.textContent = T(g.caption || '');
   c.append(im, num, h, cap);
+  if (routeIndex >= 0 && guideSeq[k + 1]) {
+    const next = document.createElement('p');
+    next.className = 'gCap';
+    next.textContent = '→ ' + T(guideSeq[k + 1].title);
+    c.append(next);
+  }
   const gal = guideGallery(g, !g.img && sp ? sp.id : null);
   if (gal.length) {
     const hd = document.createElement('p'); hd.className = 'gGalHead'; hd.textContent = T('Это место в разные годы') + ' (' + gal.length + ')';
@@ -2622,7 +2630,10 @@ function guideCard(g, k) {
     a.onclick = () => { ttsStop(); for (const o of $('guidePager').querySelectorAll('audio')) o.pause(); askTranslationFeedback(); };
     p.append(a); tx.append(p);
   }
-  for (const para of String(gt.text).split(/\n\s*\n/)) { const p = document.createElement('p'); p.textContent = para.trim(); tx.append(p); }
+  for (const para of String(gt.text).split(/\n\s*\n/)) {
+    if (g.n === 5 && guideSeq[k + 1]?.n !== 6 && gt.lang === 'ru' && para.trim().startsWith('Теперь пройдите через ворота')) continue;
+    const p = document.createElement('p'); p.textContent = para.trim(); tx.append(p);
+  }
   c.append(tx);
   // В конце прогулки — мягкая просьба поддержать проект (гид остаётся бесплатным)
   if (g === GD.outro && typeof DONATE_URL === 'string' && DONATE_URL) {
@@ -2743,7 +2754,7 @@ function dlAskRun() { const go = dlAskNext; dlAskNext = null; if ($('dlAskDlg').
 $('dlAskGo').onclick = dlAskRun;
 $('dlAskDonate').addEventListener('click', () => { track('feature', 'donate_dl'); dlAskRun(); });
 $('dlAskDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
-$('gDlBtn').onclick = e => { const btn = e.currentTarget; askDonateThen('guide', async () => { track('feature', 'guide_offline'); await saveOffline(guideOfflineUrls(), btn); guideBarPaint(); }); };
+$('gDlBtn').onclick = async e => { const btn = e.currentTarget; track('feature', 'guide_offline'); await saveOffline(guideOfflineUrls(), btn); guideBarPaint(); };
 // Карта маршрута: схема по прямой между точками, «вы здесь», нажатие на номер — переход к рассказу
 async function guideShowMap(show) {
   $('gMapBox').hidden = !show; $('gMapBtn').classList.toggle('on', !!show);
@@ -2770,7 +2781,15 @@ async function guideShowMap(show) {
     gPins[s.n] = m;
   }
   setTimeout(() => { gmap.invalidateSize(); gmap.fitBounds(L.latLngBounds(st.map(s => s.pos)), { padding: [30, 30] }); guideMeDot(); }, 60);
-  if (!guideHere && navigator.geolocation) navigator.geolocation.getCurrentPosition(p => { guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy }; guideMeDot(); }, () => {}, { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 });
+  if (guideWatch == null && navigator.geolocation) {
+    guideHere = null;
+    if (gmeDot) { gmeDot.remove(); gmeDot = null; }
+    navigator.geolocation.getCurrentPosition(p => {
+      if (!$('guideDlg').open || $('gMapBox').hidden || guideWatch != null) return;
+      guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy };
+      guideMeDot();
+    }, () => {}, { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 });
+  }
 }
 function guideMeDot() {
   if (!gmap || !gmap._loaded || !guideHere) return;
@@ -3015,7 +3034,12 @@ function photoUrls(list, full) {
 async function cachedPaths() {
   try { const c = await caches.open(PHOTO_CACHE); return new Set((await c.keys()).map(r => new URL(r.url).pathname)); } catch { return new Set(); }
 }
-async function offCount(urls) { const have = await cachedPaths(); return [urls.filter(u => have.has(pathOf(u))).length, urls.length]; }
+async function offCount(urls) {
+  const have = await cachedPaths();
+  const shell = await caches.open(OFF_CACHE);
+  const required = await Promise.all(SHELL.map(u => shell.match(u)));
+  return [urls.filter(u => have.has(pathOf(u))).length + required.filter(Boolean).length, urls.length + SHELL.length];
+}
 let offJob = null;
 async function saveOffline(urls, btn) {
   if (offJob) return;
@@ -3036,13 +3060,16 @@ async function saveOffline(urls, btn) {
   paint();
   try {
     const sh = await caches.open(OFF_CACHE);
-    await Promise.all(SHELL.map(u => sh.add(u).catch(() => {})));
+    await Promise.all(SHELL.map(async u => {
+      try { await sh.add(u); }
+      catch { if (!(await sh.match(u))) fail++; }
+    }));
     const c = await caches.open(PHOTO_CACHE);
     const worker = async () => {
       while (!offJob.stop && i < todo.length) {
         const u = todo[i++];
-        try { await c.add(u); } catch { fail++; }
-        done++; paint();
+        try { await c.add(u); done++; } catch { fail++; }
+        paint();
       }
     };
     await Promise.all([worker(), worker(), worker(), worker()]);
