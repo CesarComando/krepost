@@ -3024,6 +3024,7 @@ async function saveOffline(urls, btn) {
   const have = await cachedPaths();
   const todo = urls.filter(u => !have.has(pathOf(u)));
   let done = urls.length - todo.length, fail = 0, i = 0;
+  const missing = [];
   offJob = { stop: false };
   const label = btn ? btn.textContent : '';
   const paint = () => {
@@ -3037,6 +3038,8 @@ async function saveOffline(urls, btn) {
   try {
     const sh = await caches.open(OFF_CACHE);
     await Promise.all(SHELL.map(u => sh.add(u).catch(() => {})));
+    // Обязательные файлы страницы проверяем по факту, а не по отсутствию ошибки
+    for (const u of SHELL) if (!(await sh.match(u, { ignoreSearch: true }))) missing.push(u);
     const c = await caches.open(PHOTO_CACHE);
     const worker = async () => {
       while (!offJob.stop && i < todo.length) {
@@ -3048,10 +3051,17 @@ async function saveOffline(urls, btn) {
     await Promise.all([worker(), worker(), worker(), worker()]);
   } catch { fail++; }
   const stopped = offJob.stop;
+  if (!stopped) {
+    // Галочку ставим, только если на месте все снимки из списка — иначе говорим, чего не хватает
+    const got = await cachedPaths();
+    for (const u of urls) if (!got.has(pathOf(u))) missing.push(u);
+  }
+  fail = missing.length || fail;
+  const missNames = missing.slice(0, 5).map(u => pathOf(u).split('/').pop()).join(', ') + (missing.length > 5 ? ' …' : '');
   offJob = null;
   document.querySelectorAll('.offStop').forEach(x => { x.hidden = true; });
   const msg = stopped ? T('Остановлено. Уже сохранённое останется.')
-    : fail ? Tf('Готово, но {n} файлов не сохранились — проверьте интернет и нажмите ещё раз.', { n: fail })
+    : fail ? Tf('Готово, но {n} файлов не сохранились — проверьте интернет и нажмите ещё раз.', { n: fail }) + (missNames ? ' (' + missNames + ')' : '')
     : T('✓ Готово! Эти снимки откроются и без интернета.');
   document.querySelectorAll('.offState').forEach(x => { x.textContent = msg; });
   if (btn) { btn.textContent = !stopped && !fail ? T('✓ Сохранено для прогулки') : label; btn.classList.toggle('done', !stopped && !fail); }
