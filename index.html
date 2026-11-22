@@ -2770,12 +2770,18 @@ async function guideShowMap(show) {
     gPins[s.n] = m;
   }
   setTimeout(() => { gmap.invalidateSize(); gmap.fitBounds(L.latLngBounds(st.map(s => s.pos)), { padding: [30, 30] }); guideMeDot(); }, 60);
-  if (!guideHere && navigator.geolocation) navigator.geolocation.getCurrentPosition(p => { guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy }; guideMeDot(); }, () => {}, { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 });
+  // Место старше 2 минут — спросить заново; пока ответа нет, точка показана серой как «последнее известное»
+  if ((!guideHere || Date.now() - guideHere.t > HERE_FRESH_MS) && navigator.geolocation) navigator.geolocation.getCurrentPosition(p => { guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy, t: Date.now() }; guideMeDot(); }, () => {}, { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 });
 }
+const HERE_FRESH_MS = 2 * 60000;
 function guideMeDot() {
   if (!gmap || !gmap._loaded || !guideHere) return;
   if (!gmeDot) gmeDot = L.circleMarker([guideHere.lat, guideHere.lng], { radius: 9, color: '#fff', weight: 3, fillColor: '#3b82f6', fillOpacity: 1 }).bindTooltip(T('Вы здесь')).addTo(gmap);
   else gmeDot.setLatLng([guideHere.lat, guideHere.lng]);
+  // Старое место — серая точка с подписью, сколько минут назад оно определено
+  const age = Date.now() - (guideHere.t || 0), stale = age > HERE_FRESH_MS;
+  gmeDot.setStyle({ fillColor: stale ? '#9ca3af' : '#3b82f6' });
+  gmeDot.setTooltipContent(stale ? Tf('Последнее известное место · {n} мин назад', { n: Math.round(age / 60000) }) : T('Вы здесь'));
 }
 $('gMapBtn').onclick = () => { ttsStop(); for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); guideShowMap($('gMapBox').hidden); };
 // Перейти к рассказу о точке n (и при желании сразу включить)
@@ -2795,7 +2801,7 @@ function guideJumpTo(n, play) {
 function guideNearStart() {
   if (guideWatch != null || !navigator.geolocation) { if (!navigator.geolocation) alert(T('Этот браузер не умеет определять место.')); return; }
   guideWatch = navigator.geolocation.watchPosition(p => {
-    guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy };
+    guideHere = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy, t: Date.now() };
     guideMeDot(); guideNearCheck();
   }, err => {
     if (err && err.code === 1) { guideNearStop(); write(GUIDE_NEAR_KEY, false); alert(T('Нет разрешения на геолокацию. Разрешите её в настройках браузера.')); }
@@ -3024,6 +3030,7 @@ async function saveOffline(urls, btn) {
   const have = await cachedPaths();
   const todo = urls.filter(u => !have.has(pathOf(u)));
   let done = urls.length - todo.length, fail = 0, i = 0;
+  const missing = [];
   offJob = { stop: false };
   const label = btn ? btn.textContent : '';
   const paint = () => {
@@ -3037,6 +3044,8 @@ async function saveOffline(urls, btn) {
   try {
     const sh = await caches.open(OFF_CACHE);
     await Promise.all(SHELL.map(u => sh.add(u).catch(() => {})));
+    // Обязательные файлы страницы проверяем по факту, а не по отсутствию ошибки
+    for (const u of SHELL) if (!(await sh.match(u, { ignoreSearch: true }))) missing.push(u);
     const c = await caches.open(PHOTO_CACHE);
     const worker = async () => {
       while (!offJob.stop && i < todo.length) {
@@ -3048,10 +3057,17 @@ async function saveOffline(urls, btn) {
     await Promise.all([worker(), worker(), worker(), worker()]);
   } catch { fail++; }
   const stopped = offJob.stop;
+  if (!stopped) {
+    // Галочку ставим, только если на месте все снимки из списка — иначе говорим, чего не хватает
+    const got = await cachedPaths();
+    for (const u of urls) if (!got.has(pathOf(u))) missing.push(u);
+  }
+  fail = missing.length || fail;
+  const missNames = missing.slice(0, 5).map(u => pathOf(u).split('/').pop()).join(', ') + (missing.length > 5 ? ' …' : '');
   offJob = null;
   document.querySelectorAll('.offStop').forEach(x => { x.hidden = true; });
   const msg = stopped ? T('Остановлено. Уже сохранённое останется.')
-    : fail ? Tf('Готово, но {n} файлов не сохранились — проверьте интернет и нажмите ещё раз.', { n: fail })
+    : fail ? Tf('Готово, но {n} файлов не сохранились — проверьте интернет и нажмите ещё раз.', { n: fail }) + (missNames ? ' (' + missNames + ')' : '')
     : T('✓ Готово! Эти снимки откроются и без интернета.');
   document.querySelectorAll('.offState').forEach(x => { x.textContent = msg; });
   if (btn) { btn.textContent = !stopped && !fail ? T('✓ Сохранено для прогулки') : label; btn.classList.toggle('done', !stopped && !fail); }
