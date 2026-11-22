@@ -1,7 +1,7 @@
 // Аудиогид «Dinaburga 1810»: кольцевой маршрут по крепости, 13 точек + вступление и финал.
 // Два старта: 1 — от остановки «Cietoksnis» у Михайловских ворот (въезд из города),
 //             4 — от Николаевских ворот, у Водоподъёмного здания (Центр культуры и информации).
-// Тексты — по книге «История Даугавпилсской крепости: правда и легенды» и стендам Центра крепости (сверка 19.11.2026).
+// Тексты — по книге «История Даугавпилсской крепости: правда и легенды» и стендам Центра крепости (сверка 19.11.2026; испытание облицовки 1820 — по сверке 22.11.2026).
 // audio: файлы, которые уже озвучены (папка audio/; русская озвучка ElevenLabs 20.11.2026 — audio/ru/00–14). Нет файла — в приложении показывается текст.
 // pos — место остановки для «подсказки у остановки» и карты маршрута (точность ±20 м).
 // routes — маршруты: полный круг и короткий.
@@ -503,7 +503,7 @@ From here walk west, along the northern part of the fortress, to the Constantine
 
 Константиновские ворота построили в 1821–1824 годах. Они вели к летнему госпиталю и на Рижскую дорогу. Именно здесь, на валу у этих ворот, 31 мая 1851 года император Николай Первый сказал: «Динабургская крепость строится при мне уже тридцать один год. Я желал бы, чтобы она была окончена при моей жизни. Но вряд ли я доживу до этого». Он не дожил. А в мае 1917 года, во время революции, у этих ворот выступал перед солдатами военный министр Керенский. В 1962 году своды ворот разобрали: военному училищу нужно было завозить крупную технику.
 
-Теперь посмотрите на вал. Главный вал крепости тянется почти на три километра, высотой до тринадцати метров. В нём восемь бастионов. Снаружи вал одет в гранит — эту каменную стену называют эскарпом. Её строили восемь лет, а в ноябре 1820 года испытали: три 24-фунтовые пушки били в одну точку (по Львову — четырнадцать залпов, по архивному делу — четыре). Стена выдержала, повреждения были только снаружи.
+Теперь посмотрите на вал. Главный вал крепости тянется почти на три километра, высотой до тринадцати метров. В нём восемь бастионов. Снаружи вал одет в гранит — эту каменную стену называют эскарпом. Её строили восемь лет, а в ноябре 1820 года испытали: три тяжёлые 24-фунтовые пушки били в одну точку с полутораста метров. Стена выдержала, повреждения были только снаружи.
 
 Внутри вала — казематы с кирпичными сводами и потерны, проходы сквозь вал. Вот это и есть настоящие подземелья крепости. Отсюда растут все легенды: о тоннеле под Даугавой, по которому будто бы можно было проехать на тройке, о шести тоннах золота, о Янтарной комнате. Документы говорят другое. Казну в 1812 году вывезли ещё до боёв, а закопанные пушки выкопали. Янтарная комната пропала в Кёнигсберге. А вместо тоннеля под рекой был наплавной мост, который разбирали каждую осень.
 
@@ -513,7 +513,7 @@ From here walk west, along the northern part of the fortress, to the Constantine
 
 Konstantīna vārtus uzcēla 1821.–1824. gadā. Tie veda uz vasaras hospitāli un uz Rīgas ceļu. Tieši šeit, uz vaļņa pie šiem vārtiem, 1851. gada 31. maijā imperators Nikolajs Pirmais teica: «Dinaburgas cietoksni būvē manā laikā jau trīsdesmit vienu gadu. Es vēlētos, lai to pabeigtu manas dzīves laikā. Bet diez vai es to sagaidīšu.» Viņš to nesagaidīja. Bet 1917. gada maijā, revolūcijas laikā, pie šiem vārtiem karavīru priekšā uzstājās kara ministrs Kerenskis. 1962. gadā vārtu velves nojauca: kara skolai vajadzēja ievest lielu tehniku.
 
-Tagad paskatieties uz valni. Cietokšņa galvenais valnis stiepjas gandrīz trīs kilometrus, līdz trīspadsmit metriem augsts. Tajā ir astoņi bastioni. No ārpuses valnis ietērpts granītā — šo akmens sienu sauc par eskarpu. To būvēja astoņus gadus, bet 1820. gada novembrī pārbaudīja: trīs 24 mārciņu lielgabali šāva vienā punktā (pēc Ļvova — četrpadsmit zalves, pēc arhīva lietas — četras). Siena izturēja, bojājumi bija tikai virspusē.
+Tagad paskatieties uz valni. Cietokšņa galvenais valnis stiepjas gandrīz trīs kilometrus, līdz trīspadsmit metriem augsts. Tajā ir astoņi bastioni. No ārpuses valnis ietērpts granītā — šo akmens sienu sauc par eskarpu. To būvēja astoņus gadus, bet 1820. gada novembrī pārbaudīja: trīs smagie 24 mārciņu lielgabali šāva vienā punktā no apmēram simt piecdesmit metriem. Siena izturēja, bojājumi bija tikai virspusē.
 
 Vaļņa iekšpusē ir kazemātas ar ķieģeļu velvēm un poternas — ejas cauri valnim. Tās arī ir cietokšņa īstās pazemes. No šejienes aug visas leģendas: par tuneli zem Daugavas, pa kuru it kā varēja izbraukt ar trijjūgu, par sešām tonnām zelta, par Dzintara istabu. Dokumenti saka ko citu. Kasi 1812. gadā aizveda vēl pirms kaujām, bet ieraktos lielgabalus izraka. Dzintara istaba pazuda Kēnigsbergā. Bet tuneļa zem upes vietā bija pontonu tilts, ko katru rudeni izjauca.
 
@@ -522,7 +522,7 @@ Tagad dodieties gar valni uz dienvidiem, uz upes pusi. Pēc kādiem četrsimt me
 
 The Constantine Gate was built in 1821 to 1824. It led to the summer hospital and the road to Riga. It was right here, on the rampart by this gate, that on 31 May 1851 Emperor Nicholas the First said: "The Dinaburg fortress has been under construction in my time for thirty-one years already. I would wish it finished in my lifetime. But I hardly think I shall live to see it." He did not. And in May 1917, during the revolution, War Minister Kerensky addressed the soldiers at this gate. In 1962 the vaults of the gate were taken down: the military school needed to bring in large vehicles.
 
-Now look at the rampart. The main rampart of the fortress runs for almost three kilometres and is up to thirteen metres high. It has eight bastions. On the outside the rampart is clad in granite — this stone wall is called the escarp. It took eight years to build, and in November 1820 it was tested: three 24-pounder guns fired at one spot (fourteen volleys according to Lvov, four according to the archive file). The wall held; the damage was only on the surface.
+Now look at the rampart. The main rampart of the fortress runs for almost three kilometres and is up to thirteen metres high. It has eight bastions. On the outside the rampart is clad in granite — this stone wall is called the escarp. It took eight years to build, and in November 1820 it was tested: three heavy 24-pounder guns fired at one spot from about a hundred and fifty metres. The wall held; the damage was only on the surface.
 
 Inside the rampart are casemates with brick vaults and posterns, passages through the rampart. These are the real underground spaces of the fortress. All the legends grow from here: about a tunnel under the Daugava that you could supposedly drive through in a troika, about six tonnes of gold, about the Amber Room. The documents say otherwise. The treasury was taken away in 1812 before the fighting, and the buried cannons were dug up. The Amber Room disappeared in Königsberg. And instead of a tunnel under the river there was a pontoon bridge that was taken apart every autumn.
 
