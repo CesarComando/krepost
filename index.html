@@ -3785,7 +3785,12 @@ function groupDoneCheck(silent) {
   const fresh = done.filter(g => !asked.includes(g));
   if (!fresh.length) return;
   write(DON_ASKED_KEY, [...asked, ...fresh]);
-  donPending = fresh[0]; donTries = 0; setTimeout(showGroupThanks, 1500);
+  // Реже: только за большие места (от 5 снимков) и не чаще раза в 3 дня — пусть сначала насладятся прогулкой.
+  const big = fresh.filter(g => visibleSpots().filter(x => groupOf(x) === g).length >= 5);
+  const last = read('krepost.donLast', 0);
+  if (!big.length || Date.now() - last < 3 * 864e5) return;
+  write('krepost.donLast', Date.now());
+  donPending = big[0]; donTries = 0; setTimeout(showGroupThanks, 1500);
 }
 function showGroupThanks() {
   if (!donPending) return;
