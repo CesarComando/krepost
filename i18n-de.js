@@ -41,3 +41,8 @@ window.I18N_UI.de["Ф. Шопен — Ноктюрн ми-бемоль мажо�
 window.I18N_UI.de["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N_UI.de["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Chopin — Ballade Nr. 1 op. 23. Musopen, gemeinfrei";
 
+
+window.I18N_UI.de["📤 Поделиться приложением с друзьями"] = "📤 App mit Freunden teilen";
+window.I18N_UI.de["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Danke! Ihre Antwort wurde gesendet. Hat es gefallen? Teilen Sie es mit Freunden.";
+window.I18N_UI.de["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Festung durch die Zeit — alte Fotos der Festung Daugavpils: Stellen Sie sich dorthin, wo der Fotograf stand.";
+window.I18N_UI.de["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Link kopiert — fügen Sie ihn in eine Nachricht an Freunde ein.";

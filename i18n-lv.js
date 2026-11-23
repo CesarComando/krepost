@@ -38,3 +38,8 @@ window.I18N.lv.ui["Ф. Шопен — Ноктюрн ми-бемоль мажо�
 window.I18N.lv.ui["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N.lv.ui["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Šopēns — Balāde Nr. 1, op. 23. Musopen, publiskais īpašums";
 
+
+window.I18N.lv.ui["📤 Поделиться приложением с друзьями"] = "📤 Dalīties ar lietotni ar draugiem";
+window.I18N.lv.ui["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Paldies! Atbilde nosūtīta. Ja patika — padalieties ar draugiem.";
+window.I18N.lv.ui["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Cietoksnis cauri laikiem — senas Daugavpils cietokšņa fotogrāfijas: nostājies tur, kur stāvēja fotogrāfs.";
+window.I18N.lv.ui["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Saite nokopēta — ielīmējiet to ziņā draugam.";

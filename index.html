@@ -568,6 +568,7 @@
   .stars button.on { color:#f4c64b; text-shadow:0 0 8px rgba(244,198,75,.5); }
   #sComment { font:16px Inter,system-ui,sans-serif; color:var(--ink); background:var(--paper); border:0; border-radius:8px; padding:10px 12px; resize:vertical; }
   #sSend { padding:12px; font:700 17px var(--cond); text-transform:uppercase; }
+  #sShare { padding:11px; font:600 15px Inter,system-ui,sans-serif; }
   #sSkip { background:none; border:0; color:var(--muted); font-size:15px; text-decoration:underline; padding:4px; min-height:0; }
   @media (orientation: landscape) and (max-height: 600px) {
     #modeBox { top:46px; } /* лёжа название места висит над снимком — кнопки режима ниже него */
@@ -1632,6 +1633,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
       <textarea id="sComment" rows="3" maxlength="1000" placeholder="Необязательно"></textarea></label>
     <p id="sMsg" class="sNote" aria-live="polite"></p>
     <button type="submit" class="main" id="sSend">Отправить</button>
+    <button type="button" id="sShare">📤 Поделиться приложением с друзьями</button>
     <button type="button" id="sSkip">Пропустить</button>
   </form>
 </dialog>
@@ -4007,7 +4009,7 @@ function showSurvey(sv) {
   $('surveyForm').classList.toggle('general', !sv.spotId);
   $('sSkip').textContent = sv.spotId ? T('Пропустить') : T('Закрыть');
   paintStars();
-  $('sComment').value = ''; $('sMsg').textContent = ''; $('sSend').disabled = false;
+  $('sComment').value = ''; $('sMsg').textContent = ''; $('sSend').disabled = false; $('sSend').style.display = ''; $('sShare').classList.remove('main');
   $('surveyDlg').showModal();
   navPush();
 }
@@ -4027,13 +4029,24 @@ $('surveyForm').onsubmit = async e => {
       body: JSON.stringify({ spot_id: survey.spotId, mode: survey.mode, ...survey.r, comment: comment || null })
     });
     if (!r.ok) throw new Error(r.status);
-    $('sMsg').textContent = T('✓ Спасибо! Ответ отправлен.');
-    setTimeout(() => { if ($('surveyDlg').open) navBack(); }, 800);
+    // После оценки окно не закрываем само: предлагаем поделиться приложением (23.11.2026, просьба Дайниса)
+    $('sMsg').textContent = T('✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями.');
+    $('sSkip').textContent = T('Закрыть'); $('sShare').classList.add('main'); $('sSend').style.display = 'none';
   } catch {
     $('sMsg').textContent = T('Не получилось отправить — нужен интернет. Попробуйте ещё раз или нажмите «Пропустить».');
     $('sSend').disabled = false;
   }
 };
+// Поделиться приложением: системное меню телефона (WhatsApp, Telegram, SMS…), иначе — копируем ссылку
+const APP_URL = 'https://cesarcomando.github.io/krepost/';
+async function shareApp(msgEl) {
+  track('feature', 'share_app');
+  const text = T('Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф.');
+  if (navigator.share) { try { await navigator.share({ title: T('Крепость сквозь время'), text, url: APP_URL }); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
+  try { await navigator.clipboard.writeText(text + ' ' + APP_URL); if (msgEl) msgEl.textContent = T('✓ Ссылка скопирована — вставьте её в сообщение другу.'); }
+  catch (e) { if (msgEl) msgEl.textContent = APP_URL; }
+}
+$('sShare').onclick = () => shareApp($('sMsg'));
 async function updateShotStats() {
   if (!ADMIN || !$('adminBar')) return;
   try {
