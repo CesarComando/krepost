@@ -32,11 +32,17 @@ window.I18N_UI.pl["Русский"] = "Rosyjski";
 window.I18N_UI.pl["Английский"] = "Angielski";
 
 window.I18N_UI.pl["🎵 Музыка: вкл"] = "🎵 Muzyka: wł.";
+window.I18N_UI.pl["🎵 Музыка:"] = "🎵 Muzyka:";
+window.I18N_UI.pl["Шопен, ноктюрн"] = "Chopin, nokturn";
+window.I18N_UI.pl["Шопен, баллада"] = "Chopin, ballada";
 window.I18N_UI.pl["🎵 Музыка: выкл"] = "🎵 Muzyka: wył.";
 window.I18N_UI.pl["Музыка в аудиогиде:"] = "Muzyka w audioprzewodniku:";
 window.I18N_UI.pl["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "F. Chopin — Nokturn Es-dur op. 9 nr 2. Wykonuje Frank Levy. Musopen, domena publiczna";
-window.I18N_UI.pl["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — „Lato”, cz. II. John Harrison (skrzypce), Wichita State University Chamber Players. Licencja CC BY-SA 1.0";
 window.I18N_UI.pl["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N_UI.pl["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Chopin — Ballada nr 1 op. 23. Musopen, domena publiczna";
 
-window.I18N_UI.pl["А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние"] = "A. Vivaldi — „Lato”, koncert g-moll RV 315, w całości. The Modena Chamber Orchestra / European Archive, Musopen, domena publiczna";
+
+window.I18N_UI.pl["📤 Поделиться приложением с друзьями"] = "📤 Udostępnij aplikację znajomym";
+window.I18N_UI.pl["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Dziękujemy! Odpowiedź wysłana. Podobało się? Podziel się ze znajomymi.";
+window.I18N_UI.pl["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Twierdza przez czas — stare zdjęcia Twierdzy Dyneburg: stań tam, gdzie stał fotograf.";
+window.I18N_UI.pl["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Link skopiowany — wklej go w wiadomości do znajomego.";

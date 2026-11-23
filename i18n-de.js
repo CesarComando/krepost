@@ -32,11 +32,17 @@ window.I18N_UI.de["Русский"] = "Russisch";
 window.I18N_UI.de["Английский"] = "Englisch";
 
 window.I18N_UI.de["🎵 Музыка: вкл"] = "🎵 Musik: an";
+window.I18N_UI.de["🎵 Музыка:"] = "🎵 Musik:";
+window.I18N_UI.de["Шопен, ноктюрн"] = "Chopin, Nocturne";
+window.I18N_UI.de["Шопен, баллада"] = "Chopin, Ballade";
 window.I18N_UI.de["🎵 Музыка: выкл"] = "🎵 Musik: aus";
 window.I18N_UI.de["Музыка в аудиогиде:"] = "Musik im Audioguide:";
 window.I18N_UI.de["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "F. Chopin — Nocturne Es-Dur op. 9 Nr. 2. Gespielt von Frank Levy. Musopen, gemeinfrei";
-window.I18N_UI.de["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — „Sommer“, 2. Satz. John Harrison (Violine), Wichita State University Chamber Players. Lizenz CC BY-SA 1.0";
 window.I18N_UI.de["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N_UI.de["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Chopin — Ballade Nr. 1 op. 23. Musopen, gemeinfrei";
 
-window.I18N_UI.de["А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние"] = "A. Vivaldi — „Sommer“, Konzert g-Moll RV 315, vollständig. The Modena Chamber Orchestra / European Archive, Musopen, gemeinfrei";
+
+window.I18N_UI.de["📤 Поделиться приложением с друзьями"] = "📤 App mit Freunden teilen";
+window.I18N_UI.de["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Danke! Ihre Antwort wurde gesendet. Hat es gefallen? Teilen Sie es mit Freunden.";
+window.I18N_UI.de["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Festung durch die Zeit — alte Fotos der Festung Daugavpils: Stellen Sie sich dorthin, wo der Fotograf stand.";
+window.I18N_UI.de["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Link kopiert — fügen Sie ihn in eine Nachricht an Freunde ein.";

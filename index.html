@@ -574,6 +574,7 @@
   .stars button.on { color:#f4c64b; text-shadow:0 0 8px rgba(244,198,75,.5); }
   #sComment { font:16px Inter,system-ui,sans-serif; color:var(--ink); background:var(--paper); border:0; border-radius:8px; padding:10px 12px; resize:vertical; }
   #sSend { padding:12px; font:700 17px var(--cond); text-transform:uppercase; }
+  #sShare { padding:11px; font:600 15px Inter,system-ui,sans-serif; }
   #sSkip { background:none; border:0; color:var(--muted); font-size:15px; text-decoration:underline; padding:4px; min-height:0; }
   @media (orientation: landscape) and (max-height: 600px) {
     #modeBox { top:46px; } /* лёжа название места висит над снимком — кнопки режима ниже него */
@@ -1639,6 +1640,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
       <textarea id="sComment" rows="3" maxlength="1000" placeholder="Необязательно"></textarea></label>
     <p id="sMsg" class="sNote" aria-live="polite"></p>
     <button type="submit" class="main" id="sSend">Отправить</button>
+    <button type="button" id="sShare">📤 Поделиться приложением с друзьями</button>
     <button type="button" id="sSkip">Пропустить</button>
   </form>
 </dialog>
@@ -2970,16 +2972,21 @@ $('guideStartBtn').onclick = () => { ttsStop(); for (const a of $('guidePager').
    под голосом (≈ −16,5 LUFS) играет ещё на 16 дБ тише. Через Web Audio — на iPhone обычная громкость <audio> не меняется.
    Звучит только пока идёт рассказ; кнопка «🎵 Музыка» выключает. */
 const GUIDE_MUSIC = [
-  { src: 'audio/music/chopin-nocturne-op9-2.mp3', t: 'Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние' },
-  { src: 'audio/music/vivaldi-summer-adagio.mp3', t: 'А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0' },
-  { src: 'audio/music/dainis-lute-voice.mp3', t: 'Lute Voice — Дайнис Миглан (CesarComando)' },
-  { src: 'audio/music/vivaldi-summer-full.mp3', t: 'А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние' },
-  { src: 'audio/music/chopin-ballade-1.mp3', t: 'Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние' },
+  { id: 'lute', name: 'Lute Voice', src: 'audio/music/dainis-lute-voice.mp3', t: 'Lute Voice — Дайнис Миглан (CesarComando)' },
+  { id: 'nocturne', name: 'Шопен, ноктюрн', src: 'audio/music/chopin-nocturne-op9-2.mp3', t: 'Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние' },
+  { id: 'ballade', name: 'Шопен, баллада', src: 'audio/music/chopin-ballade-1.mp3', t: 'Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние' },
 ];
-const MUS_KEY = 'krepost.music', MUS_LEVEL = 0.16;
-let musOn = (() => { try { return localStorage.getItem(MUS_KEY) !== '0'; } catch (e) { return true; } })();
+/* 23.11.2026: Вивальди убран по просьбе Дайниса. Слушатель сам выбирает фон кнопкой «🎵 Музыка» (по кругу: Lute Voice → ноктюрн → баллада → выкл).
+   По умолчанию везде Lute Voice. Выбор хранится в krepost.music2; старое «выкл» (krepost.music = '0') сохраняется. */
+const MUS_KEY = 'krepost.music2', MUS_LEVEL = 0.16;
+let musChoice = (() => { try {
+  const v = localStorage.getItem(MUS_KEY);
+  if (v === 'off' || GUIDE_MUSIC.some(m => m.id === v)) return v;
+  return localStorage.getItem('krepost.music') === '0' ? 'off' : 'lute';
+} catch (e) { return 'lute'; } })();
+let musOn = musChoice !== 'off';
 let musCtx = null, musGain = null, musEl = null, musStopT = 0;
-function musTrackFor(g) { return GUIDE_MUSIC[((g && g.n) || 0) % GUIDE_MUSIC.length]; }
+function musTrackFor() { return GUIDE_MUSIC.find(m => m.id === musChoice) || GUIDE_MUSIC[0]; }
 function musStart(g) {
   if (!musOn) return;
   try {
@@ -2991,7 +2998,7 @@ function musStart(g) {
     }
     clearTimeout(musStopT);
     if (musCtx.state === 'suspended') musCtx.resume();
-    const tr = musTrackFor(g);
+    const tr = musTrackFor();
     if (!musEl.src.endsWith(tr.src)) { musEl.src = tr.src; }
     musEl.play().catch(() => {});
     const now = musCtx.currentTime; musGain.gain.cancelScheduledValues(now);
@@ -3006,10 +3013,12 @@ function musStop() {
     clearTimeout(musStopT); musStopT = setTimeout(() => { try { musEl.pause(); } catch (e) {} }, 1300);
   } catch (e) {}
 }
-function musBtnPaint() { $('gMusBtn').textContent = musOn ? T('🎵 Музыка: вкл') : T('🎵 Музыка: выкл'); $('gMusBtn').classList.toggle('on', musOn); }
+function musBtnPaint() { $('gMusBtn').textContent = musOn ? T('🎵 Музыка:') + ' ' + T(musTrackFor().name) : T('🎵 Музыка: выкл'); $('gMusBtn').classList.toggle('on', musOn); }
 $('gMusBtn').onclick = () => {
-  musOn = !musOn; try { localStorage.setItem(MUS_KEY, musOn ? '1' : '0'); } catch (e) {}
-  track('feature', musOn ? 'music_on' : 'music_off'); musBtnPaint();
+  const ids = GUIDE_MUSIC.map(m => m.id).concat('off');
+  musChoice = ids[(ids.indexOf(musChoice) + 1) % ids.length]; musOn = musChoice !== 'off';
+  try { localStorage.setItem(MUS_KEY, musChoice); } catch (e) {}
+  track('feature', 'music_' + musChoice); musBtnPaint();
   if (!musOn) musStop();
   else { const a = [...$('guidePager').querySelectorAll('audio')].find(x => !x.paused); if (a || ttsBtn) musStart(guideSeq[guideCur]); }
 };
@@ -4053,7 +4062,7 @@ function showSurvey(sv) {
   $('surveyForm').classList.toggle('general', !sv.spotId);
   $('sSkip').textContent = sv.spotId ? T('Пропустить') : T('Закрыть');
   paintStars();
-  $('sComment').value = ''; $('sMsg').textContent = ''; $('sSend').disabled = false;
+  $('sComment').value = ''; $('sMsg').textContent = ''; $('sSend').disabled = false; $('sSend').style.display = ''; $('sShare').classList.remove('main');
   $('surveyDlg').showModal();
   navPush();
 }
@@ -4073,13 +4082,24 @@ $('surveyForm').onsubmit = async e => {
       body: JSON.stringify({ spot_id: survey.spotId, mode: survey.mode, ...survey.r, comment: comment || null })
     });
     if (!r.ok) throw new Error(r.status);
-    $('sMsg').textContent = T('✓ Спасибо! Ответ отправлен.');
-    setTimeout(() => { if ($('surveyDlg').open) navBack(); }, 800);
+    // После оценки окно не закрываем само: предлагаем поделиться приложением (23.11.2026, просьба Дайниса)
+    $('sMsg').textContent = T('✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями.');
+    $('sSkip').textContent = T('Закрыть'); $('sShare').classList.add('main'); $('sSend').style.display = 'none';
   } catch {
     $('sMsg').textContent = T('Не получилось отправить — нужен интернет. Попробуйте ещё раз или нажмите «Пропустить».');
     $('sSend').disabled = false;
   }
 };
+// Поделиться приложением: системное меню телефона (WhatsApp, Telegram, SMS…), иначе — копируем ссылку
+const APP_URL = 'https://cesarcomando.github.io/krepost/';
+async function shareApp(msgEl) {
+  track('feature', 'share_app');
+  const text = T('Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф.');
+  if (navigator.share) { try { await navigator.share({ title: T('Крепость сквозь время'), text, url: APP_URL }); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
+  try { await navigator.clipboard.writeText(text + ' ' + APP_URL); if (msgEl) msgEl.textContent = T('✓ Ссылка скопирована — вставьте её в сообщение другу.'); }
+  catch (e) { if (msgEl) msgEl.textContent = APP_URL; }
+}
+$('sShare').onclick = () => shareApp($('sMsg'));
 async function updateShotStats() {
   if (!ADMIN || !$('adminBar')) return;
   try {

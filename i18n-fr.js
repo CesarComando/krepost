@@ -32,11 +32,17 @@ window.I18N_UI.fr["Русский"] = "Russe";
 window.I18N_UI.fr["Английский"] = "Anglais";
 
 window.I18N_UI.fr["🎵 Музыка: вкл"] = "🎵 Musique : oui";
+window.I18N_UI.fr["🎵 Музыка:"] = "🎵 Musique :";
+window.I18N_UI.fr["Шопен, ноктюрн"] = "Chopin, nocturne";
+window.I18N_UI.fr["Шопен, баллада"] = "Chopin, ballade";
 window.I18N_UI.fr["🎵 Музыка: выкл"] = "🎵 Musique : non";
 window.I18N_UI.fr["Музыка в аудиогиде:"] = "Musique de l’audioguide :";
 window.I18N_UI.fr["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "F. Chopin — Nocturne en mi bémol majeur, op. 9 n° 2. Interprète : Frank Levy. Musopen, domaine public";
-window.I18N_UI.fr["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — « L’Été », 2e mouvement. John Harrison (violon), Wichita State University Chamber Players. Licence CC BY-SA 1.0";
 window.I18N_UI.fr["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N_UI.fr["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Chopin — Ballade n° 1, op. 23. Musopen, domaine public";
 
-window.I18N_UI.fr["А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние"] = "A. Vivaldi — « L’Été », concerto en sol mineur RV 315, intégral. The Modena Chamber Orchestra / European Archive, Musopen, domaine public";
+
+window.I18N_UI.fr["📤 Поделиться приложением с друзьями"] = "📤 Partager l’appli avec des amis";
+window.I18N_UI.fr["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Merci ! Votre réponse a été envoyée. Vous avez aimé ? Partagez avec vos amis.";
+window.I18N_UI.fr["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "La forteresse à travers le temps — photos anciennes de la forteresse de Daugavpils : placez-vous là où se tenait le photographe.";
+window.I18N_UI.fr["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Lien copié — collez-le dans un message à un ami.";

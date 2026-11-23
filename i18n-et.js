@@ -32,11 +32,17 @@ window.I18N_UI.et["Русский"] = "Vene";
 window.I18N_UI.et["Английский"] = "Inglise";
 
 window.I18N_UI.et["🎵 Музыка: вкл"] = "🎵 Muusika: sees";
+window.I18N_UI.et["🎵 Музыка:"] = "🎵 Muusika:";
+window.I18N_UI.et["Шопен, ноктюрн"] = "Chopin, nokturn";
+window.I18N_UI.et["Шопен, баллада"] = "Chopin, ballaad";
 window.I18N_UI.et["🎵 Музыка: выкл"] = "🎵 Muusika: väljas";
 window.I18N_UI.et["Музыка в аудиогиде:"] = "Muusika audiogiidis:";
 window.I18N_UI.et["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "F. Chopin — Nokturn Es-duur op. 9 nr 2. Esitab Frank Levy. Musopen, avalik omand";
-window.I18N_UI.et["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — „Suvi“, II osa. John Harrison (viiul), Wichita State University Chamber Players. Litsents CC BY-SA 1.0";
 window.I18N_UI.et["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N_UI.et["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Chopin — Ballaad nr 1 op. 23. Musopen, avalik omand";
 
-window.I18N_UI.et["А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние"] = "A. Vivaldi — „Suvi“, kontsert g-moll RV 315, tervikuna. The Modena Chamber Orchestra / European Archive, Musopen, avalik omand";
+
+window.I18N_UI.et["📤 Поделиться приложением с друзьями"] = "📤 Jaga rakendust sõpradega";
+window.I18N_UI.et["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Aitäh! Vastus on saadetud. Kui meeldis, jaga sõpradega.";
+window.I18N_UI.et["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Kindlus läbi aja — vanad fotod Daugavpilsi kindlusest: seisa seal, kus seisis fotograaf.";
+window.I18N_UI.et["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Link kopeeritud — kleebi see sõbrale saadetavasse sõnumisse.";

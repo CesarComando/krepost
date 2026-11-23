@@ -29,11 +29,17 @@ window.I18N.lv.ui["Русский"] = "Krievu";
 window.I18N.lv.ui["Английский"] = "Angļu";
 
 window.I18N.lv.ui["🎵 Музыка: вкл"] = "🎵 Mūzika: iesl.";
+window.I18N.lv.ui["🎵 Музыка:"] = "🎵 Mūzika:";
+window.I18N.lv.ui["Шопен, ноктюрн"] = "Šopēns, noktirne";
+window.I18N.lv.ui["Шопен, баллада"] = "Šopēns, balāde";
 window.I18N.lv.ui["🎵 Музыка: выкл"] = "🎵 Mūzika: izsl.";
 window.I18N.lv.ui["Музыка в аудиогиде:"] = "Mūzika audiogidā:";
 window.I18N.lv.ui["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "F. Šopēns — Noktirne Es mažorā, op. 9 Nr. 2. Izpilda Frank Levy. Musopen, publiskais īpašums";
-window.I18N.lv.ui["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — “Vasara”, II daļa. John Harrison (vijole), Wichita State University Chamber Players. Licence CC BY-SA 1.0";
 window.I18N.lv.ui["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N.lv.ui["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Šopēns — Balāde Nr. 1, op. 23. Musopen, publiskais īpašums";
 
-window.I18N.lv.ui["А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние"] = "A. Vivaldi — “Vasara”, koncerts sol minorā RV 315, pilnībā. The Modena Chamber Orchestra / European Archive, Musopen, publiskais īpašums";
+
+window.I18N.lv.ui["📤 Поделиться приложением с друзьями"] = "📤 Dalīties ar lietotni ar draugiem";
+window.I18N.lv.ui["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Paldies! Atbilde nosūtīta. Ja patika — padalieties ar draugiem.";
+window.I18N.lv.ui["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Cietoksnis cauri laikiem — senas Daugavpils cietokšņa fotogrāfijas: nostājies tur, kur stāvēja fotogrāfs.";
+window.I18N.lv.ui["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Saite nokopēta — ielīmējiet to ziņā draugam.";

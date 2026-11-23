@@ -32,11 +32,17 @@ window.I18N_UI.es["Русский"] = "Ruso";
 window.I18N_UI.es["Английский"] = "Inglés";
 
 window.I18N_UI.es["🎵 Музыка: вкл"] = "🎵 Música: sí";
+window.I18N_UI.es["🎵 Музыка:"] = "🎵 Música:";
+window.I18N_UI.es["Шопен, ноктюрн"] = "Chopin, nocturno";
+window.I18N_UI.es["Шопен, баллада"] = "Chopin, balada";
 window.I18N_UI.es["🎵 Музыка: выкл"] = "🎵 Música: no";
 window.I18N_UI.es["Музыка в аудиогиде:"] = "Música de la audioguía:";
 window.I18N_UI.es["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "F. Chopin — Nocturno en mi bemol mayor, op. 9 n.º 2. Interpreta Frank Levy. Musopen, dominio público";
-window.I18N_UI.es["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — «El verano», 2.º movimiento. John Harrison (violín), Wichita State University Chamber Players. Licencia CC BY-SA 1.0";
 window.I18N_UI.es["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N_UI.es["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Chopin — Balada n.º 1, op. 23. Musopen, dominio público";
 
-window.I18N_UI.es["А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние"] = "A. Vivaldi — «El verano», concierto en sol menor RV 315, completo. The Modena Chamber Orchestra / European Archive, Musopen, dominio público";
+
+window.I18N_UI.es["📤 Поделиться приложением с друзьями"] = "📤 Compartir la app con amigos";
+window.I18N_UI.es["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ ¡Gracias! Respuesta enviada. Si le ha gustado, compártala con sus amigos.";
+window.I18N_UI.es["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "La fortaleza a través del tiempo — fotos antiguas de la fortaleza de Daugavpils: colóquese donde estuvo el fotógrafo.";
+window.I18N_UI.es["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Enlace copiado — péguelo en un mensaje a un amigo.";

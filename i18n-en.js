@@ -29,11 +29,17 @@ window.I18N.en.ui["Русский"] = "Russian";
 window.I18N.en.ui["Английский"] = "English";
 
 window.I18N.en.ui["🎵 Музыка: вкл"] = "🎵 Music: on";
+window.I18N.en.ui["🎵 Музыка:"] = "🎵 Music:";
+window.I18N.en.ui["Шопен, ноктюрн"] = "Chopin, Nocturne";
+window.I18N.en.ui["Шопен, баллада"] = "Chopin, Ballade";
 window.I18N.en.ui["🎵 Музыка: выкл"] = "🎵 Music: off";
 window.I18N.en.ui["Музыка в аудиогиде:"] = "Music in the audio guide:";
 window.I18N.en.ui["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "F. Chopin — Nocturne in E-flat major, Op. 9 No. 2. Performed by Frank Levy. Musopen, public domain";
-window.I18N.en.ui["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — “Summer”, 2nd movement. John Harrison (violin), Wichita State University Chamber Players. Licence CC BY-SA 1.0";
 window.I18N.en.ui["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N.en.ui["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Chopin — Ballade No. 1, Op. 23. Musopen, public domain";
 
-window.I18N.en.ui["А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние"] = "A. Vivaldi — “Summer”, Concerto in G minor RV 315, complete. The Modena Chamber Orchestra / European Archive, Musopen, public domain";
+
+window.I18N.en.ui["📤 Поделиться приложением с друзьями"] = "📤 Share the app with friends";
+window.I18N.en.ui["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Thank you! Your answer has been sent. If you liked it, share it with friends.";
+window.I18N.en.ui["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Fortress Through Time — old photos of Daugavpils Fortress: stand where the photographer stood.";
+window.I18N.en.ui["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Link copied — paste it into a message to a friend.";
