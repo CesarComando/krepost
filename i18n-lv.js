@@ -27,3 +27,11 @@ window.I18N.lv.ui["Записаться на экскурсию — Культу
 window.I18N.lv.ui["Латышский"] = "Latviešu";
 window.I18N.lv.ui["Русский"] = "Krievu";
 window.I18N.lv.ui["Английский"] = "Angļu";
+
+window.I18N.lv.ui["🎵 Музыка: вкл"] = "🎵 Mūzika: iesl.";
+window.I18N.lv.ui["🎵 Музыка: выкл"] = "🎵 Mūzika: izsl.";
+window.I18N.lv.ui["Музыка в аудиогиде:"] = "Mūzika audiogidā:";
+window.I18N.lv.ui["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "F. Šopēns — Noktirne Es mažorā, op. 9 Nr. 2. Izpilda Frank Levy. Musopen, publiskais īpašums";
+window.I18N.lv.ui["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — “Vasara”, II daļa. John Harrison (vijole), Wichita State University Chamber Players. Licence CC BY-SA 1.0";
+window.I18N.lv.ui["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
+window.I18N.lv.ui["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Šopēns — Balāde Nr. 1, op. 23. Musopen, publiskais īpašums";

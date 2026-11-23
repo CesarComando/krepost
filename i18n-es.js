@@ -30,3 +30,11 @@ window.I18N_UI.es["Записаться на экскурсию — Культу
 window.I18N_UI.es["Латышский"] = "Letón";
 window.I18N_UI.es["Русский"] = "Ruso";
 window.I18N_UI.es["Английский"] = "Inglés";
+
+window.I18N_UI.es["🎵 Музыка: вкл"] = "🎵 Música: sí";
+window.I18N_UI.es["🎵 Музыка: выкл"] = "🎵 Música: no";
+window.I18N_UI.es["Музыка в аудиогиде:"] = "Música de la audioguía:";
+window.I18N_UI.es["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "F. Chopin — Nocturno en mi bemol mayor, op. 9 n.º 2. Interpreta Frank Levy. Musopen, dominio público";
+window.I18N_UI.es["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — «El verano», 2.º movimiento. John Harrison (violín), Wichita State University Chamber Players. Licencia CC BY-SA 1.0";
+window.I18N_UI.es["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
+window.I18N_UI.es["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Chopin — Balada n.º 1, op. 23. Musopen, dominio público";

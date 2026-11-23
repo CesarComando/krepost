@@ -1471,7 +1471,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
   </nav>
 </section>
 
-<dialog id="guideDlg"><div class="guideBox"><div class="gTop"><h3 id="guideH"></h3><button type="button" id="guideStartBtn" class="gSmall"></button><button type="button" id="guideClose" aria-label="Закрыть">✕</button></div><div id="gBar"><button type="button" id="gMapBtn" class="gSmall"></button><button type="button" id="gNearBtn" class="gSmall"></button><button type="button" id="gDlBtn" class="gSmall"></button></div><div id="gMapBox" hidden><div id="gMap"></div><p id="gMapNote"></p></div><div id="guideStart" hidden></div><div id="guidePager"></div><div id="gNear" hidden><span id="gNearT"></span><button type="button" id="gNearGo"></button><button type="button" id="gNearX" aria-label="Закрыть">✕</button></div><div class="gNav"><button type="button" id="gPrev" aria-label="Назад">‹</button><span id="gPos"></span><button type="button" id="gNext" aria-label="Дальше">›</button></div></div></dialog>
+<dialog id="guideDlg"><div class="guideBox"><div class="gTop"><h3 id="guideH"></h3><button type="button" id="guideStartBtn" class="gSmall"></button><button type="button" id="guideClose" aria-label="Закрыть">✕</button></div><div id="gBar"><button type="button" id="gMapBtn" class="gSmall"></button><button type="button" id="gNearBtn" class="gSmall"></button><button type="button" id="gDlBtn" class="gSmall"></button><button type="button" id="gMusBtn" class="gSmall"></button></div><div id="gMapBox" hidden><div id="gMap"></div><p id="gMapNote"></p></div><div id="guideStart" hidden></div><div id="guidePager"></div><div id="gNear" hidden><span id="gNearT"></span><button type="button" id="gNearGo"></button><button type="button" id="gNearX" aria-label="Закрыть">✕</button></div><div class="gNav"><button type="button" id="gPrev" aria-label="Назад">‹</button><span id="gPos"></span><button type="button" id="gNext" aria-label="Дальше">›</button></div></div></dialog>
 <dialog id="illDlg"><div class="illBox"><div class="illTop"><small id="illCount"></small><button type="button" id="illClose" aria-label="Закрыть">✕</button></div><img id="illImg" alt=""><div class="illNavRow"><button type="button" id="illPrev" class="illNav" aria-label="Предыдущий снимок" hidden>‹</button><p id="illCap"></p><button type="button" id="illNext" class="illNav" aria-label="Следующий снимок" hidden>›</button></div><small id="illCredit"></small></div></dialog>
 <dialog id="modDlg"><div class="modBox">
   <div class="setHead"><h3>Модератор</h3><button type="button" id="modClose" aria-label="Закрыть">✕</button></div>
@@ -2616,7 +2616,7 @@ function ttsVoice(lang) {
 }
 function ttsStop() {
   try { if ('speechSynthesis' in window) speechSynthesis.cancel(); } catch (e) {}
-  if (ttsBtn) { ttsBtn.textContent = T('🔊 Слушать голосом телефона'); ttsBtn.classList.remove('on'); ttsBtn = null; }
+  if (ttsBtn) { ttsBtn.textContent = T('🔊 Слушать голосом телефона'); ttsBtn.classList.remove('on'); ttsBtn = null; musStop(); }
 }
 function ttsPlay(btn, text, lang) {
   if (ttsBtn === btn) { ttsStop(); return; }
@@ -2625,7 +2625,7 @@ function ttsPlay(btn, text, lang) {
   const v = ttsVoice(lang);
   // Длинный текст читаем по кусочкам: некоторые браузеры обрывают длинную фразу
   const parts = String(text).replace(/\s+/g, ' ').match(/[^.!?…]+[.!?…»"]*\s*/g) || [text];
-  ttsBtn = btn; btn.textContent = T('⏹ Остановить'); btn.classList.add('on');
+  ttsBtn = btn; btn.textContent = T('⏹ Остановить'); btn.classList.add('on'); musStart(guideSeq[guideCur]);
   parts.forEach((p, i) => {
     const u = new SpeechSynthesisUtterance(p.trim());
     u.lang = TTS_LOCALE[lang] || lang; if (v) u.voice = v; u.rate = 0.95;
@@ -2658,6 +2658,7 @@ function guideCard(g, k) {
     go.onclick = () => { track('feature', 'guide_continue_full'); ttsStop(); for (const o of $('guidePager').querySelectorAll('audio')) o.pause(); guideBuild(g.n + 1, 1, 'full'); };
     rNote('Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу.', go);
   }
+  if (g === GD.outro) { const m = document.createElement('p'); m.className = 'gWait gMusCred'; m.textContent = T('Музыка в аудиогиде:') + ' ' + GUIDE_MUSIC.map(x => T(x.t)).join(' · '); c.append(m); }
   const gal = guideGallery(g, !g.img && sp ? sp.id : null);
   if (gal.length) {
     const hd = document.createElement('p'); hd.className = 'gGalHead'; hd.textContent = T('Это место в разные годы') + ' (' + gal.length + ')';
@@ -2676,7 +2677,8 @@ function guideCard(g, k) {
   const ownRec = au && au.lang === L;
   if (au) {
     const a = document.createElement('audio'); a.controls = true; a.preload = 'none'; a.src = au.src;
-    a.addEventListener('play', () => { ttsStop(); track('feature', 'audio_' + g.n + '_' + au.lang); for (const o of $('guidePager').querySelectorAll('audio')) if (o !== a) o.pause(); guideMedia(a, g, sp); });
+    a.addEventListener('play', () => { ttsStop(); track('feature', 'audio_' + g.n + '_' + au.lang); for (const o of $('guidePager').querySelectorAll('audio')) if (o !== a) o.pause(); guideMedia(a, g, sp); musStart(g); });
+    a.addEventListener('pause', () => { if (![...$('guidePager').querySelectorAll('audio')].some(x => !x.paused)) musStop(); });
     c.append(a);
     if (au.lang !== L) { const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T(au.lang === 'en' ? '(на английском)' : '(на русском)'); c.append(w); }
     if (g.audioOld === true || (g.audioOld && g.audioOld[au.lang])) { const w = document.createElement('p'); w.className = 'gWait'; w.textContent = T('Озвучена прежняя, короткая версия текста.'); c.append(w); }
@@ -2801,11 +2803,12 @@ function guideBarPaint() {
   $('gNearBtn').textContent = guideWatch != null ? T('📍 Подсказки у остановок: вкл') : T('📍 Подсказывать у остановок');
   $('gNearBtn').classList.toggle('on', guideWatch != null);
   $('gNearGo').textContent = T('▶ Включить');
+  musBtnPaint();
   offCount(guideOfflineUrls()).then(([a, b]) => { $('gDlBtn').textContent = a >= b ? T('✓ Аудиогид без интернета') : T('⬇ Скачать аудиогид'); $('gDlBtn').classList.toggle('on', a >= b); }).catch(() => { $('gDlBtn').textContent = T('⬇ Скачать аудиогид'); });
 }
 // Всё, что нужно гиду без интернета: записи на языке приложения, картинки карточек, текст гида
 function guideOfflineUrls() {
-  const urls = new Set(['photos/hero.jpg']);
+  const urls = new Set(['photos/hero.jpg', ...GUIDE_MUSIC.map(m => m.src)]);
   for (const g of [GD.intro, ...GD.stops, GD.outro].filter(Boolean)) {
     const au = guideAudioOf(g); if (au) urls.add(au.src);
     if (g.img) urls.add(g.img);
@@ -2920,6 +2923,52 @@ $('gPrev').onclick = () => { ttsStop(); guideGo(guideCur - 1, true); };
 $('gNext').onclick = () => { ttsStop(); guideGo(guideCur + 1, true); };
 $('guideStartBtn').onclick = () => { ttsStop(); for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); guideChooseStart(); };
 // Экран блокировки: название трека и кнопки ⏯ ⏮ ⏭ — переход к соседней точке маршрута
+/* Тихая музыка под рассказом гида (23.11.2026, по просьбе Дайниса). Громкость выровнена (−20 LUFS),
+   под голосом (≈ −16,5 LUFS) играет ещё на 16 дБ тише. Через Web Audio — на iPhone обычная громкость <audio> не меняется.
+   Звучит только пока идёт рассказ; кнопка «🎵 Музыка» выключает. */
+const GUIDE_MUSIC = [
+  { src: 'audio/music/chopin-nocturne-op9-2.mp3', t: 'Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние' },
+  { src: 'audio/music/vivaldi-summer-adagio.mp3', t: 'А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0' },
+  { src: 'audio/music/dainis-lute-voice.mp3', t: 'Lute Voice — Дайнис Миглан (CesarComando)' },
+  { src: 'audio/music/chopin-ballade-1.mp3', t: 'Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние' },
+];
+const MUS_KEY = 'krepost.music', MUS_LEVEL = 0.16;
+let musOn = (() => { try { return localStorage.getItem(MUS_KEY) !== '0'; } catch (e) { return true; } })();
+let musCtx = null, musGain = null, musEl = null, musStopT = 0;
+function musTrackFor(g) { return GUIDE_MUSIC[((g && g.n) || 0) % GUIDE_MUSIC.length]; }
+function musStart(g) {
+  if (!musOn) return;
+  try {
+    if (!musCtx) {
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+      musCtx = new AC(); musEl = new Audio(); musEl.loop = true; musEl.preload = 'auto';
+      musGain = musCtx.createGain(); musGain.gain.value = 0;
+      musCtx.createMediaElementSource(musEl).connect(musGain); musGain.connect(musCtx.destination);
+    }
+    clearTimeout(musStopT);
+    if (musCtx.state === 'suspended') musCtx.resume();
+    const tr = musTrackFor(g);
+    if (!musEl.src.endsWith(tr.src)) { musEl.src = tr.src; }
+    musEl.play().catch(() => {});
+    const now = musCtx.currentTime; musGain.gain.cancelScheduledValues(now);
+    musGain.gain.setValueAtTime(musGain.gain.value, now); musGain.gain.linearRampToValueAtTime(MUS_LEVEL, now + 1.5);
+  } catch (e) {}
+}
+function musStop() {
+  if (!musCtx || !musEl) return;
+  try {
+    const now = musCtx.currentTime; musGain.gain.cancelScheduledValues(now);
+    musGain.gain.setValueAtTime(musGain.gain.value, now); musGain.gain.linearRampToValueAtTime(0, now + 1.2);
+    clearTimeout(musStopT); musStopT = setTimeout(() => { try { musEl.pause(); } catch (e) {} }, 1300);
+  } catch (e) {}
+}
+function musBtnPaint() { $('gMusBtn').textContent = musOn ? T('🎵 Музыка: вкл') : T('🎵 Музыка: выкл'); $('gMusBtn').classList.toggle('on', musOn); }
+$('gMusBtn').onclick = () => {
+  musOn = !musOn; try { localStorage.setItem(MUS_KEY, musOn ? '1' : '0'); } catch (e) {}
+  track('feature', musOn ? 'music_on' : 'music_off'); musBtnPaint();
+  if (!musOn) musStop();
+  else { const a = [...$('guidePager').querySelectorAll('audio')].find(x => !x.paused); if (a || ttsBtn) musStart(guideSeq[guideCur]); }
+};
 function guideMedia(a, g, sp) {
   if (!('mediaSession' in navigator)) return;
   try {
@@ -2932,7 +2981,7 @@ function guideMedia(a, g, sp) {
     navigator.mediaSession.setActionHandler('nexttrack', guideCur < guideSeq.length - 1 ? () => go(1) : null);
   } catch (e) {}
 }
-function closeGuide() { guideNearStop(); ttsStop(); for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); if ($('guideDlg').open) $('guideDlg').close(); }
+function closeGuide() { guideNearStop(); ttsStop(); musStop(); for (const a of $('guidePager').querySelectorAll('audio')) a.pause(); if ($('guideDlg').open) $('guideDlg').close(); }
 $('guideRow').onclick = openGuide;
 $('guideClose').onclick = () => navBack();
 $('guideDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });

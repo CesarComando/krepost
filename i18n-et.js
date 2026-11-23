@@ -30,3 +30,11 @@ window.I18N_UI.et["Записаться на экскурсию — Культу
 window.I18N_UI.et["Латышский"] = "Läti";
 window.I18N_UI.et["Русский"] = "Vene";
 window.I18N_UI.et["Английский"] = "Inglise";
+
+window.I18N_UI.et["🎵 Музыка: вкл"] = "🎵 Muusika: sees";
+window.I18N_UI.et["🎵 Музыка: выкл"] = "🎵 Muusika: väljas";
+window.I18N_UI.et["Музыка в аудиогиде:"] = "Muusika audiogiidis:";
+window.I18N_UI.et["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "F. Chopin — Nokturn Es-duur op. 9 nr 2. Esitab Frank Levy. Musopen, avalik omand";
+window.I18N_UI.et["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — „Suvi“, II osa. John Harrison (viiul), Wichita State University Chamber Players. Litsents CC BY-SA 1.0";
+window.I18N_UI.et["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
+window.I18N_UI.et["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Chopin — Ballaad nr 1 op. 23. Musopen, avalik omand";
