@@ -19,3 +19,14 @@ window.I18N_UI.et["Вы выбрали короткий маршрут: 5 точ
 window.I18N_UI.et["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Olete lühikese marsruudi läbinud. Täisringi ülejäänud 8 peatust — laod, komandandi maja, aed, hospital, Aleksandri ja Konstantini värav — ootavad teid järgmisel korral.";
 window.I18N_UI.et["▶ Продолжить полный круг с точки {n}"] = "▶ Jätka täisringi peatusest {n}";
 window.I18N_UI.et["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Siin lühike marsruut lõpeb. Salvestise lõpus on vihje, kuidas minna täisringi 6. peatusse. Kui soovite lõpetada, libistage edasi lõpuni.";
+
+window.I18N_UI.et["Официальные экскурсоводы"] = "Ametlikud giidid";
+window.I18N_UI.et["Гиды крепости · имена и контакты"] = "Kindluse giidid · nimed ja kontaktid";
+window.I18N_UI.et["Официальные экскурсоводы крепости"] = "Kindluse ametlikud giidid";
+window.I18N_UI.et["Много лет работает в крепости; в 2020 году исполнял обязанности коменданта Даугавпилсской крепости."] = "On aastaid kindluses töötanud; 2020. aastal oli Daugavpilsi kindluse kohusetäitjast komandant.";
+window.I18N_UI.et["Куратор экспозиций крепости, в том числе центра техники «Инженерный арсенал»."] = "Kindluse ekspositsioonide kuraator, sh tehnikakeskuse „Inseneride arsenal“.";
+window.I18N_UI.et["Записаться на экскурсию — Культурно-информационный центр крепости, ул. Николая 5:"] = "Ekskursiooni broneerimine — kindluse kultuuri- ja infokeskus, Nikolaja 5:";
+
+window.I18N_UI.et["Латышский"] = "Läti";
+window.I18N_UI.et["Русский"] = "Vene";
+window.I18N_UI.et["Английский"] = "Inglise";

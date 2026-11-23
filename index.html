@@ -448,6 +448,21 @@
   /* ===== Спасибо каждые 10 снимков ===== */
   #thanksDlg { width:min(420px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text);
     box-shadow:0 0 0 2px var(--brass2), 0 20px 50px rgba(0,0,0,.7); }
+  #guidesDlg { width:min(440px, calc(100vw - 24px)); max-height:calc(100dvh - 40px); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text); }
+  #guidesDlg::backdrop { background:rgba(0,0,0,.7); }
+  .guidesBox { padding:20px 18px 16px; }
+  .guidesBox h3 { margin:0 0 14px; font:600 22px 'Playfair Display',serif; }
+  .gdP { padding:12px 14px; margin-bottom:10px; border:1px solid rgba(217,164,65,.35); border-radius:12px; }
+  .gdP h4 { margin:0 0 4px; font:600 18px Inter,system-ui,sans-serif; }
+  .gdLangs { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .gdLangs span { padding:3px 8px; border-radius:999px; background:rgba(217,164,65,.14); font:600 13px Inter,system-ui,sans-serif; }
+  .gdP p { margin:0; font-size:14px; line-height:1.45; opacity:.85; }
+  #guidesBook { margin:14px 0 4px; font-size:14px; line-height:1.5; }
+  #guidesBook b { display:block; margin-bottom:6px; }
+  #guidesBook a { display:flex; align-items:center; min-height:44px; padding:0 12px; margin-bottom:8px; border-radius:12px; background:rgba(217,164,65,.12); color:inherit; text-decoration:none; font-weight:600; }
+  #guidesClose { display:block; width:100%; min-height:44px; margin-top:8px; border-radius:12px; border:1px solid rgba(255,255,255,.2); background:transparent; color:inherit; font:600 15px Inter,system-ui,sans-serif; }
+  html[data-theme="light"] #guidesDlg { background:#f7f5f5; }
+  html[data-theme="light"] #guidesClose { border-color:rgba(0,0,0,.2); }
   #thanksDlg::backdrop, #dlAskDlg::backdrop { background:rgba(0,0,0,.7); }
   #dlAskDlg { width:min(420px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text); }
   #dlAskDlg small { display:block; color:var(--muted); font-size:12px; text-align:center; margin:-4px 0 6px; }
@@ -925,9 +940,9 @@
   #questRow { display:grid; grid-template-columns:28px 1fr auto; align-items:center; gap:4px 12px; width:100%; min-height:0; padding:12px 14px; border-radius:16px; background:#1c1610; border:1px solid rgba(217,164,65,.25); box-shadow:none; color:var(--text); text-align:left; text-transform:none; letter-spacing:0; }
   #questRow[hidden], #nearCard[hidden] { display:none; }
   /* Аудиогид (проба, 19.11.2026) */
-  #guideRow, #bookRow { display:grid; grid-template-columns:28px 1fr; align-items:center; gap:2px 12px; width:100%; min-height:0; padding:12px 14px; border-radius:16px; background:#1c1610; border:1px solid rgba(217,164,65,.25); box-shadow:none; color:var(--text); text-align:left; text-transform:none; letter-spacing:0; margin-top:10px; }
-  #guideRow b, #bookRow b { grid-row:1 / 3; font-size:22px; line-height:1; }
-  #guideRow .gT, #bookRow .gT { font-weight:600; } #guideRow .gN, #bookRow .gN { color:var(--muted, #b8a98f); }
+  #guideRow, #guidesRow, #bookRow { display:grid; grid-template-columns:28px 1fr; align-items:center; gap:2px 12px; width:100%; min-height:0; padding:12px 14px; border-radius:16px; background:#1c1610; border:1px solid rgba(217,164,65,.25); box-shadow:none; color:var(--text); text-align:left; text-transform:none; letter-spacing:0; margin-top:10px; }
+  #guideRow b, #guidesRow b, #bookRow b { grid-row:1 / 3; font-size:22px; line-height:1; }
+  #guideRow .gT, #guidesRow .gT, #bookRow .gT { font-weight:600; } #guideRow .gN, #guidesRow .gN, #bookRow .gN { color:var(--muted, #b8a98f); }
   #guideDlg { width:100vw; max-width:100vw; height:100dvh; max-height:100dvh; margin:0; padding:0; border:0; background:#17120d; color:var(--text, #f2e8d8); }
   #guideDlg::backdrop { background:rgba(10,8,6,.9); }
   #guideDlg [hidden] { display:none !important; }
@@ -1318,8 +1333,8 @@ html[data-theme="light"] .nBody b { color:#1b1516; }
 html[data-theme="light"] .nGo { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
 html[data-theme="light"] .nRoute { background:#f7f5f5; color:#d51a33; border:1px solid rgba(182,22,44,.35); }
 html[data-theme="light"] #questRow { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
-html[data-theme="light"] #guideRow, html[data-theme="light"] #bookRow { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
-html[data-theme="light"] #bookRow .gN, html[data-theme="light"] #guideRow .gN { color:var(--muted, #d51a33); }
+html[data-theme="light"] #guideRow, html[data-theme="light"] #guidesRow, html[data-theme="light"] #bookRow { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] #bookRow .gN, html[data-theme="light"] #guideRow .gN, html[data-theme="light"] #guidesRow .gN { color:var(--muted, #d51a33); }
 html[data-theme="light"] #guideDlg { background:#f7f5f5; color:var(--text, #1d1718); }
 html[data-theme="light"] #guideDlg::backdrop { background:rgba(248,246,246,.9); }
 html[data-theme="light"] #gBar button.on { color:#f7f5f5; }
@@ -1399,6 +1414,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
     <div id="nearCard" hidden></div>
     <button type="button" id="questRow" hidden></button>
     <button type="button" id="guideRow"><b>🎧</b><span class="gT"></span><small class="gN"></small></button>
+    <button type="button" id="guidesRow"><b>🧭</b><span class="gT"></span><small class="gN"></small></button>
     <button type="button" id="bookRow"><b>📖</b><span class="gT"></span><small class="gN"></small></button>
     <div id="progLine"><span class="pBar"><i id="progFill"></i></span><span id="progTxt"></span></div>
     <div id="installBox" hidden>
@@ -1618,6 +1634,14 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
     <button type="submit" class="main" id="sSend">Отправить</button>
     <button type="button" id="sSkip">Пропустить</button>
   </form>
+</dialog>
+<dialog id="guidesDlg">
+  <div class="guidesBox">
+    <h3 id="guidesH"></h3>
+    <div id="guidesList"></div>
+    <div id="guidesBook"></div>
+    <button type="button" id="guidesClose"></button>
+  </div>
 </dialog>
 <dialog id="thanksDlg">
   <div class="thanksBox">
@@ -2417,7 +2441,7 @@ $('shootTab').onclick = () => {
 
 function renderHome() {
   updateLibCount();
-  renderNear(); renderQuestRow(); renderGuideRow(); renderBookRow(); refreshPos();
+  renderNear(); renderQuestRow(); renderGuideRow(); renderGuidesRow(); renderBookRow(); refreshPos();
   const box = $('places');
   box.replaceChildren();
   const spots = visibleSpots();
@@ -2510,6 +2534,42 @@ function renderGuideRow() {
   $('guideRow').querySelector('.gT').textContent = T('Аудиогид');
   $('guideRow').querySelector('.gN').textContent = Tf('Маршрут по кругу · {n} точек', { n: GD.stops.length });
 }
+/* Официальные экскурсоводы крепости (23.11.2026, по просьбе Дайниса). Личные телефоны — только с согласия гида;
+   пока для записи — официальный центр крепости (visitdaugavpils.lv). Список пополняется здесь. */
+const FORT_GUIDES = [
+  { ru: 'Виталий Петкун', lat: 'Vitālijs Petkuns', about: 'Много лет работает в крепости; в 2020 году исполнял обязанности коменданта Даугавпилсской крепости.', langs: ['lv', 'ru', 'en'] },
+  { ru: 'Айнар Панкянс', lat: 'Ainārs Pankjāns', about: 'Куратор экспозиций крепости, в том числе центра техники «Инженерный арсенал».', langs: ['lv', 'ru', 'en'] },
+];
+const GD_FLAGS = { lv: '🇱🇻', ru: '🇷🇺', en: '🇬🇧', de: '🇩🇪', lt: '🇱🇹', pl: '🇵🇱', et: '🇪🇪', fr: '🇫🇷', it: '🇮🇹', es: '🇪🇸', zh: '🇨🇳' };
+const GD_LANGN = { lv: 'Латышский', ru: 'Русский', en: 'Английский' };
+function renderGuidesRow() {
+  $('guidesRow').querySelector('.gT').textContent = T('Официальные экскурсоводы');
+  $('guidesRow').querySelector('.gN').textContent = T('Гиды крепости · имена и контакты');
+}
+$('guidesRow').onclick = () => {
+  track('feature', 'guides');
+  const ru = (window.LANG || 'ru').startsWith('ru');
+  $('guidesH').textContent = T('Официальные экскурсоводы крепости');
+  $('guidesList').replaceChildren(...FORT_GUIDES.map(g => {
+    const d = document.createElement('div'); d.className = 'gdP';
+    const h = document.createElement('h4'); h.textContent = ru ? g.ru : g.lat;
+    const p = document.createElement('p'); p.textContent = T(g.about);
+    // Флажки языков, на которых гид ведёт экскурсии
+    const fl = document.createElement('div'); fl.className = 'gdLangs';
+    for (const l of g.langs || []) { const sp = document.createElement('span'); sp.textContent = GD_FLAGS[l] + ' ' + l.toUpperCase(); sp.title = T(GD_LANGN[l]); fl.append(sp); }
+    d.append(h, p, fl); return d;
+  }));
+  const b = $('guidesBook'); b.replaceChildren();
+  const bt = document.createElement('b'); bt.textContent = T('Записаться на экскурсию — Культурно-информационный центр крепости, ул. Николая 5:');
+  b.append(bt);
+  for (const [href, txt] of [['tel:+37165424043', '📞 +371 654 24043'], ['tel:+37128686331', '📞 +371 286 86331'], ['mailto:cietoksnis@daugavpils.lv', '✉️ cietoksnis@daugavpils.lv']]) {
+    const a = document.createElement('a'); a.href = href; a.textContent = txt; b.append(a);
+  }
+  $('guidesClose').textContent = T('Закрыть');
+  $('guidesDlg').showModal();
+};
+$('guidesClose').onclick = () => $('guidesDlg').close();
+$('guidesDlg').addEventListener('click', e => { if (e.target === $('guidesDlg')) $('guidesDlg').close(); });
 /* Книга о крепости (PDF) на языке приложения: RU, LV, остальные — EN. Перед скачиванием — просьба поддержать (можно просто скачать). */
 const BOOK_PDF = { ru: 'books/Dinaburga1810_book_RU.pdf', lv: 'books/Dinaburga1810_gramata_LV.pdf', en: 'books/Dinaburga1810_book_EN.pdf', de: 'books/Dinaburga1810_Buch_DE.pdf', lt: 'books/Dinaburga1810_knyga_LT.pdf', pl: 'books/Dinaburga1810_ksiazka_PL.pdf', et: 'books/Dinaburga1810_raamat_ET.pdf', fr: 'books/Dinaburga1810_livre_FR.pdf', it: 'books/Dinaburga1810_libro_IT.pdf', es: 'books/Dinaburga1810_libro_ES.pdf', zh: 'books/Dinaburga1810_book_ZH.pdf' };
 const bookLang = () => { const L = (window.LANG || 'ru').slice(0, 2); return BOOK_PDF[L] ? L : 'en'; };

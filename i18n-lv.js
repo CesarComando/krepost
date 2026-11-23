@@ -16,3 +16,14 @@ window.I18N.lv.ui["Вы выбрали короткий маршрут: 5 точ
 window.I18N.lv.ui["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Jūs esat izgājuši īso maršrutu. Pārējās 8 pilnā apļa pieturas — noliktavas, Komandanta nams, dārzs, hospitālis, Aleksandra un Konstantīna vārti — gaida jūs citreiz.";
 window.I18N.lv.ui["▶ Продолжить полный круг с точки {n}"] = "▶ Turpināt pilno apli no {n}. pieturas";
 window.I18N.lv.ui["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Šeit īsais maršruts beidzas. Ieraksta beigās ir norāde, kā iet uz pilnā apļa 6. pieturu. Ja vēlaties beigt, pāršķiriet tālāk līdz noslēgumam.";
+
+window.I18N.lv.ui["Официальные экскурсоводы"] = "Oficiālie gidi";
+window.I18N.lv.ui["Гиды крепости · имена и контакты"] = "Cietokšņa gidi · vārdi un kontakti";
+window.I18N.lv.ui["Официальные экскурсоводы крепости"] = "Cietokšņa oficiālie gidi";
+window.I18N.lv.ui["Много лет работает в крепости; в 2020 году исполнял обязанности коменданта Даугавпилсской крепости."] = "Daudzus gadus strādā cietoksnī; 2020. gadā bija Daugavpils cietokšņa komandanta pienākumu izpildītājs.";
+window.I18N.lv.ui["Куратор экспозиций крепости, в том числе центра техники «Инженерный арсенал»."] = "Cietokšņa ekspozīciju kurators, arī Tehnikas centra “Inženieru arsenāls”.";
+window.I18N.lv.ui["Записаться на экскурсию — Культурно-информационный центр крепости, ул. Николая 5:"] = "Pieteikties ekskursijai — Cietokšņa kultūras un informācijas centrs, Nikolaja ielā 5:";
+
+window.I18N.lv.ui["Латышский"] = "Latviešu";
+window.I18N.lv.ui["Русский"] = "Krievu";
+window.I18N.lv.ui["Английский"] = "Angļu";

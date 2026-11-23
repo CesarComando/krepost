@@ -19,3 +19,14 @@ window.I18N_UI.fr["Вы выбрали короткий маршрут: 5 точ
 window.I18N_UI.fr["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Vous avez terminé l’itinéraire court. Les 8 autres arrêts du circuit complet — les magasins, la maison du commandant, le jardin, l’hôpital, les portes Alexandre et Constantin — vous attendent une autre fois.";
 window.I18N_UI.fr["▶ Продолжить полный круг с точки {n}"] = "▶ Continuer le circuit complet à partir de l’arrêt {n}";
 window.I18N_UI.fr["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "L’itinéraire court s’arrête ici. À la fin de l’enregistrement, une indication explique comment rejoindre l’arrêt 6 du circuit complet. Pour terminer, faites glisser jusqu’au final.";
+
+window.I18N_UI.fr["Официальные экскурсоводы"] = "Guides officiels";
+window.I18N_UI.fr["Гиды крепости · имена и контакты"] = "Guides de la forteresse · noms et contacts";
+window.I18N_UI.fr["Официальные экскурсоводы крепости"] = "Guides officiels de la forteresse";
+window.I18N_UI.fr["Много лет работает в крепости; в 2020 году исполнял обязанности коменданта Даугавпилсской крепости."] = "Travaille à la forteresse depuis de nombreuses années ; en 2020, il a été commandant par intérim de la forteresse de Daugavpils.";
+window.I18N_UI.fr["Куратор экспозиций крепости, в том числе центра техники «Инженерный арсенал»."] = "Commissaire des expositions de la forteresse, dont le centre technique « Arsenal des ingénieurs ».";
+window.I18N_UI.fr["Записаться на экскурсию — Культурно-информационный центр крепости, ул. Николая 5:"] = "Réserver une visite — Centre culturel et d’information de la forteresse, Nikolaja 5 :";
+
+window.I18N_UI.fr["Латышский"] = "Letton";
+window.I18N_UI.fr["Русский"] = "Russe";
+window.I18N_UI.fr["Английский"] = "Anglais";

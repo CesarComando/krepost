@@ -19,3 +19,14 @@ window.I18N_UI.lt["Вы выбрали короткий маршрут: 5 точ
 window.I18N_UI.lt["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Įveikėte trumpą maršrutą. Kitos 8 viso rato stotelės — sandėliai, Komendanto namas, sodas, ligoninė, Aleksandro ir Konstantino vartai — laukia kitą kartą.";
 window.I18N_UI.lt["▶ Продолжить полный круг с точки {n}"] = "▶ Tęsti visą ratą nuo {n} stotelės";
 window.I18N_UI.lt["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Čia trumpas maršrutas baigiasi. Įrašo pabaigoje — patarimas, kaip eiti į 6 viso rato stotelę. Jei norite baigti, braukite toliau iki pabaigos.";
+
+window.I18N_UI.lt["Официальные экскурсоводы"] = "Oficialūs gidai";
+window.I18N_UI.lt["Гиды крепости · имена и контакты"] = "Tvirtovės gidai · vardai ir kontaktai";
+window.I18N_UI.lt["Официальные экскурсоводы крепости"] = "Oficialūs tvirtovės gidai";
+window.I18N_UI.lt["Много лет работает в крепости; в 2020 году исполнял обязанности коменданта Даугавпилсской крепости."] = "Daug metų dirba tvirtovėje; 2020 m. ėjo Daugpilio tvirtovės komendanto pareigas.";
+window.I18N_UI.lt["Куратор экспозиций крепости, в том числе центра техники «Инженерный арсенал»."] = "Tvirtovės ekspozicijų kuratorius, taip pat technikos centro „Inžinierių arsenalas“.";
+window.I18N_UI.lt["Записаться на экскурсию — Культурно-информационный центр крепости, ул. Николая 5:"] = "Užsisakyti ekskursiją — Tvirtovės kultūros ir informacijos centras, Nikolaja g. 5:";
+
+window.I18N_UI.lt["Латышский"] = "Latvių";
+window.I18N_UI.lt["Русский"] = "Rusų";
+window.I18N_UI.lt["Английский"] = "Anglų";

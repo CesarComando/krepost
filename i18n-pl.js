@@ -19,3 +19,14 @@ window.I18N_UI.pl["Вы выбрали короткий маршрут: 5 точ
 window.I18N_UI.pl["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Krótka trasa przebyta. Pozostałe 8 przystanków pełnego kręgu — magazyny, Dom Komendanta, ogród, szpital, Brama Aleksandra i Brama Konstantego — czeka na inny raz.";
 window.I18N_UI.pl["▶ Продолжить полный круг с точки {n}"] = "▶ Kontynuuj pełny krąg od przystanku {n}";
 window.I18N_UI.pl["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Tu kończy się krótka trasa. Na końcu nagrania jest wskazówka, jak dojść do przystanku 6 pełnego kręgu. Jeśli chcesz zakończyć, przesuń dalej do finału.";
+
+window.I18N_UI.pl["Официальные экскурсоводы"] = "Oficjalni przewodnicy";
+window.I18N_UI.pl["Гиды крепости · имена и контакты"] = "Przewodnicy po twierdzy · imiona i kontakty";
+window.I18N_UI.pl["Официальные экскурсоводы крепости"] = "Oficjalni przewodnicy po twierdzy";
+window.I18N_UI.pl["Много лет работает в крепости; в 2020 году исполнял обязанности коменданта Даугавпилсской крепости."] = "Od wielu lat pracuje w twierdzy; w 2020 roku pełnił obowiązki komendanta Twierdzy Dyneburg.";
+window.I18N_UI.pl["Куратор экспозиций крепости, в том числе центра техники «Инженерный арсенал»."] = "Kurator ekspozycji twierdzy, w tym centrum techniki „Arsenał Inżynieryjny”.";
+window.I18N_UI.pl["Записаться на экскурсию — Культурно-информационный центр крепости, ул. Николая 5:"] = "Zapisy na wycieczkę — Centrum Kultury i Informacji Twierdzy, ul. Nikolaja 5:";
+
+window.I18N_UI.pl["Латышский"] = "Łotewski";
+window.I18N_UI.pl["Русский"] = "Rosyjski";
+window.I18N_UI.pl["Английский"] = "Angielski";

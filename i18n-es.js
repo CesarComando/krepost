@@ -19,3 +19,14 @@ window.I18N_UI.es["Вы выбрали короткий маршрут: 5 точ
 window.I18N_UI.es["Вы прошли короткий маршрут. Остальные 8 точек полного круга — склады, Комендантский дом, сад, госпиталь, Александровские и Константиновские ворота — ждут вас в другой раз."] = "Ha terminado la ruta corta. Las otras 8 paradas del circuito completo — los almacenes, la Casa del Comandante, el jardín, el hospital, las puertas de Alejandro y de Constantino — le esperan otro día.";
 window.I18N_UI.es["▶ Продолжить полный круг с точки {n}"] = "▶ Seguir el circuito completo desde la parada {n}";
 window.I18N_UI.es["Здесь короткий маршрут заканчивается. В конце записи — подсказка, как идти к точке 6 полного круга. Если хотите закончить — листайте дальше, к финалу."] = "Aquí termina la ruta corta. Al final de la grabación hay una indicación para ir a la parada 6 del circuito completo. Si quiere terminar, deslice hasta el final.";
+
+window.I18N_UI.es["Официальные экскурсоводы"] = "Guías oficiales";
+window.I18N_UI.es["Гиды крепости · имена и контакты"] = "Guías de la fortaleza · nombres y contactos";
+window.I18N_UI.es["Официальные экскурсоводы крепости"] = "Guías oficiales de la fortaleza";
+window.I18N_UI.es["Много лет работает в крепости; в 2020 году исполнял обязанности коменданта Даугавпилсской крепости."] = "Trabaja desde hace muchos años en la fortaleza; en 2020 fue comandante en funciones de la fortaleza de Daugavpils.";
+window.I18N_UI.es["Куратор экспозиций крепости, в том числе центра техники «Инженерный арсенал»."] = "Comisario de las exposiciones de la fortaleza, entre ellas el centro técnico «Arsenal de Ingenieros».";
+window.I18N_UI.es["Записаться на экскурсию — Культурно-информационный центр крепости, ул. Николая 5:"] = "Reservar una visita — Centro Cultural y de Información de la fortaleza, Nikolaja 5:";
+
+window.I18N_UI.es["Латышский"] = "Letón";
+window.I18N_UI.es["Русский"] = "Ruso";
+window.I18N_UI.es["Английский"] = "Inglés";
