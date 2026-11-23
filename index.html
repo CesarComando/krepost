@@ -1801,7 +1801,9 @@ let activeGroup = ALL;
 const DEMO = (() => { try { const q = new URLSearchParams(location.search).get('demo'); if (q === '1') localStorage.setItem('krepost.demo', '1'); if (q === '0') localStorage.removeItem('krepost.demo'); return localStorage.getItem('krepost.demo') === '1'; } catch { return false; } })();
 // Правило Дайниса: снимки «Солдаты и люди» не публикуем — посетители их не видят, модератор видит
 const NOT_PUBLIC_GROUPS = ['Солдаты и люди'];
-const visibleSpots = () => allSpots().filter(s => !s.illus && !s.arch && (ADMIN || !NOT_PUBLIC_GROUPS.includes(groupOf(s))) && (ADMIN || (DEMO && s.demo) || (!s.hidden && !hiddenIds.includes(s.id))));
+// 23.11.2026: Дайнис вернул 36 снимков группы, где главное — место (ворота, казармы, улицы, вал, памятник), без советской и нацистской формы
+const PUBLIC_OK = new Set(["s077", "s074", "s094", "s122", "s137", "s142", "s149", "s174", "s186", "s188", "s191", "s193", "s194", "s216", "s240", "s452", "s482", "s483", "s484", "s487", "s488", "s489", "s500", "s501", "s503", "s504", "s509", "s510", "s119", "s063", "s126", "s445", "s459", "s449", "s502", "s104"]);
+const visibleSpots = () => allSpots().filter(s => !s.illus && !s.arch && (ADMIN || !NOT_PUBLIC_GROUPS.includes(groupOf(s)) || PUBLIC_OK.has(s.id)) && (ADMIN || (DEMO && s.demo) || (!s.hidden && !hiddenIds.includes(s.id))));
 const illusOf = g => byYear(allSpots().filter(s => s.illus && groupOf(s) === g));
 // Архив (arch): снимки, которые не переснять (с воздуха и т. п.), — только в «Истории крепости», мини-статьями по объектам
 const archGroups = () => { const m = new Map(); for (const s of allSpots()) if (s.arch && !s.hidden) { const g = groupOf(s); if (!m.has(g)) m.set(g, []); m.get(g).push(s); } return [...m].map(([g, l]) => [g, byYear(l)]); };
