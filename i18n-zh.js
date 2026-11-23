@@ -32,11 +32,12 @@ window.I18N_UI.zh["Русский"] = "俄语";
 window.I18N_UI.zh["Английский"] = "英语";
 
 window.I18N_UI.zh["🎵 Музыка: вкл"] = "🎵 音乐：开";
+window.I18N_UI.zh["🎵 Музыка:"] = "🎵 音乐：";
+window.I18N_UI.zh["Шопен, ноктюрн"] = "肖邦·夜曲";
+window.I18N_UI.zh["Шопен, баллада"] = "肖邦·叙事曲";
 window.I18N_UI.zh["🎵 Музыка: выкл"] = "🎵 音乐：关";
 window.I18N_UI.zh["Музыка в аудиогиде:"] = "语音导览中的音乐：";
 window.I18N_UI.zh["Ф. Шопен — Ноктюрн ми-бемоль мажор, op. 9 № 2. Исп. Frank Levy. Musopen, общественное достояние"] = "肖邦——降E大调夜曲，作品9第2号。演奏：Frank Levy。Musopen，公有领域";
-window.I18N_UI.zh["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "维瓦尔第——《夏》第二乐章。John Harrison（小提琴），Wichita State University Chamber Players。许可协议 CC BY-SA 1.0";
 window.I18N_UI.zh["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice——Dainis Miglāns（CesarComando）";
 window.I18N_UI.zh["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "肖邦——第一叙事曲，作品23。Musopen，公有领域";
 
-window.I18N_UI.zh["А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние"] = "维瓦尔第——《夏》，G小调协奏曲 RV 315 全曲。The Modena Chamber Orchestra / European Archive，Musopen，公有领域";
