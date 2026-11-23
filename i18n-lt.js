@@ -38,3 +38,5 @@ window.I18N_UI.lt["Ф. Шопен — Ноктюрн ми-бемоль мажо�
 window.I18N_UI.lt["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldis — „Vasara“, II dalis. John Harrison (smuikas), Wichita State University Chamber Players. Licencija CC BY-SA 1.0";
 window.I18N_UI.lt["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N_UI.lt["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Šopenas — Baladė Nr. 1, op. 23. Musopen, viešoji nuosavybė";
+
+window.I18N_UI.lt["А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние"] = "A. Vivaldis — „Vasara“, koncertas sol minor RV 315, visas. The Modena Chamber Orchestra / European Archive, Musopen, viešoji nuosavybė";

@@ -35,3 +35,5 @@ window.I18N.en.ui["Ф. Шопен — Ноктюрн ми-бемоль мажо�
 window.I18N.en.ui["А. Вивальди — «Лето», II часть. John Harrison (скрипка), Wichita State University Chamber Players. Лицензия CC BY-SA 1.0"] = "A. Vivaldi — “Summer”, 2nd movement. John Harrison (violin), Wichita State University Chamber Players. Licence CC BY-SA 1.0";
 window.I18N.en.ui["Lute Voice — Дайнис Миглан (CesarComando)"] = "Lute Voice — Dainis Miglāns (CesarComando)";
 window.I18N.en.ui["Ф. Шопен — Баллада № 1, op. 23. Musopen, общественное достояние"] = "F. Chopin — Ballade No. 1, Op. 23. Musopen, public domain";
+
+window.I18N.en.ui["А. Вивальди — «Лето», концерт соль минор RV 315 целиком. The Modena Chamber Orchestra / European Archive, Musopen, общественное достояние"] = "A. Vivaldi — “Summer”, Concerto in G minor RV 315, complete. The Modena Chamber Orchestra / European Archive, Musopen, public domain";
