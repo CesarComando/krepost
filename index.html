@@ -1069,6 +1069,11 @@
   .camNav[hidden] { display:none; }
   #camPrev { left:6px; } #camNext { right:6px; }
   .camNav:active { transform:translateY(-50%) scale(.94); }
+  /* 24.11.2026: стрелки полупрозрачные и уже — меньше закрывают снимок */
+  .camNav { width:34px; height:60px; border-radius:12px; background:rgba(18,14,10,.28); border:1px solid rgba(243,210,122,.22); color:rgba(243,210,122,.8); box-shadow:none; text-shadow:0 1px 3px rgba(0,0,0,.8); font-size:30px; }
+  .camNav::after { content:""; position:absolute; inset:-6px -6px; }
+  .camNav:active { background:rgba(18,14,10,.6); color:#f3d27a; }
+  #camPrev { left:3px; } #camNext { right:3px; }
   #camPos { position:absolute; z-index:8; right:10px; bottom:8px; padding:2px 8px; border-radius:999px; background:rgba(18,14,10,.72); color:#f3d27a; font:600 12px 'PT Mono',ui-monospace,monospace; pointer-events:none; }
   #camPos:empty { display:none; }
   #resNext { display:block; width:100%; margin:10px 0 0; padding:13px 14px; border-radius:14px; font:700 15px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
