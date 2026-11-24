@@ -471,6 +471,9 @@
   html[data-theme="light"] .eraNote { border-color:rgba(182,22,44,.25); }
   #thanksDlg::backdrop, #dlAskDlg::backdrop { background:rgba(0,0,0,.7); }
   #dlAskDlg { width:min(420px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text); }
+  #dlAskDlg { position:fixed; overflow:visible; }
+  #dlAskClose { position:absolute; top:8px; right:8px; z-index:1; width:44px; height:44px; border-radius:50%; border:0; padding:0; background:rgba(255,255,255,.1); color:var(--text); font-size:20px; line-height:44px; cursor:pointer; }
+  html[data-theme="light"] #dlAskClose { background:rgba(0,0,0,.08); color:#2b2b2b; }
   #dlAskDlg small { display:block; color:var(--muted); font-size:12px; text-align:center; margin:-4px 0 6px; }
   .thanksBox { padding:22px 20px 18px; display:flex; flex-direction:column; gap:12px; text-align:center; }
   .thanksIcon { font-size:44px; line-height:1; }
@@ -724,6 +727,19 @@
   #langList button.on small { color:#f3c650; }
 
   /* ===== Без интернета ===== */
+  #moveBox { margin:10px 0 0; padding:12px; border-radius:14px; background:#2a231b; border:1px solid rgba(217,164,65,.3); display:flex; flex-direction:column; gap:8px; }
+  #moveBox h4 { margin:0; font:700 17px var(--serif); color:#f6ecd8; }
+  #moveBox p { margin:0; font-size:14px; line-height:1.4; }
+  #moveBox button { min-height:0; padding:10px 12px; border-radius:12px; font:600 14px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; box-shadow:none; }
+  #moveBox button:not(.main) { background:#1c1610; color:#e6d8bd; border:1px solid rgba(217,164,65,.3); }
+  #moveBox small { color:var(--muted); font-size:12px; }
+  #moveOut { display:flex; flex-direction:column; gap:8px; }
+  #moveOut[hidden], #moveQr[hidden] { display:none; }
+  #moveQr { width:min(240px, 100%); align-self:center; background:#fff; padding:8px; border-radius:8px; image-rendering:pixelated; }
+  #moveMsg:empty { display:none; }
+  html[data-theme="light"] #moveBox { background:#f7f5f5; border:1px solid rgba(182,22,44,.3); }
+  html[data-theme="light"] #moveBox h4 { color:#1b1516; }
+  html[data-theme="light"] #moveBox button:not(.main) { background:#f7f5f5; color:#e6334b; border:1px solid rgba(182,22,44,.3); }
   #offBox { margin:10px 0; padding:12px; border-radius:14px; background:#2a231b; border:1px solid rgba(217,164,65,.3); display:flex; flex-direction:column; gap:8px; }
   #offBox h4 { margin:0; font:700 17px var(--serif); color:#f6ecd8; }
   #offInfo, .offState { margin:0; color:var(--muted); font-size:13px; }
@@ -1509,6 +1525,18 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
     <p id="supBox" hidden><a id="supBtn" target="_blank" rel="noopener">☕ Поддержать проект</a><br><small>Через Revolut: картой, Apple Pay или Google Pay</small></p>
     <p id="handSet"><button type="button" id="handChange"></button></p>
     <p id="themeSet"><button type="button" id="themeBtn"></button></p>
+    <div id="moveBox">
+      <h4>🔄 Перенести прогресс</h4>
+      <p>Посещённые места, «печати» паспорта и задания квестов можно перенести на другой телефон или компьютер. Без регистрации: всё хранится в самом коде.</p>
+      <button type="button" class="main" id="moveMake">Показать код переноса</button>
+      <div id="moveOut" hidden>
+        <img id="moveQr" alt="QR-код переноса">
+        <p id="moveHint">Наведите камеру другого телефона на этот код или отправьте ссылку себе (на компьютер, в мессенджер) и откройте её там.</p>
+        <button type="button" id="moveShare">📤 Отправить ссылку</button>
+        <p id="moveMsg"></p>
+      </div>
+      <small>Снимки из «Библиотеки» не переносятся — только отметки.</small>
+    </div>
     <div id="offBox">
       <h4>📥 Без интернета</h4>
       <p id="offInfo"></p>
@@ -1673,6 +1701,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
   </div>
 </dialog>
 <dialog id="dlAskDlg" class="thanksLike">
+  <button type="button" id="dlAskClose" aria-label="Закрыть">✕</button>
   <div class="thanksBox">
     <div class="thanksIcon">🎧</div>
     <h3>Вам нравится приложение?</h3>
@@ -2898,6 +2927,9 @@ function dlAskRun() { const go = dlAskNext; dlAskNext = null; if ($('dlAskDlg').
 $('dlAskGo').onclick = dlAskRun;
 $('dlAskDonate').addEventListener('click', () => { track('feature', 'donate_dl'); dlAskRun(); });
 $('dlAskDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
+// Окно можно закрыть без выбора: крестик, нажатие мимо окна или «Назад» (отзыв тестировщика 24.11). Скачивание тогда не начинается.
+$('dlAskClose').onclick = () => { track('feature', 'dl_ask_close'); navBack(); };
+$('dlAskDlg').addEventListener('click', e => { if (e.target === $('dlAskDlg')) { track('feature', 'dl_ask_close'); navBack(); } });
 $('gDlBtn').onclick = e => { const btn = e.currentTarget; askDonateThen('guide', async () => { track('feature', 'guide_offline'); await saveOffline(guideOfflineUrls(), btn); guideBarPaint(); }); };
 // Карта маршрута: схема по прямой между точками, «вы здесь», нажатие на номер — переход к рассказу
 async function guideShowMap(show) {
@@ -3230,7 +3262,7 @@ function renderObj() {
 /* ===== Без интернета: заранее сохранить снимки (и саму страницу) в памяти телефона ===== */
 const PHOTO_CACHE = 'krepost-photos', OFF_CACHE = 'krepost-offline';
 const SHELL = ['./', 'index.html', 'spots.js', 'quests.js', 'history.js', 'guide.js', 'i18n.js', ...(window.I18N_FILES || []),
-  'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'manifest.webmanifest', 'photos/hero.jpg'];
+  'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'vendor/qrcode/qrcode.js', 'manifest.webmanifest', 'photos/hero.jpg'];
 const pathOf = u => new URL(u, location.href).pathname;
 function photoUrls(list, full) {
   const out = [];
@@ -4123,6 +4155,98 @@ async function shareApp(msgEl) {
   catch (e) { if (msgEl) msgEl.textContent = APP_URL; }
 }
 $('sShare').onclick = () => shareApp($('sMsg'));
+
+/* ===== Перенос прогресса на другое устройство (24.11.2026, выбор Дайниса: код переноса без логина) =====
+   Прогресс (посещённые места, даты «печатей», задания квестов, место в аудиогиде) сжимается в ссылку
+   …/krepost/#move=КОД. Часть после # не уходит на сервер и в статистику. На другом устройстве ссылка
+   открывается, прогресс ДОБАВЛЯЕТСЯ к тому, что там уже есть (ничего не стирается). */
+const b64u = bytes => { let s = ''; for (const b of bytes) s += String.fromCharCode(b); return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); };
+const unb64u = str => { const s = atob(str.replace(/-/g, '+').replace(/_/g, '/')); return Uint8Array.from(s, c => c.charCodeAt(0)); };
+async function zipBytes(bytes, back) {
+  const cs = back ? new DecompressionStream('deflate-raw') : new CompressionStream('deflate-raw');
+  return new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(cs)).arrayBuffer());
+}
+const DAY = 864e5;
+function movePack() {
+  const known = new Set(SPOTS.map(s => s.id));
+  let at; try { at = JSON.parse(localStorage.getItem(FOUND_AT_KEY)) || {}; } catch { at = {}; }
+  const f = found.filter(id => known.has(id));
+  const q = {};
+  for (const [qid, steps] of Object.entries(questDone || {})) { const ids = Object.keys(steps || {}).filter(id => known.has(id)); if (ids.length) q[qid] = ids; }
+  const data = { v: 1, f, d: f.map(id => at[id] ? Math.floor(at[id] / DAY) : 0), q };
+  try { const g = JSON.parse(localStorage.getItem(GUIDE_KEY)); if (g) data.g = g; } catch { /* */ }
+  return data;
+}
+async function moveCode() {
+  const raw = new TextEncoder().encode(JSON.stringify(movePack()));
+  if (typeof CompressionStream === 'function') { try { return 'z' + b64u(await zipBytes(raw)); } catch { /* старый браузер */ } }
+  return 'j' + b64u(raw);
+}
+async function moveDecode(code) {
+  let bytes = unb64u(code.slice(1));
+  if (code[0] === 'z') bytes = await zipBytes(bytes, true);
+  else if (code[0] !== 'j') throw new Error('bad');
+  const d = JSON.parse(new TextDecoder().decode(bytes));
+  if (!d || d.v !== 1 || !Array.isArray(d.f)) throw new Error('bad');
+  return d;
+}
+function loadQr() {
+  if (window.qrcode) return Promise.resolve();
+  return new Promise((res, rej) => { const js = document.createElement('script'); js.src = 'vendor/qrcode/qrcode.js'; js.onload = res; js.onerror = rej; document.head.append(js); });
+}
+let moveUrl = '';
+$('moveMake').onclick = async () => {
+  track('feature', 'move_make');
+  $('moveMsg').textContent = '';
+  moveUrl = location.origin + location.pathname + '#move=' + await moveCode();
+  $('moveOut').hidden = false;
+  const img = $('moveQr');
+  try {
+    await loadQr();
+    const qr = qrcode(0, 'L'); qr.addData(moveUrl); qr.make();
+    img.src = qr.createDataURL(4, 2); img.hidden = false;
+  } catch {
+    img.hidden = true; // слишком много данных для QR или нет файла — остаётся ссылка
+  }
+  $('moveHint').textContent = img.hidden ? T('Отправьте ссылку себе (на компьютер, в мессенджер) и откройте её на другом устройстве.') : T('Наведите камеру другого телефона на этот код или отправьте ссылку себе (на компьютер, в мессенджер) и откройте её там.');
+};
+$('moveShare').onclick = async () => {
+  if (!moveUrl) return;
+  track('feature', 'move_share');
+  if (navigator.share) { try { await navigator.share({ title: T('Перенести прогресс'), url: moveUrl }); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
+  try { await navigator.clipboard.writeText(moveUrl); $('moveMsg').textContent = T('✓ Ссылка скопирована — откройте её на другом устройстве.'); }
+  catch { $('moveMsg').textContent = moveUrl; }
+};
+// Открыли ссылку переноса: спрашиваем и добавляем прогресс к своему (и при открытии, и если сайт уже был открыт)
+async function moveCheck() {
+  const m = /^#move=([A-Za-z0-9_-]+)$/.exec(location.hash);
+  if (!m) return;
+  try { history.replaceState(history.state, '', location.pathname + location.search); } catch { /* */ }
+  let d;
+  try { d = await moveDecode(m[1]); } catch { alert(T('Ссылка переноса повреждена. Сделайте новую на старом устройстве.')); return; }
+  const known = new Set(SPOTS.map(s => s.id));
+  const f = d.f.filter(id => known.has(id));
+  const qn = Object.values(d.q || {}).reduce((n, a) => n + (Array.isArray(a) ? a.length : 0), 0);
+  if (!confirm(Tf('Перенести прогресс с другого устройства? Мест: {f}, заданий квестов: {q}. То, что уже есть здесь, останется.', { f: f.length, q: qn }))) return;
+  track('feature', 'move_import');
+  let at; try { at = JSON.parse(localStorage.getItem(FOUND_AT_KEY)) || {}; } catch { at = {}; }
+  f.forEach((id, i) => { const day = Array.isArray(d.d) ? d.d[d.f.indexOf(id)] : 0; if (day) { const t = day * DAY + DAY / 2; if (!at[id] || t < at[id]) at[id] = t; } });
+  found = [...new Set([...read(FOUND_KEY, []), ...f])];
+  try { localStorage.setItem(FOUND_AT_KEY, JSON.stringify(at)); } catch { /* */ }
+  write(FOUND_KEY, found); // проставит дату «сегодня» только тем, у кого её не было
+  const qd = { ...read(QUEST_KEY, {}) };
+  for (const [qid, ids] of Object.entries(d.q || {})) {
+    if (!Array.isArray(ids)) continue;
+    qd[qid] = { ...(qd[qid] || {}) };
+    for (const id of ids) if (known.has(id) && !qd[qid][id]) qd[qid][id] = Date.now();
+  }
+  write(QUEST_KEY, qd);
+  try { if (d.g && !localStorage.getItem(GUIDE_KEY)) localStorage.setItem(GUIDE_KEY, JSON.stringify(d.g)); } catch { /* */ }
+  alert(T('✓ Прогресс перенесён.'));
+  location.reload();
+}
+moveCheck();
+window.addEventListener('hashchange', moveCheck);
 async function updateShotStats() {
   if (!ADMIN || !$('adminBar')) return;
   try {
