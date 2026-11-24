@@ -3803,7 +3803,7 @@ function renderQuests() {
 
 
 /* ===== Мозаики «можно дома»: старое фото режется на квадратные плитки. Всё хранится в телефоне. ===== */
-const MOSAIC_ON = (() => { try { const q = new URLSearchParams(location.search).get('mosaic'); if (q === '1') localStorage.setItem('krepost.mosaicPreview', '1'); if (q === '0') localStorage.removeItem('krepost.mosaicPreview'); return localStorage.getItem('krepost.mosaicPreview') === '1'; } catch (e) { return false; } })();
+const MOSAIC_ON = true; // мозаики открыты для всех с 24.11.2026
 let questTab = (() => { try { return localStorage.getItem('krepost.questTab') || 'walk'; } catch (e) { return 'walk'; } })();
 const MOS_KEY = 'krepost.mosaics';
 const mosaicList = () => (window.MOSAICS_DATA || []).map(m => ({ ...m, s: spotById(m.spot) })).filter(m => m.s);
