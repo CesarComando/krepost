@@ -43,3 +43,18 @@ window.I18N.lv.ui["📤 Поделиться приложением с друз�
 window.I18N.lv.ui["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Paldies! Atbilde nosūtīta. Ja patika — padalieties ar draugiem.";
 window.I18N.lv.ui["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Cietoksnis cauri laikiem — senas Daugavpils cietokšņa fotogrāfijas: nostājies tur, kur stāvēja fotogrāfs.";
 window.I18N.lv.ui["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Saite nokopēta — ielīmējiet to ziņā draugam.";
+
+window.I18N.lv.ui["Квесты на месте"] = "Kvesti uz vietas";
+window.I18N.lv.ui["Мозаики — можно дома"] = "Mozaīkas — var mājās";
+window.I18N.lv.ui["Соберите старую фотографию из квадратиков. Можно дома, с детьми, без прогулки — а потом найти это место в крепости."] = "Salieciet veco fotogrāfiju no kvadrātiņiem. Var mājās, ar bērniem, bez pastaigas — un pēc tam atrast šo vietu cietoksnī.";
+window.I18N.lv.ui["начата"] = "iesākta";
+window.I18N.lv.ui["Собрана"] = "Salikta";
+window.I18N.lv.ui["{n} плиток"] = "{n} gabaliņi";
+window.I18N.lv.ui["Подсказка"] = "Padoms";
+window.I18N.lv.ui["Перемешать заново"] = "Sajaukt no jauna";
+window.I18N.lv.ui["На месте: {a} из {b}"] = "Savā vietā: {a} no {b}";
+window.I18N.lv.ui["Нажмите на плитку, потом на другую — они поменяются местами. Можно и перетащить пальцем."] = "Pieskarieties gabaliņam, pēc tam citam — tie samainīsies vietām. Var arī pārvilkt ar pirkstu.";
+window.I18N.lv.ui["Плитка на своём месте слегка светится золотом."] = "Gabaliņš savā vietā viegli mirdz zeltā.";
+window.I18N.lv.ui["Собрано!"] = "Salikts!";
+window.I18N.lv.ui["Показать на карте"] = "Parādīt kartē";
+window.I18N.lv.ui["Собрать ещё раз"] = "Salikt vēlreiz";

@@ -288,6 +288,47 @@
   .edRow.end { justify-content:flex-end; }
   .edRow a { color:var(--accent); }
   .edNote { margin:0; font-size:13px; color:var(--muted); min-height:1em; }
+  /* Мозаики «можно дома» */
+  .qtabs { display:flex; gap:8px; flex-wrap:wrap; }
+  .qtabs button { font:600 15px var(--cond); text-transform:uppercase; letter-spacing:.03em; min-height:44px; padding:0 14px; border-radius:22px; border:1px solid rgba(217,164,65,.45); background:transparent; color:var(--ink2,#eadcbd); }
+  .qtabs button[aria-pressed="true"] { background:var(--paper); color:var(--ink); border-color:var(--paper); }
+  .mgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+  .mcard { position:relative; background:var(--paper); color:var(--ink); border:0; border-radius:4px; padding:8px 8px 10px; text-align:left; box-shadow:0 4px 12px rgba(0,0,0,.5); }
+  .mcard img { width:100%; aspect-ratio:1; object-fit:cover; display:block; filter:sepia(.35); }
+  .mcard b { display:block; font:700 16px/1.2 var(--old); margin-top:6px; }
+  .mcard small { display:block; font:600 13px var(--cond); text-transform:uppercase; opacity:.75; margin-top:2px; }
+  .mcard .stamp { position:absolute; top:12px; right:12px; transform:rotate(8deg); border:3px solid #8b1d14; color:#8b1d14; background:rgba(241,230,204,.9); font:700 13px var(--cond); padding:1px 6px; text-transform:uppercase; }
+  .mintro { margin:0; color:#d9cbb2; font-family:var(--old); }
+  #mosDlg { position:fixed; inset:0; z-index:60; background:#14100b; color:#f3ead8; overflow-y:auto; padding:max(12px,env(safe-area-inset-top)) max(4vw,14px) 32px; }
+  #mosDlg[hidden] { display:none; }
+  #mosDlg .mtop { display:flex; align-items:center; gap:10px; }
+  #mosDlg .mtop button { min-width:44px; min-height:44px; border-radius:22px; border:1px solid rgba(217,164,65,.45); background:transparent; color:#f3ead8; font-size:22px; }
+  #mosDlg h2 { margin:0; font:700 clamp(20px,5vw,28px)/1.15 var(--old); }
+  #mosDlg .mlv, #mosDlg .mact { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+  #mosDlg .mact { justify-content:center; }
+  #mosDlg .mlv button, #mosDlg .mact button, #mosDlg .mact a { font:600 16px Inter,system-ui,sans-serif; min-height:44px; padding:0 16px; border-radius:22px; border:1px solid rgba(217,164,65,.45); background:#211a12; color:#f3ead8; text-decoration:none; display:inline-flex; align-items:center; }
+  #mosDlg .mlv button[aria-pressed="true"] { background:#f3ead8; color:#14100b; }
+  #mosDlg .pri { background:linear-gradient(#f2c95c,#c9932c) !important; color:#1c1408 !important; border:0 !important; }
+  .mwrap { display:grid; gap:14px; }
+  @media (min-width:760px) and (orientation:landscape) { .mwrap { grid-template-columns:minmax(0,1fr) 300px; align-items:start; } }
+  .mboard { position:relative; width:min(100%,640px); aspect-ratio:1; margin:0 auto; border-radius:10px; overflow:hidden; border:1px solid rgba(217,164,65,.45); background:#000; touch-action:none; user-select:none; -webkit-user-select:none; }
+  @media (min-width:760px) and (orientation:landscape) { .mboard { width:min(100%,calc(100vh - 200px),640px); } }
+  .mt { position:absolute; overflow:hidden; outline:1px solid rgba(0,0,0,.55); transition:left .18s, top .18s; }
+  .mt img { position:absolute; max-width:none; pointer-events:none; -webkit-user-drag:none; }
+  .mt::after { content:""; position:absolute; inset:0; pointer-events:none; }
+  .mt.ok::after { box-shadow:inset 0 0 0 2px rgba(232,184,74,.6); }
+  .mt.sel::after { box-shadow:inset 0 0 0 3px #e8b84a; }
+  .mt.sel { z-index:2; }
+  .mt.drag { z-index:5; transition:none; opacity:.92; box-shadow:0 8px 24px rgba(0,0,0,.6); }
+  .mhint { position:absolute; inset:0; z-index:8; opacity:0; pointer-events:none; transition:opacity .25s; overflow:hidden; }
+  .mhint.on { opacity:1; }
+  .mhint img { width:100%; height:100%; object-fit:cover; display:block; }
+  .mside { background:#211a12; border:1px solid rgba(217,164,65,.35); border-radius:10px; padding:12px 14px; }
+  .mside p { margin:6px 0; color:#d6c7a6; font-size:15px; }
+  .mside .mprog { color:#f3ead8; font-weight:600; }
+  .mside .msrc { font-size:13px; color:#bfae8c; }
+  .mside img { width:100%; border-radius:6px; display:block; margin:8px 0; }
+  @media (prefers-reduced-motion:reduce) { .mt, .mhint { transition:none; } }
   #quests[hidden] { display:none; }
   #quests { display:flex; flex-direction:column; gap:16px; margin-bottom:20px; }
   .quest { background:var(--paper); color:var(--ink); border-radius:4px; padding:14px 16px; text-align:left; box-shadow:0 4px 12px rgba(0,0,0,.5), inset 0 0 24px rgba(120,90,40,.25); border:0; position:relative; }
@@ -1484,6 +1525,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
   </div>
   <div id="lib" hidden></div>
   <div id="quests" hidden></div>
+  <div id="mosDlg" hidden></div>
   <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
   <div id="yearRail" hidden><div id="yearBubble" role="slider" aria-label="Год"><b></b><small></small></div></div>
   <nav id="botNav">
@@ -1756,6 +1798,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
 </dialog>
 <script src="spots.js"></script>
 <script src="quests.js"></script>
+<script src="mosaics.js"></script>
 <script src="history.js"></script>
 <script src="guide.js"></script>
 <script>
@@ -2156,6 +2199,7 @@ function stepBack() {
   try { sessionStorage.removeItem(RESUME_KEY); } catch (e) {}
   if (!$('cam').hidden) { stopCam(); current = null; questCtx = null; show('list'); softRefresh(); return; }
   if (!$('result').hidden) { const go = flyToAlbum(); setInset(false); current = null; show('list'); softRefresh(); requestAnimationFrame(go); return; }
+  if (!$('mosDlg').hidden) { closeMosaic(); return; }
   if (view === 'quests' && openQuest) { openQuest = null; renderQuests(); return; }
   if ($('setDlg').open) { $('setDlg').close(); return; }
   if (view !== 'home') {
@@ -3261,7 +3305,7 @@ function renderObj() {
 
 /* ===== Без интернета: заранее сохранить снимки (и саму страницу) в памяти телефона ===== */
 const PHOTO_CACHE = 'krepost-photos', OFF_CACHE = 'krepost-offline';
-const SHELL = ['./', 'index.html', 'spots.js', 'quests.js', 'history.js', 'guide.js', 'i18n.js', ...(window.I18N_FILES || []),
+const SHELL = ['./', 'index.html', 'spots.js', 'quests.js', 'mosaics.js', 'history.js', 'guide.js', 'i18n.js', ...(window.I18N_FILES || []),
   'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'vendor/qrcode/qrcode.js', 'manifest.webmanifest', 'photos/hero.jpg'];
 const pathOf = u => new URL(u, location.href).pathname;
 function photoUrls(list, full) {
@@ -3692,6 +3736,16 @@ function renderQuests() {
   const box = $('quests');
   box.replaceChildren();
   if (!openQuest) {
+    if (MOSAIC_ON) {
+      const tabs = document.createElement('div'); tabs.className = 'qtabs';
+      for (const [k, label] of [['walk', T('Квесты на месте')], ['mosaic', T('Мозаики — можно дома')]]) {
+        const b = document.createElement('button'); b.type = 'button'; b.textContent = label; b.setAttribute('aria-pressed', questTab === k);
+        b.onclick = () => { questTab = k; try { localStorage.setItem('krepost.questTab', k); } catch (e) {} renderQuests(); };
+        tabs.append(b);
+      }
+      box.append(tabs);
+      if (questTab === 'mosaic') { renderMosaicList(box); return; }
+    }
     const warn = document.createElement('p');
     warn.className = 'safety';
     warn.textContent = T('⚠ Выполняя квесты, не мешайте дорожному движению и соблюдайте ПДД: не стойте и не ставьте машину на проезжей части ради кадра, переходите дорогу только по переходу. Не лезьте на валы, стены и к краю воды — снимайте примерно, с безопасной точки.');
@@ -3745,6 +3799,127 @@ function renderQuests() {
     const fin = document.createElement('div'); fin.className = 'qdone'; fin.textContent = T('🎖 Квест пройден! Все кадры — в «Библиотеке».');
     box.append(fin);
   }
+}
+
+
+/* ===== Мозаики «можно дома»: старое фото режется на квадратные плитки. Всё хранится в телефоне. ===== */
+const MOSAIC_ON = (() => { try { const q = new URLSearchParams(location.search).get('mosaic'); if (q === '1') localStorage.setItem('krepost.mosaicPreview', '1'); if (q === '0') localStorage.removeItem('krepost.mosaicPreview'); return localStorage.getItem('krepost.mosaicPreview') === '1'; } catch (e) { return false; } })();
+let questTab = (() => { try { return localStorage.getItem('krepost.questTab') || 'walk'; } catch (e) { return 'walk'; } })();
+const MOS_KEY = 'krepost.mosaics';
+const mosaicList = () => (window.MOSAICS_DATA || []).map(m => ({ ...m, s: spotById(m.spot) })).filter(m => m.s);
+let mos = null; // { m, n, pos, sel, drag, aspect }
+function renderMosaicList(box) {
+  const st = read(MOS_KEY, {});
+  const intro = document.createElement('p'); intro.className = 'mintro';
+  intro.textContent = T('Соберите старую фотографию из квадратиков. Можно дома, с детьми, без прогулки — а потом найти это место в крепости.');
+  const grid = document.createElement('div'); grid.className = 'mgrid';
+  for (const m of mosaicList()) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'mcard';
+    const img = document.createElement('img'); img.src = m.s.thumb || m.s.src; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
+    const t = document.createElement('b'); t.textContent = m.s.title;
+    const y = document.createElement('small'); const rec = st[m.id] || {};
+    y.textContent = (m.s.year ? yearT(m.s.year) : '') + (rec.pos && !rec.done ? ' · ' + T('начата') : '');
+    b.append(img, t, y);
+    if (rec.done) { const s = document.createElement('span'); s.className = 'stamp'; s.textContent = T('Собрана'); b.append(s); }
+    b.onclick = () => openMosaic(m);
+    grid.append(b);
+  }
+  box.append(intro, grid);
+}
+function mosSave() { const st = read(MOS_KEY, {}); st[mos.m.id] = { n: mos.n, pos: mos.pos, done: !!mos.done, ever: !!(st[mos.m.id] || {}).ever || !!mos.done }; write(MOS_KEY, st); }
+function mosShuffle(n) { const a = [...Array(n * n).keys()]; do { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } } while (a.filter((v, i) => v === i).length > 1); return a; }
+function openMosaic(m) {
+  const rec = read(MOS_KEY, {})[m.id] || {};
+  mos = { m, n: rec.n || 3, pos: rec.pos && rec.pos.length === (rec.n || 3) ** 2 ? rec.pos : null, done: !!rec.done, sel: null, drag: null, aspect: 1 };
+  if (!mos.pos || mos.done) { mos.pos = mosShuffle(mos.n); mos.done = false; }
+  track('mosaic', 'start:' + m.id + ':' + mos.n);
+  navPush();
+  const d = $('mosDlg'); d.hidden = false; d.scrollTop = 0; document.body.style.overflow = 'hidden';
+  const im = new Image(); im.onload = () => { mos.aspect = im.naturalWidth / im.naturalHeight || 1; drawMosaic(); }; im.onerror = () => drawMosaic(); im.src = m.s.src;
+  drawMosaic();
+}
+function closeMosaic() { $('mosDlg').hidden = true; $('mosDlg').replaceChildren(); document.body.style.overflow = ''; mos = null; if (view === 'quests') renderQuests(); }
+function drawMosaic() {
+  if (!mos) return;
+  const d = $('mosDlg'), s = mos.m.s, n = mos.n;
+  d.replaceChildren();
+  const top = document.createElement('div'); top.className = 'mtop';
+  const back = document.createElement('button'); back.type = 'button'; back.textContent = '←'; back.setAttribute('aria-label', T('Назад')); back.onclick = () => navBack();
+  const h = document.createElement('h2'); h.textContent = s.title + (s.year ? ', ' + yearT(s.year) : '');
+  top.append(back, h);
+  const lv = document.createElement('div'); lv.className = 'mlv';
+  for (const k of [3, 4, 5]) { const b = document.createElement('button'); b.type = 'button'; b.textContent = Tf('{n} плиток', { n: k * k }); b.setAttribute('aria-pressed', k === n); b.onclick = () => { mos.n = k; mos.pos = mosShuffle(k); mos.done = false; mos.sel = null; mosSave(); track('mosaic', 'start:' + mos.m.id + ':' + k); drawMosaic(); }; lv.append(b); }
+  const wrap = document.createElement('div'); wrap.className = 'mwrap';
+  const left = document.createElement('div');
+  const board = document.createElement('div'); board.className = 'mboard'; board.id = 'mBoard';
+  // Кадр: квадрат из середины фото. Ширина картинки в долях клетки: n*a (a>1) или n (a≤1).
+  const a = mos.aspect, W = a >= 1 ? n * a : n, H = a >= 1 ? n : n / a, ox = (W - n) / 2, oy = (H - n) / 2;
+  const hint = document.createElement('div'); hint.className = 'mhint';
+  const hi = document.createElement('img'); hi.src = s.src; hi.alt = ''; hint.append(hi);
+  mos.pos.forEach((piece, cell) => {
+    const t = document.createElement('div'); t.className = 'mt'; t.dataset.piece = piece;
+    t.style.width = t.style.height = (100 / n) + '%';
+    const img = document.createElement('img'); img.src = s.src; img.alt = ''; img.draggable = false;
+    img.style.width = (W * 100) + '%'; img.style.height = (H * 100) + '%';
+    img.style.left = (-(ox + piece % n) * 100) + '%'; img.style.top = (-(oy + Math.floor(piece / n)) * 100) + '%';
+    t.append(img); board.append(t);
+  });
+  board.append(hint);
+  const act = document.createElement('div'); act.className = 'mact';
+  const hb = document.createElement('button'); hb.type = 'button'; hb.className = 'pri'; hb.textContent = T('Подсказка');
+  let ht; hb.onclick = () => { hint.classList.add('on'); clearTimeout(ht); ht = setTimeout(() => hint.classList.remove('on'), 2000); };
+  const mx = document.createElement('button'); mx.type = 'button'; mx.textContent = T('Перемешать заново');
+  mx.onclick = () => { mos.pos = mosShuffle(n); mos.done = false; mos.sel = null; mosSave(); drawMosaic(); };
+  act.append(hb, mx);
+  left.append(board, act);
+  const side = document.createElement('div'); side.className = 'mside'; side.id = 'mSide';
+  wrap.append(left, side);
+  d.append(top, lv, wrap);
+  mosBind(board);
+  mosPlace();
+}
+function mosPlace() {
+  const board = $('mBoard'); if (!board || !mos) return;
+  const n = mos.n; let ok = 0;
+  mos.pos.forEach((piece, cell) => {
+    const t = board.querySelector(`.mt[data-piece="${piece}"]`); t.dataset.cell = cell;
+    t.style.left = (cell % n) * 100 / n + '%'; t.style.top = Math.floor(cell / n) * 100 / n + '%';
+    const good = piece === cell; t.classList.toggle('ok', good); if (good) ok++;
+  });
+  const side = $('mSide'), s = mos.m.s;
+  side.replaceChildren();
+  if (ok < n * n) {
+    const p = document.createElement('p'); p.className = 'mprog'; p.textContent = Tf('На месте: {a} из {b}', { a: ok, b: n * n });
+    const h1 = document.createElement('p'); h1.textContent = T('Нажмите на плитку, потом на другую — они поменяются местами. Можно и перетащить пальцем.');
+    const h2 = document.createElement('p'); h2.textContent = T('Плитка на своём месте слегка светится золотом.');
+    side.append(p, h1, h2);
+    return;
+  }
+  if (!mos.done) { mos.done = true; mosSave(); track('mosaic', 'done:' + mos.m.id + ':' + n); }
+  board.querySelectorAll('.mt').forEach(t => t.classList.remove('ok'));
+  const h = document.createElement('p'); h.className = 'mprog'; h.textContent = T('Собрано!');
+  const img = document.createElement('img'); img.src = s.src; img.alt = s.title;
+  const cap = document.createElement('p'); cap.textContent = s.title + (s.year ? ', ' + yearT(s.year) : '');
+  const src = document.createElement('p'); src.className = 'msrc'; src.textContent = T(s.credit || '');
+  const act = document.createElement('div'); act.className = 'mact'; act.style.justifyContent = 'flex-start';
+  const go = document.createElement('button'); go.type = 'button'; go.className = 'pri'; go.textContent = T('Показать на карте');
+  go.onclick = () => { const sp = s; closeMosaic(); if (navDepth > 0) { navDepth--; history.replaceState({ d: navDepth }, ''); } pushView(); mapFocus = { spot: sp }; setView('map'); };
+  const again = document.createElement('button'); again.type = 'button'; again.textContent = T('Собрать ещё раз');
+  again.onclick = () => { mos.pos = mosShuffle(mos.n); mos.done = false; mosSave(); drawMosaic(); };
+  act.append(go, again);
+  side.append(h, img, cap, src, act);
+}
+function mosBind(board) {
+  const cellAt = (x, y) => { const r = board.getBoundingClientRect(), n = mos.n, cx = Math.floor((x - r.left) / r.width * n), cy = Math.floor((y - r.top) / r.height * n); return cx < 0 || cy < 0 || cx >= n || cy >= n ? -1 : cy * n + cx; };
+  const swap = (a, b) => { if (a === b || a < 0 || b < 0) return; const p = mos.pos; [p[a], p[b]] = [p[b], p[a]]; mosSave(); mosPlace(); };
+  board.addEventListener('pointerdown', e => { const t = e.target.closest('.mt'); if (!t || !mos || mos.done) return; mos.drag = { t, x: e.clientX, y: e.clientY, moved: false, cell: +t.dataset.cell }; try { board.setPointerCapture(e.pointerId); } catch (er) {} });
+  board.addEventListener('pointermove', e => { const g = mos && mos.drag; if (!g) return; const dx = e.clientX - g.x, dy = e.clientY - g.y;
+    if (!g.moved && Math.hypot(dx, dy) > 8) { g.moved = true; g.t.classList.add('drag'); if (mos.sel) { mos.sel.classList.remove('sel'); mos.sel = null; } }
+    if (g.moved) g.t.style.transform = `translate(${dx}px,${dy}px)`; });
+  board.addEventListener('pointerup', e => { const g = mos && mos.drag; if (!g) return; mos.drag = null;
+    if (g.moved) { g.t.classList.remove('drag'); g.t.style.transform = ''; swap(g.cell, cellAt(e.clientX, e.clientY)); return; }
+    if (!mos.sel) { mos.sel = g.t; g.t.classList.add('sel'); } else { const a = +mos.sel.dataset.cell; mos.sel.classList.remove('sel'); mos.sel = null; swap(a, g.cell); } });
+  board.addEventListener('pointercancel', () => { const g = mos && mos.drag; if (g) { g.t.classList.remove('drag'); g.t.style.transform = ''; mos.drag = null; } });
 }
 
 /* ===== Истории о местах: присылают люди, разработчик проверяет, затем видят все =====

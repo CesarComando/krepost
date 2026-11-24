@@ -46,3 +46,18 @@ window.I18N_UI.lt["📤 Поделиться приложением с друз�
 window.I18N_UI.lt["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Ačiū! Atsakymas išsiųstas. Patiko — pasidalinkite su draugais.";
 window.I18N_UI.lt["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Tvirtovė per laiką — senos Daugpilio tvirtovės nuotraukos: atsistokite ten, kur stovėjo fotografas.";
 window.I18N_UI.lt["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Nuoroda nukopijuota — įklijuokite ją į žinutę draugui.";
+
+window.I18N_UI.lt["Квесты на месте"] = "Užduotys vietoje";
+window.I18N_UI.lt["Мозаики — можно дома"] = "Mozaikos — galima namuose";
+window.I18N_UI.lt["Соберите старую фотографию из квадратиков. Можно дома, с детьми, без прогулки — а потом найти это место в крепости."] = "Sudėkite seną nuotrauką iš kvadratėlių. Galima namuose, su vaikais, be pasivaikščiojimo — o paskui rasti šią vietą tvirtovėje.";
+window.I18N_UI.lt["начата"] = "pradėta";
+window.I18N_UI.lt["Собрана"] = "Sudėta";
+window.I18N_UI.lt["{n} плиток"] = "{n} dalių";
+window.I18N_UI.lt["Подсказка"] = "Užuomina";
+window.I18N_UI.lt["Перемешать заново"] = "Sumaišyti iš naujo";
+window.I18N_UI.lt["На месте: {a} из {b}"] = "Savo vietoje: {a} iš {b}";
+window.I18N_UI.lt["Нажмите на плитку, потом на другую — они поменяются местами. Можно и перетащить пальцем."] = "Palieskite dalį, paskui kitą — jos susikeis vietomis. Galima ir vilkti pirštu.";
+window.I18N_UI.lt["Плитка на своём месте слегка светится золотом."] = "Savo vietoje esanti dalis švelniai švyti auksu.";
+window.I18N_UI.lt["Собрано!"] = "Sudėta!";
+window.I18N_UI.lt["Показать на карте"] = "Rodyti žemėlapyje";
+window.I18N_UI.lt["Собрать ещё раз"] = "Dėlioti dar kartą";

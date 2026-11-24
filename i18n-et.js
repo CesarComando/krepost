@@ -46,3 +46,18 @@ window.I18N_UI.et["📤 Поделиться приложением с друз�
 window.I18N_UI.et["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Aitäh! Vastus on saadetud. Kui meeldis, jaga sõpradega.";
 window.I18N_UI.et["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Kindlus läbi aja — vanad fotod Daugavpilsi kindlusest: seisa seal, kus seisis fotograaf.";
 window.I18N_UI.et["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Link kopeeritud — kleebi see sõbrale saadetavasse sõnumisse.";
+
+window.I18N_UI.et["Квесты на месте"] = "Ülesanded kohapeal";
+window.I18N_UI.et["Мозаики — можно дома"] = "Mosaiigid — saab kodus";
+window.I18N_UI.et["Соберите старую фотографию из квадратиков. Можно дома, с детьми, без прогулки — а потом найти это место в крепости."] = "Pange vana foto ruutudest uuesti kokku. Saab kodus, lastega, ilma jalutuskäiguta — ja hiljem leida see koht kindlusest.";
+window.I18N_UI.et["начата"] = "alustatud";
+window.I18N_UI.et["Собрана"] = "Valmis";
+window.I18N_UI.et["{n} плиток"] = "{n} tükki";
+window.I18N_UI.et["Подсказка"] = "Vihje";
+window.I18N_UI.et["Перемешать заново"] = "Sega uuesti";
+window.I18N_UI.et["На месте: {a} из {b}"] = "Õiges kohas: {a} / {b}";
+window.I18N_UI.et["Нажмите на плитку, потом на другую — они поменяются местами. Можно и перетащить пальцем."] = "Puudutage tükki, siis teist — need vahetavad kohad. Võib ka sõrmega lohistada.";
+window.I18N_UI.et["Плитка на своём месте слегка светится золотом."] = "Õiges kohas tükk helendab kergelt kuldselt.";
+window.I18N_UI.et["Собрано!"] = "Valmis!";
+window.I18N_UI.et["Показать на карте"] = "Näita kaardil";
+window.I18N_UI.et["Собрать ещё раз"] = "Pane uuesti kokku";

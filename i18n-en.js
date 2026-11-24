@@ -43,3 +43,18 @@ window.I18N.en.ui["📤 Поделиться приложением с друз�
 window.I18N.en.ui["✓ Спасибо! Ответ отправлен. Понравилось — поделитесь с друзьями."] = "✓ Thank you! Your answer has been sent. If you liked it, share it with friends.";
 window.I18N.en.ui["Крепость сквозь время — старые фото Даугавпилсской крепости: встаньте там, где стоял фотограф."] = "Fortress Through Time — old photos of Daugavpils Fortress: stand where the photographer stood.";
 window.I18N.en.ui["✓ Ссылка скопирована — вставьте её в сообщение другу."] = "✓ Link copied — paste it into a message to a friend.";
+
+window.I18N.en.ui["Квесты на месте"] = "On-site quests";
+window.I18N.en.ui["Мозаики — можно дома"] = "Mosaics — play at home";
+window.I18N.en.ui["Соберите старую фотографию из квадратиков. Можно дома, с детьми, без прогулки — а потом найти это место в крепости."] = "Put an old photo back together from squares. You can do it at home with children, no walk needed — then find the place in the fortress.";
+window.I18N.en.ui["начата"] = "started";
+window.I18N.en.ui["Собрана"] = "Done";
+window.I18N.en.ui["{n} плиток"] = "{n} tiles";
+window.I18N.en.ui["Подсказка"] = "Hint";
+window.I18N.en.ui["Перемешать заново"] = "Shuffle again";
+window.I18N.en.ui["На месте: {a} из {b}"] = "In place: {a} of {b}";
+window.I18N.en.ui["Нажмите на плитку, потом на другую — они поменяются местами. Можно и перетащить пальцем."] = "Tap a tile, then another — they swap places. You can also drag with your finger.";
+window.I18N.en.ui["Плитка на своём месте слегка светится золотом."] = "A tile in its right place glows softly gold.";
+window.I18N.en.ui["Собрано!"] = "Done!";
+window.I18N.en.ui["Показать на карте"] = "Show on map";
+window.I18N.en.ui["Собрать ещё раз"] = "Play again";
