@@ -500,6 +500,7 @@
   .gdP p { margin:0; font-size:14px; line-height:1.45; opacity:.85; }
   #guidesBook { margin:14px 0 4px; font-size:14px; line-height:1.5; }
   #guidesBook b { display:block; margin-bottom:6px; }
+  #guidesBook small { display:block; margin-top:4px; opacity:.7; font-size:12px; }
   #guidesBook a { display:flex; align-items:center; min-height:44px; padding:0 12px; margin-bottom:8px; border-radius:12px; background:rgba(217,164,65,.12); color:inherit; text-decoration:none; font-weight:600; }
   #eraDlg p { margin:0 0 10px; font-size:15px; line-height:1.5; }
   #eraDlg small { display:block; margin:0 0 12px; opacity:.75; font-size:13px; line-height:1.4; }
@@ -533,7 +534,24 @@
   #safeDlg .volunteer { margin:14px 0 8px; font-size:15px; }
   #safeDonate { display:block; text-align:center; text-decoration:none; padding:10px 12px; min-height:44px; border-radius:10px; border:1px solid rgba(217,164,65,.6); color:#f3d27a; font:700 16px var(--cond); text-transform:uppercase; letter-spacing:.03em; }
   #safeDonate[hidden] { display:none; }
-  #safeOk { width:100%; margin-top:14px; } #safeOk:disabled { opacity:.55; }
+  #safeOk { width:100%; margin-top:14px; }
+  /* Тур «Как пользоваться» */
+  #tourAsk button { width:100%; margin-top:10px; min-height:44px; }
+  #tourAsk #tourNo { background:transparent; border:1px solid rgba(217,164,65,.5); color:#eadcbd; }
+  #tour { position:fixed; inset:0; z-index:95; }
+  #tour[hidden] { display:none; }
+  #tourHole { position:fixed; border-radius:14px; box-shadow:0 0 0 3px #f3c650, 0 0 0 9999px rgba(8,6,4,.78); transition:all .25s ease; pointer-events:none; }
+  #tourHole.none { left:50% !important; top:40% !important; width:0 !important; height:0 !important; box-shadow:0 0 0 9999px rgba(8,6,4,.78); }
+  #tourCard { position:fixed; left:12px; right:12px; max-width:460px; margin:0 auto; background:#211a12; color:#f3ead8; border:1px solid rgba(243,198,80,.6); border-radius:14px; padding:14px 16px 12px; box-shadow:0 10px 30px rgba(0,0,0,.6); }
+  #tourNum { margin:0; font:600 12px 'PT Mono',ui-monospace,monospace; color:#f3c650; }
+  #tourTitle { margin:4px 34px 6px 0; font:700 20px/1.2 var(--old); }
+  #tourText { margin:0 0 12px; font:15px/1.45 var(--old); color:#e2d5ba; }
+  .tourBtns { display:flex; gap:8px; }
+  .tourBtns button { flex:1; min-height:44px; border-radius:10px; font:700 15px var(--cond); text-transform:uppercase; }
+  #tourBack { background:transparent; border:1px solid rgba(217,164,65,.5); color:#eadcbd; }
+  #tourBack[disabled] { opacity:.35; }
+  #tourClose { position:absolute; top:8px; right:8px; width:40px; height:40px; min-height:0; padding:0; border-radius:20px; background:transparent; border:0; color:#d9cbb2; font-size:20px; }
+  @media (prefers-reduced-motion:reduce) { #tourHole { transition:none; } } #safeOk:disabled { opacity:.55; }
   .safety { margin:14px 0 0; padding:10px 12px; border-radius:8px; background:rgba(244,198,75,.12); border:1px solid rgba(244,198,75,.45); color:#f1e6cc; font-size:14px; line-height:1.45; text-align:left; }
   /* ===== О приложении ===== */
   .free { text-align:center; margin:-4px 0 12px; font-size:13px; color:var(--muted); }
@@ -1573,6 +1591,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
     <div class="setHead"><h3>Настройки</h3><button type="button" id="setClose" aria-label="Закрыть">✕</button></div>
     <p id="fbBox"><button type="button" id="fbOpen">💬 Оставить отзыв</button><br><small>Анонимно: без имён, телефонов и местоположения</small></p>
     <p id="supBox" hidden><a id="supBtn" target="_blank" rel="noopener">☕ Поддержать проект</a><br><small>Через Revolut: картой, Apple Pay или Google Pay</small></p>
+    <p id="tourSet"><button type="button" id="tourAgain">❓ Как пользоваться (10 шагов)</button></p>
     <p id="handSet"><button type="button" id="handChange"></button></p>
     <p id="themeSet"><button type="button" id="themeBtn"></button></p>
     <div id="moveBox">
@@ -1693,6 +1712,24 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
     <button type="button" id="safeOk" class="main" disabled>Понятно</button>
   </div>
 </dialog>
+<dialog id="tourAsk">
+  <div class="handBox">
+    <h3>Показать, как пользоваться?</h3>
+    <p>10 коротких шагов, около минуты. Можно закрыть в любой момент и открыть снова в ⚙ Настройках.</p>
+    <button type="button" id="tourYes" class="main">Показать</button>
+    <button type="button" id="tourNo">Не сейчас</button>
+  </div>
+</dialog>
+<div id="tour" hidden>
+  <div id="tourHole"></div>
+  <div id="tourCard" role="dialog" aria-live="polite">
+    <p id="tourNum"></p>
+    <h4 id="tourTitle"></h4>
+    <p id="tourText"></p>
+    <div class="tourBtns"><button type="button" id="tourBack">← Назад</button><button type="button" id="tourNext" class="main">Дальше →</button></div>
+    <button type="button" id="tourClose" aria-label="Закрыть">✕</button>
+  </div>
+</div>
 <dialog id="handDlg">
   <div class="handBox">
     <h3>Какой рукой удобнее снимать?</h3>
@@ -2665,37 +2702,34 @@ function renderGuideRow() {
   $('guideRow').querySelector('.gT').textContent = T('Аудиогид');
   $('guideRow').querySelector('.gN').textContent = Tf('Маршрут по кругу · {n} точек', { n: GD.stops.length });
 }
-/* Официальные экскурсоводы крепости (23.11.2026, по просьбе Дайниса). Личные телефоны — только с согласия гида;
-   пока для записи — официальный центр крепости (visitdaugavpils.lv). Список пополняется здесь. */
-const FORT_GUIDES = [
-  { ru: 'Виталий Петкун', lat: 'Vitālijs Petkuns', about: 'Много лет работает в крепости; в 2020 году исполнял обязанности коменданта Даугавпилсской крепости.', langs: ['lv', 'ru', 'en'] },
-  { ru: 'Айнар Панкянс', lat: 'Ainārs Pankjāns', about: 'Куратор экспозиций крепости, в том числе центра техники «Инженерный арсенал».', langs: ['lv', 'ru', 'en'] },
-];
-const GD_FLAGS = { lv: '🇱🇻', ru: '🇷🇺', en: '🇬🇧', de: '🇩🇪', lt: '🇱🇹', pl: '🇵🇱', et: '🇪🇪', fr: '🇫🇷', it: '🇮🇹', es: '🇪🇸', zh: '🇨🇳' };
-const GD_LANGN = { lv: 'Латышский', ru: 'Русский', en: 'Английский' };
+/* Информационный центр крепости (24.11.2026, по просьбе Дайниса: живые экскурсоводы пока отложены).
+   Данные: путеводитель «Daugavpils 2025» (visitdaugavpils.lv) — Daugavpils cietokšņa Apmeklētāju centrs, Nikolaja iela 5,
+   GPS 55.883883, 26.495869, +371 65424043, +371 28686331, cietoksnis@daugavpils.lv. Часы: каждый день до 18:00 — со слов Дайниса (24.11.2026). */
+const INFO_CENTER = { lat: 55.883883, lng: 26.495869 };
 function renderGuidesRow() {
-  $('guidesRow').querySelector('.gT').textContent = T('Официальные экскурсоводы');
-  $('guidesRow').querySelector('.gN').textContent = T('Гиды крепости · имена и контакты');
+  $('guidesRow').querySelector('b').textContent = 'ℹ️';
+  $('guidesRow').querySelector('.gT').textContent = T('Информационный центр крепости');
+  $('guidesRow').querySelector('.gN').textContent = T('Адрес, телефон и как дойти');
 }
 $('guidesRow').onclick = () => {
-  track('feature', 'guides');
-  const ru = (window.LANG || 'ru').startsWith('ru');
-  $('guidesH').textContent = T('Официальные экскурсоводы крепости');
-  $('guidesList').replaceChildren(...FORT_GUIDES.map(g => {
-    const d = document.createElement('div'); d.className = 'gdP';
-    const h = document.createElement('h4'); h.textContent = ru ? g.ru : g.lat;
-    const p = document.createElement('p'); p.textContent = T(g.about);
-    // Флажки языков, на которых гид ведёт экскурсии
-    const fl = document.createElement('div'); fl.className = 'gdLangs';
-    for (const l of g.langs || []) { const sp = document.createElement('span'); sp.textContent = GD_FLAGS[l] + ' ' + l.toUpperCase(); sp.title = T(GD_LANGN[l]); fl.append(sp); }
-    d.append(h, p, fl); return d;
-  }));
+  track('feature', 'infocenter');
+  $('guidesH').textContent = T('Центр посетителей Даугавпилсской крепости');
+  const d = document.createElement('div'); d.className = 'gdP';
+  const p1 = document.createElement('p'); p1.textContent = T('Здесь подскажут, что посмотреть в крепости, и помогут записаться на экскурсию. Центр находится в бывшем водоподъёмном здании 1865–1866 годов.');
+  const p2 = document.createElement('p'); p2.textContent = T('Адрес: ул. Николая 5 (Nikolaja iela 5), Даугавпилсская крепость. Работает каждый день до 18:00.');
+  d.append(p1, p2);
+  $('guidesList').replaceChildren(d);
   const b = $('guidesBook'); b.replaceChildren();
-  const bt = document.createElement('b'); bt.textContent = T('Записаться на экскурсию — Культурно-информационный центр крепости, ул. Николая 5:');
-  b.append(bt);
-  for (const [href, txt] of [['tel:+37165424043', '📞 +371 654 24043'], ['tel:+37128686331', '📞 +371 286 86331'], ['mailto:cietoksnis@daugavpils.lv', '✉️ cietoksnis@daugavpils.lv']]) {
-    const a = document.createElement('a'); a.href = href; a.textContent = txt; b.append(a);
+  const q = `${INFO_CENTER.lat},${INFO_CENTER.lng}`;
+  for (const [href, txt, ev] of [
+    ['tel:+37165424043', '📞 +371 654 24043', 'call'], ['tel:+37128686331', '📞 +371 286 86331', 'call'],
+    ['mailto:cietoksnis@daugavpils.lv', '✉️ cietoksnis@daugavpils.lv', 'mail'],
+    [`https://www.google.com/maps/search/?api=1&query=${q}`, '📍 ' + T('Открыть в Google Картах'), 'gmaps'],
+    [`https://maps.apple.com/?ll=${q}&q=${encodeURIComponent('Daugavpils cietokšņa Apmeklētāju centrs')}`, '📍 ' + T('Открыть в Apple Картах'), 'amaps']]) {
+    const a = document.createElement('a'); a.href = href; a.textContent = txt; if (href.startsWith('http')) { a.target = '_blank'; a.rel = 'noopener'; }
+    a.onclick = () => track('feature', 'infocenter_' + ev); b.append(a);
   }
+  const s = document.createElement('small'); s.textContent = T('Источник: путеводитель «Daugavpils 2025», visitdaugavpils.lv'); b.append(s);
   $('guidesClose').textContent = T('Закрыть');
   $('guidesDlg').showModal();
 };
@@ -3812,6 +3846,77 @@ function renderQuests() {
 }
 
 
+
+/* ===== Тур «Как пользоваться»: 10 шагов с подсветкой. Предлагается один раз после предупреждения о безопасности, повтор — в Настройках ===== */
+const TOUR_STEPS = [
+  { sel: null, t: 'Как пользоваться — за минуту', x: 'Идея простая: найти в крепости место со старой фотографии и встать туда, откуда снимал фотограф. Покажем главное за 10 шагов.' },
+  { sel: '#nearCard', t: 'Начните отсюда', x: 'Здесь снимок, с которого удобно начать. «Встать на точку» откроет камеру со старым фото поверх.' },
+  { sel: '#botNav .tab.shoot', t: 'Съёмка', x: 'Совместите старое фото с тем, что видит камера, и нажмите «Совпало — снять». Ползунок «Тогда / Сейчас» делает старое фото прозрачнее.' },
+  { sel: '#botNav [data-view="map"]', t: 'Карта', x: 'Все места со старыми снимками. Кнопка «Где я» покажет, что рядом с вами.' },
+  { sel: '#progLine', t: 'Ваши отметки', x: 'Побывали на месте — отметьте его. Здесь видно, сколько мест уже открыто.' },
+  { sel: '#guideRow', t: 'Аудиогид', x: 'Короткий маршрут на 5 точек или полный круг. Лучше в наушниках; можно скачать заранее и слушать без интернета.' },
+  { sel: '#botNav [data-view="quests"]', t: 'Квесты и мозаики', x: 'Квесты — задания на месте, в крепости. Мозаики из старых фото можно собирать и дома, с детьми.' },
+  { sel: '#botNav [data-view="lib"]', t: 'Паспорт', x: 'Ваши снимки, отмеченные места и значки за пройденное.' },
+  { sel: '#guidesRow', t: 'Инфоцентр и книга', x: 'Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 11 языках.' },
+  { sel: '#setOpen', t: 'Язык и настройки', x: 'Язык — кнопка 🌐 рядом. В ⚙ Настройках: снимки без интернета, перенос прогресса на другой телефон, отзыв и этот тур. Берегите себя и крепость!' },
+];
+// Состояние тура в телефоне: нет записи — ещё не предлагали; 'later' — «Не сейчас» (спросим ещё раз при следующем запуске);
+// 'no' — второй раз «Не сейчас»; 'done' — человек прошёл тур («Понятно, всё ясно») или закрыл его. После 'no'/'done' больше не предлагаем.
+const TOUR_KEY = 'krepost.tour';
+let tourI = -1, tourPlace = null;
+function offerTour() {
+  const st = read(TOUR_KEY, '');
+  if (st === 'done' || st === 'no') return;
+  const d = $('tourAsk');
+  $('tourYes').onclick = () => { d.close(); startTour(); };
+  $('tourNo').onclick = () => { d.close(); write(TOUR_KEY, st === 'later' ? 'no' : 'later'); track('feature', 'tour_no'); };
+  d.oncancel = e => { e.preventDefault(); };
+  d.showModal();
+}
+// Кто в прошлый раз нажал «Не сейчас» — предложим ещё раз при следующем запуске (уже после предупреждения о безопасности).
+if (read('krepost.safetySeen', false) && read(TOUR_KEY, '') === 'later') setTimeout(offerTour, 1500);
+function startTour() {
+  if (view !== 'home') setView('home');
+  track('feature', 'tour_start');
+  $('tour').hidden = false; document.body.style.overflow = 'hidden';
+  tourShow(0);
+}
+function tourEnd(done) {
+  write(TOUR_KEY, 'done');
+  $('tour').hidden = true; document.body.style.overflow = '';
+  track('feature', done ? 'tour_done' : 'tour_skip:' + (tourI + 1));
+  tourI = -1;
+}
+function tourShow(i) {
+  tourI = i;
+  const s = TOUR_STEPS[i], n = TOUR_STEPS.length;
+  $('tourNum').textContent = Tf('Шаг {a} из {b}', { a: i + 1, b: n });
+  $('tourTitle').textContent = T(s.t); $('tourText').textContent = T(s.x);
+  $('tourBack').disabled = i === 0;
+  $('tourNext').textContent = i === n - 1 ? T('Понятно, всё ясно') : T('Дальше →');
+  const el = s.sel && document.querySelector(s.sel);
+  const hole = $('tourHole'), card = $('tourCard');
+  const place = tourPlace = () => {
+    if (tourI !== i) return;
+    if (!el || !el.offsetParent) { hole.classList.add('none'); card.style.top = '30%'; card.style.bottom = ''; return; }
+    hole.classList.remove('none');
+    const r = el.getBoundingClientRect(), p = 6;
+    Object.assign(hole.style, { left: (r.left - p) + 'px', top: (r.top - p) + 'px', width: (r.width + p * 2) + 'px', height: (r.height + p * 2) + 'px' });
+    const below = r.top + r.height / 2 < innerHeight / 2;
+    const ch = card.offsetHeight;
+    if (below) { card.style.top = Math.max(12, Math.min(r.bottom + 16, innerHeight - ch - 12)) + 'px'; card.style.bottom = ''; }
+    else { card.style.top = ''; card.style.bottom = Math.max(12, Math.min(innerHeight - r.top + 16, innerHeight - ch - 12)) + 'px'; }
+  };
+  if (el && el.offsetParent && !el.closest('#botNav')) { el.scrollIntoView({ block: el.id === 'setOpen' ? 'start' : 'center', behavior: reduceMotion ? 'auto' : 'smooth' }); for (const ms of [150, 450, 800, 1200]) setTimeout(place, ms); }
+  place();
+}
+$('tourNext').onclick = () => { if (tourI >= TOUR_STEPS.length - 1) tourEnd(true); else tourShow(tourI + 1); };
+$('tourBack').onclick = () => { if (tourI > 0) tourShow(tourI - 1); };
+$('tourClose').onclick = () => tourEnd(false);
+$('tourAgain').onclick = () => { $('setDlg').close(); startTour(); };
+addEventListener('resize', () => { if (tourI >= 0) tourShow(tourI); });
+addEventListener('scroll', () => { if (tourI >= 0 && tourPlace) tourPlace(); }, { capture: true, passive: true });
+
 /* ===== Мозаики «можно дома»: старое фото режется на квадратные плитки. Всё хранится в телефоне. ===== */
 const MOSAIC_ON = true; // мозаики открыты для всех с 24.11.2026
 let questTab = (() => { try { return localStorage.getItem('krepost.questTab') || 'walk'; } catch (e) { return 'walk'; } })();
@@ -4719,7 +4824,7 @@ const safetyGate = new Promise(res => {
   const tick = () => { b.textContent = n > 0 ? label + ' (' + n + ')' : label; b.disabled = n > 0; if (n-- > 0) setTimeout(tick, 1000); };
   d.oncancel = e => { e.preventDefault(); };
   const sd = $('safeDonate'); if (DONATE_URL) { sd.href = DONATE_URL; sd.hidden = false; sd.onclick = () => track('feature', 'donate_first'); }
-  b.onclick = () => { if (b.disabled) return; write(SAFE_KEY, true); track('feature', 'safety_ok'); d.close(); res(); };
+  b.onclick = () => { if (b.disabled) return; write(SAFE_KEY, true); track('feature', 'safety_ok'); d.close(); res(); setTimeout(offerTour, 300); };
   setTimeout(() => { d.showModal(); if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur(); tick(); }, 200);
 });
 function askHand() {
