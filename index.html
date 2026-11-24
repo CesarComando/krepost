@@ -2704,7 +2704,7 @@ function renderGuideRow() {
 }
 /* Информационный центр крепости (24.11.2026, по просьбе Дайниса: живые экскурсоводы пока отложены).
    Данные: путеводитель «Daugavpils 2025» (visitdaugavpils.lv) — Daugavpils cietokšņa Apmeklētāju centrs, Nikolaja iela 5,
-   GPS 55.883883, 26.495869, +371 65424043, +371 28686331, cietoksnis@daugavpils.lv. Часы: каждый день до 18:00 — со слов Дайниса (24.11.2026). */
+   GPS 55.883883, 26.495869, +371 65424043, +371 28686331, cietoksnis@daugavpils.lv. Часы: пн–вс 10:00–18:00 (latgale.travel, daugavpils.lv, проверено Дайнисом 24.11.2026). */
 const INFO_CENTER = { lat: 55.883883, lng: 26.495869 };
 function renderGuidesRow() {
   $('guidesRow').querySelector('b').textContent = 'ℹ️';
@@ -2716,7 +2716,7 @@ $('guidesRow').onclick = () => {
   $('guidesH').textContent = T('Центр посетителей Даугавпилсской крепости');
   const d = document.createElement('div'); d.className = 'gdP';
   const p1 = document.createElement('p'); p1.textContent = T('Здесь подскажут, что посмотреть в крепости, и помогут записаться на экскурсию. Центр находится в бывшем водоподъёмном здании 1865–1866 годов.');
-  const p2 = document.createElement('p'); p2.textContent = T('Адрес: ул. Николая 5 (Nikolaja iela 5), Даугавпилсская крепость. Работает каждый день до 18:00.');
+  const p2 = document.createElement('p'); p2.textContent = T('Адрес: ул. Николая 5 (Nikolaja iela 5), Даугавпилсская крепость. Работает каждый день с 10:00 до 18:00. Экскурсия по крепости длится 1 час; бесплатные карты и буклеты.');
   d.append(p1, p2);
   $('guidesList').replaceChildren(d);
   const b = $('guidesBook'); b.replaceChildren();
@@ -2729,7 +2729,7 @@ $('guidesRow').onclick = () => {
     const a = document.createElement('a'); a.href = href; a.textContent = txt; if (href.startsWith('http')) { a.target = '_blank'; a.rel = 'noopener'; }
     a.onclick = () => track('feature', 'infocenter_' + ev); b.append(a);
   }
-  const s = document.createElement('small'); s.textContent = T('Источник: путеводитель «Daugavpils 2025», visitdaugavpils.lv'); b.append(s);
+  const s = document.createElement('small'); s.textContent = T('Источники: путеводитель «Daugavpils 2025», latgale.travel'); b.append(s);
   $('guidesClose').textContent = T('Закрыть');
   $('guidesDlg').showModal();
 };
