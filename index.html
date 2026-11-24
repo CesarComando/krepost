@@ -1739,6 +1739,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
 </dialog>
 <script src="spots.js"></script>
 <script src="quests.js"></script>
+<script src="mosaics.js"></script>
 <script src="history.js"></script>
 <script src="guide.js"></script>
 <script>
@@ -1825,7 +1826,7 @@ const ADMIN = !!(modSess && modSess.admin);
 // Номер ни с чем не связан: не имя, не номер телефона, стирается вместе с данными сайта.
 // «Это я»: ссылка ?me=1 помечает телефон/компьютер Дайниса (adm = true, в подсчёт посетителей не идёт); ?me=0 снимает метку.
 // Автотесты и локальная копия не пишут в статистику
-const NOTRACK = navigator.webdriver === true || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+const NOTRACK = navigator.webdriver === true || !/(^|\.)github\.io$/.test(location.hostname); // считаем только настоящий сайт: локальная копия, автотесты и пробные ссылки не пишут в статистику
 const ME = (() => { try { const q = new URLSearchParams(location.search).get('me'); if (q === '1') localStorage.setItem('krepost.me', '1'); if (q === '0') localStorage.removeItem('krepost.me'); return localStorage.getItem('krepost.me') === '1'; } catch { return false; } })();
 const VISITOR = (() => {
   const ok = v => /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(v || '');
@@ -2205,6 +2206,7 @@ function passportBadges(shots) {
     if (!steps.length) continue;
     out.push({ icon: '🎯', name: Tf('Квест: {q}', { q: q.title }), have: doneIn(q), need: steps.length, how: T('Пройдите все шаги этого квеста.') });
   }
+  if (window.MZ) out.push(...MZ.badges()); // мозаики (mosaics.js)
   return out;
 }
 function renderPassport(box, shots) {
@@ -3208,7 +3210,7 @@ function renderObj() {
 
 /* ===== Без интернета: заранее сохранить снимки (и саму страницу) в памяти телефона ===== */
 const PHOTO_CACHE = 'krepost-photos', OFF_CACHE = 'krepost-offline';
-const SHELL = ['./', 'index.html', 'spots.js', 'quests.js', 'history.js', 'guide.js', 'i18n.js', ...(window.I18N_FILES || []),
+const SHELL = ['./', 'index.html', 'spots.js', 'quests.js', 'mosaics.js', 'history.js', 'guide.js', 'i18n.js', ...(window.I18N_FILES || []),
   'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'vendor/qrcode/qrcode.js', 'manifest.webmanifest', 'photos/hero.jpg'];
 const pathOf = u => new URL(u, location.href).pathname;
 function photoUrls(list, full) {
@@ -3638,7 +3640,9 @@ const doneIn = q => questSteps(q).filter(st => (questDone[q.id] || {})[st.spot])
 function renderQuests() {
   const box = $('quests');
   box.replaceChildren();
+  if (window.MZ && MZ.isOpen(openQuest)) { MZ.render(box, openQuest.slice(3)); return; } // мозаика (mosaics.js)
   if (!openQuest) {
+    if (window.MZ) MZ.renderList(box);
     const warn = document.createElement('p');
     warn.className = 'safety';
     warn.textContent = T('⚠ Выполняя квесты, не мешайте дорожному движению и соблюдайте ПДД: не стойте и не ставьте машину на проезжей части ради кадра, переходите дорогу только по переходу. Не лезьте на валы, стены и к краю воды — снимайте примерно, с безопасной точки.');
@@ -4122,6 +4126,7 @@ function movePack() {
   for (const [qid, steps] of Object.entries(questDone || {})) { const ids = Object.keys(steps || {}).filter(id => known.has(id)); if (ids.length) q[qid] = ids; }
   const data = { v: 1, f, d: f.map(id => at[id] ? Math.floor(at[id] / DAY) : 0), q };
   try { const g = JSON.parse(localStorage.getItem(GUIDE_KEY)); if (g) data.g = g; } catch { /* */ }
+  const mz = read('krepost.mosaics', null); if (mz && Object.keys(mz).length) data.m = mz; // собранные мозаики (mosaics.js)
   return data;
 }
 async function moveCode() {
@@ -4189,6 +4194,15 @@ async function moveCheck() {
   }
   write(QUEST_KEY, qd);
   try { if (d.g && !localStorage.getItem(GUIDE_KEY)) localStorage.setItem(GUIDE_KEY, JSON.stringify(d.g)); } catch { /* */ }
+  if (d.m && typeof d.m === 'object') { // мозаики: по каждой сложности — лучший (меньший) счёт ходов
+    const mz = read('krepost.mosaics', {});
+    for (const [id, lv] of Object.entries(d.m)) {
+      if (!known.has(id) || !lv || typeof lv !== 'object') continue;
+      const cur = mz[id] = { ...(mz[id] || {}) };
+      for (const [k, n] of Object.entries(lv)) if (['9', '16', '25'].includes(k) && Number.isFinite(n) && n >= 0 && !(cur[k] <= n)) cur[k] = Math.round(n);
+    }
+    write('krepost.mosaics', mz);
+  }
   alert(T('✓ Прогресс перенесён.'));
   location.reload();
 }
