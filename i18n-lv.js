@@ -96,3 +96,4 @@ window.I18N.lv.ui["Источник: путеводитель «Daugavpils 2025�
 window.I18N.lv.ui["Инфоцентр и книга"] = "Infocentrs un grāmata";
 window.I18N.lv.ui["Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 11 языках."] = "Cietokšņa informācijas centrs: adrese, tālrunis un kā nokļūt. Zemāk — grāmata par cietoksni 11 valodās.";
 window.I18N.lv.ui["Источники: путеводитель «Daugavpils 2025», latgale.travel"] = "Avoti: ceļvedis «Daugavpils 2025», latgale.travel";
+window.I18N.lv.ui["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";

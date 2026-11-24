@@ -99,3 +99,4 @@ window.I18N_UI.et["Источник: путеводитель «Daugavpils 2025�
 window.I18N_UI.et["Инфоцентр и книга"] = "Infokeskus ja raamat";
 window.I18N_UI.et["Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 11 языках."] = "Kindluse infokeskus: aadress, telefon ja kuidas kohale jõuda. Allpool on raamat kindlusest 11 keeles.";
 window.I18N_UI.et["Источники: путеводитель «Daugavpils 2025», latgale.travel"] = "Allikad: teejuht „Daugavpils 2025“, latgale.travel";
+window.I18N_UI.et["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";

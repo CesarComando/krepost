@@ -500,6 +500,8 @@
   .gdP p { margin:0; font-size:14px; line-height:1.45; opacity:.85; }
   #guidesBook { margin:14px 0 4px; font-size:14px; line-height:1.5; }
   #guidesBook b { display:block; margin-bottom:6px; }
+  .icPhoto { display:block; width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:10px; margin:0 0 4px; }
+  .icCredit { display:block; margin:0 0 10px; font-size:12px; opacity:.7; }
   #guidesBook small { display:block; margin-top:4px; opacity:.7; font-size:12px; }
   #guidesBook a { display:flex; align-items:center; min-height:44px; padding:0 12px; margin-bottom:8px; border-radius:12px; background:rgba(217,164,65,.12); color:inherit; text-decoration:none; font-weight:600; }
   #eraDlg p { margin:0 0 10px; font-size:15px; line-height:1.5; }
@@ -2715,6 +2717,9 @@ $('guidesRow').onclick = () => {
   track('feature', 'infocenter');
   $('guidesH').textContent = T('Центр посетителей Даугавпилсской крепости');
   const d = document.createElement('div'); d.className = 'gdP';
+  const im = document.createElement('img'); im.src = 'photos/infocenter.jpg'; im.alt = T('Центр посетителей Даугавпилсской крепости'); im.className = 'icPhoto'; im.decoding = 'async';
+  const ic = document.createElement('small'); ic.className = 'icCredit'; ic.textContent = T('Фото: visitdaugavpils.lv');
+  d.append(im, ic);
   const p1 = document.createElement('p'); p1.textContent = T('Здесь подскажут, что посмотреть в крепости, и помогут записаться на экскурсию. Центр находится в бывшем водоподъёмном здании 1865–1866 годов.');
   const p2 = document.createElement('p'); p2.textContent = T('Адрес: ул. Николая 5 (Nikolaja iela 5), Даугавпилсская крепость. Работает каждый день с 10:00 до 18:00. Экскурсия по крепости длится 1 час; бесплатные карты и буклеты.');
   d.append(p1, p2);

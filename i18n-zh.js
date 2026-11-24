@@ -99,3 +99,4 @@ window.I18N_UI.zh["Источник: путеводитель «Daugavpils 2025�
 window.I18N_UI.zh["Инфоцентр и книга"] = "信息中心和书";
 window.I18N_UI.zh["Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 11 языках."] = "要塞信息中心：地址、电话和路线。下方是 11 种语言的要塞介绍书。";
 window.I18N_UI.zh["Источники: путеводитель «Daugavpils 2025», latgale.travel"] = "来源：《Daugavpils 2025》旅游指南，latgale.travel";
+window.I18N_UI.zh["Фото: visitdaugavpils.lv"] = "照片：visitdaugavpils.lv";

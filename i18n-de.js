@@ -99,3 +99,4 @@ window.I18N_UI.de["Источник: путеводитель «Daugavpils 2025�
 window.I18N_UI.de["Инфоцентр и книга"] = "Infozentrum und Buch";
 window.I18N_UI.de["Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 11 языках."] = "Das Informationszentrum der Festung: Adresse, Telefon und Anfahrt. Darunter ein Buch über die Festung in 11 Sprachen.";
 window.I18N_UI.de["Источники: путеводитель «Daugavpils 2025», latgale.travel"] = "Quellen: Reiseführer „Daugavpils 2025“, latgale.travel";
+window.I18N_UI.de["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";
