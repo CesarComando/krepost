@@ -58,3 +58,4 @@ window.I18N.en.ui["Плитка на своём месте слегка свет
 window.I18N.en.ui["Собрано!"] = "Done!";
 window.I18N.en.ui["Показать на карте"] = "Show on map";
 window.I18N.en.ui["Собрать ещё раз"] = "Play again";
+window.I18N.en.ui["🤝 Приложение делают на добровольных началах — энтузиасты и жители крепости. Если оно вам понравится и есть возможность, поддержите проект: сколько не жалко."] = "🤝 The app is made by volunteers — enthusiasts and residents of the fortress. If you like it and can, support the project with whatever you can spare.";

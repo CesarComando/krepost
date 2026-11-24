@@ -530,6 +530,9 @@
   #adminBar p { flex-basis:100%; margin:0; font-size:13px; }
   #safeDlg { width:min(440px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text); }
   #safeDlg::backdrop { background:rgba(0,0,0,.8); }
+  #safeDlg .volunteer { margin:14px 0 8px; font-size:15px; }
+  #safeDonate { display:block; text-align:center; text-decoration:none; padding:10px 12px; min-height:44px; border-radius:10px; border:1px solid rgba(217,164,65,.6); color:#f3d27a; font:700 16px var(--cond); text-transform:uppercase; letter-spacing:.03em; }
+  #safeDonate[hidden] { display:none; }
   #safeOk { width:100%; margin-top:14px; } #safeOk:disabled { opacity:.55; }
   .safety { margin:14px 0 0; padding:10px 12px; border-radius:8px; background:rgba(244,198,75,.12); border:1px solid rgba(244,198,75,.45); color:#f1e6cc; font-size:14px; line-height:1.45; text-align:left; }
   /* ===== О приложении ===== */
@@ -1685,6 +1688,8 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
   <div class="handBox">
     <h3>⚠ Безопасность прежде всего.</h3>
     <p class="safety">⚠ Берегите себя. Некоторые старые снимки сделаны с точек, которых сегодня нет или куда опасно лезть: с валов, стен, крыш, у самой воды. Снимайте примерно с того же места, где безопасно, — не рискуйте ради кадра. Не мешайте дорожному движению и соблюдайте ПДД.<br>🏰 Берегите и крепость — это наследие всего человечества. Увидели мусор или покрышки — сообщите через 📜 у снимка или коменданту крепости.</p>
+    <p class="volunteer">🤝 Приложение делают на добровольных началах — энтузиасты и жители крепости. Если оно вам понравится и есть возможность, поддержите проект: сколько не жалко.</p>
+    <a id="safeDonate" target="_blank" rel="noopener" hidden>☕ Поддержать проект</a>
     <button type="button" id="safeOk" class="main" disabled>Понятно</button>
   </div>
 </dialog>
@@ -4713,8 +4718,9 @@ const safetyGate = new Promise(res => {
   let n = 5;
   const tick = () => { b.textContent = n > 0 ? label + ' (' + n + ')' : label; b.disabled = n > 0; if (n-- > 0) setTimeout(tick, 1000); };
   d.oncancel = e => { e.preventDefault(); };
+  const sd = $('safeDonate'); if (DONATE_URL) { sd.href = DONATE_URL; sd.hidden = false; sd.onclick = () => track('feature', 'donate_first'); }
   b.onclick = () => { if (b.disabled) return; write(SAFE_KEY, true); track('feature', 'safety_ok'); d.close(); res(); };
-  setTimeout(() => { d.showModal(); tick(); }, 200);
+  setTimeout(() => { d.showModal(); if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur(); tick(); }, 200);
 });
 function askHand() {
   return new Promise(res => {

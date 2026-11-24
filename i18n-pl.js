@@ -61,3 +61,4 @@ window.I18N_UI.pl["Плитка на своём месте слегка свет
 window.I18N_UI.pl["Собрано!"] = "Ułożone!";
 window.I18N_UI.pl["Показать на карте"] = "Pokaż na mapie";
 window.I18N_UI.pl["Собрать ещё раз"] = "Ułóż jeszcze raz";
+window.I18N_UI.pl["🤝 Приложение делают на добровольных началах — энтузиасты и жители крепости. Если оно вам понравится и есть возможность, поддержите проект: сколько не жалко."] = "🤝 Aplikację tworzą społecznie entuzjaści i mieszkańcy twierdzy. Jeśli się spodoba i masz możliwość, wesprzyj projekt — ile nie żal.";

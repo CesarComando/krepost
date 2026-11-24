@@ -61,3 +61,4 @@ window.I18N_UI.de["Плитка на своём месте слегка свет
 window.I18N_UI.de["Собрано!"] = "Geschafft!";
 window.I18N_UI.de["Показать на карте"] = "Auf der Karte zeigen";
 window.I18N_UI.de["Собрать ещё раз"] = "Noch einmal";
+window.I18N_UI.de["🤝 Приложение делают на добровольных началах — энтузиасты и жители крепости. Если оно вам понравится и есть возможность, поддержите проект: сколько не жалко."] = "🤝 Die App wird ehrenamtlich gemacht — von Enthusiasten und Bewohnern der Festung. Wenn sie Ihnen gefällt und Sie können, unterstützen Sie das Projekt mit einem Betrag Ihrer Wahl.";

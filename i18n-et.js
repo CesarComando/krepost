@@ -61,3 +61,4 @@ window.I18N_UI.et["Плитка на своём месте слегка свет
 window.I18N_UI.et["Собрано!"] = "Valmis!";
 window.I18N_UI.et["Показать на карте"] = "Näita kaardil";
 window.I18N_UI.et["Собрать ещё раз"] = "Pane uuesti kokku";
+window.I18N_UI.et["🤝 Приложение делают на добровольных началах — энтузиасты и жители крепости. Если оно вам понравится и есть возможность, поддержите проект: сколько не жалко."] = "🤝 Rakendust teevad vabatahtlikult entusiastid ja kindluse elanikud. Kui see teile meeldib ja võimalus on, toetage projekti — nii palju, kui raatsite.";

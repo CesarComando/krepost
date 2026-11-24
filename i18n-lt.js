@@ -61,3 +61,4 @@ window.I18N_UI.lt["Плитка на своём месте слегка свет
 window.I18N_UI.lt["Собрано!"] = "Sudėta!";
 window.I18N_UI.lt["Показать на карте"] = "Rodyti žemėlapyje";
 window.I18N_UI.lt["Собрать ещё раз"] = "Dėlioti dar kartą";
+window.I18N_UI.lt["🤝 Приложение делают на добровольных началах — энтузиасты и жители крепости. Если оно вам понравится и есть возможность, поддержите проект: сколько не жалко."] = "🤝 Programėlę savanoriškai kuria entuziastai ir tvirtovės gyventojai. Jei ji jums patiks ir turite galimybę, paremkite projektą — kiek negaila.";

@@ -58,3 +58,4 @@ window.I18N.lv.ui["Плитка на своём месте слегка свет
 window.I18N.lv.ui["Собрано!"] = "Salikts!";
 window.I18N.lv.ui["Показать на карте"] = "Parādīt kartē";
 window.I18N.lv.ui["Собрать ещё раз"] = "Salikt vēlreiz";
+window.I18N.lv.ui["🤝 Приложение делают на добровольных началах — энтузиасты и жители крепости. Если оно вам понравится и есть возможность, поддержите проект: сколько не жалко."] = "🤝 Lietotni brīvprātīgi veido entuziasti un cietokšņa iedzīvotāji. Ja tā jums patiks un ir iespēja, atbalstiet projektu — cik nav žēl.";
