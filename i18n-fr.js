@@ -115,3 +115,21 @@ window.I18N_DATA.fr.titles["Прямая дорога к Михайловски�
 window.I18N_DATA.fr.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Au-dessus du passage, la plaque « Porte de la République » ; l’aigle est encore là";
 window.I18N_DATA.fr.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Rue Michel 13 : le petit bâtiment est aujourd’hui une salle de conférences";
 window.I18N_DATA.fr.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Les ponts de bois ont disparu — une route droite mène à la porte";
+// Книга: превью 7 страниц и вся книга за 70% (25.11.2026)
+window.I18N_UI.fr["Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)"] = "Extrait gratuit · livre complet à {n}% de progression (vous : {p}%)";
+window.I18N_UI.fr["Вся книга открыта. Спасибо, что прошли крепость!"] = "Le livre complet est débloqué. Merci d’avoir exploré la forteresse !";
+window.I18N_UI.fr["Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе."] = "Les 7 premières pages sont gratuites. Le livre complet est offert dès que vous avez accompli {n}% de l’application : photos, quêtes et mosaïques ensemble.";
+window.I18N_UI.fr["Или купите её на Amazon."] = "Ou achetez-le sur Amazon.";
+window.I18N_UI.fr["📄 Читать первые 7 страниц"] = "📄 Lire les 7 premières pages";
+window.I18N_UI.fr["Пройдено {p}% из нужных {n}%"] = "Accompli {p}% sur les {n}% nécessaires";
+window.I18N_UI.fr["осталось шагов: {k}"] = "étapes restantes : {k}";
+window.I18N_UI.fr["📷 Снимки"] = "📷 Photos";
+window.I18N_UI.fr["🎯 Кадры квестов"] = "🎯 Clichés de quêtes";
+window.I18N_UI.fr["🧩 Мозаики"] = "🧩 Mosaïques";
+window.I18N_UI.fr["Мозаики можно собирать дома — это самый быстрый способ начать."] = "Les mosaïques se font à la maison — le moyen le plus rapide de commencer.";
+window.I18N_UI.fr["⬇ Скачать всю книгу (PDF)"] = "⬇ Télécharger le livre complet (PDF)";
+window.I18N_UI.fr["Вся книга — после {n}%"] = "Livre complet — à {n}%";
+window.I18N_UI.fr["🛒 Купить на Amazon"] = "🛒 Acheter sur Amazon";
+window.I18N_UI.fr["🛒 Купить на Amazon (на английском)"] = "🛒 Acheter sur Amazon (en anglais)";
+window.I18N_UI.fr["Готовлю книгу…"] = "Préparation du livre…";
+window.I18N_UI.fr["Не получилось. Проверьте интернет и попробуйте ещё раз."] = "Échec. Vérifiez votre connexion et réessayez.";

@@ -115,3 +115,21 @@ window.I18N_DATA.lt.titles["Прямая дорога к Михайловски�
 window.I18N_DATA.lt.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Virš pravažiavimo – lentelė „Respublikos vartai“, erelis dar savo vietoje";
 window.I18N_DATA.lt.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Michailo g. 13: mažas pastatas dabar – konferencijų salė";
 window.I18N_DATA.lt.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Medinių tiltų jau nebėra – į vartus veda tiesus kelias";
+// Книга: превью 7 страниц и вся книга за 70% (25.11.2026)
+window.I18N_UI.lt["Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)"] = "Ištrauka nemokamai · visa knyga — pasiekus {n}% (jūs: {p}%)";
+window.I18N_UI.lt["Вся книга открыта. Спасибо, что прошли крепость!"] = "Visa knyga atrakinta. Ačiū, kad apžiūrėjote tvirtovę!";
+window.I18N_UI.lt["Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе."] = "Pirmi 7 puslapiai — nemokamai. Visą knygą gausite nemokamai, kai įveiksite {n}% programėlės: nuotraukos, užduotys ir mozaikos kartu.";
+window.I18N_UI.lt["Или купите её на Amazon."] = "Arba įsigykite ją Amazon.";
+window.I18N_UI.lt["📄 Читать первые 7 страниц"] = "📄 Skaityti pirmus 7 puslapius";
+window.I18N_UI.lt["Пройдено {p}% из нужных {n}%"] = "Įveikta {p}% iš reikalingų {n}%";
+window.I18N_UI.lt["осталось шагов: {k}"] = "liko žingsnių: {k}";
+window.I18N_UI.lt["📷 Снимки"] = "📷 Nuotraukos";
+window.I18N_UI.lt["🎯 Кадры квестов"] = "🎯 Užduočių kadrai";
+window.I18N_UI.lt["🧩 Мозаики"] = "🧩 Mozaikos";
+window.I18N_UI.lt["Мозаики можно собирать дома — это самый быстрый способ начать."] = "Mozaikas galima dėlioti namie — tai greičiausias būdas pradėti.";
+window.I18N_UI.lt["⬇ Скачать всю книгу (PDF)"] = "⬇ Atsisiųsti visą knygą (PDF)";
+window.I18N_UI.lt["Вся книга — после {n}%"] = "Visa knyga — pasiekus {n}%";
+window.I18N_UI.lt["🛒 Купить на Amazon"] = "🛒 Pirkti Amazon";
+window.I18N_UI.lt["🛒 Купить на Amazon (на английском)"] = "🛒 Pirkti Amazon (anglų k.)";
+window.I18N_UI.lt["Готовлю книгу…"] = "Ruošiama knyga…";
+window.I18N_UI.lt["Не получилось. Проверьте интернет и попробуйте ещё раз."] = "Nepavyko. Patikrinkite internetą ir bandykite dar kartą.";

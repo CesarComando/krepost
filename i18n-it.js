@@ -115,3 +115,21 @@ window.I18N_DATA.it.titles["Прямая дорога к Михайловски�
 window.I18N_DATA.it.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Sopra il passaggio la targa «Porta della Repubblica», l’aquila è ancora al suo posto";
 window.I18N_DATA.it.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Via Michele 13: il piccolo edificio oggi è una sala conferenze";
 window.I18N_DATA.it.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "I ponti di legno non ci sono più: una strada diritta porta alla porta";
+// Книга: превью 7 страниц и вся книга за 70% (25.11.2026)
+window.I18N_UI.it["Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)"] = "Anteprima gratis · libro completo al {n}% di avanzamento (tu: {p}%)";
+window.I18N_UI.it["Вся книга открыта. Спасибо, что прошли крепость!"] = "Il libro completo è sbloccato. Grazie per aver esplorato la fortezza!";
+window.I18N_UI.it["Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе."] = "Le prime 7 pagine sono gratis. Il libro completo è gratis quando completi il {n}% dell’app: foto, missioni e mosaici insieme.";
+window.I18N_UI.it["Или купите её на Amazon."] = "Oppure acquistalo su Amazon.";
+window.I18N_UI.it["📄 Читать первые 7 страниц"] = "📄 Leggi le prime 7 pagine";
+window.I18N_UI.it["Пройдено {p}% из нужных {n}%"] = "Completato {p}% del {n}% necessario";
+window.I18N_UI.it["осталось шагов: {k}"] = "passi mancanti: {k}";
+window.I18N_UI.it["📷 Снимки"] = "📷 Foto";
+window.I18N_UI.it["🎯 Кадры квестов"] = "🎯 Scatti delle missioni";
+window.I18N_UI.it["🧩 Мозаики"] = "🧩 Mosaici";
+window.I18N_UI.it["Мозаики можно собирать дома — это самый быстрый способ начать."] = "I mosaici si fanno anche a casa — il modo più rapido per iniziare.";
+window.I18N_UI.it["⬇ Скачать всю книгу (PDF)"] = "⬇ Scarica il libro completo (PDF)";
+window.I18N_UI.it["Вся книга — после {n}%"] = "Libro completo — al {n}%";
+window.I18N_UI.it["🛒 Купить на Amazon"] = "🛒 Acquista su Amazon";
+window.I18N_UI.it["🛒 Купить на Amazon (на английском)"] = "🛒 Acquista su Amazon (in inglese)";
+window.I18N_UI.it["Готовлю книгу…"] = "Preparo il libro…";
+window.I18N_UI.it["Не получилось. Проверьте интернет и попробуйте ещё раз."] = "Non è riuscito. Controlla la connessione e riprova.";

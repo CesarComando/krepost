@@ -115,3 +115,21 @@ window.I18N_DATA.et.titles["Прямая дорога к Михайловски�
 window.I18N_DATA.et.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Läbipääsu kohal silt „Vabariigi värav“, kotkas veel paigas";
 window.I18N_DATA.et.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Mihaili tn 13: väike hoone on nüüd konverentsisaal";
 window.I18N_DATA.et.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Puusildu enam pole — väravani viib sirge tee";
+// Книга: превью 7 страниц и вся книга за 70% (25.11.2026)
+window.I18N_UI.et["Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)"] = "Eelvaade tasuta · kogu raamat {n}% juures (teil {p}%)";
+window.I18N_UI.et["Вся книга открыта. Спасибо, что прошли крепость!"] = "Kogu raamat on avatud. Aitäh, et kindluse läbi käisite!";
+window.I18N_UI.et["Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе."] = "Esimesed 7 lehekülge on tasuta. Kogu raamatu saate tasuta, kui olete läbinud {n}% rakendusest: fotod, ülesanded ja mosaiigid kokku.";
+window.I18N_UI.et["Или купите её на Amazon."] = "Või ostke see Amazonist.";
+window.I18N_UI.et["📄 Читать первые 7 страниц"] = "📄 Loe esimesi 7 lehekülge";
+window.I18N_UI.et["Пройдено {p}% из нужных {n}%"] = "Läbitud {p}% vajalikust {n}%-st";
+window.I18N_UI.et["осталось шагов: {k}"] = "samme jäänud: {k}";
+window.I18N_UI.et["📷 Снимки"] = "📷 Fotod";
+window.I18N_UI.et["🎯 Кадры квестов"] = "🎯 Ülesannete kaadrid";
+window.I18N_UI.et["🧩 Мозаики"] = "🧩 Mosaiigid";
+window.I18N_UI.et["Мозаики можно собирать дома — это самый быстрый способ начать."] = "Mosaiike saab teha kodus — see on kiireim viis alustada.";
+window.I18N_UI.et["⬇ Скачать всю книгу (PDF)"] = "⬇ Laadi alla kogu raamat (PDF)";
+window.I18N_UI.et["Вся книга — после {n}%"] = "Kogu raamat — {n}% juures";
+window.I18N_UI.et["🛒 Купить на Amazon"] = "🛒 Osta Amazonist";
+window.I18N_UI.et["🛒 Купить на Amazon (на английском)"] = "🛒 Osta Amazonist (inglise keeles)";
+window.I18N_UI.et["Готовлю книгу…"] = "Valmistan raamatut ette…";
+window.I18N_UI.et["Не получилось. Проверьте интернет и попробуйте ещё раз."] = "Ei õnnestunud. Kontrollige internetti ja proovige uuesti.";
