@@ -1486,6 +1486,14 @@ html[data-theme="light"] .card img, html[data-theme="light"] .gImg { filter:none
 html[data-theme="light"] #hero::after { background:linear-gradient(180deg, rgba(247,245,245,.35) 0%, rgba(247,245,245,0) 22%, rgba(247,245,245,.55) 48%, rgba(247,245,245,.92) 72%, #f7f5f5 100%); }
 html[data-theme="light"] #list #heroText h1 { color:#1b1516; text-shadow:0 0 2px #fff, 0 0 10px rgba(255,255,255,.95), 0 0 22px rgba(255,255,255,.85); }
 html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; text-shadow:0 0 2px #fff, 0 0 8px rgba(255,255,255,.95); }
+/* Арабский (справа налево): линия истории и крестик тура — с другой стороны */
+html[dir="rtl"] .oTime { padding:0 18px 0 0; border-left:0; border-right:2px solid rgba(217,164,65,.45); }
+html[dir="rtl"][data-theme="light"] .oTime { border-left:0; border-right:2px solid rgba(182,22,44,.45); }
+html[dir="rtl"] .oTime li::before { left:auto; right:-25px; }
+html[dir="rtl"] #tourClose { right:auto; left:8px; }
+/* Камера и результат: раскладка как у всех (кнопка «Снять» под рукой из настройки), арабский текст внутри — справа налево */
+html[dir="rtl"] #cam, html[dir="rtl"] #result { direction:ltr; }
+html[dir="rtl"] #cam :is(p,span,div,button,label,small,b,h2,h3), html[dir="rtl"] #result :is(p,span,div,button,label,small,b,h2,h3) { unicode-bidi:plaintext; }
 </style>
 </head>
 <body>
@@ -1855,7 +1863,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
 <script>
 /* Переводы: грузим только файл нужного языка (выбранного или языка телефона), а не все сразу. */
 (function () {
-  var L = ['ru', 'lv', 'en', 'lt', 'pl', 'de', 'et', 'fr', 'it', 'es', 'zh'], l = null; // все языки включены 20.11.2026
+  var L = ['ru', 'lv', 'en', 'lt', 'pl', 'de', 'et', 'fr', 'it', 'es', 'zh', 'ar'], l = null; // все языки включены 20.11.2026
   try { l = JSON.parse(localStorage.getItem('krepost.lang')); } catch (e) { /* нет хранилища */ }
   if (L.indexOf(l) < 0) {
     l = 'en';
@@ -1872,10 +1880,10 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
 translateDom(document.body); // язык: i18n.js
 /* Выбор языка: кнопка 🌐 открывает список. Названия языков — на самих языках. */
 (() => {
-  const NAMES = { lv: 'Latviešu', en: 'English', ru: 'Русский', lt: 'Lietuvių', et: 'Eesti', pl: 'Polski', de: 'Deutsch', fr: 'Français', it: 'Italiano', es: 'Español', zh: '中文' };
+  const NAMES = { lv: 'Latviešu', en: 'English', ru: 'Русский', lt: 'Lietuvių', et: 'Eesti', pl: 'Polski', de: 'Deutsch', fr: 'Français', it: 'Italiano', es: 'Español', zh: '中文', ar: 'العربية' };
   const list = document.getElementById('langList'), btn = document.getElementById('langBtn');
   document.getElementById('langCur').textContent = LANG.toUpperCase();
-  for (const l of ['lv', 'en', 'ru', 'lt', 'pl', 'de', 'et', 'fr', 'it', 'es', 'zh']) {
+  for (const l of ['lv', 'en', 'ru', 'lt', 'pl', 'de', 'et', 'fr', 'it', 'es', 'zh', 'ar']) {
     const o = document.createElement('button');
     o.type = 'button'; o.setAttribute('role', 'option'); o.lang = l;
     o.setAttribute('aria-selected', l === LANG);
@@ -2801,7 +2809,7 @@ function guideTextOf(g) {
   return { text: g.text || '', lang: 'ru' };
 }
 // Голос телефона (Web Speech API): читает текст, если нет записи на языке приложения
-const TTS_LOCALE = { ru: 'ru-RU', lv: 'lv-LV', en: 'en-GB', lt: 'lt-LT', pl: 'pl-PL', de: 'de-DE', et: 'et-EE', fr: 'fr-FR', it: 'it-IT', es: 'es-ES', zh: 'zh-CN' };
+const TTS_LOCALE = { ru: 'ru-RU', lv: 'lv-LV', en: 'en-GB', lt: 'lt-LT', pl: 'pl-PL', de: 'de-DE', et: 'et-EE', fr: 'fr-FR', it: 'it-IT', es: 'es-ES', zh: 'zh-CN', ar: 'ar-SA' };
 let ttsBtn = null;
 function ttsVoice(lang) {
   if (!('speechSynthesis' in window)) return null;
@@ -4964,7 +4972,7 @@ $('resNext').onclick = () => camGo(1);
 /* Увеличение: оптический/цифровой зум камеры телефона, если он есть (Chrome на Android),
    иначе — увеличение картинки на экране; снимок обрезается так же. Ползунок 🔍 и щипок двумя пальцами. */
 let zoom = 1, hwZoom = null;
-const decT = n => /^(en|zh)$/.test(LANG) ? String(n) : String(n).replace('.', ','); // 1.5× по-английски, 1,5× по-русски и по-латышски
+const decT = n => /^(en|zh|ar)$/.test(LANG) ? String(n) : String(n).replace('.', ','); // 1.5× по-английски, 1,5× по-русски и по-латышски
 function setupZoom(s) {
   hwZoom = null;
   const track = s.getVideoTracks()[0];
@@ -5570,6 +5578,12 @@ updateShotStats();
   if (sp) openSpot(sp);
 })();
 if (!new URLSearchParams(location.search).get('spot')) setTimeout(resumeAfterReload, 300);
+</script>
+<script>
+/* Арабский (справа налево): стрелки «назад» смотрят вправо */
+if (document.documentElement.dir === 'rtl') {
+  [['subBack', '›']].forEach(([id, ch]) => { const b = document.getElementById(id); if (b) b.textContent = ch; });
+}
 </script>
 </body>
 </html>

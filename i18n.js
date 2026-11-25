@@ -3,7 +3,7 @@
    Язык: выбранный вручную (список языков) → иначе язык телефона → иначе английский.
    Смена языка перезагружает страницу: всё рисуется заново уже на новом языке. */
 (function () {
-  const LANGS = ['ru', 'lv', 'en', 'lt', 'pl', 'de', 'et', 'fr', 'it', 'es', 'zh']; // все языки включены 20.11.2026; переводы проверяют носители (кнопка «Помогите проверить перевод»)
+  const LANGS = ['ru', 'lv', 'en', 'lt', 'pl', 'de', 'et', 'fr', 'it', 'es', 'zh', 'ar']; // все языки включены 20.11.2026; переводы проверяют носители (кнопка «Помогите проверить перевод»)
   const KEY = 'krepost.lang';
   let lang = null;
   try { lang = JSON.parse(localStorage.getItem(KEY)); } catch { /* нет хранилища */ }
@@ -25,7 +25,8 @@
       titles: Object.assign({}, ALL.en.titles, data.titles || {}),
       hints: Object.assign({}, ALL.en.hints, data.hints || {}),
       patterns: data.patterns || ALL.en.patterns,
-      quests: Object.assign({}, ALL.en.quests, data.quests || {})
+      quests: Object.assign({}, ALL.en.quests, data.quests || {}),
+      history: data.history || ALL.en.history // своя история есть пока только у арабского
     });
   }
   const norm = s => String(s).replace(/\s+/g, ' ').trim();
@@ -56,11 +57,11 @@
   }
 
   /* Годы: «1940-е» → «1940. gadi» / «1940s», «ок. 1910» → «ap. 1910» / «c. 1910». */
-  const APPROX = { lv: 'ap. ', en: 'c. ', lt: 'apie ', et: 'u ', pl: 'ok. ', de: 'ca. ', fr: 'vers ', it: 'ca. ', es: 'c. ', zh: '约 ' };
+  const APPROX = { lv: 'ap. ', en: 'c. ', lt: 'apie ', et: 'u ', pl: 'ok. ', de: 'ca. ', fr: 'vers ', it: 'ca. ', es: 'c. ', zh: '约 ', ar: 'نحو ' };
   const DECADE = { lv: d => d + '. gadi', en: d => d + 's', lt: d => d + '-ieji', et: d => d + '. aastad', pl: d => 'lata ' + d + '.',
-    de: d => d + 'er', fr: d => 'années ' + d, it: d => 'anni ' + d, es: d => 'años ' + d, zh: d => d + ' 年代' };
+    de: d => d + 'er', fr: d => 'années ' + d, it: d => 'anni ' + d, es: d => 'años ' + d, zh: d => d + ' 年代', ar: d => 'عقد ' + d };
   const BEFORE = { lv: d => 'līdz ' + d, en: d => 'before ' + d, lt: d => 'iki ' + d, et: d => 'enne ' + d, pl: d => 'przed ' + d,
-    de: d => 'vor ' + d, fr: d => 'avant ' + d, it: d => 'prima del ' + d, es: d => 'antes de ' + d, zh: d => d + ' 年以前' };
+    de: d => 'vor ' + d, fr: d => 'avant ' + d, it: d => 'prima del ' + d, es: d => 'antes de ' + d, zh: d => d + ' 年以前', ar: d => 'قبل ' + d };
   function yearT(y) {
     if (!D) return y;
     const t = T(y); if (t !== y) return t;
@@ -110,9 +111,10 @@
   }
 
   window.LANG = lang;
-  window.LOCALE = { ru: 'ru-RU', lv: 'lv-LV', en: 'en-GB', lt: 'lt-LT', et: 'et-EE', pl: 'pl-PL', de: 'de-DE', fr: 'fr-FR', it: 'it-IT', es: 'es-ES', zh: 'zh-CN' }[lang];
+  window.LOCALE = { ru: 'ru-RU', lv: 'lv-LV', en: 'en-GB', lt: 'lt-LT', et: 'et-EE', pl: 'pl-PL', de: 'de-DE', fr: 'fr-FR', it: 'it-IT', es: 'es-ES', zh: 'zh-CN', ar: 'ar' }[lang];
   window.LANGS = LANGS;
   window.yearT = yearT; window.T = T; window.Tf = Tf; window.translateDom = translateDom; window.setLang = setLang;
   document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'; // арабский пишется справа налево
   if (D) document.title = T(document.title);
 })();
