@@ -100,3 +100,5 @@ window.I18N_UI.et["Инфоцентр и книга"] = "Infokeskus ja raamat";
 window.I18N_UI.et["Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 11 языках."] = "Kindluse infokeskus: aadress, telefon ja kuidas kohale jõuda. Allpool on raamat kindlusest 11 keeles.";
 window.I18N_UI.et["Источники: путеводитель «Daugavpils 2025», latgale.travel"] = "Allikad: teejuht „Daugavpils 2025“, latgale.travel";
 window.I18N_UI.et["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";
+window.I18N_UI.et["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Kogu kindlus on kaitse all olev kultuurimälestis (nr 7428). Kaevamine ja muististe otsimine, ka metallidetektoriga, on ilma Läti kultuuripärandi ameti loata keelatud.";
+window.I18N_UI.et["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Kaitse all olev kultuurimälestis nr {n} — mantojums.lv";

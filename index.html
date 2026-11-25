@@ -756,6 +756,7 @@
   .oTime li.plain::before { background:#5a4a35; }
   .oTime li b { display:block; color:#f3c650; font:700 14px var(--mono); margin-bottom:2px; }
   .oSrc { color:var(--muted); font-size:12px; margin:4px 0 0; }
+  .oProt { display:flex; align-items:center; min-height:44px; margin:10px 0 0; padding:8px 12px; border-radius:12px; border:1px solid rgba(217,164,65,.4); color:inherit; text-decoration:none; font-size:14px; }
   .oDecs, #decBar { display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px; }
   .oDecs button, #decBar button { flex:none; min-height:0; padding:7px 12px; border-radius:999px; background:#1c1610; color:#d9cbb2; border:1px solid rgba(217,164,65,.28); font:600 13px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
   .oDecs button.on { background:#f6ecd8; color:#1c1610; border-color:#f6ecd8; }
@@ -1709,6 +1710,7 @@ html[data-theme="light"] #list #heroText .sub { color:#a3122a; font-weight:600; 
   <div class="handBox">
     <h3>⚠ Безопасность прежде всего.</h3>
     <p class="safety">⚠ Берегите себя. Некоторые старые снимки сделаны с точек, которых сегодня нет или куда опасно лезть: с валов, стен, крыш, у самой воды. Снимайте примерно с того же места, где безопасно, — не рискуйте ради кадра. Не мешайте дорожному движению и соблюдайте ПДД.<br>🏰 Берегите и крепость — это наследие всего человечества. Увидели мусор или покрышки — сообщите через 📜 у снимка или коменданту крепости.</p>
+    <p class="safety">⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено.</p>
     <p class="volunteer">🤝 Приложение делают на добровольных началах — энтузиасты и жители крепости. Если оно вам понравится и есть возможность, поддержите проект: сколько не жалко.</p>
     <a id="safeDonate" target="_blank" rel="noopener" hidden>☕ Поддержать проект</a>
     <button type="button" id="safeOk" class="main" disabled>Понятно</button>
@@ -1993,6 +1995,8 @@ const PUBLIC_OK = new Set(["s101", "s024", "s087", "s091", "s106", "s108", "s121
 /* Период «Военное авиационное училище (ДВВАИУ), 1948–1993» (23.11.2026, по просьбе Дайниса). Снимки с пометкой era
    не входят в общую ленту, карту, игру и счёт — их видно только внутри периода и только после дисклеймера (eraDlg). */
 const ERA = 'Военное авиационное училище (ДВВАИУ), 1948–1993';
+/* Номера охраняемых памятников (mantojums.lv): вся крепость — № 7428, у отдельных зданий свои номера */
+const KVO_OF_GROUP = { 'Михайловские ворота': 4722, 'Николаевские ворота': 4723, 'Александровские ворота': 4688, 'Комендантский дом': 4721, 'Артиллерийский арсенал': 4705, 'Военный госпиталь': 4715, 'Инженерный арсенал': 4718, 'Водоподъёмное здание': 4692 };
 const ERA_KEY = 'krepost.eraOk';
 const eraOk = () => { try { return localStorage.getItem(ERA_KEY) === '1'; } catch { return false; } };
 const eraCtx = () => { try { return eraOk() && ((view === 'obj' && objGroup === ERA) || (view === 'all' && activeGroup === ERA)); } catch { return false; } };
@@ -3260,6 +3264,14 @@ function renderObj() {
   offCount(photoUrls(list, true)).then(([have, all]) => { if (have >= all) { off.textContent = T('✓ Сохранено для прогулки'); off.classList.add('done'); } });
   head.append(acts);
   box.append(top, head);
+  // Охраняемый памятник: номер в государственном списке (mantojums.lv, проверено 25.11.2026; адреса — likumi.lv/ta/id/347202)
+  const kvo = KVO_OF_GROUP[g];
+  if (kvo) {
+    const pr = document.createElement('a'); pr.className = 'oProt'; pr.href = 'https://mantojums.lv/cultural-objects/' + kvo; pr.target = '_blank'; pr.rel = 'noopener';
+    pr.textContent = Tf('🏛 Охраняемый памятник культуры № {n} — mantojums.lv', { n: kvo });
+    pr.onclick = () => track('feature', 'kvo_' + kvo);
+    box.append(pr);
+  }
   if (g === ERA) {
     // Короткое напоминание на странице периода: название, контекст, связь для авторов снимков
     const n = document.createElement('div'); n.className = 'eraNote';

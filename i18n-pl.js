@@ -100,3 +100,5 @@ window.I18N_UI.pl["Инфоцентр и книга"] = "Centrum informacji i ks
 window.I18N_UI.pl["Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 11 языках."] = "Centrum informacyjne twierdzy: adres, telefon i dojazd. Niżej — książka o twierdzy w 11 językach.";
 window.I18N_UI.pl["Источники: путеводитель «Daugavpils 2025», latgale.travel"] = "Źródła: przewodnik „Daugavpils 2025”, latgale.travel";
 window.I18N_UI.pl["Фото: visitdaugavpils.lv"] = "Zdjęcie: visitdaugavpils.lv";
+window.I18N_UI.pl["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Cała twierdza jest chronionym zabytkiem kultury (nr 7428). Kopanie i poszukiwanie zabytków, także wykrywaczem metali, bez zgody Narodowego Zarządu Dziedzictwa Kulturowego jest zabronione.";
+window.I18N_UI.pl["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Chroniony zabytek kultury nr {n} — mantojums.lv";

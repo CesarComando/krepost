@@ -100,3 +100,5 @@ window.I18N_UI.de["Инфоцентр и книга"] = "Infozentrum und Buch";
 window.I18N_UI.de["Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 11 языках."] = "Das Informationszentrum der Festung: Adresse, Telefon und Anfahrt. Darunter ein Buch über die Festung in 11 Sprachen.";
 window.I18N_UI.de["Источники: путеводитель «Daugavpils 2025», latgale.travel"] = "Quellen: Reiseführer „Daugavpils 2025“, latgale.travel";
 window.I18N_UI.de["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";
+window.I18N_UI.de["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Die gesamte Festung ist ein geschütztes Kulturdenkmal (Nr. 7428). Graben und die Suche nach Altertümern, auch mit Metalldetektor, sind ohne Genehmigung der Nationalen Denkmalschutzbehörde verboten.";
+window.I18N_UI.de["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Geschütztes Kulturdenkmal Nr. {n} — mantojums.lv";

@@ -97,3 +97,5 @@ window.I18N.lv.ui["Инфоцентр и книга"] = "Infocentrs un grāmata"
 window.I18N.lv.ui["Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 11 языках."] = "Cietokšņa informācijas centrs: adrese, tālrunis un kā nokļūt. Zemāk — grāmata par cietoksni 11 valodās.";
 window.I18N.lv.ui["Источники: путеводитель «Daugavpils 2025», latgale.travel"] = "Avoti: ceļvedis «Daugavpils 2025», latgale.travel";
 window.I18N.lv.ui["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";
+window.I18N.lv.ui["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Viss cietoksnis ir valsts aizsargājams kultūras piemineklis (Nr. 7428). Rakt un meklēt senlietas, arī ar metāla detektoru, bez Nacionālās kultūras mantojuma pārvaldes atļaujas ir aizliegts.";
+window.I18N.lv.ui["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Aizsargājams kultūras piemineklis Nr. {n} — mantojums.lv";
