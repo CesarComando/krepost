@@ -102,3 +102,16 @@ window.I18N_UI.de["Источники: путеводитель «Daugavpils 202
 window.I18N_UI.de["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";
 window.I18N_UI.de["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Die gesamte Festung ist ein geschütztes Kulturdenkmal (Nr. 7428). Graben und die Suche nach Altertümern, auch mit Metalldetektor, sind ohne Genehmigung der Nationalen Denkmalschutzbehörde verboten.";
 window.I18N_UI.de["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Geschütztes Kulturdenkmal Nr. {n} — mantojums.lv";
+// 25.11.2026: ясные счётчики и первый снимок
+window.I18N_UI.de["Отмечено снимков: {a} из {b}"] = "Markierte Fotos: {a} von {b}";
+window.I18N_UI.de["Снимков с известной точкой съёмки: {a} из {b}"] = "Fotos mit bekanntem Aufnahmeort: {a} von {b}";
+window.I18N_UI.de["объектов из {n}"] = "Objekte von {n}";
+window.I18N_UI.de["Первый снимок «тогда / сейчас» готов!"] = "Dein erstes „Damals / Heute“-Foto ist fertig!";
+
+// 25.11.2026: 3 новых снимка из пар «было — стало» (Old Daugavpils)
+window.I18N_DATA.de.titles["Часовой у Николаевских ворот, табличка «Ворота Республики»"] = "Wachposten am Nikolaitor, Schild „Tor der Republik“";
+window.I18N_DATA.de.titles["Марш солдат на улице Михаила, вдали Константиновская казарма"] = "Marsch der Soldaten in der Michaelstraße, dahinter die Konstantin-Kaserne";
+window.I18N_DATA.de.titles["Прямая дорога к Михайловским воротам, вдали собор"] = "Gerade Straße zum Michaelstor, in der Ferne die Kathedrale";
+window.I18N_DATA.de.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Über der Durchfahrt das Schild „Tor der Republik“, der Adler ist noch da";
+window.I18N_DATA.de.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Michaelstraße 13: das kleine Gebäude ist heute ein Konferenzsaal";
+window.I18N_DATA.de.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Die Holzbrücken sind weg — eine gerade Straße führt zum Tor";

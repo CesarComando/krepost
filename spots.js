@@ -7001,5 +7001,42 @@ window.SPOTS_DATA = [
   "oldGroup": "Собор",
   "era": "dvvaiu",
   "eraBlock": "1940-е, до училища"
+ },
+ {
+  "id": "s582",
+  "src": "photos/spot582.jpg",
+  "thumb": "photos/thumbs/spot582.jpg",
+  "title": "Часовой у Николаевских ворот, табличка «Ворота Республики»",
+  "year": "1920-е",
+  "hint": "Над проходом — табличка «Ворота Республики», орёл ещё на месте",
+  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
+  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid0QorcPjapyEeJ8x7adQ3oXrikhPXzS57jnJ7C8ucmo6sPh9TENbLKmKLiQcu7Ai9ul",
+  "group": "Николаевские ворота",
+  "lat": 55.8832,
+  "lng": 26.4955
+ },
+ {
+  "id": "s583",
+  "src": "photos/spot583.jpg",
+  "thumb": "photos/thumbs/spot583.jpg",
+  "title": "Марш солдат на улице Михаила, вдали Константиновская казарма",
+  "year": "1920-1940",
+  "hint": "Улица Михаила, 13: маленькое здание сейчас — конференц-зал",
+  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
+  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02oxp1qV29rrM8853mk5PW3nvusgY6UxHRYZcpjP86yBxxudWhz5J6EzrUVqiZ3Gqnl",
+  "group": "Солдаты и люди"
+ },
+ {
+  "id": "s584",
+  "src": "photos/spot584.jpg",
+  "thumb": "photos/thumbs/spot584.jpg",
+  "title": "Прямая дорога к Михайловским воротам, вдали собор",
+  "year": "1930-е",
+  "hint": "Деревянных мостов уже нет — к воротам ведёт прямая дорога",
+  "credit": "Источник: Facebook, Old Daugavpils. Автор не установлен",
+  "source": "https://www.facebook.com/OldDaugavpils/posts/pfbid02sEWXCkdnH9q3mMAEtPPPHNmUZezTJ7McBMfciTn8FTsZcuznRbWaM8WRn6Lta693l",
+  "group": "Михайловские ворота",
+  "lat": 55.8821,
+  "lng": 26.4997
  }
 ];

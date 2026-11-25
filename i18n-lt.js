@@ -102,3 +102,16 @@ window.I18N_UI.lt["Источники: путеводитель «Daugavpils 202
 window.I18N_UI.lt["Фото: visitdaugavpils.lv"] = "Nuotrauka: visitdaugavpils.lv";
 window.I18N_UI.lt["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Visa tvirtovė yra saugomas kultūros paminklas (Nr. 7428). Kasti ir ieškoti senienų, taip pat metalo detektoriumi, be Nacionalinės kultūros paveldo valdybos leidimo draudžiama.";
 window.I18N_UI.lt["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Saugomas kultūros paminklas Nr. {n} — mantojums.lv";
+// 25.11.2026: ясные счётчики и первый снимок
+window.I18N_UI.lt["Отмечено снимков: {a} из {b}"] = "Pažymėta nuotraukų: {a} iš {b}";
+window.I18N_UI.lt["Снимков с известной точкой съёмки: {a} из {b}"] = "Nuotraukų su žinoma fotografavimo vieta: {a} iš {b}";
+window.I18N_UI.lt["объектов из {n}"] = "objektų iš {n}";
+window.I18N_UI.lt["Первый снимок «тогда / сейчас» готов!"] = "Pirmoji nuotrauka „tada / dabar“ paruošta!";
+
+// 25.11.2026: 3 новых снимка из пар «было — стало» (Old Daugavpils)
+window.I18N_DATA.lt.titles["Часовой у Николаевских ворот, табличка «Ворота Республики»"] = "Sargybinis prie Nikolajaus vartų, užrašas „Respublikos vartai“";
+window.I18N_DATA.lt.titles["Марш солдат на улице Михаила, вдали Константиновская казарма"] = "Karių žygis Michailo gatvėje, tolumoje Konstantino kareivinės";
+window.I18N_DATA.lt.titles["Прямая дорога к Михайловским воротам, вдали собор"] = "Tiesus kelias į Michailo vartus, tolumoje katedra";
+window.I18N_DATA.lt.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Virš pravažiavimo – lentelė „Respublikos vartai“, erelis dar savo vietoje";
+window.I18N_DATA.lt.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Michailo g. 13: mažas pastatas dabar – konferencijų salė";
+window.I18N_DATA.lt.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Medinių tiltų jau nebėra – į vartus veda tiesus kelias";

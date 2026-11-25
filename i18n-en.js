@@ -99,3 +99,16 @@ window.I18N.en.ui["Источники: путеводитель «Daugavpils 202
 window.I18N.en.ui["Фото: visitdaugavpils.lv"] = "Photo: visitdaugavpils.lv";
 window.I18N.en.ui["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ The whole fortress is a protected cultural monument (No. 7428). Digging or searching for antiquities, including with a metal detector, without permission from the National Heritage Board is prohibited.";
 window.I18N.en.ui["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Protected cultural monument No. {n} — mantojums.lv";
+// 25.11.2026: ясные счётчики и первый снимок
+window.I18N.en.ui["Отмечено снимков: {a} из {b}"] = "Photos marked: {a} of {b}";
+window.I18N.en.ui["Снимков с известной точкой съёмки: {a} из {b}"] = "Photos with a known camera spot: {a} of {b}";
+window.I18N.en.ui["объектов из {n}"] = "sites of {n}";
+window.I18N.en.ui["Первый снимок «тогда / сейчас» готов!"] = "Your first “then / now” photo is ready!";
+
+// 25.11.2026: 3 новых снимка из пар «было — стало» (Old Daugavpils)
+window.I18N.en.titles["Часовой у Николаевских ворот, табличка «Ворота Республики»"] = "Sentry at the Nicholas Gate, “Republic Gate” sign";
+window.I18N.en.titles["Марш солдат на улице Михаила, вдали Константиновская казарма"] = "Soldiers marching on Michael Street, Constantine Barracks behind";
+window.I18N.en.titles["Прямая дорога к Михайловским воротам, вдали собор"] = "Straight road to the Michael Gate, cathedral in the distance";
+window.I18N.en.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Above the passage — the “Republic Gate” sign; the eagle is still in place";
+window.I18N.en.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Michael Street 13: the small building is now a conference hall";
+window.I18N.en.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "The wooden bridges are gone — a straight road leads to the gate";

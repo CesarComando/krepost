@@ -99,3 +99,16 @@ window.I18N.lv.ui["Источники: путеводитель «Daugavpils 202
 window.I18N.lv.ui["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";
 window.I18N.lv.ui["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Viss cietoksnis ir valsts aizsargājams kultūras piemineklis (Nr. 7428). Rakt un meklēt senlietas, arī ar metāla detektoru, bez Nacionālās kultūras mantojuma pārvaldes atļaujas ir aizliegts.";
 window.I18N.lv.ui["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Aizsargājams kultūras piemineklis Nr. {n} — mantojums.lv";
+// 25.11.2026: ясные счётчики и первый снимок
+window.I18N.lv.ui["Отмечено снимков: {a} из {b}"] = "Atzīmētas fotogrāfijas: {a} no {b}";
+window.I18N.lv.ui["Снимков с известной точкой съёмки: {a} из {b}"] = "Fotogrāfijas ar zināmu uzņemšanas vietu: {a} no {b}";
+window.I18N.lv.ui["объектов из {n}"] = "objekti no {n}";
+window.I18N.lv.ui["Первый снимок «тогда / сейчас» готов!"] = "Pirmais «toreiz / tagad» kadrs gatavs!";
+
+// 25.11.2026: 3 новых снимка из пар «было — стало» (Old Daugavpils)
+window.I18N.lv.titles["Часовой у Николаевских ворот, табличка «Ворота Республики»"] = "Sargs pie Nikolaja vārtiem, uzraksts «Republikas vārti»";
+window.I18N.lv.titles["Марш солдат на улице Михаила, вдали Константиновская казарма"] = "Karavīru maršs Mihaila ielā, fonā Konstantīna kazarma";
+window.I18N.lv.titles["Прямая дорога к Михайловским воротам, вдали собор"] = "Taisns ceļš uz Mihaila vārtiem, tālumā katedrāle";
+window.I18N.lv.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Virs pārejas — plāksne «Republikas vārti», ērglis vēl savā vietā";
+window.I18N.lv.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Mihaila iela 13: mazā ēka tagad ir konferenču zāle";
+window.I18N.lv.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Koka tiltu vairs nav — uz vārtiem ved taisns ceļš";

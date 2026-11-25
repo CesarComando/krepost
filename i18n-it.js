@@ -102,3 +102,16 @@ window.I18N_UI.it["Источники: путеводитель «Daugavpils 202
 window.I18N_UI.it["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";
 window.I18N_UI.it["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ L’intera fortezza è un monumento culturale tutelato (n. 7428). È vietato scavare o cercare reperti, anche con il metal detector, senza il permesso dell’Ente nazionale per il patrimonio culturale.";
 window.I18N_UI.it["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Monumento culturale tutelato n. {n} — mantojums.lv";
+// 25.11.2026: ясные счётчики и первый снимок
+window.I18N_UI.it["Отмечено снимков: {a} из {b}"] = "Foto segnate: {a} su {b}";
+window.I18N_UI.it["Снимков с известной точкой съёмки: {a} из {b}"] = "Foto con punto di scatto noto: {a} su {b}";
+window.I18N_UI.it["объектов из {n}"] = "luoghi su {n}";
+window.I18N_UI.it["Первый снимок «тогда / сейчас» готов!"] = "La tua prima foto «allora / oggi» è pronta!";
+
+// 25.11.2026: 3 новых снимка из пар «было — стало» (Old Daugavpils)
+window.I18N_DATA.it.titles["Часовой у Николаевских ворот, табличка «Ворота Республики»"] = "Sentinella alla porta Nicola, targa «Porta della Repubblica»";
+window.I18N_DATA.it.titles["Марш солдат на улице Михаила, вдали Константиновская казарма"] = "Marcia di soldati in via Michele, sullo sfondo la caserma Costantino";
+window.I18N_DATA.it.titles["Прямая дорога к Михайловским воротам, вдали собор"] = "Strada diritta verso la porta Michele, in lontananza la cattedrale";
+window.I18N_DATA.it.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Sopra il passaggio la targa «Porta della Repubblica», l’aquila è ancora al suo posto";
+window.I18N_DATA.it.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Via Michele 13: il piccolo edificio oggi è una sala conferenze";
+window.I18N_DATA.it.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "I ponti di legno non ci sono più: una strada diritta porta alla porta";

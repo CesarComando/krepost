@@ -538,6 +538,16 @@
   #safeDonate[hidden] { display:none; }
   #safeOk { width:100%; margin-top:14px; }
   /* Тур «Как пользоваться» */
+  #tourAsk { width:min(440px, calc(100vw - 24px)); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text); }
+  #tourAsk::backdrop { background:rgba(0,0,0,.7); }
+  html[data-theme="light"] #tourAsk { background:#f7f5f5; color:#1b1516; }
+  html[data-theme="light"] #tourAsk #tourNo { color:#b6162c; border-color:rgba(182,22,44,.5); }
+  #tourStrip { display:flex; gap:8px; align-items:stretch; }
+  #tourStrip[hidden] { display:none; }
+  #tourStripGo { flex:1; min-height:44px; text-align:start; padding:10px 14px; border-radius:14px; background:#1c1610; border:1px solid rgba(217,164,65,.45); color:#f3d27a; font-weight:600; }
+  #tourStripX { flex:none; width:44px; min-height:44px; padding:0; border-radius:14px; background:transparent; border:1px solid rgba(217,164,65,.3); color:#d9cbb2; }
+  html[data-theme="light"] #tourStripGo { background:#f7f5f5; border-color:rgba(182,22,44,.35); color:#b6162c; }
+  html[data-theme="light"] #tourStripX { color:#6b5a5c; border-color:rgba(182,22,44,.25); }
   #tourAsk button { width:100%; margin-top:10px; min-height:44px; }
   #tourAsk #tourNo { background:transparent; border:1px solid rgba(217,164,65,.5); color:#eadcbd; }
   #tour { position:fixed; inset:0; z-index:95; }
@@ -1513,6 +1523,7 @@ html[dir="rtl"] #cam :is(p,span,div,button,label,small,b,h2,h3), html[dir="rtl"]
   <div id="subBar" hidden><button type="button" id="subBack" aria-label="Назад">‹</button><h2 id="subTitle"></h2></div>
   <div id="home">
     <div id="nearCard" hidden></div>
+    <div id="tourStrip" hidden><button type="button" id="tourStripGo">❓ Как пользоваться (10 шагов)</button><button type="button" id="tourStripX" aria-label="Закрыть">✕</button></div>
     <button type="button" id="questRow" hidden></button>
     <button type="button" id="guideRow"><b>🎧</b><span class="gT"></span><small class="gN"></small></button>
     <button type="button" id="guidesRow"><b>🧭</b><span class="gT"></span><small class="gN"></small></button>
@@ -1719,8 +1730,6 @@ html[dir="rtl"] #cam :is(p,span,div,button,label,small,b,h2,h3), html[dir="rtl"]
     <h3>⚠ Безопасность прежде всего.</h3>
     <p class="safety">⚠ Берегите себя. Некоторые старые снимки сделаны с точек, которых сегодня нет или куда опасно лезть: с валов, стен, крыш, у самой воды. Снимайте примерно с того же места, где безопасно, — не рискуйте ради кадра. Не мешайте дорожному движению и соблюдайте ПДД.<br>🏰 Берегите и крепость — это наследие всего человечества. Увидели мусор или покрышки — сообщите через 📜 у снимка или коменданту крепости.</p>
     <p class="safety">⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено.</p>
-    <p class="volunteer">🤝 Приложение делают на добровольных началах — энтузиасты и жители крепости. Если оно вам понравится и есть возможность, поддержите проект: сколько не жалко.</p>
-    <a id="safeDonate" target="_blank" rel="noopener" hidden>☕ Поддержать проект</a>
     <button type="button" id="safeOk" class="main" disabled>Понятно</button>
   </div>
 </dialog>
@@ -1999,7 +2008,7 @@ const DEMO = (() => { try { const q = new URLSearchParams(location.search).get('
 // Правило Дайниса: снимки «Солдаты и люди» не публикуем — посетители их не видят, модератор видит
 const NOT_PUBLIC_GROUPS = ['Солдаты и люди'];
 // 23.11.2026: Дайнис вернул 70 снимков группы, где главное — место (ворота, казармы, улицы, вал, памятник), без советской и нацистской формы
-const PUBLIC_OK = new Set(["s101", "s024", "s087", "s091", "s106", "s108", "s121", "s136", "s141", "s144", "s146", "s156", "s160", "s162", "s163", "s166", "s169", "s176", "s187", "s196", "s198", "s211", "s448", "s462", "s463", "s478", "s490", "s481", "s494", "s499", "s505", "s480", "s236", "s479", "s077", "s074", "s094", "s122", "s137", "s142", "s149", "s174", "s186", "s188", "s191", "s193", "s194", "s216", "s240", "s452", "s482", "s483", "s484", "s487", "s488", "s489", "s500", "s501", "s503", "s504", "s509", "s510", "s119", "s063", "s126", "s445", "s459", "s449", "s502", "s104"]);
+const PUBLIC_OK = new Set(["s101", "s583", "s024", "s087", "s091", "s106", "s108", "s121", "s136", "s141", "s144", "s146", "s156", "s160", "s162", "s163", "s166", "s169", "s176", "s187", "s196", "s198", "s211", "s448", "s462", "s463", "s478", "s490", "s481", "s494", "s499", "s505", "s480", "s236", "s479", "s077", "s074", "s094", "s122", "s137", "s142", "s149", "s174", "s186", "s188", "s191", "s193", "s194", "s216", "s240", "s452", "s482", "s483", "s484", "s487", "s488", "s489", "s500", "s501", "s503", "s504", "s509", "s510", "s119", "s063", "s126", "s445", "s459", "s449", "s502", "s104"]);
 /* Период «Военное авиационное училище (ДВВАИУ), 1948–1993» (23.11.2026, по просьбе Дайниса). Снимки с пометкой era
    не входят в общую ленту, карту, игру и счёт — их видно только внутри периода и только после дисклеймера (eraDlg). */
 const ERA = 'Военное авиационное училище (ДВВАИУ), 1948–1993';
@@ -2017,7 +2026,7 @@ function updateProgress() {
   if (typeof groupDoneCheck === 'function') try { groupDoneCheck(); } catch (e) {}
   const spots = visibleSpots();
   const doneCount = spots.filter(s => found.includes(s.id)).length;
-  $('progTxt').innerHTML = Tf('Отмечено мест: {a} из {b}', { a: '<b>' + doneCount + '</b>', b: spots.length });
+  $('progTxt').innerHTML = Tf('Отмечено снимков: {a} из {b}', { a: '<b>' + doneCount + '</b>', b: spots.length });
   $('progFill').style.width = (spots.length ? 100 * doneCount / spots.length : 0).toFixed(1) + '%';
 }
 
@@ -2352,7 +2361,7 @@ function renderPassport(box, shots) {
     ? Tf('Исследует крепость с {d}', { d: new Date(first).toLocaleDateString(LOCALE, { day: 'numeric', month: 'long', year: 'numeric' }) })
     : T('Отмечайте «Посещено» или снимайте «тогда и сейчас» — в паспорте появятся печати.');
   const lbl = cover.querySelectorAll('.pStats span');
-  lbl[0].textContent = T('печатей'); lbl[1].textContent = Tf('мест из {n}', { n: GROUPS.filter(g => spots.some(s => groupOf(s) === g)).length }); lbl[2].textContent = Tf('значков из {n}', { n: badges.length });
+  lbl[0].textContent = T('печатей'); lbl[1].textContent = Tf('объектов из {n}', { n: GROUPS.filter(g => spots.some(s => groupOf(s) === g)).length }); lbl[2].textContent = Tf('значков из {n}', { n: badges.length });
   box.append(cover);
 
   // Значки: полученные — цветные, остальные — с полоской прогресса
@@ -3617,7 +3626,7 @@ function drawPins() {
       m.bindPopup(() => mapPopup(byYear(list), near), { maxWidth: 260, minWidth: 220 });
     }
   }
-  $('mapInfo').textContent = Tf('На карте {a} из {b} снимков', { a: n, b: visibleSpots().length });
+  $('mapInfo').textContent = Tf('Снимков с известной точкой съёмки: {a} из {b}', { a: n, b: visibleSpots().length });
 }
 function mapPopup(list, near) {
   const box = document.createElement('div');
@@ -3899,7 +3908,11 @@ function offerTour() {
   d.showModal();
 }
 // Кто в прошлый раз нажал «Не сейчас» — предложим ещё раз при следующем запуске (уже после предупреждения о безопасности).
-if (read('krepost.safetySeen', false) && read(TOUR_KEY, '') === 'later') setTimeout(offerTour, 1500);
+// С 25.11.2026: тур предлагаем полоской на главной (#tourStrip), а не окном. ✕ — больше не показываем.
+function paintTourStrip() { const st = read(TOUR_KEY, ''); $('tourStrip').hidden = st === 'done' || st === 'no'; }
+$('tourStripGo').onclick = () => { track('feature', 'tour_strip'); startTour(); };
+$('tourStripX').onclick = () => { write(TOUR_KEY, 'no'); track('feature', 'tour_no'); paintTourStrip(); };
+paintTourStrip();
 function startTour() {
   if (view !== 'home') setView('home');
   track('feature', 'tour_start');
@@ -3907,7 +3920,7 @@ function startTour() {
   tourShow(0);
 }
 function tourEnd(done) {
-  write(TOUR_KEY, 'done');
+  write(TOUR_KEY, 'done'); if (typeof paintTourStrip === 'function') paintTourStrip();
   $('tour').hidden = true; document.body.style.overflow = '';
   track('feature', done ? 'tour_done' : 'tour_skip:' + (tourI + 1));
   tourI = -1;
@@ -4351,6 +4364,20 @@ function showThanks(n) {
   navPush();
 }
 $('thanksLater').onclick = () => navBack();
+/* Первый сохранённый снимок: «готово!» и просьба поддержать — один раз; ждём, пока закроют опрос */
+let firstTries = 0;
+function showFirstThanks() {
+  if (!DONATE_URL && !SPONSOR) return;
+  if (document.querySelector('dialog[open]') || !$('cam').hidden) { if (++firstTries < 40) setTimeout(showFirstThanks, 3000); return; }
+  $('thanksTitle').textContent = T('Первый снимок «тогда / сейчас» готов!');
+  $('thanksLater').textContent = T('▶ Продолжить');
+  $('donateBtn').hidden = !DONATE_URL;
+  if (DONATE_URL) $('donateBtn').href = DONATE_URL;
+  const sp = SPONSOR && (!SPONSOR.until || new Date() <= new Date(SPONSOR.until)) ? SPONSOR : null;
+  $('sponsorBox').hidden = !sp; if (sp) $('sponsorBox').textContent = sp.text;
+  track('feature', 'don_ask_first');
+  $('thanksDlg').showModal(); navPush();
+}
 /* Просьба поддержать — когда пройдены ВСЕ снимки одного места (Михайловские ворота, собор…), в любом порядке.
    Каждое место — один раз: отказался или задонатил — до следующего полностью пройденного места не спрашиваем. */
 const DON_ASKED_KEY = 'krepost.donAsked';
@@ -4840,18 +4867,23 @@ function applyHand() {
   requestAnimationFrame(refit);
 }
 /* Один раз при первом открытии камеры спрашиваем, какой рукой удобнее */
-/* Первый запуск: обязательное предупреждение о безопасности — кнопка «Понятно» станет активной через 5 секунд. Один раз. */
+/* Перед первой камерой: короткое предупреждение о безопасности — кнопка «Понятно» станет активной через 5 секунд. Один раз.
+   С 25.11.2026 (вариант А по отзыву Astra) — не при запуске: человек сразу видит главную и выбор языка. */
 const SAFE_KEY = 'krepost.safetySeen';
-const safetyGate = new Promise(res => {
-  if (read(SAFE_KEY, false)) { res(); return; }
-  const d = $('safeDlg'), b = $('safeOk'), label = b.textContent;
-  let n = 5;
-  const tick = () => { b.textContent = n > 0 ? label + ' (' + n + ')' : label; b.disabled = n > 0; if (n-- > 0) setTimeout(tick, 1000); };
-  d.oncancel = e => { e.preventDefault(); };
-  const sd = $('safeDonate'); if (DONATE_URL) { sd.href = DONATE_URL; sd.hidden = false; sd.onclick = () => track('feature', 'donate_first'); }
-  b.onclick = () => { if (b.disabled) return; write(SAFE_KEY, true); track('feature', 'safety_ok'); d.close(); res(); setTimeout(offerTour, 300); };
-  setTimeout(() => { d.showModal(); if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur(); tick(); }, 200);
-});
+let safetyP = null;
+function safetyGate() {
+  if (read(SAFE_KEY, false)) return Promise.resolve();
+  if (safetyP) return safetyP;
+  safetyP = new Promise(res => {
+    const d = $('safeDlg'), b = $('safeOk'), label = b.textContent;
+    let n = 5;
+    const tick = () => { b.textContent = n > 0 ? label + ' (' + n + ')' : label; b.disabled = n > 0; if (n-- > 0) setTimeout(tick, 1000); };
+    d.oncancel = e => { e.preventDefault(); };
+    b.onclick = () => { if (b.disabled) return; write(SAFE_KEY, true); track('feature', 'safety_ok'); d.close(); res(); };
+    d.showModal(); if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur(); tick();
+  });
+  return safetyP;
+}
 function askHand() {
   return new Promise(res => {
     const d = $('handDlg');
@@ -4904,7 +4936,7 @@ function stopCam() {
 
 async function openSpot(spot, ctx) {
   track('photo', spot.id);
-  await safetyGate;
+  await safetyGate();
   if (read(HAND_KEY, null) === null) await askHand();
   if (!$('list').hidden) { // из списка в камеру — шаг вглубь (из «Переснять» и ‹ › — нет)
     navPush();
@@ -5474,6 +5506,7 @@ $('shoot').onclick = async () => {
   // Опрос — не после каждого снимка: после первого и потом на каждом десятом (5-й, 15-й, 25-й…). На 10-м, 20-м… показывается «спасибо».
   const nShot = read(SHOTS_KEY, 0);
   if (nShot === 1 || nShot % 10 === 5) setTimeout(() => openSurvey(shotSpot.id), 1400); // когда старое фото уже ушло в уголок
+  if (nShot === 1 && !read('krepost.firstThanks', false)) { write('krepost.firstThanks', true); firstTries = 0; setTimeout(showFirstThanks, 4000); }
 };
 
 function label(ctx, text, x, y) {

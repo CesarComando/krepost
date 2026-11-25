@@ -102,3 +102,16 @@ window.I18N_UI.pl["Источники: путеводитель «Daugavpils 202
 window.I18N_UI.pl["Фото: visitdaugavpils.lv"] = "Zdjęcie: visitdaugavpils.lv";
 window.I18N_UI.pl["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Cała twierdza jest chronionym zabytkiem kultury (nr 7428). Kopanie i poszukiwanie zabytków, także wykrywaczem metali, bez zgody Narodowego Zarządu Dziedzictwa Kulturowego jest zabronione.";
 window.I18N_UI.pl["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Chroniony zabytek kultury nr {n} — mantojums.lv";
+// 25.11.2026: ясные счётчики и первый снимок
+window.I18N_UI.pl["Отмечено снимков: {a} из {b}"] = "Zaznaczone zdjęcia: {a} z {b}";
+window.I18N_UI.pl["Снимков с известной точкой съёмки: {a} из {b}"] = "Zdjęcia ze znanym miejscem wykonania: {a} z {b}";
+window.I18N_UI.pl["объектов из {n}"] = "obiektów z {n}";
+window.I18N_UI.pl["Первый снимок «тогда / сейчас» готов!"] = "Twoje pierwsze zdjęcie „wtedy / teraz” gotowe!";
+
+// 25.11.2026: 3 новых снимка из пар «было — стало» (Old Daugavpils)
+window.I18N_DATA.pl.titles["Часовой у Николаевских ворот, табличка «Ворота Республики»"] = "Wartownik przy Bramie Mikołajowskiej, tablica „Brama Republiki”";
+window.I18N_DATA.pl.titles["Марш солдат на улице Михаила, вдали Константиновская казарма"] = "Marsz żołnierzy ulicą Michała, w tle koszary Konstantynowskie";
+window.I18N_DATA.pl.titles["Прямая дорога к Михайловским воротам, вдали собор"] = "Prosta droga do Bramy Michałowskiej, w oddali katedra";
+window.I18N_DATA.pl.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Nad przejazdem tablica „Brama Republiki”, orzeł jeszcze na miejscu";
+window.I18N_DATA.pl.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Ulica Michała 13: mały budynek to dziś sala konferencyjna";
+window.I18N_DATA.pl.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Drewnianych mostów już nie ma — do bramy prowadzi prosta droga";

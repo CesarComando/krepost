@@ -102,3 +102,16 @@ window.I18N_UI.et["Источники: путеводитель «Daugavpils 202
 window.I18N_UI.et["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";
 window.I18N_UI.et["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Kogu kindlus on kaitse all olev kultuurimälestis (nr 7428). Kaevamine ja muististe otsimine, ka metallidetektoriga, on ilma Läti kultuuripärandi ameti loata keelatud.";
 window.I18N_UI.et["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Kaitse all olev kultuurimälestis nr {n} — mantojums.lv";
+// 25.11.2026: ясные счётчики и первый снимок
+window.I18N_UI.et["Отмечено снимков: {a} из {b}"] = "Märgitud fotosid: {a} / {b}";
+window.I18N_UI.et["Снимков с известной точкой съёмки: {a} из {b}"] = "Teadaoleva pildistamiskohaga fotosid: {a} / {b}";
+window.I18N_UI.et["объектов из {n}"] = "objekti {n}-st";
+window.I18N_UI.et["Первый снимок «тогда / сейчас» готов!"] = "Sinu esimene „siis / nüüd“ foto on valmis!";
+
+// 25.11.2026: 3 новых снимка из пар «было — стало» (Old Daugavpils)
+window.I18N_DATA.et.titles["Часовой у Николаевских ворот, табличка «Ворота Республики»"] = "Tunnimees Nikolai värava juures, silt „Vabariigi värav“";
+window.I18N_DATA.et.titles["Марш солдат на улице Михаила, вдали Константиновская казарма"] = "Sõdurite marss Mihaili tänaval, taamal Konstantini kasarm";
+window.I18N_DATA.et.titles["Прямая дорога к Михайловским воротам, вдали собор"] = "Sirge tee Mihaili väravani, kaugel katedraal";
+window.I18N_DATA.et.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Läbipääsu kohal silt „Vabariigi värav“, kotkas veel paigas";
+window.I18N_DATA.et.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Mihaili tn 13: väike hoone on nüüd konverentsisaal";
+window.I18N_DATA.et.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Puusildu enam pole — väravani viib sirge tee";

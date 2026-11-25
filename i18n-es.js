@@ -102,3 +102,16 @@ window.I18N_UI.es["Источники: путеводитель «Daugavpils 202
 window.I18N_UI.es["Фото: visitdaugavpils.lv"] = "Foto: visitdaugavpils.lv";
 window.I18N_UI.es["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Toda la fortaleza es un monumento cultural protegido (n.º 7428). Está prohibido excavar o buscar antigüedades, también con detector de metales, sin permiso de la Administración Nacional del Patrimonio Cultural.";
 window.I18N_UI.es["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Monumento cultural protegido n.º {n} — mantojums.lv";
+// 25.11.2026: ясные счётчики и первый снимок
+window.I18N_UI.es["Отмечено снимков: {a} из {b}"] = "Fotos marcadas: {a} de {b}";
+window.I18N_UI.es["Снимков с известной точкой съёмки: {a} из {b}"] = "Fotos con punto de toma conocido: {a} de {b}";
+window.I18N_UI.es["объектов из {n}"] = "lugares de {n}";
+window.I18N_UI.es["Первый снимок «тогда / сейчас» готов!"] = "¡Tu primera foto «antes / ahora» está lista!";
+
+// 25.11.2026: 3 новых снимка из пар «было — стало» (Old Daugavpils)
+window.I18N_DATA.es.titles["Часовой у Николаевских ворот, табличка «Ворота Республики»"] = "Centinela en la puerta de Nicolás, placa «Puerta de la República»";
+window.I18N_DATA.es.titles["Марш солдат на улице Михаила, вдали Константиновская казарма"] = "Desfile de soldados por la calle Miguel, al fondo el cuartel Constantino";
+window.I18N_DATA.es.titles["Прямая дорога к Михайловским воротам, вдали собор"] = "Camino recto hacia la puerta de Miguel, a lo lejos la catedral";
+window.I18N_DATA.es.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Sobre el paso, la placa «Puerta de la República»; el águila sigue en su sitio";
+window.I18N_DATA.es.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Calle Miguel 13: el edificio pequeño hoy es una sala de conferencias";
+window.I18N_DATA.es.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Ya no hay puentes de madera: un camino recto lleva a la puerta";

@@ -102,3 +102,16 @@ window.I18N_UI.fr["Источники: путеводитель «Daugavpils 202
 window.I18N_UI.fr["Фото: visitdaugavpils.lv"] = "Photo : visitdaugavpils.lv";
 window.I18N_UI.fr["⛏ Вся крепость — охраняемый памятник культуры (№ 7428). Копать и искать старинные предметы, в том числе металлоискателем, без разрешения Управления по охране культурного наследия запрещено."] = "⛏ Toute la forteresse est un monument culturel protégé (n° 7428). Il est interdit de creuser ou de chercher des objets anciens, y compris au détecteur de métaux, sans l’autorisation de l’Office national du patrimoine.";
 window.I18N_UI.fr["🏛 Охраняемый памятник культуры № {n} — mantojums.lv"] = "🏛 Monument culturel protégé n° {n} — mantojums.lv";
+// 25.11.2026: ясные счётчики и первый снимок
+window.I18N_UI.fr["Отмечено снимков: {a} из {b}"] = "Photos cochées : {a} sur {b}";
+window.I18N_UI.fr["Снимков с известной точкой съёмки: {a} из {b}"] = "Photos dont le point de vue est connu : {a} sur {b}";
+window.I18N_UI.fr["объектов из {n}"] = "sites sur {n}";
+window.I18N_UI.fr["Первый снимок «тогда / сейчас» готов!"] = "Votre première photo « avant / maintenant » est prête !";
+
+// 25.11.2026: 3 новых снимка из пар «было — стало» (Old Daugavpils)
+window.I18N_DATA.fr.titles["Часовой у Николаевских ворот, табличка «Ворота Республики»"] = "Sentinelle à la porte Nicolas, plaque « Porte de la République »";
+window.I18N_DATA.fr.titles["Марш солдат на улице Михаила, вдали Константиновская казарма"] = "Défilé de soldats rue Michel, au fond la caserne Constantin";
+window.I18N_DATA.fr.titles["Прямая дорога к Михайловским воротам, вдали собор"] = "Route droite vers la porte Michel, cathédrale au loin";
+window.I18N_DATA.fr.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Au-dessus du passage, la plaque « Porte de la République » ; l’aigle est encore là";
+window.I18N_DATA.fr.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Rue Michel 13 : le petit bâtiment est aujourd’hui une salle de conférences";
+window.I18N_DATA.fr.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Les ponts de bois ont disparu — une route droite mène à la porte";
