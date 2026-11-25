@@ -3985,9 +3985,14 @@ function drawMosaic() {
   const left = document.createElement('div');
   const board = document.createElement('div'); board.className = 'mboard'; board.id = 'mBoard';
   // Кадр: квадрат из середины фото. Ширина картинки в долях клетки: n*a (a>1) или n (a≤1).
-  const a = mos.aspect, W = a >= 1 ? n * a : n, H = a >= 1 ? n : n / a, ox = (W - n) / 2, oy = (H - n) / 2;
+  // crop — срез краёв скана (поля, подписи, синие края), см. mosaics.js. Квадрат берётся из середины того, что осталось.
+  const c = mos.m.crop || [0, 0, 0, 0], fw = 1 - c[0] - c[2], fh = 1 - c[1] - c[3];
+  const a = mos.aspect * fw / fh, Wc = a >= 1 ? n * a : n, Hc = a >= 1 ? n : n / a;
+  const W = Wc / fw, H = Hc / fh, ox = c[0] * W + (Wc - n) / 2, oy = c[1] * H + (Hc - n) / 2;
   const hint = document.createElement('div'); hint.className = 'mhint';
-  const hi = document.createElement('img'); hi.src = s.src; hi.alt = ''; hint.append(hi);
+  const hi = document.createElement('img'); hi.src = s.src; hi.alt = '';
+  Object.assign(hi.style, { position: 'absolute', maxWidth: 'none', objectFit: 'fill', width: W / n * 100 + '%', height: H / n * 100 + '%', left: -ox / n * 100 + '%', top: -oy / n * 100 + '%' });
+  hint.append(hi);
   mos.pos.forEach((piece, cell) => {
     const t = document.createElement('div'); t.className = 'mt'; t.dataset.piece = piece;
     t.style.width = t.style.height = (100 / n) + '%';
@@ -4030,7 +4035,12 @@ function mosPlace() {
   if (!mos.done) { mos.done = true; mosSave(); track('mosaic', 'done:' + mos.m.id + ':' + n); }
   board.querySelectorAll('.mt').forEach(t => t.classList.remove('ok'));
   const h = document.createElement('p'); h.className = 'mprog'; h.textContent = T('Собрано!');
-  const img = document.createElement('img'); img.src = s.src; img.alt = s.title;
+  // Целое фото — тоже без полей скана (тот же crop)
+  const c = mos.m.crop || [0, 0, 0, 0], fw = 1 - c[0] - c[2], fh = 1 - c[1] - c[3];
+  const img = document.createElement('div'); img.style.cssText = `position:relative;overflow:hidden;border-radius:6px;margin:8px 0;aspect-ratio:${(mos.aspect * fw / fh).toFixed(4)}`;
+  const im = document.createElement('img'); im.src = s.src; im.alt = s.title;
+  im.style.cssText = `position:absolute;max-width:none;margin:0;border-radius:0;width:${100 / fw}%;height:${100 / fh}%;left:${-c[0] / fw * 100}%;top:${-c[1] / fh * 100}%`;
+  img.append(im);
   const cap = document.createElement('p'); cap.textContent = s.title + (s.year ? ', ' + yearT(s.year) : '');
   const src = document.createElement('p'); src.className = 'msrc'; src.textContent = T(s.credit || '');
   const act = document.createElement('div'); act.className = 'mact'; act.style.justifyContent = 'flex-start';
