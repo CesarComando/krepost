@@ -1038,9 +1038,9 @@
   #questRow { display:grid; grid-template-columns:28px 1fr auto; align-items:center; gap:4px 12px; width:100%; min-height:0; padding:12px 14px; border-radius:16px; background:#1c1610; border:1px solid rgba(217,164,65,.25); box-shadow:none; color:var(--text); text-align:left; text-transform:none; letter-spacing:0; }
   #questRow[hidden], #nearCard[hidden] { display:none; }
   /* Аудиогид (проба, 19.11.2026) */
-  #guideRow, #guidesRow, #bookRow, #eraRow { display:grid; grid-template-columns:28px 1fr; align-items:center; gap:2px 12px; width:100%; min-height:0; padding:12px 14px; border-radius:16px; background:#1c1610; border:1px solid rgba(217,164,65,.25); box-shadow:none; color:var(--text); text-align:left; text-transform:none; letter-spacing:0; margin-top:10px; }
-  #guideRow b, #guidesRow b, #bookRow b, #eraRow b { grid-row:1 / 3; font-size:22px; line-height:1; }
-  #guideRow .gT, #guidesRow .gT, #bookRow .gT, #eraRow .gT { font-weight:600; } #guideRow .gN, #guidesRow .gN, #bookRow .gN, #eraRow .gN { color:var(--muted, #b8a98f); }
+  #galRow, #galEraBtn, #guideRow, #guidesRow, #bookRow, #eraRow { display:grid; grid-template-columns:28px 1fr; align-items:center; gap:2px 12px; width:100%; min-height:0; padding:12px 14px; border-radius:16px; background:#1c1610; border:1px solid rgba(217,164,65,.25); box-shadow:none; color:var(--text); text-align:left; text-transform:none; letter-spacing:0; margin-top:10px; }
+  #galRow b, #galEraBtn b, #guideRow b, #guidesRow b, #bookRow b, #eraRow b { grid-row:1 / 3; font-size:22px; line-height:1; }
+  #galRow .gT, #galEraBtn .gT, #guideRow .gT, #guidesRow .gT, #bookRow .gT, #eraRow .gT { font-weight:600; } #galRow .gN, #galEraBtn .gN, #guideRow .gN, #guidesRow .gN, #bookRow .gN, #eraRow .gN { color:var(--muted, #b8a98f); }
   #guideDlg { width:100vw; max-width:100vw; height:100dvh; max-height:100dvh; margin:0; padding:0; border:0; background:#17120d; color:var(--text, #f2e8d8); }
   #guideDlg::backdrop { background:rgba(10,8,6,.9); }
   #guideDlg [hidden] { display:none !important; }
@@ -1154,6 +1154,28 @@
   .illNav { flex:none; width:44px; height:44px; min-height:0; padding:0; border-radius:50%; background:rgba(18,14,10,.75); color:#f2e8d8; border:1px solid rgba(243,210,122,.4); box-shadow:none; font-size:24px; line-height:1; }
   .illNav[hidden] { visibility:hidden; display:block; }
   .illTop { width:100%; display:flex; align-items:center; justify-content:space-between; min-height:40px; }
+  /* Галерея старых фото (26.11.2026): все снимки по периодам, смотреть без камеры */
+  #gal[hidden] { display:none; }
+  #gal { padding-bottom:24px; }
+  #gal .galIntro { margin:4px 0 10px; color:var(--muted); font-size:14px; line-height:1.4; }
+  #gal .galJump { position:sticky; top:0; z-index:3; display:flex; gap:6px; overflow-x:auto; padding:8px 0; margin:0 0 4px; background:var(--bg); scrollbar-width:none; }
+  #gal .galJump::-webkit-scrollbar { display:none; }
+  #gal .galJump .chip { flex:none; white-space:nowrap; }
+  #gal .galSec { margin:18px 0 8px; scroll-margin-top:56px; }
+  #gal .galSec h3 { margin:0; font:700 20px/1.2 var(--serif, Georgia, serif); color:var(--accent); }
+  #gal .galSec p { margin:4px 0 0; color:var(--muted); font-size:14px; line-height:1.4; }
+  #gal .galGrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+  #gal .galItem { display:flex; flex-direction:column; gap:0; padding:0; min-height:0; border-radius:12px; overflow:hidden; background:var(--panel); border:1px solid var(--line); color:var(--text); text-align:left; text-transform:none; letter-spacing:0; box-shadow:none; font:inherit; }
+  #gal .galItem img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; background:#0d0a07; }
+  #gal .galItem .gi { display:flex; flex-direction:column; gap:3px; padding:7px 9px 9px; }
+  #gal .galItem b { font-weight:600; font-size:13.5px; line-height:1.25; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  #gal .galItem small { color:var(--muted); font-size:12px; line-height:1.25; }
+  #gal .galItem .gy { color:var(--accent); font-weight:600; }
+  #gal .galEra { margin-top:22px; }
+  #illDesc { margin:0; max-width:640px; color:#e4d8c3; font-size:14px; line-height:1.4; text-align:center; }
+  #illDesc:empty { display:none; }
+  #illPlace { color:var(--accent); font-size:13px; text-align:center; }
+  #illPlace:empty { display:none; }
   .illNavRow { width:100%; display:flex; align-items:center; gap:10px; } .illNavRow #illCap { flex:1; }
   #illCount { color:var(--muted); font-size:12px; }
   #illClose { position:static; width:40px; height:40px; min-height:0; padding:0; border-radius:50%; background:rgba(18,14,10,.8); color:#f2e8d8; border:1px solid rgba(243,210,122,.4); box-shadow:none; }
@@ -1436,8 +1458,8 @@ html[data-theme="light"] .nBody b { color:#1b1516; }
 html[data-theme="light"] .nGo { background:linear-gradient(#d51a33,#b6162c); color:#f7f5f5; }
 html[data-theme="light"] .nRoute { background:#f7f5f5; color:#d51a33; border:1px solid rgba(182,22,44,.35); }
 html[data-theme="light"] #questRow { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
-html[data-theme="light"] #guideRow, html[data-theme="light"] #guidesRow, html[data-theme="light"] #bookRow, html[data-theme="light"] #eraRow { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
-html[data-theme="light"] #bookRow .gN, html[data-theme="light"] #guideRow .gN, html[data-theme="light"] #guidesRow .gN, html[data-theme="light"] #eraRow .gN { color:var(--muted, #d51a33); }
+html[data-theme="light"] #galRow, html[data-theme="light"] #galEraBtn, html[data-theme="light"] #guideRow, html[data-theme="light"] #guidesRow, html[data-theme="light"] #bookRow, html[data-theme="light"] #eraRow { background:#f7f5f5; border:1px solid rgba(182,22,44,.25); }
+html[data-theme="light"] #galRow .gN, html[data-theme="light"] #bookRow .gN, html[data-theme="light"] #guideRow .gN, html[data-theme="light"] #guidesRow .gN, html[data-theme="light"] #eraRow .gN { color:var(--muted, #d51a33); }
 html[data-theme="light"] #guideDlg { background:#f7f5f5; color:var(--text, #1d1718); }
 html[data-theme="light"] #guideDlg::backdrop { background:rgba(248,246,246,.9); }
 html[data-theme="light"] #gBar button.on { color:#f7f5f5; }
@@ -1471,6 +1493,7 @@ html[data-theme="light"] .oIllItem { color:#e6334b; }
 html[data-theme="light"] .oIllItem img { border:1px solid rgba(182,22,44,.25); }
 html[data-theme="light"] #illDlg::backdrop { background:rgba(248,246,246,.92); }
 html[data-theme="light"] #illCap { color:#1b1516; }
+html[data-theme="light"] #illDesc { color:#3a3033; }
 html[data-theme="light"] .gGal img { border-color:rgba(213,26,51,.35); }
 html[data-theme="light"] .illNav { background:rgba(247,245,245,.85); color:#d51a33; border-color:rgba(213,26,51,.5); }
 html[data-theme="light"] #illClose { background:rgba(247,245,245,.8); color:#1d1718; border:1px solid rgba(213,26,51,.4); }
@@ -1525,6 +1548,7 @@ html[dir="rtl"] #cam :is(p,span,div,button,label,small,b,h2,h3), html[dir="rtl"]
     <div id="nearCard" hidden></div>
     <div id="tourStrip" hidden><button type="button" id="tourStripGo">❓ Как пользоваться (10 шагов)</button><button type="button" id="tourStripX" aria-label="Закрыть">✕</button></div>
     <button type="button" id="questRow" hidden></button>
+    <button type="button" id="galRow"><b>🖼</b><span class="gT"></span><small class="gN"></small></button>
     <button type="button" id="guideRow"><b>🎧</b><span class="gT"></span><small class="gN"></small></button>
     <button type="button" id="guidesRow"><b>🧭</b><span class="gT"></span><small class="gN"></small></button>
     <button type="button" id="bookRow"><b>📖</b><span class="gT"></span><small class="gN"></small></button>
@@ -1572,6 +1596,7 @@ html[dir="rtl"] #cam :is(p,span,div,button,label,small,b,h2,h3), html[dir="rtl"]
     <p id="mapLegend"><i class="lg todo"></i> не посещено <i class="lg done"></i> посещено <i class="lg near"></i> рядом с вами <i class="lg stop">1</i> точка аудиогида</p>
   </div>
   <div id="lib" hidden></div>
+  <div id="gal" hidden></div>
   <div id="quests" hidden></div>
   <div id="mosDlg" hidden></div>
   <div id="empty" hidden>Пока нет ни одного фото. Добавьте старый снимок, чтобы попробовать.</div>
@@ -1586,7 +1611,7 @@ html[dir="rtl"] #cam :is(p,span,div,button,label,small,b,h2,h3), html[dir="rtl"]
 </section>
 
 <dialog id="guideDlg"><div class="guideBox"><div class="gTop"><h3 id="guideH"></h3><button type="button" id="guideStartBtn" class="gSmall"></button><button type="button" id="guideClose" aria-label="Закрыть">✕</button></div><div id="gBar"><button type="button" id="gMapBtn" class="gSmall"></button><button type="button" id="gNearBtn" class="gSmall"></button><button type="button" id="gDlBtn" class="gSmall"></button><button type="button" id="gMusBtn" class="gSmall"></button></div><div id="gMapBox" hidden><div id="gMap"></div><p id="gMapNote"></p></div><div id="guideStart" hidden></div><div id="guidePager"></div><div id="gNear" hidden><span id="gNearT"></span><button type="button" id="gNearGo"></button><button type="button" id="gNearX" aria-label="Закрыть">✕</button></div><div class="gNav"><button type="button" id="gPrev" aria-label="Назад">‹</button><span id="gPos"></span><button type="button" id="gNext" aria-label="Дальше">›</button></div></div></dialog>
-<dialog id="illDlg"><div class="illBox"><div class="illTop"><small id="illCount"></small><button type="button" id="illClose" aria-label="Закрыть">✕</button></div><img id="illImg" alt=""><div class="illNavRow"><button type="button" id="illPrev" class="illNav" aria-label="Предыдущий снимок" hidden>‹</button><p id="illCap"></p><button type="button" id="illNext" class="illNav" aria-label="Следующий снимок" hidden>›</button></div><small id="illCredit"></small></div></dialog>
+<dialog id="illDlg"><div class="illBox"><div class="illTop"><small id="illCount"></small><button type="button" id="illClose" aria-label="Закрыть">✕</button></div><img id="illImg" alt=""><div class="illNavRow"><button type="button" id="illPrev" class="illNav" aria-label="Предыдущий снимок" hidden>‹</button><p id="illCap"></p><button type="button" id="illNext" class="illNav" aria-label="Следующий снимок" hidden>›</button></div><p id="illDesc"></p><small id="illPlace"></small><small id="illCredit"></small></div></dialog>
 <dialog id="modDlg"><div class="modBox">
   <div class="setHead"><h3>Модератор</h3><button type="button" id="modClose" aria-label="Закрыть">✕</button></div>
   <form id="modLogin" hidden>
@@ -2463,7 +2488,7 @@ async function renderLib() {
 function setView(v) {
   if (v !== view) track('view', v);
   view = v;
-  const navOf = { home: 'home', all: 'home', obj: 'home', map: 'map', quests: 'quests', lib: 'lib' }[v];
+  const navOf = { home: 'home', all: 'home', obj: 'home', gal: 'home', map: 'map', quests: 'quests', lib: 'lib' }[v];
   for (const b of document.querySelectorAll('#botNav .tab')) b.classList.toggle('on', b.dataset.view === navOf);
   const home = v === 'home', all = v === 'all';
   $('hero').hidden = !home; $('home').hidden = !home;
@@ -2472,6 +2497,7 @@ function setView(v) {
   $('mapView').hidden = v !== 'map';
   $('objView').hidden = v !== 'obj';
   $('lib').hidden = v !== 'lib';
+  $('gal').hidden = v !== 'gal';
   $('quests').hidden = v !== 'quests';
   $('list').classList.toggle('mapMode', v === 'map');
   $('yearRail').hidden = true;
@@ -2632,7 +2658,7 @@ $('shootTab').onclick = () => {
 
 function renderHome() {
   updateLibCount();
-  renderNear(); renderQuestRow(); renderGuideRow(); renderGuidesRow(); renderBookRow(); renderEraRow(); refreshPos();
+  renderNear(); renderQuestRow(); renderGuideRow(); renderGuidesRow(); renderBookRow(); renderEraRow(); renderGalRow(); refreshPos();
   const box = $('places');
   box.replaceChildren();
   const spots = visibleSpots();
@@ -2761,6 +2787,73 @@ $('guidesRow').onclick = () => {
 };
 $('guidesClose').onclick = () => $('guidesDlg').close();
 $('guidesDlg').addEventListener('click', e => { if (e.target === $('guidesDlg')) $('guidesDlg').close(); });
+/* ===== Галерея старых фото (26.11.2026, просьба Дайниса): все снимки просто посмотреть, без камеры и без похода к месту.
+   Разбивка по историческим периодам (по первому году в подписи), внутри — по годам; у снимка — что на нём, год и к какому месту относится.
+   Берём те же снимки, что видят посетители, плюс «Из архива» (arch) и рисунки/открытки (illus).
+   Снимки училища (era) сюда не входят — только кнопкой в конце, через дисклеймер, как на главной. */
+const GAL_PERIODS = [
+  { to: 1914, h: 'До 1915 · Российская империя', d: 'Динабургская крепость (с 1893 года — Двинская) — крепость Российской империи: валы, ворота, казармы, собор и сад коменданта.' },
+  { to: 1919, h: '1915–1919 · Первая мировая война', d: 'Рядом с городом проходит фронт. В 1918 году — немецкая оккупация, затем годы борьбы за независимость Латвии.' },
+  { to: 1940, h: '1920–1940 · Латвийская Республика', d: 'После освобождения Даугавпилса в январе 1920 года в крепости стоит латвийская армия.' },
+  { to: 1945, h: '1941–1945 · Вторая мировая война', d: 'Немецкая оккупация 1941–1944 годов. В крепости — лагерь военнопленных Шталаг 340.' },
+  { to: 1993, h: '1946–1993 · Советское время', d: 'Крепость занимают воинские части и военное авиационное училище.' },
+  { to: 9999, h: 'Год не известен', d: '' },
+];
+function gallerySpots() {
+  // Только старые: снимки после 1993 года (новые, «как сейчас») в галерею не идут
+  return byYear(allSpots().filter(s => s.src && !s.era && !s.hidden && !hiddenIds.includes(s.id) && (yearOfSpot(s) <= 1993 || yearOfSpot(s) === 9999)
+    && (!s.demo || DEMO) && (ADMIN || !NOT_PUBLIC_GROUPS.includes(groupOf(s)) || PUBLIC_OK.has(s.id))));
+}
+function renderGalRow() {
+  $('galRow').querySelector('.gT').textContent = T('Галерея старых фото');
+  $('galRow').querySelector('.gN').textContent = Tf('Все снимки по годам · смотреть без камеры · {n}', { n: gallerySpots().length });
+}
+$('galRow').onclick = () => { track('feature', 'gallery'); goView('gal'); };
+function renderGallery() {
+  const box = $('gal'); box.replaceChildren();
+  const list = gallerySpots();
+  const secs = GAL_PERIODS.map(p => ({ ...p, items: [] }));
+  for (const s of list) { const y = yearOfSpot(s); (secs.find(p => y <= p.to) || secs[secs.length - 1]).items.push(s); }
+  const used = secs.filter(p => p.items.length);
+  const intro = document.createElement('p'); intro.className = 'galIntro';
+  intro.textContent = Tf('{n} старых снимков крепости. Нажмите на снимок, чтобы открыть его крупно; листайте влево-вправо.', { n: list.length });
+  const jump = document.createElement('div'); jump.className = 'galJump';
+  box.append(intro, jump);
+  // Полоска периодов прилипает под заголовком экрана; раздел при переходе не прячется под ними
+  requestAnimationFrame(() => { const top = $('subBar').offsetHeight; jump.style.top = top + 'px'; for (const s of box.querySelectorAll('.galSec')) s.style.scrollMarginTop = (top + jump.offsetHeight + 6) + 'px'; });
+  used.forEach((p, i) => {
+    const sec = document.createElement('section'); sec.className = 'galSec'; sec.id = 'galSec' + i;
+    const h = document.createElement('h3'); h.textContent = T(p.h) + ' · ' + p.items.length; sec.append(h);
+    if (p.d) { const d = document.createElement('p'); d.textContent = T(p.d); sec.append(d); }
+    const ch = document.createElement('button'); ch.type = 'button'; ch.className = 'chip'; ch.textContent = T(p.h).split(' · ')[0];
+    ch.onclick = () => sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    jump.append(ch);
+    const grid = document.createElement('div'); grid.className = 'galGrid';
+    for (const s of p.items) {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'galItem';
+      const img = document.createElement('img'); img.src = s.thumb || s.src; img.alt = s.title || ''; img.loading = 'lazy'; img.decoding = 'async';
+      const gi = document.createElement('span'); gi.className = 'gi';
+      const ti = document.createElement('b'); ti.textContent = s.title || '';
+      const yr = document.createElement('small'); yr.className = 'gy'; yr.textContent = s.year || '';
+      gi.append(ti, yr);
+      const g = groupOf(s);
+      if (g && g !== 'Другое' && g !== 'Солдаты и люди') { const pl = document.createElement('small'); pl.textContent = '📍 ' + T(g); gi.append(pl); }
+      b.append(img, gi);
+      b.onclick = () => { track('feature', 'gallery_photo'); openIllus(s, p.items); };
+      grid.append(b);
+    }
+    sec.append(grid); box.append(sec);
+  });
+  // Период училища — отдельно, через то же предупреждение, что и на главной
+  if (!$('eraRow').hidden) {
+    const er = document.createElement('button'); er.type = 'button'; er.className = 'galEra'; er.id = 'galEraBtn';
+    er.innerHTML = '<b>✈️</b><span class="gT"></span><small class="gN"></small>';
+    er.querySelector('.gT').textContent = T(ERA);
+    er.querySelector('.gN').textContent = T('Снимки этого периода открываются отдельно, после короткого пояснения');
+    er.onclick = () => $('eraRow').onclick();
+    box.append(er);
+  }
+}
 function renderEraRow() {
   const n = allSpots().filter(s => s.era && !s.hidden && !hiddenIds.includes(s.id)).length;
   $('eraRow').hidden = !n;
@@ -3213,6 +3306,9 @@ function illPaint() {
   $('illImg').src = s.src;
   $('illCap').textContent = [s.title, s.year].filter(Boolean).join(', ');
   $('illCredit').textContent = s.credit || '';
+  // Описание и место — для галереи старых фото (26.11.2026); подпись «Старая открытка» и т. п. тоже показываем
+  $('illDesc').textContent = s.hint || '';
+  const pl = groupOf(s); $('illPlace').textContent = pl && pl !== 'Другое' && pl !== 'Солдаты и люди' && pl !== ERA ? '📍 ' + T(pl) : '';
   const many = illList.length > 1;
   $('illPrev').hidden = !many || illIdx === 0; $('illNext').hidden = !many || illIdx === illList.length - 1;
   $('illCount').textContent = many ? (illIdx + 1) + ' / ' + illList.length : '';
@@ -4651,6 +4747,7 @@ function softRefresh() {
 }
 function renderList() {
   if (view === 'lib') { updateProgress(); $('subTitle').textContent = T('Паспорт исследователя'); renderLib(); return; }
+  if (view === 'gal') { $('subTitle').textContent = T('Галерея старых фото'); renderGallery(); return; }
   if (view === 'quests') { updateProgress(); $('subTitle').textContent = T('Квесты'); renderQuests(); return; }
   if (view === 'home') { updateProgress(); renderHome(); return; }
   if (view === 'map') { updateProgress(); renderMap(); return; }
