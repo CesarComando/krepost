@@ -115,6 +115,24 @@ window.I18N_DATA.fr.titles["Прямая дорога к Михайловски�
 window.I18N_DATA.fr.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Au-dessus du passage, la plaque « Porte de la République » ; l’aigle est encore là";
 window.I18N_DATA.fr.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Rue Michel 13 : le petit bâtiment est aujourd’hui une salle de conférences";
 window.I18N_DATA.fr.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Les ponts de bois ont disparu — une route droite mène à la porte";
+// Книга: превью 7 страниц и вся книга за 70% (25.11.2026)
+window.I18N_UI.fr["Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)"] = "Extrait gratuit · livre complet à {n}% de progression (vous : {p}%)";
+window.I18N_UI.fr["Вся книга открыта. Спасибо, что прошли крепость!"] = "Le livre complet est débloqué. Merci d’avoir exploré la forteresse !";
+window.I18N_UI.fr["Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе."] = "Les 7 premières pages sont gratuites. Le livre complet est offert dès que vous avez accompli {n}% de l’application : photos, quêtes et mosaïques ensemble.";
+window.I18N_UI.fr["Или купите её на Amazon."] = "Ou achetez-le sur Amazon.";
+window.I18N_UI.fr["📄 Читать первые 7 страниц"] = "📄 Lire les 7 premières pages";
+window.I18N_UI.fr["Пройдено {p}% из нужных {n}%"] = "Accompli {p}% sur les {n}% nécessaires";
+window.I18N_UI.fr["осталось шагов: {k}"] = "étapes restantes : {k}";
+window.I18N_UI.fr["📷 Снимки"] = "📷 Photos";
+window.I18N_UI.fr["🎯 Кадры квестов"] = "🎯 Clichés de quêtes";
+window.I18N_UI.fr["🧩 Мозаики"] = "🧩 Mosaïques";
+window.I18N_UI.fr["Мозаики можно собирать дома — это самый быстрый способ начать."] = "Les mosaïques se font à la maison — le moyen le plus rapide de commencer.";
+window.I18N_UI.fr["⬇ Скачать всю книгу (PDF)"] = "⬇ Télécharger le livre complet (PDF)";
+window.I18N_UI.fr["Вся книга — после {n}%"] = "Livre complet — à {n}%";
+window.I18N_UI.fr["🛒 Купить на Amazon"] = "🛒 Acheter sur Amazon";
+window.I18N_UI.fr["🛒 Купить на Amazon (на английском)"] = "🛒 Acheter sur Amazon (en anglais)";
+window.I18N_UI.fr["Готовлю книгу…"] = "Préparation du livre…";
+window.I18N_UI.fr["Не получилось. Проверьте интернет и попробуйте ещё раз."] = "Échec. Vérifiez votre connexion et réessayez.";
 
 // Дополнение 26.11.2026: галерея старых фото (вкладка «Галерея», периоды)
 Object.assign(window.I18N_UI.fr, {"Галерея старых фото": "Galerie de photos anciennes", "Все снимки по годам · смотреть без камеры · {n}": "Toutes les photos par année · à voir sans caméra · {n}", "{n} старых снимков крепости. Нажмите на снимок, чтобы открыть его крупно; листайте влево-вправо.": "{n} photos anciennes de la forteresse. Touchez une photo pour l’agrandir ; faites glisser à gauche et à droite.", "До 1915 · Российская империя": "Avant 1915 · Empire russe", "Динабургская крепость (с 1893 года — Двинская) — крепость Российской империи: валы, ворота, казармы, собор и сад коменданта.": "La forteresse de Dünaburg (Dvinsk à partir de 1893) — une forteresse de l’Empire russe : remparts, portes, casernes, cathédrale et jardin du commandant.", "1915–1919 · Первая мировая война": "1915–1919 · Première Guerre mondiale", "Рядом с городом проходит фронт. В 1918 году — немецкая оккупация, затем годы борьбы за независимость Латвии.": "Le front passe près de la ville. En 1918, occupation allemande, puis les années de la guerre d’indépendance de la Lettonie.", "1920–1940 · Латвийская Республика": "1920–1940 · République de Lettonie", "После освобождения Даугавпилса в январе 1920 года в крепости стоит латвийская армия.": "Après la libération de Daugavpils en janvier 1920, l’armée lettone est stationnée dans la forteresse.", "1941–1945 · Вторая мировая война": "1941–1945 · Seconde Guerre mondiale", "Немецкая оккупация 1941–1944 годов. В крепости — лагерь военнопленных Шталаг 340.": "Occupation allemande 1941–1944. Dans la forteresse — le camp de prisonniers de guerre Stalag 340.", "1946–1993 · Советское время": "1946–1993 · Époque soviétique", "Крепость занимают воинские части и военное авиационное училище.": "La forteresse est occupée par des unités militaires et une école d’aviation militaire.", "Год не известен": "Année inconnue", "Снимки этого периода открываются отдельно, после короткого пояснения": "Les photos de cette période s’ouvrent à part, après une courte note"});

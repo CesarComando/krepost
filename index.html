@@ -504,6 +504,23 @@
   .icCredit { display:block; margin:0 0 10px; font-size:12px; opacity:.7; }
   #guidesBook small { display:block; margin-top:4px; opacity:.7; font-size:12px; }
   #guidesBook a { display:flex; align-items:center; min-height:44px; padding:0 12px; margin-bottom:8px; border-radius:12px; background:rgba(217,164,65,.12); color:inherit; text-decoration:none; font-weight:600; }
+  /* ===== Книга: превью, прогресс до 70%, Amazon ===== */
+  #bookDlg { width:min(440px, calc(100vw - 24px)); max-height:calc(100dvh - 40px); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text); }
+  #bookDlg::backdrop { background:rgba(0,0,0,.7); }
+  #bookDlg p { margin:0 0 10px; font-size:15px; line-height:1.5; }
+  .bookBtn { display:flex; align-items:center; justify-content:center; min-height:44px; padding:0 12px; margin:0 0 10px; border-radius:12px; background:rgba(217,164,65,.14); color:inherit; text-decoration:none; font:600 15px Inter,system-ui,sans-serif; text-align:center; }
+  .bookBtn[hidden] { display:none; }
+  .bookTrack { height:10px; border-radius:999px; background:rgba(255,255,255,.12); overflow:hidden; margin:4px 0 8px; }
+  .bookTrack i { display:block; height:100%; width:0; background:var(--accent, #d9a441); border-radius:999px; }
+  #bookParts { margin:0 0 8px; padding-left:20px; font-size:14px; line-height:1.6; }
+  #bookHint { display:block; margin:0 0 10px; opacity:.75; font-size:13px; line-height:1.4; }
+  #bookFull { display:block; width:100%; min-height:44px; margin:4px 0 10px; }
+  #bookFull:disabled { opacity:.6; }
+  #bookBack { display:block; width:100%; min-height:44px; margin-top:0; border-radius:12px; border:1px solid rgba(255,255,255,.2); background:transparent; color:inherit; font:600 15px Inter,system-ui,sans-serif; }
+  html[data-theme="light"] #bookDlg { background:#f7f5f5; }
+  html[data-theme="light"] #bookBack { border-color:rgba(0,0,0,.2); }
+  html[data-theme="light"] .bookTrack { background:rgba(0,0,0,.1); }
+  html[data-theme="light"] .bookBtn { background:rgba(182,22,44,.08); }
   #eraDlg p { margin:0 0 10px; font-size:15px; line-height:1.5; }
   #eraDlg small { display:block; margin:0 0 12px; opacity:.75; font-size:13px; line-height:1.4; }
   #eraGo { display:block; width:100%; min-height:44px; margin-top:8px; }
@@ -1807,6 +1824,22 @@ html[dir="rtl"] #cam :is(p,span,div,button,label,small,b,h2,h3), html[dir="rtl"]
     <button type="button" id="sSkip">Пропустить</button>
   </form>
 </dialog>
+<dialog id="bookDlg">
+  <div class="guidesBox">
+    <h3 id="bookH"></h3>
+    <p id="bookIntro"></p>
+    <a id="bookPrev" class="bookBtn" target="_blank" rel="noopener"></a>
+    <div id="bookProg">
+      <div class="bookTrack"><i id="bookBar"></i></div>
+      <p id="bookPct"></p>
+      <ul id="bookParts"></ul>
+      <small id="bookHint"></small>
+    </div>
+    <button type="button" id="bookFull" class="main"></button>
+    <a id="bookAmazon" class="bookBtn" target="_blank" rel="noopener" hidden></a>
+    <button type="button" id="bookBack"></button>
+  </div>
+</dialog>
 <dialog id="eraDlg">
   <div class="guidesBox">
     <h3 id="eraH"></h3>
@@ -2874,18 +2907,90 @@ $('eraRow').onclick = () => {
 $('eraGo').onclick = () => { try { localStorage.setItem(ERA_KEY, '1'); } catch {} $('eraDlg').close(); openObj(ERA); };
 $('eraBack').onclick = () => $('eraDlg').close();
 $('eraDlg').addEventListener('click', e => { if (e.target === $('eraDlg')) $('eraDlg').close(); });
-/* Книга о крепости (PDF) на языке приложения: RU, LV, остальные — EN. Перед скачиванием — просьба поддержать (можно просто скачать). */
-const BOOK_PDF = { ru: 'books/Dinaburga1810_book_RU.pdf', lv: 'books/Dinaburga1810_gramata_LV.pdf', en: 'books/Dinaburga1810_book_EN.pdf', de: 'books/Dinaburga1810_Buch_DE.pdf', lt: 'books/Dinaburga1810_knyga_LT.pdf', pl: 'books/Dinaburga1810_ksiazka_PL.pdf', et: 'books/Dinaburga1810_raamat_ET.pdf', fr: 'books/Dinaburga1810_livre_FR.pdf', it: 'books/Dinaburga1810_libro_IT.pdf', es: 'books/Dinaburga1810_libro_ES.pdf', zh: 'books/Dinaburga1810_book_ZH.pdf' };
-const bookLang = () => { const L = (window.LANG || 'ru').slice(0, 2); return BOOK_PDF[L] ? L : 'en'; };
+/* Книга о крепости (PDF) на языке приложения (нет перевода — EN).
+   С 25.11.2026 (решение Дайниса): превью первых 7 страниц — всем; полная книга — бесплатно после 70% прохождения
+   (снимки + задания квестов + мозаики, всё вместе) или покупка на Amazon. Телефон/ПК Дайниса (?me=1) и модератор видят всё.
+   Полная книга лежит зашифрованной (books/full_xx.bin), см. tools/books/make_books.py. Это защита от случайного скачивания,
+   а не от программиста: ключ ниже, в коде. */
+const BOOK_FILES = { ru: 'Dinaburga1810_book_RU', lv: 'Dinaburga1810_gramata_LV', en: 'Dinaburga1810_book_EN', de: 'Dinaburga1810_Buch_DE', lt: 'Dinaburga1810_knyga_LT', pl: 'Dinaburga1810_ksiazka_PL', et: 'Dinaburga1810_raamat_ET', fr: 'Dinaburga1810_livre_FR', it: 'Dinaburga1810_libro_IT', es: 'Dinaburga1810_libro_ES', zh: 'Dinaburga1810_book_ZH' };
+const BOOK_KEY = '8uWaykzYygCKZpfVQ5CMaCKI+o2cNU1Eqw1LrXd2f90=';
+const BOOK_NEED = 70; // % прохождения для бесплатной полной книги
+// Языки, на которых вся книга пока бесплатна без условий (решение Дайниса 26.11: RU и LV будут сильно меняться после находок в музее)
+const BOOK_FREE = ['ru', 'lv'];
+// Ссылки на Amazon. Пусто — кнопки нет. Английская Kindle-версия показывается на всех языках, у которых нет своей.
+const AMAZON_BOOK = { en: '' };
+const BOOK_OPEN_KEY = 'krepost.bookOpen';
+const bookLang = () => { const L = (window.LANG || 'ru').slice(0, 2); return BOOK_FILES[L] ? L : 'en'; };
+// Прохождение: отмеченные снимки + снятые кадры квестов + собранные мозаики. Данные берём прямо из памяти телефона.
+function bookProgress() {
+  const spots = visibleSpots(), ids = new Set(allSpots().map(s => s.id));
+  const ph = { a: spots.filter(s => found.includes(s.id)).length, b: spots.length };
+  const qd = read('krepost.quests', {}), qs = { a: 0, b: 0 };
+  for (const q of (window.QUESTS_DATA || [])) for (const st of q.steps) if (ids.has(st.spot)) { qs.b++; if ((qd[q.id] || {})[st.spot]) qs.a++; }
+  const md = read('krepost.mosaics', {}), ms = { a: 0, b: 0 };
+  for (const m of (window.MOSAICS_DATA || [])) if (ids.has(m.spot)) { ms.b++; if ((md[m.id] || {}).ever || (md[m.id] || {}).done) ms.a++; }
+  const a = ph.a + qs.a + ms.a, b = ph.b + qs.b + ms.b;
+  const pct = b ? Math.floor(100 * a / b) : 0;
+  const need = Math.ceil(b * BOOK_NEED / 100);
+  return { ph, qs, ms, a, b, pct, left: Math.max(0, need - a) };
+}
+function bookOpen() {
+  if (ME || ADMIN || BOOK_FREE.includes(bookLang())) return true;
+  try { if (localStorage.getItem(BOOK_OPEN_KEY) === '1') return true; } catch {}
+  if (bookProgress().pct >= BOOK_NEED) { try { localStorage.setItem(BOOK_OPEN_KEY, '1'); } catch {} track('feature', 'book_unlocked'); return true; }
+  return false;
+}
+const amazonUrl = () => AMAZON_BOOK[bookLang()] || AMAZON_BOOK.en || '';
 function renderBookRow() {
   $('bookRow').querySelector('.gT').textContent = T('Книга о крепости');
-  $('bookRow').querySelector('.gN').textContent = T('История и путеводитель · PDF') ;
+  $('bookRow').querySelector('.gN').textContent = bookOpen() ? T('История и путеводитель · PDF') : Tf('Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)', { n: BOOK_NEED, p: bookProgress().pct });
 }
-$('bookRow').onclick = () => askDonateThen('ebook', () => {
-  track('feature', 'book_' + bookLang());
-  const a = document.createElement('a'); a.href = BOOK_PDF[bookLang()]; a.target = '_blank'; a.rel = 'noopener';
-  a.download = BOOK_PDF[bookLang()].split('/').pop(); document.body.append(a); a.click(); a.remove();
-});
+function renderBookDlg() {
+  const open = bookOpen(), pr = bookProgress(), L = bookLang();
+  $('bookH').textContent = T('Книга о крепости');
+  $('bookIntro').textContent = open ? (BOOK_FREE.includes(L) && !ME && !ADMIN ? T('Книга бесплатная.') : T('Вся книга открыта. Спасибо, что прошли крепость!')) : Tf('Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе.', { n: BOOK_NEED }) + (amazonUrl() ? ' ' + T('Или купите её на Amazon.') : '');
+  $('bookPrev').href = 'books/preview/' + BOOK_FILES[L] + '_preview.pdf';
+  $('bookPrev').textContent = T('📄 Читать первые 7 страниц');
+  $('bookPrev').hidden = open;
+  $('bookProg').hidden = open;
+  if (!open) {
+    $('bookBar').style.width = Math.min(100, pr.pct * 100 / BOOK_NEED).toFixed(1) + '%';
+    $('bookPct').textContent = Tf('Пройдено {p}% из нужных {n}%', { p: pr.pct, n: BOOK_NEED }) + ' · ' + Tf('осталось шагов: {k}', { k: pr.left });
+    $('bookParts').replaceChildren(...[[T('📷 Снимки'), pr.ph], [T('🎯 Кадры квестов'), pr.qs], [T('🧩 Мозаики'), pr.ms]].map(([t, x]) => {
+      const li = document.createElement('li'); li.textContent = t + ': ' + Tf('{a} из {b}', { a: x.a, b: x.b }); return li;
+    }));
+    $('bookHint').textContent = T('Мозаики можно собирать дома — это самый быстрый способ начать.');
+  }
+  $('bookFull').textContent = open ? T('⬇ Скачать всю книгу (PDF)') : '🔒 ' + Tf('Вся книга — после {n}%', { n: BOOK_NEED });
+  $('bookFull').disabled = !open;
+  const az = amazonUrl();
+  $('bookAmazon').hidden = !az || open;
+  if (az) { $('bookAmazon').href = az; $('bookAmazon').textContent = AMAZON_BOOK[L] ? T('🛒 Купить на Amazon') : T('🛒 Купить на Amazon (на английском)'); }
+  $('bookBack').textContent = T('Назад');
+}
+async function bookDownload(btn) {
+  const L = bookLang(), name = BOOK_FILES[L] + '.pdf', was = btn.textContent;
+  btn.disabled = true; btn.textContent = T('Готовлю книгу…');
+  try {
+    const buf = new Uint8Array(await (await fetch('books/full_' + L + '.bin')).arrayBuffer());
+    const key = await crypto.subtle.importKey('raw', Uint8Array.from(atob(BOOK_KEY), c => c.charCodeAt(0)), 'AES-GCM', false, ['decrypt']);
+    const pdf = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.slice(0, 12) }, key, buf.slice(12));
+    const url = URL.createObjectURL(new Blob([pdf], { type: 'application/pdf' }));
+    const a = document.createElement('a'); a.href = url; a.download = name; document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+    btn.textContent = was;
+  } catch (e) {
+    btn.textContent = T('Не получилось. Проверьте интернет и попробуйте ещё раз.');
+  }
+  btn.disabled = false;
+}
+$('bookRow').onclick = () => { track('feature', 'book_open_' + (bookOpen() ? 'full' : 'locked')); renderBookDlg(); navPush(); $('bookDlg').showModal(); };
+$('bookPrev').addEventListener('click', () => track('feature', 'book_preview_' + bookLang()));
+$('bookAmazon').addEventListener('click', () => track('feature', 'book_amazon'));
+$('bookFull').onclick = e => { const btn = e.currentTarget; if (!bookOpen()) return; askDonateThen('ebook', () => { track('feature', 'book_' + bookLang()); bookDownload(btn); }); };
+$('bookBack').onclick = () => navBack();
+$('bookDlg').addEventListener('cancel', e => { e.preventDefault(); navBack(); });
+$('bookDlg').addEventListener('click', e => { if (e.target === $('bookDlg')) navBack(); });
 // Маршруты (guide.js → routes): полный круг из 13 точек и короткий (1–5, ~45 минут)
 function guideRoute(id) { return (GD.routes || []).find(r => r.id === id) || { id: 'full', stops: GD.stops.map(s => s.n) }; }
 const guideStop = n => GD.stops.find(s => s.n === n);

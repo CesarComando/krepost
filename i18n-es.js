@@ -115,6 +115,24 @@ window.I18N_DATA.es.titles["Прямая дорога к Михайловски�
 window.I18N_DATA.es.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Sobre el paso, la placa «Puerta de la República»; el águila sigue en su sitio";
 window.I18N_DATA.es.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Calle Miguel 13: el edificio pequeño hoy es una sala de conferencias";
 window.I18N_DATA.es.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Ya no hay puentes de madera: un camino recto lleva a la puerta";
+// Книга: превью 7 страниц и вся книга за 70% (25.11.2026)
+window.I18N_UI.es["Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)"] = "Vista previa gratis · libro completo al {n}% de progreso (tú: {p}%)";
+window.I18N_UI.es["Вся книга открыта. Спасибо, что прошли крепость!"] = "El libro completo está desbloqueado. ¡Gracias por recorrer la fortaleza!";
+window.I18N_UI.es["Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе."] = "Las primeras 7 páginas son gratis. El libro completo es gratis cuando completes el {n}% de la app: fotos, misiones y mosaicos juntos.";
+window.I18N_UI.es["Или купите её на Amazon."] = "O cómpralo en Amazon.";
+window.I18N_UI.es["📄 Читать первые 7 страниц"] = "📄 Leer las primeras 7 páginas";
+window.I18N_UI.es["Пройдено {p}% из нужных {n}%"] = "Completado {p}% del {n}% necesario";
+window.I18N_UI.es["осталось шагов: {k}"] = "pasos restantes: {k}";
+window.I18N_UI.es["📷 Снимки"] = "📷 Fotos";
+window.I18N_UI.es["🎯 Кадры квестов"] = "🎯 Fotos de misiones";
+window.I18N_UI.es["🧩 Мозаики"] = "🧩 Mosaicos";
+window.I18N_UI.es["Мозаики можно собирать дома — это самый быстрый способ начать."] = "Los mosaicos se pueden hacer en casa: la forma más rápida de empezar.";
+window.I18N_UI.es["⬇ Скачать всю книгу (PDF)"] = "⬇ Descargar el libro completo (PDF)";
+window.I18N_UI.es["Вся книга — после {n}%"] = "Libro completo — al {n}%";
+window.I18N_UI.es["🛒 Купить на Amazon"] = "🛒 Comprar en Amazon";
+window.I18N_UI.es["🛒 Купить на Amazon (на английском)"] = "🛒 Comprar en Amazon (en inglés)";
+window.I18N_UI.es["Готовлю книгу…"] = "Preparando el libro…";
+window.I18N_UI.es["Не получилось. Проверьте интернет и попробуйте ещё раз."] = "No funcionó. Revisa la conexión e inténtalo de nuevo.";
 
 // Дополнение 26.11.2026: галерея старых фото (вкладка «Галерея», периоды)
 Object.assign(window.I18N_UI.es, {"Галерея старых фото": "Galería de fotos antiguas", "Все снимки по годам · смотреть без камеры · {n}": "Todas las fotos por año · ver sin cámara · {n}", "{n} старых снимков крепости. Нажмите на снимок, чтобы открыть его крупно; листайте влево-вправо.": "{n} fotos antiguas de la fortaleza. Toca una foto para verla en grande; desliza a izquierda y derecha.", "До 1915 · Российская империя": "Antes de 1915 · Imperio ruso", "Динабургская крепость (с 1893 года — Двинская) — крепость Российской империи: валы, ворота, казармы, собор и сад коменданта.": "La fortaleza de Dünaburg (Dvinsk desde 1893): una fortaleza del Imperio ruso con murallas, puertas, cuarteles, la catedral y el jardín del comandante.", "1915–1919 · Первая мировая война": "1915–1919 · Primera Guerra Mundial", "Рядом с городом проходит фронт. В 1918 году — немецкая оккупация, затем годы борьбы за независимость Латвии.": "El frente pasa cerca de la ciudad. En 1918, ocupación alemana; después, los años de la guerra de independencia de Letonia.", "1920–1940 · Латвийская Республика": "1920–1940 · República de Letonia", "После освобождения Даугавпилса в январе 1920 года в крепости стоит латвийская армия.": "Tras la liberación de Daugavpils en enero de 1920, el ejército letón se instala en la fortaleza.", "1941–1945 · Вторая мировая война": "1941–1945 · Segunda Guerra Mundial", "Немецкая оккупация 1941–1944 годов. В крепости — лагерь военнопленных Шталаг 340.": "Ocupación alemana de 1941 a 1944. En la fortaleza, el campo de prisioneros de guerra Stalag 340.", "1946–1993 · Советское время": "1946–1993 · Época soviética", "Крепость занимают воинские части и военное авиационное училище.": "La fortaleza la ocupan unidades militares y una escuela de aviación militar.", "Год не известен": "Año desconocido", "Снимки этого периода открываются отдельно, после короткого пояснения": "Las fotos de este periodo se abren aparte, tras una breve nota"});

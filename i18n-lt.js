@@ -115,6 +115,24 @@ window.I18N_DATA.lt.titles["Прямая дорога к Михайловски�
 window.I18N_DATA.lt.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Virš pravažiavimo – lentelė „Respublikos vartai“, erelis dar savo vietoje";
 window.I18N_DATA.lt.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Michailo g. 13: mažas pastatas dabar – konferencijų salė";
 window.I18N_DATA.lt.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Medinių tiltų jau nebėra – į vartus veda tiesus kelias";
+// Книга: превью 7 страниц и вся книга за 70% (25.11.2026)
+window.I18N_UI.lt["Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)"] = "Ištrauka nemokamai · visa knyga — pasiekus {n}% (jūs: {p}%)";
+window.I18N_UI.lt["Вся книга открыта. Спасибо, что прошли крепость!"] = "Visa knyga atrakinta. Ačiū, kad apžiūrėjote tvirtovę!";
+window.I18N_UI.lt["Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе."] = "Pirmi 7 puslapiai — nemokamai. Visą knygą gausite nemokamai, kai įveiksite {n}% programėlės: nuotraukos, užduotys ir mozaikos kartu.";
+window.I18N_UI.lt["Или купите её на Amazon."] = "Arba įsigykite ją Amazon.";
+window.I18N_UI.lt["📄 Читать первые 7 страниц"] = "📄 Skaityti pirmus 7 puslapius";
+window.I18N_UI.lt["Пройдено {p}% из нужных {n}%"] = "Įveikta {p}% iš reikalingų {n}%";
+window.I18N_UI.lt["осталось шагов: {k}"] = "liko žingsnių: {k}";
+window.I18N_UI.lt["📷 Снимки"] = "📷 Nuotraukos";
+window.I18N_UI.lt["🎯 Кадры квестов"] = "🎯 Užduočių kadrai";
+window.I18N_UI.lt["🧩 Мозаики"] = "🧩 Mozaikos";
+window.I18N_UI.lt["Мозаики можно собирать дома — это самый быстрый способ начать."] = "Mozaikas galima dėlioti namie — tai greičiausias būdas pradėti.";
+window.I18N_UI.lt["⬇ Скачать всю книгу (PDF)"] = "⬇ Atsisiųsti visą knygą (PDF)";
+window.I18N_UI.lt["Вся книга — после {n}%"] = "Visa knyga — pasiekus {n}%";
+window.I18N_UI.lt["🛒 Купить на Amazon"] = "🛒 Pirkti Amazon";
+window.I18N_UI.lt["🛒 Купить на Amazon (на английском)"] = "🛒 Pirkti Amazon (anglų k.)";
+window.I18N_UI.lt["Готовлю книгу…"] = "Ruošiama knyga…";
+window.I18N_UI.lt["Не получилось. Проверьте интернет и попробуйте ещё раз."] = "Nepavyko. Patikrinkite internetą ir bandykite dar kartą.";
 
 // Дополнение 26.11.2026: галерея старых фото (вкладка «Галерея», периоды)
 Object.assign(window.I18N_UI.lt, {"Галерея старых фото": "Senų nuotraukų galerija", "Все снимки по годам · смотреть без камеры · {n}": "Visos nuotraukos pagal metus · žiūrėti be kameros · {n}", "{n} старых снимков крепости. Нажмите на снимок, чтобы открыть его крупно; листайте влево-вправо.": "{n} senos tvirtovės nuotraukos. Palieskite nuotrauką, kad pamatytumėte didelę; braukite kairėn ir dešinėn.", "До 1915 · Российская империя": "Iki 1915 · Rusijos imperija", "Динабургская крепость (с 1893 года — Двинская) — крепость Российской империи: валы, ворота, казармы, собор и сад коменданта.": "Dinaburgo (nuo 1893 m. — Dvinsko) tvirtovė — Rusijos imperijos tvirtovė: pylimai, vartai, kareivinės, katedra ir komendanto sodas.", "1915–1919 · Первая мировая война": "1915–1919 · Pirmasis pasaulinis karas", "Рядом с городом проходит фронт. В 1918 году — немецкая оккупация, затем годы борьбы за независимость Латвии.": "Netoli miesto eina frontas. 1918 m. — vokiečių okupacija, vėliau Latvijos nepriklausomybės kovų metai.", "1920–1940 · Латвийская Республика": "1920–1940 · Latvijos Respublika", "После освобождения Даугавпилса в январе 1920 года в крепости стоит латвийская армия.": "Po Daugpilio išlaisvinimo 1920 m. sausį tvirtovėje dislokuota Latvijos kariuomenė.", "1941–1945 · Вторая мировая война": "1941–1945 · Antrasis pasaulinis karas", "Немецкая оккупация 1941–1944 годов. В крепости — лагерь военнопленных Шталаг 340.": "Vokiečių okupacija 1941–1944 m. Tvirtovėje — karo belaisvių stovykla Stalag 340.", "1946–1993 · Советское время": "1946–1993 · Sovietmetis", "Крепость занимают воинские части и военное авиационное училище.": "Tvirtovėje — karinių dalinių ir karo aviacijos mokykla.", "Год не известен": "Metai nežinomi", "Снимки этого периода открываются отдельно, после короткого пояснения": "Šio laikotarpio nuotraukos atsidaro atskirai, po trumpo paaiškinimo"});

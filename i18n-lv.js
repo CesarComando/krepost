@@ -112,6 +112,25 @@ window.I18N.lv.titles["Прямая дорога к Михайловским в�
 window.I18N.lv.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Virs pārejas — plāksne «Republikas vārti», ērglis vēl savā vietā";
 window.I18N.lv.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Mihaila iela 13: mazā ēka tagad ir konferenču zāle";
 window.I18N.lv.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Koka tiltu vairs nav — uz vārtiem ved taisns ceļš";
+// Книга: превью 7 страниц и вся книга за 70% (25.11.2026)
+window.I18N.lv.ui["Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)"] = "Priekšskatījums bez maksas · visa grāmata — pie {n}% (jums {p}%)";
+window.I18N.lv.ui["Вся книга открыта. Спасибо, что прошли крепость!"] = "Visa grāmata ir atvērta. Paldies, ka izstaigājāt cietoksni!";
+window.I18N.lv.ui["Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе."] = "Pirmās 7 lappuses — bez maksas. Visu grāmatu var saņemt bez maksas, kad būsiet izpildījis {n}% lietotnes: fotogrāfijas, kvestus un mozaīkas kopā.";
+window.I18N.lv.ui["Или купите её на Amazon."] = "Vai nopērciet to Amazon.";
+window.I18N.lv.ui["📄 Читать первые 7 страниц"] = "📄 Lasīt pirmās 7 lappuses";
+window.I18N.lv.ui["Пройдено {p}% из нужных {n}%"] = "Izpildīti {p}% no vajadzīgajiem {n}%";
+window.I18N.lv.ui["осталось шагов: {k}"] = "atlikuši soļi: {k}";
+window.I18N.lv.ui["📷 Снимки"] = "📷 Fotogrāfijas";
+window.I18N.lv.ui["🎯 Кадры квестов"] = "🎯 Kvestu kadri";
+window.I18N.lv.ui["🧩 Мозаики"] = "🧩 Mozaīkas";
+window.I18N.lv.ui["Мозаики можно собирать дома — это самый быстрый способ начать."] = "Mozaīkas var likt mājās — tas ir ātrākais veids, kā sākt.";
+window.I18N.lv.ui["⬇ Скачать всю книгу (PDF)"] = "⬇ Lejupielādēt visu grāmatu (PDF)";
+window.I18N.lv.ui["Вся книга — после {n}%"] = "Visa grāmata — pie {n}%";
+window.I18N.lv.ui["🛒 Купить на Amazon"] = "🛒 Pirkt Amazon";
+window.I18N.lv.ui["🛒 Купить на Amazon (на английском)"] = "🛒 Pirkt Amazon (angliski)";
+window.I18N.lv.ui["Готовлю книгу…"] = "Sagatavoju grāmatu…";
+window.I18N.lv.ui["Не получилось. Проверьте интернет и попробуйте ещё раз."] = "Neizdevās. Pārbaudiet internetu un mēģiniet vēlreiz.";
 
 // Дополнение 26.11.2026: галерея старых фото (вкладка «Галерея», периоды)
 Object.assign(window.I18N.lv.ui, {"Галерея старых фото": "Veco foto galerija", "Все снимки по годам · смотреть без камеры · {n}": "Visi foto pa gadiem · skatīties bez kameras · {n}", "{n} старых снимков крепости. Нажмите на снимок, чтобы открыть его крупно; листайте влево-вправо.": "{n} veci cietokšņa foto. Pieskarieties foto, lai to atvērtu lielu; šķirstiet pa kreisi un pa labi.", "До 1915 · Российская империя": "Līdz 1915 · Krievijas impērija", "Динабургская крепость (с 1893 года — Двинская) — крепость Российской империи: валы, ворота, казармы, собор и сад коменданта.": "Dinaburgas (no 1893. gada — Dvinskas) cietoksnis — Krievijas impērijas cietoksnis: vaļņi, vārti, kazarmas, katedrāle un komandanta dārzs.", "1915–1919 · Первая мировая война": "1915–1919 · Pirmais pasaules karš", "Рядом с городом проходит фронт. В 1918 году — немецкая оккупация, затем годы борьбы за независимость Латвии.": "Netālu no pilsētas iet fronte. 1918. gadā — vācu okupācija, pēc tam Latvijas neatkarības cīņu gadi.", "1920–1940 · Латвийская Республика": "1920–1940 · Latvijas Republika", "После освобождения Даугавпилса в январе 1920 года в крепости стоит латвийская армия.": "Pēc Daugavpils atbrīvošanas 1920. gada janvārī cietoksnī izvietota Latvijas armija.", "1941–1945 · Вторая мировая война": "1941–1945 · Otrais pasaules karš", "Немецкая оккупация 1941–1944 годов. В крепости — лагерь военнопленных Шталаг 340.": "Vācu okupācija 1941.–1944. gadā. Cietoksnī — karagūstekņu nometne Stalag 340.", "1946–1993 · Советское время": "1946–1993 · Padomju laiks", "Крепость занимают воинские части и военное авиационное училище.": "Cietoksni aizņem karaspēka daļas un kara aviācijas skola.", "Год не известен": "Gads nav zināms", "Снимки этого периода открываются отдельно, после короткого пояснения": "Šī perioda foto atveras atsevišķi, pēc īsa paskaidrojuma"});
+window.I18N.lv.ui["Книга бесплатная."] = "Grāmata ir bez maksas.";

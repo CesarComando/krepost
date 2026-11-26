@@ -115,6 +115,24 @@ window.I18N_DATA.et.titles["Прямая дорога к Михайловски�
 window.I18N_DATA.et.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Läbipääsu kohal silt „Vabariigi värav“, kotkas veel paigas";
 window.I18N_DATA.et.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Mihaili tn 13: väike hoone on nüüd konverentsisaal";
 window.I18N_DATA.et.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Puusildu enam pole — väravani viib sirge tee";
+// Книга: превью 7 страниц и вся книга за 70% (25.11.2026)
+window.I18N_UI.et["Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)"] = "Eelvaade tasuta · kogu raamat {n}% juures (teil {p}%)";
+window.I18N_UI.et["Вся книга открыта. Спасибо, что прошли крепость!"] = "Kogu raamat on avatud. Aitäh, et kindluse läbi käisite!";
+window.I18N_UI.et["Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе."] = "Esimesed 7 lehekülge on tasuta. Kogu raamatu saate tasuta, kui olete läbinud {n}% rakendusest: fotod, ülesanded ja mosaiigid kokku.";
+window.I18N_UI.et["Или купите её на Amazon."] = "Või ostke see Amazonist.";
+window.I18N_UI.et["📄 Читать первые 7 страниц"] = "📄 Loe esimesi 7 lehekülge";
+window.I18N_UI.et["Пройдено {p}% из нужных {n}%"] = "Läbitud {p}% vajalikust {n}%-st";
+window.I18N_UI.et["осталось шагов: {k}"] = "samme jäänud: {k}";
+window.I18N_UI.et["📷 Снимки"] = "📷 Fotod";
+window.I18N_UI.et["🎯 Кадры квестов"] = "🎯 Ülesannete kaadrid";
+window.I18N_UI.et["🧩 Мозаики"] = "🧩 Mosaiigid";
+window.I18N_UI.et["Мозаики можно собирать дома — это самый быстрый способ начать."] = "Mosaiike saab teha kodus — see on kiireim viis alustada.";
+window.I18N_UI.et["⬇ Скачать всю книгу (PDF)"] = "⬇ Laadi alla kogu raamat (PDF)";
+window.I18N_UI.et["Вся книга — после {n}%"] = "Kogu raamat — {n}% juures";
+window.I18N_UI.et["🛒 Купить на Amazon"] = "🛒 Osta Amazonist";
+window.I18N_UI.et["🛒 Купить на Amazon (на английском)"] = "🛒 Osta Amazonist (inglise keeles)";
+window.I18N_UI.et["Готовлю книгу…"] = "Valmistan raamatut ette…";
+window.I18N_UI.et["Не получилось. Проверьте интернет и попробуйте ещё раз."] = "Ei õnnestunud. Kontrollige internetti ja proovige uuesti.";
 
 // Дополнение 26.11.2026: галерея старых фото (вкладка «Галерея», периоды)
 Object.assign(window.I18N_UI.et, {"Галерея старых фото": "Vanade fotode galerii", "Все снимки по годам · смотреть без камеры · {n}": "Kõik fotod aastate kaupa · vaata ilma kaamerata · {n}", "{n} старых снимков крепости. Нажмите на снимок, чтобы открыть его крупно; листайте влево-вправо.": "{n} vana kindluse fotot. Puuduta fotot, et seda suurelt näha; libista vasakule ja paremale.", "До 1915 · Российская империя": "Enne 1915 · Vene impeerium", "Динабургская крепость (с 1893 года — Двинская) — крепость Российской империи: валы, ворота, казармы, собор и сад коменданта.": "Dünaburgi (alates 1893 Dvinski) kindlus — Vene impeeriumi kindlus: vallid, väravad, kasarmud, katedraal ja komandandi aed.", "1915–1919 · Первая мировая война": "1915–1919 · Esimene maailmasõda", "Рядом с городом проходит фронт. В 1918 году — немецкая оккупация, затем годы борьбы за независимость Латвии.": "Linna lähedal kulgeb rinne. 1918 — Saksa okupatsioon, seejärel Läti Vabadussõja aastad.", "1920–1940 · Латвийская Республика": "1920–1940 · Läti Vabariik", "После освобождения Даугавпилса в январе 1920 года в крепости стоит латвийская армия.": "Pärast Daugavpilsi vabastamist 1920. aasta jaanuaris paikneb kindluses Läti armee.", "1941–1945 · Вторая мировая война": "1941–1945 · Teine maailmasõda", "Немецкая оккупация 1941–1944 годов. В крепости — лагерь военнопленных Шталаг 340.": "Saksa okupatsioon 1941–1944. Kindluses — sõjavangilaager Stalag 340.", "1946–1993 · Советское время": "1946–1993 · Nõukogude aeg", "Крепость занимают воинские части и военное авиационное училище.": "Kindluses asuvad väeosad ja sõjaväe lennukool.", "Год не известен": "Aasta teadmata", "Снимки этого периода открываются отдельно, после короткого пояснения": "Selle perioodi fotod avanevad eraldi, pärast lühikest selgitust"});

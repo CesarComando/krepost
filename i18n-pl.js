@@ -115,6 +115,24 @@ window.I18N_DATA.pl.titles["Прямая дорога к Михайловски�
 window.I18N_DATA.pl.hints["Над проходом — табличка «Ворота Республики», орёл ещё на месте"] = "Nad przejazdem tablica „Brama Republiki”, orzeł jeszcze na miejscu";
 window.I18N_DATA.pl.hints["Улица Михаила, 13: маленькое здание сейчас — конференц-зал"] = "Ulica Michała 13: mały budynek to dziś sala konferencyjna";
 window.I18N_DATA.pl.hints["Деревянных мостов уже нет — к воротам ведёт прямая дорога"] = "Drewnianych mostów już nie ma — do bramy prowadzi prosta droga";
+// Книга: превью 7 страниц и вся книга за 70% (25.11.2026)
+window.I18N_UI.pl["Превью бесплатно · вся книга — за {n}% прохождения (у вас {p}%)"] = "Fragment za darmo · cała książka przy {n}% postępu (Ty: {p}%)";
+window.I18N_UI.pl["Вся книга открыта. Спасибо, что прошли крепость!"] = "Cała książka jest odblokowana. Dziękujemy za zwiedzenie twierdzy!";
+window.I18N_UI.pl["Первые 7 страниц — бесплатно. Всю книгу можно получить бесплатно, когда пройдёте {n}% приложения: снимки, квесты и мозаики вместе."] = "Pierwsze 7 stron — za darmo. Całą książkę dostaniesz za darmo po ukończeniu {n}% aplikacji: zdjęcia, zadania i mozaiki razem.";
+window.I18N_UI.pl["Или купите её на Amazon."] = "Albo kup ją na Amazon.";
+window.I18N_UI.pl["📄 Читать первые 7 страниц"] = "📄 Czytaj pierwsze 7 stron";
+window.I18N_UI.pl["Пройдено {p}% из нужных {n}%"] = "Ukończono {p}% z potrzebnych {n}%";
+window.I18N_UI.pl["осталось шагов: {k}"] = "zostało kroków: {k}";
+window.I18N_UI.pl["📷 Снимки"] = "📷 Zdjęcia";
+window.I18N_UI.pl["🎯 Кадры квестов"] = "🎯 Kadry z zadań";
+window.I18N_UI.pl["🧩 Мозаики"] = "🧩 Mozaiki";
+window.I18N_UI.pl["Мозаики можно собирать дома — это самый быстрый способ начать."] = "Mozaiki można układać w domu — to najszybszy sposób, by zacząć.";
+window.I18N_UI.pl["⬇ Скачать всю книгу (PDF)"] = "⬇ Pobierz całą książkę (PDF)";
+window.I18N_UI.pl["Вся книга — после {n}%"] = "Cała książka — przy {n}%";
+window.I18N_UI.pl["🛒 Купить на Amazon"] = "🛒 Kup na Amazon";
+window.I18N_UI.pl["🛒 Купить на Amazon (на английском)"] = "🛒 Kup na Amazon (po angielsku)";
+window.I18N_UI.pl["Готовлю книгу…"] = "Przygotowuję książkę…";
+window.I18N_UI.pl["Не получилось. Проверьте интернет и попробуйте ещё раз."] = "Nie udało się. Sprawdź internet i spróbuj ponownie.";
 
 // Дополнение 26.11.2026: галерея старых фото (вкладка «Галерея», периоды)
 Object.assign(window.I18N_UI.pl, {"Галерея старых фото": "Galeria starych zdjęć", "Все снимки по годам · смотреть без камеры · {n}": "Wszystkie zdjęcia według lat · oglądaj bez aparatu · {n}", "{n} старых снимков крепости. Нажмите на снимок, чтобы открыть его крупно; листайте влево-вправо.": "{n} starych zdjęć twierdzy. Dotknij zdjęcia, aby je powiększyć; przesuwaj w lewo i w prawo.", "До 1915 · Российская империя": "Przed 1915 · Imperium Rosyjskie", "Динабургская крепость (с 1893 года — Двинская) — крепость Российской империи: валы, ворота, казармы, собор и сад коменданта.": "Twierdza Dyneburg (od 1893 r. — Dźwińsk) — twierdza Imperium Rosyjskiego: wały, bramy, koszary, sobór i ogród komendanta.", "1915–1919 · Первая мировая война": "1915–1919 · I wojna światowa", "Рядом с городом проходит фронт. В 1918 году — немецкая оккупация, затем годы борьбы за независимость Латвии.": "W pobliżu miasta przebiega front. W 1918 r. — okupacja niemiecka, potem lata walki o niepodległość Łotwy.", "1920–1940 · Латвийская Республика": "1920–1940 · Republika Łotewska", "После освобождения Даугавпилса в январе 1920 года в крепости стоит латвийская армия.": "Po wyzwoleniu Dyneburga w styczniu 1920 r. w twierdzy stacjonuje armia łotewska.", "1941–1945 · Вторая мировая война": "1941–1945 · II wojna światowa", "Немецкая оккупация 1941–1944 годов. В крепости — лагерь военнопленных Шталаг 340.": "Okupacja niemiecka w latach 1941–1944. W twierdzy — obóz jeniecki Stalag 340.", "1946–1993 · Советское время": "1946–1993 · Czasy radzieckie", "Крепость занимают воинские части и военное авиационное училище.": "Twierdzę zajmują jednostki wojskowe i wojskowa szkoła lotnicza.", "Год не известен": "Rok nieznany", "Снимки этого периода открываются отдельно, после короткого пояснения": "Zdjęcia z tego okresu otwierają się osobno, po krótkim wyjaśnieniu"});
