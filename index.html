@@ -2799,6 +2799,21 @@ const GAL_PERIODS = [
   { to: 1993, h: '1946–1993 · Советское время', d: 'Крепость занимают воинские части и военное авиационное училище.' },
   { to: 9999, h: 'Год не известен', d: '' },
 ];
+/* «2026 · Сегодня» (26.11.2026): снимки Дайниса — разборка постамента самолёта МиГ-19 на площади бывшего собора.
+   Не в игре, не на карте, не в счёте — только в галерее. Новые снимки «как меняется крепость сейчас» добавлять сюда. */
+const GAL_TODAY = {
+  h: '2026 · Сегодня',
+  d: '26 ноября 2026 года на площади, где до 1944 года стоял крепостной собор, разобрали постамент. В советское время на нём стоял самолёт МиГ-19 — символ авиационного училища.',
+  credit: 'Фото: Дайнис Миглан, 26.11.2026',
+  items: [
+    ['photos/today/mig_2026_6', 'Площадь бывшего собора: разборка постамента самолёта МиГ'],
+    ['photos/today/mig_2026_1', 'Лестница к площади собора, наверху работает экскаватор'],
+    ['photos/today/mig_2026_2', 'Груда камня и земли на месте постамента'],
+    ['photos/today/mig_2026_3', 'Камни и кирпич из основания постамента'],
+    ['photos/today/mig_2026_4', 'Экскаватор грузит обломки в самосвал'],
+    ['photos/today/mig_2026_5', 'Обломки постамента увозят на самосвале'],
+  ],
+};
 function gallerySpots() {
   // Только старые: снимки после 1993 года (новые, «как сейчас») в галерею не идут
   return byYear(allSpots().filter(s => s.src && !s.era && !s.hidden && !hiddenIds.includes(s.id) && (yearOfSpot(s) <= 1993 || yearOfSpot(s) === 9999)
@@ -2844,6 +2859,30 @@ function renderGallery() {
     }
     sec.append(grid); box.append(sec);
   });
+  // «2026 · Сегодня»: что происходит в крепости сейчас (снимки Дайниса)
+  {
+    const items = GAL_TODAY.items.map(([f, ti], k) => ({ id: 'today' + (k + 1), src: f + '.jpg', thumb: f + '_t.jpg', title: T(ti), year: '26.11.2026', hint: T(GAL_TODAY.d), group: 'Собор', credit: T(GAL_TODAY.credit) }));
+    const i = used.length;
+    const sec = document.createElement('section'); sec.className = 'galSec'; sec.id = 'galSec' + i;
+    const h = document.createElement('h3'); h.textContent = T(GAL_TODAY.h) + ' · ' + items.length; sec.append(h);
+    const d = document.createElement('p'); d.textContent = T(GAL_TODAY.d); sec.append(d);
+    const ch = document.createElement('button'); ch.type = 'button'; ch.className = 'chip'; ch.textContent = T(GAL_TODAY.h).split(' · ')[0];
+    ch.onclick = () => sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    jump.append(ch);
+    const grid = document.createElement('div'); grid.className = 'galGrid';
+    for (const s of items) {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'galItem';
+      const img = document.createElement('img'); img.src = s.thumb; img.alt = s.title; img.loading = 'lazy'; img.decoding = 'async';
+      const gi = document.createElement('span'); gi.className = 'gi';
+      const ti = document.createElement('b'); ti.textContent = s.title;
+      const yr = document.createElement('small'); yr.className = 'gy'; yr.textContent = s.year;
+      const pl = document.createElement('small'); pl.textContent = '📍 ' + T('Собор');
+      gi.append(ti, yr, pl); b.append(img, gi);
+      b.onclick = () => { track('feature', 'gallery_today'); openIllus(s, items); };
+      grid.append(b);
+    }
+    sec.append(grid); box.append(sec);
+  }
   // Период училища — отдельно, через то же предупреждение, что и на главной
   if (!$('eraRow').hidden) {
     const er = document.createElement('button'); er.type = 'button'; er.className = 'galEra'; er.id = 'galEraBtn';
