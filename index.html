@@ -3240,7 +3240,7 @@ const GUIDE_MUSIC = [
 ];
 /* 23.11.2026: Вивальди убран по просьбе Дайниса. Слушатель сам выбирает фон кнопкой «🎵 Музыка» (по кругу: Lute Voice → ноктюрн → баллада → выкл).
    По умолчанию везде Lute Voice. Выбор хранится в krepost.music2; старое «выкл» (krepost.music = '0') сохраняется. */
-const MUS_KEY = 'krepost.music2', MUS_LEVEL = 0.16;
+const MUS_KEY = 'krepost.music2', MUS_LEVEL = 0.144; // 26.11.2026: на 10% тише по просьбе Дайниса (было 0.16), голос без изменений
 let musChoice = (() => { try {
   const v = localStorage.getItem(MUS_KEY);
   if (v === 'off' || GUIDE_MUSIC.some(m => m.id === v)) return v;
