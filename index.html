@@ -2914,7 +2914,7 @@ $('eraGo').onclick = () => { try { localStorage.setItem(ERA_KEY, '1'); } catch {
 $('eraBack').onclick = () => $('eraDlg').close();
 $('eraDlg').addEventListener('click', e => { if (e.target === $('eraDlg')) $('eraDlg').close(); });
 /* Книга о крепости (PDF) на языке приложения: RU, LV, остальные — EN. Перед скачиванием — просьба поддержать (можно просто скачать). */
-const BOOK_PDF = { ru: 'books/Dinaburga1810_book_RU.pdf', lv: 'books/Dinaburga1810_gramata_LV.pdf', en: 'books/Dinaburga1810_book_EN.pdf', de: 'books/Dinaburga1810_Buch_DE.pdf', lt: 'books/Dinaburga1810_knyga_LT.pdf', pl: 'books/Dinaburga1810_ksiazka_PL.pdf', et: 'books/Dinaburga1810_raamat_ET.pdf', fr: 'books/Dinaburga1810_livre_FR.pdf', it: 'books/Dinaburga1810_libro_IT.pdf', es: 'books/Dinaburga1810_libro_ES.pdf', zh: 'books/Dinaburga1810_book_ZH.pdf' };
+const BOOK_PDF = { ru: 'books/Dinaburga1810_book_RU.pdf', lv: 'books/Dinaburga1810_gramata_LV.pdf', en: 'books/Dinaburga1810_book_EN.pdf', de: 'books/Dinaburga1810_Buch_DE.pdf', lt: 'books/Dinaburga1810_knyga_LT.pdf', pl: 'books/Dinaburga1810_ksiazka_PL.pdf', et: 'books/Dinaburga1810_raamat_ET.pdf', fr: 'books/Dinaburga1810_livre_FR.pdf', it: 'books/Dinaburga1810_libro_IT.pdf', es: 'books/Dinaburga1810_libro_ES.pdf', zh: 'books/Dinaburga1810_book_ZH.pdf', ar: 'books/Dinaburga1810_kitab_AR.pdf' };
 const bookLang = () => { const L = (window.LANG || 'ru').slice(0, 2); return BOOK_PDF[L] ? L : 'en'; };
 function renderBookRow() {
   $('bookRow').querySelector('.gT').textContent = T('Книга о крепости');
@@ -4026,7 +4026,7 @@ const TOUR_STEPS = [
   { sel: '#guideRow', t: 'Аудиогид', x: 'Короткий маршрут на 5 точек или полный круг. Лучше в наушниках; можно скачать заранее и слушать без интернета.' },
   { sel: '#botNav [data-view="quests"]', t: 'Квесты и мозаики', x: 'Квесты — задания на месте, в крепости. Мозаики из старых фото можно собирать и дома, с детьми.' },
   { sel: '#botNav [data-view="lib"]', t: 'Паспорт', x: 'Ваши снимки, отмеченные места и значки за пройденное.' },
-  { sel: '#guidesRow', t: 'Инфоцентр и книга', x: 'Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 11 языках.' },
+  { sel: '#guidesRow', t: 'Инфоцентр и книга', x: 'Информационный центр крепости: адрес, телефон и как дойти. Ниже — книга о крепости на 12 языках.' },
   { sel: '#setOpen', t: 'Язык и настройки', x: 'Язык — кнопка 🌐 рядом. В ⚙ Настройках: снимки без интернета, перенос прогресса на другой телефон, отзыв и этот тур. Берегите себя и крепость!' },
 ];
 // Состояние тура в телефоне: нет записи — ещё не предлагали; 'later' — «Не сейчас» (спросим ещё раз при следующем запуске);
