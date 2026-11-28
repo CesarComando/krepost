@@ -24,7 +24,8 @@
 <meta property="og:locale:alternate" content="en_GB">
 <meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
-<script>try{if(JSON.parse(localStorage.getItem('krepost.theme')||'"dark"')==='light'){document.documentElement.dataset.theme='light';}}catch(e){}</script>
+<script>try{if(JSON.parse(localStorage.getItem('krepost.theme')||'"dark"')==='light'){document.documentElement.dataset.theme='light';}}catch(e){}
+try{if(JSON.parse(localStorage.getItem('krepost.big')||'false')){document.documentElement.dataset.big='1';}}catch(e){}</script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Dinaburga 1810">
 <!-- Шрифты лежат на самом сайте и грузятся без задержки показа страницы; пока не пришли — видны системные -->
@@ -54,7 +55,7 @@
   .card .info { padding:10px 12px 12px; }
   .card .name { font-weight:600; }
   .card .meta { color:var(--muted); font-size:14px; }
-  .card .credit { color:var(--muted); font-size:12px; opacity:.8; margin-top:4px; }
+  .card .credit { color:var(--muted); font-size:13px; opacity:.8; margin-top:4px; }
   .card .done { color:var(--ok); font-size:14px; font-weight:600; }
   .card .del { position:absolute; top:6px; right:6px; width:34px; height:34px; padding:0; border-radius:50%; background:rgba(0,0,0,.65); }
   #empty { color:var(--muted); padding:28px 16px; border:1px dashed var(--line); border-radius:12px; text-align:center; margin-bottom:18px; }
@@ -492,18 +493,25 @@
   #guidesDlg, #eraDlg { width:min(440px, calc(100vw - 24px)); max-height:calc(100dvh - 40px); border:0; padding:0; border-radius:14px; background:#1c1610; color:var(--text); }
   #guidesDlg::backdrop, #eraDlg::backdrop { background:rgba(0,0,0,.7); }
   .guidesBox { padding:20px 18px 16px; }
+  html[data-big] #list, html[data-big] .guidesBox, html[data-big] .setBox { zoom:1.15; }
+  #tourAgain, #themeBtn, #bigBtn { width:100%; }
   .guidesBox h3 { margin:0 0 14px; font:600 22px 'Playfair Display',serif; }
   .gdP { padding:12px 14px; margin-bottom:10px; border:1px solid rgba(217,164,65,.35); border-radius:12px; }
   .gdP h4 { margin:0 0 4px; font:600 18px Inter,system-ui,sans-serif; }
   .gdLangs { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
   .gdLangs span { padding:3px 8px; border-radius:999px; background:rgba(217,164,65,.14); font:600 13px Inter,system-ui,sans-serif; }
-  .gdP p { margin:0; font-size:14px; line-height:1.45; opacity:.85; }
+  .gdP p { margin:0; font-size:15px; line-height:1.45; opacity:.85; }
   #guidesBook { margin:14px 0 4px; font-size:14px; line-height:1.5; }
   #guidesBook b { display:block; margin-bottom:6px; }
   .icPhoto { display:block; width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:10px; margin:0 0 4px; }
-  .icCredit { display:block; margin:0 0 10px; font-size:12px; opacity:.7; }
-  #guidesBook small { display:block; margin-top:4px; opacity:.7; font-size:12px; }
-  #guidesBook a { display:flex; align-items:center; min-height:44px; padding:0 12px; margin-bottom:8px; border-radius:12px; background:rgba(217,164,65,.12); color:inherit; text-decoration:none; font-weight:600; }
+  .icCredit { display:block; margin:0 0 10px; font-size:13px; opacity:.7; }
+  #guidesBook small { display:block; margin-top:4px; opacity:.7; font-size:13px; }
+  .gdP p + p { margin-top:8px; }
+  .icSec summary { list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:28px; font:600 17px Inter,system-ui,sans-serif; }
+  .icSec summary::-webkit-details-marker { display:none; }
+  .icSec summary::after { content:"▾"; opacity:.6; transition:transform .2s; } .icSec[open] summary::after { transform:rotate(180deg); }
+  .icSec[open] summary { margin-bottom:8px; } .gdP .icA:first-of-type { margin-top:12px; }
+  #guidesBook a, .gdP a.icA { display:flex; align-items:center; min-height:44px; padding:0 12px; margin-bottom:8px; border-radius:12px; background:rgba(217,164,65,.12); color:inherit; text-decoration:none; font-weight:600; }
   #eraDlg p { margin:0 0 10px; font-size:15px; line-height:1.5; }
   #eraDlg small { display:block; margin:0 0 12px; opacity:.75; font-size:13px; line-height:1.4; }
   #eraGo { display:block; width:100%; min-height:44px; margin-top:8px; }
@@ -518,7 +526,7 @@
   #dlAskDlg { position:fixed; overflow:visible; }
   #dlAskClose { position:absolute; top:8px; right:8px; z-index:1; width:44px; height:44px; border-radius:50%; border:0; padding:0; background:rgba(255,255,255,.1); color:var(--text); font-size:20px; line-height:44px; cursor:pointer; }
   html[data-theme="light"] #dlAskClose { background:rgba(0,0,0,.08); color:#2b2b2b; }
-  #dlAskDlg small { display:block; color:var(--muted); font-size:12px; text-align:center; margin:-4px 0 6px; }
+  #dlAskDlg small { display:block; color:var(--muted); font-size:13px; text-align:center; margin:-4px 0 6px; }
   .thanksBox { padding:22px 20px 18px; display:flex; flex-direction:column; gap:12px; text-align:center; }
   .thanksIcon { font-size:44px; line-height:1; }
   .thanksBox h3 { margin:0; font:700 23px/1.2 var(--old); }
@@ -692,7 +700,7 @@
   #langBar button.on { background:#f4c64b; color:#1c1610; border-color:#f4c64b; }
   #fbBox { text-align:center; margin:22px 0 0; }
   #fbBox button { padding:12px 22px; font-weight:600; }
-  #fbBox small { display:inline-block; margin-top:6px; color:var(--muted); font-size:12px; }
+  #fbBox small { display:inline-block; margin-top:6px; color:var(--muted); font-size:13px; }
   #surveyForm .gen { display:none; }
   #surveyForm.general .gen { display:block; }
   #surveyForm.general .q.gen { display:flex; }
@@ -715,7 +723,7 @@
   .pSince { margin:6px auto 14px; color:var(--muted); font-size:13px; max-width:26em; }
   .pStats { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; border-top:1px solid rgba(217,164,65,.25); padding-top:12px; }
   .pStats b { display:block; font:700 26px var(--serif); color:#f3c650; }
-  .pStats span { font-size:12px; color:var(--muted); }
+  .pStats span { font-size:13px; color:var(--muted); }
   .secTitle.badgeTitle::before { content:"🎖"; } .secTitle.stampTitle::before { content:"📮"; } .secTitle.shotsTitle::before { content:"📷"; }
   button.badge { min-height:0; color:inherit; font:inherit; text-transform:none; letter-spacing:0; box-shadow:none; cursor:pointer; }
   .badge.open { grid-column:1 / -1; }
@@ -726,7 +734,7 @@
   .badge .bIcon { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; background:#2a231b; filter:grayscale(1); opacity:.7; }
   .badge.ok .bIcon { filter:none; opacity:1; background:radial-gradient(circle,#f8d978,#c9921f); box-shadow:0 0 0 3px #1c1610, 0 0 0 4px #e8b84a, 0 4px 12px rgba(232,184,74,.35); }
   .badge b { font:600 12px/1.2 Inter,system-ui,sans-serif; color:#e6d8bd; }
-  .badge small { font-size:11px; color:var(--muted); }
+  .badge small { font-size:13px; color:var(--muted); }
   .badge.ok small { color:#f3c650; }
   .bBar { display:block; width:80%; height:4px; border-radius:2px; background:rgba(242,232,216,.12); overflow:hidden; }
   .bBar i { display:block; height:100%; background:#e8b84a; }
@@ -765,7 +773,7 @@
   .oTime li::before { content:""; position:absolute; left:-25px; top:6px; width:10px; height:10px; border-radius:50%; background:#e8b84a; box-shadow:0 0 0 3px #120e0a; }
   .oTime li.plain::before { background:#5a4a35; }
   .oTime li b { display:block; color:#f3c650; font:700 14px var(--mono); margin-bottom:2px; }
-  .oSrc { color:var(--muted); font-size:12px; margin:4px 0 0; }
+  .oSrc { color:var(--muted); font-size:13px; margin:4px 0 0; }
   .oProt { display:flex; align-items:center; min-height:44px; margin:10px 0 0; padding:8px 12px; border-radius:12px; border:1px solid rgba(217,164,65,.4); color:inherit; text-decoration:none; font-size:14px; }
   .oDecs, #decBar { display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px; }
   .oDecs button, #decBar button { flex:none; min-height:0; padding:7px 12px; border-radius:999px; background:#1c1610; color:#d9cbb2; border:1px solid rgba(217,164,65,.28); font:600 13px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
@@ -797,7 +805,7 @@
   .gDonate small { display:block; margin-top:8px; color:var(--muted); }
   .gTesterBtn { display:block; margin-top:8px; padding:8px 12px; font-size:13px; }
   #langList button { display:flex; justify-content:space-between; align-items:center; min-height:0; padding:10px 12px; border-radius:10px; background:none; border:0; color:#e6d8bd; font:500 15px Inter,system-ui,sans-serif; text-align:left; box-shadow:none; text-transform:none; letter-spacing:0; }
-  #langList button small { color:var(--muted); font:600 11px var(--mono); }
+  #langList button small { color:var(--muted); font:600 13px var(--mono); }
   #langList button.on { background:rgba(244,198,75,.16); color:#f3c650; }
   #langList button.on small { color:#f3c650; }
 
@@ -807,7 +815,7 @@
   #moveBox p { margin:0; font-size:14px; line-height:1.4; }
   #moveBox button { min-height:0; padding:10px 12px; border-radius:12px; font:600 14px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; box-shadow:none; }
   #moveBox button:not(.main) { background:#1c1610; color:#e6d8bd; border:1px solid rgba(217,164,65,.3); }
-  #moveBox small { color:var(--muted); font-size:12px; }
+  #moveBox small { color:var(--muted); font-size:13px; }
   #moveOut { display:flex; flex-direction:column; gap:8px; }
   #moveOut[hidden], #moveQr[hidden] { display:none; }
   #moveQr { width:min(240px, 100%); align-self:center; background:#fff; padding:8px; border-radius:8px; image-rendering:pixelated; }
@@ -821,7 +829,7 @@
   .offState:empty { display:none; }
   #offBox button { min-height:0; padding:10px 12px; border-radius:12px; font:600 14px Inter,system-ui,sans-serif; text-transform:none; letter-spacing:0; box-shadow:none; }
   #offBox button:not(.main) { background:#1c1610; color:#e6d8bd; border:1px solid rgba(217,164,65,.3); }
-  #offBox small { color:var(--muted); font-size:12px; }
+  #offBox small { color:var(--muted); font-size:13px; }
   .offProg { height:6px; border-radius:3px; background:rgba(242,232,216,.12); overflow:hidden; }
   .offProg[hidden], #offBox [hidden] { display:none !important; }
   .offProg i { display:block; height:100%; width:0; background:#e8b84a; transition:width .2s; }
@@ -840,7 +848,7 @@
   #oldBar[hidden] { display:none; }
   #oldBar label { color:#e6d8bd; font-size:13px; }
   #oldBar input { width:100%; accent-color:#e8b84a; }
-  #oldNote { margin:0; color:var(--muted); font-size:12px; }
+  #oldNote { margin:0; color:var(--muted); font-size:13px; }
 
   /* ===== Плашка года при прокрутке ===== */
   #yearRail { position:fixed; z-index:25; right:0; top:calc(78px + env(safe-area-inset-top)); bottom:calc(96px + env(safe-area-inset-bottom)); width:10px; pointer-events:none; }
@@ -872,7 +880,7 @@
   #supBox { margin:8px 0 0; text-align:center; }
   #supBox[hidden] { display:none; }
   #supBtn { display:inline-block; padding:10px 16px; border-radius:12px; background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; font:700 15px Inter,system-ui,sans-serif; text-decoration:none; }
-  #supBox small { color:var(--muted); font-size:12px; }
+  #supBox small { color:var(--muted); font-size:13px; }
   /* ===== 17.11.2026: новый главный экран, нижнее меню, поиск, карта ===== */
   #list { border:0; outline:0; box-shadow:none; padding:0 0 calc(84px + env(safe-area-inset-bottom)); background:#120e0a; }
   #list > #home, #list > #objView, #list > #filters, #list > #chips, #list > #cards, #list > #lib, #list > #quests, #list > #empty, #list > #adminBar { margin-left:16px; margin-right:16px; }
@@ -898,10 +906,10 @@
   #ringArc { stroke:#e8b84a; stroke-linecap:round; stroke-dasharray:0 200; transition:stroke-dasharray .5s; }
   #ring > div { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1; }
   #ringN { font:700 24px var(--serif); color:#f6ecd8; }
-  #ringOf { font-size:11px; color:var(--muted); margin-top:3px; }
+  #ringOf { font-size:13px; color:var(--muted); margin-top:3px; }
   .pcTxt { flex:1; min-width:0; display:flex; flex-direction:column; gap:3px; }
   .pcTxt b { font:600 16px Inter,system-ui,sans-serif; }
-  .pcTxt small { color:var(--muted); font-size:12px; line-height:1.3; }
+  .pcTxt small { color:var(--muted); font-size:13px; line-height:1.3; }
   #contBtn { flex:1 0 100%; padding:12px 14px; font:700 14px Inter,system-ui,sans-serif; border-radius:14px; background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; text-transform:none; letter-spacing:0; }
   #installBox { margin:0 0 14px; }
   #installBtn { width:100%; }
@@ -957,7 +965,7 @@
   #mapBar { display:flex; align-items:center; gap:10px; padding:10px 16px 4px; }
   #locBtn { flex:none; min-height:0; padding:9px 14px; border-radius:12px; background:linear-gradient(#f4c64b,#d9a52c); color:#2b1d08; font:700 14px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
   #mapInfo { color:var(--muted); font-size:13px; }
-  #mapLegend { margin:2px 16px 0; color:var(--muted); font-size:12px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  #mapLegend { margin:2px 16px 0; color:var(--muted); font-size:13px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
   .lg { display:inline-block; width:12px; height:12px; border-radius:50%; margin-left:6px; }
   .lg.todo { background:#1c1610; border:2px solid #e8b84a; }
   .lg.done { background:#5f9e45; border:2px solid #fff; }
@@ -982,14 +990,14 @@
   .mrow { display:flex; gap:8px; }
   .mrow img { flex:none; width:72px; height:56px; object-fit:cover; border-radius:6px; filter:sepia(.3); }
   .mrow b { display:block; font:600 13px/1.25 Inter,sans-serif; }
-  .mrow small { display:block; color:var(--muted); font-size:11px; margin:2px 0 5px; }
+  .mrow small { display:block; color:var(--muted); font-size:13px; margin:2px 0 5px; }
   .macts { display:flex; gap:6px; }
   .macts button { min-height:0; padding:6px 8px; font:600 12px Inter,sans-serif; border-radius:8px; box-shadow:none; text-transform:none; letter-spacing:0; }
   .macts button:not(.main) { background:#2a231b; color:#e6d8bd; }
   .macts button.on { background:#5f9e45; color:#fff; }
   .mhere { display:flex; flex-direction:column; gap:4px; }
   .mhere button { min-height:0; padding:8px 10px; font:700 13px Inter,sans-serif; border-radius:8px; box-shadow:none; text-transform:none; letter-spacing:0; }
-  .mhere small { color:#e6d8bd; font-size:12px; line-height:1.3; }
+  .mhere small { color:#e6d8bd; font-size:13px; line-height:1.3; }
   .mhere small:empty { display:none; }
   .mrow .mfix { display:block; margin-top:6px; padding:4px 0; min-height:0; background:none; border:0; border-radius:0; box-shadow:none; color:#f3d27a; font:500 12px Inter,sans-serif; text-decoration:underline; text-align:left; text-transform:none; letter-spacing:0; }
   #mapView { position:relative; }
@@ -997,7 +1005,7 @@
   #tipBar[hidden] { display:none; }
   #tipBar b { font:600 14px/1.25 Inter,sans-serif; }
   #tipBar p { margin:0; font-size:13px; line-height:1.35; }
-  #tipBar small { color:var(--muted); font-size:12px; line-height:1.3; }
+  #tipBar small { color:var(--muted); font-size:13px; line-height:1.3; }
   #tipBar input { padding:10px 12px; border-radius:10px; border:1px solid rgba(217,164,65,.35); background:#120e0a; color:#f6ecd8; font:500 16px Inter,system-ui,sans-serif; min-width:0; }
   #tipBar .row { display:flex; gap:8px; }
   #tipBar .row button { flex:1; min-height:44px; padding:8px 10px; border-radius:12px; font:700 14px Inter,system-ui,sans-serif; box-shadow:none; text-transform:none; letter-spacing:0; }
@@ -1641,6 +1649,7 @@ html[dir="rtl"] #cam :is(p,span,div,button,label,small,b,h2,h3), html[dir="rtl"]
     <p id="tourSet"><button type="button" id="tourAgain">❓ Как пользоваться (10 шагов)</button></p>
     <p id="handSet"><button type="button" id="handChange"></button></p>
     <p id="themeSet"><button type="button" id="themeBtn"></button></p>
+    <p id="bigSet"><button type="button" id="bigBtn"></button></p>
     <div id="moveBox">
       <h4>🔄 Перенести прогресс</h4>
       <p>Посещённые места, «печати» паспорта и задания квестов можно перенести на другой телефон или компьютер. Без регистрации: всё хранится в самом коде.</p>
@@ -2534,6 +2543,14 @@ function applyTheme(t) {
 }
 applyTheme(read(THEME_KEY, 'dark'));
 $('themeBtn').onclick = () => { const t = read(THEME_KEY, 'dark') === 'light' ? 'dark' : 'light'; write(THEME_KEY, t); applyTheme(t); };
+/* Крупный текст (28.11.2026): весь главный экран и окна чтения крупнее на 15 % (камера не меняется). */
+const BIG_KEY = 'krepost.big';
+function applyBig(on) {
+  if (on) document.documentElement.dataset.big = '1'; else delete document.documentElement.dataset.big;
+  const b = $('bigBtn'); if (b) b.textContent = T(on ? '🔠 Крупный текст: включён' : '🔠 Крупный текст: выключен');
+}
+applyBig(read(BIG_KEY, false));
+$('bigBtn').onclick = () => { const on = !read(BIG_KEY, false); write(BIG_KEY, on); applyBig(on); track('feature', on ? 'big_on' : 'big_off'); };
 /* Настройки (шестерёнка): отзыв, рука, о приложении */
 $('setOpen').onclick = () => { navPush(); $('setDlg').showModal(); paintOffInfo(); };
 $('setClose').onclick = () => navBack();
@@ -2753,35 +2770,89 @@ function renderGuideRow() {
 }
 /* Информационный центр крепости (24.11.2026, по просьбе Дайниса: живые экскурсоводы пока отложены).
    Данные: путеводитель «Daugavpils 2025» (visitdaugavpils.lv) — Daugavpils cietokšņa Apmeklētāju centrs, Nikolaja iela 5,
-   GPS 55.883883, 26.495869, +371 65424043, +371 28686331, cietoksnis@daugavpils.lv. Часы: пн–вс 10:00–18:00 (latgale.travel, daugavpils.lv, проверено Дайнисом 24.11.2026). */
+   GPS 55.883883, 26.495869, +371 65424043, +371 28686331, cietoksnis@daugavpils.lv. Часы: пн–вс 10:00–18:00 (latgale.travel, daugavpils.lv, проверено Дайнисом 24.11.2026).
+   28.11.2026 (просьба Дайниса): окно стало блоком «Информация и как добраться» — транспорт, часы и билеты, кафе, официальные сайты.
+   Источники (проверено 28.11.2026): автобусы/трамваи — en.wikipedia.org/wiki/Daugavpils_Satiksme (данные 2020–2023) и lvportals.lv 07.07.2026;
+   Центр Ротко — rothkomuseum.com/en/for-rothko-center-visitors (часы) и …/prices-for-visiting (цены); кафе «Arsenāls», автостанция,
+   городской турцентр — буклет visitdaugavpils.lv 2026 (Daugavpils_brosuraENG.pdf). Парковка, туалеты, доступность — ещё не проверены,
+   добавить в INFO_EXTRA, когда Дайнис подтвердит.
+   Уточнено в тот же день: транспорт и бесплатная парковка у музея — rothkomuseum.com/en/for-rothko-center-visitors/how-to-reach/;
+   туалеты и доступность — …/availability; часы центра посетителей — visitdaugavpils.lv (изм. 10.09.2026); кафе 10–22 — visitdaugavpils.lv/en/turisma-objekts/kafejnica-arsenals/.
+   Магазин в крепости и точные координаты стоянки — не найдены. */
 const INFO_CENTER = { lat: 55.883883, lng: 26.495869 };
+const INFO_EXTRA = []; // [{ h: 'Парковка', p: '…', href: '…', a: '…' }] — после проверки на месте
 function renderGuidesRow() {
   $('guidesRow').querySelector('b').textContent = 'ℹ️';
-  $('guidesRow').querySelector('.gT').textContent = T('Информационный центр крепости');
-  $('guidesRow').querySelector('.gN').textContent = T('Адрес, телефон и как дойти');
+  $('guidesRow').querySelector('.gT').textContent = T('Информация и как добраться');
+  $('guidesRow').querySelector('.gN').textContent = T('Транспорт, часы, билеты, кафе, контакты');
+}
+function infoLink(href, txt, ev) {
+  const a = document.createElement('a'); a.href = href; a.textContent = txt; a.className = 'icA';
+  if (href.startsWith('http')) { a.target = '_blank'; a.rel = 'noopener'; }
+  a.onclick = () => track('feature', 'infocenter_' + ev); return a;
+}
+// Разделы сворачиваются (details): видны только заголовки, нужный открывается нажатием — «ненавязчиво»
+function infoSection(h, ps, links, open) {
+  const d = document.createElement('details'); d.className = 'gdP icSec'; if (open) d.open = true;
+  const t = document.createElement('summary'); t.textContent = h; d.append(t);
+  d.addEventListener('toggle', () => { if (d.open) track('feature', 'info_' + h.replace(/[^\p{L}\d]+/gu, '_').slice(0, 24)); });
+  for (const x of ps) { const p = document.createElement('p'); p.textContent = x; d.append(p); }
+  for (const l of links || []) d.append(infoLink(...l));
+  return d;
 }
 $('guidesRow').onclick = () => {
   track('feature', 'infocenter');
-  $('guidesH').textContent = T('Центр посетителей Даугавпилсской крепости');
-  const d = document.createElement('div'); d.className = 'gdP';
+  $('guidesH').textContent = T('Информация для туриста');
+  const q = `${INFO_CENTER.lat},${INFO_CENTER.lng}`;
+  const top = document.createElement('div');
   const im = document.createElement('img'); im.src = 'photos/infocenter.jpg'; im.alt = T('Центр посетителей Даугавпилсской крепости'); im.className = 'icPhoto'; im.decoding = 'async';
   const ic = document.createElement('small'); ic.className = 'icCredit'; ic.textContent = T('Фото: visitdaugavpils.lv');
-  d.append(im, ic);
-  const p1 = document.createElement('p'); p1.textContent = T('Здесь подскажут, что посмотреть в крепости, и помогут записаться на экскурсию. Центр находится в бывшем водоподъёмном здании 1865–1866 годов.');
-  const p2 = document.createElement('p'); p2.textContent = T('Адрес: ул. Николая 5 (Nikolaja iela 5), Даугавпилсская крепость. Работает каждый день с 10:00 до 18:00. Экскурсия по крепости длится 1 час; бесплатные карты и буклеты.');
-  d.append(p1, p2);
-  $('guidesList').replaceChildren(d);
+  top.append(im, ic);
+  const secs = [
+    infoSection('ℹ️ ' + T('Центр посетителей Даугавпилсской крепости'), [
+      T('Здесь подскажут, что посмотреть в крепости, и помогут записаться на экскурсию. Центр находится в бывшем водоподъёмном здании 1865–1866 годов.'),
+      T('Адрес: ул. Николая 5 (Nikolaja iela 5), Даугавпилсская крепость. Работает каждый день с 10:00 до 18:00. Экскурсия по крепости длится 1 час; бесплатные карты и буклеты.')
+    ], [
+      ['tel:+37165424043', '📞 +371 654 24043', 'call'], ['tel:+37128686331', '📞 +371 286 86331', 'call'],
+      ['mailto:cietoksnis@daugavpils.lv', '✉️ cietoksnis@daugavpils.lv', 'mail'],
+      [`https://www.google.com/maps/search/?api=1&query=${q}`, '📍 ' + T('Открыть в Google Картах'), 'gmaps'],
+      [`https://maps.apple.com/?ll=${q}&q=${encodeURIComponent('Daugavpils cietokšņa Apmeklētāju centrs')}`, '📍 ' + T('Открыть в Apple Картах'), 'amaps']], true),
+    infoSection('🚌 ' + T('Как добраться и парковка'), [
+      T('Автобусы № 4 и 13 и трамваи № 3 и 5 — до остановки «Cietoksnis» (Крепость). Автобус № 13A — до остановки «Rotko muzejs», прямо у Центра Ротко.'),
+      T('Из Риги и других городов — автобусом до автостанции Даугавпилса (ул. Виестура 10), дальше городским транспортом.'),
+      T('Парковка: у Центра Ротко — бесплатная стоянка для машин и автобусов; во дворе есть место для велосипедов.')
+    ], [
+      [`https://www.google.com/maps/dir/?api=1&destination=${q}`, '🧭 ' + T('Маршрут до крепости'), 'route'],
+      ['https://www.google.com/maps/search/?api=1&query=55.883766,26.497355', '🅿️ ' + T('Парковка у Центра Ротко на карте'), 'parking'],
+      ['http://satiksme.daugavpils.lv/autobusu-kustibu-saraksts', '🚌 ' + T('Расписание городских автобусов'), 'bus_city'],
+      ['http://satiksme.daugavpils.lv/tramvaju-kustibu-saraksts', '🚋 ' + T('Расписание трамваев'), 'tram'],
+      ['https://www.autoosta.lv', '🚍 ' + T('Междугородние автобусы: autoosta.lv'), 'bus']]),
+    infoSection('🕘 ' + T('Часы работы и билеты'), [
+      T('Территория крепости открыта в любое время, вход свободный.'),
+      T('Центр посетителей (ул. Николая 5): каждый день 10:00–18:00, перед праздниками часы могут меняться.'),
+      T('Центр Ротко (ул. Михаила 3) и Дом Мартинсона (ул. Николая 1): понедельник — выходной; вторник и воскресенье 11:00–17:00; среда–суббота 11:00–19:00. Касса закрывается за 30 минут.'),
+      T('Билеты: музей Ротко 10 € (льготный 5 €), Ротко + Дом Мартинсона 16 € (8 €), семейный билет 32 €; дети до 6 лет — бесплатно. В кассе музея — без наценки, онлайн — с сервисным сбором.'),
+      T('Часы и цены — с официальных сайтов на 28.11.2026; перед визитом лучше проверить.')
+    ], [['https://rothkomuseum.com/en/for-rothko-center-visitors', '🎨 ' + T('Центр Ротко: часы и билеты'), 'rothko'], ['tel:+37122471925', '📞 ' + T('Центр Ротко') + ' +371 224 71925', 'rothko_call']]),
+    infoSection('☕ ' + T('Кафе, туалеты, доступность'), [
+      T('Кафе «Arsenāls» — ул. Михаила 3, в здании Центра Ротко. Каждый день 10:00–22:00; летом открыта терраса с видом на Николаевские ворота.'),
+      T('Туалеты — в Центре Ротко, там же туалет для людей на коляске и комната матери и ребёнка.'),
+      T('Центр Ротко доступен на коляске: залы на двух этажах соединяет лифт.'),
+      T('Летом по крепости и городу ездят экскурсии на электробусе.'),
+      T('Экстренная помощь — 112.')
+    ], [['tel:+37127757872', '📞 ' + T('Кафе «Arsenāls»') + ' +371 277 57872', 'cafe']]),
+    ...INFO_EXTRA.map(x => infoSection(T(x.h), [T(x.p)], x.href ? [[x.href, T(x.a), 'extra']] : [])),
+    infoSection('🔗 ' + T('Официальные сайты'), [
+      T('Туристический центр Даугавпилса: ул. Ригас 22а, +371 654 22818.')
+    ], [
+      ['https://www.visitdaugavpils.lv', '🌐 visitdaugavpils.lv', 'visit'],
+      ['https://www.daugavpils.lv', '🌐 daugavpils.lv', 'city'],
+      ['https://rothkomuseum.com', '🌐 rothkomuseum.com', 'rothko_site'],
+      ['tel:+37165422818', '📞 +371 654 22818', 'tic']])
+  ];
+  $('guidesList').replaceChildren(top, ...secs);
   const b = $('guidesBook'); b.replaceChildren();
-  const q = `${INFO_CENTER.lat},${INFO_CENTER.lng}`;
-  for (const [href, txt, ev] of [
-    ['tel:+37165424043', '📞 +371 654 24043', 'call'], ['tel:+37128686331', '📞 +371 286 86331', 'call'],
-    ['mailto:cietoksnis@daugavpils.lv', '✉️ cietoksnis@daugavpils.lv', 'mail'],
-    [`https://www.google.com/maps/search/?api=1&query=${q}`, '📍 ' + T('Открыть в Google Картах'), 'gmaps'],
-    [`https://maps.apple.com/?ll=${q}&q=${encodeURIComponent('Daugavpils cietokšņa Apmeklētāju centrs')}`, '📍 ' + T('Открыть в Apple Картах'), 'amaps']]) {
-    const a = document.createElement('a'); a.href = href; a.textContent = txt; if (href.startsWith('http')) { a.target = '_blank'; a.rel = 'noopener'; }
-    a.onclick = () => track('feature', 'infocenter_' + ev); b.append(a);
-  }
-  const s = document.createElement('small'); s.textContent = T('Источники: путеводитель «Daugavpils 2025», latgale.travel'); b.append(s);
+  const s = document.createElement('small'); s.textContent = T('Источники: visitdaugavpils.lv, rothkomuseum.com, satiksme.daugavpils.lv, путеводитель «Daugavpils 2025», latgale.travel'); b.append(s);
   $('guidesClose').textContent = T('Закрыть');
   $('guidesDlg').showModal();
 };
